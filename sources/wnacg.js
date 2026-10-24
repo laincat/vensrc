@@ -15,60 +15,63 @@ class Wnacg extends ComicSource {
         return `https://${domain}`
     }
 
-    account = {
-        loginWithWebview: {
-            url: `${this.baseUrl}/users-login.html`,
-            checkStatus: (url, title) => {
-                const base = this.baseUrl
-                const memberUrl = `${base}/users-index.html`
-                const current = String(url || "").split(/[?#]/)[0].replace(/\/$/, "")
-                const pageTitle = String(title || "").trim()
-                // 登录页也可能直接打开会员 URL；标题必须出现会员中心字样。
-                return current === memberUrl &&
-                    /(?:用戶|用户|會員|会员|個人|个人|我的).*(?:中心|主頁|主页)/.test(pageTitle) &&
-                    !/登[錄录]|登录|您沒有權限|您没有权限|權限不足|权限不足/.test(pageTitle)
+    get account() {
+        const source = this
+        return {
+            loginWithWebview: {
+                url: `${source.baseUrl}/users-login.html`,
+                checkStatus: (url, title) => {
+                    const base = source.baseUrl
+                    const memberUrl = `${base}/users-index.html`
+                    const current = String(url || "").split(/[?#]/)[0].replace(/\/$/, "")
+                    const pageTitle = String(title || "").trim()
+                    // 登录页也可能直接打开会员 URL；标题必须出现会员中心字样。
+                    return current === memberUrl &&
+                        /(?:用戶|用户|會員|会员|個人|个人|我的).*(?:中心|主頁|主页)/.test(pageTitle) &&
+                        !/登[錄录]|登录|您沒有權限|您没有权限|權限不足|权限不足/.test(pageTitle)
+                },
             },
-        },
-        loginWithCookies: {
-            fields: ["浏览器 Cookie（本人在对应域名登录并完成滑块后复制）"],
-            validate: async (values) => {
-                if (!Array.isArray(values) || values.length !== 1 || typeof values[0] !== "string") {
-                    throw "请填写浏览器请求中的 Cookie，勿填写账号密码或 Set-Cookie"
-                }
-                const text = values[0].trim().replace(/^Cookie:\s*/i, "")
-                if (!text || text.length > 16384 || /[\r\n]/.test(text)) {
-                    throw "Cookie 格式无效，请只复制一行 Cookie 请求头"
-                }
-                const base = this.baseUrl
-                const domain = base.slice("https://".length)
-                const names = new Set()
-                const cookies = text.split(";").map((part) => {
-                    const match = part.trim().match(/^([!#$%&'*+\-.^_`|~0-9A-Za-z]+)=([^\x00-\x20\x7f;,]*)$/)
-                    if (!match || names.has(match[1]) || /^(path|domain|expires|max-age|samesite)$/i.test(match[1])) {
-                        throw "Cookie 格式无效，请复制 Cookie 请求头，勿复制 Set-Cookie"
+            loginWithCookies: {
+                fields: ["浏览器 Cookie（本人在对应域名登录并完成滑块后复制）"],
+                validate: async (values) => {
+                    if (!Array.isArray(values) || values.length !== 1 || typeof values[0] !== "string") {
+                        throw "请填写浏览器请求中的 Cookie，勿填写账号密码或 Set-Cookie"
                     }
-                    names.add(match[1])
-                    return new Cookie({ name: match[1], value: match[2], domain })
-                })
-                const previous = await Network.getCookies(base)
-                try {
-                    await Network.deleteCookies(base)
-                    await Network.setCookies(base, cookies)
-                    if (!await this._checkSession(base)) {
-                        throw "会员会话未验证；请确认登录域名一致、Cookie 未过期，并在正常浏览器完成滑块"
+                    const text = values[0].trim().replace(/^Cookie:\s*/i, "")
+                    if (!text || text.length > 16384 || /[\r\n]/.test(text)) {
+                        throw "Cookie 格式无效，请只复制一行 Cookie 请求头"
                     }
-                    return true
-                } catch (error) {
-                    await Network.deleteCookies(base)
-                    await Network.setCookies(base, previous)
-                    throw error
-                }
+                    const base = source.baseUrl
+                    const domain = base.slice("https://".length)
+                    const names = new Set()
+                    const cookies = text.split(";").map((part) => {
+                        const match = part.trim().match(/^([!#$%&'*+\-.^_`|~0-9A-Za-z]+)=([^\x00-\x20\x7f;,]*)$/)
+                        if (!match || names.has(match[1]) || /^(path|domain|expires|max-age|samesite)$/i.test(match[1])) {
+                            throw "Cookie 格式无效，请复制 Cookie 请求头，勿复制 Set-Cookie"
+                        }
+                        names.add(match[1])
+                        return new Cookie({ name: match[1], value: match[2], domain })
+                    })
+                    const previous = await Network.getCookies(base)
+                    try {
+                        await Network.deleteCookies(base)
+                        await Network.setCookies(base, cookies)
+                        if (!await source._checkSession(base)) {
+                            throw "会员会话未验证；请确认登录域名一致、Cookie 未过期，并在正常浏览器完成滑块"
+                        }
+                        return true
+                    } catch (error) {
+                        await Network.deleteCookies(base)
+                        await Network.setCookies(base, previous)
+                        throw error
+                    }
+                },
             },
-        },
-        logout: async () => {
-            await Network.deleteCookies("https://www.wnacg.com")
-            await Network.deleteCookies("https://www.wnacg.ru")
-        },
+            logout: async () => {
+                await Network.deleteCookies("https://www.wnacg.com")
+                await Network.deleteCookies("https://www.wnacg.ru")
+            },
+        }
     }
 
     async _checkSession(base) {
