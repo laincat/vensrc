@@ -192,7 +192,7 @@ def validate_catalog(catalog):
     for item in catalog["sources"]:
         assert not excluded_wnacg(item), "绅士漫画只允许 laincat/vensrc 独立维护版"
         if item["key"] == "wnacg":
-            assert item.get("repository") == "laincat/vensrc"
+            assert item.get("repository") == "laincat/vensrc", "绅士漫画只允许 laincat/vensrc 独立维护版"
         assert re.fullmatch(r"[a-f0-9]{64}", item["sha256"])
         assert pinned(item["url"]), item["url"]
         assert item["id"] == item["sha256"], "构建 ID 必须是完整源码哈希"
