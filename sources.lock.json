@@ -1,97 +1,215 @@
 [
   {
-    "name": "腾讯漫画",
-    "key": "acqq",
-    "version": "1.0.0",
-    "fileName": "acqq.js",
-    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/acqq.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit",
-    "sha256": "6c155c4db1d0ebb1d51c626a7f201048dddd02b81f0315b33b2982305b0c73e2",
-    "minAppVersion": "1.0.0",
+    "name": "古风漫画",
+    "key": "GfmhApp",
+    "version": "1.3.0",
+    "fileName": "gfmh.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/gfmh.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "a49d1e4b58fdea401dc908368e429ddef26e1de54ca7c92593bf011155ce8362",
+    "minAppVersion": "1.6.0",
     "officialKey": false,
-    "status": "partial",
-    "channel": "extended",
+    "status": "passed",
+    "channel": "main",
     "sample": {
-      "comicId": "505432",
-      "epId": "1",
+      "comicId": "413866",
+      "epId": "147389",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:18.585Z",
-    "limitations": [
-      {
-        "stage": "comic.onImageLoad.onLoadFailed",
-        "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
-      }
-    ]
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "a49d1e4b58fdea401dc908368e429ddef26e1de54ca7c92593bf011155ce8362",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source",
+      "n3114576614-cell/N_venera_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": []
   },
   {
-    "name": "爱漫岛",
-    "key": "aiman",
-    "version": "2.3.6",
-    "fileName": "amdcomic.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/amdcomic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "18c0c8b324346da24ba58992d1493facb91d50fae789d320d07968b2fa452f83",
-    "minAppVersion": "1.4.0",
-    "officialKey": false,
-    "status": "partial",
+    "name": "Komiic",
+    "key": "Komiic",
+    "version": "1.0.8",
+    "fileName": "komiic_dual.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/komiic_dual.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "ad74a243c07ebc549254e75162fceb81097e6755054e1902ca81e0327370bd68",
+    "minAppVersion": "1.0.0",
+    "officialKey": true,
+    "status": "failed",
     "channel": "extended",
     "sample": {
-      "comicId": "70587",
-      "epId": "https://www.amdcomic-plus.vip/vodplay-70587-1-1.html",
+      "comicId": "4992",
+      "epId": "174010",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:18.585Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "ad74a243c07ebc549254e75162fceb81097e6755054e1902ca81e0327370bd68",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
-        "stage": "account.loginWithCookies.validate",
+        "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.cookieValues"
+        "reason": "Provide credentials.username and password"
+      },
+      {
+        "stage": "explore[0].load",
+        "status": "失败",
+        "category": "返回结构或样本不满足契约",
+        "reason": "分页字段 maxPage 不是非负整数"
+      },
+      {
+        "stage": "categoryComics.load",
+        "status": "失败",
+        "category": "返回结构或样本不满足契约",
+        "reason": "分页字段 maxPage 不是非负整数"
+      },
+      {
+        "stage": "categoryComics.ranking.load",
+        "status": "失败",
+        "category": "返回结构或样本不满足契约",
+        "reason": "分页字段 maxPage 不是非负整数"
       },
       {
         "stage": "favorites.loadFolders",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "favorites.loadComics",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
+      },
+      {
+        "stage": "comic.onImageLoad.onLoadFailed",
+        "status": "跳过",
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "explore[0].onThumbnailLoad",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      },
-      {
-        "stage": "categoryComics.onThumbnailLoad",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
-        "stage": "search.onThumbnailLoad",
+        "stage": "favorites.addFolder",
         "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "favorites.deleteFolder",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "comic.sendComment",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      }
+    ]
+  },
+  {
+    "name": "漫画柜",
+    "key": "ManHuaGui",
+    "version": "1.2.1",
+    "fileName": "manhuagui.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/manhuagui.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "a5bf6c633e0ce728361dded097424b829134d618128f72b571e42525e8950128",
+    "minAppVersion": "1.4.0",
+    "officialKey": true,
+    "status": "partial",
+    "channel": "extended",
+    "sample": {
+      "comicId": "20224",
+      "epId": "233848",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "a5bf6c633e0ce728361dded097424b829134d618128f72b571e42525e8950128",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source",
+      "hea784/venera-configs",
+      "yelongyue197-svg/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "account.login",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "Provide credentials.username and password"
+      },
+      {
+        "stage": "favorites.loadComics",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "网络收藏需要已登录的账号"
+      },
+      {
+        "stage": "account.logout",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "favorites.addOrDelFavorite",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "comic.sendComment",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      }
+    ]
+  },
+  {
+    "name": "腾讯动漫",
+    "key": "ac_qq",
+    "version": "1.0.1",
+    "fileName": "ac_qq.js",
+    "url": "https://raw.githubusercontent.com/Angus-fw/venera-configs/ce03585b9a4e1bc24cbb7d61f748a66eac393ddf/ac_qq.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "c36110d27ea41a64fdd9f1180bc3cf4b0936b0cdffa0fb30a14c5c8c64612236",
+    "minAppVersion": "1.0.0",
+    "officialKey": false,
+    "status": "partial",
+    "channel": "extended",
+    "sample": {
+      "comicId": "643717",
+      "epId": "1",
+      "keyword": "海贼王"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "c36110d27ea41a64fdd9f1180bc3cf4b0936b0cdffa0fb30a14c5c8c64612236",
+    "trackedBy": [
+      "Angus-fw/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "comic.link.linkToId",
+        "status": "跳过",
+        "category": "缺少样本输入",
+        "reason": "Provide inputs.comicUrl"
       }
     ]
   },
@@ -101,7 +219,7 @@
     "version": "1.0.0",
     "fileName": "aman.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/aman.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "2b16b80ed5cfa66f56009ad32a98e6a4fa75cfb95f78d10cc6c5ecba38f711f3",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -112,7 +230,12 @@
       "epId": "dSIqcrthizgeTZxusEPu",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:18.585Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "2b16b80ed5cfa66f56009ad32a98e6a4fa75cfb95f78d10cc6c5ecba38f711f3",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
@@ -121,7 +244,7 @@
     "version": "1.3.0",
     "fileName": "asura_scans.js",
     "url": "https://raw.githubusercontent.com/Micqiyue/venera-sources/cee408d01603fd2466eefd66bbd2084218862965/asura_scans.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Micqiyue/venera-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "a852624ec250b589183b680cb48d306323c64d961c40f239ea0cf0a4bacce043",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -132,7 +255,12 @@
       "epId": "1",
       "keyword": "love"
     },
-    "checkedAt": "2026-10-23T08:59:21.891Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "a852624ec250b589183b680cb48d306323c64d961c40f239ea0cf0a4bacce043",
+    "trackedBy": [
+      "Micqiyue/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.login",
@@ -144,54 +272,54 @@
         "stage": "favorites.loadFolders",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "favorites.loadComics",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "comic.idMatch",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "漫画 ID 与源声明的匹配规则不一致"
+        "reason": "漫画 ID 与源声明的规则不一致"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addFolder",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.deleteFolder",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
   {
     "name": "百合会",
     "key": "baihehui",
-    "version": "1.0.2",
+    "version": "1.0.0",
     "fileName": "baihehui.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/baihehui.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "356372e99f8b6836151cca6ddbd5bc46a8085cdc7ec06a91ea2442289e401758",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/baihehui.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "ba1520f9cad1d0d960d8c0d5520c5db02d874e809e1e59c7fe41f43c474c7ccf",
     "minAppVersion": "1.4.0",
     "officialKey": false,
     "status": "failed",
@@ -201,7 +329,12 @@
       "epId": "781",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T08:59:23.644Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "ba1520f9cad1d0d960d8c0d5520c5db02d874e809e1e59c7fe41f43c474c7ccf",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.login",
@@ -213,40 +346,39 @@
         "stage": "search.load",
         "status": "失败",
         "category": "需要登录",
-        "reason": "百合会搜索需要登录账号，请先在「我的」中登录百合会"
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "comic.link.idToLink",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
   {
-    "name": "包子漫画（修订版）",
-    "key": "baozi_fixed",
-    "version": "1.1.3",
-    "fileName": "baozi_fixed.js",
-    "url": "https://raw.githubusercontent.com/JunQianNuo/venera-sources/b489d5e2d8c53e6a2a03af9a8bf87dab25a0df0a/dist/baozi_fixed.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；JunQianNuo/venera-sources",
-    "sha256": "d5be7f79acce09fe65144c026bd129db550a7bce894adb665ac41848c3a4e638",
-    "minAppVersion": "1.4.0",
-    "officialKey": false,
+    "name": "包子漫画",
+    "key": "baozi",
+    "version": "1.1.7",
+    "fileName": "baozi.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/baozi.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "d589aabc779b17c58a72bb4edc15f955e05d8e17a0e4ce8164836542a3d6492c",
+    "minAppVersion": "1.0.0",
+    "officialKey": true,
     "status": "failed",
     "channel": "extended",
     "sample": {
       "comicId": "huoyingrenzhe-anbenqishi",
-      "epId": "huoyingrenzhe-anbenqishi|0|0",
+      "epId": "0",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:27.879Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "d589aabc779b17c58a72bb4edc15f955e05d8e17a0e4ce8164836542a3d6492c",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.login",
@@ -264,58 +396,75 @@
         "stage": "favorites.loadComics",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
   {
-    "name": "哔哩漫画",
-    "key": "bilimanga",
-    "version": "1.6.2",
-    "fileName": "bilimanga.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/bilimanga.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "0480d3d33192a99f19c458dc3248996988a73a4493b829a8ea0c15f3083e0a63",
-    "minAppVersion": "1.6.0",
+    "name": "包子漫画（修订版）",
+    "key": "baozi_fixed",
+    "version": "1.1.3",
+    "fileName": "baozi_fixed.js",
+    "url": "https://raw.githubusercontent.com/JunQianNuo/venera-sources/b489d5e2d8c53e6a2a03af9a8bf87dab25a0df0a/dist/baozi_fixed.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "d5be7f79acce09fe65144c026bd129db550a7bce894adb665ac41848c3a4e638",
+    "minAppVersion": "1.4.0",
     "officialKey": false,
-    "status": "partial",
+    "status": "failed",
     "channel": "extended",
     "sample": {
-      "comicId": "1230",
-      "epId": "102449",
+      "comicId": "huoyingrenzhe-anbenqishi",
+      "epId": "huoyingrenzhe-anbenqishi|0|0",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:29.032Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "d5be7f79acce09fe65144c026bd129db550a7bce894adb665ac41848c3a4e638",
+    "trackedBy": [
+      "JunQianNuo/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
-        "stage": "account.loginWithWebview.checkStatus",
+        "stage": "account.login",
         "status": "跳过",
-        "category": "interactive_required",
-        "reason": "Provide observed browser URL/title and exported cookies or token"
+        "category": "未提供账号凭据",
+        "reason": "Provide credentials.username and password"
+      },
+      {
+        "stage": "categoryComics.load",
+        "status": "失败",
+        "category": "返回结构或样本不满足契约",
+        "reason": "分页字段 maxPage 不是非负整数"
+      },
+      {
+        "stage": "favorites.loadComics",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
-        "stage": "comic.getShareLink",
+        "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -325,7 +474,7 @@
     "version": "1.2.9",
     "fileName": "bukamh.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/bukamh.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "34424b843c058c1545b1633024330bd98bde711ef3694da0ebbbf24bcac4f4f9",
     "minAppVersion": "1.4.0",
     "officialKey": false,
@@ -336,17 +485,54 @@
       "epId": "603211_208477",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:29.147Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "34424b843c058c1545b1633024330bd98bde711ef3694da0ebbbf24bcac4f4f9",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
+  },
+  {
+    "name": "Buon Dua",
+    "key": "buondua",
+    "version": "1.2.0",
+    "fileName": "buondua.js",
+    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/buondua.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "2cba3e6205a4e09059de879a6891a16f1b660f44bd7c54614ddd3966923493b3",
+    "minAppVersion": "1.6.0",
+    "officialKey": false,
+    "status": "failed",
+    "channel": "extended",
+    "sample": {
+      "comicId": "coser-nian-nian-tuan-zi-tu-2026nian08yue-zuo-pin-huo-ying-ren-zhe-gang-shou-89-photos-1-video-e9516d1499b5f4fc9b4587180971e8ea-56549",
+      "epId": "0",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "2cba3e6205a4e09059de879a6891a16f1b660f44bd7c54614ddd3966923493b3",
+    "trackedBy": [
+      "meaninglesslyy/venera-config"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "comic.idMatch",
+        "status": "失败",
+        "category": "返回结构或样本不满足契约",
+        "reason": "漫画 ID 与源声明的规则不一致"
+      }
+    ]
   },
   {
     "name": "CCC追漫台",
     "key": "ccc",
-    "version": "1.0.2",
+    "version": "1.0.1",
     "fileName": "ccc.js",
-    "url": "https://raw.githubusercontent.com/zakkida/venera-sources/a5d8118da700c44f4823e82494d4ca816054afaf/ccc.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；zakkida/venera-sources",
-    "sha256": "c8db4ef9af1d6d1a8eadf06e66347aecb5ba0e73457f6a2b12fad1d240914ea1",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/ccc.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "d916f6ef74cd1ca127388d2e74c86c72ed765148b403449d8b24a5c679e303af",
     "minAppVersion": "1.6.0",
     "officialKey": true,
     "status": "partial",
@@ -356,7 +542,12 @@
       "epId": "6563",
       "keyword": "戀"
     },
-    "checkedAt": "2026-10-23T08:59:33.580Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "d916f6ef74cd1ca127388d2e74c86c72ed765148b403449d8b24a5c679e303af",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.login",
@@ -367,50 +558,50 @@
       {
         "stage": "account.loginWithWebview.checkStatus",
         "status": "跳过",
-        "category": "interactive_required",
+        "category": "需要交互",
         "reason": "Provide observed browser URL/title and exported cookies or token"
       },
       {
         "stage": "account.loginWithWebview.onLoginSuccess",
         "status": "跳过",
-        "category": "dependency_failed",
+        "category": "前置能力未通过",
         "reason": "Webview checkStatus did not pass"
       },
       {
         "stage": "favorites.loadComics",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "comic.freeRead",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic.sendComment",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "comic.likeComment",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -420,7 +611,7 @@
     "version": "1.0.0",
     "fileName": "ciyuandao.js",
     "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/ciyuandao.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "af736e8c7ac60f3fc27903e997b4d89827fa6fd33bb274f90268c05b8ee69287",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -431,13 +622,87 @@
       "epId": "/photo/show/133564",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:34.461Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "af736e8c7ac60f3fc27903e997b4d89827fa6fd33bb274f90268c05b8ee69287",
+    "trackedBy": [
+      "token1008/venera-cn-64bit"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.onImageLoad.onLoadFailed",
         "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
+      }
+    ]
+  },
+  {
+    "name": "comick",
+    "key": "comick",
+    "version": "1.2.0",
+    "fileName": "comick.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/comick.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "8e775b2381419d6cc8f912abb11158ee8ab5fb216b68441c6ea18e7bab135562",
+    "minAppVersion": "1.4.0",
+    "officialKey": true,
+    "status": "failed",
+    "channel": "extended",
+    "sample": {
+      "comicId": "executioner//Executioner",
+      "epId": "lSjfCBXU//chapter//1//en",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "8e775b2381419d6cc8f912abb11158ee8ab5fb216b68441c6ea18e7bab135562",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source",
+      "hea784/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "search.load",
+        "status": "失败",
+        "category": "HTTP 错误",
+        "reason": "Invalid status code: 422"
+      },
+      {
+        "stage": "categoryComics.load",
+        "status": "失败",
+        "category": "返回结构或样本不满足契约",
+        "reason": "分页字段 maxPage 不是非负整数"
+      },
+      {
+        "stage": "comic.onClickTag",
+        "status": "失败",
+        "category": "源配置错误",
+        "reason": "Click Tag Error"
+      },
+      {
+        "stage": "comic.onClickTag",
+        "status": "失败",
+        "category": "源配置错误",
+        "reason": "Click Tag Error"
+      },
+      {
+        "stage": "comic.onClickTag",
+        "status": "失败",
+        "category": "源配置错误",
+        "reason": "Click Tag Error"
+      },
+      {
+        "stage": "comic.onImageLoad.onLoadFailed",
+        "status": "跳过",
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
+      },
+      {
+        "stage": "comic.onThumbnailLoad.onLoadFailed",
+        "status": "跳过",
+        "category": "unsupported_thumbnail",
+        "reason": "Venera does not apply onLoadFailed to thumbnails"
       }
     ]
   },
@@ -447,7 +712,7 @@
     "version": "1.7.0",
     "fileName": "cosplaytele.js",
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/cosplaytele.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；meaninglesslyy/venera-config",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "dd6e35d1a5b603cb21b615c2c0d97b92ff26515bbe52b2fdbe950a528f4a56e2",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -458,7 +723,12 @@
       "epId": "0",
       "keyword": "girl"
     },
-    "checkedAt": "2026-10-23T08:59:38.452Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "dd6e35d1a5b603cb21b615c2c0d97b92ff26515bbe52b2fdbe950a528f4a56e2",
+    "trackedBy": [
+      "meaninglesslyy/venera-config"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
@@ -467,7 +737,7 @@
     "version": "1.0.3",
     "fileName": "cxc.js",
     "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/cxc.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；handahao666-boop/venera_comic_source",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "d6f5fbaff90113ca450685f6e9fd0547f83bf3627c896edc9a83921a5f943a04",
     "minAppVersion": "1.6.3",
     "officialKey": false,
@@ -478,76 +748,48 @@
       "epId": "c27179",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:38.865Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "d6f5fbaff90113ca450685f6e9fd0547f83bf3627c896edc9a83921a5f943a04",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.loginWithCookies.validate",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.cookieValues"
+        "reason": "未提供 Cookie 登录凭据"
       },
       {
         "stage": "account.loginWithWebview.checkStatus",
         "status": "跳过",
-        "category": "interactive_required",
+        "category": "需要交互",
         "reason": "Provide observed browser URL/title and exported cookies or token"
       },
       {
         "stage": "account.loginWithWebview.onLoginSuccess",
         "status": "跳过",
-        "category": "dependency_failed",
+        "category": "前置能力未通过",
         "reason": "Webview checkStatus did not pass"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "settings.accountStatus.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "settings.loginHelp.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      }
-    ]
-  },
-  {
-    "name": "次元漫画",
-    "key": "cycomic",
-    "version": "1.0.3",
-    "fileName": "cycomic.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/cycomic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "3db355237cecd70b8441ecd8c5b34e71de832300d1bfbaa9e7c9a076a87e0112",
-    "minAppVersion": "1.6.0",
-    "officialKey": false,
-    "status": "failed",
-    "channel": "extended",
-    "sample": {
-      "comicId": "https://2cycomic.com/book/7531/",
-      "epId": "https://2cycomic.com/chapter/7531/772669.html",
-      "keyword": "海贼王"
-    },
-    "checkedAt": "2026-10-23T08:59:39.116Z",
-    "limitations": [
-      {
-        "stage": "explore[1].load",
-        "status": "失败",
-        "category": "返回结构或样本不满足契约",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
-      },
-      {
-        "stage": "categoryComics.ranking.load",
-        "status": "失败",
-        "category": "返回结构或样本不满足契约",
-        "reason": "列表项缺少合法的 ID、标题或封面"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -557,7 +799,7 @@
     "version": "1.0.0",
     "fileName": "damotu.js",
     "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/damotu.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "7a9137c49fbd0c27d58811e615388082589c8cc73aa964a77e159b37d1dd7e1c",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -568,13 +810,18 @@
       "epId": "/manhua/8302/74037.htm",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T08:59:40.167Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "7a9137c49fbd0c27d58811e615388082589c8cc73aa964a77e159b37d1dd7e1c",
+    "trackedBy": [
+      "token1008/venera-cn-64bit"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.onImageLoad.onLoadFailed",
         "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
       }
     ]
   },
@@ -584,7 +831,7 @@
     "version": "1.0.5",
     "fileName": "dingmanhua.js",
     "url": "https://raw.githubusercontent.com/Angus-fw/venera-configs/ce03585b9a4e1bc24cbb7d61f748a66eac393ddf/dingmanhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Angus-fw/venera-configs",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "30b1a74acaa370926ec0b4cd8816a0ca88e9a5e7372e6318b48295a5dc5f9a98",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -595,12 +842,17 @@
       "epId": "2250659",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T08:59:45.642Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "30b1a74acaa370926ec0b4cd8816a0ca88e9a5e7372e6318b48295a5dc5f9a98",
+    "trackedBy": [
+      "Angus-fw/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.link.linkToId",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "Provide inputs.comicUrl"
       },
       {
@@ -622,8 +874,8 @@
     "key": "dm5",
     "version": "7.0.3",
     "fileName": "dm5.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/dm5.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/dm5.js",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "7dee44268278d65e2dd42b886edf3473cfc09bbfbc713ed1348dca39e25ff5dc",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -634,36 +886,54 @@
       "epId": "m938318",
       "keyword": "斗破苍穹"
     },
-    "checkedAt": "2026-10-23T08:59:46.066Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "7dee44268278d65e2dd42b886edf3473cfc09bbfbc713ed1348dca39e25ff5dc",
+    "trackedBy": [
+      "Junkrat9527/venera-sources",
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
-    "name": "咚漫",
-    "key": "dongman",
-    "version": "1.0.8",
-    "fileName": "dongman.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/dongman.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "a4e34d9681a48022640c072842dc37ccb4099fd1f9c04d8ab51cc38ebfa57669",
-    "minAppVersion": "1.6.0",
+    "name": "动漫啦",
+    "key": "dongman_la",
+    "version": "1.0.5",
+    "fileName": "dongman_la_fixed_v101.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/dongman_la_fixed_v101.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "c3c1e9989d8a859c99309fc05ed5f7c179cd9eb641e20cad319bfa7acf1a1627",
+    "minAppVersion": "1.0.0",
     "officialKey": false,
-    "status": "passed",
-    "channel": "main",
+    "status": "partial",
+    "channel": "extended",
     "sample": {
-      "comicId": "2931",
-      "epId": "1",
-      "keyword": "神之塔"
+      "comicId": "13331",
+      "epId": "144072",
+      "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:48.982Z",
-    "limitations": []
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "c3c1e9989d8a859c99309fc05ed5f7c179cd9eb641e20cad319bfa7acf1a1627",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "comic.onImageLoad.onLoadFailed",
+        "status": "跳过",
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
+      }
+    ]
   },
   {
     "name": "咚漫",
     "key": "dongmanmanhua",
     "version": "1.0.6",
     "fileName": "dongmanmanhua.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/dongmanmanhua.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/dongmanmanhua.js",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "65df758f8643f331baf978a55d5bbbe8c8fff1df285b92f63f97bb18aa48935f",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -674,17 +944,23 @@
       "epId": "10",
       "keyword": "神之塔"
     },
-    "checkedAt": "2026-10-23T08:59:49.997Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "65df758f8643f331baf978a55d5bbbe8c8fff1df285b92f63f97bb18aa48935f",
+    "trackedBy": [
+      "Junkrat9527/venera-sources",
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
     "name": "ehentai",
     "key": "ehentai",
-    "version": "1.1.8",
+    "version": "1.2.0",
     "fileName": "ehentai.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/ehentai.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
-    "sha256": "a6af9c97e6c5cbf81bf39f5b2729ee2c1a45ecb738e43b7182c234ce50ce5439",
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/ehentai.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "ef15f80d8090cb9ec1fcb18b502017a47694484e81d51c85e6b06ea162c58e4a",
     "minAppVersion": "1.5.3",
     "officialKey": true,
     "status": "failed",
@@ -693,37 +969,48 @@
       "comicId": "https://e-hentai.org/g/4127683/14cef22186/",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T08:59:53.833Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "ef15f80d8090cb9ec1fcb18b502017a47694484e81d51c85e6b06ea162c58e4a",
+    "trackedBy": [
+      "hea784/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.loginWithCookies.validate",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.cookieValues"
+        "reason": "未提供 Cookie 登录凭据"
       },
       {
         "stage": "account.loginWithWebview.checkStatus",
         "status": "跳过",
-        "category": "interactive_required",
+        "category": "需要交互",
         "reason": "Provide observed browser URL/title and exported cookies or token"
       },
       {
         "stage": "account.loginWithWebview.onLoginSuccess",
         "status": "跳过",
-        "category": "dependency_failed",
+        "category": "前置能力未通过",
         "reason": "Webview checkStatus did not pass"
+      },
+      {
+        "stage": "explore[2].loadNext",
+        "status": "失败",
+        "category": "返回结构或样本不满足契约",
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
       },
       {
         "stage": "favorites.loadFolders",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "favorites.loadNext",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "comic.archive.getArchives",
@@ -734,56 +1021,56 @@
       {
         "stage": "comic.archive.getDownloadUrl",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "Provide inputs.archiveId or a nonempty archive list"
       },
       {
         "stage": "comic.onImageLoad.onLoadFailed",
         "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "comic.starRating",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "comic.getKey",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic.parseComments",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic.sendComment",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "comic.voteComment",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -793,7 +1080,7 @@
     "version": "1.0.2",
     "fileName": "ffppt.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/ffppt.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "9073ad30b4cbfd080f35154607610450db6a76fc56f1c4f1fb263c5502488318",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -804,48 +1091,70 @@
       "epId": "0",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:54.009Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "9073ad30b4cbfd080f35154607610450db6a76fc56f1c4f1fb263c5502488318",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
-    "name": "FoamGirl",
-    "key": "foamgirl",
-    "version": "1.2.1",
-    "fileName": "foamgirl.js",
-    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/foamgirl.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；meaninglesslyy/venera-config",
-    "sha256": "b5191bbc693356ff78e0f8594d3a8624058c3b8f6b77ed632970d333d6bd43e6",
+    "name": "4KHD",
+    "key": "fourkhd",
+    "version": "2.0.7",
+    "fileName": "4khd.js",
+    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/4khd.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "a0fc9199723dba45be5c9adae42b6ccbaf66b2a096c085f4bec15469fcf4c3e0",
     "minAppVersion": "1.6.0",
     "officialKey": false,
     "status": "passed",
     "channel": "main",
     "sample": {
-      "comicId": "1839551",
-      "epId": "1",
+      "comicId": "72628",
+      "epId": "0",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T08:59:54.411Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "a0fc9199723dba45be5c9adae42b6ccbaf66b2a096c085f4bec15469fcf4c3e0",
+    "trackedBy": [
+      "meaninglesslyy/venera-config"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
-    "name": "GoDa漫画",
-    "key": "goda",
-    "version": "1.2.1",
-    "fileName": "goda.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/goda.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
-    "sha256": "dc94b8d5074e342633b2f1c4ca74e9d7cfa3a6952890ab9a56f5c675a1a16fc5",
-    "minAppVersion": "1.4.0",
-    "officialKey": true,
-    "status": "passed",
-    "channel": "main",
+    "name": "4KHD Cosplay",
+    "key": "fourkhd_cosplay",
+    "version": "2.0.0",
+    "fileName": "4khd_cosplay.js",
+    "url": "https://raw.githubusercontent.com/6678670jsy/venera-sources/ec8383dc51c3b13be2dfb9f4576c3edb57629704/4khd_cosplay.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "bd1374c61127fd9de387b4a57a89d70e0ad03ab383cbcc77bb91588e3f2057cc",
+    "minAppVersion": "1.6.0",
+    "officialKey": false,
+    "status": "failed",
+    "channel": "extended",
     "sample": {
-      "comicId": "/manga/huoyingrenzhequancaiban-jiyingshe",
-      "epId": "5205@412417",
+      "comicId": "iron-hand-calling-beast-meiko-yagi-the-light-bearer",
+      "epId": "gallery",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:05.166Z",
-    "limitations": []
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "bd1374c61127fd9de387b4a57a89d70e0ad03ab383cbcc77bb91588e3f2057cc",
+    "trackedBy": [
+      "6678670jsy/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "search.load",
+        "status": "失败",
+        "category": "HTTP 错误",
+        "reason": "4KHD 列表请求失败: HTTP 502"
+      }
+    ]
   },
   {
     "name": "瓜子漫画",
@@ -853,7 +1162,7 @@
     "version": "1.0.1",
     "fileName": "guazi.js",
     "url": "https://raw.githubusercontent.com/ChenTeea/veneresource/7cd59a1571e0b47138da9333034fbd37164d9335/guazi.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；ChenTeea/veneresource",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "9191babe81a1472f57d02363c5e3af510d3b3aebbc48c97e17edb539068d7ba1",
     "minAppVersion": "1.2.2",
     "officialKey": false,
@@ -864,17 +1173,22 @@
       "epId": "1890870",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:05.235Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "9191babe81a1472f57d02363c5e3af510d3b3aebbc48c97e17edb539068d7ba1",
+    "trackedBy": [
+      "ChenTeea/veneresource"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
     "name": "瓜子漫画",
     "key": "guazimanhua",
     "version": "1.0.4",
-    "fileName": "guazi_manhua.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/guazi_manhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "3b47fd313cc99c887b6d2fca7d320b6df72f72e52c0b322fe74ff1f683c3c489",
+    "fileName": "guazi_manhua_v1.1.0.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/guazi_manhua_v1.1.0.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "b93ad63c5e0ac1a41c77ab95e7561f20718ad46228fb9b6b8fbb8196c3f56dc6",
     "minAppVersion": "1.0.0",
     "officialKey": false,
     "status": "failed",
@@ -884,46 +1198,18 @@
       "epId": "1890870",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:05.904Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "b93ad63c5e0ac1a41c77ab95e7561f20718ad46228fb9b6b8fbb8196c3f56dc6",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.idMatch",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "漫画 ID 与源声明的匹配规则不一致"
-      }
-    ]
-  },
-  {
-    "name": "国漫吧",
-    "key": "guoman8",
-    "version": "1.0.2",
-    "fileName": "guoman8.js",
-    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/guoman8.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit",
-    "sha256": "b7c7b03cefb791395b5fb7a06be832e7ab4d2a73d2e661407f131b29d1cc448a",
-    "minAppVersion": "1.0.0",
-    "officialKey": false,
-    "status": "failed",
-    "channel": "extended",
-    "sample": {
-      "comicId": "http://www.guoman8.cc/44900/",
-      "epId": "http://www.guoman8.cc/44900/01.html",
-      "keyword": "海贼王"
-    },
-    "checkedAt": "2026-10-23T09:00:09.979Z",
-    "limitations": [
-      {
-        "stage": "explore[43].load",
-        "status": "失败",
-        "category": "需要登录",
-        "reason": "列表项缺少合法的 ID、标题或封面"
-      },
-      {
-        "stage": "comic.onImageLoad.onLoadFailed",
-        "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
+        "reason": "漫画 ID 与源声明的规则不一致"
       }
     ]
   },
@@ -933,7 +1219,7 @@
     "version": "1.0.0",
     "fileName": "hachiraw.js",
     "url": "https://raw.githubusercontent.com/YUIRIKIiii/venera-sources/451400c86bf970a0a85b9d24c2d98ed7915b588f/hachiraw.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；YUIRIKIiii/venera-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "bee58b154cb64f25e738ffb56306cf10c15820388fbf882723bf25644771e4c3",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -944,29 +1230,97 @@
       "epId": "5119/1474625",
       "keyword": "異世界"
     },
-    "checkedAt": "2026-10-23T09:00:11.198Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "bee58b154cb64f25e738ffb56306cf10c15820388fbf882723bf25644771e4c3",
+    "trackedBy": [
+      "YUIRIKIiii/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "search.load",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
       },
       {
         "stage": "comic.idMatch",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "漫画 ID 与源声明的匹配规则不一致"
+        "reason": "漫画 ID 与源声明的规则不一致"
       }
     ]
+  },
+  {
+    "name": "花火漫画",
+    "key": "hanabimanga",
+    "version": "1.0.0",
+    "fileName": "hanabimanga.js",
+    "url": "https://raw.githubusercontent.com/xiaoxingmian/venera-configs/aa9fea3526294435982e765cc96ce916be6748a6/hanabimanga.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "e8d71c02d79cf0e370882d11f9bfd52e6620db34b479b099ce81f9e46701fca0",
+    "minAppVersion": "1.4.0",
+    "officialKey": false,
+    "status": "partial",
+    "channel": "extended",
+    "sample": {
+      "comicId": "334",
+      "epId": "18158",
+      "keyword": "海贼王"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "e8d71c02d79cf0e370882d11f9bfd52e6620db34b479b099ce81f9e46701fca0",
+    "trackedBy": [
+      "xiaoxingmian/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "account.login",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "Provide credentials.username and password"
+      },
+      {
+        "stage": "account.logout",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      }
+    ]
+  },
+  {
+    "name": "好看漫画",
+    "key": "haokan_txt",
+    "version": "1.0.4",
+    "fileName": "haokan.js",
+    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/haokan.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "88e1a9b1d513975bb86f8fae43a3dc64977bbaed470106d440c6e359d98a3839",
+    "minAppVersion": "1.2.2",
+    "officialKey": false,
+    "status": "passed",
+    "channel": "main",
+    "sample": {
+      "comicId": "/comic_haizeiwangbluedeepziliaoshedingji.html",
+      "epId": "91394@2817951",
+      "keyword": "海贼王"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "88e1a9b1d513975bb86f8fae43a3dc64977bbaed470106d440c6e359d98a3839",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": []
   },
   {
     "name": "H-Comic",
     "key": "hcomic",
     "version": "1.0.0",
     "fileName": "hcomic.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/hcomic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/hcomic.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "0490859b636ca796a8a16b044724fed556bcfcfcdefae02e6b1e81fd6d8393d2",
     "minAppVersion": "1.6.0",
     "officialKey": true,
@@ -977,44 +1331,30 @@
       "epId": "nh|3164169|16",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:12.407Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "0490859b636ca796a8a16b044724fed556bcfcfcdefae02e6b1e81fd6d8393d2",
+    "trackedBy": [
+      "hea784/venera-configs",
+      "yelongyue197-svg/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.link.linkToId",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "Provide inputs.comicUrl"
       }
     ]
   },
   {
-    "name": "绅士会所",
-    "key": "hentaiclub",
-    "version": "1.0.0",
-    "fileName": "hentaiclub.js",
-    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/hentaiclub.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；meaninglesslyy/venera-config",
-    "sha256": "87985fef6ce6541776ecb8f31f2034f8d05015b421fe2d63602e1dc644a476d3",
-    "minAppVersion": "1.6.0",
-    "officialKey": false,
-    "status": "passed",
-    "channel": "main",
-    "sample": {
-      "comicId": "https://www.hentaiclub.net/r18/69677.html",
-      "epId": "0",
-      "keyword": "火影"
-    },
-    "checkedAt": "2026-10-23T09:00:16.668Z",
-    "limitations": []
-  },
-  {
     "name": "嬉皮漫畫",
     "key": "hipmh",
-    "version": "1.0.6",
+    "version": "1.0.1",
     "fileName": "hipmh.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/hipmh.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "95a132f5468187e35cd9224cd0ae923ec544187a14a60d8bac376308218f2f1a",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/hipmh.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "c55ce0fca5fbfff897bb3fdd766fc13948efd943ad7254ecb5d915e1730f2a47",
     "minAppVersion": "1.6.0",
     "officialKey": false,
     "status": "passed",
@@ -1024,7 +1364,12 @@
       "epId": "bToyOTM5NC1jOjExMzAxNw-MjkzOTQ6MS4wMA",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:16.851Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "c55ce0fca5fbfff897bb3fdd766fc13948efd943ad7254ecb5d915e1730f2a47",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
@@ -1033,7 +1378,7 @@
     "version": "1.0.7",
     "fileName": "wnacg.js",
     "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/3de9a7fa1b71f4a4bf25c8bfcd65c485920e2435/sources/private/wnacg.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Taototo/venera-comic-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "d0cac0d5816e803e2a835fba1ed15cab39b46c2f644ced878f47e2cc1da4c246",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -1043,7 +1388,12 @@
       "comicId": "397513",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:17.185Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "d0cac0d5816e803e2a835fba1ed15cab39b46c2f644ced878f47e2cc1da4c246",
+    "trackedBy": [
+      "Taototo/venera-comic-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.login",
@@ -1055,43 +1405,43 @@
         "stage": "favorites.loadFolders",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "favorites.loadComics",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addFolder",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.deleteFolder",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "settings.refreshDomains.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -1100,8 +1450,8 @@
     "key": "hot_manga",
     "version": "1.0.0",
     "fileName": "hot_manga.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/hot_manga.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/hot_manga.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "d5f440d1a2e5d41e53189eb8d3e7ba19864c43b1d6592e20eb65ef326a410fd4",
     "minAppVersion": "1.6.0",
     "officialKey": true,
@@ -1112,7 +1462,13 @@
       "epId": "09a0024c-e0fb-11e8-a1df-00163e0ca5bd",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:24.937Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "d5f440d1a2e5d41e53189eb8d3e7ba19864c43b1d6592e20eb65ef326a410fd4",
+    "trackedBy": [
+      "hea784/venera-configs",
+      "yelongyue197-svg/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.login",
@@ -1124,7 +1480,7 @@
         "stage": "favorites.loadComics",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "comic.onClickTag",
@@ -1142,13 +1498,13 @@
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -1158,7 +1514,7 @@
     "version": "1.0.0",
     "fileName": "huakacomic.js",
     "url": "https://raw.githubusercontent.com/xiaoxingmian/venera-configs/aa9fea3526294435982e765cc96ce916be6748a6/huakacomic.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；xiaoxingmian/venera-configs",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "8f430535694cab075823c33f0afe6bb0cd2293ab058d9a3624a02325b7dfde86",
     "minAppVersion": "1.4.0",
     "officialKey": false,
@@ -1169,158 +1525,13 @@
       "epId": "ep_69765b718370836c2a6c939f",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:26.155Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "8f430535694cab075823c33f0afe6bb0cd2293ab058d9a3624a02325b7dfde86",
+    "trackedBy": [
+      "xiaoxingmian/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
-  },
-  {
-    "name": "爱看漫",
-    "key": "ikmmh",
-    "version": "1.0.8",
-    "fileName": "ikmmh.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/ikmmh.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
-    "sha256": "c18c32e12b3ffa9e489c0d9792ee828b9df16ff8948b15eee8b718503871ec91",
-    "minAppVersion": "1.0.0",
-    "officialKey": true,
-    "status": "partial",
-    "channel": "extended",
-    "sample": {
-      "comicId": "https://www.ikmmh.com/book/7525/",
-      "epId": "https://www.ikmmh.com/chapter/7525/772663.html",
-      "keyword": "海贼王"
-    },
-    "checkedAt": "2026-10-23T09:00:27.096Z",
-    "limitations": [
-      {
-        "stage": "account.login",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
-      },
-      {
-        "stage": "favorites.loadComics",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
-      },
-      {
-        "stage": "comic.onImageLoad.onLoadFailed",
-        "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
-      },
-      {
-        "stage": "account.logout",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "explore[0].onThumbnailLoad",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      },
-      {
-        "stage": "categoryComics.onThumbnailLoad",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      },
-      {
-        "stage": "favorites.addOrDelFavorite",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "favorites.onThumbnailLoad",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      },
-      {
-        "stage": "search.onThumbnailLoad",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      }
-    ]
-  },
-  {
-    "name": "爱看漫",
-    "key": "ikmmh_v2",
-    "version": "3.0.0",
-    "fileName": "ikmmh_v2.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/ikmmh_v2.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "b911acf018184f748b08a4466b520692f709a7f2fa022da85180804186a4b3a5",
-    "minAppVersion": "1.0.0",
-    "officialKey": false,
-    "status": "partial",
-    "channel": "extended",
-    "sample": {
-      "comicId": "https://www.ikmmh.com/book/7525/",
-      "epId": "https://www.ikmmh.com/chapter/7525/772663.html",
-      "keyword": "海贼王"
-    },
-    "checkedAt": "2026-10-23T09:00:28.191Z",
-    "limitations": [
-      {
-        "stage": "account.login",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
-      },
-      {
-        "stage": "favorites.loadComics",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
-      },
-      {
-        "stage": "comic.onImageLoad.onLoadFailed",
-        "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
-      },
-      {
-        "stage": "account.logout",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "explore[0].onThumbnailLoad",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      },
-      {
-        "stage": "categoryComics.onThumbnailLoad",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      },
-      {
-        "stage": "favorites.addOrDelFavorite",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "favorites.onThumbnailLoad",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      },
-      {
-        "stage": "search.onThumbnailLoad",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      }
-    ]
   },
   {
     "name": "爱飒漫画",
@@ -1328,7 +1539,7 @@
     "version": "1.0.0",
     "fileName": "isamanhua.js",
     "url": "https://raw.githubusercontent.com/YHQY-Dev/venera-sources/b84b58ad0935df124b38a12f2d6e369d0715ff32/isamanhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；YHQY-Dev/venera-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "788af64ed6b0477c3a42a9c5f34ef0908cea6db12502ef9f091c572fc4e67158",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -1339,7 +1550,12 @@
       "epId": "1",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:28.344Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "788af64ed6b0477c3a42a9c5f34ef0908cea6db12502ef9f091c572fc4e67158",
+    "trackedBy": [
+      "YHQY-Dev/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "search.load",
@@ -1350,57 +1566,12 @@
     ]
   },
   {
-    "name": "极速漫画",
-    "key": "jisu_1kkk",
-    "version": "1.0.0",
-    "fileName": "jisu_1kkk.js",
-    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/jisu_1kkk.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit",
-    "sha256": "2a2874b992ab5d632c5e68bbac2b044f022ebe05649c7be5a8d5580af4bc7e79",
-    "minAppVersion": "1.0.0",
-    "officialKey": false,
-    "status": "failed",
-    "channel": "extended",
-    "sample": {
-      "comicId": "/manhua55465/",
-      "epId": "/ch1-938318/",
-      "keyword": "斗破苍穹"
-    },
-    "checkedAt": "2026-10-23T09:00:30.878Z",
-    "limitations": [
-      {
-        "stage": "account.loginWithWebview.checkStatus",
-        "status": "跳过",
-        "category": "interactive_required",
-        "reason": "Provide observed browser URL/title and exported cookies or token"
-      },
-      {
-        "stage": "explore[17].load",
-        "status": "失败",
-        "category": "HTTP 错误",
-        "reason": "Invalid status code: 404"
-      },
-      {
-        "stage": "comic.onImageLoad.onLoadFailed",
-        "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
-      },
-      {
-        "stage": "account.logout",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      }
-    ]
-  },
-  {
     "name": "JJCOS",
     "key": "jjcos",
     "version": "1.3.0",
     "fileName": "jjcos.js",
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/jjcos.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；meaninglesslyy/venera-config",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "27a34128c375cac6d2e8e232ae983dd6de705b5c05f4a2796bb4bea95bacff6d",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -1411,19 +1582,24 @@
       "epId": "0",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:33.670Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "27a34128c375cac6d2e8e232ae983dd6de705b5c05f4a2796bb4bea95bacff6d",
+    "trackedBy": [
+      "meaninglesslyy/venera-config"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "search.onTagSuggestionSelected",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "Provide inputs.tag or details tags"
       },
       {
         "stage": "comic.onImageLoad.onLoadFailed",
         "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
       },
       {
         "stage": "comic.onThumbnailLoad.onLoadFailed",
@@ -1434,12 +1610,104 @@
     ]
   },
   {
+    "name": "禁漫天堂",
+    "key": "jm",
+    "version": "1.4.1",
+    "fileName": "jm.js",
+    "url": "https://raw.githubusercontent.com/hea784/venera-configs/c45e8178894cc760b24f9dc19caf4a59264a357c/jm.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "490504eb906339d352c86dc8afdd40a772ac775bcdddb4a2de2eb683db23a08f",
+    "minAppVersion": "1.5.0",
+    "officialKey": true,
+    "status": "partial",
+    "channel": "extended",
+    "sample": {
+      "comicId": "1485211",
+      "epId": "1485211",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "490504eb906339d352c86dc8afdd40a772ac775bcdddb4a2de2eb683db23a08f",
+    "trackedBy": [
+      "hea784/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "account.login",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "Provide credentials.username and password"
+      },
+      {
+        "stage": "favorites.loadFolders",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "网络收藏需要已登录的账号"
+      },
+      {
+        "stage": "favorites.loadComics",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "网络收藏需要已登录的账号"
+      },
+      {
+        "stage": "account.logout",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "favorites.addOrDelFavorite",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "favorites.addFolder",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "favorites.deleteFolder",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "comic.likeComic",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "comic.sendComment",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "settings.refreshDomains.callback",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "settings.dailyCheckIn.callback",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      }
+    ]
+  },
+  {
     "name": "禁漫天堂X",
     "key": "jmx",
     "version": "2.1.0",
     "fileName": "jmcomic.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/jmcomic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "670aadfa410103c0e3606019fffcf9c79a5c25845938a6f0272667dc91afa357",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -1450,7 +1718,12 @@
       "epId": "ep_1484511",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:40.745Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "670aadfa410103c0e3606019fffcf9c79a5c25845938a6f0272667dc91afa357",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.login",
@@ -1462,91 +1735,91 @@
         "stage": "favorites.loadFolders",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "favorites.loadComics",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "comic.onImageLoad.onLoadFailed",
         "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addFolder",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.deleteFolder",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "comic._makeImageRetry",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic.likeComic",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "comic.sendComment",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "comic.sendChapterComment",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "settings.refreshDomains.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "settings.optimizeNodes.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "settings.imageSpeedTest.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "settings.dailyCheckIn.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -1556,7 +1829,7 @@
     "version": "2.2.7",
     "fileName": "kanman.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/kanman.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "dafac9381c690985263df2d438f183ebc36e51ee0687ba2b026a8b95d95b4d22",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -1567,24 +1840,29 @@
       "epId": "1",
       "keyword": "斗破苍穹"
     },
-    "checkedAt": "2026-10-23T09:00:41.758Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "dafac9381c690985263df2d438f183ebc36e51ee0687ba2b026a8b95d95b4d22",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "search.load",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
       },
       {
         "stage": "explore[0].onThumbnailLoad",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "categoryComics.onThumbnailLoad",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       }
     ]
@@ -1595,7 +1873,7 @@
     "version": "1.1.0",
     "fileName": "kiutaku.js",
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/kiutaku.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；meaninglesslyy/venera-config",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "f48424abde971435ccf26f6d908efb6dbbab0c5d8709cf00c80dddb71ab283ba",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -1606,100 +1884,18 @@
       "epId": "0",
       "keyword": "girl"
     },
-    "checkedAt": "2026-10-23T09:00:43.655Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "f48424abde971435ccf26f6d908efb6dbbab0c5d8709cf00c80dddb71ab283ba",
+    "trackedBy": [
+      "meaninglesslyy/venera-config"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.idMatch",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "漫画 ID 与源声明的匹配规则不一致"
-      }
-    ]
-  },
-  {
-    "name": "Komiic",
-    "key": "Komiic",
-    "version": "1.0.2",
-    "fileName": "komiic.js",
-    "url": "https://raw.githubusercontent.com/l233333333/venera-sources/8e19e35ba1b0b12a1157184e0adae0906ca31f4e/Venera-Core/komiic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；l233333333/venera-sources",
-    "sha256": "189a094af7672c19cdca10d20dda4cd7840356ad2109fb8d125cb3f128045de2",
-    "minAppVersion": "1.0.0",
-    "officialKey": true,
-    "status": "failed",
-    "channel": "extended",
-    "sample": {
-      "comicId": "4992",
-      "epId": "174010",
-      "keyword": "火影"
-    },
-    "checkedAt": "2026-10-23T09:00:43.881Z",
-    "limitations": [
-      {
-        "stage": "account.login",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
-      },
-      {
-        "stage": "explore[0].load",
-        "status": "失败",
-        "category": "返回结构或样本不满足契约",
-        "reason": "分页字段 maxPage 不是非负整数"
-      },
-      {
-        "stage": "categoryComics.load",
-        "status": "失败",
-        "category": "返回结构或样本不满足契约",
-        "reason": "分页字段 maxPage 不是非负整数"
-      },
-      {
-        "stage": "categoryComics.ranking.load",
-        "status": "失败",
-        "category": "返回结构或样本不满足契约",
-        "reason": "分页字段 maxPage 不是非负整数"
-      },
-      {
-        "stage": "favorites.loadFolders",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
-      },
-      {
-        "stage": "favorites.loadComics",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
-      },
-      {
-        "stage": "account.logout",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "favorites.addOrDelFavorite",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "favorites.addFolder",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "favorites.deleteFolder",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "comic.sendComment",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "漫画 ID 与源声明的规则不一致"
       }
     ]
   },
@@ -1709,7 +1905,7 @@
     "version": "1.0.0",
     "fileName": "kuaikan.js",
     "url": "https://raw.githubusercontent.com/cattoldme/venera-configs/8b62410bcd576551bf12523968d6373a0f28230d/kuaikan.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；cattoldme/venera-configs",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "ad550aa4ecafa18119adbb651318cc501d40e753e9dc1a999f16a4f3a4dc2fff",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -1720,17 +1916,22 @@
       "epId": "744903",
       "keyword": "斗破苍穹"
     },
-    "checkedAt": "2026-10-23T09:00:44.310Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "ad550aa4ecafa18119adbb651318cc501d40e753e9dc1a999f16a4f3a4dc2fff",
+    "trackedBy": [
+      "cattoldme/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
     "name": "来漫画（分流）",
     "key": "laimanhua_split",
-    "version": "1.2.2",
-    "fileName": "laimanhua.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/laimanhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "ed9c0d8a088d31aa8b45d311a7280c35d4b971c728c74b9fe3eead94e08cbb9b",
+    "version": "1.2.1",
+    "fileName": "laimanhua_split_hosts_v1.2.1_configurable.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/laimanhua_split_hosts_v1.2.1_configurable.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5",
     "minAppVersion": "1.0.0",
     "officialKey": false,
     "status": "failed",
@@ -1740,30 +1941,29 @@
       "epId": "74330001",
       "keyword": "斗破苍穹"
     },
-    "checkedAt": "2026-10-23T09:00:47.246Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "search.load",
         "status": "失败",
-        "category": "HTTP 错误",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
-      },
-      {
-        "stage": "thumbnail.download",
-        "status": "失败",
-        "category": "TLS 错误",
-        "reason": "网络请求失败"
+        "category": "反爬拦截",
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
       }
     ]
   },
   {
     "name": "Lanraragi",
     "key": "lanraragi",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "fileName": "lanraragi.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/lanraragi.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
-    "sha256": "360c68843b8a04153a12411af1a9648078ed42939a57290b3c85539b62dab7d6",
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/lanraragi.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "b2bc20d13979a40bb5973ac56c6fcdaccc096bd95adcafc8e2317c9eda44e130",
     "minAppVersion": "1.4.0",
     "officialKey": true,
     "status": "failed",
@@ -1773,8 +1973,19 @@
       "epId": "e4c422fd10943dc169e3489a38cdbf57101a5f7e",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:47.924Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "b2bc20d13979a40bb5973ac56c6fcdaccc096bd95adcafc8e2317c9eda44e130",
+    "trackedBy": [
+      "hea784/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
+      {
+        "stage": "account.loginWithCookies.validate",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "未提供 Cookie 登录凭据"
+      },
       {
         "stage": "search.load",
         "status": "失败",
@@ -1786,6 +1997,36 @@
         "status": "失败",
         "category": "HTTP 错误",
         "reason": "Invalid status code: 400"
+      },
+      {
+        "stage": "favorites.loadFolders",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "网络收藏需要已登录的账号"
+      },
+      {
+        "stage": "favorites.loadComics",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "网络收藏需要已登录的账号"
+      },
+      {
+        "stage": "account.logout",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "favorites.addOrDelFavorite",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "comic.starRating",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -1795,7 +2036,7 @@
     "version": "0.1.0",
     "fileName": "lkkk.js",
     "url": "https://raw.githubusercontent.com/wuliaoe/venera-extra-sources/40b844256c1f7e2e66192613b9a2157e487f4b77/lkkk.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；wuliaoe/venera-extra-sources",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "eb0e0aa7c715ce71a3a932b20aa4c8bbcc8a29d7136746a9d766a95b010e91ae",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -1806,92 +2047,151 @@
       "epId": "https://m.1kkk.com/ch1-200037/",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:49.198Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "eb0e0aa7c715ce71a3a932b20aa4c8bbcc8a29d7136746a9d766a95b010e91ae",
+    "trackedBy": [
+      "wuliaoe/venera-extra-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
-    "name": "MangaDex",
-    "key": "manga_dex",
-    "version": "1.1.0",
-    "fileName": "manga_dex.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/manga_dex.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
-    "sha256": "5c0e59731aa37853c5f07920f3251978046b5a60138ef3d39613040121da8386",
-    "minAppVersion": "1.4.0",
-    "officialKey": true,
+    "name": "Manga18FX",
+    "key": "manga18fx",
+    "version": "1.0.2",
+    "fileName": "manga18fx.js",
+    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/raw_comic/manga18fx.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "2c6a2d86f30a4a9bf8687834618dccc7c52ac2e96befc15a7f0eea05b183c47e",
+    "minAppVersion": "1.6.0",
+    "officialKey": false,
     "status": "failed",
     "channel": "extended",
     "sample": {
-      "comicId": "99e912e1-ca9d-4019-8fe8-349bf814b75e",
-      "epId": "399be404-bb29-4ffd-87c9-6345b7fe0a32",
-      "keyword": "one"
+      "comicId": "the-liquid-medicine-of-love",
+      "epId": "/manga/the-liquid-medicine-of-love/chapter-1",
+      "keyword": "love"
     },
-    "checkedAt": "2026-10-23T09:00:49.882Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "2c6a2d86f30a4a9bf8687834618dccc7c52ac2e96befc15a7f0eea05b183c47e",
+    "trackedBy": [
+      "meaninglesslyy/venera-config"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
-        "stage": "categoryComics.load",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "Provide inputs.category and optional categoryParam"
-      },
-      {
-        "stage": "comic.loadComments",
+        "stage": "comic.idMatch",
         "status": "失败",
-        "category": "运行时不支持",
-        "reason": "当前运行时尚未实现该能力"
-      },
-      {
-        "stage": "comic.getComic",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      },
-      {
-        "stage": "comic.getChapters",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      },
-      {
-        "stage": "comic.getStats",
-        "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      },
-      {
-        "stage": "comic.sendComment",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "category": "返回结构或样本不满足契约",
+        "reason": "漫画 ID 与源声明的规则不一致"
       }
     ]
   },
   {
     "name": "51漫画",
     "key": "manga51",
-    "version": "1.1.0",
-    "fileName": "51manga.js",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/c3648715ebb77053dd6099cd3ed1c362e976eafe/%E4%B8%89%E6%96%B9/51manga.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；huajiaoshu520/venera-cimoc",
-    "sha256": "5a505f80319071bddf6f0de2b1bc2f32d9153bcb7c5d11679e7c1fe88ab3221e",
+    "version": "1.2.0",
+    "fileName": "manga51.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/manga51.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "c6fba1ceade91d1913cfd2a1bfcb143e9df8d8679f7dc6d54ab4be0fddff19ab",
     "minAppVersion": "1.6.0",
     "officialKey": false,
-    "status": "partial",
-    "channel": "extended",
+    "status": "passed",
+    "channel": "main",
     "sample": {
       "comicId": "q960wlKzoQ",
       "epId": "JE5ywtv7Pp",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T09:00:51.301Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "c6fba1ceade91d1913cfd2a1bfcb143e9df8d8679f7dc6d54ab4be0fddff19ab",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": []
+  },
+  {
+    "name": "MangaDex",
+    "key": "manga_dex",
+    "version": "1.1.1",
+    "fileName": "manga_dex.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/manga_dex.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "4943789e628385a2936f32d7e87146a9f4dae517a334f9f230e348f83c6d9c89",
+    "minAppVersion": "1.6.0",
+    "officialKey": true,
+    "status": "partial",
+    "channel": "extended",
+    "sample": {
+      "comicId": "99e912e1-ca9d-4019-8fe8-349bf814b75e",
+      "epId": "399be404-bb29-4ffd-87c9-6345b7fe0a32",
+      "keyword": "one"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "4943789e628385a2936f32d7e87146a9f4dae517a334f9f230e348f83c6d9c89",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
-        "stage": "comic.link.linkToId",
+        "stage": "categoryComics.load",
         "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "Provide inputs.comicUrl"
+        "category": "缺少样本输入",
+        "reason": "Provide inputs.category and optional categoryParam"
+      },
+      {
+        "stage": "comic.getComic",
+        "status": "跳过",
+        "category": "缺少样本输入",
+        "reason": "No automatic adapter; provide cases[path].args and expect"
+      },
+      {
+        "stage": "comic.getChapters",
+        "status": "跳过",
+        "category": "缺少样本输入",
+        "reason": "No automatic adapter; provide cases[path].args and expect"
+      },
+      {
+        "stage": "comic.getStats",
+        "status": "跳过",
+        "category": "缺少样本输入",
+        "reason": "No automatic adapter; provide cases[path].args and expect"
+      },
+      {
+        "stage": "comic.sendComment",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
+  },
+  {
+    "name": "Mangabz",
+    "key": "mangabz",
+    "version": "1.0.0",
+    "fileName": "mangabz.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/mangabz.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "4beecb5beefc38a78944c31ddca95161d235455912b80d3af3bb69f2e59bc418",
+    "minAppVersion": "1.6.3",
+    "officialKey": false,
+    "status": "passed",
+    "channel": "main",
+    "sample": {
+      "comicId": "142",
+      "epId": "14224",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "4beecb5beefc38a78944c31ddca95161d235455912b80d3af3bb69f2e59bc418",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": []
   },
   {
     "name": "178漫画网",
@@ -1899,7 +2199,7 @@
     "version": "1.0.0",
     "fileName": "manhua178.js",
     "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/manhua178.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "d7361f1ec9128df35d0ccc7ea4bf6aef18c44065f51ed7a397228dcadbb6363f",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -1910,102 +2210,29 @@
       "epId": "/chapter/1857/196766.html",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:00:55.156Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "d7361f1ec9128df35d0ccc7ea4bf6aef18c44065f51ed7a397228dcadbb6363f",
+    "trackedBy": [
+      "token1008/venera-cn-64bit"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.onImageLoad.onLoadFailed",
         "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
-      }
-    ]
-  },
-  {
-    "name": "漫画吧网",
-    "key": "manhuaba",
-    "version": "1.0.0",
-    "fileName": "manhuaba.js",
-    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/manhuaba.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit",
-    "sha256": "51636f60ed1f983ea2033cbfc8d1207a0063a0d0578ee5639da02d7867300d76",
-    "minAppVersion": "1.0.0",
-    "officialKey": false,
-    "status": "partial",
-    "channel": "extended",
-    "sample": {
-      "comicId": "/comic/1Z5zQ8D8oD",
-      "epId": "/chapter/2VW0WTOg7N.html",
-      "keyword": "海贼王"
-    },
-    "checkedAt": "2026-10-23T09:00:58.608Z",
-    "limitations": [
-      {
-        "stage": "comic.onImageLoad.onLoadFailed",
-        "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
-      }
-    ]
-  },
-  {
-    "name": "漫画柜",
-    "key": "ManHuaGui",
-    "version": "1.2.1",
-    "fileName": "manhuagui.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/manhuagui.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
-    "sha256": "a5bf6c633e0ce728361dded097424b829134d618128f72b571e42525e8950128",
-    "minAppVersion": "1.4.0",
-    "officialKey": true,
-    "status": "partial",
-    "channel": "extended",
-    "sample": {
-      "comicId": "20224",
-      "epId": "233848",
-      "keyword": "火影"
-    },
-    "checkedAt": "2026-10-23T09:00:59.825Z",
-    "limitations": [
-      {
-        "stage": "account.login",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
-      },
-      {
-        "stage": "favorites.loadComics",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
-      },
-      {
-        "stage": "account.logout",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "favorites.addOrDelFavorite",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "comic.sendComment",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
       }
     ]
   },
   {
     "name": "漫画人",
     "key": "manhuaren",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "fileName": "manhuaren.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/manhuaren.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
-    "sha256": "6ec9b7ca3f843698625fed1291b25708638a506be486f6f113af71dcd71b3bf8",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/manhuaren.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "568730c90b615c31742363535cf6e6d6089b2e26baaa69ff257c702f598000cf",
     "minAppVersion": "1.6.0",
     "officialKey": true,
     "status": "passed",
@@ -2015,33 +2242,43 @@
       "epId": "https://www.manhuaren.com/m969149/",
       "keyword": "斗破苍穹"
     },
-    "checkedAt": "2026-10-23T09:01:00.486Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "568730c90b615c31742363535cf6e6d6089b2e26baaa69ff257c702f598000cf",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
-    "name": "漫舍",
-    "key": "manshe",
-    "version": "1.0.8",
-    "fileName": "manshe.js",
-    "url": "https://raw.githubusercontent.com/Micqiyue/venera-sources/cee408d01603fd2466eefd66bbd2084218862965/manshe.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Micqiyue/venera-sources",
-    "sha256": "e69d6f53b58b1159fe506683ab44bb40b1c8f93fc8b2e0caa5d6a29c2b8e5fef",
-    "minAppVersion": "1.0.0",
-    "officialKey": false,
+    "name": "漫蛙吧",
+    "key": "manwaba",
+    "version": "1.1.3",
+    "fileName": "manwaba_fixed_v113.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/manwaba_fixed_v113.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "5fc159d25409de31d43af7036b4aad36c4ae2229b423a49cef205fa8f3916eeb",
+    "minAppVersion": "1.6.0",
+    "officialKey": true,
     "status": "failed",
     "channel": "extended",
     "sample": {
-      "comicId": "41991",
-      "epId": "41991@491369",
+      "comicId": "58100",
+      "epId": "1135662",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:03.641Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "5fc159d25409de31d43af7036b4aad36c4ae2229b423a49cef205fa8f3916eeb",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
-        "stage": "comic.link.linkToId",
+        "stage": "categoryComics.load",
         "status": "失败",
-        "category": "返回结构或样本不满足契约",
-        "reason": "漫画链接解析函数未识别该链接"
+        "category": "HTTP 错误",
+        "reason": "请求失败: HTTP 405"
       }
     ]
   },
@@ -2051,7 +2288,7 @@
     "version": "1.0.7",
     "fileName": "manwaba_fixed.js",
     "url": "https://raw.githubusercontent.com/YongkeDet/venera-configs/1205b22129ba226413084a0a292a9daa532a15c7/manwaba_fixed.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；YongkeDet/venera-configs",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "7cd57c562c3cc36fc69e07ff77f71ce09448a131fca766741264dda4d6b678d2",
     "minAppVersion": "1.4.0",
     "officialKey": false,
@@ -2062,27 +2299,12 @@
       "epId": "1135662",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:06.190Z",
-    "limitations": []
-  },
-  {
-    "name": "漫网",
-    "key": "manwang",
-    "version": "1.3.4",
-    "fileName": "manwang.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/manwang.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "f4864ddfe001645b8b3e05285cc037ed844ddaa95802ff3a8863b177d40f5fb9",
-    "minAppVersion": "1.4.0",
-    "officialKey": false,
-    "status": "passed",
-    "channel": "main",
-    "sample": {
-      "comicId": "531963",
-      "epId": "192773",
-      "keyword": "火影"
-    },
-    "checkedAt": "2026-10-23T09:01:06.275Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "7cd57c562c3cc36fc69e07ff77f71ce09448a131fca766741264dda4d6b678d2",
+    "trackedBy": [
+      "YongkeDet/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
@@ -2091,7 +2313,7 @@
     "version": "1.0.1",
     "fileName": "mh03.js",
     "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/mh03.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Magentadots/venera-configs",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "fb0043c114e1916b99164727b2c8b2a5331ebdcad25dba3bf1bfd93af76fdf12",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -2102,13 +2324,18 @@
       "epId": "91394_2817951",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T09:01:06.886Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "fb0043c114e1916b99164727b2c8b2a5331ebdcad25dba3bf1bfd93af76fdf12",
+    "trackedBy": [
+      "Magentadots/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "explore[0].load",
         "status": "失败",
         "category": "需要登录",
-        "reason": "列表项缺少合法的 ID、标题或封面"
+        "reason": "列表项缺少合法 ID、标题或封面"
       }
     ]
   },
@@ -2118,7 +2345,7 @@
     "version": "1.2.2",
     "fileName": "mh1234_fixed.js",
     "url": "https://raw.githubusercontent.com/JunQianNuo/venera-sources/b489d5e2d8c53e6a2a03af9a8bf87dab25a0df0a/dist/mh1234_fixed.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；JunQianNuo/venera-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "ae25ddf5e039aab565111253a5328cf6062e4a0cb487104e3c9a97a991098786",
     "minAppVersion": "1.4.0",
     "officialKey": false,
@@ -2129,37 +2356,42 @@
       "epId": "240685",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T09:01:08.237Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "ae25ddf5e039aab565111253a5328cf6062e4a0cb487104e3c9a97a991098786",
+    "trackedBy": [
+      "JunQianNuo/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.loginWithWebview.checkStatus",
         "status": "跳过",
-        "category": "interactive_required",
+        "category": "需要交互",
         "reason": "Provide observed browser URL/title and exported cookies or token"
       },
       {
         "stage": "categoryComics.load",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
       },
       {
         "stage": "favorites.loadComics",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -2169,7 +2401,7 @@
     "version": "1.1.4",
     "fileName": "mkzhan.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/mkzhan.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "2988fe4b9c8913e9201375b0dd25ea8aa5febf7af6cac15801f2b70f1a99d429",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -2180,7 +2412,12 @@
       "epId": "750783",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:13.196Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "2988fe4b9c8913e9201375b0dd25ea8aa5febf7af6cac15801f2b70f1a99d429",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
@@ -2189,7 +2426,7 @@
     "version": "1.0.8",
     "fileName": "mojoin.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/mojoin.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "eac0c6d5ff2f5f5658170e0f0288ea87294a90b698803f802e0dc9ac03ad98ac",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -2200,13 +2437,18 @@
       "epId": "001",
       "keyword": "戀"
     },
-    "checkedAt": "2026-10-23T09:01:13.590Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "eac0c6d5ff2f5f5658170e0f0288ea87294a90b698803f802e0dc9ac03ad98ac",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.onImageLoad.onLoadFailed",
         "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
       }
     ]
   },
@@ -2215,8 +2457,8 @@
     "key": "mojoin_v2",
     "version": "1.0.7",
     "fileName": "mojoin_fixed_v107.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/mojoin_fixed_v107.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/mojoin_fixed_v107.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "ccfde1cd6784218ee5a1a407562bd1082c20b44fc5265c538c6594ce89512422",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -2227,13 +2469,19 @@
       "epId": "001",
       "keyword": "戀"
     },
-    "checkedAt": "2026-10-23T09:01:15.693Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "ccfde1cd6784218ee5a1a407562bd1082c20b44fc5265c538c6594ce89512422",
+    "trackedBy": [
+      "Junkrat9527/venera-sources",
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.onImageLoad.onLoadFailed",
         "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
       }
     ]
   },
@@ -2242,8 +2490,8 @@
     "key": "mxs",
     "version": "1.0.0",
     "fileName": "mxs.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/mxs.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/mxs.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "da2c222eda825b77eb3b67ac09ec33b70bc2512cd5fc867fbe9b958df55037f8",
     "minAppVersion": "1.5.0",
     "officialKey": true,
@@ -2254,19 +2502,144 @@
       "epId": "58626",
       "keyword": "斗破苍穹"
     },
-    "checkedAt": "2026-10-23T09:01:16.737Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "da2c222eda825b77eb3b67ac09ec33b70bc2512cd5fc867fbe9b958df55037f8",
+    "trackedBy": [
+      "hea784/venera-configs",
+      "yelongyue197-svg/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "search.load",
         "status": "失败",
-        "category": "请求超时",
-        "reason": "Network request failed: HTTP request timed out"
+        "category": "返回结构或样本不满足契约",
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
       },
       {
         "stage": "settings.domainCheck.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      }
+    ]
+  },
+  {
+    "name": "MYCOMIC",
+    "key": "mycomic",
+    "version": "1.1.0",
+    "fileName": "mycomic.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/mycomic.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "85432d15a15e71a03192a27e73ee61b09cd68878561c9f5543ecb5dcb2933c67",
+    "minAppVersion": "1.4.6",
+    "officialKey": true,
+    "status": "failed",
+    "channel": "extended",
+    "sample": {
+      "comicId": "1305",
+      "epId": "185931",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "85432d15a15e71a03192a27e73ee61b09cd68878561c9f5543ecb5dcb2933c67",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source",
+      "hea784/venera-configs",
+      "yelongyue197-svg/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "account.loginWithCookies.validate",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "未提供 Cookie 登录凭据"
+      },
+      {
+        "stage": "account.loginWithWebview.checkStatus",
+        "status": "跳过",
+        "category": "需要交互",
+        "reason": "Provide observed browser URL/title and exported cookies or token"
+      },
+      {
+        "stage": "account.loginWithWebview.onLoginSuccess",
+        "status": "跳过",
+        "category": "前置能力未通过",
+        "reason": "Webview checkStatus did not pass"
+      },
+      {
+        "stage": "categoryComics.ranking.load",
+        "status": "失败",
+        "category": "返回结构或样本不满足契约",
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
+      },
+      {
+        "stage": "account.logout",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      }
+    ]
+  },
+  {
+    "name": "nhentai",
+    "key": "nhentai",
+    "version": "1.1.0",
+    "fileName": "nhentai.js",
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/nhentai.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "0f68757f89d493926cbf4c039c256d34365d0639aaa6996acbcde7c162257982",
+    "minAppVersion": "1.0.0",
+    "officialKey": true,
+    "status": "partial",
+    "channel": "extended",
+    "sample": {
+      "comicId": "628150",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "0f68757f89d493926cbf4c039c256d34365d0639aaa6996acbcde7c162257982",
+    "trackedBy": [
+      "hea784/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "account.loginWithWebview.checkStatus",
+        "status": "跳过",
+        "category": "需要交互",
+        "reason": "Provide observed browser URL/title and exported cookies or token"
+      },
+      {
+        "stage": "account.loginWithWebview.onLoginSuccess",
+        "status": "跳过",
+        "category": "前置能力未通过",
+        "reason": "Webview checkStatus did not pass"
+      },
+      {
+        "stage": "favorites.loadComics",
+        "status": "跳过",
+        "category": "未提供账号凭据",
+        "reason": "网络收藏需要已登录的账号"
+      },
+      {
+        "stage": "account.logout",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "favorites.addOrDelFavorite",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
+      },
+      {
+        "stage": "comic.sendComment",
+        "status": "跳过",
+        "category": "写操作未启用",
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -2276,7 +2649,7 @@
     "version": "1.1.1",
     "fileName": "nnhanman.js",
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/translated/nnhanman.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；meaninglesslyy/venera-config",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "41b72c230bf6336f67cd99002beca4032be3023cb43ab982288cad29574554a1",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -2287,7 +2660,37 @@
       "epId": "/comic/huo-ying-ren-zhe-wu-ma-A-man-zuo-ai-jian-yu/chapter-61694.html",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:18.536Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "41b72c230bf6336f67cd99002beca4032be3023cb43ab982288cad29574554a1",
+    "trackedBy": [
+      "meaninglesslyy/venera-config"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": []
+  },
+  {
+    "name": "鸟鸟韩漫",
+    "key": "nnhm",
+    "version": "1.3.0",
+    "fileName": "nnhm.js",
+    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/nnhm.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "f429d7718abd60ec0a4d2f93226840714a816ff159da976e26f1cb23eb4a86d5",
+    "minAppVersion": "1.5.0",
+    "officialKey": false,
+    "status": "passed",
+    "channel": "main",
+    "sample": {
+      "comicId": "huo-ying-ren-zhe-wu-ma-A-man-zuo-ai-jian-yu",
+      "epId": "61694",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "f429d7718abd60ec0a4d2f93226840714a816ff159da976e26f1cb23eb4a86d5",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
@@ -2296,7 +2699,7 @@
     "version": "2.0.0",
     "fileName": "one_kkk.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/one_kkk.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "2ef9dbceeb238081ade90b587833dce0c54de05227b844f1e7b5a150133526b2",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -2307,7 +2710,12 @@
       "epId": "https://m.1kkk.com/ch15-969149/",
       "keyword": "斗破苍穹"
     },
-    "checkedAt": "2026-10-23T09:01:22.308Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "2ef9dbceeb238081ade90b587833dce0c54de05227b844f1e7b5a150133526b2",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
@@ -2316,32 +2724,24 @@
     "version": "1.0.0",
     "fileName": "drmh3.js",
     "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/3de9a7fa1b71f4a4bf25c8bfcd65c485920e2435/sources/private/drmh3.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Taototo/venera-comic-sources",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "16295397129cf4271ea5bb881773416cdd572032ef5e030c489192614f331390",
     "minAppVersion": "1.0.0",
     "officialKey": false,
-    "status": "failed",
-    "channel": "extended",
+    "status": "passed",
+    "channel": "main",
     "sample": {
       "comicId": "/comics-reading/35840.html",
       "epId": "/comics-reading/35840/BkHKfpyYanChfcbWksJF.html",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:25.416Z",
-    "limitations": [
-      {
-        "stage": "explore[0].load",
-        "status": "失败",
-        "category": "请求超时",
-        "reason": "Network request failed: HTTP request timed out"
-      },
-      {
-        "stage": "categoryComics.load",
-        "status": "失败",
-        "category": "请求超时",
-        "reason": "Network request failed: HTTP request timed out"
-      }
-    ]
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "16295397129cf4271ea5bb881773416cdd572032ef5e030c489192614f331390",
+    "trackedBy": [
+      "Taototo/venera-comic-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": []
   },
   {
     "name": "魅影画廊（私人）",
@@ -2349,7 +2749,7 @@
     "version": "1.0.1",
     "fileName": "myhl.js",
     "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/3de9a7fa1b71f4a4bf25c8bfcd65c485920e2435/sources/private/myhl.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Taototo/venera-comic-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "9ac3e3a327b55f81a4ad1205c3686cf38fb8da01b11af31f39cbf76abd9ebbb4",
     "minAppVersion": "1.2.0",
     "officialKey": false,
@@ -2360,76 +2760,18 @@
       "epId": "https://tk.myhl03.sbs/2026/10/%e5%b0%8f%e4%b8%81ding%e3%80%8anikke-%e6%af%92%e8%9b%87%e3%80%8b/",
       "keyword": "斗破苍穹"
     },
-    "checkedAt": "2026-10-23T09:01:29.581Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "9ac3e3a327b55f81a4ad1205c3686cf38fb8da01b11af31f39cbf76abd9ebbb4",
+    "trackedBy": [
+      "Taototo/venera-comic-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "search.load",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
-      }
-    ]
-  },
-  {
-    "name": "腾讯动漫（正版）",
-    "key": "qq_comic_official",
-    "version": "2.0.0",
-    "fileName": "qq_comic_official.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/qq_comic_official.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "98ce234683ae1141b9f3104e549da0c45391cad41dde0da10fddf4fe404f17fa",
-    "minAppVersion": "1.6.0",
-    "officialKey": false,
-    "status": "partial",
-    "channel": "extended",
-    "sample": {
-      "comicId": "505432",
-      "epId": "1",
-      "keyword": "火影"
-    },
-    "checkedAt": "2026-10-23T09:01:32.879Z",
-    "limitations": [
-      {
-        "stage": "account.loginWithWebview.checkStatus",
-        "status": "跳过",
-        "category": "interactive_required",
-        "reason": "Provide observed browser URL/title and exported cookies or token"
-      },
-      {
-        "stage": "account.loginWithWebview.onLoginSuccess",
-        "status": "跳过",
-        "category": "dependency_failed",
-        "reason": "Webview checkStatus did not pass"
-      },
-      {
-        "stage": "favorites.loadComics",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
-      },
-      {
-        "stage": "account.logout",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "favorites.addOrDelFavorite",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "settings.tencent_account_status.callback",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "settings.source_self_test.callback",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
       }
     ]
   },
@@ -2439,7 +2781,7 @@
     "version": "2.4.1",
     "fileName": "rumanhua.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/rumanhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "93e982bd657cea4deedc0f9e785ea1321dff6e46eedb1cb9eb53200961e6f724",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -2450,87 +2792,65 @@
       "epId": "zOVgVgY",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:34.512Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "93e982bd657cea4deedc0f9e785ea1321dff6e46eedb1cb9eb53200961e6f724",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.decryptChapterImages",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic._findPackedExpr",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic._unquote",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic._parseK",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic._parsePackedArgs",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic._base62sym",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic._unpack",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic._base64ToBytes",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "comic._utf8BytesToString",
         "status": "跳过",
-        "category": "缺少测试输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
-      }
-    ]
-  },
-  {
-    "name": "如漫画",
-    "key": "rumanhua_fixed_v15",
-    "version": "1.2.8",
-    "fileName": "rumanhua_fixed_v16.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/rumanhua_fixed_v16.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "3727590e9d05ea769173ba7a1d9ae4169d7460cb2f3d7c38f71220d42e2a0512",
-    "minAppVersion": "1.0.0",
-    "officialKey": false,
-    "status": "partial",
-    "channel": "extended",
-    "sample": {
-      "comicId": "TRxUTBo",
-      "epId": "/TRxUTBo/zOVgVgY.html",
-      "keyword": "火影"
-    },
-    "checkedAt": "2026-10-23T09:01:35.081Z",
-    "limitations": [
-      {
-        "stage": "comic.unpackJS",
-        "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       }
     ]
@@ -2541,7 +2861,7 @@
     "version": "0.4.3",
     "fileName": "rumanhua2.js",
     "url": "https://raw.githubusercontent.com/zhimouzhou/venera-manga-sources/b3b22aaf832fb2382004b5be10a314e59c47e328/sources/rumanhua2.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；zhimouzhou/venera-manga-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "a39d9abac8093b6333690c56f3b4c692b85f941c5d2574b7cbf4cc62533567b4",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -2552,13 +2872,51 @@
       "epId": "http://www.rumanhua2.com/TRxUTBo/zOVgVgY.html",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:38.469Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "a39d9abac8093b6333690c56f3b4c692b85f941c5d2574b7cbf4cc62533567b4",
+    "trackedBy": [
+      "zhimouzhou/venera-manga-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "explore[0].load",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "列表项缺少合法的 ID、标题或封面"
+        "reason": "列表项缺少合法 ID、标题或封面"
+      }
+    ]
+  },
+  {
+    "name": "如漫画",
+    "key": "rumanhua_fixed_v15",
+    "version": "1.2.8",
+    "fileName": "rumanhua_fixed_v16.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/rumanhua_fixed_v16.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "3727590e9d05ea769173ba7a1d9ae4169d7460cb2f3d7c38f71220d42e2a0512",
+    "minAppVersion": "1.0.0",
+    "officialKey": false,
+    "status": "partial",
+    "channel": "extended",
+    "sample": {
+      "comicId": "TRxUTBo",
+      "epId": "/TRxUTBo/zOVgVgY.html",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "3727590e9d05ea769173ba7a1d9ae4169d7460cb2f3d7c38f71220d42e2a0512",
+    "trackedBy": [
+      "Junkrat9527/venera-sources",
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "comic.unpackJS",
+        "status": "跳过",
+        "category": "缺少样本输入",
+        "reason": "No automatic adapter; provide cases[path].args and expect"
       }
     ]
   },
@@ -2568,7 +2926,7 @@
     "version": "1.2.0",
     "fileName": "311.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/311.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "ec1cc9c7c3fe451b574848c44ffccf1827978ee62aa5690e1c811045e9b2731c",
     "minAppVersion": "1.2.2",
     "officialKey": false,
@@ -2579,17 +2937,22 @@
       "epId": "91394@2817951",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T09:01:38.972Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "ec1cc9c7c3fe451b574848c44ffccf1827978ee62aa5690e1c811045e9b2731c",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
     "name": "SF漫画",
     "key": "sfacg_manhua",
-    "version": "1.0.2",
+    "version": "1.0.0",
     "fileName": "sfacg_manhua.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/sfacg_manhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "5d9d9c36ea32e270f1aeaea09b69476d3c1cf78f9597d4e67889c660bf2fffa1",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/sfacg_manhua.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "fa1533e0fb6adeeb899d4b8c3623c834ad1f7c31eb8bdd25f37350098054cc37",
     "minAppVersion": "1.6.0",
     "officialKey": false,
     "status": "failed",
@@ -2599,13 +2962,18 @@
       "epId": "113358",
       "keyword": "斗破苍穹"
     },
-    "checkedAt": "2026-10-23T09:01:41.483Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "fa1533e0fb6adeeb899d4b8c3623c834ad1f7c31eb8bdd25f37350098054cc37",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "search.load",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
       }
     ]
   },
@@ -2615,7 +2983,7 @@
     "version": "1.1.1",
     "fileName": "shenqimanhua.js",
     "url": "https://raw.githubusercontent.com/coldnighten/venera-configs/01719d2b363e3a9874839b19a100f2105c13c6e3/shenqimanhua.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；coldnighten/venera-configs",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "9c44e7c5e3fb81c8aca8006569da4e33e27bb5202a2953d928495e2d5b2a3de8",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -2626,8 +2994,45 @@
       "epId": "cmj5uq0qhsn5spv9pr4uxbjlm",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:41.906Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "9c44e7c5e3fb81c8aca8006569da4e33e27bb5202a2953d928495e2d5b2a3de8",
+    "trackedBy": [
+      "coldnighten/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
+  },
+  {
+    "name": "少年ジャンプ＋",
+    "key": "shonen_jump_plus",
+    "version": "1.2.0",
+    "fileName": "shonen_jump_plus.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/shonen_jump_plus.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "22407b426ed6610b559cc7eecd32748ebd5a20e9f2c46ac75932c7640245b954",
+    "minAppVersion": "1.6.0",
+    "officialKey": true,
+    "status": "failed",
+    "channel": "extended",
+    "sample": {
+      "comicId": "web:9253191257382258065",
+      "epId": "9253191257382361538",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "22407b426ed6610b559cc7eecd32748ebd5a20e9f2c46ac75932c7640245b954",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "search.load",
+        "status": "失败",
+        "category": "反爬拦截",
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
+      }
+    ]
   },
   {
     "name": "思思漫画",
@@ -2635,7 +3040,7 @@
     "version": "1.0.0",
     "fileName": "sisimanhua.js",
     "url": "https://raw.githubusercontent.com/YHQY-Dev/venera-sources/b84b58ad0935df124b38a12f2d6e369d0715ff32/sisimanhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；YHQY-Dev/venera-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "938f9b2398c7dc73eb92eb91cf84c042e8a59c7c6b9ea8ed1686741d51ac8d69",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -2646,7 +3051,12 @@
       "epId": "1214470",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:44.450Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "938f9b2398c7dc73eb92eb91cf84c042e8a59c7c6b9ea8ed1686741d51ac8d69",
+    "trackedBy": [
+      "YHQY-Dev/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "thumbnail.download",
@@ -2662,7 +3072,7 @@
     "version": "1.0.0",
     "fileName": "sunday_webry.js",
     "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/sunday_webry.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；handahao666-boop/venera_comic_source",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "e0df66f216f923bc080f9784c096a1d996051a520e25a493609d8f90b8e547e5",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -2673,7 +3083,12 @@
       "epId": "/episode/2551460909733308888",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:45.441Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "e0df66f216f923bc080f9784c096a1d996051a520e25a493609d8f90b8e547e5",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "search.load",
@@ -2685,95 +3100,50 @@
   },
   {
     "name": "腾讯动漫",
-    "key": "tencent_comics",
-    "version": "1.1.3",
-    "fileName": "tencent_comics.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/tencent_comics.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "e696aaf1b4fb36d0bc29591fc407854c89e43ff4280211233192eb66b45963ed",
-    "minAppVersion": "1.6.0",
-    "officialKey": false,
-    "status": "partial",
-    "channel": "extended",
-    "sample": {
-      "comicId": "https://m.ac.qq.com/comic/index/id/505432",
-      "epId": "https://m.ac.qq.com/chapter/index/id/505432/cid/1",
-      "keyword": "火影"
-    },
-    "checkedAt": "2026-10-23T09:01:46.928Z",
-    "limitations": [
-      {
-        "stage": "account.loginWithWebview.checkStatus",
-        "status": "跳过",
-        "category": "interactive_required",
-        "reason": "Provide observed browser URL/title and exported cookies or token"
-      },
-      {
-        "stage": "account.loginWithWebview.onLoginSuccess",
-        "status": "跳过",
-        "category": "dependency_failed",
-        "reason": "Webview checkStatus did not pass"
-      },
-      {
-        "stage": "favorites.loadComics",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
-      },
-      {
-        "stage": "account.logout",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "favorites.addOrDelFavorite",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "settings.tencent_account_status.callback",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "settings.source_self_test.callback",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      }
-    ]
-  },
-  {
-    "name": "腾讯动漫",
     "key": "tencentcomics",
     "version": "1.0.0",
     "fileName": "tencentcomics.js",
     "url": "https://raw.githubusercontent.com/xiaoxingmian/venera-configs/aa9fea3526294435982e765cc96ce916be6748a6/tencentcomics.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；xiaoxingmian/venera-configs",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "50a7268a0de339d364553947059a2c522846def79c5c5259eb2a65eb1df300f0",
     "minAppVersion": "1.5.0",
     "officialKey": false,
-    "status": "passed",
-    "channel": "main",
+    "status": "failed",
+    "channel": "extended",
     "sample": {
       "comicId": "643717",
       "epId": "/ComicView/index/id/643717/cid/1",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T09:01:51.440Z",
-    "limitations": []
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "50a7268a0de339d364553947059a2c522846def79c5c5259eb2a65eb1df300f0",
+    "trackedBy": [
+      "xiaoxingmian/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": [
+      {
+        "stage": "explore[0].load",
+        "status": "失败",
+        "category": "需要登录",
+        "reason": "列表项缺少合法 ID、标题或封面"
+      },
+      {
+        "stage": "categoryComics.load",
+        "status": "失败",
+        "category": "需要登录",
+        "reason": "列表项缺少合法 ID、标题或封面"
+      }
+    ]
   },
   {
     "name": "图库漫画",
     "key": "tuku_cc",
-    "version": "1.0.2",
+    "version": "1.0.1",
     "fileName": "tuku_cc.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/tuku_cc.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "59c79f140dd68c1e848473a17a5916ff52ef009e539cf8a1de94a1b29d4a1b26",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/tuku_cc.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "235e01bc5009b5aab75a21c95730d4be41fbc834322ba989b37d7c68d94f9150",
     "minAppVersion": "1.4.0",
     "officialKey": false,
     "status": "failed",
@@ -2783,24 +3153,104 @@
       "epId": "630339",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:52.343Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "235e01bc5009b5aab75a21c95730d4be41fbc834322ba989b37d7c68d94f9150",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "explore[0].load",
         "status": "失败",
         "category": "需要登录",
-        "reason": "列表项缺少合法的 ID、标题或封面"
+        "reason": "列表项缺少合法 ID、标题或封面"
       }
     ]
   },
   {
+    "name": "WEBTOON",
+    "key": "webtoon",
+    "version": "1.0.0",
+    "fileName": "webtoon.js",
+    "url": "https://raw.githubusercontent.com/cattoldme/venera-configs/8b62410bcd576551bf12523968d6373a0f28230d/webtoon.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "1afbcd932087e454e78769d78874a415b6e6da7c726ddc378fce8fd55a0a5471",
+    "minAppVersion": "1.6.0",
+    "officialKey": false,
+    "status": "passed",
+    "channel": "main",
+    "sample": {
+      "comicId": "https://www.webtoons.com/zh-hant/fantasy/tower-of-god-urek-mazino/list?title_no=%5BREDACTED%5D",
+      "epId": "/zh-hant/fantasy/tower-of-god-urek-mazino/%E7%AC%AC60%E8%A9%B1-%E8%89%BE%E5%88%A9%E5%AE%B6%E6%97%8F%E7%9A%84%E6%B8%AC%E8%A9%A62/viewer?title_no=8591&episode_no=60",
+      "keyword": "神之塔"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "1afbcd932087e454e78769d78874a415b6e6da7c726ddc378fce8fd55a0a5471",
+    "trackedBy": [
+      "cattoldme/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": []
+  },
+  {
+    "name": "LINE WEBTOON",
+    "key": "webtoons_zh_hant",
+    "version": "1.0.1",
+    "fileName": "webtoons_zh_hant.js",
+    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/webtoons_zh_hant.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "18166b46099113835eb1a20d1bb35a84b49b1d64437b79fd6c4a1acf752c8b4d",
+    "minAppVersion": "1.6.0",
+    "officialKey": false,
+    "status": "passed",
+    "channel": "main",
+    "sample": {
+      "comicId": "/zh-hant/romance/love-or-sex/list?title_no=7127",
+      "epId": "1",
+      "keyword": "love"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "18166b46099113835eb1a20d1bb35a84b49b1d64437b79fd6c4a1acf752c8b4d",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": []
+  },
+  {
+    "name": "W漫画",
+    "key": "wmanhua",
+    "version": "1.0.1",
+    "fileName": "wmanhua.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/wmanhua.js",
+    "description": "核心阅读链路及本次执行项通过",
+    "sha256": "621a3e063f15cdfba06499e3535a81e9ebbc1837070605ae578508abee8d5db9",
+    "minAppVersion": "1.4.0",
+    "officialKey": false,
+    "status": "passed",
+    "channel": "main",
+    "sample": {
+      "comicId": "4968",
+      "epId": "305323",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "621a3e063f15cdfba06499e3535a81e9ebbc1837070605ae578508abee8d5db9",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "limitations": []
+  },
+  {
     "name": "紳士漫畫",
     "key": "wnacg",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "fileName": "wnacg.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/wnacg.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources",
-    "sha256": "5c812b8e9a5ee0fe3dd10312135bef8ec7ca5db20ee8ceae1b94d2ee5992005e",
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/wnacg.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "545a6d818d012c1e5799d6aaf7ecd09798969acb840166ee7c56de6d02201df0",
     "minAppVersion": "1.0.0",
     "officialKey": true,
     "status": "partial",
@@ -2809,7 +3259,12 @@
       "comicId": "397513",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:01:54.617Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "545a6d818d012c1e5799d6aaf7ecd09798969acb840166ee7c56de6d02201df0",
+    "trackedBy": [
+      "hea784/venera-configs"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.login",
@@ -2821,43 +3276,43 @@
         "stage": "favorites.loadFolders",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "favorites.loadComics",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
+        "reason": "网络收藏需要已登录的账号"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addOrDelFavorite",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.addFolder",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "favorites.deleteFolder",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "settings.refreshDomains.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -2867,7 +3322,7 @@
     "version": "1.1.0",
     "fileName": "xiutaku.js",
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/xiutaku.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；meaninglesslyy/venera-config",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "1b4283f85946e6923b4d0103d0ece932c9184eac5e43276a112d9db3106d0613",
     "minAppVersion": "1.6.0",
     "officialKey": false,
@@ -2878,13 +3333,18 @@
       "epId": "0",
       "keyword": "girl"
     },
-    "checkedAt": "2026-10-23T09:01:57.344Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "1b4283f85946e6923b4d0103d0ece932c9184eac5e43276a112d9db3106d0613",
+    "trackedBy": [
+      "meaninglesslyy/venera-config"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "comic.idMatch",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "漫画 ID 与源声明的匹配规则不一致"
+        "reason": "漫画 ID 与源声明的规则不一致"
       }
     ]
   },
@@ -2894,7 +3354,7 @@
     "version": "1.8.1",
     "fileName": "xmanhua.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/xmanhua.js",
-    "description": "核心阅读链路及本次执行项通过；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路及本次执行项通过",
     "sha256": "ab5be6abb62f2d8d0247dbf14b33b9a2b4cda464e57fe53497a2921f4a5257f5",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -2905,126 +3365,55 @@
       "epId": "29396",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T09:02:03.701Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "ab5be6abb62f2d8d0247dbf14b33b9a2b4cda464e57fe53497a2921f4a5257f5",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": []
   },
   {
-    "name": "yande.re",
-    "key": "yandere",
-    "version": "4.9.3",
-    "fileName": "yandere.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/yandere.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "cada1c28f4ed96a7025543fa275e3f43f5206c582a38ed1ba1f61b4440b4cd61",
-    "minAppVersion": "1.6.0",
-    "officialKey": false,
+    "name": "优酷漫画 (修复版)",
+    "key": "ykmh",
+    "version": "1.0.7",
+    "fileName": "youku.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/youku.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "ae5fba5713b3398d6d40b9dc3a016050078d692af10d4f99d7d786c05a4d0d40",
+    "minAppVersion": "1.4.0",
+    "officialKey": true,
     "status": "failed",
     "channel": "extended",
     "sample": {
-      "comicId": "1270646",
-      "epId": "0",
-      "keyword": "斗破苍穹"
+      "comicId": "https://www.ykmh.net/manhua/huoyingrenzhe/",
+      "epId": "https://m.ykmh.net/manhua/huoyingrenzhe/236144.html",
+      "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:02:04.194Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "ae5fba5713b3398d6d40b9dc3a016050078d692af10d4f99d7d786c05a4d0d40",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
-        "stage": "account.login",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
-      },
-      {
-        "stage": "account.loginWithWebview.checkStatus",
-        "status": "跳过",
-        "category": "interactive_required",
-        "reason": "Provide observed browser URL/title and exported cookies or token"
-      },
-      {
-        "stage": "account.loginWithWebview.onLoginSuccess",
-        "status": "跳过",
-        "category": "dependency_failed",
-        "reason": "Webview checkStatus did not pass"
-      },
-      {
-        "stage": "search.load",
+        "stage": "comic.onClickTag",
         "status": "失败",
-        "category": "返回结构或样本不满足契约",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
+        "category": "源配置错误",
+        "reason": "未支持此类Tag检索"
       },
       {
-        "stage": "favorites.loadFolders",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
-      },
-      {
-        "stage": "favorites.loadComics",
-        "status": "跳过",
-        "category": "未提供账号凭据",
-        "reason": "Favorites require authenticated account data"
-      },
-      {
-        "stage": "account.logout",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "favorites.addOrDelFavorite",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "comic.likeComic",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "comic.sendComment",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      },
-      {
-        "stage": "settings.help.callback",
-        "status": "跳过",
-        "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
-      }
-    ]
-  },
-  {
-    "name": "野蛮漫画",
-    "key": "yemancomic",
-    "version": "1.3.8",
-    "fileName": "yemancomic.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/yemancomic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
-    "sha256": "42b53d66e34198ec4d1cacb31808e9386ac0392e305016d87c98a703f608c25e",
-    "minAppVersion": "1.6.0",
-    "officialKey": false,
-    "status": "failed",
-    "channel": "extended",
-    "sample": {
-      "comicId": "https://yemancomic.com/book/7530/",
-      "epId": "https://yemancomic.com/chapter/7530/772668.html",
-      "keyword": "海贼王"
-    },
-    "checkedAt": "2026-10-23T09:02:08.849Z",
-    "limitations": [
-      {
-        "stage": "explore[1].load",
+        "stage": "comic.onClickTag",
         "status": "失败",
-        "category": "返回结构或样本不满足契约",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
+        "category": "源配置错误",
+        "reason": "未支持此类Tag检索"
       },
       {
-        "stage": "categoryComics.ranking.load",
+        "stage": "comic.onClickTag",
         "status": "失败",
-        "category": "返回结构或样本不满足契约",
-        "reason": "列表项缺少合法的 ID、标题或封面"
+        "category": "源配置错误",
+        "reason": "未支持此类Tag检索"
       }
     ]
   },
@@ -3034,54 +3423,53 @@
     "version": "1.2.0",
     "fileName": "zero.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/zero.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "348f7334f1ff01af56b1414ac22bd9a5f34203dd22fd103b64976690abcc057a",
     "minAppVersion": "1.0.0",
     "officialKey": false,
-    "status": "failed",
+    "status": "partial",
     "channel": "extended",
     "sample": {
       "comicId": "23128",
       "epId": "0",
       "keyword": "火影"
     },
-    "checkedAt": "2026-10-23T09:02:10.178Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "348f7334f1ff01af56b1414ac22bd9a5f34203dd22fd103b64976690abcc057a",
+    "trackedBy": [
+      "Junkrat9527/venera-sources"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.loginWithWebview.checkStatus",
         "status": "跳过",
-        "category": "interactive_required",
+        "category": "需要交互",
         "reason": "Provide observed browser URL/title and exported cookies or token"
       },
       {
         "stage": "account.loginWithWebview.onLoginSuccess",
         "status": "跳过",
-        "category": "dependency_failed",
+        "category": "前置能力未通过",
         "reason": "Webview checkStatus did not pass"
-      },
-      {
-        "stage": "search.load",
-        "status": "失败",
-        "category": "请求超时",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
       },
       {
         "stage": "account.isLoggedIn",
         "status": "跳过",
-        "category": "缺少测试输入",
+        "category": "缺少样本输入",
         "reason": "No automatic adapter; provide cases[path].args and expect"
       },
       {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "settings.refresh_domain.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -3090,19 +3478,24 @@
     "key": "zerobyw33",
     "version": "1.2.0",
     "fileName": "zerobyw33.js",
-    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/normal_comic/zerobyw33.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；meaninglesslyy/venera-config",
-    "sha256": "17b9a4ae12100e367b54c116d5ee9810a9520eacbf7ab46cf930fe6485dd2fe7",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/zerobyw33.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
+    "sha256": "fec1f36630cceab05aadc8d918b64aa8a7d6f6a298499bdb257b6b34a3332895",
     "minAppVersion": "1.6.0",
     "officialKey": false,
-    "status": "failed",
+    "status": "partial",
     "channel": "extended",
     "sample": {
       "comicId": "23009",
       "epId": "711126",
       "keyword": "海贼王"
     },
-    "checkedAt": "2026-10-23T09:02:11.284Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "fec1f36630cceab05aadc8d918b64aa8a7d6f6a298499bdb257b6b34a3332895",
+    "trackedBy": [
+      "handahao666-boop/venera_comic_source"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "account.login",
@@ -3111,22 +3504,16 @@
         "reason": "Provide credentials.username and password"
       },
       {
-        "stage": "explore[0].load",
-        "status": "失败",
-        "category": "请求超时",
-        "reason": "Network request failed: HTTP request timed out"
-      },
-      {
         "stage": "account.logout",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       },
       {
         "stage": "settings.refresh_domain.callback",
         "status": "跳过",
         "category": "写操作未启用",
-        "reason": "Requires allowMutations:true and an explicit case"
+        "reason": "默认禁用写操作，且没有显式写操作用例"
       }
     ]
   },
@@ -3136,7 +3523,7 @@
     "version": "1.0.0",
     "fileName": "zymk.js",
     "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/zymk.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告",
     "sha256": "78a5f653f49504d9bc5e704dc75fba9d4973199643dfcae1317e540d3e21aca8",
     "minAppVersion": "1.0.0",
     "officialKey": false,
@@ -3147,19 +3534,24 @@
       "epId": "/101/168663.html",
       "keyword": "斗破苍穹"
     },
-    "checkedAt": "2026-10-23T09:02:11.788Z",
+    "checkedAt": "2026-10-24T01:20:27.954335+00:00",
+    "buildId": "78a5f653f49504d9bc5e704dc75fba9d4973199643dfcae1317e540d3e21aca8",
+    "trackedBy": [
+      "token1008/venera-cn-64bit"
+    ],
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "limitations": [
       {
         "stage": "search.load",
         "status": "失败",
         "category": "返回结构或样本不满足契约",
-        "reason": "当前关键词或列表为空；需调整样本或检查页面解析"
+        "reason": "当前关键词或列表为空，需复核样本或解析规则"
       },
       {
         "stage": "comic.onImageLoad.onLoadFailed",
         "status": "跳过",
-        "category": "not_triggered",
-        "reason": "Image succeeded; failure recovery was not invoked"
+        "category": "本次成功路径未触发",
+        "reason": "图片已成功，未触发失败恢复回调"
       }
     ]
   }

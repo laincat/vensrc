@@ -2,34 +2,26 @@
   {
     "name": "Komiic",
     "key": "Komiic",
-    "version": "1.0.2",
-    "fileName": "komiic.js",
-    "url": "https://raw.githubusercontent.com/l233333333/venera-sources/8e19e35ba1b0b12a1157184e0adae0906ca31f4e/Venera-Core/komiic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；l233333333/venera-sources"
+    "version": "1.0.8",
+    "fileName": "komiic_dual.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/komiic_dual.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "漫画柜",
     "key": "ManHuaGui",
     "version": "1.2.1",
     "fileName": "manhuagui.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/manhuagui.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources"
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/manhuagui.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
-    "name": "腾讯漫画",
-    "key": "acqq",
-    "version": "1.0.0",
-    "fileName": "acqq.js",
-    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/acqq.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit"
-  },
-  {
-    "name": "爱漫岛",
-    "key": "aiman",
-    "version": "2.3.6",
-    "fileName": "amdcomic.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/amdcomic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "name": "腾讯动漫",
+    "key": "ac_qq",
+    "version": "1.0.1",
+    "fileName": "ac_qq.js",
+    "url": "https://raw.githubusercontent.com/Angus-fw/venera-configs/ce03585b9a4e1bc24cbb7d61f748a66eac393ddf/ac_qq.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "Asura Scans",
@@ -37,15 +29,23 @@
     "version": "1.3.0",
     "fileName": "asura_scans.js",
     "url": "https://raw.githubusercontent.com/Micqiyue/venera-sources/cee408d01603fd2466eefd66bbd2084218862965/asura_scans.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Micqiyue/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "百合会",
     "key": "baihehui",
-    "version": "1.0.2",
+    "version": "1.0.0",
     "fileName": "baihehui.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/baihehui.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/baihehui.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
+  },
+  {
+    "name": "包子漫画",
+    "key": "baozi",
+    "version": "1.1.7",
+    "fileName": "baozi.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/baozi.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "包子漫画（修订版）",
@@ -53,23 +53,23 @@
     "version": "1.1.3",
     "fileName": "baozi_fixed.js",
     "url": "https://raw.githubusercontent.com/JunQianNuo/venera-sources/b489d5e2d8c53e6a2a03af9a8bf87dab25a0df0a/dist/baozi_fixed.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；JunQianNuo/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
-    "name": "哔哩漫画",
-    "key": "bilimanga",
-    "version": "1.6.2",
-    "fileName": "bilimanga.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/bilimanga.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "name": "Buon Dua",
+    "key": "buondua",
+    "version": "1.2.0",
+    "fileName": "buondua.js",
+    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/buondua.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "CCC追漫台",
     "key": "ccc",
-    "version": "1.0.2",
+    "version": "1.0.1",
     "fileName": "ccc.js",
-    "url": "https://raw.githubusercontent.com/zakkida/venera-sources/a5d8118da700c44f4823e82494d4ca816054afaf/ccc.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；zakkida/venera-sources"
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/ccc.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "Cosplay啦",
@@ -77,7 +77,15 @@
     "version": "1.0.0",
     "fileName": "ciyuandao.js",
     "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/ciyuandao.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
+  },
+  {
+    "name": "comick",
+    "key": "comick",
+    "version": "1.2.0",
+    "fileName": "comick.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/comick.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "CxC",
@@ -85,15 +93,7 @@
     "version": "1.0.3",
     "fileName": "cxc.js",
     "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/cxc.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；handahao666-boop/venera_comic_source"
-  },
-  {
-    "name": "次元漫画",
-    "key": "cycomic",
-    "version": "1.0.3",
-    "fileName": "cycomic.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/cycomic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "大魔兔",
@@ -101,7 +101,7 @@
     "version": "1.0.0",
     "fileName": "damotu.js",
     "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/damotu.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "顶漫画",
@@ -109,31 +109,39 @@
     "version": "1.0.5",
     "fileName": "dingmanhua.js",
     "url": "https://raw.githubusercontent.com/Angus-fw/venera-configs/ce03585b9a4e1bc24cbb7d61f748a66eac393ddf/dingmanhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Angus-fw/venera-configs"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
+  },
+  {
+    "name": "动漫啦",
+    "key": "dongman_la",
+    "version": "1.0.5",
+    "fileName": "dongman_la_fixed_v101.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/dongman_la_fixed_v101.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "ehentai",
     "key": "ehentai",
-    "version": "1.1.8",
+    "version": "1.2.0",
     "fileName": "ehentai.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/ehentai.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources"
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/ehentai.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
+  },
+  {
+    "name": "4KHD Cosplay",
+    "key": "fourkhd_cosplay",
+    "version": "2.0.0",
+    "fileName": "4khd_cosplay.js",
+    "url": "https://raw.githubusercontent.com/6678670jsy/venera-sources/ec8383dc51c3b13be2dfb9f4576c3edb57629704/4khd_cosplay.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "瓜子漫画",
     "key": "guazimanhua",
     "version": "1.0.4",
-    "fileName": "guazi_manhua.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/guazi_manhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
-  },
-  {
-    "name": "国漫吧",
-    "key": "guoman8",
-    "version": "1.0.2",
-    "fileName": "guoman8.js",
-    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/guoman8.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit"
+    "fileName": "guazi_manhua_v1.1.0.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/guazi_manhua_v1.1.0.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "Hachiraw",
@@ -141,15 +149,23 @@
     "version": "1.0.0",
     "fileName": "hachiraw.js",
     "url": "https://raw.githubusercontent.com/YUIRIKIiii/venera-sources/451400c86bf970a0a85b9d24c2d98ed7915b588f/hachiraw.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；YUIRIKIiii/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
+  },
+  {
+    "name": "花火漫画",
+    "key": "hanabimanga",
+    "version": "1.0.0",
+    "fileName": "hanabimanga.js",
+    "url": "https://raw.githubusercontent.com/xiaoxingmian/venera-configs/aa9fea3526294435982e765cc96ce916be6748a6/hanabimanga.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "H-Comic",
     "key": "hcomic",
     "version": "1.0.0",
     "fileName": "hcomic.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/hcomic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources"
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/hcomic.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "紳士漫畫（私人）",
@@ -157,31 +173,15 @@
     "version": "1.0.7",
     "fileName": "wnacg.js",
     "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/3de9a7fa1b71f4a4bf25c8bfcd65c485920e2435/sources/private/wnacg.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Taototo/venera-comic-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "热辣漫画",
     "key": "hot_manga",
     "version": "1.0.0",
     "fileName": "hot_manga.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/hot_manga.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources"
-  },
-  {
-    "name": "爱看漫",
-    "key": "ikmmh",
-    "version": "1.0.8",
-    "fileName": "ikmmh.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/ikmmh.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources"
-  },
-  {
-    "name": "爱看漫",
-    "key": "ikmmh_v2",
-    "version": "3.0.0",
-    "fileName": "ikmmh_v2.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/ikmmh_v2.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/hot_manga.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "爱飒漫画",
@@ -189,15 +189,7 @@
     "version": "1.0.0",
     "fileName": "isamanhua.js",
     "url": "https://raw.githubusercontent.com/YHQY-Dev/venera-sources/b84b58ad0935df124b38a12f2d6e369d0715ff32/isamanhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；YHQY-Dev/venera-sources"
-  },
-  {
-    "name": "极速漫画",
-    "key": "jisu_1kkk",
-    "version": "1.0.0",
-    "fileName": "jisu_1kkk.js",
-    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/jisu_1kkk.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "JJCOS",
@@ -205,7 +197,15 @@
     "version": "1.3.0",
     "fileName": "jjcos.js",
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/jjcos.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；meaninglesslyy/venera-config"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
+  },
+  {
+    "name": "禁漫天堂",
+    "key": "jm",
+    "version": "1.4.1",
+    "fileName": "jm.js",
+    "url": "https://raw.githubusercontent.com/hea784/venera-configs/c45e8178894cc760b24f9dc19caf4a59264a357c/jm.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "禁漫天堂X",
@@ -213,7 +213,7 @@
     "version": "2.1.0",
     "fileName": "jmcomic.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/jmcomic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "看漫画",
@@ -221,7 +221,7 @@
     "version": "2.2.7",
     "fileName": "kanman.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/kanman.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "Kiutaku",
@@ -229,39 +229,39 @@
     "version": "1.1.0",
     "fileName": "kiutaku.js",
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/kiutaku.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；meaninglesslyy/venera-config"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "来漫画（分流）",
     "key": "laimanhua_split",
-    "version": "1.2.2",
-    "fileName": "laimanhua.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/laimanhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "version": "1.2.1",
+    "fileName": "laimanhua_split_hosts_v1.2.1_configurable.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/laimanhua_split_hosts_v1.2.1_configurable.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "Lanraragi",
     "key": "lanraragi",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "fileName": "lanraragi.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/lanraragi.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources"
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/lanraragi.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
-    "name": "51漫画",
-    "key": "manga51",
-    "version": "1.1.0",
-    "fileName": "51manga.js",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/c3648715ebb77053dd6099cd3ed1c362e976eafe/%E4%B8%89%E6%96%B9/51manga.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；huajiaoshu520/venera-cimoc"
+    "name": "Manga18FX",
+    "key": "manga18fx",
+    "version": "1.0.2",
+    "fileName": "manga18fx.js",
+    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/raw_comic/manga18fx.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "MangaDex",
     "key": "manga_dex",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "fileName": "manga_dex.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/manga_dex.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources"
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/manga_dex.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "178漫画网",
@@ -269,23 +269,15 @@
     "version": "1.0.0",
     "fileName": "manhua178.js",
     "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/manhua178.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
-    "name": "漫画吧网",
-    "key": "manhuaba",
-    "version": "1.0.0",
-    "fileName": "manhuaba.js",
-    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/manhuaba.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit"
-  },
-  {
-    "name": "漫舍",
-    "key": "manshe",
-    "version": "1.0.8",
-    "fileName": "manshe.js",
-    "url": "https://raw.githubusercontent.com/Micqiyue/venera-sources/cee408d01603fd2466eefd66bbd2084218862965/manshe.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Micqiyue/venera-sources"
+    "name": "漫蛙吧",
+    "key": "manwaba",
+    "version": "1.1.3",
+    "fileName": "manwaba_fixed_v113.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/manwaba_fixed_v113.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "漫画manga",
@@ -293,7 +285,7 @@
     "version": "1.0.1",
     "fileName": "mh03.js",
     "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/mh03.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Magentadots/venera-configs"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "漫画1234（新版网站）",
@@ -301,7 +293,7 @@
     "version": "1.2.2",
     "fileName": "mh1234_fixed.js",
     "url": "https://raw.githubusercontent.com/JunQianNuo/venera-sources/b489d5e2d8c53e6a2a03af9a8bf87dab25a0df0a/dist/mh1234_fixed.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；JunQianNuo/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "MOJOIN",
@@ -309,31 +301,39 @@
     "version": "1.0.8",
     "fileName": "mojoin.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/mojoin.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "MOJOIN",
     "key": "mojoin_v2",
     "version": "1.0.7",
     "fileName": "mojoin_fixed_v107.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/mojoin_fixed_v107.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/mojoin_fixed_v107.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "漫小肆",
     "key": "mxs",
     "version": "1.0.0",
     "fileName": "mxs.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/mxs.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources"
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/mxs.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
-    "name": "大人漫画（私人）",
-    "key": "private_drmh3",
-    "version": "1.0.0",
-    "fileName": "drmh3.js",
-    "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/3de9a7fa1b71f4a4bf25c8bfcd65c485920e2435/sources/private/drmh3.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Taototo/venera-comic-sources"
+    "name": "MYCOMIC",
+    "key": "mycomic",
+    "version": "1.1.0",
+    "fileName": "mycomic.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/mycomic.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
+  },
+  {
+    "name": "nhentai",
+    "key": "nhentai",
+    "version": "1.1.0",
+    "fileName": "nhentai.js",
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/nhentai.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "魅影画廊（私人）",
@@ -341,15 +341,7 @@
     "version": "1.0.1",
     "fileName": "myhl.js",
     "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/3de9a7fa1b71f4a4bf25c8bfcd65c485920e2435/sources/private/myhl.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Taototo/venera-comic-sources"
-  },
-  {
-    "name": "腾讯动漫（正版）",
-    "key": "qq_comic_official",
-    "version": "2.0.0",
-    "fileName": "qq_comic_official.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/qq_comic_official.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "如漫画",
@@ -357,7 +349,7 @@
     "version": "2.4.1",
     "fileName": "rumanhua.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/rumanhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "如漫画",
@@ -365,23 +357,31 @@
     "version": "0.4.3",
     "fileName": "rumanhua2.js",
     "url": "https://raw.githubusercontent.com/zhimouzhou/venera-manga-sources/b3b22aaf832fb2382004b5be10a314e59c47e328/sources/rumanhua2.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；zhimouzhou/venera-manga-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "如漫画",
     "key": "rumanhua_fixed_v15",
     "version": "1.2.8",
     "fileName": "rumanhua_fixed_v16.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/rumanhua_fixed_v16.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/rumanhua_fixed_v16.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "SF漫画",
     "key": "sfacg_manhua",
-    "version": "1.0.2",
+    "version": "1.0.0",
     "fileName": "sfacg_manhua.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/sfacg_manhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/sfacg_manhua.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
+  },
+  {
+    "name": "少年ジャンプ＋",
+    "key": "shonen_jump_plus",
+    "version": "1.2.0",
+    "fileName": "shonen_jump_plus.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/shonen_jump_plus.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "思思漫画",
@@ -389,7 +389,7 @@
     "version": "1.0.0",
     "fileName": "sisimanhua.js",
     "url": "https://raw.githubusercontent.com/YHQY-Dev/venera-sources/b84b58ad0935df124b38a12f2d6e369d0715ff32/sisimanhua.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；YHQY-Dev/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "サンデーうぇぶり",
@@ -397,31 +397,31 @@
     "version": "1.0.0",
     "fileName": "sunday_webry.js",
     "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/sunday_webry.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；handahao666-boop/venera_comic_source"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "腾讯动漫",
-    "key": "tencent_comics",
-    "version": "1.1.3",
-    "fileName": "tencent_comics.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/tencent_comics.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "key": "tencentcomics",
+    "version": "1.0.0",
+    "fileName": "tencentcomics.js",
+    "url": "https://raw.githubusercontent.com/xiaoxingmian/venera-configs/aa9fea3526294435982e765cc96ce916be6748a6/tencentcomics.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "图库漫画",
     "key": "tuku_cc",
-    "version": "1.0.2",
+    "version": "1.0.1",
     "fileName": "tuku_cc.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/tuku_cc.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/tuku_cc.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "紳士漫畫",
     "key": "wnacg",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "fileName": "wnacg.js",
-    "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/wnacg.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；yelongyue197-svg/venera-sources"
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/wnacg.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "Xiutaku",
@@ -429,23 +429,15 @@
     "version": "1.1.0",
     "fileName": "xiutaku.js",
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/xiutaku.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；meaninglesslyy/venera-config"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
-    "name": "yande.re",
-    "key": "yandere",
-    "version": "4.9.3",
-    "fileName": "yandere.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/yandere.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
-  },
-  {
-    "name": "野蛮漫画",
-    "key": "yemancomic",
-    "version": "1.3.8",
-    "fileName": "yemancomic.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/yemancomic.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "name": "优酷漫画 (修复版)",
+    "key": "ykmh",
+    "version": "1.0.7",
+    "fileName": "youku.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/youku.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "zero搬运网",
@@ -453,15 +445,15 @@
     "version": "1.2.0",
     "fileName": "zero.js",
     "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/zero.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；Junkrat9527/venera-sources"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "zero搬运网",
     "key": "zerobyw33",
     "version": "1.2.0",
     "fileName": "zerobyw33.js",
-    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/normal_comic/zerobyw33.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；meaninglesslyy/venera-config"
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/zerobyw33.js",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
     "name": "知音漫客",
@@ -469,6 +461,6 @@
     "version": "1.0.0",
     "fileName": "zymk.js",
     "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/zymk.js",
-    "description": "核心阅读链路通过，其他能力有失败或跳过；请查看审计清单；核验时间 2026-10-23；token1008/venera-cn-64bit"
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   }
 ]

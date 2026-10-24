@@ -1,0 +1,382 @@
+# 上游变更与待审阅候选
+
+检查时间：2026-10-24T01:12:58.518056+00:00（UTC）。
+检查 50 个已登记仓库；发现 260 个未审阅源码构建。
+
+新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
+
+## 源码变动
+
+| 名称 | key | 版本 | 仓库 | 最低应用版本 | SHA-256 |
+| --- | --- | --- | --- | --- | --- |
+| 爱看漫 | ikmmh | 2.1.2 | Junkrat9527/venera-sources | 1.0.0 | fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3 |
+| vomic | vomic | 1.2.0 | 137syh/venera-syh | 1.5.0 | 525cf99fc99d62991069c3c01ecaff16b4044804ec451743ec7188af3f853846 |
+| 拷贝漫画 | copy_manga | 1.4.1 | Angus-fw/venera-configs | 1.6.0 | 5c37869baaed569b5806e7179c8a7b65e85f09d1427dac2d4c42e8db43893a75 |
+| 拷贝漫画(多账号) | copy_manga | 1.4.1 | Angus-fw/venera-configs | 1.6.0 | c71ffde879bbbf2de967a392933df16767530e9debeb84bf8ab2af1dad3408f2 |
+| nhentai | nhentai | 1.0.9 | Angus-fw/venera-configs | 1.0.0 | 0fb00ddd41b26a33170d964b4f9349cb4df766afb3276b982a079f85686a0686 |
+| 爱看漫 | ikmmh | 1.0.6 | Angus-fw/venera-configs | 1.0.0 | dc81b308f6b240b8b48dccdb863b21a796a68d576ca11388b51f524b5471a95c |
+| カドコミ | comic_walker | 1.0.0 | zhimouzhou/venera-manga-sources | 1.6.0 | fa353ab61baba196e0a5375925caf04f4d258adf146f8d750e9ac3c305926b06 |
+| GoDa漫画 | goda | 1.0.0 | Angus-fw/venera-configs | 1.4.0 | cf9dc9815dc5544cb5f9cf5cc48f894d0aefb684ee17801cdef63264becd1d75 |
+| 漫蛙漫画 | mwuu | 1.2.0 | Angus-fw/venera-configs | 1.0.0 | 1cd62034164549749d971b15a7ac1e085c6d9b9bd721029038660d1635f1d49b |
+| 快看漫画 | kuaikan | 1.0.3 | Angus-fw/venera-configs | 1.0.0 | a2a515bde9bb5c7b7c1b22417559e7d4db03e872523cef4053b9808c11cf93de |
+| 包子漫画 | baozi | 1.1.7 | ChopDream/venera-source-hub | 1.0.0 | 81214391b7fb95d8e632381d92f284e26939c4b465abed5a0cb324606564e1be |
+| 禁漫天堂 | jm | 1.4.2 | ChopDream/venera-source-hub | 1.5.0 | 1b195b4ecd0bcbed61546d11761f6d0c8b027588564da7d28368f2f4645d5b16 |
+| nhentai | nhentai | 1.1.2 | ChopDream/venera-source-hub | 1.0.0 | 9379d8441f42d06a7835cee6b21519ea8a951eb01c476402d00dce721ffeaec6 |
+| MYCOMIC | mycomic | 1.1.2 | ChopDream/venera-source-hub | 1.4.6 | f35e2e7cb531f7591e81a5edf41ab6303880686f0009c7477f77154e9511f07f |
+| 紳士漫畫 | wnacg | 1.0.9 | ChopDream/venera-source-hub | 1.0.0 | b2886d9c54ae662f2b0da391fe6769779043a6cf01af4174eaec64d7e9f2f734 |
+| 拷贝漫画 | copy_manga | 1.4.3 | ChopDream/venera-source-hub | 1.6.0 | 5aa1a8af7115167c07e96da7a22e12c2e52141733e16509f5d52db06de7a4d4e |
+| Komiic | Komiic | 1.8.3 | Junkrat9527/venera-sources | 1.0.0 | d957a4de13948a967368975b43e947a3dc56cb094f02e4fa9b62f8339a5e678a |
+| 包子漫画 | baozi | 1.2.1 | Junkrat9527/venera-sources | 1.0.0 | 0fe528ef087e092a2d57ec32f2d9414642987e07ceaced9973c6ecf8acb1cb40 |
+| 包子漫画 | baozi | 1.1.7 | zhimouzhou/venera-manga-sources | 1.0.0 | ed698fbc58b216b0a22bc178947f56f637400629cd4a852bcda70b68b34349f3 |
+| CCC追漫台 | ccc | 1.0.9 | Junkrat9527/venera-sources | 1.6.0 | 062c6d3948d728e97d529330b0db07b102b259302571a0aeb2ec0e213b38b5b5 |
+| カドコミ | comic_walker | 1.3.2 | LX7kM9/venera-configs | 1.6.0 | 266cab4c1172866c25fb5b61f57f56502817b2c7dc14a707d67e5e8b1f3fdf0a |
+| comick | comick | 1.3.0 | LX7kM9/venera-configs | 1.4.0 | 510fbc210f12ab0260d26b4b708c8d23582e11c68fad4d5f7a0aac820bc7d236 |
+| 拷贝漫画 | copy_manga | 2.3.1 | LX7kM9/venera-configs | 1.6.0 | ea1f834157acd3787eade0a4c436f172b46e983f576e46142aa650574f373ca5 |
+| 拷贝漫画 | copy_manga | 1.4.2 | zhimouzhou/venera-manga-sources | 1.6.0 | 9052d056a31bf8c090947d94afbf307a9a8d01b24c497d8e37a210e4e752724d |
+| 拷贝漫画(多账号)（官方） | copy_manga | 1.4.1 | token1008/venera-cn-64bit | 1.6.0 | 4f16adcec431f158a80f02e4ba8eccf94f8129d74d4203de4723a771528c8d83 |
+| 动漫啦 | dongman_la | 1.0.1 | n3114576614-cell/N_venera_source | 1.0.0 | f3599e84cdebd39aa3cf752e0b97b015ea673917314572cf52e567d81a12daba |
+| 动漫啦 | dongmanla | 1.0.0 | YHQY-Dev/venera-sources | 1.0.0 | 15a8e8970bd8142accb161272c6491082b193d8ceaad393025877effe63cf009 |
+| ehentai | ehentai | 1.2.1 | VComic-org/venera-comic-source | 1.5.3 | 1aa135bfdba24d66eaea1cbd6c66eb4d6b7a97d62ffc8ef8361f2ce5eff6038b |
+| GoDa漫画 | goda | 1.2.4 | LX7kM9/venera-configs | 1.4.0 | d560801cd543d9cec07d1098b46f9992276cde9e904c5a8ff431a678a2f3415e |
+| GoDa漫画 | goda | 1.0.1 | Junkrat9527/venera-sources | 1.4.0 | 91ddb551afa79c77d355192d48948909de91c3db0cc1c9453b1d780ddb4a120b |
+| 爱看漫 | ikmmh | 3.0.1 | Junkrat9527/venera-sources | 1.0.0 | 78cc44bb2c9a69225a3446698005d3d33080dedb67ff9d9e7cc43052e14190f8 |
+| 爱看漫 | ikmmh | 1.0.5 | WEP-56/EZvenera-config | 1.0.0 | 721708faa57c08fac5b2ad700eb16730bd8f7b283f4a2b2ce333c733f5ca9215 |
+| 禁漫天堂 | jm | 1.4.3 | VComic-org/venera-comic-source | 1.5.0 | eb059a5ae6ad528bbcbfcfb2296a4b3945405bb5cab1faab326f1b374450d0b7 |
+| Lanraragi | lanraragi | 1.2.3 | LX7kM9/venera-configs | 1.4.0 | 55bc1f431f9e26af5a20a38cc26fc233595df10a00916ca519afc042f33ef8ad |
+| MangaDex | manga_dex | 1.9.4 | LX7kM9/venera-configs | 1.4.0 | c1fda4f7542327ea9c35a485250b7f97ba51c65b831407a4f1474ee51728ae97 |
+| MangaDex | manga_dex | 1.1.2 | zhimouzhou/venera-manga-sources | 1.6.0 | b505c890153bf1bc5cb511146d4bef2f75d53fb6bbd1dc092cd4b33d3660af21 |
+| 漫画柜 | manhuagui | 1.2.2 | YHQY-Dev/venera-sources | 1.4.0 | b7f7995704b42b31010edf007c6a069bef77d3a96d03b5dca2d3456c6e2b29a4 |
+| 漫画人 | manhuaren | 2.0.0 | Junkrat9527/venera-sources | 1.6.0 | 5adc51fbd180f7f4b987d9f36c1f06951d3507a61def96385af2b72eb078508d |
+| 漫蛙吧 | manwaba | 1.0.3 | zhimouzhou/venera-manga-sources | 1.4.0 | 2727adee5abf680436db5a962b460bd416bfdb3042c3e5b0256a595efe22323c |
+| 漫画1234 | mh1234 | 1.4.3 | LX7kM9/venera-configs | 1.4.0 | a1d71934255b57ea7f7895a9bdedbfedceeda4fcdaec9aa765cd974792c985d5 |
+| 漫画1234 | mh1234 | 1.0.1 | Junkrat9527/venera-sources | 1.4.0 | 6f410a9984f172b202bad08f4d12aed7629cde43fc02280edd3f4f443558aecc |
+| 18漫画（官方·需代理） | mh18 | 1.0.0 | token1008/venera-cn-64bit | 1.4.0 | 2336cb35e59885901002d655d664f879f38a866076707895c4b42582aa8876b6 |
+| MYCOMIC | mycomic | 1.1.1 | LX7kM9/venera-configs | 1.4.6 | 0d1ee97148833716ff4b667872e28d14c751a17720c6518edcff1fd91c116448 |
+| nhentai | nhentai | 1.1.1 | VComic-org/venera-comic-source | 1.0.0 | 9c637790f59d072003adbdee32b1336082d58e50e6cfa4f5cd5becde18996129 |
+| 少年ジャンプ＋ | shonen_jump_plus | 1.3.1 | Junkrat9527/venera-sources | 1.2.1 | d7cc9e684b14239e3c921d8ce19da7db9343ccf7692093a7d048f21822130f6b |
+| 优酷漫画 | ykmh | 1.1.0 | Junkrat9527/venera-sources | 1.4.0 | effa08b818616a670bfe5ff5e1abc42e5da925fe767dec86c84d9ea51016e861 |
+| 优酷漫画 | ykmh | 1.0.1 | zhimouzhou/venera-manga-sources | 1.4.0 | d0eb522a8fe55d322cca2c27c1a8f7e27dd0bf5b24fe80eab9032dead0f8bde6 |
+| 优酷漫画 (修复版) | ykmh | 1.0.6 | yelongyue197-svg/venera-sources | 1.4.0 | f0b1979721bf81094772b4575c2cb1a6ebc774a58d4b3f3fa301a36b5a7d641f |
+| 再漫画 | zaimanhua | 1.2.6 | LX7kM9/venera-configs | 1.0.0 | ecef4acbb4548e999cda545931cd71f5951a5b9231a10e8f23d04156064279de |
+| 再漫画 | zaimanhua | 1.0.3 | zhimouzhou/venera-manga-sources | 1.0.0 | 2d9e8d071b2cd1cd5b6c5cd5d06716c2f0aa941ebe9da8c9d96c27c1c2a17273 |
+| 咚漫漫画 | dongman | 1.0.0 | cattoldme/venera-configs | 1.6.0 | db829f439e27dc33c3ae3303646fa780efe7d2c37ee9c777df1f041d7631485d |
+| 嬉皮漫画 | hipmh | 1.0.1 | AXmishell/venera-configs | 1.0.0 | 57f23ebd47143defe73117ed24b986bb99ad1904938ec42725c15440b139a0cd |
+| 如漫画 | rumanhua | 1.0.3 | caitlin-cheng-ccc/venera-configs | 1.4.0 | 78f7fba17c15bbbf10bb52b4f46d5df2222e3cfef18abfee19c750dad8348800 |
+| 瓜子漫画 | guazimanhua | 1.0.4 | LX7kM9/venera-configs | 1.0.0 | 07aaf9e53940358eab902e47f7971980b699a09aa4104176fa9bb9d1b656f6ed |
+| 动漫啦 | dongman_la | 1.0.6 | LX7kM9/venera-configs | 1.0.0 | 56989eb9acd1cf21a44cde3ddb1726a69dbafaa115b25e1a2a63736f0ebc8d44 |
+| 如漫画 | rumanhua | 2.4.2 | LX7kM9/venera-configs | 1.0.0 | 9d9ada706f965a6da4c36588d50827a8ef37d3c47c989f993e991e08994787d7 |
+| 飞翔漫画 | ffppt | 1.0.6 | LX7kM9/venera-configs | 1.0.0 | 4eeee3685842c843c12c909ec75680ed6a332120a0f86c27c8bb48b43b68bb96 |
+| 来漫画 | laimanhua_split | 1.2.2 | LX7kM9/venera-configs | 1.0.0 | 9874de436f3ee50db72543c53ad47a5375401791daf89f1f6542d485b6ae6c03 |
+| 爱看漫 | ikmmh | 3.0.1 | LX7kM9/venera-configs | 1.0.0 | e78216115cc4e14484b3cbe299585a99f832944a8e277bd11b365ccae9396c98 |
+| 哔哩漫画 | bilimanga | 1.6.3 | LX7kM9/venera-configs | 1.6.0 | 97fd92499c11c4ee0baed1874598862d021051c22abe08674e9152b8458eb2fe |
+| 51漫画 | manga51 | 1.3.0 | LX7kM9/venera-configs | 1.6.0 | c02ee18f652724a534d19e5d7206dcf855d43f1768356820caaa6974666a7b10 |
+| NoyManga | noymanga | 1.1.6 | LX7kM9/venera-configs | 1.6.0 | 2917b22ca6b78778d7c5761d27b001324475f54ba3548abfc4c8b00c32321381 |
+| 优酷漫画 | ykmh | 1.2.0 | LX7kM9/venera-configs | 1.4.0 | fbd0c34abd226cc98980aa3bfb633012f42f8fb90bade985312bb1889358c725 |
+| 动漫屋 | dm5 | 2.0.5 | LX7kM9/venera-configs | 1.6.0 | f1082766eade7d5acea8156b19430499fc1f8004408b9dfd4964dcad03f7fcbd |
+| Mangabz | mangabz | 1.0.3 | LX7kM9/venera-configs | 1.6.0 | 06aeb01ff5b8ef3be44e36da8f3c4242d80bcdb13581d730191069a735fefc59 |
+| 311漫画 | s311_com | 1.2.0 | LX7kM9/venera-configs | 1.2.2 | 7de2d08ef245b7cb756b5f6500b1c6f1f84733f4211c09f525666e8de4321746 |
+| 好看漫画 | haokan_txt | 1.0.4 | LX7kM9/venera-configs | 1.2.2 | 04bfdfb5fd06f5e29c340253cc5c78e5c5f1a47d65766d920b841ea41e5cb53d |
+| 思思漫画 | sisimanhua | 2.7.0 | LX7kM9/venera-configs | 1.0.0 | 189b8656d816de05b70f07b71da6a593dec6280e054405aeacbfa5c001a6c065 |
+| CxC | cxc | 1.0.4 | LX7kM9/venera-configs | 1.6.3 | ea881a3a29c020802f63e20451bd74599b245e063b64decd752f2596caa7bde2 |
+| サンデーうぇぶり | sunday_webry | 1.0.1 | LX7kM9/venera-configs | 1.0.0 | b7b5303abd2e69ff690b0f546d3f3a498b46702b81b545f2076a79014730c800 |
+| Kavita | kavita | 1.0.0 | LX7kM9/venera-configs | 1.4.0 | abed78c2857ccf8371e3c3e0fa2887b0ecf8303ad9685cd4a7b1b89611e6effd |
+| Komga | komga | 1.0.0 | LX7kM9/venera-configs | 1.4.0 | 0f5369764a659ce2201e399f37f2283c20c138e397cad0f09bacb3ea6ef25c28 |
+| 包子漫画 | baozi | 1.2.2 | LX7kM9/venera-configs | 1.0.0 | 5a6472e9eb85f98ac97f6456c2b7217c5d9117126e1863690df41f3c085108f1 |
+| 漫画人 | manhuaren | 2.0.1 | LX7kM9/venera-configs | 1.6.0 | a13a85540e57ee3ae4a8ccdcf0f4c83fd8d396dd678afa04ba5dc0260533e70e |
+| CCC追漫台 | ccc | 1.0.9 | LX7kM9/venera-configs | 1.6.0 | 42a220ca017e01b5cd45d53ec9f70e3a20b8453f0c68870f42de7762a4ffe95b |
+| zero搬运网 | zerobyw | 1.2.0 | LX7kM9/venera-configs | 1.0.0 | 4cc6a768c02333b851ba9427f2897a69af4ed6a8f17adb1de7baf20a66cffa81 |
+| Komiic | Komiic | 1.8.3 | LX7kM9/venera-configs | 1.0.0 | cbb3ac23c4389fb73c341bd14d169c011a81913957fa284e321a86df513ebc8f |
+| yande.re | yandere | 4.9.4 | LX7kM9/venera-configs | 1.6.0 | 089c33fde66e90452ee7c1a1662437098a7fc25d98f703bd75d5a4250325ef50 |
+| 少年ジャンプ＋ | shonen_jump_plus | 1.4.0 | LX7kM9/venera-configs | 1.6.0 | b7a3564421242b44a7004ece5bdc439624a97b840a31a55d581e1cf8cbdd1b74 |
+| 百合会 | baihehui | 1.0.1 | Magentadots/venera-configs | 1.4.0 | a8ee1645dbe486e6bcda2309b729873ed2557675226b908604cf07b6dca229c9 |
+| 包子漫画 | baozi | 1.2.0 | Magentadots/venera-configs | 1.0.0 | e548cdfaaa2810dbf6c2b007310b15186d6b2fca39927b30ff592fa2cce71cb5 |
+| CCC追漫台 | ccc | 1.0.1 | Magentadots/venera-configs | 1.6.0 | b250baef74b1df928123b08fa3da1f507cb48f1a7c0aa593f9c1fec427aaaa5b |
+| カドコミ | comic_walker | 1.0.1 | Magentadots/venera-configs | 1.6.0 | 4ccd0f01a6940b7657d462cdb5fe9ea755b58d608d41dd8c977d712e37f4fddc |
+| comick | comick | 1.2.0 | Magentadots/venera-configs | 1.4.0 | d911830865116461ff08a5f9e4ed5356e561c2cd0c2cbd2495d71e4ab8b80e00 |
+| 拷贝漫画 | copy_manga | 1.6.1 | Magentadots/venera-configs | 1.6.0 | b352baa7ce4da19aca93b197f1cebcadf1a739723cce5f8bff1f74b94554ea60 |
+| 拷贝漫画(多账号) | copy_manga_multi_accounts | 1.4.2 | Magentadots/venera-configs | 1.6.0 | d70f680003d13e1c53155804a7e4014334d52feef47345432829c7aef09e2077 |
+| 动漫屋 | dm5 | 7.0.1 | Magentadots/venera-configs | 1.6.0 | 6cac096e047489fdd3d44929f203b860e2b9acb05b4665a0f3c242392703766b |
+| ehentai | ehentai | 1.2.1 | Magentadots/venera-configs | 1.5.3 | 1f5e477c32060e2d52a0bd19348bfac53a7f6c8c1962ea086130fcb46f6bf623 |
+| GoDa漫画 | goda | 1.2.1 | Magentadots/venera-configs | 1.4.0 | a25c2565092f8873bbba8857957d02d9301d04c619479089b038c66325a94d2c |
+| 嗨皮漫画 | happy | 1.0.1 | Magentadots/venera-configs | 1.6.0 | 106ac09e4c0582d3a32906976a325598671a41151b744c020f7d49641dce0ebd |
+| H-Comic | hcomic | 1.0.1 | Magentadots/venera-configs | 1.6.0 | 208abe75c6c84f45539f90d3bacdd1e066c0f74207acc8a7067f19c67c5c3c31 |
+| hitomi.la | hitomi | 1.1.3 | Magentadots/venera-configs | 1.4.6 | fc8463aed012b4ad2eef03f04768c67b8e037ac8047197be15097ba46c07280e |
+| 热辣漫画 | hot_manga | 1.0.1 | Magentadots/venera-configs | 1.6.0 | 53c6c18fa86700615237916a7a24738111e31ce76e273bd3ce9a66d707ce6596 |
+| 爱看漫 | ikmmh | 1.0.7 | Magentadots/venera-configs | 1.0.0 | 576ec4b1f0a34938d6eac7f026d098b1619237164cd7d7d1dd55b509103f15e7 |
+| jcomic.net | jcomic | 1.0.0 | Magentadots/venera-configs | 1.4.6 | 7e718a2a2499e0cc8d46596ab381b38f396cc852f8c07e007d39fe6e73c0ba51 |
+| 禁漫天堂 | jm | 1.4.3 | Magentadots/venera-configs | 1.5.0 | 570b58fb26a794d284c31e054416a090413e59ed396555adc54b1b0f3ee7b376 |
+| Kavita | kavita | 1.0.1 | Magentadots/venera-configs | 1.4.0 | 3c48f1f2db7c28ff8a1f837f9172903660b5b0c1f215f1ee0ebd806750ba77f7 |
+| Komga | komga | 1.0.1 | Magentadots/venera-configs | 1.4.0 | 5b2307d8ec90f96e255ba34c14ad214e51706a3b46fa66faaee9735434da72e0 |
+| Komiic | Komiic | 1.0.7 | Magentadots/venera-configs | 1.0.0 | 7c493973cab70ad0b14a491a2aab864056e553e33e52c31a381799fe11300e17 |
+| Lanraragi | lanraragi | 1.2.1 | Magentadots/venera-configs | 1.4.0 | 1f73ebb4f6514ecaa3b5abdeec16975897774bd84ad36d28b3e0d043f7d3e7e6 |
+| MangaDex | manga_dex | 1.1.1 | Magentadots/venera-configs | 1.6.0 | 64cffa87582eebe438019a05f3532352df1ede56f4b49d4d7c87470a200b9c31 |
+| 漫画柜 | ManHuaGui | 1.2.2 | Magentadots/venera-configs | 1.4.0 | 2f72de4c3de11499f3349af0f746cd966d31a116f8d84e7a29779c0885e1a5fe |
+| 漫画人 | manhuaren | 1.0.0 | Magentadots/venera-configs | 1.6.0 | 490a1367ed61435c0f96f038ce05c4da0ed3b28943bfe1efd367f63fc439b9f6 |
+| 香蕉漫画 | manhuauo_banana_v2 | 1.0.4 | Magentadots/venera-configs | 1.0.0 | 1c40729e769ccc048f342498dd0fe5c844432b63d50de4d0db3df076370a17d6 |
+| 漫蛙吧 | manwaba | 1.1.4 | Magentadots/venera-configs | 1.6.0 | 2ccbfb1ef6f39bc0c7e99a823a2d1155716e7d674cd35bac231a56921e94a1d1 |
+| 漫画1234 | mh1234 | 1.0.1 | Magentadots/venera-configs | 1.4.0 | f42f010f235cf552f2946f2300cdfc5851f7a71c155205a7e7f2e4ce32b25902 |
+| 18漫画 | mh18 | 1.0.1 | Magentadots/venera-configs | 1.4.0 | 23dda487981425af402c3a536f920d9e6b70aedcd1f74cde6383338ce6ecfb53 |
+| 漫小肆 | mxs | 1.0.1 | Magentadots/venera-configs | 1.5.0 | fdc2d8453aa2915fb027ff1cb38e3210f12d103196d87a28917026947d869ec8 |
+| MYCOMIC | mycomic | 1.1.2 | Magentadots/venera-configs | 1.4.6 | 0ff55d097b96f5d567436826943319c8538b65d4b866de1b36cc69f90892e117 |
+| nhentai | nhentai | 1.1.1 | Magentadots/venera-configs | 1.0.0 | e0c30482210941fb1783ff2caa95b72f206042c39cb582474afc872258c18c95 |
+| Picacg | picacg | 1.0.7 | Magentadots/venera-configs | 1.0.0 | b34ec3ee1cfda521d1995466fb49d370e2e23af045227d24c8b9d27b5b1e8b9e |
+| 如漫画 | rumanhua_fixed_v15 | 1.2.6 | n3114576614-cell/N_venera_source | 1.0.0 | bf5b4c9becfbee456bfc02c2cc0851aedb6bde63a568564954208e27d455eec7 |
+| 少年ジャンプ＋ | shonen_jump_plus | 1.1.2 | Magentadots/venera-configs | 1.2.1 | 2851cc1c51e7f0629cd5612f81ec5de6061bf6fccf4e5776435c6975ef387f1f |
+| 紳士漫畫 | wnacg | 1.0.6 | Magentadots/venera-configs | 1.0.0 | 05e715ccfe5b3556539c0816681fc2f0e7c836ec511cd693b16124c95fc9a64f |
+| 优酷漫画 (修复版) | ykmh | 1.0.7 | Magentadots/venera-configs | 1.4.0 | 6c61be0f942afc5fa4798479f3d913b7b9bb47da8116e4cea53dfbfec2732e96 |
+| 优酷漫画 (修复版) | ykmh | 1.0.7 | Magentadots/venera-configs | 1.4.0 | 08613616a806f0e58a10fe2f0d7b05ac6c9bd7947e6d72f57a6e07ed1b91a041 |
+| 再漫画 | zaimanhua | 1.0.3 | Magentadots/venera-configs | 1.0.0 | fba4d1b36b85cb03e0517a0f84ca209f1fd04ff7646f859d33cc76411af7425c |
+| 漫画源聚合与全量导入器 | sources_hub | 1.0.0 | Magentadots/venera-configs | 1.6.0 | 7b55eb6a9c010618b3265862d89359152d443de33b13fc2c994e04507fd7a850 |
+| 漫蛙漫画 | manwa_routes | 2.3.3 | Ra1nbo-w/mhy-v | 1.0.0 | 8b7a65e5a520003d9ce6885848f882ab6b9f50a286bb50109835a5cb5303d5ba |
+| 如漫画 | rumanhua_com | 2.1.2 | Ra1nbo-w/mhy-v | 1.16.0 | 3a383515749605a38609e8b5260e1f9aaf6aefd4f2dde22a38c07d9e606b93f2 |
+| Komiic漫画 | komiic_cc | 2.3.3 | Ra1nbo-w/mhy-v | 1.0.0 | 0d627b63113b1e0ca2c4180df732fd15f9b50f919919e8efaf7159ba99355514 |
+| 漫画屋 | mhua5 | 2.3.3 | Ra1nbo-w/mhy-v | 1.0.0 | 63b165b1065239b07d94c3a83750824fde8a53bc1c2afc9b0af5f0bfd0195b6c |
+| 拷贝漫画 | copy_web_routes | 2.3.2 | Ra1nbo-w/mhy-v | 1.0.0 | 7a472063e163a7a33f888554c83e1043c3a400641ee9e43d04e6de64b4933b22 |
+| 瓜子漫画 | guazimanhua | 1.0.1 | Ra1nbo-w/mhy-v | 1.16.0 | 4f94b6801f09db7534de9f98c650e686ff6ff7dfbf5658a81a1b6d38b2ff2d1b |
+| MYCOMIC | mycomic | 2.3.3 | Ra1nbo-w/mhy-v | 1.16.0 | 763e7973a8ae82fe2af031bcf24b51796435dd840d45791b87ae2798e38ef826 |
+| 包子漫画 | baozi | 2.3.3 | Ra1nbo-w/mhy-v | 1.18.0 | 445daa4d7caace438f7e1a1f9477b8e39fffb8f87b70c969a78aa63930410114 |
+| 漫自由 | mheee_catalog | 2.3.4 | Ra1nbo-w/mhy-v | 1.0.0 | ff7d63b45ec92bfd7e78565bfa29becff2c94da2a040d6e18cab9ae235b62dc9 |
+| 再漫画（Ven） | zaimanhua | 1.0.2 | Taototo/venera-comic-sources | 1.0.0 | a2ded9ae553403430595878e91f9fd197aaef878e19054031ea6e2e378b068c6 |
+| 漫小肆（Ven） | mxs | 1.0.0 | Taototo/venera-comic-sources | 1.5.0 | 369cba5b93029ca414c9d3f30bd61bce8f9a86287293ccd61567cfbb22e8c9d4 |
+| 漫画人（Ven） | manhuaren | 1.0.0 | Taototo/venera-comic-sources | 1.6.0 | 586c812825db5de9a563273b8be603690771bca570f904edff1727c2416d497f |
+| 禁漫天堂（Ven） | jm | 1.4.0 | Taototo/venera-comic-sources | 1.5.0 | 00fd27877454aa32cdb3d407553a37a83707479e9ae1e82a6c01a17d9b79b870 |
+| 拷贝漫画（Ven） | copy_manga | 1.4.2 | Taototo/venera-comic-sources | 1.6.0 | daaa853479a7462b7d133727495b97e456c88c539ba4a91f482db9b6af804538 |
+| HLZY资源（私人） | private_hlzy_video | 1.2.0 | Taototo/venera-comic-sources | 1.0.0 | 7fe92bd8b3a421ffc246403d2e20640c20680ec3ab16f8eb26244cd99bd8b4ed |
+| 91短视频（私人） | private_91short_video | 1.0.1 | Taototo/venera-comic-sources | 1.0.0 | f63d4e8e04fe08ab960331baa72378ac606814a1eefcc0a86b8dc85ae1be9024 |
+| 黄果漫剧（私人） | private_huangguo_video | 1.2.1 | Taototo/venera-comic-sources | 1.0.0 | d9b5ffb2b84aa9934b017342543059a3b75e9e2d091b715d8a7f46668e404241 |
+| 51吃瓜（私人） | private_51_video | 1.2.0 | Taototo/venera-comic-sources | 1.0.0 | 9654318585a04e1a082a0402f4c91e2deaca26727e6cc63294a67b86d256dae0 |
+| 91porna（私人） | private_91porna_video | 1.2.0 | Taototo/venera-comic-sources | 1.0.0 | a15b6dd07059ac75bc05c9be967b9a61686454240d2ecbe65dd5fe58ff802b82 |
+| 源力资源（私人） | private_yuanlib_video | 1.3.0 | Taototo/venera-comic-sources | 1.0.0 | 3be0ebd33018e66548a0915c62d6f98921ae7d90c334d7b419ec71aa3ab3a976 |
+| 拷贝漫画 | copy_manga | 1.4.2 | VComic-org/venera-comic-source | 1.6.0 | 3fef033449bfd5c2c7fe2d7d3cfaa5f846eadebca22b8829c61144610f5d762f |
+| Komiic | Komiic | 1.0.5 | VComic-org/venera-comic-source | 1.0.0 | 2d2e4aa8068355d265e57d3c4a15ecf1bc9def27ff38cc73b47d0d837658f5ec |
+| 包子漫画 | baozi | 1.1.6 | VComic-org/venera-comic-source | 1.0.0 | ff60867a89fa25367d39332cc21958ecfef33e4618be49e59fd2a429293f58b6 |
+| Picacg | picacg | 1.0.5 | VComic-org/venera-comic-source | 1.0.0 | e872a62fb42003bbffe8ddcf140aac55be105e3ea4895ab63ab5d1e7c1ea27f5 |
+| 紳士漫畫 | wnacg | 1.0.5 | VComic-org/venera-comic-source | 1.0.0 | b0fda8c9850b0c37c99190cf527e93d503ec1f580a02e7033c70361f00eeaf53 |
+| MangaDex | manga_dex | 1.1.1 | VComic-org/venera-comic-source | 1.6.0 | dcc2304266ead2ed20daed6ab49f3952fb8337598ebedf039fe1008cd2dffd7d |
+| 爱看漫 | ikmmh | 1.0.8 | VComic-org/venera-comic-source | 1.0.0 | 23ca88878d53f69b783171e968547f6d9fd62521802d1c599721d9dcbae0ce96 |
+| 少年ジャンプ＋ | shonen_jump_plus | 1.1.1 | VComic-org/venera-comic-source | 1.2.1 | 6e2ffe0a8f9c583005220c2de790b5a79e9e9ca01fb8a20eac7b8a3a7d159137 |
+| hitomi.la | hitomi | 1.1.2 | VComic-org/venera-comic-source | 1.4.6 | 0c7a64040878a111e41504fd33c68a8f0c41d379f7e5cb0c0ec82f24d952ae96 |
+| comick | comick | 1.2.0 | VComic-org/venera-comic-source | 1.4.0 | d652dc4139841d9b5aa02e4af55ba36bfc29e6dd5615994e99fb1594ddd78724 |
+| 优酷漫画 | ykmh | 1.0.0 | VComic-org/venera-comic-source | 1.4.0 | 3bd22c62bcdde88e7d05bdeab0d2ef149c71118bef74f1a2eab6569813ff9a0b |
+| 再漫画 | zaimanhua | 1.0.2 | VComic-org/venera-comic-source | 1.0.0 | 50174a4ce5cafb3b273eecbc8b22d5fa8839ef1ba56e49a3e72e559e84d417dc |
+| 漫画柜 | ManHuaGui | 1.2.1 | VComic-org/venera-comic-source | 1.4.0 | 772a2813c850bd236e88e5c9f782ffd528998969302fa3fd6ed44f4d24bad25f |
+| 漫蛙吧 | manwaba | 1.0.3 | VComic-org/venera-comic-source | 1.4.0 | 4f44efdf0626623305e02a8fde4af4cedda906795f26ce3cc3c139c756a0c001 |
+| Lanraragi | lanraragi | 1.2.0 | VComic-org/venera-comic-source | 1.4.0 | 3db60747709d72eff454d96bef13e907397ebd2a7e4e9cebd3279bddc5d768cd |
+| Komga | komga | 1.0.0 | VComic-org/venera-comic-source | 1.4.0 | c7d1f5806991e330b5edc137202af7ecbe12733e98c66fd18703ab9cdfcfbba4 |
+| カドコミ | comic_walker | 1.0.0 | VComic-org/venera-comic-source | 1.6.0 | 6b9c2f4746fb6cb51702a5bfa3f47902fe08303d4e8cb902e2bcced7f143704b |
+| 漫画1234 | mh1234 | 1.0.0 | VComic-org/venera-comic-source | 1.4.0 | eac8fcf6d6bafc23019f51913b760ac7a1efa23feda5f1b874b1caf6ca53b72c |
+| CCC追漫台 | ccc | 1.0.1 | VComic-org/venera-comic-source | 1.6.0 | 610870248dcfef7ac0088f4088dbf547ab7276bc56ba3c5ef3ad8d857b0a6338 |
+| GoDa漫画 | goda | 1.0.0 | VComic-org/venera-comic-source | 1.4.0 | a26f2117aa8e1d9ae399743e0d25d9d812c898926bdc311280623e6ae9da472f |
+| 18漫画 | mh18 | 1.0.0 | VComic-org/venera-comic-source | 1.4.0 | 8d28aa1ec9ddd7d1d12b2bb781f985119b6dd5f40a8c5ba7f3d420cca17dd1f3 |
+| 漫小肆 | mxs | 1.0.0 | VComic-org/venera-comic-source | 1.5.0 | dd21d0b887879e0e05494a447231ed1c24179cf13fa05b60b6da9d169f8ad1f8 |
+| 漫画人 | manhuaren | 1.0.0 | VComic-org/venera-comic-source | 1.6.0 | e87aabdd657a4d394c1e7ee352ff1c3b77940752cf1659cca056184769d79489 |
+| H-Comic | hcomic | 1.0.0 | VComic-org/venera-comic-source | 1.6.0 | 4f33901e89a563a69ba90eefe284e6e1ea1d5540cecacbf53c346aff58803638 |
+| jcomic.net | jcomic | 1.0.0 | VComic-org/venera-comic-source | 1.4.6 | 719fb550790ea94ac42a3334c46c2946cc745179e3e4547c74c59db96ae754c7 |
+| 热辣漫画 | hot_manga | 1.0.0 | VComic-org/venera-comic-source | 1.6.0 | 874db24853106a0961e27f31e943ad62917812c1f44cf6501a97eb526adfe264 |
+| Kavita | kavita | 1.0.0 | VComic-org/venera-comic-source | 1.4.0 | 113e597bf8fc93e1dc9939ff126b324f4de93e70f702735dd58782ca5f1b799d |
+| 嗨皮漫画 | happy | 1.0.0 | VComic-org/venera-comic-source | 1.6.0 | 3b96d2cd8b28fa800331b0360e11a02a6d56ba6f8985e169ab618caf342ca328 |
+| 拷贝漫画 | copy_manga | 1.4.2 | WEP-56/EZvenera-config | 1.6.0 | 6074c967a7de162b331c18d38f25dbb35a69b8aa524cb1eadca22a7110bb7927 |
+| Picacg | picacg | 1.0.5 | WEP-56/EZvenera-config | 1.0.0 | fed53c55e2f66fa10302f89b9e39c837e267ebb61d40a1c722033caddb400f86 |
+| nhentai | nhentai | 1.0.8 | WEP-56/EZvenera-config | 1.0.0 | fe43d1a4fe6fafc4c9a10e33ed589a61a9067732b6b297176b7d7777b9b49d51 |
+| 紳士漫畫 | wnacg | 1.0.4 | WEP-56/EZvenera-config | 1.0.0 | 21ec0499b632e02243bf801bfc3eef5d0bb4abc7c5b37595687f50708184cede |
+| 漫蛙吧 | manwaba | 1.0.2 | WEP-56/EZvenera-config | 1.4.0 | 233d888b6b286aa43731f1b887de9c75c1d633e85caa123c9758eca712b16a46 |
+| 漫画1234 | mh1234 | 1.0.0 | WEP-56/EZvenera-config | 1.4.0 | ea564c53aaf20e76b6f7da33cbf7cf79742dbcfd2f3cd82ad44f4e140af9c3aa |
+| GoDa漫画 | goda | 1.0.0 | WEP-56/EZvenera-config | 1.4.0 | 80618961d3e7cf3e0490d80fd7fa3df24fccbca8a81454688346fac3a263ac60 |
+| 漫客栈 | mkzhan | 1.0.1 | YHQY-Dev/venera-sources | 1.0.0 | 4b8e222d01cd8860a57da0a1e08a894b1f2f1ebb362864ba1db50eb94baae87f |
+| 漫本 | manben | 1.0.0 | YHQY-Dev/venera-sources | 1.0.0 | 53b79cb16a07e05e1910f77c03a55ef62e4417b4ca94e9b757fcfdce82475dc3 |
+| 动漫屋 | dm5 | 1.0.0 | YHQY-Dev/venera-sources | 1.0.0 | e948c055697747d401ba2177e95d4c341cbd22d894411e85661011a7fd527543 |
+| X漫画 | xmanhua | 1.0.0 | YHQY-Dev/venera-sources | 1.0.0 | 89fb57efa92d994006310f45e8aec0a4ea6253bb273a0d58b612d568a2b0e1b2 |
+| 漫画看 | mhkan | 1.0.0 | YHQY-Dev/venera-sources | 1.0.0 | b7cae7695bd43aa034ce3a050e686550d7ae50c4fe359a5ac4ab354430714849 |
+| 漫画皮 | manhuapi | 1.0.0 | YHQY-Dev/venera-sources | 1.0.0 | 9ca6d84bf82e3ca03415cd0e05739767d11d32476527833d3048f54b876076c5 |
+| 看漫画 | kanman | 1.0.0 | YHQY-Dev/venera-sources | 1.0.0 | 42ff5a70afda843fa9cc2cd12d8223dc6da3594b811fa7c4a0459794887c907f |
+| 包子漫画 | baozi | 1.1.7 | YHQY-Dev/venera-sources | 1.0.0 | 1d16542756f3bbaa4f699fbf55996239c3842a3c188b05e72b8045c6fd95d650 |
+| 如漫画 | rumanhua | 1.1.0 | YHQY-Dev/venera-sources | 1.4.0 | 066120d2cf429efa904c7dc241e793e0ea16108e4bfc6ff482eadf50f7e45c3b |
+| 布卡漫画 | bukamh | 1.0.0 | YHQY-Dev/venera-sources | 1.4.0 | 32402780e73a061ea0c60431fd8ca3ad0b9a24ea61c1d7d81891d7133fdb0b78 |
+| 次元漫画 | cycomic | 1.0.0 | YHQY-Dev/venera-sources | 1.0.0 | 942f29bd9a6834d7a7d9f7a5a115b3ff1164f0990828f4eb9c2358ed354303d7 |
+| 包子漫画 | baozi | 1.1.9 | YongkeDet/venera-configs | 1.5.0 | 9ad7272a59dd26ea7f59e471ef140a63acbbdd16bcdcf694615e2c9201794816 |
+| 拷贝漫画 | copy_manga | 1.4.3 | YongkeDet/venera-configs | 1.6.0 | 3b4ad8bff7d26697781f1bdf4cc80d6b89731733c4522c0eba7a3f3c4fdd8c2d |
+| NoyManga | noymanga | 1.1.3 | casthan321/Venera-community-URL | 1.6.0 | feffe371db3a294e17202041e2da0b0b021f1a0f810c3eaf55e79ab847cf0fde |
+| 拷贝漫画(多账号) | copy_manga | 1.4.1 | cattoldme/venera-configs | 1.6.0 | 24944d6580103db3900c285f9e6500ce72206c38bc22f27fcd9da2c6dcf4a76f |
+| 包子漫画 | baozi | 1.1.6 | cattoldme/venera-configs | 1.0.0 | 3165bb397c746990e1d59601696168c8703bdb6acd11a934a540c08f06c51652 |
+| MangaDex | manga_dex | 1.1.1 | cattoldme/venera-configs | 1.6.0 | 20e1f3329d2526a68a346a3d664c8918cc75ae9aba8a6fea42906c1020fd4ee7 |
+| 少年ジャンプ＋ | shonen_jump_plus | 1.1.2 | cattoldme/venera-configs | 1.2.1 | a3f346b5569d945c4953ef32dd017735ddf81ecc0b0e5929cb79de69ea59e848 |
+| comick | comick | 1.2.0 | cattoldme/venera-configs | 1.4.0 | 1e71ef01648c33de9df6826da96cb16f9a6732fd9b62ff0d314ea3e347036692 |
+| 再漫画 | zaimanhua | 1.0.2 | cattoldme/venera-configs | 1.0.0 | 4e338b562498fc639dc49eb13df4eddfe002e0dd0ad598a696e524aa484fa285 |
+| カドコミ | comic_walker | 1.0.1 | cattoldme/venera-configs | 1.6.0 | 8824737d1bf409c995b2d1f6d44333cd0d1e0a909b3f1637ce00270755b5b519 |
+| CCC追漫台 | ccc | 1.0.1 | cattoldme/venera-configs | 1.6.0 | f8f9eb1707c2eb4e65e0721eb0b9f397e5228cabd6ab568e4c84ea172f093d27 |
+| 漫画人 | manhuaren | 1.0.0 | cattoldme/venera-configs | 1.6.0 | 810edab910456d6c567d420ea73c34face112a7af01f904bd5c149944849cd2a |
+| 拷贝漫画 | copy_manga | 1.4.1 | coldnighten/venera-configs | 1.6.0 | e69ce04ef1ef86c26874c85464ff12b33f49cecaeca0dd5184bc1672e4603f4a |
+| Komiic | Komiic | 1.1.1 | coldnighten/venera-configs | 1.0.0 | 09745417a434adb03de541685c53a39340ec842b70ef193542b0273139f3a5ec |
+| 包子漫画 | baozi | 1.1.6 | coldnighten/venera-configs | 1.0.0 | 3198bf23f4426a6ed587e006ae244209231bb67d4a351a04f1d4bab955c4decf |
+| 紳士漫畫 | wnacg | 1.0.5 | coldnighten/venera-configs | 1.0.0 | 69f991728756e7772077982b6844de505d16008b3361bf02e5003d6cf8e13544 |
+| ehentai | ehentai | 1.2.0 | coldnighten/venera-configs | 1.5.3 | 5e84f24b495acc4564660ef4d99fe260626205ac71ad2aa14e9c18aa6c1c011e |
+| 禁漫天堂 | jm | 1.4.0 | coldnighten/venera-configs | 1.5.0 | 5fadf45afe85244ef538fb2d4a503b39690f60eff6ac8e65944d9cdb60919b73 |
+| MangaDex | manga_dex | 1.1.1 | coldnighten/venera-configs | 1.6.0 | 77f2a569cde6cdd27d58ec866d63237ce5eb12b42b6cd7163caed5d573a66857 |
+| 爱看漫 | ikmmh | 1.0.5 | coldnighten/venera-configs | 1.0.0 | 443b2a5a7b003c1dc8645eaecf1919902ed5d23220bdba44583e7b5a7977b888 |
+| 少年ジャンプ＋ | shonen_jump_plus | 1.1.1 | coldnighten/venera-configs | 1.2.1 | b8079dc3f596fc2496bf63e1452265194e55791dba163ee9d0752f6e69ec6171 |
+| hitomi.la | hitomi | 1.1.2 | coldnighten/venera-configs | 1.4.6 | 730d2559887a1fda8c834ddab72d23b8f07b9095b713a1069ce2eb612750cdf3 |
+| comick | comick | 1.2.0 | coldnighten/venera-configs | 1.4.0 | d2de6cdf4028ee8313321dc448c1aa752320bfb8051c8e897dc47e6ae7892428 |
+| 优酷漫画 | ykmh | 1.0.0 | coldnighten/venera-configs | 1.4.0 | 9686d30f1ec4da3fa2fbdd4738867cafde3261a046667f52eb441e4d880cbdc7 |
+| 再漫画 | zaimanhua | 1.0.2 | coldnighten/venera-configs | 1.0.0 | c49e4b0b8505345cd01fa299d5a6d6570daaf7815a01521a78646d2a03d963bc |
+| 漫画柜 | ManHuaGui | 1.2.1 | coldnighten/venera-configs | 1.4.0 | 7e3f479b1c8c39df9298bcaaa46c9561f12d67856794ac0637f761896bd8d9a6 |
+| 漫蛙吧 | manwaba | 1.1.0 | coldnighten/venera-configs | 1.4.0 | 1f86b7eac78866624f514a6c919a9780ce89b7ad1e8676863546c08a2f111ae5 |
+| Lanraragi | lanraragi | 1.2.0 | coldnighten/venera-configs | 1.4.0 | 323a61b9905979c5e0ebd50fe7e119cb3bc67a62aa7d7bbdc57b70dc4c5ef9a1 |
+| Komga | komga | 1.0.0 | coldnighten/venera-configs | 1.4.0 | a0c05a195fc2610677e444fc7b11176b9d0c32277768fee8e094f45732c9438f |
+| カドコミ | comic_walker | 1.1.0 | coldnighten/venera-configs | 1.6.0 | 926ea5a941994d321df046149a91220244ba710e3dde52356939d7af1d19d67a |
+| 漫画1234 | mh1234 | 1.0.0 | coldnighten/venera-configs | 1.4.0 | 6e1c4ce8a8d1111e5c0e8ef6514909e514e33132d87c4d9bd0c3623e6414b518 |
+| CCC追漫台 | ccc | 1.0.1 | coldnighten/venera-configs | 1.6.0 | f8eef9943aa969dece1c92cfde3287f5f2111c7ccd7c34b7f7d45d559c81b7fe |
+| GoDa漫画 | goda | 1.2.1 | coldnighten/venera-configs | 1.4.0 | c9d4f5efb90f791544b95e06140dc06052733ee4434a308af30a0690efd6d100 |
+| 18漫画 | mh18 | 1.0.0 | coldnighten/venera-configs | 1.4.0 | 994b6398a22bd7cf1622c621f865ebfe0904d2996141a187fe7844a2fee860f1 |
+| 肉漫屋 | roum27 | 1.1.0 | coldnighten/venera-configs | 1.6.0 | 3745f74ccfa8b3b00b5199f2f3946f954bc94e02b9d0e80438e087053215b7e4 |
+| 漫小肆 | mxs | 1.0.0 | coldnighten/venera-configs | 1.5.0 | 423917595b23178ca314c1e19c707786401a0ae039c7ed2e66682b9d8f14c5e7 |
+| 漫画人 | manhuaren | 1.0.0 | coldnighten/venera-configs | 1.6.0 | 9dc23c76d7bfe69bde31a8b21db5ecc58f8f60f06b2f5233086c3f96b9c7c81a |
+| H-Comic | hcomic | 1.0.0 | coldnighten/venera-configs | 1.6.0 | 422e40203055db0bde9009a29e22dbfc68a1927348732e24eaa695825783eb94 |
+| jcomic.net | jcomic | 1.0.0 | coldnighten/venera-configs | 1.4.6 | 6e048ed143d903be2766f9590eca085328c1048da03a993362385d4dcc4022ec |
+| 热辣漫画 | hot_manga | 1.0.0 | coldnighten/venera-configs | 1.6.0 | a7a93532f0e9ce89343445a0d7b31336aa670beadff570cc0c39466b8988e96e |
+| Kavita | kavita | 1.0.0 | coldnighten/venera-configs | 1.4.0 | 784a41de77f1eec48b29a86a995cf265e9d85e5688e0338cb762a705c845a36b |
+| W漫画 | wmanhua | 1.0.3 | coldnighten/venera-configs | 1.6.0 | e7dda68f4770edfad5e0bf4842c7e7ed2b0542112e72627bf67ee08716850446 |
+| 漫画屋 | mhua5 | 1.1.0 | coldnighten/venera-configs | 1.6.0 | ca3190f8c8195047def754315cbc8c4ff8ec5a5a0f5ba31b1a62a96ac19ae378 |
+| MYCOMIC | mycomic | 1.2.0 | coldnighten/venera-configs | 1.4.6 | 930d26974a5cfe42108b8634157c6a6425edaf3bbe20c73aca73469030db7abe |
+| 乐成漫画 | lcmhx | 1.0.1 | coldnighten/venera-configs | 1.6.0 | 095a6b7f72176785c3460d536977a713722ae3dbf3eddbda7e0067e6f3bdcfd7 |
+| 嗶哩漫畫 | bilimanga | 1.2.0 | meaninglesslyy/venera-config | 1.6.0 | e21b7984e309e0a1b730d737da914834ce15908b59c45c0d4d2be2627cecbbe2 |
+| 如漫画 | rumanhua | 1.0.0 | meaninglesslyy/venera-config | 1.6.0 | 017847c6901f8e491c28e6cb7b3da2a3475e6512b88374ecd41b7922dcca38a7 |
+| 嗶哩漫畫 | bilimanga | 1.1.0 | n3114576614-cell/N_venera_source | 1.6.0 | 0be6c0a5f3bcee229990c90e820f2ec410443d4e0d00dbf01a00155e1eb292f5 |
+| 动漫屋 | dm5 | 7.0.0 | n3114576614-cell/N_venera_source | 1.6.0 | 23908d87f455e3d09025ea450a2bf82eafb5a0ae0b9c3eceddb03207abbc7241 |
+| 飞翔漫画 | ffppt | 1.0.1 | n3114576614-cell/N_venera_source | 1.0.0 | b86d41220d3fcfafd0799ac569332adfc0978c5ac0509a08cf077b6f51853d3e |
+| 少年ジャンプ＋ | shonen_jump_plus | 1.1.1 | n3114576614-cell/N_venera_source | 1.2.1 | 7bbdb35236d8cf827433407fdefe037740215b45c15c5886f50affddf2c1a20a |
+| zero搬运网 | zerobyw33 | 1.1.0 | n3114576614-cell/N_venera_source | 1.6.0 | 534e23e43bb016cecb0988e11651da049f39e2a4d1ffa7cd4498c8695fde95ca |
+| 拷贝漫画 | copy_manga | 1.1.5 | nukbodu/mh-configs | 1.2.1 | feba2de0a4f7b75d7d869c9358e6a980f9ed5007bc69e50b2185440c8bcc6ab3 |
+| 包子漫画 | baozi | 1.0.3 | nukbodu/mh-configs | 1.0.0 | 8e4825a5431d3c5b95e360ae70ebdf998ead50967f03e1936ac782d895e8108e |
+| ehentai | ehentai | 1.1.3 | nukbodu/mh-configs | 1.0.0 | 46d841072e271027022fa768c2c50019ba44d67ceff34a9586d3564a46675718 |
+| 看漫画 | kanman | 1.0.0 | token1008/venera-cn-64bit | 1.0.0 | 34eec9fe833cc3184b0737a37b0fe3865c539d8c231fc76ccb55f29e3eefe9f1 |
+| 漫客栈 | mkzhan | 1.0.0 | token1008/venera-cn-64bit | 1.0.0 | c57fecd89d364edab67b412a5c864f0599570775d8eb1e4eb7a3de0889302f26 |
+| 诊断与日志上传 | venera_diag | 2.1.2 | token1008/venera-cn-64bit | 1.0.0 | 6435b641481be521f8bb7c8195f53955bba7cc86122cd7ee325059c31ca0eb3d |
+| カドコミ（官方） | comic_walker | 1.0.2 | token1008/venera-cn-64bit | 1.6.0 | acbf044b6ef6131037fd518874d2de5b7d66891db1e8ec5ac9837901f0d7d561 |
+| 拷贝漫画（官方） | copy_manga | 1.4.2 | token1008/venera-cn-64bit | 1.6.0 | 5994ea533a308b7b52179086d9b790bece881d1d46fd366c2812484ed598c50e |
+| GoDa漫画（官方） | goda | 1.2.3 | token1008/venera-cn-64bit | 1.4.0 | 5e4bfcb321979017ea4a6b59aaf44e67a45f32417f14c690f2102e65cba1439f |
+| 少年ジャンプ＋（官方） | shonen_jump_plus | 1.1.2 | token1008/venera-cn-64bit | 1.2.1 | ddd6421d3095f04d22a3cf82256a52bf68792b8241b8513d912c4718fd6b42c4 |
+| 漫蛙 | manwa | 1.0.0 | xiaoxingmian/venera-configs | 1.4.0 | f40d0f77dedeb8a0a4c38dbb59d18686cb7b422bc41aae5bdc79ac88f0d20b81 |
+| Komga | komga | 1.0.0 | xiaoxingmian/venera-configs | 1.4.0 | ec38d2e85e2b88cf2e5171ae5fc8ab14c519731c3b9fe0b6c08e75f5b04fbca7 |
+| hitomi.la | hitomi | 2.0.0 | xiaoxingmian/venera-configs | 1.4.6 | 8b5bc5f7dbd3c9e20f944fb328bc2a6256ceee0a234cf2fda11f4631611332c2 |
+| 拷贝漫画 | copy_manga | 1.6.1 | xiaoxingmian/venera-configs | 1.6.0 | e0a8d25704b83e3efcf757c0f6b80449bb2404bab5852ec5948a8ded44a99eea |
+| 拷贝漫画 | copy_manga | 1.4.1 | yelongyue197-svg/venera-sources | 1.6.0 | 296d60a254a559ad533c8162624f8f66f5cbc5054c8a523ab4337dfd50494f86 |
+| Komga | komga | 1.0.1 | yelongyue197-svg/venera-sources | 1.4.0 | 7d11fbc62c254a8f2909fc3bdac3762f704b83e03de046fe3d9e209632a73768 |
+| Komiic | Komiic | 1.0.6 | yelongyue197-svg/venera-sources | 1.0.0 | 31f0b78a6bf090743763f072e4d5b1a2e20666813ea5b1ef40b079b5f3519f09 |
+| 漫蛙吧 | manwaba | 1.0.2 | yelongyue197-svg/venera-sources | 1.4.0 | ed70c7695f59d317ffdc481724632ba0b1634b20e3fab50f9cf21f2438c35a57 |
+| Mangabz | mangabz | 1.0.0 | zakkida/venera-sources | 1.6.0 | 8ec53577ba8e5a865589884f3d2be53ec108aff1085610124e66444e943c91b3 |
+| 拷贝漫画(多账号) | copy_manga | 1.4.4 | zakkida/venera-sources | 1.6.0 | e2ba75d47461ea726af9fdd933e779ce8ec1bb24cd40ddca033650d6026b99a2 |
+| Komiic | Komiic | 1.1.0 | zakkida/venera-sources | 1.0.0 | c01d8348577ca1fa83264d29071af81eca2346aaa026da42ab55c6dce0c32955 |
+| 爱看漫 | ikmmh | 1.0.5 | zhimouzhou/venera-manga-sources | 1.0.0 | d2797d9747df97dbbb1ef25a50bef82c989e43b132314d8eea0063aa98d52ae5 |
+| 漫画1234 | mh1234 | 1.0.1 | zhimouzhou/venera-manga-sources | 1.4.0 | b1f34a65e13d15d6ac3c03836c1b7e0a8f68c40bb6a490d7155d31c134035bab |
+| GoDa漫画 | goda | 1.0.1 | zhimouzhou/venera-manga-sources | 1.4.0 | 800dd3f29139024a2431a3b00deb0a594a6cf7ff4f3804b88b3681e23f3e2ffb |
+
+## 索引获取问题
+
+- `137syh/venera-syh`：漫画源07：HTTP Error 404: Not Found；漫画源08：暂不执行非 GitHub 原始地址；漫画源09：HTTP Error 404: Not Found；漫画源10：HTTP Error 404: Not Found
+- `2869893488/ikmmh-venera-source`：HTTP Error 404: Not Found
+- `6678670jsy/venera-sources`：HTTP Error 404: Not Found
+- `893954529/venera-configs`：HTTP Error 404: Not Found
+- `Bandcomic/RESTful-venera-source`：HTTP Error 404: Not Found
+- `BlueStarOne/bluestarone.github.io`：HTTP Error 404: Not Found
+- `ChenTeea/veneresource`：HTTP Error 404: Not Found
+- `F22822/22822`：HTTP Error 404: Not Found
+- `LuckyLxi/Sources`：HTTP Error 404: Not Found
+- `NinEvandesu/venera-configs`：HTTP Error 404: Not Found
+- `QWWWQ-MIX/venera-sources`：HTTP Error 409: Conflict
+- `cheyou001/venera-sources`：HTTP Error 404: Not Found
+- `kuiti/manga-source-index`：HTTP Error 404: Not Found
+- `l233333333/venera-sources`：HTTP Error 404: Not Found
+- `nukbodu/mh-configs`：Komiic：HTTP Error 404: Not Found；Picacg：HTTP Error 404: Not Found；nhentai：HTTP Error 404: Not Found；紳士漫畫：HTTP Error 404: Not Found；禁漫天堂：HTTP Error 404: Not Found
+- `snowf14k3/venera-komiic-multi`：Komiic 多账号：暂不执行非 GitHub 原始地址
+- `yelongyue197-svg/venera-sources`：动漫啦：暂不执行非 GitHub 原始地址；妙趣漫画：暂不执行非 GitHub 原始地址；六漫画：暂不执行非 GitHub 原始地址；动漫屋：暂不执行非 GitHub 原始地址
+- `zetriumyx/noyacg-source-venera`：HTTP Error 404: Not Found
+
+## 新仓库线索
+
+仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
+
+- `laincat/venera-source-index`：Venera 社区漫画源巡检、固定样本与持续更新订阅索引
+- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
+- `w13630039663-bit/venera-miuix`：一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。
+- `amke79/venerastudios-site`：
+- `yuyuyu529/venera`：Venera日语生肉源
+- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
+- `CangShui/VenHM`：兼容Venera源的鸿蒙开源漫画阅读器
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `Vulpes-venera/CS50p`：
+- `1148891151a-ui/-veneranext-sources.json`：
+- `Magic-Miku/venera-store`：
+- `ikun5200/venera-prime-server`：
+- `jnsingh01/venerabullstudios`：Venerabull Studios — a showcase of projects in development.
+- `hgnbh/sw`：Venera 漫画源索引（59 个源）
+- `rytzj2-spec/VeneraX-nagi`：
+- `Kyosee/VeneraX`：A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。
+- `veneraproject/venera-node`：
+- `yanyi05/venera-sources`：Personal JavaScript sources for VeneraNext
+- `Gandum2077/venera-patrol-cli`：
+- `XclusiveM/venera-nailart`：
+- `Kerollos004/venera`：
+- `nightcat3254/venera-sources`：Venera personal source fixes: Baozi domain migration and shared updates.
+- `yuxuan965960/VeneraX-ios`：VeneraX - Flutter app
+- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
+- `KBPZSDP/Venera`：
+- `Walter498/Venera-Max`：以 VeneraX 為基礎、按我們自己閱讀習慣深度改裝的漫畫閱讀器（栗子漫畫源優先）。加了什麼、修了什麼，全部寫在 README。
+- `john-cpallc/venerable-grain`：
+- `fave-eng/venera`：
+- `FengHA223/venera-ios12`：
+- `opaiopaio/Venera-Nas`：Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中
+- `a3169249487-sys/Venera-Next-ai-upscale-temp`：Experimental AI upscale build for Venera-Next
+- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源
+- `Gandum2077/venera-runtime`：A venera runtime that works in both Node and JSBox environments. 
+- `SnowDreamXUE/venera-next-config`：转换venera-config漫画源配置文件格式为venera-next要求
+- `cylendra-info/Venera`：
+- `venera-tech-art/Dashboard`：
+- `Venera-h/a-b_test`：Анализ A/B-теста нового экрана оплаты: SRM, бутстрап, сегменты
+- `vetatina-hub/venera-bot`：
+- `pastorig/Voskhod-2-y-Venera-7`：
+- `roddup75/venera`：capacity
+- `Vartak2/Project-Venera-14`：
+- `Zicheng0326/my-venera-sources`：漫画源仓库
+- `940440952/comic-sources`：双生态漫画源：Venera / VeneraNext / VeneraPlus JavaScript + Aidoku Rust/WASM；目前维护 manhuazhan.com。
+- `venera-app/venera-prime`：A comic app,but prime
+- `Venera0207/venera-bot`：
+- `Venera0207/venera-portfolio`：
+- `PrincessGods/venera`：
+- `Venera-Works/Venera-Native-Prebuilts`：
+- `venerahm/venerahm.github.io`：Website
+- `rehansajeev5-gif/venerable-parfait-13a105`：
+- `yashbhosale2403/web-venerability-scanner-`：
+- `FDEAABH6/Venera`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `xiati007/venera-project`：
+- `LiliaKhazieva/VeneraStore`：Интернет магазин украшений Venera
+- `maplessovo/venera-configs`：
+- `Teresian/VeneraL`：
+- `NagasakiAno/VENERA_NEXT`：强大！可爱！自动化！一往无前！
+- `tide23333-max/venera-photo-sources`：Personal VeneraNext photo source scripts and update catalog
+- `MoYangking/venera_comic_js`：
+- `kuhnliza35-ux/venera-mangadistrict`：
+- `hamdahff44-arch/venerable-capybara-530077mentalhealth`：
+- `aidar41k/venera-uzatuu`：
+- `venerandahospital/ihms_online_ui_for_local_veneranda`：
+- `shehabeldeen/venera-theme-guide`：Venera Salla theme guide — setup, home blocks, product data and support
+- `ismoses62-svg/venerable-kitten-41cd16`：
+- `novestudios-hq/Venera-Beauty-Center-SPA`：
+- `fuluoydebende/venera-manga-sources`：Venera manga sources (fixed) - 33 sources + index.json, ready to import in Venera
+- `fuluoydebende/venera-configs-fixed`：修复后的 Venera 漫画源：9 个源已修复域名/端点/图片拼接，版本号已在 index.json 同步。
+- `VenerableHouse/VenerableWebsite`：Source code for the Venerable House website.
+- `WEP-56/EZVenera`：Venera重写+简化版本，只提供windows、安卓包体，简化大量功能尤其是插件模块运行时，方便持续维护。／ 请勿提出超出EZVenera边界的需求，如果你真的需要，欢迎pr或自行fork
+- `fuluoydebende/venera-hipmh-source`：Venera 漫画源 - 嬉皮漫畫 hipmh v1.0.2 (API 驱动修复版)
+- `yuanshenmingri/venera_comic_source`：Legado ????(???? id72 ??,75 ?)
+- `yuanshenmingri/venera-comick-sources`：Venera ???:Comick ??(69 ?)+ MangaDex v2.0
+- `hlf2016/venera-config`：
+- `haukuen/venera`：仅自用 ／ For personal use only
+- `lizhenghe616/venera-baozi-source`：
+- `ZhiLin-Sam/venera-sources`：Venera 源目录 ／ 一条订阅装齐 56 个源（镜像+去重），自带夹具驱动的解析回归测试台
+- `Tobeinlovewith/veneranext-source`：
+- `noelle-silva/Venera`：
+- `hasanrakib42679-ctrl/venerable-valkyrie-3e891c`：
+- `VenusUK/Ms.-Venera-s-English-Studio`：IE Support
+- `bandcomic/RESTful-venera-source`：
+- `lll152872/venera-lll`：venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、
+- `VenusUK/Ms.-Venera-s-IE-Class`：IE Support
