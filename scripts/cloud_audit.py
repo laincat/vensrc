@@ -25,7 +25,7 @@ POLICY = {
     "sourceTimeoutMs": 90000, "minRequestIntervalMs": 300,
     "maxRequests": 60, "maxResponseBytes": 20971520, "maxTraceEvents": 1600,
 }
-LABELS = {"passed": "通过", "partial": "部分通过", "failed": "失败",
+LABELS = {"passed": "通过", "recovered": "恢复后通过", "partial": "部分通过", "failed": "失败",
           "skipped": "跳过", "listed": "仅加载"}
 CATEGORIES = {
     "auth_required": "需要登录", "credentials_missing": "未提供账号凭据",
@@ -125,9 +125,11 @@ def reason_zh(reason):
         "Image response is empty": "图片响应为空",
         "Image succeeded; failure recovery was not invoked": "图片已成功，未触发失败恢复回调",
         "Provide credentials.cookieValues": "未提供 Cookie 登录凭据",
+        "Provide credentials.username and password": "未提供用户名和密码",
         "Favorites require authenticated account data": "网络收藏需要已登录的账号",
         "Requires allowMutations:true and an explicit case": "默认禁用写操作，且没有显式写操作用例",
         "Not implemented": "当前运行时未实现该能力",
+        "No automatic adapter; provide cases[path].args and expect": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果",
         "Worker terminated before this capability": "巡检进程已停止，未执行该能力",
     }
     return text(known.get(reason, reason))

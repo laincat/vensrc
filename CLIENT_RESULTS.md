@@ -19,7 +19,7 @@
 | configuration.apply | 通过 |  |
 | init | 通过 |  |
 | configuration.capabilities | 通过 |  |
-| account.login | 跳过 | Provide credentials.username and password |
+| account.login | 跳过 | 未提供用户名和密码 |
 | category | 通过 |  |
 | settings | 通过 |  |
 | search.load | 通过 |  |
@@ -51,7 +51,7 @@
 | favorites.addOrDelFavorite | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
 | favorites.addFolder | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
 | favorites.deleteFolder | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
-| comic._makeImageRetry | 跳过 | No automatic adapter; provide cases[path].args and expect |
+| comic._makeImageRetry | 跳过 | 此扩展方法没有自动巡检适配器，需提供显式参数和预期结果 |
 | comic.likeComic | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
 | comic.sendComment | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
 | comic.sendChapterComment | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
@@ -75,7 +75,7 @@
 | configuration.apply | 通过 |  |
 | init | 通过 |  |
 | configuration.capabilities | 通过 |  |
-| account.login | 跳过 | Provide credentials.username and password |
+| account.login | 跳过 | 未提供用户名和密码 |
 | category | 通过 |  |
 | settings | 通过 |  |
 | search.load | 通过 |  |
@@ -107,7 +107,7 @@
 | favorites.addOrDelFavorite | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
 | favorites.addFolder | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
 | favorites.deleteFolder | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
-| comic._makeImageRetry | 跳过 | No automatic adapter; provide cases[path].args and expect |
+| comic._makeImageRetry | 跳过 | 此扩展方法没有自动巡检适配器，需提供显式参数和预期结果 |
 | comic.likeComic | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
 | comic.sendComment | 跳过 | 默认禁用写操作，且没有显式写操作用例 |
 | comic.sendChapterComment | 跳过 | 默认禁用写操作，且没有显式写操作用例 |

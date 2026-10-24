@@ -50,3 +50,7 @@
 `jm 1.9.2` 的主记录明确使用 VeneraX 环境，Next 对照另行保留；Next 成功不能替代 X 失败。该版本只有当次 X 核心通过才有收录资格。若它失败，同 key 的其他已审阅构建仍按各自当次结果参与选择；报告不会把旧版本结果写成 1.9.2 成功。
 
 其他构建目前仍使用原版 Runtime 巡检，尚未逐个在两套 Fork 环境执行；订阅格式通用不等于已经完成两套客户端的全量验收。锁定清单的 `runtimeProfile` 和客户端报告区分上述范围。用户设备上的导入、实际阅读、账号与地区网络仍需客户端实测。
+
+两个 Fork 当前源码都能保存多个源库，主／扩展索引可以同时添加。X 的索引解析及下载地址优先规则见固定提交的 `lib/pages/comic_source_page.dart`、`lib/foundation/comic_source_update_tasks.dart`；Next 的格式校验和来源关联见 `lib/features/comic_source/source_repositories.dart`。它们都优先读取非空 `url`，其次使用 `fileName`，与本订阅结构一致。
+
+源更新路径也已经与原版不同：X 优先使用来源库解析出的下载 URL；Next 对已关联仓库的源重新读取该仓库索引，未关联时才回退源 JS 自带 URL。因此建议从添加后的订阅库内安装，并保留来源关联。此前仅依据原版得出的“更新只读取源 JS 自带 URL”不适用于这两份当前 Fork 源码。

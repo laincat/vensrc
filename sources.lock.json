@@ -55,7 +55,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "explore[0].load",
@@ -156,7 +156,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "favorites.loadComics",
@@ -272,7 +272,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "favorites.loadFolders",
@@ -347,7 +347,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "search.load",
@@ -392,7 +392,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "categoryComics.load",
@@ -449,7 +449,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "categoryComics.load",
@@ -565,7 +565,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "account.loginWithWebview.checkStatus",
@@ -601,7 +601,7 @@
         "stage": "comic.freeRead",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic.sendComment",
@@ -1107,13 +1107,13 @@
         "stage": "comic.getKey",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic.parseComments",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic.sendComment",
@@ -1341,7 +1341,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "account.logout",
@@ -1465,7 +1465,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "favorites.loadFolders",
@@ -1541,7 +1541,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "favorites.loadComics",
@@ -1708,7 +1708,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "favorites.loadFolders",
@@ -1756,7 +1756,7 @@
         "stage": "comic._makeImageRetry",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic.likeComic",
@@ -1831,7 +1831,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "favorites.loadFolders",
@@ -1879,7 +1879,7 @@
         "stage": "comic._makeImageRetry",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic.likeComic",
@@ -1960,13 +1960,13 @@
         "stage": "explore[0].onThumbnailLoad",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "categoryComics.onThumbnailLoad",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       }
     ]
   },
@@ -2264,19 +2264,19 @@
         "stage": "comic.getComic",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic.getChapters",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic.getStats",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic.sendComment",
@@ -3030,55 +3030,55 @@
         "stage": "comic.decryptChapterImages",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic._findPackedExpr",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic._unquote",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic._parseK",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic._parsePackedArgs",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic._base62sym",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic._unpack",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic._base64ToBytes",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "comic._utf8BytesToString",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       }
     ]
   },
@@ -3145,7 +3145,7 @@
         "stage": "comic.unpackJS",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       }
     ]
   },
@@ -3446,7 +3446,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "favorites.loadFolders",
@@ -3643,7 +3643,7 @@
         "stage": "account.isLoggedIn",
         "status": "跳过",
         "category": "缺少样本输入",
-        "reason": "No automatic adapter; provide cases[path].args and expect"
+        "reason": "此扩展方法没有自动巡检适配器，需提供显式参数和预期结果"
       },
       {
         "stage": "account.logout",
@@ -3688,7 +3688,7 @@
         "stage": "account.login",
         "status": "跳过",
         "category": "未提供账号凭据",
-        "reason": "Provide credentials.username and password"
+        "reason": "未提供用户名和密码"
       },
       {
         "stage": "account.logout",

@@ -9,11 +9,11 @@
 | 主订阅 | [index.json](https://raw.githubusercontent.com/laincat/venera-source-index/main/index.json) | 同次巡检的核心阅读链路及全部执行项通过 |
 | 扩展订阅 | [extended.json](https://raw.githubusercontent.com/laincat/venera-source-index/main/extended.json) | 同次巡检的核心阅读链路通过，其他能力可能失败或跳过 |
 
-在 Venera 的漫画源列表 URL 设置中填入对应地址，再进入漫画源列表添加源。主、扩展索引没有重复 key；如需查看扩展源，可切换列表地址。这里的地址是源列表，不能当作单个 JS 源导入。
+在 VeneraX 的漫画源库管理中添加对应索引 URL，或在 Venera-Next 的漫画源仓库页添加；两者当前源码均支持保存多个库，可同时添加主、扩展订阅。较旧客户端若只有漫画源列表 URL 设置，则切换列表地址使用。主、扩展索引没有重复 key。这里的地址是源列表，不能当作单个 JS 源导入。
 
 索引每项均提供 `url`，指向经过核验的上游固定 Git 提交。不会把 GitHub 的 HTML 页面地址当 JS 地址。源的名称、版本、最低应用版本、SHA-256 和固定巡检样本见 [锁定清单](sources.lock.json)。
 
-列表持续更新与已安装源自动升级是两个步骤。已核对的 Venera 客户端用列表版本判断更新，但下载升级文件时读取源 JS 自身的 `url`；部分社区源将它写成站点首页，升级按钮可能因此失败。这类源需要按客户端支持的流程，从本列表提供的 JS 地址重新导入。没有改写上游脚本的 `url`，以免影响源内部请求。
+列表持续更新与已安装源升级是两个步骤。当前核对的 VeneraX 优先使用来源库解析出的下载地址，Next 为已关联仓库的源读取仓库索引地址；从本订阅库安装并保留来源关联，才能沿用索引内固定提交的更新地址。未关联库、直接导入或旧版客户端可能回退到源 JS 自身的 `url`；部分社区源将它写成站点首页，此时升级可能失败，需要从列表提供的 JS 地址重新导入。本仓库没有改写上游脚本的 `url`。
 
 ## 通过的含义
 
@@ -45,6 +45,7 @@
 
 - [中文巡检报告](RESULTS.md)：逐构建结果、固定样本的核心链路、主／扩展名单。
 - [中文完整清单](sources.zh.csv)：源版本、样本输入、首个失败阶段及源码哈希。
+- [账号巡检与 Secrets](ACCOUNT_TESTING.md)：可准备的凭据格式；当前匿名定时任务尚未接入账号 Secret。
 - `audit-status.json`：本次执行环境、工具版本和 Actions 运行链接。
 - Actions 的 `venera-patrol-results` artifact：结构化逐阶段证据及中文预览，保留 30 天；不上传原始 trace 或认证状态。
 - `monitor/catalog.json`：已审阅源码及固定样本；不要通过修改 `minAppVersion` 或伪造通过阶段绕过兼容性问题。
@@ -53,6 +54,8 @@
 
 ## 上游与范围
 
+- [VeneraX（主要使用的客户端）](https://github.com/Kyosee/VeneraX)
+- [Venera-Next（JM 同样本对照客户端）](https://github.com/CyrilPeng/Venera-Next)
 - [Venera 官方索引](https://github.com/venera-app/venera-configs)
 - [Venera 源格式](https://github.com/venera-app/venera/blob/master/doc/comic_source.md)
 - [venera-patrol-cli](https://github.com/Gandum2077/venera-patrol-cli)
