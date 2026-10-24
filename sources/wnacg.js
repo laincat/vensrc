@@ -3,8 +3,8 @@
 class Wnacg extends ComicSource {
     name = "紳士漫畫"
     key = "wnacg"
-    version = "1.1.0"
-    minAppVersion = "1.0.0"
+    version = "1.2.0"
+    minAppVersion = "1.3.4"
     url = "https://raw.githubusercontent.com/laincat/vensrc/main/sources/wnacg.js"
 
     get baseUrl() {
@@ -16,6 +16,19 @@ class Wnacg extends ComicSource {
     }
 
     account = {
+        loginWithWebview: {
+            url: `${this.baseUrl}/users-login.html`,
+            checkStatus: (url, title) => {
+                const base = this.baseUrl
+                const memberUrl = `${base}/users-index.html`
+                const current = String(url || "").split(/[?#]/)[0].replace(/\/$/, "")
+                const pageTitle = String(title || "").trim()
+                // 登录页也可能直接打开会员 URL；标题必须出现会员中心字样。
+                return current === memberUrl &&
+                    /(?:用戶|用户|會員|会员|個人|个人|我的).*(?:中心|主頁|主页)/.test(pageTitle) &&
+                    !/登[錄录]|登录|您沒有權限|您没有权限|權限不足|权限不足/.test(pageTitle)
+            },
+        },
         loginWithCookies: {
             fields: ["浏览器 Cookie（本人在对应域名登录并完成滑块后复制）"],
             validate: async (values) => {
@@ -41,18 +54,7 @@ class Wnacg extends ComicSource {
                 try {
                     await Network.deleteCookies(base)
                     await Network.setCookies(base, cookies)
-                    const response = await Network.get(`${base}/users-index.html`, {})
-                    const headers = response.headers || {}
-                    if (Object.entries(headers).some(([key, value]) =>
-                        key.toLowerCase() === "cf-mitigated" && String(value).toLowerCase() === "challenge") ||
-                        /cdn-cgi\/challenge-platform|cf-chl-/.test(response.body || "")) {
-                        throw "Cloudflare 仍要求验证；请在本人浏览器完成验证后重新复制 Cookie，会话可能绑定设备或网络"
-                    }
-                    // 会员页 HTTP 200 也可能是未登录提示；必须同时找到本站退出登录链接。
-                    const loggedIn = response.status === 200 &&
-                        /<a\b[^>]*href\s*=\s*["'](?:https:\/\/www\.wnacg\.(?:com|ru))?\/users-logout\.html(?:\?[^"']*)?["']/i.test(response.body || "") &&
-                        !/您沒有權限|您没有权限|需要登錄|需要登录/.test(response.body || "")
-                    if (!loggedIn || this.baseUrl !== base) {
+                    if (!await this._checkSession(base)) {
                         throw "会员会话未验证；请确认登录域名一致、Cookie 未过期，并在正常浏览器完成滑块"
                     }
                     return true
@@ -67,6 +69,41 @@ class Wnacg extends ComicSource {
             await Network.deleteCookies("https://www.wnacg.com")
             await Network.deleteCookies("https://www.wnacg.ru")
         },
+    }
+
+    async _checkSession(base) {
+        const response = await Network.get(`${base}/users-index.html`, {})
+        const headers = response.headers || {}
+        if (Object.entries(headers).some(([key, value]) =>
+            key.toLowerCase() === "cf-mitigated" && String(value).toLowerCase() === "challenge") ||
+            /cdn-cgi\/challenge-platform|cf-chl-/.test(response.body || "")) {
+            throw "Cloudflare 仍要求验证；请在 App 内登录页完成验证，会话可能绑定网络或设备"
+        }
+        const loggedIn = response.status === 200 &&
+            /<a\b[^>]*href\s*=\s*["'](?:https:\/\/www\.wnacg\.(?:com|ru))?\/users-logout\.html(?:\?[^"']*)?["']/i.test(response.body || "") &&
+            !/您沒有權限|您没有权限|需要登錄|需要登录/.test(response.body || "")
+        if (!loggedIn || this.baseUrl !== base) {
+            throw "会员会话未验证；请在 App 内登录页完成滑块，并确认域名一致、会话未过期"
+        }
+        return true
+    }
+
+    async _copyCookies() {
+        const base = this.baseUrl
+        const host = base.slice("https://".length)
+        const cookies = await Network.getCookies(base)
+        const header = (Array.isArray(cookies) ? cookies : [])
+            .filter((cookie) => cookie && /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/.test(cookie.name || ""))
+            .filter((cookie) => {
+                const domain = String(cookie.domain || "").replace(/^\./, "")
+                return !domain || host === domain || host.endsWith(`.${domain}`)
+            })
+            .map((cookie) => `${cookie.name}=${cookie.value ?? ""}`)
+            .join("; ")
+        if (!header || header.length > 16384) throw "当前域名没有可导出的有效 Cookie"
+        await this._checkSession(base)
+        await setClipboard(header)
+        UI.showMessage("已复制当前会员 Cookie；不要分享给他人")
     }
 
     parseComic(c) {
@@ -542,6 +579,12 @@ class Wnacg extends ComicSource {
                 { value: "www.wnacg.ru", text: "www.wnacg.ru" },
             ],
             default: "www.wnacg.com",
+        },
+        copyCookies: {
+            title: "获取 Cookie（仅复制到剪贴板）",
+            type: "callback",
+            buttonText: "获取 Cookie",
+            callback: () => this._copyCookies(),
         },
     }
 }
