@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-10-24T03:33:58.461476+00:00（UTC）。
+检查时间：2026-10-24T05:40:31.200739+00:00（UTC）。
 检查 49 个已登记仓库；发现 70 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -107,9 +107,11 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `laincat/venera-source-index`：Venera 社区漫画源巡检、固定样本与持续更新订阅索引
-- `Kyosee/VeneraX`：A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。
+- `laincat/vensrc`：Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release
 - `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
+- `ikun5200/venera-prime-server`：
+- `MQ9Reaper/venera-personal-sources`：
+- `Kyosee/VeneraX`：A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。
 - `w13630039663-bit/venera-miuix`：一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。
 - `amke79/venerastudios-site`：
 - `yuyuyu529/venera`：Venera日语生肉源
@@ -120,7 +122,6 @@
 - `Vulpes-venera/CS50p`：
 - `1148891151a-ui/-veneranext-sources.json`：
 - `Magic-Miku/venera-store`：
-- `ikun5200/venera-prime-server`：
 - `jnsingh01/venerabullstudios`：Venerabull Studios — a showcase of projects in development.
 - `hgnbh/sw`：Venera 漫画源索引（59 个源）
 - `rytzj2-spec/VeneraX-nagi`：
@@ -191,4 +192,3 @@
 - `VenusUK/Ms.-Venera-s-English-Studio`：IE Support
 - `bandcomic/RESTful-venera-source`：
 - `lll152872/venera-lll`：venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、
-- `VenusUK/Ms.-Venera-s-IE-Class`：IE Support

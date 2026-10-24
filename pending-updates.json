@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-24T03:33:58.461476+00:00",
+  "checkedAt": "2026-10-24T05:40:31.200739+00:00",
   "updates": [
     {
       "id": "525cf99fc99d62991069c3c01ecaff16b4044804ec451743ec7188af3f853846",
@@ -1700,16 +1700,24 @@
   ],
   "newRepositories": [
     {
-      "repository": "laincat/venera-source-index",
-      "description": "Venera 社区漫画源巡检、固定样本与持续更新订阅索引"
-    },
-    {
-      "repository": "Kyosee/VeneraX",
-      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
+      "repository": "laincat/vensrc",
+      "description": "Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release"
     },
     {
       "repository": "Maxll51/EZVenera-Lite",
       "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android"
+    },
+    {
+      "repository": "ikun5200/venera-prime-server",
+      "description": ""
+    },
+    {
+      "repository": "MQ9Reaper/venera-personal-sources",
+      "description": ""
+    },
+    {
+      "repository": "Kyosee/VeneraX",
+      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
     },
     {
       "repository": "w13630039663-bit/venera-miuix",
@@ -1749,10 +1757,6 @@
     },
     {
       "repository": "Magic-Miku/venera-store",
-      "description": ""
-    },
-    {
-      "repository": "ikun5200/venera-prime-server",
       "description": ""
     },
     {
@@ -2034,10 +2038,6 @@
     {
       "repository": "lll152872/venera-lll",
       "description": "venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、"
-    },
-    {
-      "repository": "VenusUK/Ms.-Venera-s-IE-Class",
-      "description": "IE Support"
     }
   ],
   "searchError": ""
