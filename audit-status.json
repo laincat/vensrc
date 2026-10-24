@@ -1,15 +1,15 @@
 {
-  "checkedAt": "2026-10-24T02:03:23.142990+00:00",
+  "checkedAt": "2026-10-24T02:48:31.425820+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-10-24T01:55:01.728693+00:00",
+    "checkedAt": "2026-10-24T02:33:23.502392+00:00",
     "adapterSha256": {
-      "scripts/client_bridge.mjs": "f7f14aa29ce16c3053525f1a568c3ad0bf6955579e0a8c4f28c98f8f48a2ef47",
-      "scripts/prepare_client.py": "9a76a34c9520b52ae2f25bd779fecc311a2bccdf4dc0b1c827a3beb852c4ec39",
-      "monitor/clients.json": "a9ec9ac8eb1ccc834d9752c0c0d2b8f34c4c3c0956451afb5b0396eae558dc69"
+      "scripts/client_bridge.mjs": "cadac7b4cc1e3b864841602e8effcdb801383ddd21570e3b89b804ce7de2b4ad",
+      "scripts/prepare_client.py": "335905c1f43ca70cfae3daea5dd3d11b7b54cafa1fe6e695a86b32347bc48ac8",
+      "monitor/clients.json": "d0872a7bfbeb1f71bfececfaeb74d89bcb66fcd3f126b99163ad99be08d4b949"
     },
     "clientProfiles": {
       "venerax": {
@@ -22,7 +22,7 @@
           "lib/foundation/js_engine.dart": "62b03d9ec7c8d10316e50c8c681df546caed1ec14aeda90119a56d386193b08d",
           "lib/foundation/comic_source/parser.dart": "7a1c37a365f747ba324f8fcb4c550813abfb2e0ef44cc53a7dc380e75003427a"
         },
-        "scope": "jm 1.9.2 单源接口巡检；不是完整 Flutter 客户端模拟"
+        "scope": "全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟"
       },
       "venera-next": {
         "repository": "CyrilPeng/Venera-Next",
@@ -34,16 +34,16 @@
           "lib/foundation/js_engine.dart": "74613ef66731313b1632dc3e1bddb2997bc040b6a4b26c398744c9d018c569fb",
           "lib/features/comic_source/parser.dart": "77cb151a2cab6718c743f8acd38fd396007ae79c18132f90cc6ed769e881587d"
         },
-        "scope": "jm 1.9.2 单源接口巡检；不是完整 Flutter 客户端模拟"
+        "scope": "全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟"
       }
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:e74b66ef353fee1523ffc7b26ad48cece254a9b0544843159771ec5c5420a7db"
+    "imageId": "sha256:f8bea67c6f44da5a99d83fe76a4385aaf42b00cf58ab058155df9d7097e738d7"
   },
-  "catalogSha256": "f016329f53b36a973427a8679327bd8fb9ba933772186ecc1f618ef56365634e",
+  "catalogSha256": "8ebda6b3d075bd74380c51af0ad7ccce2c4969ff67a8263b398a7beef1900558",
   "builds": 316,
-  "main": 27,
-  "extended": 61,
-  "runUrl": "https://github.com/laincat/venera-source-index/actions/runs/40051922347"
+  "main": 28,
+  "extended": 59,
+  "runUrl": "https://github.com/laincat/venera-source-index/actions/runs/40054649606"
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-24T01:56:15.780470+00:00",
+  "checkedAt": "2026-10-24T02:34:11.353845+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -272,6 +272,8 @@
       "repository": "ChopDream/venera-source-hub",
       "minAppVersion": "1.4.6",
       "sample": {
+        "comicId": "1305",
+        "epId": "185931",
         "keyword": "火影"
       },
       "trackedBy": [
@@ -867,6 +869,8 @@
       "repository": "LX7kM9/venera-configs",
       "minAppVersion": "1.4.6",
       "sample": {
+        "comicId": "1305",
+        "epId": "185931",
         "keyword": "火影"
       },
       "trackedBy": [
@@ -1355,6 +1359,8 @@
       "repository": "LX7kM9/venera-configs",
       "minAppVersion": "1.2.2",
       "sample": {
+        "comicId": "/comic_haizeiwangbluedeepziliaoshedingji.html",
+        "epId": "91394@2817951",
         "keyword": "海贼王"
       },
       "trackedBy": [
@@ -2196,6 +2202,8 @@
       "repository": "Magentadots/venera-configs",
       "minAppVersion": "1.4.6",
       "sample": {
+        "comicId": "1305",
+        "epId": "185931",
         "keyword": "火影"
       },
       "trackedBy": [
@@ -2506,6 +2514,8 @@
       "repository": "Ra1nbo-w/mhy-v",
       "minAppVersion": "1.16.0",
       "sample": {
+        "comicId": "1305",
+        "epId": "185931",
         "keyword": "火影"
       },
       "trackedBy": [
@@ -4537,6 +4547,8 @@
       "repository": "coldnighten/venera-configs",
       "minAppVersion": "1.4.6",
       "sample": {
+        "comicId": "1305",
+        "epId": "185931",
         "keyword": "火影"
       },
       "trackedBy": [
@@ -5475,6 +5487,10 @@
       "description": "Venera 社区漫画源巡检、固定样本与持续更新订阅索引"
     },
     {
+      "repository": "Kyosee/VeneraX",
+      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
+    },
+    {
       "repository": "Maxll51/EZVenera-Lite",
       "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android"
     },
@@ -5533,10 +5549,6 @@
     {
       "repository": "rytzj2-spec/VeneraX-nagi",
       "description": ""
-    },
-    {
-      "repository": "Kyosee/VeneraX",
-      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
     },
     {
       "repository": "veneraproject/venera-node",

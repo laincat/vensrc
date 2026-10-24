@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-10-24T01:56:15.780470+00:00（UTC）。
+检查时间：2026-10-24T02:34:11.353845+00:00（UTC）。
 检查 50 个已登记仓库；发现 260 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -296,6 +296,7 @@
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
 - `laincat/venera-source-index`：Venera 社区漫画源巡检、固定样本与持续更新订阅索引
+- `Kyosee/VeneraX`：A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。
 - `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
 - `w13630039663-bit/venera-miuix`：一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。
 - `amke79/venerastudios-site`：
@@ -311,7 +312,6 @@
 - `jnsingh01/venerabullstudios`：Venerabull Studios — a showcase of projects in development.
 - `hgnbh/sw`：Venera 漫画源索引（59 个源）
 - `rytzj2-spec/VeneraX-nagi`：
-- `Kyosee/VeneraX`：A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。
 - `veneraproject/venera-node`：
 - `yanyi05/venera-sources`：Personal JavaScript sources for VeneraNext
 - `Gandum2077/venera-patrol-cli`：

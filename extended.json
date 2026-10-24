@@ -2,9 +2,9 @@
   {
     "name": "Komiic",
     "key": "Komiic",
-    "version": "1.0.8",
-    "fileName": "komiic_dual.js",
-    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/komiic_dual.js",
+    "version": "1.0.3",
+    "fileName": "komiic.js",
+    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/komiic.js",
     "minAppVersion": "1.0.0",
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
@@ -33,15 +33,6 @@
     "fileName": "asura_scans.js",
     "url": "https://raw.githubusercontent.com/Micqiyue/venera-sources/cee408d01603fd2466eefd66bbd2084218862965/asura_scans.js",
     "minAppVersion": "1.0.0",
-    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
-  },
-  {
-    "name": "百合会",
-    "key": "baihehui",
-    "version": "1.0.0",
-    "fileName": "baihehui.js",
-    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/baihehui.js",
-    "minAppVersion": "1.4.0",
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
@@ -123,15 +114,6 @@
     "fileName": "dingmanhua.js",
     "url": "https://raw.githubusercontent.com/Angus-fw/venera-configs/ce03585b9a4e1bc24cbb7d61f748a66eac393ddf/dingmanhua.js",
     "minAppVersion": "1.0.0",
-    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
-  },
-  {
-    "name": "咚漫",
-    "key": "dongman",
-    "version": "1.0.8",
-    "fileName": "dongman.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/dongman.js",
-    "minAppVersion": "1.6.0",
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
@@ -272,9 +254,9 @@
   {
     "name": "来漫画（分流）",
     "key": "laimanhua_split",
-    "version": "1.2.1",
-    "fileName": "laimanhua_split_hosts_v1.2.1_configurable.js",
-    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/laimanhua_split_hosts_v1.2.1_configurable.js",
+    "version": "1.2.2",
+    "fileName": "laimanhua.js",
+    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/laimanhua.js",
     "minAppVersion": "1.0.0",
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
@@ -293,15 +275,6 @@
     "version": "1.0.2",
     "fileName": "manga18fx.js",
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/raw_comic/manga18fx.js",
-    "minAppVersion": "1.6.0",
-    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
-  },
-  {
-    "name": "51漫画",
-    "key": "manga51",
-    "version": "1.2.0",
-    "fileName": "manga51.js",
-    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/manga51.js",
     "minAppVersion": "1.6.0",
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
@@ -486,6 +459,15 @@
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
+    "name": "腾讯动漫",
+    "key": "tencentcomics",
+    "version": "1.0.0",
+    "fileName": "tencentcomics.js",
+    "url": "https://raw.githubusercontent.com/xiaoxingmian/venera-configs/aa9fea3526294435982e765cc96ce916be6748a6/tencentcomics.js",
+    "minAppVersion": "1.5.0",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
+  },
+  {
     "name": "图库漫画",
     "key": "tuku_cc",
     "version": "1.0.1",
@@ -513,11 +495,11 @@
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
-    "name": "优酷漫画",
+    "name": "优酷漫画 (修复版)",
     "key": "ykmh",
-    "version": "1.0.0",
-    "fileName": "ykmh.js",
-    "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/ykmh.js",
+    "version": "1.0.7",
+    "fileName": "youku.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/youku.js",
     "minAppVersion": "1.4.0",
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
