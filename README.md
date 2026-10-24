@@ -1,6 +1,6 @@
 # Venera 可用源订阅索引
 
-本仓库发布经过 Venera Runtime 和 venera-patrol-cli 有限样本巡检的社区漫画源索引。中文结果、源名称和固定漫画／章节 ID 见 [复测摘要](RESULTS.md)。
+本仓库发布经过 Venera Runtime 和 venera-patrol-cli 有限样本巡检的社区漫画源索引。主要使用场景为 VeneraX；两个 Fork 的接口与验证范围见 [客户端兼容性](CLIENT_COMPATIBILITY.md)，中文结果、源名称和固定漫画／章节 ID 见 [复测摘要](RESULTS.md)。
 
 ## 订阅地址
 
@@ -30,6 +30,8 @@
 已迁移到 [GitHub Actions](https://github.com/laincat/venera-source-index/actions/workflows/patrol.yml)，按香港时间每周一 09:00（UTC 周一 01:00）运行，也可在 Actions 页面手动执行。修改巡检脚本或审阅清单后会自动触发。无需本机或 Codex 在线；GitHub 定时运行可能有延迟，以 Actions 记录为准。
 
 **每次巡检前更新 venera-patrol-cli 到上游默认分支最新提交**，使用该提交的 `package-lock.json` 安装依赖并构建独立容器。巡检开始前再次核对上游 HEAD。获取、安装或报告格式检查失败时停止本次发布，不回退到缓存旧版。中文报告和 `audit-status.json` 记录 CLI 提交、版本、依赖锁 SHA-256、Node 版本和运行地址。
+
+`jm 1.9.2` 另加载固定提交的 VeneraX 原始 JS bootstrap，并以相同固定样本对照 Venera-Next；版本取自各自真实 `pubspec.yaml`，不降低源最低版本、不修改旧 Runtime 版本。最新 CLI 加载的本仓库适配层、客户端源码哈希及逐阶段结果见 [客户端对照报告](CLIENT_RESULTS.md) 和 `client-results.json`。其他构建暂保留原版 Runtime 验证范围。
 
 固定漫画与章节 ID 保存在 `monitor/catalog.json`；每个构建的 JS URL 固定到 Git 提交，下载字节 SHA-256 必须与已审阅清单完全相同。源码只在没有 GitHub 凭据、没有 Docker socket、源码只读的容器中运行；不提供账号，不启用 mutations。发布放在另一个有写权限的 job，重新核对清单哈希、源码哈希及主／扩展标准，只提交生成的 JSON、中文 CSV 和报告。
 

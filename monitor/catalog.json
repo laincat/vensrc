@@ -2198,7 +2198,9 @@
       "repository": "BB-CHICKEN/venera-jm",
       "fileName": "recode-jm.js",
       "sample": {
-        "keyword": "火影"
+        "keyword": "火影",
+        "comicId": "1485211",
+        "epId": "ep_1485211"
       },
       "officialKey": true,
       "priority": 20,
@@ -2210,7 +2212,11 @@
       "settings": {
         "dailyCheckInTask": false
       },
-      "clientFamily": "Venera-Next"
+      "clientFamily": "Venera-Next",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ]
     },
     {
       "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/jm.js",

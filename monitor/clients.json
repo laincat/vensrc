@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "venerax": {
+      "repository": "Kyosee/VeneraX",
+      "commit": "a4e20b9f14061fd333e89ca31c6458571e7a7e00",
+      "version": "2.3.6",
+      "files": {
+        "assets/init.js": "bd9066a761b8aa0d7fa156c69917138072166c80667f7505d09fd26464bedc3a",
+        "pubspec.yaml": "4e72d6c7ac25d10554d5e73c765b66eb6aae54c032002efd99b2f08b302d8384",
+        "lib/foundation/js_engine.dart": "62b03d9ec7c8d10316e50c8c681df546caed1ec14aeda90119a56d386193b08d",
+        "lib/foundation/comic_source/parser.dart": "7a1c37a365f747ba324f8fcb4c550813abfb2e0ef44cc53a7dc380e75003427a"
+      },
+      "scope": "jm 1.9.2 单源接口巡检；不是完整 Flutter 客户端模拟"
+    },
+    "venera-next": {
+      "repository": "CyrilPeng/Venera-Next",
+      "commit": "47f7416cecc2dbbc97c7618f8dd53aa92f587601",
+      "version": "1.18.0",
+      "files": {
+        "assets/init.js": "5854a85bc3822819c2742529906ab3b56bd233323034e6d3e7dc062d8e992a35",
+        "pubspec.yaml": "50a246f003c2e099efe441564bf90060647a254068aec527a34cc084ced7ff66",
+        "lib/foundation/js_engine.dart": "74613ef66731313b1632dc3e1bddb2997bc040b6a4b26c398744c9d018c569fb",
+        "lib/features/comic_source/parser.dart": "77cb151a2cab6718c743f8acd38fd396007ae79c18132f90cc6ed769e881587d"
+      },
+      "scope": "jm 1.9.2 单源接口巡检；不是完整 Flutter 客户端模拟"
+    }
+  }
+}
