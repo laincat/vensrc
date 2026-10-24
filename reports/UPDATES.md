@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-10-24T13:05:48.363794+00:00（UTC）。
+检查时间：2026-10-24T14:01:56.637890+00:00（UTC）。
 检查 49 个已登记仓库；发现 159 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -197,7 +197,10 @@
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
 - `laincat/vensrc`：Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release
+- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `Meloon-dr/venera-sources`：
 - `moonskycake/venera-next`：venera-next的个人漫画源仓库
+- `veneraproject/venera-node`：
 - `Kyosee/VeneraX`：A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。
 - `w13630039663-bit/venera-miuix`：一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。
 - `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
@@ -207,7 +210,6 @@
 - `ikun5200/venera-prime-server`：
 - `MQ9Reaper/venera-personal-sources`：
 - `yuyuyu529/venera`：Venera日语生肉源
-- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
 - `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `CangShui/VenHM`：兼容Venera源的鸿蒙开源漫画阅读器
 - `Vulpes-venera/CS50p`：
@@ -215,7 +217,6 @@
 - `jnsingh01/venerabullstudios`：Venerabull Studios — a showcase of projects in development.
 - `hgnbh/sw`：Venera 漫画源索引（59 个源）
 - `rytzj2-spec/VeneraX-nagi`：
-- `veneraproject/venera-node`：
 - `yanyi05/venera-sources`：Personal JavaScript sources for VeneraNext
 - `Gandum2077/venera-patrol-cli`：
 - `XclusiveM/venera-nailart`：

@@ -13,9 +13,9 @@ comick,comick,1.2.0,handahao666-boop/venera_comic_source,venerax,通过,失败,1
 CxC,cxc,1.0.3,handahao666-boop/venera_comic_source,venerax,通过,部分通过,1.6.3,324/6343,c27179,火影,d6f5fbaff90113ca450685f6e9fd0547f83bf3627c896edc9a83921a5f943a04,,
 动漫屋,dm5,0.2.0,hea784/venera-configs,venerax,未通过,失败,1.6.0,manhua-manbucangqiong,m938318,斗破苍穹,0adf399b0eab25937f07a9b6b23c044b7ebee8b75f1d30dcd55a1a8a4a5a400a,search.load,返回结构或样本不满足契约
 动漫啦,dongman_la,1.0.5,handahao666-boop/venera_comic_source,venerax,通过,部分通过,1.0.0,13331,144072,火影,c3c1e9989d8a859c99309fc05ed5f7c179cd9eb641e20cad319bfa7acf1a1627,,
-咚漫,dongmanmanhua,1.0.6,handahao666-boop/venera_comic_source,venerax,通过,失败,1.6.0,2914,10,神之塔,65df758f8643f331baf978a55d5bbbe8c8fff1df285b92f63f97bb18aa48935f,thumbnail.download,请求超时
+咚漫,dongmanmanhua,1.0.6,handahao666-boop/venera_comic_source,venerax,通过,通过,1.6.0,2914,10,神之塔,65df758f8643f331baf978a55d5bbbe8c8fff1df285b92f63f97bb18aa48935f,,
 ehentai,ehentai,1.2.0,venera-app/venera-configs,venerax,通过,失败,1.5.3,https://e-hentai.org/g/4127683/14cef22186/,,海贼王,ef15f80d8090cb9ec1fcb18b502017a47694484e81d51c85e6b06ea162c58e4a,explore[2].loadNext,返回结构或样本不满足契约
-飞翔漫画,ffppt,1.0.3,handahao666-boop/venera_comic_source,venerax,通过,通过,1.0.0,30027,0,火影,a0253ea74b068fc3fbd471518d34e6dc7347463c98862029b0010a6e57c8c0fa,,
+飞翔漫画,ffppt,1.0.3,handahao666-boop/venera_comic_source,venerax,未通过,失败,1.0.0,30027,0,火影,a0253ea74b068fc3fbd471518d34e6dc7347463c98862029b0010a6e57c8c0fa,explore[0].load,阶段超时
 GoDa漫画,goda,1.2.1,handahao666-boop/venera_comic_source,venerax,未通过,失败,1.4.0,/manga/huoyingrenzhequancaiban-jiyingshe,5205@412417,火影,dc94b8d5074e342633b2f1c4ca74e9d7cfa3a6952890ab9a56f5c675a1a16fc5,search.load,反爬拦截
 瓜子漫画,guazimanhua,1.0.4,handahao666-boop/venera_comic_source,venerax,通过,失败,1.0.0,15663,1890870,火影,b93ad63c5e0ac1a41c77ab95e7561f20718ad46228fb9b6b8fbb8196c3f56dc6,comic.idMatch,返回结构或样本不满足契约
 嗨皮漫画,happy,1.0.0,venera-app/venera-configs,venerax,未通过,失败,1.6.0,,,火影,656f038a7b134135bca51e1eaca1c3e1ba761d2daa8d89e26d085b1bd8950180,search.load,DNS 错误
@@ -27,9 +27,9 @@ hitomi.la,hitomi,1.1.2,venera-app/venera-configs,venerax,未通过,失败,1.4.6,
 爱看漫,ikmmh_v2,3.0.0,handahao666-boop/venera_comic_source,venerax,未通过,失败,1.0.0,https://www.ikmmh.com/book/7525/,https://www.ikmmh.com/chapter/7525/772663.html,海贼王,b911acf018184f748b08a4466b520692f709a7f2fa022da85180804186a4b3a5,search.load,需要登录
 jcomic.net,jcomic,1.0.0,venera-app/venera-configs,venerax,未通过,失败,1.4.6,发情期 (火影忍者 同人) | Temporada De Apareamiento (Naruto),1,火影,afd7dc75ac1216eec39350ca7a7228d836183b9ec61751f3064dcc53a97422b1,comic.loadEp,返回结构或样本不满足契约
 禁漫天堂,jm,1.4.0,venera-app/venera-configs,venerax,通过,部分通过,1.5.0,1246607,1246607,火影,a91bc8cc8b1a69eda20cdf2a04deea3fe0522baf2de84caa0c851211cb5f78ad,,
-Kavita,kavita,1.0.0,venera-app/venera-configs,venerax,未通过,失败,1.4.0,,,火影,65173ae4eb4a57f33f867a67f9030078b49b7386b8a02ab5829e1966f4d47763,search.load,请求超时
+Kavita,kavita,1.0.0,venera-app/venera-configs,venerax,未通过,失败,1.4.0,,,火影,65173ae4eb4a57f33f867a67f9030078b49b7386b8a02ab5829e1966f4d47763,search.load,网络错误
 Komga,komga,1.0.0,venera-app/venera-configs,venerax,未通过,失败,1.4.0,,,火影,2aa5b4e7d4b32bf282f86168b22af091d7436f4e3ad603defb7b6df738a36908,search.load,源配置错误
-来漫画（分流）,laimanhua_split,1.2.1,handahao666-boop/venera_comic_source,venerax,通过,失败,1.0.0,dengluweilaiyiwannian,74330001,斗破苍穹,3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5,search.load,HTTP 错误
+来漫画（分流）,laimanhua_split,1.2.1,handahao666-boop/venera_comic_source,venerax,未通过,失败,1.0.0,dengluweilaiyiwannian,74330001,斗破苍穹,3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5,search.load,HTTP 错误
 Lanraragi,lanraragi,1.2.0,venera-app/venera-configs,venerax,通过,失败,1.4.0,e4c422fd10943dc169e3489a38cdbf57101a5f7e,e4c422fd10943dc169e3489a38cdbf57101a5f7e,火影,b2bc20d13979a40bb5973ac56c6fcdaccc096bd95adcafc8e2317c9eda44e130,search.load,HTTP 错误
 51漫画,manga51,1.2.0,handahao666-boop/venera_comic_source,venerax,通过,通过,1.6.0,q960wlKzoQ,JE5ywtv7Pp,海贼王,c6fba1ceade91d1913cfd2a1bfcb143e9df8d8679f7dc6d54ab4be0fddff19ab,,
 MangaDex,manga_dex,1.1.1,handahao666-boop/venera_comic_source,venerax,通过,部分通过,1.6.0,99e912e1-ca9d-4019-8fe8-349bf814b75e,399be404-bb29-4ffd-87c9-6345b7fe0a32,one,4943789e628385a2936f32d7e87146a9f4dae517a334f9f230e348f83c6d9c89,,
@@ -38,7 +38,7 @@ Mangabz,mangabz,0.2.0,hea784/venera-configs,venerax,未通过,失败,1.6.0,https
 香蕉漫画,manhuauo_banana_v2,1.0.3,handahao666-boop/venera_comic_source,venerax,未通过,失败,1.0.0,,,火影,af540832b7f08e571fea7baae2e0bb545b760c82b5965ab4f20e21b046bb9e20,search.load,需要登录
 漫蛙吧,manwaba,1.0.3,venera-app/venera-configs,venerax,未通过,失败,1.4.0,58100,1135662,火影,6d85a9a18d2f44fb8b71ef598e6a74fb9de4b0ddd0260b3a6cb57fc05753f481,categoryComics.load,HTTP 错误
 漫网,manwang,1.2.0,handahao666-boop/venera_comic_source,venerax,未通过,失败,1.4.0,531963,192773,火影,4520b8edb70b971f895841e4f8977d8980d2dd85ab31460445487018aca6c6c1,search.load,反爬拦截
-漫画1234,mh1234,1.0.0,venera-app/venera-configs,venerax,未通过,失败,1.4.0,,,火影,17d910952f7de6d47b10cca2302193e84b7ae1873219f91dfa927d0cc4e8897e,search.load,源配置错误
+漫画1234,mh1234,1.0.0,venera-app/venera-configs,venerax,未通过,失败,1.4.0,,,火影,17d910952f7de6d47b10cca2302193e84b7ae1873219f91dfa927d0cc4e8897e,search.load,请求超时
 18漫画,mh18,1.0.0,venera-app/venera-configs,venerax,未通过,失败,1.4.0,,,火影,88ba802dbc33988702b9cc3b9e8d2b669acc46d3f76d2040fd91832504a637ee,search.load,反爬拦截
 4399漫画网,mh4399,1.0.3,handahao666-boop/venera_comic_source,venerax,未通过,失败,1.6.0,2515169,1,火影,ffddebed57a843e59b341df19a11585c03c0244d5be4bddc22c1b6f95557ebca,search.load,返回结构或样本不满足契约
 MOJOIN,mojoin_v2,1.0.7,handahao666-boop/venera_comic_source,venerax,通过,部分通过,1.0.0,310,001,戀,ccfde1cd6784218ee5a1a407562bd1082c20b44fc5265c538c6594ce89512422,,
@@ -59,7 +59,7 @@ LINE WEBTOON,webtoons_zh_hant,1.0.0,handahao666-boop/venera_comic_source,venerax
 W漫画,wmanhua,1.0.1,handahao666-boop/venera_comic_source,venerax,通过,通过,1.4.0,4968,305323,火影,621a3e063f15cdfba06499e3535a81e9ebbc1837070605ae578508abee8d5db9,,
 紳士漫畫,wnacg,1.0.6,venera-app/venera-configs,venerax,通过,部分通过,1.0.0,397513,,火影,545a6d818d012c1e5799d6aaf7ecd09798969acb840166ee7c56de6d02201df0,,
 野蛮漫画,yemancomic,0.1.2,hea784/venera-configs,venerax,未通过,失败,1.6.0,https://yemancomic.com/book/7530/,https://yemancomic.com/chapter/7530/772668.html,海贼王,46ccc7b1b4951f9ebe0b0c4cd04e88cc46ce460abeadfb56e3c5e85d3290b113,search.load,需要登录
-优酷漫画,ykmh,1.0.0,venera-app/venera-configs,venerax,通过,失败,1.4.0,https://www.ykmh.net/manhua/huoyingrenzhe/,https://m.ykmh.net/manhua/huoyingrenzhe/236712.html,火影,c03ea3696420c3e71b0a638c9d8a3a3666d20ce0d0095e6b13970a27186fea4b,categoryComics.load,源配置错误
+优酷漫画,ykmh,1.0.0,venera-app/venera-configs,venerax,未通过,失败,1.4.0,https://www.ykmh.net/manhua/huoyingrenzhe/,https://m.ykmh.net/manhua/huoyingrenzhe/236712.html,火影,c03ea3696420c3e71b0a638c9d8a3a3666d20ce0d0095e6b13970a27186fea4b,search.load,HTTP 错误
 再漫画,zaimanhua,1.0.2,handahao666-boop/venera_comic_source,venerax,未通过,失败,1.0.0,,,火影,96b89df7bcdaa2f3c1a02d15ce19575c5fdffceb768083dff552c8afc5969f1b,comic.loadInfo,源配置错误
 zero搬运网,zerobyw33,1.2.0,handahao666-boop/venera_comic_source,venerax,通过,部分通过,1.6.0,23009,711126,海贼王,fec1f36630cceab05aadc8d918b64aa8a7d6f6a298499bdb257b6b34a3332895,,
 Komiic,Komiic,1.0.8,handahao666-boop/venera_comic_source,venerax,未通过,失败,1.0.0,4992,174010,火影,ad74a243c07ebc549254e75162fceb81097e6755054e1902ca81e0327370bd68,explore[0].load,返回结构或样本不满足契约
@@ -117,7 +117,7 @@ CosplayTele,cosplaytele,1.7.0,meaninglesslyy/venera-config,venerax,通过,通过
 CosplayTele,cosplaytele_25_190983,0.2.0,KadishJoey/venera-json,venerax,未通过,失败,1.0.0,https://cosplaytele.com/lynae-10/,https://cosplaytele.com/lynae-10/Tiny%20Asa%20%E3%82%A2%E3%82%B5%20(tiny.asababy)%20cosplay%20Lynae%20%E2%80%93%20Wuthering%20Waves%20%E2%80%9C59%20photos%20and%201%20video%E2%80%9D,cos,c1b9db6ef30749caf774d577e5c2a7ac1c66feb0f52226f2a6d47d144098a48d,comic.loadEp,HTTP 错误
 包子漫画cw,cw_57_cc4798,0.2.0,KadishJoey/venera-json,venerax,未通过,失败,1.0.0,,,斗破苍穹,6fad2dc6dbc90ebfbc9993b2ca1be598852d3aef8f3d41097e7613c91d453719,comic.loadInfo,返回结构或样本不满足契约
 次元漫画,cycomic,1.0.3,Junkrat9527/venera-sources,venerax,未通过,失败,1.6.0,https://2cycomic.com/book/7531/,https://2cycomic.com/chapter/7531/772669.html,海贼王,3db355237cecd70b8441ecd8c5b34e71de832300d1bfbaa9e7c9a076a87e0112,search.load,需要登录
-大魔兔,damotu,1.0.0,token1008/venera-cn-64bit,venerax,通过,部分通过,1.0.0,/manhua/8302.htm,/manhua/8302/74037.htm,海贼王,7a9137c49fbd0c27d58811e615388082589c8cc73aa964a77e159b37d1dd7e1c,,
+大魔兔,damotu,1.0.0,token1008/venera-cn-64bit,venerax,通过,失败,1.0.0,/manhua/8302.htm,/manhua/8302/74037.htm,海贼王,7a9137c49fbd0c27d58811e615388082589c8cc73aa964a77e159b37d1dd7e1c,search.load,请求超时
 顶漫画,dingmanhua,1.0.5,Angus-fw/venera-configs,venerax,通过,失败,1.0.0,6161,2250659,海贼王,30b1a74acaa370926ec0b4cd8816a0ca88e9a5e7372e6318b48295a5dc5f9a98,comic.onClickTag,源配置错误
 咚漫,dongman,1.0.8,Junkrat9527/venera-sources,venerax,未通过,失败,1.6.0,2931,1,神之塔,a4e34d9681a48022640c072842dc37ccb4099fd1f9c04d8ab51cc38ebfa57669,image.download,请求超时
 动漫啦,dongman_la,1.0.3,Junkrat9527/venera-sources,venerax,未通过,失败,1.0.0,,,斗破苍穹,3da97ede8f94cce6127313d582a8dda391d7b74d04bbb125e95c246010ee5ac5,search.load,返回结构或样本不满足契约
@@ -128,7 +128,7 @@ ehentai,ehentai,1.1.8,yelongyue197-svg/venera-sources,venerax,通过,失败,1.5.
 Everia图集,everia_14_efa23b,0.2.0,KadishJoey/venera-json,venerax,未通过,失败,1.0.0,,,海贼王,83c0e795960bb3d836c043c8a8f7a3d80ede7410dd3fe6ca3f88232de113f0d6,search.load,请求超时
 810114 漫画源,ex_810114_xyz,1.0.0,xuzhen2905-pixel/venera-source,venerax,未通过,失败,1.6.0,,,海贼王,9e66fbc18688bdab5ce08370de7480acbe8830456a43366019ab7805937b83bb,explore[0].load,返回结构或样本不满足契约
 ExHentai (fangliding 镜像),ex_fangliding,1.2.0,zakkida/venera-sources,venerax,未通过,失败,1.5.3,,,海贼王,19fdc46bcfeb4dd0ecbe5191db865a60791a3dd1bf1c024a7a001d1b770be591,search.loadNext,反爬拦截
-飞翔漫画,ffppt,1.0.2,Junkrat9527/venera-sources,venerax,通过,通过,1.0.0,30027,0,火影,9073ad30b4cbfd080f35154607610450db6a76fc56f1c4f1fb263c5502488318,,
+飞翔漫画,ffppt,1.0.2,Junkrat9527/venera-sources,venerax,通过,失败,1.0.0,30027,0,火影,9073ad30b4cbfd080f35154607610450db6a76fc56f1c4f1fb263c5502488318,search.load,请求超时
 FoamGirl,foamgirl,1.2.1,meaninglesslyy/venera-config,venerax,未通过,失败,1.6.0,1839551,1,火影,b5191bbc693356ff78e0f8594d3a8624058c3b8f6b77ed632970d333d6bd43e6,explore[1].load,反爬拦截
 4KHD,fourkhd,2.0.7,meaninglesslyy/venera-config,venerax,通过,通过,1.6.0,72628,0,火影,a0fc9199723dba45be5c9adae42b6ccbaf66b2a096c085f4bec15469fcf4c3e0,,
 4KHD Cosplay,fourkhd_cosplay,2.0.0,6678670jsy/venera-sources,venerax,通过,失败,1.6.0,iron-hand-calling-beast-meiko-yagi-the-light-bearer,gallery,火影,bd1374c61127fd9de387b4a57a89d70e0ad03ab383cbcc77bb91588e3f2057cc,search.load,HTTP 错误
@@ -140,7 +140,7 @@ GMANHUA,gmanhua_59_ee9658,0.2.0,KadishJoey/venera-json,venerax,未通过,失败,
 国漫吧,guoman8,1.0.2,token1008/venera-cn-64bit,venerax,未通过,失败,1.0.0,http://www.guoman8.cc/44900/,http://www.guoman8.cc/44900/01.html,海贼王,b7c7b03cefb791395b5fb7a06be832e7ab4d2a73d2e661407f131b29d1cc448a,search.load,反爬拦截
 Hachiraw,hachiraw,1.0.0,YUIRIKIiii/venera-sources,venerax,通过,失败,1.6.0,/manga-diner-raw/,5119/1474625,異世界,bee58b154cb64f25e738ffb56306cf10c15820388fbf882723bf25644771e4c3,search.load,返回结构或样本不满足契约
 花火漫画,hanabimanga,1.0.0,xiaoxingmian/venera-configs,venerax,未通过,失败,1.4.0,334,18158,海贼王,e8d71c02d79cf0e370882d11f9bfd52e6620db34b479b099ce81f9e46701fca0,comic.loadEp,请求限流
-好看漫画,haokan_txt,1.0.4,Junkrat9527/venera-sources,venerax,未通过,失败,1.2.2,/comic_haizeiwangbluedeepziliaoshedingji.html,91394@2817951,海贼王,88e1a9b1d513975bb86f8fae43a3dc64977bbaed470106d440c6e359d98a3839,image.download,请求限流
+好看漫画,haokan_txt,1.0.4,Junkrat9527/venera-sources,venerax,通过,通过,1.2.2,/comic_haizeiwangbluedeepziliaoshedingji.html,91394@2817951,海贼王,88e1a9b1d513975bb86f8fae43a3dc64977bbaed470106d440c6e359d98a3839,,
 绅士会所,hentaiclub,1.0.0,meaninglesslyy/venera-config,venerax,未通过,失败,1.6.0,https://www.hentaiclub.net/r18/69677.html,0,火影,87985fef6ce6541776ecb8f31f2034f8d05015b421fe2d63602e1dc644a476d3,search.load,反爬拦截
 嬉皮漫畫,hipmh,1.0.6,Junkrat9527/venera-sources,venerax,通过,通过,1.6.0,bToyOTM5NA-huan-ying-lian-ge-webtoon-4257-21966,bToyOTM5NC1jOjExMzAxNw-MjkzOTQ6MS4wMA,火影,95a132f5468187e35cd9224cd0ae923ec544187a14a60d8bac376308218f2f1a,,
 hitomi.la,hitomi,1.1.3,zakkida/venera-sources,venerax,未通过,失败,1.4.6,,,海贼王,7aeef0e996adbf5a8ee49bd8079f8c9d1fedbde3b9205782647212734f94f7a1,categoryComics.load,网络错误
@@ -158,8 +158,8 @@ Kiutaku,kiutaku,1.1.0,meaninglesslyy/venera-config,venerax,通过,失败,1.6.0,7
 Komga,komga,1.0.1,zakkida/venera-sources,venerax,未通过,失败,1.4.0,,,海贼王,550a18cf941e8f63904b0248ebc39329d124f8b8e259f7cc925873d89930bb79,search.load,需要登录
 Komiic漫画,komiic_69_259947,0.2.0,KadishJoey/venera-json,venerax,未通过,失败,1.0.0,,,愛,698670f557ce30d2a554c6bb82cd65a03e3322ea18a0c73e90e57b74bcd6c2c0,search.load,HTTP 错误
 Komiic 多账号,komiic_multi,1.6.2,snowf14k3/venera-komiic-multi,venerax,未通过,失败,1.0.0,9145,238269,愛,96036813d0211f2908736133788e3403f7a03dbe8d5001830f2c612413e1c24b,explore[0].load,返回结构或样本不满足契约
-快看漫画,kuaikan,1.0.0,cattoldme/venera-configs,venerax,未通过,失败,1.6.0,766,744903,斗破苍穹,ad550aa4ecafa18119adbb651318cc501d40e753e9dc1a999f16a4f3a4dc2fff,image.download,请求超时
-来漫画（分流）,laimanhua_split,1.2.2,Junkrat9527/venera-sources,venerax,通过,失败,1.0.0,dengluweilaiyiwannian,74330001,斗破苍穹,ed9c0d8a088d31aa8b45d311a7280c35d4b971c728c74b9fe3eead94e08cbb9b,search.load,HTTP 错误
+快看漫画,kuaikan,1.0.0,cattoldme/venera-configs,venerax,通过,通过,1.6.0,766,744903,斗破苍穹,ad550aa4ecafa18119adbb651318cc501d40e753e9dc1a999f16a4f3a4dc2fff,,
+来漫画（分流）,laimanhua_split,1.2.2,Junkrat9527/venera-sources,venerax,未通过,失败,1.0.0,dengluweilaiyiwannian,74330001,斗破苍穹,ed9c0d8a088d31aa8b45d311a7280c35d4b971c728c74b9fe3eead94e08cbb9b,search.load,HTTP 错误
 Lanraragi,lanraragi,1.1.0,yelongyue197-svg/venera-sources,venerax,通过,失败,1.4.0,e4c422fd10943dc169e3489a38cdbf57101a5f7e,e4c422fd10943dc169e3489a38cdbf57101a5f7e,火影,360c68843b8a04153a12411af1a9648078ed42939a57290b3c85539b62dab7d6,search.load,HTTP 错误
 特漫网站,legacy_17te,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,81fbbe889e77ca251bffee35518f736f85789a088501001ef8748703b1acebf5,search.load,网络错误
 极速漫画,legacy_1kkk,0.1.0,wuliaoe/venera-extra-sources,venerax,通过,通过,1.6.0,http://www.1kkk.com/manhua18216/,https://m.1kkk.com/ch1-200037/,火影,eb0e0aa7c715ce71a3a932b20aa4c8bbcc8a29d7136746a9d766a95b010e91ae,,
@@ -180,8 +180,8 @@ Lanraragi,lanraragi,1.1.0,yelongyue197-svg/venera-sources,venerax,通过,失败,
 爱米推漫画,legacy_imitui,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,f301496fb91a4ebcf0ba3660f99ef715d6efdba63c0b5ec9110a08c669749780,search.load,DNS 错误
 看漫画,legacy_kanman,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,8ab8a3e0ccfe10462264f0130820c579dcd3bdcf3adfdf7100c255522585c19f,comic.loadInfo,源配置错误
 漫画羊,legacy_manhuayang,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,a17452ca3352040f824e6a46d4345ab1c79b25e61db3d79e9cfdd6b17d8be2c7,search.load,DNS 错误
-漫漫看漫画网,legacy_manmankan,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,e650efd029f2c33b509edfa268188fb5c080952bfe0e856efcfafdd43eb19539,search.load,TLS 错误
-漫漫睇,legacy_manmantai,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,0540caf28915172d95af9dffa6de1db78822af48f04ab307c9fa155fbb239dd8,search.load,请求超时
+漫漫看漫画网,legacy_manmankan,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,e650efd029f2c33b509edfa268188fb5c080952bfe0e856efcfafdd43eb19539,search.load,请求超时
+漫漫睇,legacy_manmantai,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,0540caf28915172d95af9dffa6de1db78822af48f04ab307c9fa155fbb239dd8,search.load,源配置错误
 漫画芯,legacy_mhxin,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,ee90d24a360449bd692834475e189cedcb5cfababd766e006e47f43a2ba5fe68,search.load,TLS 错误
 奇妙漫画,legacy_qimiaomh,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,542169675a8b087c8d07ba3ea4208cc75dfd493762566d44cfa3f7bd58e2c674,search.load,TLS 错误
 奇热漫画,legacy_qiremanhua,0.1.0,wuliaoe/venera-extra-sources,venerax,未通过,失败,1.6.0,,,海贼王,091afce1a67e4bfbee65ab2331f43a6a658a2516943e80e43033dfb9b6f2efae,search.load,DNS 错误
@@ -206,10 +206,10 @@ MangaDex,manga_dex,1.1.0,yelongyue197-svg/venera-sources,venerax,通过,失败,1
 MANGA Plus,manga_plus,1.0.2,WEP-56/EZvenera-config,venerax,未通过,失败,1.2.2,,,one,7a29a3460780bf860bd8257c1567c16f57df702691e7d11170f16f5644396685,search.load,需要登录
 Mangabz,mangabz,1.0.0,YHQY-Dev/venera-sources,venerax,未通过,失败,1.0.0,,,海贼王,45ea62f02ef64fa0ad1f176fe125572b78d326060d06bf2964c7f8bc5dd63192,search.load,需要登录
 Mangabz,mangabz_72_18ed08,0.2.0,KadishJoey/venera-json,venerax,未通过,失败,1.0.0,,,海贼王,510e1cca571f7f48fdf5341fa85bc628965ae6bb9b5e42debb58ae754d3fd90c,comic.loadInfo,HTTP 错误
-MangaForFree,mangaforfree,0.7.4,meaninglesslyy/venera-config,venerax,未通过,失败,1.6.0,the-idol-managers-diary,chapter-1,one,617657b4235f2ba5d0b100eef5d577dfb8611d06a965642990b3c32ee41f5621,search.load,阶段超时
+MangaForFree,mangaforfree,0.7.4,meaninglesslyy/venera-config,venerax,通过,失败,1.6.0,the-idol-managers-diary,chapter-1,one,617657b4235f2ba5d0b100eef5d577dfb8611d06a965642990b3c32ee41f5621,search.load,返回结构或样本不满足契约
 MangaPill,mangapill,1.0.0,zakkida/venera-sources,venerax,未通过,失败,1.6.0,,,love,ca1a4bec908a574c71a218e337a3efd655ec32e6d978b153cfd4fa1fe7bebb75,search.load,返回结构或样本不满足契约
 MangaRead,mangaread_66_d1113a,0.2.0,KadishJoey/venera-json,venerax,未通过,失败,1.0.0,,,one,7e24ed7aa022fba8773a989c11e17bbdaa6b65101815d01f00b5599314278e94,comic.loadInfo,返回结构或样本不满足契约
-178漫画网,manhua178,1.0.0,token1008/venera-cn-64bit,venerax,未通过,失败,1.0.0,/book/1857/,/chapter/1857/196766.html,火影,d7361f1ec9128df35d0ccc7ea4bf6aef18c44065f51ed7a397228dcadbb6363f,search.load,请求超时
+178漫画网,manhua178,1.0.0,token1008/venera-cn-64bit,venerax,通过,部分通过,1.0.0,/book/1857/,/chapter/1857/196766.html,火影,d7361f1ec9128df35d0ccc7ea4bf6aef18c44065f51ed7a397228dcadbb6363f,,
 漫画吧网,manhuaba,1.0.0,token1008/venera-cn-64bit,venerax,未通过,失败,1.0.0,/comic/1Z5zQ8D8oD,/chapter/2VW0WTOg7N.html,海贼王,51636f60ed1f983ea2033cbfc8d1207a0063a0d0578ee5639da02d7867300d76,search.load,反爬拦截
 漫画皮,manhuapi,1.4.2,Junkrat9527/venera-sources,venerax,未通过,失败,1.0.0,,,海贼王,65c2d5107a45048e51541f9ec68b2e392faea2d111f05dab925ae9e7b4d80377,search.load,反爬拦截
 漫漫漫画,manman,1.0.0,token1008/venera-cn-64bit,venerax,未通过,失败,1.0.0,,,海贼王,ed5cec30a0f150ede5684082aa34e4c38e52fb6c111b026dcbc3d415641d914c,comic.loadInfo,源配置错误
@@ -309,7 +309,7 @@ Xiutaku,xiutaku,1.1.0,meaninglesslyy/venera-config,venerax,通过,失败,1.6.0,1
 X漫画,xmanhua,1.8.1,Junkrat9527/venera-sources,venerax,通过,通过,1.0.0,139,29396,海贼王,ab5be6abb62f2d8d0247dbf14b33b9a2b4cda464e57fe53497a2921f4a5257f5,,
 yande.re,yandere,4.9.3,Junkrat9527/venera-sources,venerax,未通过,失败,1.6.0,1270646,0,斗破苍穹,cada1c28f4ed96a7025543fa275e3f43f5206c582a38ed1ba1f61b4440b4cd61,search.load,返回结构或样本不满足契约
 野蛮漫画,yemancomic,1.3.8,Junkrat9527/venera-sources,venerax,未通过,失败,1.6.0,https://yemancomic.com/book/7530/,https://yemancomic.com/chapter/7530/772668.html,海贼王,42b53d66e34198ec4d1cacb31808e9386ac0392e305016d87c98a703f608c25e,search.load,需要登录
-优酷漫画,ykmh,1.0.2,zakkida/venera-sources,venerax,通过,失败,1.4.0,https://www.ykmh.net/manhua/huoyingrenzhe/,https://m.ykmh.net/manhua/huoyingrenzhe/236712.html,火影,f862f6aaac364564740ea77672fa248811d94c9176a6b1c73a42387bc9430ffe,categoryComics.load,源配置错误
+优酷漫画,ykmh,1.0.2,zakkida/venera-sources,venerax,未通过,失败,1.4.0,https://www.ykmh.net/manhua/huoyingrenzhe/,https://m.ykmh.net/manhua/huoyingrenzhe/236712.html,火影,f862f6aaac364564740ea77672fa248811d94c9176a6b1c73a42387bc9430ffe,search.load,HTTP 错误
 ◯ YYDS,yyds_04_86b037,0.2.0,KadishJoey/venera-json,venerax,未通过,失败,1.0.0,,,斗破苍穹,810c02550b8d61cbfaa0b2817f5e3318debe8ebebe88911b22a0f9271151181e,search.load,需要登录
 zero搬运网,zerobyw,1.2.0,Junkrat9527/venera-sources,venerax,通过,部分通过,1.0.0,23128,0,火影,348f7334f1ff01af56b1414ac22bd9a5f34203dd22fd103b64976690abcc057a,,
 zero搬运网,zerobyw33,1.2.0,meaninglesslyy/venera-config,venerax,通过,部分通过,1.6.0,23009,711126,海贼王,17b9a4ae12100e367b54c116d5ee9810a9520eacbf7ab46cf930fe6485dd2fe7,,
@@ -329,7 +329,7 @@ comick,comick,1.2.0,handahao666-boop/venera_comic_source,venera-next,通过,失�
 CxC,cxc,1.0.3,handahao666-boop/venera_comic_source,venera-next,通过,部分通过,1.6.3,324/6343,c27179,火影,d6f5fbaff90113ca450685f6e9fd0547f83bf3627c896edc9a83921a5f943a04,,
 动漫屋,dm5,0.2.0,hea784/venera-configs,venera-next,未通过,失败,1.6.0,manhua-manbucangqiong,m938318,斗破苍穹,0adf399b0eab25937f07a9b6b23c044b7ebee8b75f1d30dcd55a1a8a4a5a400a,search.load,返回结构或样本不满足契约
 动漫啦,dongman_la,1.0.5,handahao666-boop/venera_comic_source,venera-next,通过,部分通过,1.0.0,13331,144072,火影,c3c1e9989d8a859c99309fc05ed5f7c179cd9eb641e20cad319bfa7acf1a1627,,
-咚漫,dongmanmanhua,1.0.6,handahao666-boop/venera_comic_source,venera-next,未通过,失败,1.6.0,2914,10,神之塔,65df758f8643f331baf978a55d5bbbe8c8fff1df285b92f63f97bb18aa48935f,image.download,请求超时
+咚漫,dongmanmanhua,1.0.6,handahao666-boop/venera_comic_source,venera-next,通过,通过,1.6.0,2914,10,神之塔,65df758f8643f331baf978a55d5bbbe8c8fff1df285b92f63f97bb18aa48935f,,
 ehentai,ehentai,1.2.0,venera-app/venera-configs,venera-next,通过,失败,1.5.3,https://e-hentai.org/g/4127683/14cef22186/,,海贼王,ef15f80d8090cb9ec1fcb18b502017a47694484e81d51c85e6b06ea162c58e4a,explore[2].loadNext,返回结构或样本不满足契约
 飞翔漫画,ffppt,1.0.3,handahao666-boop/venera_comic_source,venera-next,未通过,失败,1.0.0,30027,0,火影,a0253ea74b068fc3fbd471518d34e6dc7347463c98862029b0010a6e57c8c0fa,explore[0].load,阶段超时
 GoDa漫画,goda,1.2.1,handahao666-boop/venera_comic_source,venera-next,未通过,失败,1.4.0,/manga/huoyingrenzhequancaiban-jiyingshe,5205@412417,火影,dc94b8d5074e342633b2f1c4ca74e9d7cfa3a6952890ab9a56f5c675a1a16fc5,search.load,反爬拦截
@@ -345,7 +345,7 @@ jcomic.net,jcomic,1.0.0,venera-app/venera-configs,venera-next,未通过,失败,1
 禁漫天堂,jm,1.4.0,venera-app/venera-configs,venera-next,通过,部分通过,1.5.0,1246607,1246607,火影,a91bc8cc8b1a69eda20cdf2a04deea3fe0522baf2de84caa0c851211cb5f78ad,,
 Kavita,kavita,1.0.0,venera-app/venera-configs,venera-next,未通过,失败,1.4.0,,,火影,65173ae4eb4a57f33f867a67f9030078b49b7386b8a02ab5829e1966f4d47763,search.load,请求超时
 Komga,komga,1.0.0,venera-app/venera-configs,venera-next,未通过,失败,1.4.0,,,火影,2aa5b4e7d4b32bf282f86168b22af091d7436f4e3ad603defb7b6df738a36908,search.load,源配置错误
-来漫画（分流）,laimanhua_split,1.2.1,handahao666-boop/venera_comic_source,venera-next,通过,失败,1.0.0,dengluweilaiyiwannian,74330001,斗破苍穹,3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5,search.load,HTTP 错误
+来漫画（分流）,laimanhua_split,1.2.1,handahao666-boop/venera_comic_source,venera-next,未通过,失败,1.0.0,dengluweilaiyiwannian,74330001,斗破苍穹,3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5,search.load,HTTP 错误
 Lanraragi,lanraragi,1.2.0,venera-app/venera-configs,venera-next,通过,失败,1.4.0,e4c422fd10943dc169e3489a38cdbf57101a5f7e,e4c422fd10943dc169e3489a38cdbf57101a5f7e,火影,b2bc20d13979a40bb5973ac56c6fcdaccc096bd95adcafc8e2317c9eda44e130,search.load,HTTP 错误
 51漫画,manga51,1.2.0,handahao666-boop/venera_comic_source,venera-next,通过,通过,1.6.0,q960wlKzoQ,JE5ywtv7Pp,海贼王,c6fba1ceade91d1913cfd2a1bfcb143e9df8d8679f7dc6d54ab4be0fddff19ab,,
 MangaDex,manga_dex,1.1.1,handahao666-boop/venera_comic_source,venera-next,通过,部分通过,1.6.0,99e912e1-ca9d-4019-8fe8-349bf814b75e,399be404-bb29-4ffd-87c9-6345b7fe0a32,one,4943789e628385a2936f32d7e87146a9f4dae517a334f9f230e348f83c6d9c89,,
@@ -428,7 +428,7 @@ CCC追漫台,ccc,1.0.2,zakkida/venera-sources,venera-next,通过,部分通过,1.
 Cosplay啦,ciyuandao,1.0.0,token1008/venera-cn-64bit,venera-next,通过,部分通过,1.0.0,/photo/show/133564,/photo/show/133564,火影,af736e8c7ac60f3fc27903e997b4d89827fa6fd33bb274f90268c05b8ee69287,,
 カドコミ,comic_walker,1.0.1,zakkida/venera-sources,venera-next,未通过,失败,1.6.0,,,海贼王,b2ad2816bfa5c6d51709a5a3f6cff970c890b63be49324054dcdc65fe983ff92,search.load,需要登录
 comick,comick,1.1.1,l233333333/venera-sources,venera-next,未通过,失败,1.4.0,,,海贼王,fd12333c3e2a5eea0371a166bab3cb2d77c8c94ccdf0441f136477ec5a1e7277,search.load,HTTP 错误
-拷贝漫画,copy_manga,1.4.4,zakkida/venera-sources,venera-next,未通过,失败,1.6.0,,,海贼王,fcb90412e0d16323340337e815267bb02c6ca0491c00cbfabe55241ed67029ac,categoryComics.load,源配置错误
+拷贝漫画,copy_manga,1.4.4,zakkida/venera-sources,venera-next,未通过,失败,1.6.0,,,海贼王,fcb90412e0d16323340337e815267bb02c6ca0491c00cbfabe55241ed67029ac,explore[0].load,源配置错误
 CosplayTele,cosplaytele,1.7.0,meaninglesslyy/venera-config,venera-next,通过,通过,1.6.0,cinderella-crystal-wave-3,0,girl,dd6e35d1a5b603cb21b615c2c0d97b92ff26515bbe52b2fdbe950a528f4a56e2,,
 CosplayTele,cosplaytele_25_190983,0.2.0,KadishJoey/venera-json,venera-next,未通过,失败,1.0.0,https://cosplaytele.com/lynae-10/,https://cosplaytele.com/lynae-10/Tiny%20Asa%20%E3%82%A2%E3%82%B5%20(tiny.asababy)%20cosplay%20Lynae%20%E2%80%93%20Wuthering%20Waves%20%E2%80%9C59%20photos%20and%201%20video%E2%80%9D,cos,c1b9db6ef30749caf774d577e5c2a7ac1c66feb0f52226f2a6d47d144098a48d,comic.loadEp,HTTP 错误
 包子漫画cw,cw_57_cc4798,0.2.0,KadishJoey/venera-json,venera-next,未通过,失败,1.0.0,,,斗破苍穹,6fad2dc6dbc90ebfbc9993b2ca1be598852d3aef8f3d41097e7613c91d453719,comic.loadInfo,返回结构或样本不满足契约
@@ -454,7 +454,7 @@ GMANHUA,gmanhua_59_ee9658,0.2.0,KadishJoey/venera-json,venera-next,未通过,失
 瓜子漫画,guazi_manhua_v2,1.0.1,ChenTeea/veneresource,venera-next,通过,通过,1.2.2,/comic.php?id=15663,1890870,火影,9191babe81a1472f57d02363c5e3af510d3b3aebbc48c97e17edb539068d7ba1,,
 瓜子漫画,guazimanhua,1.0.4,Junkrat9527/venera-sources,venera-next,通过,失败,1.0.0,15663,1890870,火影,3b47fd313cc99c887b6d2fca7d320b6df72f72e52c0b322fe74ff1f683c3c489,comic.idMatch,返回结构或样本不满足契约
 国漫吧,guoman8,1.0.2,token1008/venera-cn-64bit,venera-next,未通过,失败,1.0.0,http://www.guoman8.cc/44900/,http://www.guoman8.cc/44900/01.html,海贼王,b7c7b03cefb791395b5fb7a06be832e7ab4d2a73d2e661407f131b29d1cc448a,search.load,反爬拦截
-Hachiraw,hachiraw,1.0.0,YUIRIKIiii/venera-sources,venera-next,未通过,失败,1.6.0,/manga-diner-raw/,5119/1474625,異世界,bee58b154cb64f25e738ffb56306cf10c15820388fbf882723bf25644771e4c3,search.load,返回结构或样本不满足契约
+Hachiraw,hachiraw,1.0.0,YUIRIKIiii/venera-sources,venera-next,通过,失败,1.6.0,/manga-diner-raw/,5119/1474625,異世界,bee58b154cb64f25e738ffb56306cf10c15820388fbf882723bf25644771e4c3,search.load,返回结构或样本不满足契约
 花火漫画,hanabimanga,1.0.0,xiaoxingmian/venera-configs,venera-next,未通过,失败,1.4.0,334,18158,海贼王,e8d71c02d79cf0e370882d11f9bfd52e6620db34b479b099ce81f9e46701fca0,comic.loadEp,请求限流
 好看漫画,haokan_txt,1.0.4,Junkrat9527/venera-sources,venera-next,通过,通过,1.2.2,/comic_haizeiwangbluedeepziliaoshedingji.html,91394@2817951,海贼王,88e1a9b1d513975bb86f8fae43a3dc64977bbaed470106d440c6e359d98a3839,,
 绅士会所,hentaiclub,1.0.0,meaninglesslyy/venera-config,venera-next,未通过,失败,1.6.0,https://www.hentaiclub.net/r18/69677.html,0,火影,87985fef6ce6541776ecb8f31f2034f8d05015b421fe2d63602e1dc644a476d3,search.load,反爬拦截
@@ -475,7 +475,7 @@ Komga,komga,1.0.1,zakkida/venera-sources,venera-next,未通过,失败,1.4.0,,,�
 Komiic漫画,komiic_69_259947,0.2.0,KadishJoey/venera-json,venera-next,未通过,失败,1.0.0,,,愛,698670f557ce30d2a554c6bb82cd65a03e3322ea18a0c73e90e57b74bcd6c2c0,search.load,HTTP 错误
 Komiic 多账号,komiic_multi,1.6.2,snowf14k3/venera-komiic-multi,venera-next,未通过,失败,1.0.0,9145,238269,愛,96036813d0211f2908736133788e3403f7a03dbe8d5001830f2c612413e1c24b,explore[0].load,返回结构或样本不满足契约
 快看漫画,kuaikan,1.0.0,cattoldme/venera-configs,venera-next,通过,通过,1.6.0,766,744903,斗破苍穹,ad550aa4ecafa18119adbb651318cc501d40e753e9dc1a999f16a4f3a4dc2fff,,
-来漫画（分流）,laimanhua_split,1.2.2,Junkrat9527/venera-sources,venera-next,通过,失败,1.0.0,dengluweilaiyiwannian,74330001,斗破苍穹,ed9c0d8a088d31aa8b45d311a7280c35d4b971c728c74b9fe3eead94e08cbb9b,search.load,HTTP 错误
+来漫画（分流）,laimanhua_split,1.2.2,Junkrat9527/venera-sources,venera-next,未通过,失败,1.0.0,dengluweilaiyiwannian,74330001,斗破苍穹,ed9c0d8a088d31aa8b45d311a7280c35d4b971c728c74b9fe3eead94e08cbb9b,search.load,HTTP 错误
 Lanraragi,lanraragi,1.1.0,yelongyue197-svg/venera-sources,venera-next,通过,失败,1.4.0,e4c422fd10943dc169e3489a38cdbf57101a5f7e,e4c422fd10943dc169e3489a38cdbf57101a5f7e,火影,360c68843b8a04153a12411af1a9648078ed42939a57290b3c85539b62dab7d6,search.load,HTTP 错误
 特漫网站,legacy_17te,0.1.0,wuliaoe/venera-extra-sources,venera-next,未通过,失败,1.6.0,,,海贼王,81fbbe889e77ca251bffee35518f736f85789a088501001ef8748703b1acebf5,search.load,网络错误
 极速漫画,legacy_1kkk,0.1.0,wuliaoe/venera-extra-sources,venera-next,通过,通过,1.6.0,http://www.1kkk.com/manhua18216/,https://m.1kkk.com/ch1-200037/,火影,eb0e0aa7c715ce71a3a932b20aa4c8bbcc8a29d7136746a9d766a95b010e91ae,,
@@ -497,7 +497,7 @@ Lanraragi,lanraragi,1.1.0,yelongyue197-svg/venera-sources,venera-next,通过,失
 看漫画,legacy_kanman,0.1.0,wuliaoe/venera-extra-sources,venera-next,未通过,失败,1.6.0,,,海贼王,8ab8a3e0ccfe10462264f0130820c579dcd3bdcf3adfdf7100c255522585c19f,comic.loadInfo,源配置错误
 漫画羊,legacy_manhuayang,0.1.0,wuliaoe/venera-extra-sources,venera-next,未通过,失败,1.6.0,,,海贼王,a17452ca3352040f824e6a46d4345ab1c79b25e61db3d79e9cfdd6b17d8be2c7,search.load,DNS 错误
 漫漫看漫画网,legacy_manmankan,0.1.0,wuliaoe/venera-extra-sources,venera-next,未通过,失败,1.6.0,,,海贼王,e650efd029f2c33b509edfa268188fb5c080952bfe0e856efcfafdd43eb19539,search.load,请求超时
-漫漫睇,legacy_manmantai,0.1.0,wuliaoe/venera-extra-sources,venera-next,未通过,失败,1.6.0,,,海贼王,0540caf28915172d95af9dffa6de1db78822af48f04ab307c9fa155fbb239dd8,search.load,请求超时
+漫漫睇,legacy_manmantai,0.1.0,wuliaoe/venera-extra-sources,venera-next,未通过,失败,1.6.0,,,海贼王,0540caf28915172d95af9dffa6de1db78822af48f04ab307c9fa155fbb239dd8,search.load,源配置错误
 漫画芯,legacy_mhxin,0.1.0,wuliaoe/venera-extra-sources,venera-next,未通过,失败,1.6.0,,,海贼王,ee90d24a360449bd692834475e189cedcb5cfababd766e006e47f43a2ba5fe68,search.load,TLS 错误
 奇妙漫画,legacy_qimiaomh,0.1.0,wuliaoe/venera-extra-sources,venera-next,未通过,失败,1.6.0,,,海贼王,542169675a8b087c8d07ba3ea4208cc75dfd493762566d44cfa3f7bd58e2c674,search.load,TLS 错误
 奇热漫画,legacy_qiremanhua,0.1.0,wuliaoe/venera-extra-sources,venera-next,未通过,失败,1.6.0,,,海贼王,091afce1a67e4bfbee65ab2331f43a6a658a2516943e80e43033dfb9b6f2efae,search.load,DNS 错误
@@ -522,7 +522,7 @@ MangaDex,manga_dex,1.1.0,yelongyue197-svg/venera-sources,venera-next,通过,失�
 MANGA Plus,manga_plus,1.0.2,WEP-56/EZvenera-config,venera-next,未通过,失败,1.2.2,,,one,7a29a3460780bf860bd8257c1567c16f57df702691e7d11170f16f5644396685,search.load,需要登录
 Mangabz,mangabz,1.0.0,YHQY-Dev/venera-sources,venera-next,未通过,失败,1.0.0,,,海贼王,45ea62f02ef64fa0ad1f176fe125572b78d326060d06bf2964c7f8bc5dd63192,search.load,需要登录
 Mangabz,mangabz_72_18ed08,0.2.0,KadishJoey/venera-json,venera-next,未通过,失败,1.0.0,,,海贼王,510e1cca571f7f48fdf5341fa85bc628965ae6bb9b5e42debb58ae754d3fd90c,comic.loadInfo,HTTP 错误
-MangaForFree,mangaforfree,0.7.4,meaninglesslyy/venera-config,venera-next,未通过,失败,1.6.0,the-idol-managers-diary,chapter-1,one,617657b4235f2ba5d0b100eef5d577dfb8611d06a965642990b3c32ee41f5621,search.load,阶段超时
+MangaForFree,mangaforfree,0.7.4,meaninglesslyy/venera-config,venera-next,通过,失败,1.6.0,the-idol-managers-diary,chapter-1,one,617657b4235f2ba5d0b100eef5d577dfb8611d06a965642990b3c32ee41f5621,search.load,返回结构或样本不满足契约
 MangaPill,mangapill,1.0.0,zakkida/venera-sources,venera-next,未通过,失败,1.6.0,,,love,ca1a4bec908a574c71a218e337a3efd655ec32e6d978b153cfd4fa1fe7bebb75,search.load,返回结构或样本不满足契约
 MangaRead,mangaread_66_d1113a,0.2.0,KadishJoey/venera-json,venera-next,未通过,失败,1.0.0,,,one,7e24ed7aa022fba8773a989c11e17bbdaa6b65101815d01f00b5599314278e94,comic.loadInfo,返回结构或样本不满足契约
 178漫画网,manhua178,1.0.0,token1008/venera-cn-64bit,venera-next,通过,部分通过,1.0.0,/book/1857/,/chapter/1857/196766.html,火影,d7361f1ec9128df35d0ccc7ea4bf6aef18c44065f51ed7a397228dcadbb6363f,,
@@ -535,7 +535,7 @@ MangaRead,mangaread_66_d1113a,0.2.0,KadishJoey/venera-json,venera-next,未通过
 漫网,manwang,1.3.4,Junkrat9527/venera-sources,venera-next,未通过,失败,1.4.0,531963,192773,火影,f4864ddfe001645b8b3e05285cc037ed844ddaa95802ff3a8863b177d40f5fb9,search.load,反爬拦截
 漫画manga,mh03,1.0.1,Magentadots/venera-configs,venera-next,通过,失败,1.0.0,haizeiwangbluedeepziliaoshedingji,91394_2817951,海贼王,fb0043c114e1916b99164727b2c8b2a5331ebdcad25dba3bf1bfd93af76fdf12,explore[0].load,需要登录
 漫画1234,mh1234,1.0.1,zakkida/venera-sources,venera-next,未通过,失败,1.4.0,,,海贼王,913f1b26d976ddf2d67bbd6f56585453120fa9af90e9aa4b3bea50d1fa746538,search.load,网络错误
-漫画1234（新版网站）,mh1234_fixed,1.2.2,JunQianNuo/venera-sources,venera-next,通过,失败,1.4.0,11608,240685,海贼王,ae25ddf5e039aab565111253a5328cf6062e4a0cb487104e3c9a97a991098786,categoryComics.load,返回结构或样本不满足契约
+漫画1234（新版网站）,mh1234_fixed,1.2.2,JunQianNuo/venera-sources,venera-next,通过,失败,1.4.0,11608,240685,海贼王,ae25ddf5e039aab565111253a5328cf6062e4a0cb487104e3c9a97a991098786,search.load,请求超时
 4399漫画网,mh4399,1.0.5,Junkrat9527/venera-sources,venera-next,未通过,失败,1.6.0,9782677,1,海贼王,4e25bc428ac5284288bc680eadcb810216b00c2e0df6840550eb198bc04647de,image.download,反爬拦截
 漫画看,mhkan,1.1.7,Junkrat9527/venera-sources,venera-next,未通过,失败,1.0.0,,,斗破苍穹,dbc378b662daf7169b78cc1c20799f52d0acfd48aacdecf98f1bd747e875a7ef,categoryComics.load,返回结构或样本不满足契约
 喵趣漫画,miaoqu,1.0.0,token1008/venera-cn-64bit,venera-next,未通过,失败,1.0.0,,,海贼王,3453e17e695392f647e7cf17c5ee412ad81d87fbab3d419918e39287c10ff1a0,search.load,反爬拦截
@@ -610,7 +610,7 @@ SF漫画,sfacg_manhua,1.0.2,Junkrat9527/venera-sources,venera-next,通过,失败
 腾讯动漫,tencentcomics,1.0.0,xiaoxingmian/venera-configs,venera-next,通过,失败,1.5.0,643717,/ComicView/index/id/643717/cid/1,海贼王,50a7268a0de339d364553947059a2c522846def79c5c5259eb2a65eb1df300f0,explore[0].load,需要登录
 图库漫画,tuku_cc,1.0.2,Junkrat9527/venera-sources,venera-next,通过,失败,1.4.0,67586,630339,火影,59c79f140dd68c1e848473a17a5916ff52ef009e539cf8a1de94a1b29d4a1b26,explore[0].load,需要登录
 V2PH,v2ph,1.2.0,meaninglesslyy/venera-config,venera-next,未通过,失败,1.6.0,,,cos,e78bf6e69d4afcaa4b72085276a1c2ab94473f69ba11e52e5bd1455173d28e5d,search.load,反爬拦截
-vomic,vomic,1.2.1,LX7kM9/venera-configs,venera-next,未通过,失败,1.5.0,39146,ep_37546,海贼王,b9c3012e15005aa533062f45c0c553e32af0dfa71706df1b7a3f70b1abeb38a9,comic.loadEp,需要登录
+vomic,vomic,1.2.1,LX7kM9/venera-configs,venera-next,未通过,失败,1.5.0,,,海贼王,b9c3012e15005aa533062f45c0c553e32af0dfa71706df1b7a3f70b1abeb38a9,search.load,需要登录
 ◯ 包子漫画web,web_70_6c33fc,0.2.0,KadishJoey/venera-json,venera-next,未通过,失败,1.0.0,,,斗破苍穹,64183163b2d7c8ae91d24a21005543a1d2e770e0d5a446528f965a10bf84c7cc,search.load,返回结构或样本不满足契约
 WEBTOON,webtoon,1.0.0,cattoldme/venera-configs,venera-next,未通过,失败,1.6.0,https://www.webtoons.com/zh-hant/fantasy/tower-of-god-urek-mazino/list?title_no=%5BREDACTED%5D,/zh-hant/fantasy/tower-of-god-urek-mazino/%E7%AC%AC60%E8%A9%B1-%E8%89%BE%E5%88%A9%E5%AE%B6%E6%97%8F%E7%9A%84%E6%B8%AC%E8%A9%A62/viewer?title_no=8591&episode_no=60,神之塔,1afbcd932087e454e78769d78874a415b6e6da7c726ddc378fce8fd55a0a5471,comic.loadInfo,HTTP 错误
 webtoon移动版,webtoon_71_d28205,0.2.0,KadishJoey/venera-json,venera-next,未通过,失败,1.0.0,,,love,d5f87faf566e3fa32be0222286fb193225e8cf241f15a821af125f6ce449275a,search.load,HTTP 错误
