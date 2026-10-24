@@ -1,12 +1,11 @@
 import { readFile } from "node:fs/promises";
-import { createHash } from "node:crypto";
-import { fileURLToPath } from "node:url";
+import { createHash, randomUUID } from "node:crypto";
 
 function unsupported(message) {
   throw Object.assign(new Error(message), { category: "runtime_unsupported" });
 }
 
-// 仅桥接已审阅的 jm 阅读接口；未知宿主消息直接失败。
+// 只执行固定提交的客户端接口；未知宿主消息直接失败。
 export async function installClientProfile(globals, runtime, images) {
   const name = process.env.VENERA_CLIENT_PROFILE;
   if (!name) return null;
@@ -25,6 +24,7 @@ export async function installClientProfile(globals, runtime, images) {
   const host = { ...globals };
   const config = runtime.configManager;
   const handles = new Map();
+  const documents = new Map();
   let client, nextImage = 0;
   const addImage = (handle) => {
     const key = ++nextImage;
@@ -45,6 +45,50 @@ export async function installClientProfile(globals, runtime, images) {
   }
   function sendMessage(m) {
     switch (m.method) {
+      case "html": {
+        if (m.function === "parse") {
+          if (documents.size >= 8) documents.delete(documents.keys().next().value);
+          documents.set(m.key, { document: new host.HtmlDocument(m.data), nodes: new Map(), next: 0 });
+          return;
+        }
+        if (m.function === "dispose") return documents.delete(m.key);
+        const doc = documents.get(m.doc ?? m.key);
+        if (!doc) throw new Error("HTML document is unavailable");
+        const add = (node) => {
+          if (node == null) return null;
+          const id = ++doc.next;
+          doc.nodes.set(id, node);
+          return id;
+        };
+        const node = m.doc === undefined ? doc.document : doc.nodes.get(m.key);
+        if (!node) throw new Error("HTML node is unavailable");
+        switch (m.function) {
+          case "querySelector": case "dom_querySelector": return add(node.querySelector(m.query));
+          case "querySelectorAll": case "dom_querySelectorAll":
+            return node.querySelectorAll(m.query).map(add);
+          case "getElementById": return add(node.getElementById(m.id));
+          case "getChildren": return node.children.map(add);
+          case "getNodes": return node.nodes.map(add);
+          case "getParent": return add(node.parent);
+          case "getPreviousSibling": return add(node.previousElementSibling);
+          case "getNextSibling": return add(node.nextElementSibling);
+          case "node_to_element": return add(node.toElement());
+          case "node_toElement":
+            // 两份客户端的 JS 拼写与 Dart 分支不同，不掩盖客户端自身的不兼容。
+            unsupported("Client HtmlNode.toElement message differs from Dart host");
+            break;
+          default: {
+            const property = {
+              getText: "text", node_text: "text", node_type: "type",
+              getAttributes: "attributes", getInnerHTML: "innerHTML",
+              getClassNames: "classNames", getId: "id", getLocalName: "localName",
+            }[m.function];
+            if (!property) unsupported(`Unimplemented HTML function: ${m.function}`);
+            return node[property];
+          }
+        }
+        break;
+      }
       case "http": {
         const headers = { ...m.headers };
         if (!Object.keys(headers).some((key) => key.toLowerCase() === "user-agent"))
@@ -53,16 +97,24 @@ export async function installClientProfile(globals, runtime, images) {
           m.http_method, m.url, headers, m.data, m.extra);
       }
       case "convert": {
+        if (m.type === "hmac")
+          return host.Convert[m.isString ? "hmacString" : "hmac"](m.key, m.value, m.hash);
         const method = {
           utf8: m.isEncode ? "encodeUtf8" : "decodeUtf8",
           gbk: m.isEncode ? "encodeGbk" : "decodeGbk",
           base64: m.isEncode ? "encodeBase64" : "decodeBase64",
           md5: "md5", sha1: "sha1", sha256: "sha256", sha512: "sha512",
           "aes-ecb": m.isEncode ? "encryptAesEcb" : "decryptAesEcb",
+          "aes-cbc": m.isEncode ? "encryptAesCbc" : "decryptAesCbc",
+          "aes-cfb": m.isEncode ? "encryptAesCfb" : "decryptAesCfb",
+          "aes-ofb": m.isEncode ? "encryptAesOfb" : "decryptAesOfb",
+          rsa: m.isEncode ? null : "decryptRsa",
         }[m.type];
         if (!method || typeof host.Convert[method] !== "function")
           unsupported(`Unimplemented conversion: ${m.type}`);
-        return host.Convert[method](m.value, m.key);
+        if (m.type === "aes-cfb") return host.Convert[method](m.value, m.key, m.iv, m.blockSize);
+        if (m.type === "aes-ofb") return host.Convert[method](m.value, m.key, m.blockSize);
+        return host.Convert[method](m.value, m.key, m.iv);
       }
       case "load_setting": {
         const source = sourceFor(m);
@@ -91,6 +143,20 @@ export async function installClientProfile(globals, runtime, images) {
       }
       case "delay":
         return new Promise((resolve) => setTimeout(resolve, Math.max(0, m.time)));
+      case "uuid": return randomUUID();
+      case "random":
+        return m.type === "int" ? Math.floor(Math.random() * (m.max - m.min)) + m.min :
+          Math.random() * (m.max - m.min) + m.min;
+      case "compute": {
+        if (typeof m.function !== "string" || !Array.isArray(m.args))
+          throw new TypeError("compute requires a function string and argument array");
+        return Promise.resolve(new Function(...Object.keys(globals),
+          `return (${m.function})(...arguments[arguments.length - 1]);`)(
+          ...Object.values(globals), m.args));
+      }
+      case "getClipboard": case "setClipboard":
+        unsupported("Interactive clipboard is unavailable");
+        break;
       case "getLocale": return host.APP.locale;
       case "getPlatform": return process.platform === "win32" ? "windows" : process.platform;
       case "log": return host.log(m.level, m.title, m.content);
@@ -124,11 +190,26 @@ export async function installClientProfile(globals, runtime, images) {
   // 使用客户端原始 bootstrap；版本来自同一提交的 pubspec，不修改旧 APP。
   client = new Function("sendMessage", "appVersion", `${init.toString()}
 return { Convert, Network, fetch, Comic, ComicDetails, Comment, ImageLoadingConfig,
-  ComicSource, APP, UI, console, log, setTimeout, setInterval, Image,
+  ComicSource, APP, UI, console, log, setTimeout, setInterval, Image, Cookie,
+  HtmlDocument, HtmlElement, HtmlNode, createUuid, randomInt, randomDouble,
+  compute, getClipboard, setClipboard,
   __sourceRuntime: typeof __sourceRuntime === "undefined" ? null : __sourceRuntime };`
   )(sendMessage, version);
   const { Image, __sourceRuntime, ...api } = client;
   Object.assign(globals, api);
+  if (name === "venerax") {
+    const parserPath = "lib/foundation/comic_source/parser.dart";
+    const parser = await readFile(new URL(`${name}/${parserPath}`, base));
+    if (createHash("sha256").update(parser).digest("hex") !== profile.files[parserPath])
+      throw new Error("Client parser hash mismatch");
+    const script = parser.toString().match(
+      /\/\/ Fix broken isAppVersionAfter[\s\S]*?JsEngine\(\)\.runCode\("""([\s\S]*?)"""\);/)?.[1];
+    if (!script) throw new Error("Client source hook is unavailable");
+    globals.__clientSourceLoaded = (source) => {
+      const actual = script.replaceAll("$_key", source.key);
+      new Function("ComicSource", "APP", actual)(client.ComicSource, client.APP);
+    };
+  }
   globals.__modifyImage = async (bytes, script) => {
     try {
       const input = new Image(addImage(await images.decode(bytes)));
@@ -141,6 +222,6 @@ return { Convert, Network, fetch, Comic, ComicDetails, Comment, ImageLoadingConf
     }
   };
   return { name, repository: profile.repository, commit: profile.commit, version,
-    bootstrapSha256: profile.files["assets/init.js"], bridge: fileURLToPath(import.meta.url),
+    bootstrapSha256: profile.files["assets/init.js"],
     scope: profile.scope };
 }

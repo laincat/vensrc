@@ -93,10 +93,10 @@ def validate_catalog(catalog):
         assert not item.get("allowMutations")
         assert isinstance(item.get("settings", {}), dict)
         if item.get("runtimeProfile"):
-            assert item["key"] == "jm" and item["version"] == "1.9.2"
-            assert item["settings"].get("dailyCheckInTask") is False
             assert item["runtimeProfile"] == "venerax"
             assert item.get("verifyProfiles") == ["venera-next"]
+        if item["key"] == "jm" and item["version"] == "1.9.2":
+            assert item["settings"].get("dailyCheckInTask") is False
             assert item["sample"].get("comicId") and item["sample"].get("epId")
     return catalog
 
@@ -353,10 +353,19 @@ def patrol(work):
                 available.append(item)
     if len(failures) > max(3, len(items) // 10):
         raise ValueError("批量源码获取异常，停止本次发布，避免误删订阅")
+    executions = available + [
+        {**item, "runtimeProfile": profile, "verificationOnly": True}
+        for item in available for profile in item.get("verifyProfiles", [])]
+    priority = set(catalog["priorityRepositories"])
+    executions.sort(key=lambda i: (
+        not bool(priority.intersection(i.get("trackedBy", []))),
+        i.get("runtimeProfile", ""), i["key"], i["version"]))
     batches = []
-    for item in available:
+    for item in executions:
         for batch in batches:
             if (batch[0].get("runtimeProfile") == item.get("runtimeProfile") and
+                    bool(priority.intersection(batch[0].get("trackedBy", []))) ==
+                    bool(priority.intersection(item.get("trackedBy", []))) and
                     all(other["key"] != item["key"] for other in batch)):
                 batch.append(item)
                 break
@@ -367,9 +376,11 @@ def patrol(work):
     client_records = [
         {"id": item["id"], "source": failure, "runtimeProfile": profile, "inputs": item["effectiveSample"]}
         for item, failure in failures for profile in item.get("verifyProfiles", [])]
-    batches += [[{**item, "runtimeProfile": profile, "verificationOnly": True}]
-                for item in available for profile in item.get("verifyProfiles", [])]
     for number, batch in enumerate(batches):
+        latest = run("git", "ls-remote", "https://github.com/Gandum2077/venera-patrol-cli.git",
+                     "HEAD", capture_output=True, text=True).stdout.split()[0]
+        if latest != metadata["commit"]:
+            raise ValueError("本批巡检前 CLI 已更新；停止，重新获取最新 CLI 后再执行")
         config = {
             "version": 1, "configPaths": [f"/work/{number}.index.json"],
             "output": f"/work/reports/{number}", "defaults": POLICY,
@@ -436,7 +447,8 @@ def validate_client_record(record, item, payload):
     assert payload["cli"]["clientProfiles"] == profiles
     for name in ("scripts/client_bridge.mjs", "scripts/prepare_client.py", "monitor/clients.json"):
         assert payload["cli"]["adapterSha256"][name] == sha((ROOT / name).read_bytes())
-    assert record["inputs"] == item["sample"], "客户端对照必须使用同一固定样本"
+    for name, value in item["sample"].items():
+        assert record["inputs"].get(name) == value, "客户端对照必须使用同一固定样本"
     stages = record["source"]["stages"]
     loaded = next((s for s in stages if s["path"] == "runtime.load"), None)
     if loaded and loaded["status"] == "passed":
@@ -531,8 +543,9 @@ def publish(payload, destination):
         "固定漫画及章节、源码字节哈希和 CLI 提交均保留。主索引必须同次通过入口、详情、章节、图片下载与解码，且整次报告为 passed；"
         "扩展索引要求相同核心链路通过，其他能力可有失败或跳过。旧成功结果不代替新失败。", "",
         "GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证导入或阅读。"
-        "普通构建仍使用原版 1.6.3 Runtime；jm 1.9.2 使用已核验的 VeneraX 原始 bootstrap，"
-        "另以相同样本对照 Venera-Next。适配范围见 CLIENT_COMPATIBILITY.md，"
+        "全部已审阅构建使用已核验的 VeneraX 原始 bootstrap，"
+        "逐个以相同样本对照 Venera-Next。订阅仅按 VeneraX 本次结果选择；"
+        "Next 成功不替代 X 失败。适配范围见 CLIENT_COMPATIBILITY.md，"
         "客户端对照复测见 CLIENT_RESULTS.md。", "",
         "## 三个自用仓库", "",
     ]
@@ -584,11 +597,15 @@ def publish_clients(payload, catalog, destination):
     assert len(actual) == len(expected) and set(actual) == expected, "客户端对照证据缺失或重复"
     records = [r for r in payload["records"] if r.get("runtimeProfile")]
     records += payload.get("clientRecords", [])
-    lines = ["# VeneraX／Venera-Next 固定样本对照结果", "",
+    lines = ["# VeneraX／Venera-Next 固定样本兼容清单", "",
              f"核验时间：{payload['checkedAt']}（UTC）。",
              f"最新上游 CLI 提交：`{payload['cli']['commit']}`；同时加载本仓库记录哈希的接口适配层。",
-             "结果为 Node 宿主上的真实客户端 JS 接口巡检，不代表 Flutter UI 或用户设备实测。", ""]
+             "全部已审阅源码逐个使用相同固定输入；VeneraX 为订阅选择依据，Next 为独立对照。",
+             "结果为 Node 宿主上的真实客户端 JS 接口巡检，不代表 Flutter UI 或用户设备实测。",
+             "账号巡检另见 ACCOUNT_RESULTS.md，不以账号通过替代匿名订阅收录标准。",
+             "完整阶段、输入和哈希保存在 client-results.json 与 sources.zh.csv。", ""]
     clean_records = []
+    grouped = {}
     for record in records:
         item = items[record["id"]]
         validate_client_record(record, item, payload)
@@ -599,20 +616,39 @@ def publish_clients(payload, catalog, destination):
         elif source.get("sourceSha256"):
             assert source["sourceSha256"] == item["sha256"]
         profile = record["runtimeProfile"]
-        definition = payload["cli"]["clientProfiles"][profile]
-        lines += [f"## {definition['repository']} {definition['version']}", "",
-                  f"- 源：`{item['key']}` {item['version']}；最低版本 `{item['minAppVersion']}`（保持原声明）。",
-                  f"- 客户端接口提交：`{definition['commit']}`。",
-                  f"- 源码 SHA-256：`{item['sha256']}`。",
-                  f"- 固定样本：`{json.dumps(record['inputs'], ensure_ascii=False)}`。",
-                  f"- 核心链路：{'通过' if core(source) else '未完整通过'}；整次状态：{LABELS[source['status']]}。",
-                  "", "| 阶段 | 状态 | 类别／说明 |", "| --- | --- | --- |"]
-        for stage in source["stages"]:
-            lines.append("| " + " | ".join(text(v) for v in (
-                stage["path"], LABELS.get(stage["status"], stage["status"]),
-                reason_zh(stage.get("reason", "")))) + " |")
-        lines.append("")
+        grouped.setdefault(item["id"], {})[profile] = record
         clean_records.append(record)
+    for pair in grouped.values():
+        if "venerax" in pair and "venera-next" in pair:
+            assert pair["venerax"]["inputs"] == pair["venera-next"]["inputs"], "两个客户端必须使用完全相同的固定输入"
+    for repo in catalog["priorityRepositories"]:
+        builds = [i for i in items.values() if repo in i.get("trackedBy", [])]
+        counts = []
+        for profile in ("venerax", "venera-next"):
+            passed = sum(core(grouped[i["id"]][profile]["source"]) for i in builds)
+            counts.append(f"{profile} 核心通过 {passed}/{len(builds)}")
+        lines.append(f"- `{repo}`：" + "；".join(counts) + "。")
+    lines += ["", "| 名称 | key | 版本 | 仓库 | 源码哈希（前12位） | VeneraX 核心／整次 | Next 核心／整次 | 首个失败（X；Next） |",
+              "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+    priority = set(catalog["priorityRepositories"])
+    for item in sorted(items.values(), key=lambda i: (
+            not bool(priority.intersection(i.get("trackedBy", []))), i["key"], i["version"])):
+        pair = grouped.get(item["id"], {})
+        cells, problems = [], []
+        for profile in ("venerax", "venera-next"):
+            record = pair.get(profile)
+            if not record:
+                cells.append("未测试")
+                problems.append("缺少环境")
+                continue
+            source = record["source"]
+            cells.append(("通过" if core(source) else "未通过") + "／" + LABELS[source["status"]])
+            failed = next((s for s in source["stages"] if s["status"] == "failed"), {})
+            problems.append(f"{failed.get('path', '')} {CATEGORIES.get(failed.get('category'), failed.get('category', ''))}".strip() or "无失败")
+        lines.append("| " + " | ".join(text(v) for v in (
+            item["name"], item["key"], item["version"], item["repository"],
+            item["sha256"][:12], *cells, "；".join(problems))) + " |")
+    lines.append("")
     save(destination / "client-results.json", {
         "schemaVersion": 1, "checkedAt": payload["checkedAt"], "cli": payload["cli"],
         "records": clean_records, "runUrl": os.environ.get("AUDIT_RUN_URL", "")})

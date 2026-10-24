@@ -21,7 +21,7 @@
 
 主索引整次报告必须为 `passed`；扩展索引可能仍有搜索、分类、标签、评论、封面或账号等能力未通过。扩展源不是“完整可用”的承诺。索引中可能包含写真或图集源，名称保留上游标识。
 
-没有提供账号凭据，不启用写操作。`source.load` 通过、核心阅读通过、Venera UI 导入成功、用户设备实际阅读成功是不同的验证范围。本索引已验证 CLI 和格式；未在用户设备验证 UI 导入与阅读。
+匿名订阅巡检不提供账号凭据。独立账号任务只向白名单源分发本站 Secret，见 [脱敏账号报告](ACCOUNT_RESULTS.md)；两类任务均不启用写操作。`source.load` 通过、核心阅读通过、Venera UI 导入成功、用户设备实际阅读成功是不同的验证范围。本索引已验证 CLI 和格式；未在用户设备验证 UI 导入与阅读。
 
 某些社区版本沿用官方 key。锁定清单中的 `officialKey: true` 表示可能与已安装的官方同 key 源冲突或替换；不同 key 也可能是同一网站的别名。
 
@@ -31,9 +31,9 @@
 
 **每次巡检前更新 venera-patrol-cli 到上游默认分支最新提交**，使用该提交的 `package-lock.json` 安装依赖并构建独立容器。巡检开始前再次核对上游 HEAD。获取、安装或报告格式检查失败时停止本次发布，不回退到缓存旧版。中文报告和 `audit-status.json` 记录 CLI 提交、版本、依赖锁 SHA-256、Node 版本和运行地址。
 
-`jm 1.9.2` 另加载固定提交的 VeneraX 原始 JS bootstrap，并以相同固定样本对照 Venera-Next；版本取自各自真实 `pubspec.yaml`，不降低源最低版本、不修改旧 Runtime 版本。最新 CLI 加载的本仓库适配层、客户端源码哈希及逐阶段结果见 [客户端对照报告](CLIENT_RESULTS.md) 和 `client-results.json`。其他构建暂保留原版 Runtime 验证范围。
+全部已审阅构建均加载固定提交的 VeneraX 原始 JS bootstrap，并以完全相同的固定输入逐个对照 Venera-Next；三个自用仓库优先执行。版本取自各自真实 `pubspec.yaml`，不降低源最低版本、不修改旧 Runtime 版本。订阅仅按 VeneraX 本次结果收录，Next 成功不能替代 X 失败。适配层、客户端源码哈希及逐阶段结果见 [客户端兼容清单](CLIENT_RESULTS.md) 和 `client-results.json`。
 
-固定漫画与章节 ID 保存在 `monitor/catalog.json`；每个构建的 JS URL 固定到 Git 提交，下载字节 SHA-256 必须与已审阅清单完全相同。源码只在没有 GitHub 凭据、没有 Docker socket、源码只读的容器中运行；不提供账号，不启用 mutations。发布放在另一个有写权限的 job，重新核对清单哈希、源码哈希及主／扩展标准，只提交生成的 JSON、中文 CSV 和报告。
+固定漫画与章节 ID 保存在 `monitor/catalog.json`；每个构建的 JS URL 固定到 Git 提交，下载字节 SHA-256 必须与已审阅清单完全相同。源码只在没有 GitHub 凭据、没有 Docker socket、源码只读的容器中运行；匿名容器不提供账号；账号容器只获得本站凭据，临时会话在运行后删除；均不启用 mutations。发布放在另一个有写权限的 job，重新核对清单哈希、源码哈希及主／扩展标准，只提交生成的 JSON、中文 CSV 和报告。
 
 上游变更检测覆盖登记仓库及 GitHub 仓库搜索。新字节只下载、计算哈希和读取声明，不加载或执行；待审阅版本见 [上游变更报告](UPDATES.md) 和 `pending-updates.json`。维护者在 GitHub 审阅固定提交代码后，将对应构建加入 `monitor/catalog.json`，后续 Actions 会自动巡检并按结果收录。这一步不需要本机在线，也不会以自动扫描替代代码审阅。
 
@@ -45,7 +45,7 @@
 
 - [中文巡检报告](RESULTS.md)：逐构建结果、固定样本的核心链路、主／扩展名单。
 - [中文完整清单](sources.zh.csv)：源版本、样本输入、首个失败阶段及源码哈希。
-- [账号巡检与 Secrets](ACCOUNT_TESTING.md)：可准备的凭据格式；当前匿名定时任务尚未接入账号 Secret。
+- [账号巡检与 Secrets](ACCOUNT_TESTING.md)：按站点隔离的 Secrets、源码白名单与脱敏规则；[账号结果](ACCOUNT_RESULTS.md)独立于匿名订阅。
 - `audit-status.json`：本次执行环境、工具版本和 Actions 运行链接。
 - Actions 的 `venera-patrol-results` artifact：结构化逐阶段证据及中文预览，保留 30 天；不上传原始 trace 或认证状态。
 - `monitor/catalog.json`：已审阅源码及固定样本；不要通过修改 `minAppVersion` 或伪造通过阶段绕过兼容性问题。
@@ -55,7 +55,7 @@
 ## 上游与范围
 
 - [VeneraX（主要使用的客户端）](https://github.com/Kyosee/VeneraX)
-- [Venera-Next（JM 同样本对照客户端）](https://github.com/CyrilPeng/Venera-Next)
+- [Venera-Next（全量同样本对照客户端）](https://github.com/CyrilPeng/Venera-Next)
 - [Venera 官方索引](https://github.com/venera-app/venera-configs)
 - [Venera 源格式](https://github.com/venera-app/venera/blob/master/doc/comic_source.md)
 - [venera-patrol-cli](https://github.com/Gandum2077/venera-patrol-cli)

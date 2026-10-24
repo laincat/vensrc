@@ -1,48 +1,47 @@
 # 账号巡检与 Actions Secrets
 
-## 当前状态
+## 已接入的方式
 
-GitHub Actions Secrets 可以保存站点用户名、密码、Cookie 或 Token。当前公开定时巡检**没有读取站点登录 Secret**；添加 Secret 只会保存凭据，不会自动启用登录。本轮所有报告均未使用账号。
+凭据按站点分别保存在仓库 Settings → Secrets and variables → Actions 中，公开仓库只保存 Secret 名称、站点映射和已审阅源码哈希。原始密码文件不进入仓库、日志或 artifact。
 
-最新 `venera-patrol-cli` 已支持通过 `PATROL_AUTH` 提供账号授权，但本仓库还需要接入独立的账号巡检任务、源白名单和按站点分配凭据，才能用于实际测试。不会把一份包含所有站点账号的 Secret 交给全部社区源。
+定时及手动工作流都运行独立的 `account_patrol` job。每次重新获取最新 CLI 并安装其原始锁定依赖，校验客户端提交及文件哈希。随后每个站点、每个客户端各启动一个容器，只传入本站的 `PATROL_AUTH`，不传 GitHub 凭据和其他站点凭据。
 
-## 可以准备的格式
+账号与匿名巡检分别记录结果。主／扩展订阅仍只依据匿名 VeneraX 的当次结果，收录标准不变；Venera-Next 和账号结果均不能替代 X 的失败。
 
-进入本订阅仓库的 **Settings → Secrets and variables → Actions → New repository secret**，名称可使用 CLI 的标准名称 `PATROL_AUTH`，值为 JSON。下面全部是占位文字，需要在 GitHub 页面填写实际值；不要把真实值发在聊天、Issue、PR、公开配置或提交中。
+## 站点与 Secrets
+
+| 站点 | 源 key | Secret 名称 | 执行范围 |
+| --- | --- | --- | --- |
+| 漫画柜 | ManHuaGui | PATROL_AUTH_MANHUAGUI | 白名单源码的账号登录及只读巡检 |
+| 绅士漫画 | wnacg | PATROL_AUTH_WNACG | 同上；不将凭据交给“绅士会所”等不同站点 |
+| 禁漫天堂 | jm | PATROL_AUTH_JM | 1.9.2；关闭 dailyCheckInTask |
+| 包子漫画 | baozi | PATROL_AUTH_BAOZI | 白名单源码的账号登录及只读巡检 |
+| 哔咔漫画 | picacg | PATROL_AUTH_PICACG | 同上 |
+| 拷贝漫画 | copy_manga | PATROL_AUTH_COPY_MANGA | 同上；不自动交给其他同站别名 |
+| 热辣漫画 | hot_manga | PATROL_AUTH_HOT_MANGA | 同上 |
+| 奇漫屋 | qimanwu | PATROL_AUTH_QIMANWU | 已保存；当前审阅版本无 account.login，不注入 |
+| 动漫屋 | dm5 | PATROL_AUTH_DM5 | 已保存；当前审阅版本无 account.login，不注入 |
+| AGE动漫 | age_anime | PATROL_AUTH_AGE | 已保存；已审阅清单暂缺本站源 |
+| 18ak 漫画 | 18ak | PATROL_AUTH_18AK | 已保存；已审阅清单暂缺本站源 |
+
+可执行构建的完整哈希在 `monitor/accounts.json`。每站只选择已审阅的一个构建，避免为重复版本反复登录；仍分别在两套客户端环境巡检。新增源或切换账号构建需要更新白名单，不能凭相似显示名称分配密码。
+
+每个 Secret 是只包含本站授权键的 JSON，以下仅为占位格式：
 
 ```json
-{
-  "jm": {
-    "credentials": {
-      "username": "在 GitHub Secret 中填写用户名",
-      "password": "在 GitHub Secret 中填写密码"
-    }
-  }
-}
+{"jm":{"credentials":{"username":"在 Secret 中填写","password":"在 Secret 中填写"}}}
 ```
 
-可以按相同格式增加其他站点条目。一级键是授权条目名，须与将来巡检配置的 `auth` 字段一致；不是任意填写网站显示名称。接入工作流时只提取本次选定站点的一项，传给对应源的巡检容器。
+账号任务只接受 `credentials.username/password`，不允许 Secret 注入源码、覆盖固定样本或启用写操作。Cookie、Token 或验证码应按源的真实接口独立适配；账号密码不保证足以登录。
 
-也可以分别保存每个站点的 Secret，减少维护时误用；具体名称应在接入工作流时统一。添加完成后，只需要告知 Secret 名称及对应站点，不需要也不应提供 Secret 值。
+## 报告、隔离与限制
 
-## 不同登录方式的范围
+结果见 [中文账号报告](ACCOUNT_RESULTS.md) 和 `account-results.json`。只保留站点、固定源码哈希、客户端、固定输入、阶段状态和失败类别；删除阶段返回值及原始异常文本。即使源把密码放进返回值或异常，也不会原样进入公开报告。
 
-| 登录方式 | CLI 授权字段 | 条件 |
-| --- | --- | --- |
-| 用户名／密码 | `credentials.username`、`credentials.password` | 源实现 `account.login` |
-| 源提供的 Cookie 登录表单 | `credentials.cookieValues` | 字段须与该源 `account.loginWithCookies.fields` 一致 |
-| 浏览器导出的 Cookie | `credentials.cookies` | 保留正确的 URL、域、路径及安全属性，格式按 CLI 文档核对 |
-| 浏览器 Token | `credentials.browserToken` | `dataKey` 必须是该源实际读取的字段 |
-| 验证码、二步验证、交互式 WebView | 没有跨站统一的自动登录方式 | 账号密码可能不足，需要真实有效的 Cookie 或 Token；不能伪造成功页面作为登录证明 |
+不向 Actions 日志转发账号容器的 stdout/stderr；不上传网络 trace、Cookie、Token、`.patrol-state` 或源保存的数据。私有临时目录在每次容器结束后删除，源码单独只读挂载。不保存跨次会话，不需要管理仓库 Secrets 的写入令牌。
 
-Cookie、Token 也属于登录凭据。账号登录应使用独立的手动任务，只执行明确选定且源码哈希已审阅的构建；测试真实登录、会话有效性和阅读权限。默认仍禁用签到、评论、点赞、收藏增删及设置按钮等写操作。
+仅执行登录及只读能力，保持 mutations 关闭，不触发签到、评论、点赞、收藏增删或设置按钮。登录通过表示源的登录接口满足本次契约，不能单凭这一项宣称账号所有权限正常；核心阅读链路另行检查。
 
-## 报告与隔离要求
+固定提交与哈希保证执行对象可追溯，不能把社区 JS 变成 Flutter 客户端或强安全沙箱。当前只向明确绑定且已审阅的站点源码分发本站凭据。
 
-账号任务应与公开匿名定时巡检分开，保留源码哈希、固定漫画样本及每次获取最新 CLI 的要求。每个容器仅获得该站点所需的凭据，不接收 GitHub 发布凭据。
-
-公开报告仅记录脱敏后的阶段状态与故障类别，不发布用户名、密码、Cookie、Token、私有状态文件或原始追踪。会话持久化属于后续独立功能，不需要为一次登录测试额外提供管理仓库 Secrets 的令牌。
-
-Secrets 的加密保存和日志遮蔽不使社区 JS 成为安全沙箱。账号巡检仍只执行经过审阅、固定提交且哈希匹配的源码；建议使用专门测试账号。
-
-参考：[venera-patrol-cli 授权配置与登录方式](https://github.com/Gandum2077/venera-patrol-cli#授权配置)、[GitHub Actions Secrets 官方说明](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)。
+参考：[CLI 授权配置](https://github.com/Gandum2077/venera-patrol-cli#授权配置)、[GitHub Actions Secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)。

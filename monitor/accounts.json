@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "sites": [
+    {
+      "site": "漫画柜",
+      "key": "ManHuaGui",
+      "secret": "PATROL_AUTH_MANHUAGUI",
+      "buildId": "a5bf6c633e0ce728361dded097424b829134d618128f72b571e42525e8950128",
+      "loginReviewed": true
+    },
+    {
+      "site": "奇漫屋",
+      "key": "qimanwu",
+      "secret": "PATROL_AUTH_QIMANWU",
+      "note": "已保存凭据；当前审阅版本未提供 account.login，未注入密码"
+    },
+    {
+      "site": "AGE动漫",
+      "key": "age_anime",
+      "secret": "PATROL_AUTH_AGE",
+      "note": "已保存凭据；当前已审阅清单无本站源"
+    },
+    {
+      "site": "动漫屋",
+      "key": "dm5",
+      "secret": "PATROL_AUTH_DM5",
+      "note": "已保存凭据；当前审阅版本未提供 account.login，未注入密码"
+    },
+    {
+      "site": "绅士漫画",
+      "key": "wnacg",
+      "secret": "PATROL_AUTH_WNACG",
+      "buildId": "545a6d818d012c1e5799d6aaf7ecd09798969acb840166ee7c56de6d02201df0",
+      "loginReviewed": true
+    },
+    {
+      "site": "禁漫天堂",
+      "key": "jm",
+      "secret": "PATROL_AUTH_JM",
+      "buildId": "e50a45d1c3b33198ab3a154335c31f4e689652106135dcc367334a3325b8be3d",
+      "loginReviewed": true
+    },
+    {
+      "site": "包子漫画",
+      "key": "baozi",
+      "secret": "PATROL_AUTH_BAOZI",
+      "buildId": "d589aabc779b17c58a72bb4edc15f955e05d8e17a0e4ce8164836542a3d6492c",
+      "loginReviewed": true
+    },
+    {
+      "site": "18ak 漫画",
+      "key": "18ak",
+      "secret": "PATROL_AUTH_18AK",
+      "note": "已保存凭据；当前已审阅清单无本站源"
+    },
+    {
+      "site": "哔咔漫画",
+      "key": "picacg",
+      "secret": "PATROL_AUTH_PICACG",
+      "buildId": "a404719b7f3f338911dd0a8a77a73fc50c6aa22048cf6458413f7b5a5a9d152b",
+      "loginReviewed": true
+    },
+    {
+      "site": "拷贝漫画",
+      "key": "copy_manga",
+      "secret": "PATROL_AUTH_COPY_MANGA",
+      "buildId": "06ea2676323e40e980cb8f8fba2b53a70733e7cade267e0261763c55e6b30155",
+      "loginReviewed": true
+    },
+    {
+      "site": "热辣漫画",
+      "key": "hot_manga",
+      "secret": "PATROL_AUTH_HOT_MANGA",
+      "buildId": "d5f440d1a2e5d41e53189eb8d3e7ba19864c43b1d6592e20eb65ef326a410fd4",
+      "loginReviewed": true
+    }
+  ]
+}

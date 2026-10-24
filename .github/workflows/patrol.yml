@@ -30,7 +30,9 @@ jobs:
         with:
           persist-credentials: false
       - name: 校验审阅清单和索引标准
-        run: python3 scripts/cloud_audit.py self-test
+        run: |
+          python3 scripts/cloud_audit.py self-test
+          python3 -m unittest discover -s scripts -p '*_test.py'
       - name: 每次巡检前获取最新 venera-patrol-cli 并安装锁定依赖
         run: python3 scripts/cloud_audit.py setup-cli --work "$RUNNER_TEMP/venera"
       - name: 检查上游及三个自用仓库的变动（不执行新代码）
@@ -59,9 +61,39 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
+  account_patrol:
+    name: 按站点隔离账号并对照两个客户端
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: 读取已审阅账号白名单
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: 独立获取最新 CLI、校验客户端并安装依赖
+        run: python3 scripts/cloud_audit.py setup-cli --work "$RUNNER_TEMP/venera-accounts"
+      - name: 每个容器只接收本站 Secret，禁用写操作
+        env:
+          AUDIT_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PATROL_AUTH_MANHUAGUI: ${{ secrets.PATROL_AUTH_MANHUAGUI }}
+          PATROL_AUTH_WNACG: ${{ secrets.PATROL_AUTH_WNACG }}
+          PATROL_AUTH_JM: ${{ secrets.PATROL_AUTH_JM }}
+          PATROL_AUTH_BAOZI: ${{ secrets.PATROL_AUTH_BAOZI }}
+          PATROL_AUTH_PICACG: ${{ secrets.PATROL_AUTH_PICACG }}
+          PATROL_AUTH_COPY_MANGA: ${{ secrets.PATROL_AUTH_COPY_MANGA }}
+          PATROL_AUTH_HOT_MANGA: ${{ secrets.PATROL_AUTH_HOT_MANGA }}
+        run: python3 scripts/account_patrol.py patrol --work "$RUNNER_TEMP/venera-accounts"
+      - name: 保存脱敏账号结果
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: venera-account-results
+          path: ${{ runner.temp }}/venera-accounts/account-artifact/
+          if-no-files-found: error
+          retention-days: 30
+
   publish:
     name: 复核证据后发布主／扩展订阅
-    needs: patrol
+    needs: [patrol, account_patrol]
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
@@ -80,6 +112,13 @@ jobs:
         env:
           AUDIT_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: python3 scripts/cloud_audit.py publish --input .audit-results/patrol.json
+      - name: 下载脱敏账号结果
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: venera-account-results
+          path: .account-results
+      - name: 复核账号白名单并生成中文报告
+        run: python3 scripts/account_patrol.py publish --input .account-results/account-results.json
       - name: 提交中文报告与订阅
         env:
           GH_TOKEN: ${{ github.token }}
@@ -87,7 +126,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- index.json extended.json sources.lock.json sources.zh.csv RESULTS.md audit-status.json UPDATES.md pending-updates.json CLIENT_RESULTS.md client-results.json
+          git add -- index.json extended.json sources.lock.json sources.zh.csv RESULTS.md audit-status.json UPDATES.md pending-updates.json CLIENT_RESULTS.md client-results.json ACCOUNT_RESULTS.md account-results.json
           if ! git diff --cached --quiet; then
             git commit -m "定时巡检：更新主／扩展订阅及中文报告"
             git -c credential.helper='!gh auth git-credential' push origin HEAD:main

@@ -19,6 +19,9 @@ def prepare(directory):
             "        return client ? JSON.stringify(client) : { version: globals.APP.version };",
         "() => runtime.modifyImage(bytes, config.modifyImage)":
             "() => (globals.__modifyImage ?? runtime.modifyImage)(bytes, config.modifyImage)",
+        "source = runtime.loadVeneraConfigBySourceCode(code, globals, false);":
+            "source = runtime.loadVeneraConfigBySourceCode(code, globals, false);\n"
+            "        globals.__clientSourceLoaded?.(source);",
     }
     for old, new in replacements.items():
         if code.count(old) != 1:
