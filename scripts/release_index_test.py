@@ -45,7 +45,7 @@ def fixture(root):
         records.append({
             "id": item["id"], "runtimeProfile": name, "inputs": item["sample"],
             "source": {"key": item["key"], "sourceSha256": item["sha256"],
-                       "status": "passed", "stages": stages},
+                       "status": "passed", "stages": stages, "version": item["version"]},
         })
     entry = {k: item[k] for k in ("name", "key", "version", "fileName", "url", "minAppVersion")}
     entry["description"] = audit.source_annotation(item, {})
@@ -56,7 +56,8 @@ def fixture(root):
         "main": 1, "extended": 0, "builds": 1, "checkedAt": checked, "runUrl": run, "cli": cli,
         "catalogSha256": audit.sha((root / "monitor/catalog.json").read_bytes()),
         "officialExclusionsSha256": audit.sha((root / "official-exclusions.json").read_bytes()),
-        "officialExcludedKeys": len(exclusions["keys"]), "officialExcludedBuilds": 0,
+        "officialBaselineKeys": len(exclusions["keys"]), "officialExcludedBuilds": 0,
+        "officialOverrides": 0,
     }
     data = {
         "index.json": [entry], "extended.json": [], "sources.lock.json": [locked],
@@ -101,18 +102,19 @@ class ReleaseIndexTests(unittest.TestCase):
                 self.assertNotIn("comic-pw.txt", archive.namelist())
             self.assertEqual(len(release.ASSETS), 13)
 
-    def test_official_key_cannot_be_reintroduced_even_with_passing_community_source(self):
+    def test_same_official_version_cannot_be_reintroduced_even_with_passing_community_source(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             data = fixture(root)
             snapshot = data["official-exclusions.json"]
             snapshot["keys"] = sorted(snapshot["keys"] + ["fixture"])
+            snapshot["versions"]["fixture"] = "1.0.0"
             audit.save(root / "official-exclusions.json", snapshot)
             data["audit-status.json"].update(
                 officialExclusionsSha256=audit.sha((root / "official-exclusions.json").read_bytes()),
-                officialExcludedKeys=len(snapshot["keys"]), officialExcludedBuilds=1)
+                officialBaselineKeys=len(snapshot["keys"]), officialExcludedBuilds=1)
             audit.save(root / "audit-status.json", data["audit-status.json"])
-            with self.assertRaisesRegex(AssertionError, "官方重复项"):
+            with self.assertRaisesRegex(AssertionError, "未高于官方版本"):
                 release.validate(root)
 
     def test_new_official_key_at_release_time_blocks_an_older_snapshot(self):
@@ -121,10 +123,40 @@ class ReleaseIndexTests(unittest.TestCase):
             fixture(root)
             latest = audit.official_policy(root)
             latest["keys"] = sorted(latest["keys"] + ["fixture"])
+            latest["versions"]["fixture"] = "1.0.0"
             with patch.object(audit, "refresh_official_policy", return_value=latest) as refreshed:
-                with self.assertRaisesRegex(AssertionError, "官方重复项"):
+                with self.assertRaisesRegex(AssertionError, "未高于官方版本"):
                     release.validate(root, check_latest=True)
             refreshed.assert_called_once_with(root)
+
+    def test_newer_community_version_can_be_released_but_equal_official_version_cannot(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            data = fixture(root)
+            snapshot = data["official-exclusions.json"]
+            snapshot["keys"] = sorted(snapshot["keys"] + ["fixture"])
+            snapshot["versions"]["fixture"] = "0.9.0"
+            audit.save(root / "official-exclusions.json", snapshot)
+            state = data["audit-status.json"]
+            state.update(
+                officialExclusionsSha256=audit.sha((root / "official-exclusions.json").read_bytes()),
+                officialBaselineKeys=len(snapshot["keys"]), officialOverrides=1)
+            audit.save(root / "audit-status.json", state)
+            data["sources.lock.json"][0]["officialVersion"] = "0.9.0"
+            audit.save(root / "sources.lock.json", data["sources.lock.json"])
+            release.validate(root)
+            primary = next(record for record in data["client-results.json"]["records"]
+                           if record["runtimeProfile"] == "venerax")
+            primary["source"]["version"] = "0.8.0"
+            audit.save(root / "client-results.json", data["client-results.json"])
+            with self.assertRaisesRegex(AssertionError, "CLI 实际版本"):
+                release.validate(root)
+            primary["source"]["version"] = "1.0.0"
+            audit.save(root / "client-results.json", data["client-results.json"])
+            latest = {**snapshot, "versions": {**snapshot["versions"], "fixture": "1.0.0"}}
+            with patch.object(audit, "refresh_official_policy", return_value=latest):
+                with self.assertRaisesRegex(AssertionError, "未高于官方版本"):
+                    release.validate(root, check_latest=True)
 
     def test_skipped_image_decode_blocks_subscription_release(self):
         with tempfile.TemporaryDirectory() as directory:

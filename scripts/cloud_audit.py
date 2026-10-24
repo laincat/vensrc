@@ -83,6 +83,12 @@ def pinned(url):
         r"https://raw\.githubusercontent\.com/[^/]+/[^/]+/[a-f0-9]{40}/.+\.js", url))
 
 
+def version_parts(version):
+    if not isinstance(version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", version):
+        raise ValueError("版本必须是三段数字，无法确认的版本不得作为官方升级版收录")
+    return tuple(int(part) for part in version.split("."))
+
+
 def official_policy(root=None, snapshot=None):
     root = root or ROOT
     baseline = load(root / "monitor/official-keys.json")
@@ -92,15 +98,22 @@ def official_policy(root=None, snapshot=None):
         snapshot = previous
     for policy in (baseline, previous, snapshot):
         assert set(policy) == {
-            "schemaVersion", "repository", "indexCommit", "indexSha256", "checkedAt", "keys"}
-        assert policy["schemaVersion"] == 1
+            "schemaVersion", "repository", "indexCommit", "indexSha256", "checkedAt", "keys",
+            "versions"}
+        assert policy["schemaVersion"] == 2
         assert policy["repository"] == OFFICIAL_REPOSITORY
         assert re.fullmatch(r"[a-f0-9]{40}", policy["indexCommit"])
         assert re.fullmatch(r"[a-f0-9]{64}", policy["indexSha256"])
         assert policy["keys"] and all(isinstance(key, str) and key for key in policy["keys"])
         assert policy["keys"] == sorted(set(policy["keys"]))
+        assert set(policy["versions"]) == set(policy["keys"])
+        for version in policy["versions"].values():
+            version_parts(version)
     assert set(baseline["keys"]) | set(previous["keys"]) <= set(snapshot["keys"]), \
-        "官方 key 排除集合不得缩小"
+        "官方版本基线集合不得缩小"
+    for policy in (baseline, previous):
+        assert all(version_parts(snapshot["versions"][key]) >= version_parts(version)
+                   for key, version in policy["versions"].items()), "官方版本基线不得降低"
     return snapshot
 
 
@@ -112,22 +125,33 @@ def refresh_official_policy(root=None):
     data = request(f"https://raw.githubusercontent.com/{OFFICIAL_REPOSITORY}/{commit}/index.json")
     entries = json.loads(data)
     assert isinstance(entries, list) and entries
-    keys = {entry["key"] for entry in entries}
-    assert all(isinstance(key, str) and key for key in keys)
+    versions = dict(previous["versions"])
+    for entry in entries:
+        key, version = entry["key"], entry["version"]
+        assert isinstance(key, str) and key
+        version_parts(version)
+        if key not in versions or version_parts(version) > version_parts(versions[key]):
+            versions[key] = version
     return official_policy(root, {
-        "schemaVersion": 1, "repository": OFFICIAL_REPOSITORY,
+        "schemaVersion": 2, "repository": OFFICIAL_REPOSITORY,
         "indexCommit": commit, "indexSha256": sha(data),
         "checkedAt": datetime.now(timezone.utc).isoformat(),
-        "keys": sorted(set(previous["keys"]) | keys),
+        "keys": sorted(versions), "versions": dict(sorted(versions.items())),
     })
 
 
 def excluded_official(item, policy):
     path = urlparse(item.get("url", "")).path.strip("/").split("/")
     target = "/".join(path[:2]).casefold()
-    return (item["key"] in policy["keys"] or item.get("officialKey", False)
-            or item.get("repository", "").casefold() == OFFICIAL_REPOSITORY
-            or target == OFFICIAL_REPOSITORY)
+    if item.get("repository", "").casefold() == OFFICIAL_REPOSITORY or target == OFFICIAL_REPOSITORY:
+        return True
+    official_version = policy["versions"].get(item["key"])
+    if official_version is None:
+        return bool(item.get("officialKey", False))
+    try:
+        return version_parts(item.get("version")) <= version_parts(official_version)
+    except ValueError:
+        return True
 
 
 def source_annotation(item, notes):
@@ -313,7 +337,8 @@ def discover(work):
                         if match:
                             entry[field] = match.group(1)
                     actual_key = entry.get("key", key)
-                    if excluded_official({"key": actual_key, "repository": target}, exclusions):
+                    if excluded_official({"key": actual_key, "repository": target,
+                                          "version": entry.get("version")}, exclusions):
                         continue
                     updates.append({
                         "id": digest, "key": actual_key, "name": name,
@@ -565,9 +590,12 @@ def publish(payload, destination):
         success = core(source)
         if success:
             assert source["sourceSha256"] == item["sha256"]
+            if item["key"] in exclusions["versions"] and not excluded_official(item, exclusions):
+                assert source["version"] == item["version"], "社区升级版必须使用 CLI 实际加载版本比较"
         display_item = {**item, "sample": record.get("sample", item["sample"])}
         rows.append((display_item, source, success))
-        score = (success, source["status"] == "passed", item.get("priority", 0),
+        score = (not excluded_official(item, exclusions), success,
+                 source["status"] == "passed", item.get("priority", 0),
                  tuple(int(x) for x in re.findall(r"\d+", item["version"])[:3]))
         if item["key"] not in selected or score > selected[item["key"]][0]:
             selected[item["key"]] = (score, item, source, record.get("sample", item["sample"]))
@@ -593,6 +621,8 @@ def publish(payload, destination):
         (main if channel == "main" else extended).append(entry)
         locks.append({
             **entry, "sha256": item["sha256"], "minAppVersion": item["minAppVersion"],
+            **({"officialVersion": exclusions["versions"][item["key"]]}
+               if item["key"] in exclusions["versions"] else {}),
             "officialKey": item.get("officialKey", False), "status": status, "channel": channel,
             "sample": sample, "checkedAt": checked, "buildId": item["id"],
             "trackedBy": item.get("trackedBy", []), "cliCommit": payload["cli"]["commit"],
@@ -620,11 +650,12 @@ def publish(payload, destination):
         f"提交 `{payload['cli']['commit']}`。",
         f"依赖锁 SHA-256：`{payload['cli']['packageLockSha256']}`。",
         f"本次审阅清单：{len(rows)} 个构建；主索引 **{len(main)}** 项，扩展索引 **{len(extended)}** 项。", "",
-        f"订阅排除官方索引中的 **{len(exclusions['keys'])}** 个 key，包括社区同 key 改版及转引。"
-        "官方仓库原始 JS 同样禁止收录；已有兼容与账号证据仅供诊断，不获得订阅资格。",
-        f"排除集合依据官方索引提交 `{exclusions['indexCommit']}`，"
+        f"官方版本基线覆盖 **{len(exclusions['keys'])}** 个 key。官方仓库原版及转引继续排除；"
+        "社区同 key 构建仅在版本严格高于官方且满足原巡检门槛时收录。同版、低版或版本无法比较均排除。",
+        f"版本基线依据官方索引提交 `{exclusions['indexCommit']}`，"
         f"原始索引 SHA-256：`{exclusions['indexSha256']}`。"
-        "后续检测追加官方 key，历史排除集合不缩小，清单见 official-exclusions.json。", "",
+        "按三段数字比较版本；后续检测追加 key 并提高官方版本基线，不降低历史基线，"
+        "清单见 official-exclusions.json。", "",
         "固定漫画及章节、源码字节哈希和 CLI 提交均保留。主索引必须同次通过入口、详情、章节、图片下载与解码，且整次报告为 passed；"
         "扩展索引要求相同核心链路通过，其他能力可有失败或跳过。旧成功结果不代替新失败。", "",
         "本报告与订阅快照滚动发布到 Releases，最终只保留最新一版；附件校验不完整时保留上一版。", "",
@@ -640,8 +671,17 @@ def publish(payload, destination):
         lines.append(f"- `{repo}`：已审阅构建 {len(group)} 个，核心链路通过 {sum(ok for _, _, ok in group)} 个。")
     excluded = [(item, source) for _, item, source, _ in selected.values()
                 if excluded_official(item, exclusions)]
-    lines += ["", "## 因与官方重复而排除的源", "",
-              "以下只保留已有诊断证据，均不进入主索引、扩展索引或锁定清单；核心通过也不会豁免。",
+    upgrades = [item for item in locks if item.get("officialVersion")]
+    lines += ["", "## 高于官方版本的社区替代源", "",
+              "以下每个构建都严格高于所列官方版本，并通过本次核心阅读门槛；同 key 源在客户端作为替代版本使用。",
+              "", "| 名称 | key | 社区版本 | 官方版本 | 订阅 |",
+              "| --- | --- | --- | --- | --- |"]
+    for item in upgrades:
+        lines.append("| " + " | ".join(text(value) for value in (
+            item["name"], item["key"], item["version"], item["officialVersion"],
+            "主索引" if item["channel"] == "main" else "扩展索引")) + " |")
+    lines += ["", "## 官方原版及未高于官方版本的排除项", "",
+              "以下只保留已有诊断证据，均不进入主索引、扩展索引或锁定清单；核心通过也不能豁免版本门槛。",
               "", "| 名称 | key | 选中构建版本 | 核心链路 | 源备注 |",
               "| --- | --- | --- | --- | --- |"]
     for item, source in sorted(excluded, key=lambda pair: pair[0]["key"]):
@@ -660,7 +700,12 @@ def publish(payload, destination):
         first = (failed or unsuccessful or [{}])[0]
         category = CATEGORIES.get(first.get("category"), first.get("category", ""))
         problem = f"{first.get('path', '')}：{category}" if first else ""
-        disposition = "排除官方重复项" if excluded_official(item, exclusions) else "按原有收录标准审核"
+        if excluded_official(item, exclusions):
+            disposition = "排除官方原版／未高于官方版本"
+        elif item["key"] in exclusions["versions"]:
+            disposition = f"高于官方 {exclusions['versions'][item['key']]}；按原收录标准审核"
+        else:
+            disposition = "按原有收录标准审核"
         lines.append("| " + " | ".join(text(v) for v in (
             item["name"], item["key"], item["repository"], item["version"],
             item.get("runtimeProfile", "原版 1.6.3 Runtime"),
@@ -687,8 +732,9 @@ def publish(payload, destination):
         "runUrl": os.environ.get("AUDIT_RUN_URL", ""),
         "clientExecutions": len(payload["records"]) + len(payload.get("clientRecords", [])),
         "officialExclusionsSha256": sha((destination / "official-exclusions.json").read_bytes()),
-        "officialExcludedKeys": len(exclusions["keys"]),
+        "officialBaselineKeys": len(exclusions["keys"]),
         "officialExcludedBuilds": sum(excluded_official(i, exclusions) for i, _, _ in rows),
+        "officialOverrides": len(upgrades),
     })
     publish_clients(payload, catalog, destination)
     print(f"中文报告已生成：主索引 {len(main)} 项、扩展索引 {len(extended)} 项。", flush=True)
@@ -705,7 +751,7 @@ def publish_clients(payload, catalog, destination):
              f"核验时间：{payload['checkedAt']}（UTC）。",
              f"最新上游 CLI 提交：`{payload['cli']['commit']}`；同时加载本仓库记录哈希的接口适配层。",
              "全部已审阅源码逐个使用相同固定输入；VeneraX 为订阅选择依据，Next 为独立对照。",
-             "官方同 key 构建仅保留兼容与账号诊断证据，不进入任何订阅；社区同 key 改版也适用。",
+             "官方原版排除；社区同 key 版本必须严格高于官方，并独立满足本次核心阅读与主／扩展门槛。",
              "结果为 Node 宿主上的真实客户端 JS 接口巡检，不代表 Flutter UI 或用户设备实测。",
              "两边分时执行，差异也可能来自网络、限流或源站变化，不能全部归因于 Fork 接口。",
              "账号巡检另见 ACCOUNT_RESULTS.md，不以账号通过替代匿名订阅收录标准。",
@@ -846,7 +892,7 @@ def publish_discovery(discovery, destination):
         "新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。"
         "维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；"
         "后续 Actions 才会执行巡检并按主／扩展标准自动收录。", "",
-        "候选已排除官方仓库及官方同 key 源；社区改版或转引也不重新加入订阅。", "",
+        "候选排除官方原版、转引，以及未严格高于官方版本的社区同 key 源；版本更高也必须审阅、巡检后才可收录。", "",
         "## 源码变动", "", "| 名称 | key | 版本 | 仓库 | 最低应用版本 | SHA-256 |",
         "| --- | --- | --- | --- | --- | --- |",
     ]

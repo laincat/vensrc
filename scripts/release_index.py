@@ -43,7 +43,7 @@ def validate(root, check_latest=False):
     exclusions = audit.official_policy(root)
     assert state["officialExclusionsSha256"] == audit.sha(
         (root / "official-exclusions.json").read_bytes()), "官方排除集合哈希不匹配"
-    assert state["officialExcludedKeys"] == len(exclusions["keys"])
+    assert state["officialBaselineKeys"] == len(exclusions["keys"])
     assert state["officialExcludedBuilds"] == sum(
         audit.excluded_official(item, exclusions) for item in items.values())
     latest_exclusions = audit.refresh_official_policy(root) if check_latest else exclusions
@@ -65,7 +65,8 @@ def validate(root, check_latest=False):
     assert all(items[build_id].get("repository") == "BB-CHICKEN/venera-jm"
                for build_id in note_config["notes"])
     assert not any(audit.excluded_official(row, latest_exclusions)
-                   for row in main + extended + locks), "订阅或锁定清单含官方重复项"
+                   for row in main + extended + locks), "订阅含官方原版或未高于官方版本的同 key 源"
+    assert state["officialOverrides"] == sum(row["key"] in exclusions["versions"] for row in locks)
     by_key = {row["key"]: row for row in locks}
     assert len(by_key) == len(locks) == len(main) + len(extended) > 0
     assert len({row["key"] for row in main + extended}) == len(locks)
@@ -75,8 +76,12 @@ def validate(root, check_latest=False):
             locked = by_key[entry["key"]]
             item = items[locked["buildId"]]
             assert not audit.excluded_official(item, latest_exclusions), "禁止重新收录官方构建"
+            if item["key"] in exclusions["versions"]:
+                assert locked["officialVersion"] == exclusions["versions"][item["key"]]
             assert entry["description"] == audit.source_annotation(item, note_config["notes"])
             record = records[(item["id"], "venerax")]
+            if item["key"] in exclusions["versions"]:
+                assert record["source"]["version"] == item["version"], "CLI 实际版本与社区升级版不符"
             assert locked["runtimeProfile"] == "venerax" and locked["channel"] == channel
             assert locked["sha256"] == item["sha256"] == record["source"]["sourceSha256"]
             assert locked["checkedAt"] == state["checkedAt"]
@@ -134,8 +139,9 @@ def stage(root, destination, repository, check_latest=False):
         "# Vensrc 最新订阅\n\n"
         f"巡检时间：{state['checkedAt']}（UTC）；已审阅构建 {state['builds']} 个。\n\n"
         f"主索引 **{state['main']}** 项；扩展索引 **{state['extended']}** 项。\n\n"
-        f"已排除官方 **{state['officialExcludedKeys']}** 个 key，社区同 key 改版也不收录；"
-        "官方与同 key 构建仅保留诊断证据。排除集合、上游提交和原始索引哈希见附件 "
+        f"官方版本基线 **{state['officialBaselineKeys']}** 个 key；"
+        f"本次收录 **{state['officialOverrides']}** 个严格高于官方版本的社区替代源。"
+        "官方原版、同版和低版继续排除；版本基线、上游提交和原始索引哈希见附件 "
         "`official-exclusions.json`。\n\n"
         f"- [主订阅 index.json]({prefix}/index.json)：核心阅读及整次执行通过。\n"
         f"- [扩展订阅 extended.json]({prefix}/extended.json)：核心阅读通过，其他能力可能受限。\n"

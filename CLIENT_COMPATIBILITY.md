@@ -47,7 +47,7 @@
 
 主／扩展订阅继续按原标准生成：主订阅要求核心阅读链路和整次执行通过；扩展订阅要求同次入口、详情、章节、图片下载和解码通过，其他能力允许失败或跳过。
 
-`jm 1.9.2` 的主记录明确使用 VeneraX 环境，Next 对照另行保留；Next 成功不能替代 X 失败。该版本只有当次 X 核心通过才有收录资格。若它失败，同 key 的其他已审阅构建仍按各自当次结果参与选择；报告不会把旧版本结果写成 1.9.2 成功。
+`jm 1.9.2` 的主记录明确使用 VeneraX 环境，Next 对照另行保留；Next 成功不能替代 X 失败。该版本必须严格高于官方 `jm` 基线 `1.4.0`，且当次 X 核心通过才有收录资格。若它失败，同 key 的其他已审阅社区构建也必须严格高于官方，再按各自当次结果参与选择；报告不会把旧版本结果写成 1.9.2 成功。
 
 全部 316 个已审阅构建现均配置 `runtimeProfile: venerax`、`verifyProfiles: [venera-next]`，逐个执行两套客户端接口巡检。清单优先执行三个自用仓库；具体完成时间、核心链路及失败类别以 CLIENT_RESULTS.md 为准，不因进入执行清单就认定兼容。两个客户端使用同一份固定输入；源码字节和最低版本声明保持不变。订阅始终仅按 VeneraX 当次证据收录，Next 不参与替代选择。用户设备上的导入、实际阅读、账号与地区网络仍需客户端实测。
 
@@ -66,3 +66,5 @@ Cloudflare 处理也固定核验了各自提交的 `lib/network/cloudflare.dart`
 ## 源 key 的实际导入规则
 
 Next 的锁定 parser 要求 key 匹配 `^[a-zA-Z_][a-zA-Z0-9_]*$`，适配层直接读取并校验该规则。X 的正则虽然允许数字开头，但随后把 key 写入点属性表达式，数字开头会触发真实的语法错误；保留这项失败，不改写源 key。两个客户端的源加载结果必须同时经过各自 parser 的约束，不能仅依据旧 Runtime 的宽松校验认定可导入。
+
+同 key 的不同版本可由不同库提供，社区版严格高于官方时可纳入本订阅作为替代版本，但不表示可以同时安装成两个独立源。VeneraX 的[安装检查](https://github.com/Kyosee/VeneraX/blob/a4e20b9f14061fd333e89ca31c6458571e7a7e00/lib/foundation/comic_source/comic_source.dart)按 key 拒绝重复；Next 的[来源索引匹配](https://github.com/CyrilPeng/Venera-Next/blob/47f7416cecc2dbbc97c7618f8dd53aa92f587601/lib/features/comic_source/source_repositories.dart)先按 key 筛选，再按原下载 URL 匹配，不能唯一匹配时报告歧义。因此本项目主／扩展订阅合计每个 key 仍只选一个构建，安装后的更新与切换应保留来源关联。以上结论来自固定提交源码核对，未替代用户设备的 UI 导入实测。

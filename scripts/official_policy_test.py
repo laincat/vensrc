@@ -14,9 +14,10 @@ class OfficialPolicyTests(unittest.TestCase):
             root = Path(directory)
             audit.save(root / "monitor/official-keys.json", baseline)
             audit.save(root / "monitor/source-notes.json", {"schemaVersion": 1, "notes": {}})
-            previous = {**baseline, "keys": sorted(baseline["keys"] + ["historical_fixture"])}
+            previous = {**baseline, "keys": sorted(baseline["keys"] + ["historical_fixture"]),
+                        "versions": {**baseline["versions"], "historical_fixture": "2.0.0"}}
             audit.save(root / "official-exclusions.json", previous)
-            raw = b'[{"key":"new_official_fixture"}]'
+            raw = b'[{"key":"new_official_fixture","version":"1.0.0"},{"key":"historical_fixture","version":"1.0.0"}]'
             with patch.object(audit, "request", side_effect=[
                 json.dumps({"sha": "b" * 40}).encode(), raw,
             ]):
@@ -24,8 +25,36 @@ class OfficialPolicyTests(unittest.TestCase):
             self.assertEqual(refreshed["indexSha256"], audit.sha(raw))
             self.assertTrue(set(baseline["keys"]) | {"historical_fixture", "new_official_fixture"}
                             <= set(refreshed["keys"]))
+            self.assertEqual(refreshed["versions"]["historical_fixture"], "2.0.0")
             with self.assertRaisesRegex(AssertionError, "不得缩小"):
-                audit.official_policy(root, {**refreshed, "keys": ["new_official_fixture"]})
+                audit.official_policy(root, {
+                    **refreshed, "keys": ["new_official_fixture"],
+                    "versions": {"new_official_fixture": "1.0.0"},
+                })
+            with self.assertRaisesRegex(AssertionError, "不得降低"):
+                audit.official_policy(root, {
+                    **refreshed, "versions": {**refreshed["versions"], "historical_fixture": "1.0.0"},
+                })
+
+    def test_community_same_key_must_be_strictly_newer_and_official_origin_stays_excluded(self):
+        policy = {"versions": {"jm": "1.4.0"}}
+        for version, excluded in (
+            ("1.3.9", True), ("1.4.0", True), ("1.4.1", False), ("1.9.2", False),
+            ("1.10.0", False), ("1.4.1-beta", True), ("unknown", True), (None, True),
+        ):
+            with self.subTest(version=version):
+                item = {"key": "jm", "version": version,
+                        "repository": "BB-CHICKEN/venera-jm", "officialKey": True}
+                self.assertEqual(audit.excluded_official(item, policy), excluded)
+        self.assertFalse(audit.excluded_official(
+            {"key": "jm", "version": "1.10.0"}, {"versions": {"jm": "1.9.9"}}))
+        self.assertTrue(audit.excluded_official({
+            "key": "jm", "version": "9.0.0", "repository": audit.OFFICIAL_REPOSITORY,
+        }, policy))
+        self.assertTrue(audit.excluded_official({
+            "key": "jm", "version": "9.0.0",
+            "url": f"https://raw.githubusercontent.com/{audit.OFFICIAL_REPOSITORY}/main/jm.js",
+        }, policy))
 
     def test_generator_excludes_official_keys_and_origins_but_keeps_community_evidence(self):
         baseline = audit.official_policy()
@@ -77,12 +106,40 @@ class OfficialPolicyTests(unittest.TestCase):
             self.assertEqual(audit.load(root / "audit-status.json")["officialExcludedBuilds"], 2)
             self.assertEqual(len(payload["records"]), 3)
             report = (root / "RESULTS.md").read_text(encoding="utf-8")
-            self.assertIn("排除官方重复项", report)
+            self.assertIn("排除官方原版／未高于官方版本", report)
             self.assertIn("修复旧版收藏数据 id 未去混淆导致的 aid 错误", report)
             rows = list(__import__("csv").reader(
                 (root / "sources.zh.csv").read_text(encoding="utf-8-sig").splitlines()))
             self.assertEqual(rows[0][-1], "源备注")
             self.assertIn("上游 CHANGELOG v1.9.2", rows[2][-1])
+
+            # A passing old/equal version must not mask an eligible partial newer build.
+            items[1]["version"] = "1.9.2"
+            items[1]["settings"] = {"dailyCheckInTask": False}
+            items.append({**items[1], "id": "d" * 64, "sha256": "d" * 64,
+                          "repository": "other/community", "priority": 1000, "version": "1.4.0"})
+            payload["records"][1]["source"] = {
+                **payload["records"][1]["source"], "status": "partial", "version": "1.9.2",
+                "stages": stages + [{"path": "account.login", "status": "skipped",
+                                    "category": "credentials_missing"}],
+            }
+            payload["records"].append({
+                "id": items[-1]["id"], "source": {
+                    "key": "jm", "sourceSha256": items[-1]["sha256"],
+                    "status": "passed", "stages": stages,
+                },
+            })
+            audit.save(root / "monitor/catalog.json", {
+                "schemaVersion": 1, "sources": items, "priorityRepositories": []})
+            payload["catalogSha256"] = audit.sha((root / "monitor/catalog.json").read_bytes())
+            with patch.object(audit, "ROOT", root):
+                audit.publish(payload, root)
+            extended = audit.load(root / "extended.json")
+            self.assertEqual([(row["key"], row["version"]) for row in extended], [("jm", "1.9.2")])
+            lock = next(row for row in audit.load(root / "sources.lock.json") if row["key"] == "jm")
+            self.assertEqual(lock["officialVersion"], baseline["versions"]["jm"])
+            self.assertEqual(lock["buildId"], "b" * 64)
+            self.assertEqual(audit.load(root / "audit-status.json")["officialOverrides"], 1)
 
     def test_discovery_uses_actual_source_key_and_omits_official_candidates(self):
         baseline = audit.official_policy()
