@@ -3,6 +3,7 @@
 from pathlib import Path
 
 import cloud_audit as audit
+from account_patrol import login_stage
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -11,7 +12,8 @@ def login_label(records, build_id, profile):
     record = records.get((build_id, profile))
     if record is None:
         return "未对该构建执行账号巡检"
-    stages = [s for s in record["source"]["stages"] if s["path"] == "account.login"]
+    stage = login_stage(record["source"])
+    stages = [stage] if stage else []
     if not stages:
         return "登录未执行"
     if all(s["status"] in ("passed", "recovered") for s in stages):

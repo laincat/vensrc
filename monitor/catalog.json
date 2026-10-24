@@ -2471,31 +2471,6 @@
       "settings": {}
     },
     {
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/3de9a7fa1b71f4a4bf25c8bfcd65c485920e2435/sources/private/wnacg.js",
-      "key": "hj_wnacg",
-      "name": "紳士漫畫（私人）",
-      "version": "1.0.7",
-      "minAppVersion": "1.0.0",
-      "repository": "Taototo/venera-comic-sources",
-      "fileName": "wnacg.js",
-      "sample": {
-        "comicId": "397513",
-        "keyword": "火影"
-      },
-      "officialKey": false,
-      "priority": 0,
-      "trackedBy": [
-        "Taototo/venera-comic-sources"
-      ],
-      "id": "d0cac0d5816e803e2a835fba1ed15cab39b46c2f644ced878f47e2cc1da4c246",
-      "sha256": "d0cac0d5816e803e2a835fba1ed15cab39b46c2f644ced878f47e2cc1da4c246",
-      "runtimeProfile": "venerax",
-      "verifyProfiles": [
-        "venera-next"
-      ],
-      "settings": {}
-    },
-    {
       "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/hot_manga.js",
       "key": "hot_manga",
       "name": "热辣漫画",
@@ -6334,30 +6309,6 @@
       "settings": {}
     },
     {
-      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_18_986ee7.js",
-      "key": "source_18_986ee7",
-      "name": "紳士漫畫·国内直连",
-      "version": "0.2.0",
-      "minAppVersion": "1.0.0",
-      "repository": "KadishJoey/venera-json",
-      "fileName": "source_18_986ee7.js",
-      "sample": {
-        "keyword": "海贼王"
-      },
-      "officialKey": false,
-      "priority": 0,
-      "trackedBy": [
-        "KadishJoey/venera-json"
-      ],
-      "id": "a6202f1736c5dfd039e95d424861dfb4a95a1826ab87b586892607006ec74a09",
-      "sha256": "a6202f1736c5dfd039e95d424861dfb4a95a1826ab87b586892607006ec74a09",
-      "runtimeProfile": "venerax",
-      "verifyProfiles": [
-        "venera-next"
-      ],
-      "settings": {}
-    },
-    {
       "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_19_50ee2a.js",
       "key": "source_19_50ee2a",
       "name": "中国人能飞",
@@ -6375,30 +6326,6 @@
       ],
       "id": "3d02227f24f6c7563ff8e602e138705f672b5f274b7769cca8801e1175ba851c",
       "sha256": "3d02227f24f6c7563ff8e602e138705f672b5f274b7769cca8801e1175ba851c",
-      "runtimeProfile": "venerax",
-      "verifyProfiles": [
-        "venera-next"
-      ],
-      "settings": {}
-    },
-    {
-      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_20_d2b98b.js",
-      "key": "source_20_d2b98b",
-      "name": "紳士漫畫🔞🌐",
-      "version": "0.2.0",
-      "minAppVersion": "1.0.0",
-      "repository": "KadishJoey/venera-json",
-      "fileName": "source_20_d2b98b.js",
-      "sample": {
-        "keyword": "斗破苍穹"
-      },
-      "officialKey": false,
-      "priority": 0,
-      "trackedBy": [
-        "KadishJoey/venera-json"
-      ],
-      "id": "695eedba656e6af170b22f06e269f3e58cf56f9fb4af7fc5ab79189870bfcfd8",
-      "sha256": "695eedba656e6af170b22f06e269f3e58cf56f9fb4af7fc5ab79189870bfcfd8",
       "runtimeProfile": "venerax",
       "verifyProfiles": [
         "venera-next"
@@ -7434,58 +7361,6 @@
       "settings": {}
     },
     {
-      "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/wnacg.js",
-      "key": "wnacg",
-      "name": "紳士漫畫",
-      "version": "1.0.6",
-      "minAppVersion": "1.0.0",
-      "repository": "venera-app/venera-configs",
-      "fileName": "wnacg.js",
-      "sample": {
-        "comicId": "397513",
-        "keyword": "火影"
-      },
-      "officialKey": true,
-      "priority": 10,
-      "trackedBy": [
-        "hea784/venera-configs"
-      ],
-      "id": "545a6d818d012c1e5799d6aaf7ecd09798969acb840166ee7c56de6d02201df0",
-      "sha256": "545a6d818d012c1e5799d6aaf7ecd09798969acb840166ee7c56de6d02201df0",
-      "runtimeProfile": "venerax",
-      "verifyProfiles": [
-        "venera-next"
-      ],
-      "settings": {
-        "domain0": "www.wnacg.com"
-      }
-    },
-    {
-      "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/wnacg.js",
-      "key": "wnacg",
-      "name": "紳士漫畫",
-      "version": "1.0.5",
-      "minAppVersion": "1.0.0",
-      "repository": "yelongyue197-svg/venera-sources",
-      "fileName": "wnacg.js",
-      "sample": {
-        "comicId": "397513",
-        "keyword": "火影"
-      },
-      "officialKey": true,
-      "priority": 0,
-      "trackedBy": [
-        "yelongyue197-svg/venera-sources"
-      ],
-      "id": "5c812b8e9a5ee0fe3dd10312135bef8ec7ca5db20ee8ceae1b94d2ee5992005e",
-      "sha256": "5c812b8e9a5ee0fe3dd10312135bef8ec7ca5db20ee8ceae1b94d2ee5992005e",
-      "runtimeProfile": "venerax",
-      "verifyProfiles": [
-        "venera-next"
-      ],
-      "settings": {}
-    },
-    {
       "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/x_30_465fc5.js",
       "key": "x_30_465fc5",
       "name": "x漫画",
@@ -7889,6 +7764,31 @@
       ],
       "id": "78a5f653f49504d9bc5e704dc75fba9d4973199643dfcae1317e540d3e21aca8",
       "sha256": "78a5f653f49504d9bc5e704dc75fba9d4973199643dfcae1317e540d3e21aca8",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {}
+    },
+    {
+      "url": "https://raw.githubusercontent.com/laincat/vensrc/12c762ae6ded9c83bdabe9ea51ecfcb1afd4f7e5/sources/wnacg.js",
+      "key": "wnacg",
+      "name": "紳士漫畫",
+      "version": "1.1.0",
+      "minAppVersion": "1.0.0",
+      "repository": "laincat/vensrc",
+      "fileName": "wnacg.js",
+      "sample": {
+        "comicId": "397513",
+        "keyword": "火影"
+      },
+      "officialKey": true,
+      "priority": 100,
+      "trackedBy": [
+        "laincat/vensrc"
+      ],
+      "id": "243fb6323fb3d9b2df933737a08c30ac2dae14f7f0e827fe2ae7b6bab6a1f550",
+      "sha256": "243fb6323fb3d9b2df933737a08c30ac2dae14f7f0e827fe2ae7b6bab6a1f550",
       "runtimeProfile": "venerax",
       "verifyProfiles": [
         "venera-next"

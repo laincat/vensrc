@@ -164,10 +164,20 @@ def excluded_official(item, policy):
         return True
 
 
+def excluded_wnacg(item):
+    family = (item.get("key") in ("wnacg", "hj_wnacg") or
+              bool(re.search(r"wnacg|[紳绅]士漫[畫画]", " ".join(
+                  str(item.get(field, "")) for field in ("name", "fileName", "url")), re.I)))
+    return family and not (
+        item.get("key") == "wnacg" and item.get("repository") == "laincat/vensrc" and
+        re.fullmatch(r"https://raw\.githubusercontent\.com/laincat/vensrc/[a-f0-9]{40}/sources/wnacg\.js",
+                     item.get("url", "")))
+
+
 def source_annotation(item, notes):
     note = notes.get(item["id"])
     if note:
-        assert item.get("repository") == "BB-CHICKEN/venera-jm"
+        assert item.get("repository") in ("BB-CHICKEN/venera-jm", "laincat/vensrc")
         return note
     repository = item.get("repository", "")
     return f"引用源：{repository}" if repository else "引用源：未知仓库"
@@ -177,6 +187,7 @@ def validate_catalog(catalog):
     assert catalog["schemaVersion"] == 1
     seen = set()
     for item in catalog["sources"]:
+        assert not excluded_wnacg(item), "绅士漫画只允许 laincat/vensrc 独立维护版"
         assert re.fullmatch(r"[a-f0-9]{64}", item["sha256"])
         assert pinned(item["url"]), item["url"]
         assert item["id"] == item["sha256"], "构建 ID 必须是完整源码哈希"
@@ -347,8 +358,10 @@ def discover(work):
                         if match:
                             entry[field] = match.group(1)
                     actual_key = entry.get("key", key)
-                    if excluded_official({"key": actual_key, "repository": target,
-                                          "version": entry.get("version")}, exclusions):
+                    candidate = {"key": actual_key, "repository": target, "name": name,
+                                 "fileName": Path(unquote(file)).name, "url": fixed,
+                                 "version": entry.get("version")}
+                    if excluded_wnacg(candidate) or excluded_official(candidate, exclusions):
                         continue
                     updates.append({
                         "id": digest, "key": actual_key, "name": name,
@@ -574,7 +587,7 @@ def publish(payload, destination):
     assert note_config["schemaVersion"] == 1 and isinstance(note_config["notes"], dict)
     known_builds = {item["id"]: item for item in catalog["sources"]}
     assert set(note_config["notes"]) <= set(known_builds)
-    assert all(known_builds[build_id].get("repository") == "BB-CHICKEN/venera-jm"
+    assert all(known_builds[build_id].get("repository") in ("BB-CHICKEN/venera-jm", "laincat/vensrc")
                for build_id in note_config["notes"])
     annotations = note_config["notes"]
     exclusions = official_policy(snapshot=payload.get("officialExclusions"))
@@ -663,6 +676,9 @@ def publish(payload, destination):
         f"本次审阅清单：{len(rows)} 个构建；主索引 **{len(main)}** 项，扩展索引 **{len(extended)}** 项。", "",
         f"官方版本基线覆盖 **{len(exclusions['keys'])}** 个 key。官方仓库原版及转引继续排除；"
         "社区同 key 构建仅在版本严格高于官方且满足原巡检门槛时收录。同版、低版或版本无法比较均排除。",
+        "绅士漫画只保留 `laincat/vensrc` 独立维护版；其他来源不再巡检或收录。"
+        "账号改为本人完成滑块后导入浏览器 Cookie，并以会员页的真实登录标志验证；"
+        "缺少会话不计登录通过，详见 WNACG_LOGIN.md。",
         f"版本基线依据官方索引提交 `{exclusions['indexCommit']}`，"
         f"原始索引 SHA-256：`{exclusions['indexSha256']}`。"
         "按三段数字比较版本；后续检测追加 key 并提高官方版本基线，不降低历史基线，"
@@ -890,7 +906,8 @@ def publish_discovery(discovery, destination):
     assert discovery["schemaVersion"] == 1
     exclusions = official_policy()
     discovery = {**discovery,
-                 "updates": [i for i in discovery["updates"] if not excluded_official(i, exclusions)],
+                 "updates": [i for i in discovery["updates"]
+                             if not excluded_wnacg(i) and not excluded_official(i, exclusions)],
                  "repositories": [i for i in discovery["repositories"]
                                   if i["repository"].casefold() != OFFICIAL_REPOSITORY],
                  "newRepositories": [i for i in discovery["newRepositories"]

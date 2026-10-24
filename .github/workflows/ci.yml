@@ -7,6 +7,8 @@ on:
     paths:
       - "scripts/**"
       - "monitor/**"
+      - "sources/**"
+      - ".gitattributes"
       - ".github/**"
   workflow_dispatch:
 
@@ -32,5 +34,7 @@ jobs:
           python3 -m unittest discover -s scripts -p '*_test.py'
           python3 scripts/cloud_audit.py self-test
           for script in scripts/*.mjs; do node --check "$script"; done
+          node --check sources/wnacg.js
+          node --test scripts/wnacg.test.mjs
       - name: 用最新 CLI 构建并测试两个真实客户端接口
         run: python3 scripts/cloud_audit.py setup-cli --work "$RUNNER_TEMP/ci-cli"

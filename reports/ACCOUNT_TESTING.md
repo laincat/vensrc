@@ -15,7 +15,7 @@
 | 站点 | 源 key | Secret 名称 | 执行范围 |
 | --- | --- | --- | --- |
 | 漫画柜 | ManHuaGui | PATROL_AUTH_MANHUAGUI | 白名单源码的账号登录及只读巡检 |
-| 绅士漫画 | wnacg | PATROL_AUTH_WNACG | 同上；不将凭据交给“绅士会所”等不同站点 |
+| 绅士漫画 | wnacg | PATROL_AUTH_WNACG（已停用注入） | 独立版只接受客户端本地导入的浏览器 Cookie；Actions 测试缺凭据处理，登录保持未验证 |
 | 禁漫天堂 | jm | PATROL_AUTH_JM | 1.9.2；关闭 dailyCheckInTask |
 | 包子漫画 | baozi | PATROL_AUTH_BAOZI | 白名单源码的账号登录及只读巡检 |
 | 哔咔漫画 | picacg | PATROL_AUTH_PICACG | 同上 |

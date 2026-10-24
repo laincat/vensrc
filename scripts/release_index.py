@@ -62,8 +62,9 @@ def validate(root, check_latest=False):
     note_config = audit.load(root / "monitor/source-notes.json")
     assert note_config["schemaVersion"] == 1 and isinstance(note_config["notes"], dict)
     assert set(note_config["notes"]) <= set(items)
-    assert all(items[build_id].get("repository") == "BB-CHICKEN/venera-jm"
+    assert all(items[build_id].get("repository") in ("BB-CHICKEN/venera-jm", "laincat/vensrc")
                for build_id in note_config["notes"])
+    assert not any(audit.excluded_wnacg(row) for row in main + extended + locks), "绅士漫画含其他来源"
     assert not any(audit.excluded_official(row, latest_exclusions)
                    for row in main + extended + locks), "订阅含官方原版或未高于官方版本的同 key 源"
     assert state["officialOverrides"] == sum(row["key"] in exclusions["versions"] for row in locks)

@@ -11,6 +11,7 @@ on:
       - ".github/workflows/patrol.yml"
       - "scripts/**"
       - "monitor/**"
+      - "sources/**"
 
 permissions:
   contents: read
@@ -76,7 +77,6 @@ jobs:
         env:
           AUDIT_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           PATROL_AUTH_MANHUAGUI: ${{ secrets.PATROL_AUTH_MANHUAGUI }}
-          PATROL_AUTH_WNACG: ${{ secrets.PATROL_AUTH_WNACG }}
           PATROL_AUTH_JM: ${{ secrets.PATROL_AUTH_JM }}
           PATROL_AUTH_BAOZI: ${{ secrets.PATROL_AUTH_BAOZI }}
           PATROL_AUTH_PICACG: ${{ secrets.PATROL_AUTH_PICACG }}
@@ -132,7 +132,7 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "定时巡检：更新主／扩展订阅及中文报告"
             git -c credential.helper='!gh auth git-credential' fetch origin main
-            git diff --quiet HEAD origin/main -- monitor/ scripts/ .github/workflows/patrol.yml
+            git diff --quiet HEAD origin/main -- monitor/ scripts/ sources/ .github/workflows/patrol.yml
             git -c credential.helper='!gh auth git-credential' pull --rebase origin main
             git -c credential.helper='!gh auth git-credential' push origin HEAD:main
           fi

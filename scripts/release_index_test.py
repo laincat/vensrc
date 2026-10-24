@@ -82,6 +82,15 @@ def fixture(root):
 
 
 class ReleaseIndexTests(unittest.TestCase):
+    def test_other_wnacg_origin_in_public_subscription_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            data = fixture(root)
+            data["index.json"][0]["name"] = "紳士漫畫（私人）"
+            audit.save(root / "subscriptions/index.json", data["index.json"])
+            with self.assertRaisesRegex(AssertionError, "绅士漫画含其他来源"):
+                release.validate(root)
+
     def test_subscription_tables_show_name_version_and_source(self):
         url = "https://raw.githubusercontent.com/JunQianNuo/venera-sources/" + "a" * 40 + "/fixture.js"
         entry = {"name": "测试源", "key": "fixture", "version": "1.2.3", "url": url}

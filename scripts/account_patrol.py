@@ -45,7 +45,18 @@ def validate_plan(plan, catalog):
             assert item["key"] == site["key"]
             assert item["runtimeProfile"] == "venerax"
             assert site["loginReviewed"] is True
+        assert site.get("authMode", "password") in ("password", "browser_cookie")
+        if site.get("authMode") == "browser_cookie":
+            assert site.get("buildId") and site["key"] == "wnacg"
     return plan
+
+
+def login_stage(source):
+    stages = [stage for stage in source["stages"] if stage["path"] in (
+        "account.login", "account.loginWithCookies.validate", "account.loginWithWebview.checkStatus")]
+    return next((stage for stage in stages if stage["status"] == "failed"),
+                next((stage for stage in stages if stage["status"] not in ("passed", "recovered")),
+                     stages[0] if stages else {}))
 
 
 def render(payload, destination):
@@ -60,6 +71,8 @@ def render(payload, destination):
         "不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。",
         "登录通过表示源登录接口满足本次契约；阅读链路独立判断，不代替匿名订阅的收录结果。",
         "没有接入账号 Secret 的源、无登录接口的源及未登记站点均如实标记。",
+        "绅士漫画只测试 Cookie 登录接口的缺凭据处理；本站密码不再注入，"
+        "本人在客户端导入会话并完成会员页校验前，登录保持未验证。",
         "不启用签到、评论、点赞、收藏增删和设置按钮等写操作；不保存跨次会话。", "",
         "跳过和未执行不计入登录、核心阅读或整次通过。登录拒绝不等同于密码错误。", "",
         "## 登录失败项", "",
@@ -70,7 +83,7 @@ def render(payload, destination):
         if not entry.get("records"):
             login_unverified.append(f"- {audit.text(entry['site'])}（`{audit.text(entry['key'])}`）：{audit.text(entry['note'])}。")
         for record in entry.get("records", []):
-            login = next((s for s in record["source"]["stages"] if s["path"] == "account.login"), {})
+            login = login_stage(record["source"])
             label = f"{audit.text(entry['site'])}／{record['runtimeProfile']}"
             if login.get("status") == "failed":
                 category = audit.CATEGORIES.get(login.get("category"), login.get("category", "未分类"))
@@ -95,7 +108,7 @@ def render(payload, destination):
                 entry["site"], entry["key"], "—", entry["note"], "未测试", "跳过", "", "未执行")) + " |")
         for record in entry.get("records", []):
             source = record["source"]
-            login = next((s for s in source["stages"] if s["path"] == "account.login"), {})
+            login = login_stage(source)
             failures = [
                 f"{s['path']}：{audit.CATEGORIES.get(s.get('category'), s.get('category', '未分类'))}"
                 for s in source["stages"] if s["status"] == "failed"
@@ -130,20 +143,22 @@ def patrol(work):
         payload["sites"].append(entry)
         if not site.get("buildId"):
             continue
-        secret = os.environ.get(site["secret"], "")
-        if not secret:
+        browser_cookie = site.get("authMode") == "browser_cookie"
+        secret = "" if browser_cookie else os.environ.get(site["secret"], "")
+        if not browser_cookie and not secret:
             entry["note"] = "未配置本站 Secret"
             continue
         # 错误信息不能包含 Secret 本身或解析异常中的片段。
-        try:
-            auth = json.loads(secret)
-            assert set(auth) == {site["key"]}
-            assert set(auth[site["key"]]) == {"credentials"}
-            credentials = auth[site["key"]]["credentials"]
-            assert set(credentials) == {"username", "password"}
-            assert all(isinstance(v, str) and v for v in credentials.values())
-        except Exception:
-            raise ValueError(f"{site['secret']} 格式不符合本站授权契约") from None
+        if not browser_cookie:
+            try:
+                auth = json.loads(secret)
+                assert set(auth) == {site["key"]}
+                assert set(auth[site["key"]]) == {"credentials"}
+                credentials = auth[site["key"]]["credentials"]
+                assert set(credentials) == {"username", "password"}
+                assert all(isinstance(v, str) and v for v in credentials.values())
+            except Exception:
+                raise ValueError(f"{site['secret']} 格式不符合本站授权契约") from None
         item = items[site["buildId"]]
         data = audit.request(item["url"])
         if audit.sha(data) != item["sha256"]:
@@ -161,17 +176,20 @@ def patrol(work):
                     "version": 1, "configPaths": ["/private/index.json"], "output": "/private/reports",
                     "defaults": {**audit.POLICY, "concurrency": 1, "sourceTimeoutMs": 120000},
                     "sources": {item["key"]: {
-                        "auth": site["key"], "inputs": item["sample"], "settings": item.get("settings", {}),
+                        **({"auth": site["key"]} if secret else {}),
+                        "inputs": item["sample"], "settings": item.get("settings", {}),
                     }},
                 })
                 environment = {k: v for k, v in os.environ.items()
                                if not k.startswith("PATROL_AUTH") and k not in ("GH_TOKEN", "GITHUB_TOKEN")}
-                environment["PATROL_AUTH"] = secret
+                if secret:
+                    environment["PATROL_AUTH"] = secret
                 command = [
                     "docker", "run", "--rm", "--read-only", "--cap-drop=ALL",
                     "--security-opt=no-new-privileges", "--pids-limit=256", "--memory=3g", "--cpus=2",
                     "--user", f"{os.getuid()}:{os.getgid()}", "--env", "HOME=/tmp",
-                    "--env", "PATROL_AUTH", "--env", f"VENERA_CLIENT_PROFILE={profile}",
+                    *(["--env", "PATROL_AUTH"] if secret else []),
+                    "--env", f"VENERA_CLIENT_PROFILE={profile}",
                     "--tmpfs", "/tmp:rw,noexec,nosuid,size=1024m",
                     "--mount", f"type=bind,source={private},target=/private",
                     "--mount", f"type=bind,source={private / 'source.js'},target=/private/source.js,readonly",

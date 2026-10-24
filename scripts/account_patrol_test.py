@@ -69,6 +69,23 @@ class AccountIsolationTests(unittest.TestCase):
             self.assertIn("## 已核对的登录流程差异", report)
             self.assertIn("旧源没有滑块验证流程", report)
 
+    def test_cookie_login_without_a_session_is_not_reported_as_passed(self):
+        source = {"status": "partial", "stages": [{
+            "path": "account.loginWithCookies.validate", "status": "skipped",
+            "category": "credentials_missing",
+        }]}
+        self.assertEqual(accounts.login_stage(source)["status"], "skipped")
+        payload = {
+            "checkedAt": "2026-10-24", "cli": {"commit": "a" * 40},
+            "sites": [{"site": "绅士漫画", "key": "wnacg", "note": "本站密码不再注入",
+                       "records": [{"runtimeProfile": "venerax", "source": source}]}],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            accounts.render(payload, Path(directory))
+            report = (Path(directory) / "reports/ACCOUNT_RESULTS.md").read_text(encoding="utf-8")
+            self.assertIn("登录跳过，不计通过", report)
+            self.assertIn("跳过 | 未通过 | 部分通过", report)
+
 
 if __name__ == "__main__":
     unittest.main()

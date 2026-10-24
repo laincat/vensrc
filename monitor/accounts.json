@@ -30,9 +30,10 @@
       "site": "绅士漫画",
       "key": "wnacg",
       "secret": "PATROL_AUTH_WNACG",
-      "buildId": "545a6d818d012c1e5799d6aaf7ecd09798969acb840166ee7c56de6d02201df0",
+      "buildId": "243fb6323fb3d9b2df933737a08c30ac2dae14f7f0e827fe2ae7b6bab6a1f550",
       "loginReviewed": true,
-      "note": "2026-10-24 核对：浏览器登录页新增自建滑块及 slider_pass；固定源 1.0.6 尚无此流程。巡检使用最终域名 www.wnacg.com 排除 301 跳转影响；失败不等同于密码错误，详见 WNACG_LOGIN.md。"
+      "note": "Vensrc 独立维护版 1.1.0；站点自建滑块须由本人在对应域名的浏览器完成，再在客户端导入 Cookie 并验证会员页。Actions 不注入本站密码、不接收浏览器会话；缺少 Cookie 如实跳过，不算登录通过。详见 WNACG_LOGIN.md。",
+      "authMode": "browser_cookie"
     },
     {
       "site": "禁漫天堂",
