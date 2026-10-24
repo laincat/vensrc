@@ -13,7 +13,10 @@ try {
     const context = await browser.newContext();
     const page = await context.newPage();
     let challengeHeader = false;
+    let navigationStatus = null;
     page.on("response", (response) => {
+      if (response.request().isNavigationRequest() && response.frame() === page.mainFrame())
+        navigationStatus = response.status();
       if (response.url().startsWith(url.origin + "/") &&
           response.headers()["cf-mitigated"] === "challenge") challengeHeader = true;
     });
@@ -24,6 +27,7 @@ try {
       const response = await page.goto(target.url, { waitUntil: "domcontentloaded", timeout: 30000 });
       result.httpStatus = response?.status() ?? null;
       for (let attempt = 0; attempt < 4; attempt++) {
+        result.httpStatus = navigationStatus ?? result.httpStatus;
         const body = await page.locator("body").innerText({ timeout: 5000 });
         const challenge = /checking your browser|just a moment|verify (?:that )?you are human|security verification|请完成人机验证/i.test(
           await page.title() + "\n" + body) ||
