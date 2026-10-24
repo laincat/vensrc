@@ -81,15 +81,6 @@
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
-    "name": "Cosplay啦",
-    "key": "ciyuandao",
-    "version": "1.0.0",
-    "fileName": "ciyuandao.js",
-    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/ciyuandao.js",
-    "minAppVersion": "1.0.0",
-    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
-  },
-  {
     "name": "comick",
     "key": "comick",
     "version": "1.2.0",
@@ -324,15 +315,6 @@
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
-    "name": "漫画manga",
-    "key": "mh03",
-    "version": "1.0.1",
-    "fileName": "mh03.js",
-    "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/mh03.js",
-    "minAppVersion": "1.0.0",
-    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
-  },
-  {
     "name": "漫画1234（新版网站）",
     "key": "mh1234_fixed",
     "version": "1.2.2",
@@ -495,11 +477,20 @@
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
   {
-    "name": "优酷漫画 (修复版)",
+    "name": "野蛮漫画",
+    "key": "yemancomic",
+    "version": "0.1.2",
+    "fileName": "yemancomic.js",
+    "url": "https://raw.githubusercontent.com/hea784/venera-configs/c45e8178894cc760b24f9dc19caf4a59264a357c/yemancomic.js",
+    "minAppVersion": "1.6.0",
+    "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
+  },
+  {
+    "name": "优酷漫画",
     "key": "ykmh",
-    "version": "1.0.7",
-    "fileName": "youku.js",
-    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/youku.js",
+    "version": "1.0.2",
+    "fileName": "ykmh.js",
+    "url": "https://raw.githubusercontent.com/zakkida/venera-sources/a5d8118da700c44f4823e82494d4ca816054afaf/ykmh.js",
     "minAppVersion": "1.4.0",
     "description": "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"
   },
