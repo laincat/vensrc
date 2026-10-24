@@ -36,3 +36,4 @@ class ClientReportTests(unittest.TestCase):
             self.assertIn("| venerax | 1 | 0 | 0 | 1 | 0 | 0 | 1 |", report)
             self.assertIn("共 1 个构建", report)
             self.assertIn("| fixture | 1.0 | fixture/repo | 未通过 | 通过 |", report)
+            self.assertIn("| fixture | 1.0 | aaaaaaaaaaaa | image.decode | 跳过 | 通过 |", report)

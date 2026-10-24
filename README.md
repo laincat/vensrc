@@ -45,9 +45,9 @@
 
 - [中文巡检报告](RESULTS.md)：逐构建结果、固定样本的核心链路、主／扩展名单。
 - [中文完整清单](sources.zh.csv)：VeneraX 主环境的源版本、样本输入、首个失败阶段及源码哈希。
-- [双客户端中文清单](client-compatibility.zh.csv)：每个构建在 VeneraX 与 Venera-Next 的独立结果。
-- [反爬与人工处理清单](ACCESS_RESULTS.md)：独立 Actions 的正常浏览器对照及验证建议；不会改变订阅资格。
-- [账号巡检与 Secrets](ACCOUNT_TESTING.md)：按站点隔离的 Secrets、源码白名单与脱敏规则；[账号结果](ACCOUNT_RESULTS.md)独立于匿名订阅。
+- [双客户端中文清单](client-compatibility.zh.csv)：每个构建在 VeneraX 与 Venera-Next 的独立结果；[对照报告](CLIENT_RESULTS.md)单列全量统计、核心阅读差异及逐阶段状态差异。
+- [反爬与人工处理清单](ACCESS_RESULTS.md)：独立 Actions 的正常浏览器对照、仍需本人验证的站点和全部受限阶段；不会改变订阅资格。
+- [账号巡检与 Secrets](ACCOUNT_TESTING.md)：按站点隔离的 Secrets、源码白名单与脱敏规则；[账号结果](ACCOUNT_RESULTS.md)单列登录失败、未验证／跳过项和全部失败阶段，独立于匿名订阅。
 - `audit-status.json`：本次执行环境、工具版本和 Actions 运行链接。
 - Actions 的 `venera-patrol-results` artifact：结构化逐阶段证据及中文预览，保留 30 天；不上传原始 trace 或认证状态。
 - `monitor/catalog.json`：已审阅源码及固定样本；不要通过修改 `minAppVersion` 或伪造通过阶段绕过兼容性问题。

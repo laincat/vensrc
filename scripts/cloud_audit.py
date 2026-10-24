@@ -638,7 +638,7 @@ def publish_clients(payload, catalog, destination):
         if "venerax" in pair and "venera-next" in pair:
             assert pair["venerax"]["inputs"] == pair["venera-next"]["inputs"], "两个客户端必须使用完全相同的固定输入"
     lines += ["## 全量统计", "",
-              "| 环境 | 已执行构建 | 核心阅读通过 | 整次通过 | 部分通过 | 失败 | 整源跳过 | 跳过阶段 |",
+              "| 环境 | 报告构建数 | 核心阅读通过 | 整次通过 | 部分通过 | 失败 | 整源跳过 | 跳过阶段 |",
               "| --- | --- | --- | --- | --- | --- | --- | --- |"]
     for profile in ("venerax", "venera-next"):
         sources = [r["source"] for r in records if r["runtimeProfile"] == profile]
@@ -669,8 +669,30 @@ def publish_clients(payload, catalog, destination):
         lines.append("| " + " | ".join(text(v) for v in (
             item["key"], item["version"], item["repository"],
             *("通过" if core(pair[p]["source"]) else "未通过" for p in ("venerax", "venera-next")))) + " |")
-    lines += ["", "整次状态及失败阶段的其他差异保留在下面的逐构建对照及 CSV 中。",
-              "", "## 逐构建对照", "",
+    lines += ["", "## 其他阶段结果差异", "",
+              "按阶段状态和类别对照，不比较耗时、返回正文和异常原文。“未出现”表示该环境报告没有此阶段，不能算通过。", "",
+              "| key | 版本 | 构建哈希（前12位） | 阶段 | VeneraX | Venera-Next |",
+              "| --- | --- | --- | --- | --- | --- |"]
+    for item in items.values():
+        pair = grouped.get(item["id"], {})
+        if not all(profile in pair for profile in ("venerax", "venera-next")):
+            continue
+        by_profile = {}
+        for profile in ("venerax", "venera-next"):
+            paths = {}
+            for stage in pair[profile]["source"]["stages"]:
+                paths.setdefault(stage["path"], []).append((stage["status"], stage.get("category", "")))
+            by_profile[profile] = paths
+        for path in sorted(set(by_profile["venerax"]) | set(by_profile["venera-next"])):
+            values = [by_profile[profile].get(path, []) for profile in ("venerax", "venera-next")]
+            if values[0] == values[1]:
+                continue
+            labels = ["；".join(
+                LABELS.get(status, status) + ("／" + CATEGORIES.get(category, category) if category else "")
+                for status, category in value) or "未出现" for value in values]
+            lines.append("| " + " | ".join(text(v) for v in (
+                item["key"], item["version"], item["sha256"][:12], path, *labels)) + " |")
+    lines += ["", "## 逐构建对照", "",
               "| 名称 | key | 版本 | 仓库 | 源码哈希（前12位） | VeneraX 核心／整次 | Next 核心／整次 | 首个失败（X；Next） |",
               "| --- | --- | --- | --- | --- | --- | --- | --- |"]
     priority = set(catalog["priorityRepositories"])
