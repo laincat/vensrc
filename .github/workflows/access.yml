@@ -1,0 +1,102 @@
+name: 反爬与人工验证诊断
+
+on:
+  workflow_run:
+    workflows: ["Venera 漫画源定时巡检与索引更新"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: venera-access-diagnostics
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: 读取受信任的诊断脚本
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: 选择已完成的真实巡检证据
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_RUN_ID: ${{ github.event.workflow_run.id }}
+        shell: bash
+        run: |
+          run_id="$EVENT_RUN_ID"
+          if test -z "$run_id"; then
+            run_id="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow patrol.yml --status success --limit 1 --json databaseId --jq '.[0].databaseId')"
+          fi
+          [[ "$run_id" =~ ^[0-9]+$ ]]
+          gh run download "$run_id" --repo "$GITHUB_REPOSITORY" --name venera-patrol-results --dir "$RUNNER_TEMP/patrol-evidence"
+          mkdir -p "$RUNNER_TEMP/access"
+          PATROL_RUN_URL="https://github.com/$GITHUB_REPOSITORY/actions/runs/$run_id" python3 scripts/access_report.py collect --input "$RUNNER_TEMP/patrol-evidence/patrol.json" --output "$RUNNER_TEMP/access/access.json"
+      - name: 获取最新 CLI 的锁定浏览器依赖
+        shell: bash
+        run: |
+          git clone --depth 1 https://github.com/Gandum2077/venera-patrol-cli.git "$RUNNER_TEMP/browser-cli"
+          commit="$(git -C "$RUNNER_TEMP/browser-cli" rev-parse HEAD)"
+          latest="$(git ls-remote https://github.com/Gandum2077/venera-patrol-cli.git HEAD | cut -f1)"
+          test "$commit" = "$latest"
+          cd "$RUNNER_TEMP/browser-cli"
+          npm ci --ignore-scripts
+          npx playwright install --with-deps chromium
+          test "$commit" = "$(git ls-remote https://github.com/Gandum2077/venera-patrol-cli.git HEAD | cut -f1)"
+          echo "BROWSER_CLI_COMMIT=$commit" >> "$GITHUB_ENV"
+      - name: 正常浏览器诊断，不提供账号或代解验证码
+        shell: bash
+        run: |
+          cp scripts/access_browser.mjs "$RUNNER_TEMP/browser-cli/access_browser.mjs"
+          node "$RUNNER_TEMP/browser-cli/access_browser.mjs" monitor/access-targets.json "$RUNNER_TEMP/access/browser.json"
+      - name: 保存状态化诊断结果
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: venera-access-results
+          path: ${{ runner.temp }}/access/
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    needs: probe
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: 读取受信任的报告生成器
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: 下载不含页面原文的诊断状态
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: venera-access-results
+          path: .access-results
+      - name: 校验诊断产物并生成中文处理清单
+        env:
+          AUDIT_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python3 scripts/access_report.py publish --input .access-results/access.json --browser .access-results/browser.json
+      - name: 发布诊断，不改写源或订阅资格
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- ACCESS_RESULTS.md access-results.json
+          if ! git diff --cached --quiet; then
+            git commit -m "更新反爬与人工验证中文处理清单"
+            git -c credential.helper='!gh auth git-credential' pull --rebase origin main
+            git -c credential.helper='!gh auth git-credential' push origin HEAD:main
+          fi

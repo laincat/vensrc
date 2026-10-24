@@ -60,3 +60,5 @@
 全量适配增加客户端原始 HTML 包装类及对应 Dart 消息桥接、HMAC、AES-CBC/CFB/OFB、随机数和 UUID。VeneraX 源解析后的 `isAppVersionAfter` 修正取自锁定且校验哈希的 Dart parser 脚本，不改写源 JS。未实现消息继续明确失败。两份客户端的 `HtmlNode.toElement` JS 消息拼写与 Dart 分支不同，按实际不兼容报告，不补造成功。
 
 `compute` 只验证 Node 中函数计算与参数传递，不模拟 Flutter 隔离线程、实例销毁或平台调度。账号巡检使用独立 job；每个白名单源的每个客户端独立容器仅获得本站 Secret，不接收其他站点或 GitHub 发布凭据。公开产物删除所有返回值、原始异常和 trace，仅保留阶段状态、受信任标识、哈希及固定输入。匿名结果仍独立决定主／扩展订阅。
+
+Cloudflare 处理也固定核验了各自提交的 `lib/network/cloudflare.dart`。宿主适配只在与客户端相同的 403＋挑战响应头条件下明确报 `anti_bot`；未执行 Flutter 的验证窗口或 Cookie 同步。额外的无账号浏览器诊断只生成 ACCESS_RESULTS.md，不能把首页能打开替换为源阅读通过。

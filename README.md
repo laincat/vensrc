@@ -44,7 +44,9 @@
 ## 报告与维护
 
 - [中文巡检报告](RESULTS.md)：逐构建结果、固定样本的核心链路、主／扩展名单。
-- [中文完整清单](sources.zh.csv)：源版本、样本输入、首个失败阶段及源码哈希。
+- [中文完整清单](sources.zh.csv)：VeneraX 主环境的源版本、样本输入、首个失败阶段及源码哈希。
+- [双客户端中文清单](client-compatibility.zh.csv)：每个构建在 VeneraX 与 Venera-Next 的独立结果。
+- [反爬与人工处理清单](ACCESS_RESULTS.md)：独立 Actions 的正常浏览器对照及验证建议；不会改变订阅资格。
 - [账号巡检与 Secrets](ACCOUNT_TESTING.md)：按站点隔离的 Secrets、源码白名单与脱敏规则；[账号结果](ACCOUNT_RESULTS.md)独立于匿名订阅。
 - `audit-status.json`：本次执行环境、工具版本和 Actions 运行链接。
 - Actions 的 `venera-patrol-results` artifact：结构化逐阶段证据及中文预览，保留 30 天；不上传原始 trace 或认证状态。
@@ -61,3 +63,11 @@
 - [venera-patrol-cli](https://github.com/Gandum2077/venera-patrol-cli)
 
 本仓库只发布索引、源码引用和审计摘要，不镜像漫画内容，也不修改或重新分发上游 JS。GitHub 未公开、未索引或尚未被搜索到的来源可能遗漏，不能声称已经穷尽全部漫画源。
+
+## Cloudflare 等访问限制
+
+适配层按两套客户端真实拦截器识别 `403` 加 `cf-mitigated: challenge`，明确报告反爬验证；普通 403 不自动认定为 Cloudflare 或密码错误。客户端的 Flutter WebView 验证、Cookie 与浏览器身份同步不能用 Node 版本号替代。
+
+[反爬诊断工作流](https://github.com/laincat/venera-source-index/actions/workflows/access.yml)在完整巡检成功后执行，也可手动触发。它使用最新 CLI 锁定的浏览器依赖，对已审阅的 4 个公开首页执行无账号的正常浏览器诊断，只等待页面自身脚本、不点击验证码；结果与真实阅读链路分开。浏览器可访问不使 CLI 失败的源自动进入订阅。
+
+需要人工时，优先在 VeneraX 自带验证窗口完成正常验证，再在相同网络环境重试。通行 Cookie 不能保证从本机搬到 GitHub runner 后仍有效；长期云端受限需要站点允许的访问方式或出口稳定的独立远程验证环境。未部署此类远程环境，不依赖本机恢复在线来维持基础定时巡检。

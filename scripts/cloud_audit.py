@@ -38,6 +38,9 @@ CATEGORIES = {
     "missing_input": "缺少样本输入", "dependency_failed": "前置能力未通过",
     "not_triggered": "本次成功路径未触发", "interactive_required": "需要交互",
     "unreviewed_update": "上游变更待审阅", "download_failed": "源码下载失败",
+    "rate_limited": "请求限流", "region_restricted": "地区限制",
+    "runtime_dependency": "运行时依赖错误", "request_limit": "超过请求预算",
+    "response_limit": "响应超过大小限制",
 }
 
 
@@ -585,6 +588,7 @@ def publish(payload, destination):
         "checkedAt": checked, "cli": payload["cli"], "catalogSha256": payload["catalogSha256"],
         "builds": len(rows), "main": len(main), "extended": len(extended),
         "runUrl": os.environ.get("AUDIT_RUN_URL", ""),
+        "clientExecutions": len(payload["records"]) + len(payload.get("clientRecords", [])),
     })
     publish_clients(payload, catalog, destination)
     print(f"中文报告已生成：主索引 {len(main)} 项、扩展索引 {len(extended)} 项。", flush=True)
@@ -602,10 +606,13 @@ def publish_clients(payload, catalog, destination):
              f"最新上游 CLI 提交：`{payload['cli']['commit']}`；同时加载本仓库记录哈希的接口适配层。",
              "全部已审阅源码逐个使用相同固定输入；VeneraX 为订阅选择依据，Next 为独立对照。",
              "结果为 Node 宿主上的真实客户端 JS 接口巡检，不代表 Flutter UI 或用户设备实测。",
+             "两边分时执行，差异也可能来自网络、限流或源站变化，不能全部归因于 Fork 接口。",
              "账号巡检另见 ACCOUNT_RESULTS.md，不以账号通过替代匿名订阅收录标准。",
              "完整阶段、输入和哈希保存在 client-results.json 与 sources.zh.csv。", ""]
     clean_records = []
     grouped = {}
+    csv_rows = [["源名称", "源标识", "版本", "仓库", "客户端环境", "核心阅读链路", "整次状态",
+                 "最低应用版本", "固定漫画ID", "固定章节ID", "关键词", "源码SHA256", "失败阶段", "失败类别"]]
     for record in records:
         item = items[record["id"]]
         validate_client_record(record, item, payload)
@@ -618,6 +625,15 @@ def publish_clients(payload, catalog, destination):
         profile = record["runtimeProfile"]
         grouped.setdefault(item["id"], {})[profile] = record
         clean_records.append(record)
+        sample = record.get("sample", record["inputs"])
+        first = next((s for s in source["stages"] if s["status"] == "failed"), {})
+        csv_rows.append([
+            item["name"], item["key"], item["version"], item["repository"], profile,
+            "通过" if core(source) else "未通过", LABELS[source["status"]], item["minAppVersion"],
+            sample.get("comicId", ""), sample.get("epId", ""), sample.get("keyword", ""),
+            item["sha256"], first.get("path", ""),
+            CATEGORIES.get(first.get("category"), first.get("category", "")),
+        ])
     for pair in grouped.values():
         if "venerax" in pair and "venera-next" in pair:
             assert pair["venerax"]["inputs"] == pair["venera-next"]["inputs"], "两个客户端必须使用完全相同的固定输入"
@@ -653,6 +669,10 @@ def publish_clients(payload, catalog, destination):
         "schemaVersion": 1, "checkedAt": payload["checkedAt"], "cli": payload["cli"],
         "records": clean_records, "runUrl": os.environ.get("AUDIT_RUN_URL", "")})
     (destination / "CLIENT_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    with (destination / "client-compatibility.zh.csv").open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream)
+        for row in csv_rows:
+            writer.writerow(["'" + str(v) if str(v).startswith(("=", "+", "-", "@")) else v for v in row])
 
 
 def publish_discovery(discovery, destination):

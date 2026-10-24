@@ -94,7 +94,14 @@ export async function installClientProfile(globals, runtime, images) {
         if (!Object.keys(headers).some((key) => key.toLowerCase() === "user-agent"))
           headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36";
         return host.Network[m.bytes ? "fetchBytes" : "sendRequest"](
-          m.http_method, m.url, headers, m.data, m.extra);
+          m.http_method, m.url, headers, m.data, m.extra).then((response) => {
+            const challenge = Object.entries(response.headers ?? {}).find(
+              ([key]) => key.toLowerCase() === "cf-mitigated")?.[1];
+            if (response.status === 403 && (Array.isArray(challenge) ? challenge[0] : challenge) === "challenge")
+              throw Object.assign(new Error("Cloudflare challenge requires browser verification"),
+                { category: "anti_bot" });
+            return response;
+          });
       }
       case "convert": {
         if (m.type === "hmac")

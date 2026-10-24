@@ -16,6 +16,10 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     const requests = [];
     globals.Network = { ...globals.Network, sendRequest: async (...args) => {
       requests.push(args);
+      if (args[1].endsWith("/challenge"))
+        return { status: 403, headers: { "Cf-Mitigated": "challenge" }, body: "fixture" };
+      if (args[1].endsWith("/forbidden"))
+        return { status: 403, headers: {}, body: "forbidden" };
       return { status: 200, headers: {}, body: "response" };
     }};
     await installClientProfile(globals, runtime, runtimeImages);
@@ -73,6 +77,9 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     await globals.Network.post("https://fixture.invalid/", { Test: "header" }, "payload");
     assert.deepEqual(requests[0].slice(0, 2), ["POST", "https://fixture.invalid/"]);
     assert.equal(requests[0][3], "payload");
+    await assert.rejects(globals.Network.get("https://fixture.invalid/challenge"),
+      (error) => error.category === "anti_bot");
+    assert.equal((await globals.Network.get("https://fixture.invalid/forbidden")).status, 403);
     const sharp = (await import("sharp")).default;
     const png = await sharp(Buffer.from([255, 0, 0, 0, 255, 0, 0, 0, 255]),
       { raw: { width: 1, height: 3, channels: 3 } }).png().toBuffer();
