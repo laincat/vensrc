@@ -1,6 +1,6 @@
 # 社区替代源与自用仓库重点复测
 
-核验时间：2026-10-24T05:55:20.448636+00:00（UTC）；CLI：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
+核验时间：2026-10-24T13:19:16.777489+00:00（UTC）；CLI：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 VeneraX 为订阅依据，Venera-Next 单独对照；固定样本、最低应用版本与源码哈希保持不变。
 表内“核心／整次”分别表示阅读链路和报告总状态。登录只采用完全相同构建的独立账号任务证据。
 未执行、跳过、缺少凭据和未触发回调均不计通过；两边分时执行的差异也可能来自源站或网络。
@@ -85,8 +85,8 @@ VeneraX 为订阅依据，Venera-Next 单独对照；固定样本、最低应用
 | cxc | 1.0.3／无 | handahao666-boop/venera_comic_source | 扩展订阅 | 通过／部分通过 | 通过／部分通过 | 未对该构建执行账号巡检 | 未对该构建执行账号巡检 |
 | dm5 | 7.0.3／无 | handahao666-boop/venera_comic_source | 主订阅 | 通过／通过 | 通过／通过 | 未对该构建执行账号巡检 | 未对该构建执行账号巡检 |
 | dongman_la | 1.0.5／无 | handahao666-boop/venera_comic_source | 扩展订阅 | 通过／部分通过 | 通过／部分通过 | 未对该构建执行账号巡检 | 未对该构建执行账号巡检 |
-| dongmanmanhua | 1.0.6／无 | handahao666-boop/venera_comic_source | 主订阅 | 通过／通过 | 通过／通过 | 未对该构建执行账号巡检 | 未对该构建执行账号巡检 |
-| ffppt | 1.0.3／无 | handahao666-boop/venera_comic_source | 主订阅 | 通过／通过 | 通过／通过 | 未对该构建执行账号巡检 | 未对该构建执行账号巡检 |
+| dongmanmanhua | 1.0.6／无 | handahao666-boop/venera_comic_source | 扩展订阅 | 通过／失败 | 未通过／失败 | 未对该构建执行账号巡检 | 未对该构建执行账号巡检 |
+| ffppt | 1.0.3／无 | handahao666-boop/venera_comic_source | 主订阅 | 通过／通过 | 未通过／失败 | 未对该构建执行账号巡检 | 未对该构建执行账号巡检 |
 | goda | 1.2.1／1.2.1 | handahao666-boop/venera_comic_source | 未收录 | 未通过／失败 | 未通过／失败 | 未对该构建执行账号巡检 | 未对该构建执行账号巡检 |
 | guazimanhua | 1.0.4／无 | handahao666-boop/venera_comic_source | 扩展订阅 | 通过／失败 | 通过／失败 | 未对该构建执行账号巡检 | 未对该构建执行账号巡检 |
 | hipmh | 1.0.1／无 | handahao666-boop/venera_comic_source | 主订阅 | 通过／通过 | 通过／通过 | 未对该构建执行账号巡检 | 未对该构建执行账号巡检 |
@@ -124,4 +124,4 @@ VeneraX 为订阅依据，Venera-Next 单独对照；固定样本、最低应用
 - [源码哈希及固定样本](../data/sources.lock.json)
 - [全部已审阅构建](../monitor/catalog.json)
 
-巡检 Actions：https://github.com/laincat/vensrc/actions/runs/40067113111
+巡检 Actions：https://github.com/laincat/vensrc/actions/runs/40096546612
