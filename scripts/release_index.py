@@ -34,8 +34,8 @@ def releases(repository):
 
 def validate(root, check_latest=False):
     for name in EVIDENCE:
-        if not (audit.generated_path(root, name)).is_file():
-            raise ValueError(f"Release 附件缺失：{name}")
+        if not audit.generated_path(root, name).is_file():
+            raise ValueError(f"发布证据缺失：{name}")
     catalog = audit.validate_catalog(audit.load(root / "monitor/catalog.json"))
     items = {item["id"]: item for item in catalog["sources"]}
     state = audit.load(root / "data/audit-status.json")
@@ -72,6 +72,9 @@ def validate(root, check_latest=False):
     assert state["main"] == len(main) and state["extended"] == len(extended)
     for channel, entries in (("main", main), ("extended", extended)):
         for entry in entries:
+            assert set(entry) == {
+                "name", "key", "version", "fileName", "url", "minAppVersion", "description",
+            }, "公开订阅含白名单以外字段"
             locked = by_key[entry["key"]]
             item = items[locked["buildId"]]
             assert not audit.excluded_official(item, latest_exclusions), "禁止重新收录官方构建"
@@ -142,6 +145,9 @@ def stage(root, destination, repository, check_latest=False):
         "JS 地址仍固定到已审阅的上游提交。"
         "不打包账号凭据、Cookie、Token、原始追踪、认证状态或漫画内容。\n\n"
         f"CLI：`{state['cli']['commit']}`（本轮巡检开始前获取的最新版本）。\n\n"
+        f"[重点复测](https://github.com/{repository}/blob/main/reports/FOCUS_RESULTS.md) · "
+        f"[双客户端清单](https://github.com/{repository}/blob/main/reports/CLIENT_RESULTS.md) · "
+        f"[账号登录结果](https://github.com/{repository}/blob/main/reports/ACCOUNT_RESULTS.md)\n\n"
         f"附件 SHA-256：\n\n```text\n{checksums}```\n\n"
         f"巡检 Actions：{state['runUrl']}\n\n诊断 Actions：{access['diagnosticRunUrl']}\n"
     )
@@ -181,7 +187,8 @@ def publish(repository, destination, tag):
            *[str(destination / name) for name in ASSETS])
     verify(repository, tag, destination)
     # 完整回读成功后才更新 Latest；中途失败不动旧版。
-    gh("release", "edit", tag, "--repo", repository, "--draft=false", "--latest")
+    gh("release", "edit", tag, "--repo", repository, "--draft=false", "--latest",
+       "--notes-file", str(destination / "release-notes.md"))
     latest = json.loads(gh("api", f"repos/{repository}/releases/latest"))
     assert latest["tag_name"] == tag
     verify_public(repository, destination)
@@ -203,6 +210,6 @@ if __name__ == "__main__":
     if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", args.repository):
         raise ValueError("仓库名称不合法")
     release_tag = stage(ROOT, args.output.resolve(), args.repository, check_latest=args.publish)
-    print(f"快照已校验并打包：{release_tag}；主／扩展标准及固定样本未变。")
+    print(f"两份订阅快照已校验：{release_tag}；主／扩展标准及固定样本未变。")
     if args.publish:
         publish(args.repository, args.output.resolve(), release_tag)

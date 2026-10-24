@@ -84,7 +84,7 @@ def fixture(root):
 class ReleaseIndexTests(unittest.TestCase):
     def test_missing_file_is_rejected_before_network(self):
         with tempfile.TemporaryDirectory() as directory:
-            with self.assertRaisesRegex(ValueError, "Release 附件缺失"):
+            with self.assertRaisesRegex(ValueError, "发布证据缺失"):
                 release.validate(Path(directory))
 
     def test_snapshot_is_deterministic_and_only_contains_public_allowlist(self):
@@ -195,6 +195,17 @@ class ReleaseIndexTests(unittest.TestCase):
             with self.assertRaises(AssertionError):
                 release.validate(root)
 
+    def test_unreviewed_public_index_field_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            data = fixture(root)
+            data["index.json"][0]["unexpected"] = "private-fixture"
+            data["sources.lock.json"][0]["unexpected"] = "private-fixture"
+            audit.save(root / "subscriptions/index.json", data["index.json"])
+            audit.save(root / "data/sources.lock.json", data["sources.lock.json"])
+            with self.assertRaisesRegex(AssertionError, "白名单以外字段"):
+                release.validate(root)
+
     def test_failed_readback_never_publishes_or_deletes_old_release(self):
         old = {"tag_name": "old", "draft": False}
         with tempfile.TemporaryDirectory() as directory, \
@@ -221,6 +232,9 @@ class ReleaseIndexTests(unittest.TestCase):
             self.assertNotIn(("release", "create"), verbs)
             self.assertNotIn(("release", "upload"), verbs)
             self.assertNotIn(("release", "delete"), verbs)
+            edit = next(call.args for call in command.call_args_list
+                        if call.args[:2] == ("release", "edit"))
+            self.assertIn("--notes-file", edit)
 
     def test_old_release_is_deleted_only_after_successful_verification_and_promotion(self):
         current = {"tag_name": "rolling-fixture", "draft": True}
