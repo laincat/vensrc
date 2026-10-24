@@ -60,22 +60,46 @@ def render(payload, destination):
         "登录通过表示源登录接口满足本次契约；阅读链路独立判断，不代替匿名订阅的收录结果。",
         "没有接入账号 Secret 的源、无登录接口的源及未登记站点均如实标记。",
         "不启用签到、评论、点赞、收藏增删和设置按钮等写操作；不保存跨次会话。", "",
-        "| 站点 | key | 环境 | 登录 | 核心阅读 | 整次 | 首个失败类别 |",
-        "| --- | --- | --- | --- | --- | --- | --- |",
+        "跳过和未执行不计入登录、核心阅读或整次通过。登录拒绝不等同于密码错误。", "",
+        "## 登录失败项", "",
+    ]
+    login_failures = []
+    login_unverified = []
+    for entry in payload["sites"]:
+        if not entry.get("records"):
+            login_unverified.append(f"- {audit.text(entry['site'])}（`{audit.text(entry['key'])}`）：{audit.text(entry['note'])}。")
+        for record in entry.get("records", []):
+            login = next((s for s in record["source"]["stages"] if s["path"] == "account.login"), {})
+            label = f"{audit.text(entry['site'])}／{record['runtimeProfile']}"
+            if login.get("status") == "failed":
+                category = audit.CATEGORIES.get(login.get("category"), login.get("category", "未分类"))
+                login_failures.append(f"- {label}：登录失败，{audit.text(category)}；需核对账号状态、权限及访问限制。")
+            elif login.get("status") not in ("passed", "recovered"):
+                login_unverified.append(f"- {label}：登录{audit.LABELS.get(login.get('status'), '未执行')}，不计通过。")
+    lines += login_failures or ["本轮没有已执行且失败的登录接口；未执行项另列。"]
+    lines += ["", "## 登录未验证／跳过项", ""]
+    lines += login_unverified or ["无。"]
+    lines += [
+        "", "## 全部账号结果", "",
+        "| 站点 | key | 环境 | 登录 | 核心阅读 | 整次 | 全部失败阶段及类别 | 跳过阶段数 |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for entry in payload["sites"]:
         if not entry.get("records"):
             lines.append("| " + " | ".join(audit.text(v) for v in (
-                entry["site"], entry["key"], "—", entry["note"], "未测试", "跳过", "")) + " |")
+                entry["site"], entry["key"], "—", entry["note"], "未测试", "跳过", "", "未执行")) + " |")
         for record in entry.get("records", []):
             source = record["source"]
             login = next((s for s in source["stages"] if s["path"] == "account.login"), {})
-            first = next((s for s in source["stages"] if s["status"] == "failed"), {})
+            failures = [
+                f"{s['path']}：{audit.CATEGORIES.get(s.get('category'), s.get('category', '未分类'))}"
+                for s in source["stages"] if s["status"] == "failed"
+            ]
             lines.append("| " + " | ".join(audit.text(v) for v in (
                 entry["site"], entry["key"], record["runtimeProfile"],
                 audit.LABELS.get(login.get("status"), "未执行"),
                 "通过" if audit.core(source) else "未通过", audit.LABELS[source["status"]],
-                audit.CATEGORIES.get(first.get("category"), first.get("category", "")))) + " |")
+                "；".join(failures) or "无失败", sum(s["status"] == "skipped" for s in source["stages"]))) + " |")
     lines += ["", "固定源码哈希、客户端提交、依赖锁和样本输入见 account-results.json。",
               f"Actions：{payload.get('runUrl', '')}", ""]
     (destination / "ACCOUNT_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")

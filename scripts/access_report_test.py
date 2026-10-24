@@ -39,3 +39,24 @@ class AccessReportTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaises(AssertionError):
                 access.publish(payload, Path(directory), browser)
+
+    def test_manual_verification_is_separate_from_http_rejection(self):
+        payload = {"checkedAt": "2026-10-24", "rows": [{
+            "name": "fixture", "key": "rawkuma", "version": "1", "repository": "fixture/repo",
+            "runtimeProfile": "venerax", "corePassed": False,
+            "failures": [
+                {"stage": "search.load", "category": "auth_required"},
+                {"stage": "comic.loadInfo", "category": "anti_bot"},
+            ],
+        }]}
+        browser = {"schemaVersion": 1, "results": [
+            {"key": "rawkuma", "origin": "https://rawkuma.net", "status": "manual_verification_required"},
+            {"key": "nhentai", "origin": "https://nhentai.net", "status": "http_blocked"},
+        ]}
+        with tempfile.TemporaryDirectory() as directory:
+            access.publish(payload, Path(directory), browser)
+            report = (Path(directory) / "ACCESS_RESULTS.md").read_text(encoding="utf-8")
+            manual = report.split("## 需要本人验证的站点")[1].split("## 逐构建处理清单")[0]
+            self.assertIn("rawkuma", manual)
+            self.assertNotIn("nhentai", manual)
+            self.assertIn("search.load；comic.loadInfo", report)

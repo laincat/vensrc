@@ -82,6 +82,17 @@ def publish(payload, destination, browser=None):
         lines.append("| " + " | ".join(audit.text(v) for v in (
             result["key"], result["origin"], BROWSER_LABELS[result["status"]],
             "是" if result.get("cloudflareHeaderObserved") else "否／未观察到")) + " |")
+    manual_browser = [r for r in browser["results"] if r["status"] == "manual_verification_required"]
+    anti_bot_keys = sorted({r["key"] for r in payload["rows"]
+                            if any(f["category"] == "anti_bot" for f in r["failures"])})
+    lines += ["", "## 需要本人验证的站点", ""]
+    lines += [
+        f"- `{r['key']}`（{r['origin']}）：Actions 正常浏览器等待后仍出现验证，需本人在 VeneraX 验证窗口处理并在同环境重试。"
+        for r in manual_browser
+    ] or ["本轮已诊断首页没有确认仍停留在人工验证的站点；网络失败和普通 HTTP 拒绝仍未验证。"]
+    if anti_bot_keys:
+        lines += ["", "CLI 检测到反爬的源 key：" + "、".join(f"`{audit.text(k)}`" for k in anti_bot_keys) + "。",
+                  "未纳入首页浏览器对照的源仍未完成人工验证；首页诊断成功也不代表正文接口通过。"]
     lines += ["", "## 逐构建处理清单", "",
               "| 名称 | key | 版本 | 仓库 | 环境 | 核心阅读 | 受限阶段 | 类别／处理 |",
               "| --- | --- | --- | --- | --- | --- | --- | --- |"]
@@ -92,11 +103,11 @@ def publish(payload, destination, browser=None):
         "auth_required": "权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误",
     }
     for row in payload["rows"]:
-        first = row["failures"][0]
         lines.append("| " + " | ".join(audit.text(v) for v in (
             row["name"], row["key"], row["version"], row["repository"], row["runtimeProfile"],
             "通过（其他能力受限）" if row["corePassed"] else "未通过",
-            first["stage"], actions[first["category"]])) + " |")
+            "；".join(f["stage"] for f in row["failures"]),
+            "；".join(actions[c] for c in dict.fromkeys(f["category"] for f in row["failures"])))) + " |")
     lines += ["", "## 依据与边界", "",
               "- VeneraX 固定源码：`lib/network/cloudflare.dart`；其验证窗口、Cookie 和请求头处理属于 Flutter 宿主，Node CLI 不具备相同的交互环境。",
               "- [Cloudflare 官方识别方法](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/detect-response/)：`cf-mitigated: challenge` 可确认挑战响应。",

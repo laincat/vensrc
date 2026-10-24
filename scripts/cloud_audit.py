@@ -637,6 +637,17 @@ def publish_clients(payload, catalog, destination):
     for pair in grouped.values():
         if "venerax" in pair and "venera-next" in pair:
             assert pair["venerax"]["inputs"] == pair["venera-next"]["inputs"], "两个客户端必须使用完全相同的固定输入"
+    lines += ["## 全量统计", "",
+              "| 环境 | 已执行构建 | 核心阅读通过 | 整次通过 | 部分通过 | 失败 | 整源跳过 | 跳过阶段 |",
+              "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+    for profile in ("venerax", "venera-next"):
+        sources = [r["source"] for r in records if r["runtimeProfile"] == profile]
+        counts = [sum(s["status"] == status for s in sources) for status in ("passed", "partial", "failed", "skipped")]
+        lines.append("| " + " | ".join(map(str, (
+            profile, len(sources), sum(core(s) for s in sources), *counts,
+            sum(stage["status"] == "skipped" for s in sources for stage in s["stages"])))) + " |")
+    lines += ["", "跳过阶段、缺少凭据及未触发回调均不计入通过；核心通过只要求已说明的阅读链路。",
+              "", "## 三个自用仓库", ""]
     for repo in catalog["priorityRepositories"]:
         builds = [i for i in items.values() if repo in i.get("trackedBy", [])]
         counts = []
@@ -644,7 +655,23 @@ def publish_clients(payload, catalog, destination):
             passed = sum(core(grouped[i["id"]][profile]["source"]) for i in builds)
             counts.append(f"{profile} 核心通过 {passed}/{len(builds)}")
         lines.append(f"- `{repo}`：" + "；".join(counts) + "。")
-    lines += ["", "| 名称 | key | 版本 | 仓库 | 源码哈希（前12位） | VeneraX 核心／整次 | Next 核心／整次 | 首个失败（X；Next） |",
+    differences = [
+        item for item in items.values()
+        if "venerax" in grouped.get(item["id"], {}) and "venera-next" in grouped.get(item["id"], {})
+        and core(grouped[item["id"]]["venerax"]["source"]) != core(grouped[item["id"]]["venera-next"]["source"])
+    ]
+    lines += ["", "## 核心阅读结果不同的构建", "",
+              f"共 {len(differences)} 个构建。两边分时执行；以下是结果差异，不自动归因为客户端代码。", "",
+              "| key | 版本 | 仓库 | VeneraX | Venera-Next |",
+              "| --- | --- | --- | --- | --- |"]
+    for item in differences:
+        pair = grouped[item["id"]]
+        lines.append("| " + " | ".join(text(v) for v in (
+            item["key"], item["version"], item["repository"],
+            *("通过" if core(pair[p]["source"]) else "未通过" for p in ("venerax", "venera-next")))) + " |")
+    lines += ["", "整次状态及失败阶段的其他差异保留在下面的逐构建对照及 CSV 中。",
+              "", "## 逐构建对照", "",
+              "| 名称 | key | 版本 | 仓库 | 源码哈希（前12位） | VeneraX 核心／整次 | Next 核心／整次 | 首个失败（X；Next） |",
               "| --- | --- | --- | --- | --- | --- | --- | --- |"]
     priority = set(catalog["priorityRepositories"])
     for item in sorted(items.values(), key=lambda i: (
