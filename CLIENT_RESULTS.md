@@ -1,15 +1,16 @@
 # VeneraX／Venera-Next 固定样本兼容清单
 
-核验时间：2026-10-24T02:48:31.425820+00:00（UTC）。
+核验时间：2026-10-24T03:16:54.349185+00:00（UTC）。
 最新上游 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`；同时加载本仓库记录哈希的接口适配层。
 全部已审阅源码逐个使用相同固定输入；VeneraX 为订阅选择依据，Next 为独立对照。
 结果为 Node 宿主上的真实客户端 JS 接口巡检，不代表 Flutter UI 或用户设备实测。
+两边分时执行，差异也可能来自网络、限流或源站变化，不能全部归因于 Fork 接口。
 账号巡检另见 ACCOUNT_RESULTS.md，不以账号通过替代匿名订阅收录标准。
 完整阶段、输入和哈希保存在 client-results.json 与 sources.zh.csv。
 
-- `hea784/venera-configs`：venerax 核心通过 17/38；venera-next 核心通过 17/38。
+- `hea784/venera-configs`：venerax 核心通过 16/38；venera-next 核心通过 16/38。
 - `BB-CHICKEN/venera-jm`：venerax 核心通过 1/1；venera-next 核心通过 1/1。
-- `handahao666-boop/venera_comic_source`：venerax 核心通过 28/43；venera-next 核心通过 31/43。
+- `handahao666-boop/venera_comic_source`：venerax 核心通过 29/43；venera-next 核心通过 30/43。
 
 | 名称 | key | 版本 | 仓库 | 源码哈希（前12位） | VeneraX 核心／整次 | Next 核心／整次 | 首个失败（X；Next） |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -17,7 +18,7 @@
 | Komiic | Komiic | 1.0.3 | venera-app/venera-configs | a467325b6be8 | 通过／失败 | 通过／失败 | explore[0].load 返回结构或样本不满足契约；explore[0].load 返回结构或样本不满足契约 |
 | Komiic | Komiic | 1.0.8 | handahao666-boop/venera_comic_source | ad74a243c07e | 未通过／失败 | 通过／失败 | explore[0].load 返回结构或样本不满足契约；explore[0].load 返回结构或样本不满足契约 |
 | 漫画柜 | ManHuaGui | 1.2.1 | handahao666-boop/venera_comic_source | a5bf6c633e0c | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
-| 百合会 | baihehui | 1.0.0 | handahao666-boop/venera_comic_source | ba1520f9cad1 | 未通过／失败 | 通过／失败 | search.load 需要登录；search.load 需要登录 |
+| 百合会 | baihehui | 1.0.0 | handahao666-boop/venera_comic_source | ba1520f9cad1 | 通过／失败 | 通过／失败 | search.load 需要登录；search.load 需要登录 |
 | 包子漫画 | baozi | 1.1.6 | venera-app/venera-configs | 6ccb52e7734e | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
 | 包子漫画 | baozi | 1.1.7 | handahao666-boop/venera_comic_source | d589aabc779b | 通过／失败 | 通过／失败 | categoryComics.load 返回结构或样本不满足契约；categoryComics.load 返回结构或样本不满足契约 |
 | 嗶哩漫畫 | bilimanga | 1.1.7 | handahao666-boop/venera_comic_source | dd8fd0160934 | 未通过／失败 | 未通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
@@ -35,7 +36,7 @@
 | 动漫啦 | dongman_la | 1.0.5 | handahao666-boop/venera_comic_source | c3c1e9989d8a | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
 | 咚漫 | dongmanmanhua | 1.0.6 | handahao666-boop/venera_comic_source | 65df758f8643 | 通过／通过 | 通过／通过 | 无失败；无失败 |
 | ehentai | ehentai | 1.2.0 | venera-app/venera-configs | ef15f80d8090 | 通过／失败 | 通过／失败 | explore[2].loadNext 返回结构或样本不满足契约；explore[2].loadNext 返回结构或样本不满足契约 |
-| 飞翔漫画 | ffppt | 1.0.3 | handahao666-boop/venera_comic_source | a0253ea74b06 | 通过／通过 | 通过／通过 | 无失败；无失败 |
+| 飞翔漫画 | ffppt | 1.0.3 | handahao666-boop/venera_comic_source | a0253ea74b06 | 未通过／失败 | 未通过／失败 | explore[0].load 阶段超时；explore[0].load 阶段超时 |
 | GoDa漫画 | goda | 1.2.1 | handahao666-boop/venera_comic_source | dc94b8d5074e | 未通过／失败 | 未通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
 | 瓜子漫画 | guazimanhua | 1.0.4 | handahao666-boop/venera_comic_source | b93ad63c5e0a | 通过／失败 | 通过／失败 | comic.idMatch 返回结构或样本不满足契约；comic.idMatch 返回结构或样本不满足契约 |
 | 嗨皮漫画 | happy | 1.0.0 | venera-app/venera-configs | 656f038a7b13 | 未通过／失败 | 未通过／失败 | search.load DNS 错误；search.load DNS 错误 |
@@ -46,12 +47,12 @@
 | 爱看漫 | ikmmh | 1.0.6 | venera-app/venera-configs | a5382a807db1 | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
 | 爱看漫 | ikmmh_v2 | 3.0.0 | handahao666-boop/venera_comic_source | b911acf01818 | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
 | jcomic.net | jcomic | 1.0.0 | venera-app/venera-configs | afd7dc75ac12 | 未通过／失败 | 未通过／失败 | comic.loadEp 返回结构或样本不满足契约；comic.loadEp 返回结构或样本不满足契约 |
-| 禁漫天堂 | jm | 1.4.0 | venera-app/venera-configs | a91bc8cc8b1a | 通过／失败 | 通过／部分通过 | search.load HTTP 错误；无失败 |
+| 禁漫天堂 | jm | 1.4.0 | venera-app/venera-configs | a91bc8cc8b1a | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
 | 禁漫天堂 | jm | 1.4.1 | hea784/venera-configs | 490504eb9063 | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
 | 禁漫天堂 | jm | 1.9.2 | BB-CHICKEN/venera-jm | e50a45d1c3b3 | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
-| Kavita | kavita | 1.0.0 | venera-app/venera-configs | 65173ae4eb4a | 未通过／失败 | 未通过／失败 | search.load 请求超时；search.load 网络错误 |
+| Kavita | kavita | 1.0.0 | venera-app/venera-configs | 65173ae4eb4a | 未通过／失败 | 未通过／失败 | search.load 网络错误；search.load 请求超时 |
 | Komga | komga | 1.0.0 | venera-app/venera-configs | 2aa5b4e7d4b3 | 未通过／失败 | 未通过／失败 | search.load 源配置错误；search.load 源配置错误 |
-| 来漫画（分流） | laimanhua_split | 1.2.1 | handahao666-boop/venera_comic_source | 3b82bcbae932 | 未通过／失败 | 通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
+| 来漫画（分流） | laimanhua_split | 1.2.1 | handahao666-boop/venera_comic_source | 3b82bcbae932 | 通过／失败 | 通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
 | Lanraragi | lanraragi | 1.2.0 | venera-app/venera-configs | b2bc20d13979 | 通过／失败 | 通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
 | 51漫画 | manga51 | 1.2.0 | handahao666-boop/venera_comic_source | c6fba1ceade9 | 通过／通过 | 通过／通过 | 无失败；无失败 |
 | MangaDex | manga_dex | 1.1.1 | handahao666-boop/venera_comic_source | 4943789e6283 | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
@@ -86,21 +87,21 @@
 | W漫画 | wmanhua | 1.0.1 | handahao666-boop/venera_comic_source | 621a3e063f15 | 通过／通过 | 通过／通过 | 无失败；无失败 |
 | 紳士漫畫 | wnacg | 1.0.6 | venera-app/venera-configs | 545a6d818d01 | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
 | 野蛮漫画 | yemancomic | 0.1.2 | hea784/venera-configs | 46ccc7b1b495 | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
-| 优酷漫画 | ykmh | 1.0.0 | venera-app/venera-configs | c03ea3696420 | 通过／失败 | 通过／失败 | categoryComics.load 源配置错误；categoryComics.load 源配置错误 |
-| 优酷漫画 (修复版) | ykmh | 1.0.7 | handahao666-boop/venera_comic_source | ae5fba5713b3 | 通过／失败 | 通过／失败 | comic.onClickTag 源配置错误；comic.onClickTag 源配置错误 |
+| 优酷漫画 | ykmh | 1.0.0 | venera-app/venera-configs | c03ea3696420 | 未通过／失败 | 未通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
+| 优酷漫画 (修复版) | ykmh | 1.0.7 | handahao666-boop/venera_comic_source | ae5fba5713b3 | 通过／失败 | 通过／失败 | comic.onClickTag 源配置错误；search.load HTTP 错误 |
 | 再漫画 | zaimanhua | 1.0.2 | handahao666-boop/venera_comic_source | 96b89df7bcda | 未通过／失败 | 未通过／失败 | comic.loadInfo 源配置错误；comic.loadInfo 源配置错误 |
 | zero搬运网 | zerobyw33 | 1.2.0 | handahao666-boop/venera_comic_source | fec1f36630cc | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
-| 漫画160 | 160_53_6c28df | 0.2.0 | KadishJoey/venera-json | 17b45905679d | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load DNS 错误 |
-| ◯ 177漫画 | 177_75_d9f4ef | 0.2.0 | KadishJoey/venera-json | c657f535b6b8 | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load HTTP 错误 |
-| 18漫畫(国内可) | 18_11_31f9fe | 0.2.0 | KadishJoey/venera-json | 3085316556d8 | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load 返回结构或样本不满足契约 |
-| 18真人图集 | 18_12_5158bf | 0.2.0 | KadishJoey/venera-json | 94010a70c8ee | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load 反爬拦截 |
-| ◯ 18H | 18h_73_868382 | 0.2.0 | KadishJoey/venera-json | fc1a63d667cb | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load 返回结构或样本不满足契约 |
-| 崩坏3漫画 | 3_31_7d315c | 0.2.0 | KadishJoey/venera-json | 019794eca2cf | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load HTTP 错误 |
-| 4KHD 美图 | 4khd_24_21d7d1 | 0.2.0 | KadishJoey/venera-json | 726e2c1fb88f | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load 返回结构或样本不满足契约 |
-| 733动漫 | 733_2 | 0.1.0 | zhimouzhou/venera-manga-sources | 54ce49133a98 | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load 源配置错误 |
-| 8色摄影 | 8_23_b711ea | 0.2.0 | KadishJoey/venera-json | c0abff98a26b | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load 反爬拦截 |
-| 無限動漫 | 8comic | 1.0.0 | zakkida/venera-sources | 0c4b06ef4f91 | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load 返回结构或样本不满足契约 |
-| 92漫画 | 92_60_af6181 | 0.2.0 | KadishJoey/venera-json | fd41125aa460 | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；search.load 需要登录 |
+| 漫画160 | 160_53_6c28df | 0.2.0 | KadishJoey/venera-json | 17b45905679d | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
+| ◯ 177漫画 | 177_75_d9f4ef | 0.2.0 | KadishJoey/venera-json | c657f535b6b8 | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
+| 18漫畫(国内可) | 18_11_31f9fe | 0.2.0 | KadishJoey/venera-json | 3085316556d8 | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
+| 18真人图集 | 18_12_5158bf | 0.2.0 | KadishJoey/venera-json | 94010a70c8ee | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
+| ◯ 18H | 18h_73_868382 | 0.2.0 | KadishJoey/venera-json | fc1a63d667cb | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
+| 崩坏3漫画 | 3_31_7d315c | 0.2.0 | KadishJoey/venera-json | 019794eca2cf | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
+| 4KHD 美图 | 4khd_24_21d7d1 | 0.2.0 | KadishJoey/venera-json | 726e2c1fb88f | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
+| 733动漫 | 733_2 | 0.1.0 | zhimouzhou/venera-manga-sources | 54ce49133a98 | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
+| 8色摄影 | 8_23_b711ea | 0.2.0 | KadishJoey/venera-json | c0abff98a26b | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
+| 無限動漫 | 8comic | 1.0.0 | zakkida/venera-sources | 0c4b06ef4f91 | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
+| 92漫画 | 92_60_af6181 | 0.2.0 | KadishJoey/venera-json | fd41125aa460 | 未通过／失败 | 未通过／失败 | source.load 源加载或版本不兼容；source.load 源加载或版本不兼容 |
 | Komiic | Komiic | 1.0.2 | l233333333/venera-sources | 189a094af767 | 通过／失败 | 通过／失败 | explore[0].load 返回结构或样本不满足契约；explore[0].load 返回结构或样本不满足契约 |
 | 新漫画-A | a_43_e3f585 | 0.2.0 | KadishJoey/venera-json | 3b7000a44ea8 | 未通过／失败 | 未通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
 | 一本漫画-A | a_49_189b7b | 0.2.0 | KadishJoey/venera-json | 3052015a1176 | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
@@ -111,7 +112,7 @@
 | 爱漫岛 | aiman | 2.3.6 | Junkrat9527/venera-sources | 18c0c8b32434 | 未通过／失败 | 未通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
 | A漫 | aman8 | 1.0.0 | Junkrat9527/venera-sources | 2b16b80ed5cf | 通过／通过 | 通过／通过 | 无失败；无失败 |
 | Asura Scans | asura_scans | 1.3.0 | Micqiyue/venera-sources | a852624ec250 | 通过／失败 | 通过／失败 | comic.idMatch 返回结构或样本不满足契约；comic.idMatch 返回结构或样本不满足契约 |
-| 百合会 | baihehui | 1.0.2 | Junkrat9527/venera-sources | 356372e99f8b | 未通过／失败 | 通过／失败 | search.load 需要登录；search.load 需要登录 |
+| 百合会 | baihehui | 1.0.2 | Junkrat9527/venera-sources | 356372e99f8b | 通过／失败 | 通过／失败 | search.load 需要登录；search.load 需要登录 |
 | 巴卡漫画 | bakamh | 1.0.1 | Magentadots/venera-configs | 43e5d34767e7 | 未通过／失败 | 未通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
 | 香蕉漫画 | banana | 1.0.4 | Junkrat9527/venera-sources | 8ed30b390d9c | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
 | 包子漫画 | baozi | 1.1.0 | l233333333/venera-sources | ff9a4842a06b | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
@@ -123,17 +124,17 @@
 | Buon Dua | buondua | 1.2.0 | meaninglesslyy/venera-config | 2cba3e6205a4 | 通过／失败 | 通过／失败 | comic.idMatch 返回结构或样本不满足契约；comic.idMatch 返回结构或样本不满足契约 |
 | Buondua图集 | buondua_15_095853 | 0.2.0 | KadishJoey/venera-json | cc42e0fe3ce3 | 未通过／失败 | 未通过／失败 | comic.loadInfo 返回结构或样本不满足契约；comic.loadInfo 返回结构或样本不满足契约 |
 | CCC追漫台 | ccc | 1.0.2 | zakkida/venera-sources | c8db4ef9af1d | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
-| Cosplay啦 | ciyuandao | 1.0.0 | token1008/venera-cn-64bit | af736e8c7ac6 | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
+| Cosplay啦 | ciyuandao | 1.0.0 | token1008/venera-cn-64bit | af736e8c7ac6 | 通过／部分通过 | 未通过／失败 | 无失败；image.download 请求超时 |
 | カドコミ | comic_walker | 1.0.1 | zakkida/venera-sources | b2ad2816bfa5 | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
 | comick | comick | 1.1.1 | l233333333/venera-sources | fd12333c3e2a | 未通过／失败 | 未通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
-| 拷贝漫画 | copy_manga | 1.4.4 | zakkida/venera-sources | fcb90412e0d1 | 未通过／失败 | 未通过／失败 | explore[0].load 源配置错误；explore[0].load 源配置错误 |
+| 拷贝漫画 | copy_manga | 1.4.4 | zakkida/venera-sources | fcb90412e0d1 | 未通过／失败 | 未通过／失败 | explore[0].load 源配置错误；categoryComics.load 源配置错误 |
 | CosplayTele | cosplaytele | 1.7.0 | meaninglesslyy/venera-config | dd6e35d1a5b6 | 通过／通过 | 通过／通过 | 无失败；无失败 |
 | CosplayTele | cosplaytele_25_190983 | 0.2.0 | KadishJoey/venera-json | c1b9db6ef307 | 未通过／失败 | 未通过／失败 | comic.loadEp HTTP 错误；comic.loadEp HTTP 错误 |
 | 包子漫画cw | cw_57_cc4798 | 0.2.0 | KadishJoey/venera-json | 6fad2dc6dbc9 | 未通过／失败 | 未通过／失败 | comic.loadInfo 返回结构或样本不满足契约；comic.loadInfo 返回结构或样本不满足契约 |
 | 次元漫画 | cycomic | 1.0.3 | Junkrat9527/venera-sources | 3db355237cec | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
 | 大魔兔 | damotu | 1.0.0 | token1008/venera-cn-64bit | 7a9137c49fbd | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
 | 顶漫画 | dingmanhua | 1.0.5 | Angus-fw/venera-configs | 30b1a74acaa3 | 通过／失败 | 通过／失败 | comic.onClickTag 源配置错误；comic.onClickTag 源配置错误 |
-| 咚漫 | dongman | 1.0.8 | Junkrat9527/venera-sources | a4e34d9681a4 | 未通过／失败 | 未通过／失败 | image.download 请求超时；image.download 请求超时 |
+| 咚漫 | dongman | 1.0.8 | Junkrat9527/venera-sources | a4e34d9681a4 | 通过／通过 | 通过／通过 | 无失败；无失败 |
 | 动漫啦 | dongman_la | 1.0.3 | Junkrat9527/venera-sources | 3da97ede8f94 | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
 | 动漫啦 | dongmanla | 1.0.1 | token1008/venera-cn-64bit | 62b7d99ee129 | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
 | 堆堆漫画 | duiduiman | 1.0.0 | cheyou001/venera-sources | b7318fecaa07 | 未通过／失败 | 未通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
@@ -173,7 +174,7 @@
 | Komiic漫画 | komiic_69_259947 | 0.2.0 | KadishJoey/venera-json | 698670f557ce | 未通过／失败 | 未通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
 | Komiic 多账号 | komiic_multi | 1.6.2 | snowf14k3/venera-komiic-multi | 96036813d021 | 未通过／失败 | 未通过／失败 | explore[0].load 返回结构或样本不满足契约；explore[0].load 返回结构或样本不满足契约 |
 | 快看漫画 | kuaikan | 1.0.0 | cattoldme/venera-configs | ad550aa4ecaf | 未通过／失败 | 通过／通过 | image.download 请求超时；无失败 |
-| 来漫画（分流） | laimanhua_split | 1.2.2 | Junkrat9527/venera-sources | ed9c0d8a088d | 通过／失败 | 通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
+| 来漫画（分流） | laimanhua_split | 1.2.2 | Junkrat9527/venera-sources | ed9c0d8a088d | 通过／失败 | 通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
 | Lanraragi | lanraragi | 1.1.0 | yelongyue197-svg/venera-sources | 360c68843b8a | 通过／失败 | 通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
 | 特漫网站 | legacy_17te | 0.1.0 | wuliaoe/venera-extra-sources | 81fbbe889e77 | 未通过／失败 | 未通过／失败 | search.load 网络错误；search.load 网络错误 |
 | 极速漫画 | legacy_1kkk | 0.1.0 | wuliaoe/venera-extra-sources | eb0e0aa7c715 | 通过／通过 | 通过／通过 | 无失败；无失败 |
@@ -187,15 +188,15 @@
 | 百年漫画 | legacy_bnmanhua | 0.1.0 | wuliaoe/venera-extra-sources | 7079da75071d | 未通过／失败 | 未通过／失败 | search.load 请求超时；search.load 请求超时 |
 | 漫画联合国 | legacy_comicun | 0.1.0 | wuliaoe/venera-extra-sources | 3e601fef4cf9 | 未通过／失败 | 未通过／失败 | search.load 源配置错误；search.load 源配置错误 |
 | 大魔兔 | legacy_damotu | 0.1.0 | wuliaoe/venera-extra-sources | cff311745f5b | 未通过／失败 | 未通过／失败 | search.load 源配置错误；search.load 源配置错误 |
-| 蒂亚漫画 | legacy_diya1 | 0.1.0 | wuliaoe/venera-extra-sources | 1d66772b6af5 | 未通过／失败 | 未通过／失败 | search.load 请求超时；search.load 网络错误 |
+| 蒂亚漫画 | legacy_diya1 | 0.1.0 | wuliaoe/venera-extra-sources | 1d66772b6af5 | 未通过／失败 | 未通过／失败 | search.load 网络错误；search.load 网络错误 |
 | 好漫6 | legacy_haoman6 | 0.1.0 | wuliaoe/venera-extra-sources | b9c37400249c | 未通过／失败 | 未通过／失败 | search.load 网络错误；search.load 网络错误 |
 | 六漫画 | legacy_hbdsfj | 0.1.0 | wuliaoe/venera-extra-sources | 3a045fc9d3de | 未通过／失败 | 未通过／失败 | search.load DNS 错误；search.load DNS 错误 |
 | 冰氪漫画 | legacy_icekr | 0.1.0 | wuliaoe/venera-extra-sources | f31f409699a0 | 未通过／失败 | 未通过／失败 | search.load 请求超时；search.load 请求超时 |
 | 爱米推漫画 | legacy_imitui | 0.1.0 | wuliaoe/venera-extra-sources | f301496fb91a | 未通过／失败 | 未通过／失败 | search.load DNS 错误；search.load DNS 错误 |
 | 看漫画 | legacy_kanman | 0.1.0 | wuliaoe/venera-extra-sources | 8ab8a3e0ccfe | 未通过／失败 | 未通过／失败 | comic.loadInfo 源配置错误；comic.loadInfo 源配置错误 |
 | 漫画羊 | legacy_manhuayang | 0.1.0 | wuliaoe/venera-extra-sources | a17452ca3352 | 未通过／失败 | 未通过／失败 | search.load DNS 错误；search.load DNS 错误 |
-| 漫漫看漫画网 | legacy_manmankan | 0.1.0 | wuliaoe/venera-extra-sources | e650efd029f2 | 未通过／失败 | 未通过／失败 | search.load 请求超时；search.load TLS 错误 |
-| 漫漫睇 | legacy_manmantai | 0.1.0 | wuliaoe/venera-extra-sources | 0540caf28915 | 未通过／失败 | 未通过／失败 | search.load 源配置错误；search.load 源配置错误 |
+| 漫漫看漫画网 | legacy_manmankan | 0.1.0 | wuliaoe/venera-extra-sources | e650efd029f2 | 未通过／失败 | 未通过／失败 | search.load TLS 错误；search.load 请求超时 |
+| 漫漫睇 | legacy_manmantai | 0.1.0 | wuliaoe/venera-extra-sources | 0540caf28915 | 未通过／失败 | 未通过／失败 | search.load 请求超时；search.load 源配置错误 |
 | 漫画芯 | legacy_mhxin | 0.1.0 | wuliaoe/venera-extra-sources | ee90d24a3604 | 未通过／失败 | 未通过／失败 | search.load TLS 错误；search.load TLS 错误 |
 | 奇妙漫画 | legacy_qimiaomh | 0.1.0 | wuliaoe/venera-extra-sources | 542169675a8b | 未通过／失败 | 未通过／失败 | search.load TLS 错误；search.load TLS 错误 |
 | 奇热漫画 | legacy_qiremanhua | 0.1.0 | wuliaoe/venera-extra-sources | 091afce1a67e | 未通过／失败 | 未通过／失败 | search.load DNS 错误；search.load DNS 错误 |
@@ -203,7 +204,7 @@
 | 搜动漫 | legacy_soudongman | 0.1.0 | wuliaoe/venera-extra-sources | 6734f0154be3 | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
 | 神漫画 | legacy_taomanhua | 0.1.0 | wuliaoe/venera-extra-sources | 58e772b98053 | 未通过／失败 | 未通过／失败 | search.load TLS 错误；search.load TLS 错误 |
 | 13漫画网 | legacy_w13k | 0.1.0 | wuliaoe/venera-extra-sources | 9052584cf9d6 | 未通过／失败 | 未通过／失败 | search.load 请求超时；search.load 请求超时 |
-| 武侠漫画 | legacy_wuxiamh | 0.1.0 | wuliaoe/venera-extra-sources | 1b4a8cc8c088 | 未通过／失败 | 未通过／失败 | search.load 请求超时；search.load 请求超时 |
+| 武侠漫画 | legacy_wuxiamh | 0.1.0 | wuliaoe/venera-extra-sources | 1b4a8cc8c088 | 未通过／失败 | 未通过／失败 | search.load TLS 错误；search.load 请求超时 |
 | 360漫画 | legacy_xd5s | 0.1.0 | wuliaoe/venera-extra-sources | 2e24a31a1745 | 未通过／失败 | 未通过／失败 | search.load 请求超时；search.load 请求超时 |
 | 土豆漫画网 | legacy_xm124 | 0.1.0 | wuliaoe/venera-extra-sources | 2e10f44aa7dc | 未通过／失败 | 未通过／失败 | search.load DNS 错误；search.load DNS 错误 |
 | 六漫画 | liumanhua | 1.0.0 | token1008/venera-cn-64bit | aa7733f6ccfa | 未通过／失败 | 未通过／失败 | explore[1].load 需要登录；explore[1].load 需要登录 |
@@ -228,7 +229,7 @@
 | 漫画吧网 | manhuaba | 1.0.0 | token1008/venera-cn-64bit | 51636f60ed1f | 未通过／失败 | 未通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
 | 漫画皮 | manhuapi | 1.4.2 | Junkrat9527/venera-sources | 65c2d5107a45 | 未通过／失败 | 未通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
 | 漫漫漫画 | manman | 1.0.0 | token1008/venera-cn-64bit | ed5cec30a0f1 | 未通过／失败 | 未通过／失败 | comic.loadInfo 源配置错误；comic.loadInfo 源配置错误 |
-| 漫舍 | manshe | 1.0.8 | Micqiyue/venera-sources | e69d6f53b58b | 通过／失败 | 未通过／失败 | comic.link.linkToId 返回结构或样本不满足契约；search.load HTTP 错误 |
+| 漫舍 | manshe | 1.0.8 | Micqiyue/venera-sources | e69d6f53b58b | 未通过／失败 | 未通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
 | 漫蛙 | manwa | 1.1.6 | YHQY-Dev/venera-sources | 66e1ec3051ed | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
 | 漫蛙吧（图片修复版） | manwaba_imagefix | 1.0.7 | YongkeDet/venera-configs | 7cd57c562c3c | 通过／通过 | 通过／通过 | 无失败；无失败 |
 | 漫网 | manwang | 1.3.4 | Junkrat9527/venera-sources | f4864ddfe001 | 未通过／失败 | 未通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
@@ -239,7 +240,7 @@
 | 漫画看 | mhkan | 1.1.7 | Junkrat9527/venera-sources | dbc378b662da | 未通过／失败 | 未通过／失败 | categoryComics.load 返回结构或样本不满足契约；categoryComics.load 返回结构或样本不满足契约 |
 | 喵趣漫画 | miaoqu | 1.0.0 | token1008/venera-cn-64bit | 3453e17e6953 | 未通过／失败 | 未通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
 | MissKon图集 | misskon_13_4b2d17 | 0.2.0 | KadishJoey/venera-json | 90fa4bdbe2aa | 未通过／失败 | 未通过／失败 | comic.loadInfo 返回结构或样本不满足契约；comic.loadInfo 返回结构或样本不满足契约 |
-| Mitaku | mitaku | 1.0.0 | meaninglesslyy/venera-config | 775844ab98af | 未通过／失败 | 未通过／失败 | comic.loadEp 反爬拦截；comic.loadEp 反爬拦截 |
+| Mitaku | mitaku | 1.0.0 | meaninglesslyy/venera-config | 775844ab98af | 未通过／失败 | 未通过／失败 | comic.loadInfo 反爬拦截；comic.loadInfo 反爬拦截 |
 | 漫客栈 | mkzhan | 1.1.4 | Junkrat9527/venera-sources | 2988fe4b9c89 | 通过／通过 | 通过／通过 | 无失败；无失败 |
 | MOJOIN | mojoin | 1.0.8 | Junkrat9527/venera-sources | eac0c6d5ff2f | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
 | momon:GA | momon_ga | 1.0.1 | ChopDream/venera-source-hub | c70fb410eebe | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
@@ -266,7 +267,7 @@
 | 神奇漫画 | shenqimanhua | 1.1.1 | coldnighten/venera-configs | 9c44e7c5e3fb | 通过／通过 | 通过／通过 | 无失败；无失败 |
 | 少年ジャンプ＋ | shonen_jump_plus | 1.1.3 | yelongyue197-svg/venera-sources | 3b1f2c677db6 | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
 | 思思漫画 | sisimanhua | 1.0.0 | YHQY-Dev/venera-sources | 938f9b2398c7 | 通过／失败 | 通过／失败 | thumbnail.download TLS 错误；thumbnail.download TLS 错误 |
-| 漫画家📱⛅ | source_01_656cfe | 0.2.0 | KadishJoey/venera-json | 12beb03c326e | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load HTTP 错误 |
+| 漫画家📱⛅ | source_01_656cfe | 0.2.0 | KadishJoey/venera-json | 12beb03c326e | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
 | 包子漫画 | source_02_e3ec7f | 0.2.0 | KadishJoey/venera-json | 67f2790696e4 | 未通过／失败 | 未通过／失败 | comic.loadInfo HTTP 错误；comic.loadInfo HTTP 错误 |
 | 污漫天堂🔞 | source_03_c97d34 | 0.2.0 | KadishJoey/venera-json | 4c3549af4429 | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
 | ◯ 拷贝漫画 | source_05_1be182 | 0.2.0 | KadishJoey/venera-json | 6b38e35fde75 | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
@@ -309,9 +310,9 @@
 | 腾讯动漫 | tencentcomics | 1.0.0 | xiaoxingmian/venera-configs | 50a7268a0de3 | 通过／失败 | 通过／失败 | explore[0].load 需要登录；explore[0].load 需要登录 |
 | 图库漫画 | tuku_cc | 1.0.2 | Junkrat9527/venera-sources | 59c79f140dd6 | 通过／失败 | 通过／失败 | explore[0].load 需要登录；explore[0].load 需要登录 |
 | V2PH | v2ph | 1.2.0 | meaninglesslyy/venera-config | e78bf6e69d4a | 未通过／失败 | 未通过／失败 | search.load 反爬拦截；search.load 反爬拦截 |
-| vomic | vomic | 1.2.1 | LX7kM9/venera-configs | b9c3012e1500 | 未通过／失败 | 未通过／失败 | comic.loadEp 需要登录；comic.loadEp 需要登录 |
+| vomic | vomic | 1.2.1 | LX7kM9/venera-configs | b9c3012e1500 | 未通过／失败 | 未通过／失败 | comic.loadEp 需要登录；search.load 需要登录 |
 | ◯ 包子漫画web | web_70_6c33fc | 0.2.0 | KadishJoey/venera-json | 64183163b2d7 | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
-| WEBTOON | webtoon | 1.0.0 | cattoldme/venera-configs | 1afbcd932087 | 通过／通过 | 通过／通过 | 无失败；无失败 |
+| WEBTOON | webtoon | 1.0.0 | cattoldme/venera-configs | 1afbcd932087 | 未通过／失败 | 未通过／失败 | comic.loadInfo HTTP 错误；comic.loadInfo HTTP 错误 |
 | webtoon移动版 | webtoon_71_d28205 | 0.2.0 | KadishJoey/venera-json | d5f87faf566e | 未通过／失败 | 未通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
 | Webtoon_us | webtoon_us_68_3131e7 | 0.2.0 | KadishJoey/venera-json | 2501f63d2445 | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
 | LINE WEBTOON | webtoons_zh_hant | 1.0.1 | Junkrat9527/venera-sources | 18166b460991 | 通过／通过 | 通过／通过 | 无失败；无失败 |
@@ -324,7 +325,7 @@
 | X漫画 | xmanhua | 1.8.1 | Junkrat9527/venera-sources | ab5be6abb62f | 通过／通过 | 通过／通过 | 无失败；无失败 |
 | yande.re | yandere | 4.9.3 | Junkrat9527/venera-sources | cada1c28f4ed | 未通过／失败 | 未通过／失败 | search.load 返回结构或样本不满足契约；search.load 返回结构或样本不满足契约 |
 | 野蛮漫画 | yemancomic | 1.3.8 | Junkrat9527/venera-sources | 42b53d66e341 | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
-| 优酷漫画 | ykmh | 1.0.2 | zakkida/venera-sources | f862f6aaac36 | 通过／失败 | 通过／失败 | categoryComics.load 源配置错误；categoryComics.load 源配置错误 |
+| 优酷漫画 | ykmh | 1.0.2 | zakkida/venera-sources | f862f6aaac36 | 未通过／失败 | 未通过／失败 | search.load HTTP 错误；search.load HTTP 错误 |
 | ◯ YYDS | yyds_04_86b037 | 0.2.0 | KadishJoey/venera-json | 810c02550b8d | 未通过／失败 | 未通过／失败 | search.load 需要登录；search.load 需要登录 |
 | zero搬运网 | zerobyw | 1.2.0 | Junkrat9527/venera-sources | 348f7334f1ff | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |
 | zero搬运网 | zerobyw33 | 1.2.0 | meaninglesslyy/venera-config | 17b9a4ae1210 | 通过／部分通过 | 通过／部分通过 | 无失败；无失败 |

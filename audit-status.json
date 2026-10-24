@@ -1,15 +1,15 @@
 {
-  "checkedAt": "2026-10-24T02:48:31.425820+00:00",
+  "checkedAt": "2026-10-24T03:16:54.349185+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-10-24T02:33:23.502392+00:00",
+    "checkedAt": "2026-10-24T03:02:20.525415+00:00",
     "adapterSha256": {
-      "scripts/client_bridge.mjs": "cadac7b4cc1e3b864841602e8effcdb801383ddd21570e3b89b804ce7de2b4ad",
+      "scripts/client_bridge.mjs": "d81019ba922e4ab939aae721da2d70222872e13ce60f97932ec84d044120f3eb",
       "scripts/prepare_client.py": "335905c1f43ca70cfae3daea5dd3d11b7b54cafa1fe6e695a86b32347bc48ac8",
-      "monitor/clients.json": "d0872a7bfbeb1f71bfececfaeb74d89bcb66fcd3f126b99163ad99be08d4b949"
+      "monitor/clients.json": "164c9467adfa2dbe8d6080fffe935a95f28faa293e1a087fb6032a27ab8d9e41"
     },
     "clientProfiles": {
       "venerax": {
@@ -20,7 +20,8 @@
           "assets/init.js": "bd9066a761b8aa0d7fa156c69917138072166c80667f7505d09fd26464bedc3a",
           "pubspec.yaml": "4e72d6c7ac25d10554d5e73c765b66eb6aae54c032002efd99b2f08b302d8384",
           "lib/foundation/js_engine.dart": "62b03d9ec7c8d10316e50c8c681df546caed1ec14aeda90119a56d386193b08d",
-          "lib/foundation/comic_source/parser.dart": "7a1c37a365f747ba324f8fcb4c550813abfb2e0ef44cc53a7dc380e75003427a"
+          "lib/foundation/comic_source/parser.dart": "7a1c37a365f747ba324f8fcb4c550813abfb2e0ef44cc53a7dc380e75003427a",
+          "lib/network/cloudflare.dart": "7823ac8a2d7d063ffc0edf7fbfc7ee38ec3b5eea821b3f7a90a9e1d983c9aa40"
         },
         "scope": "全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟"
       },
@@ -32,18 +33,20 @@
           "assets/init.js": "5854a85bc3822819c2742529906ab3b56bd233323034e6d3e7dc062d8e992a35",
           "pubspec.yaml": "50a246f003c2e099efe441564bf90060647a254068aec527a34cc084ced7ff66",
           "lib/foundation/js_engine.dart": "74613ef66731313b1632dc3e1bddb2997bc040b6a4b26c398744c9d018c569fb",
-          "lib/features/comic_source/parser.dart": "77cb151a2cab6718c743f8acd38fd396007ae79c18132f90cc6ed769e881587d"
+          "lib/features/comic_source/parser.dart": "77cb151a2cab6718c743f8acd38fd396007ae79c18132f90cc6ed769e881587d",
+          "lib/network/cloudflare.dart": "e31bd2242afc77fa7241125624bf0c590207817292ff545636b72f6bf30b78e4"
         },
         "scope": "全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟"
       }
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:f8bea67c6f44da5a99d83fe76a4385aaf42b00cf58ab058155df9d7097e738d7"
+    "imageId": "sha256:fcfd3d14cdfa11c3c107ba013c0d2120cf9ab83619fad4803ec5bbf27a7a67bb"
   },
-  "catalogSha256": "8ebda6b3d075bd74380c51af0ad7ccce2c4969ff67a8263b398a7beef1900558",
+  "catalogSha256": "3cbbce612c11260fe2db4b4712b892bbd9de68cd122567c12bd8c8a45359fe72",
   "builds": 316,
   "main": 28,
   "extended": 59,
-  "runUrl": "https://github.com/laincat/venera-source-index/actions/runs/40054649606"
+  "runUrl": "https://github.com/laincat/venera-source-index/actions/runs/40056577988",
+  "clientExecutions": 632
 }

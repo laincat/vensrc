@@ -1,6 +1,6 @@
 # 隔离账号巡检结果
 
-核验时间：2026-10-24T02:35:11.922038+00:00（UTC）。
+核验时间：2026-10-24T03:04:12.485451+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
@@ -30,4 +30,4 @@
 | 热辣漫画 | hot_manga | venera-next | 通过 | 通过 | 失败 | 源配置错误 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 account-results.json。
-Actions：https://github.com/laincat/venera-source-index/actions/runs/40054649606
+Actions：https://github.com/laincat/venera-source-index/actions/runs/40056577988
