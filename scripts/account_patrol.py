@@ -60,7 +60,7 @@ def render(payload, destination):
         "登录通过表示源登录接口满足本次契约；阅读链路独立判断，不代替匿名订阅的收录结果。",
         "没有接入账号 Secret 的源、无登录接口的源及未登记站点均如实标记。",
         "不启用签到、评论、点赞、收藏增删和设置按钮等写操作；不保存跨次会话。", "",
-        "| 站点 | key | 环境 | 登录 | 核心阅读 | 整次 | 首个失败类别 |",
+        "| 站点 | key | 环境 | 登录 | 核心阅读 | 整次 | 失败类别 |",
         "| --- | --- | --- | --- | --- | --- | --- |",
     ]
     for entry in payload["sites"]:
@@ -70,12 +70,14 @@ def render(payload, destination):
         for record in entry.get("records", []):
             source = record["source"]
             login = next((s for s in source["stages"] if s["path"] == "account.login"), {})
-            first = next((s for s in source["stages"] if s["status"] == "failed"), {})
+            failed = [s for s in source["stages"] if s["status"] == "failed"]
+            categories = "、".join(dict.fromkeys(
+                audit.CATEGORIES.get(s.get("category"), s.get("category", "")) for s in failed)) or "—"
             lines.append("| " + " | ".join(audit.text(v) for v in (
                 entry["site"], entry["key"], record["runtimeProfile"],
                 audit.LABELS.get(login.get("status"), "未执行"),
                 "通过" if audit.core(source) else "未通过", audit.LABELS[source["status"]],
-                audit.CATEGORIES.get(first.get("category"), first.get("category", "")))) + " |")
+                categories)) + " |")
     lines += ["", "固定源码哈希、客户端提交、依赖锁和样本输入见 account-results.json。",
               f"Actions：{payload.get('runUrl', '')}", ""]
     (destination / "ACCOUNT_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
