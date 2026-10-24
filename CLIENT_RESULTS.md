@@ -8,9 +8,91 @@
 账号巡检另见 ACCOUNT_RESULTS.md，不以账号通过替代匿名订阅收录标准。
 完整阶段、输入和哈希保存在 client-results.json 与 sources.zh.csv。
 
+## 全量统计
+
+| 环境 | 报告构建数 | 核心阅读通过 | 整次通过 | 部分通过 | 失败 | 整源跳过 | 跳过阶段 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| venerax | 316 | 110 | 31 | 33 | 252 | 0 | 1301 |
+| venera-next | 316 | 111 | 32 | 32 | 252 | 0 | 1298 |
+
+跳过阶段、缺少凭据及未触发回调均不计入通过；核心通过只要求已说明的阅读链路。
+
+## 三个自用仓库
+
 - `hea784/venera-configs`：venerax 核心通过 16/38；venera-next 核心通过 16/38。
 - `BB-CHICKEN/venera-jm`：venerax 核心通过 1/1；venera-next 核心通过 1/1。
 - `handahao666-boop/venera_comic_source`：venerax 核心通过 29/43；venera-next 核心通过 30/43。
+
+## 核心阅读结果不同的构建
+
+共 3 个构建。两边分时执行；以下是结果差异，不自动归因为客户端代码。
+
+| key | 版本 | 仓库 | VeneraX | Venera-Next |
+| --- | --- | --- | --- | --- |
+| Komiic | 1.0.8 | handahao666-boop/venera_comic_source | 未通过 | 通过 |
+| ciyuandao | 1.0.0 | token1008/venera-cn-64bit | 通过 | 未通过 |
+| kuaikan | 1.0.0 | cattoldme/venera-configs | 未通过 | 通过 |
+
+## 其他阶段结果差异
+
+按阶段状态和类别对照，不比较耗时、返回正文和异常原文。“未出现”表示该环境报告没有此阶段，不能算通过。
+
+| key | 版本 | 构建哈希（前12位） | 阶段 | VeneraX | Venera-Next |
+| --- | --- | --- | --- | --- | --- |
+| Komiic | 1.0.8 | ad74a243c07e | comic.loadEp | 失败／需要登录 | 通过 |
+| Komiic | 1.0.8 | ad74a243c07e | comic.onImageLoad | 跳过／缺少样本输入 | 通过 |
+| Komiic | 1.0.8 | ad74a243c07e | comic.onImageLoad.onLoadFailed | 未出现 | 跳过／本次成功路径未触发 |
+| Komiic | 1.0.8 | ad74a243c07e | image.decode | 未出现 | 通过 |
+| Komiic | 1.0.8 | ad74a243c07e | image.download | 跳过／前置能力未通过 | 通过 |
+| ciyuandao | 1.0.0 | af736e8c7ac6 | comic.onImageLoad.onLoadFailed | 跳过／本次成功路径未触发 | 通过 |
+| ciyuandao | 1.0.0 | af736e8c7ac6 | image.decode | 通过 | 未出现 |
+| ciyuandao | 1.0.0 | af736e8c7ac6 | image.download | 通过 | 失败／请求超时；失败／请求超时 |
+| comic_walker | 1.0.1 | 736c49789faf | comic.loadEp | 跳过／前置能力未通过 | 通过 |
+| comic_walker | 1.0.1 | 736c49789faf | comic.loadInfo | 跳过／前置能力未通过 | 通过 |
+| comic_walker | 1.0.1 | 736c49789faf | comic.onClickTag | 跳过／前置能力未通过 | 通过；失败／源配置错误；失败／源配置错误；失败／源配置错误；失败／源配置错误 |
+| comic_walker | 1.0.1 | 736c49789faf | comic.onImageLoad | 跳过／前置能力未通过 | 通过 |
+| comic_walker | 1.0.1 | 736c49789faf | comic.onImageLoad.onResponse | 未出现 | 失败／源配置错误 |
+| comic_walker | 1.0.1 | 736c49789faf | configuration.capabilities | 未出现 | 通过 |
+| comic_walker | 1.0.1 | 736c49789faf | explore[0].load | 跳过／前置能力未通过 | 通过 |
+| comic_walker | 1.0.1 | 736c49789faf | image.download | 未出现 | 通过 |
+| comic_walker | 1.0.1 | 736c49789faf | init | 失败／需要登录 | 通过 |
+| comic_walker | 1.0.1 | 736c49789faf | search.load | 跳过／前置能力未通过 | 失败／返回结构或样本不满足契约 |
+| comic_walker | 1.0.1 | 736c49789faf | thumbnail.decode | 未出现 | 通过 |
+| comic_walker | 1.0.1 | 736c49789faf | thumbnail.download | 未出现 | 通过 |
+| comic_walker | 1.0.1 | d039289f0aac | explore[0].load | 失败／需要登录 | 失败／网络错误 |
+| comic_walker | 1.0.1 | d039289f0aac | search.load | 失败／需要登录 | 失败／网络错误 |
+| copy_manga | 1.4.4 | fcb90412e0d1 | explore[0].load | 失败／源配置错误 | 通过 |
+| kavita | 1.0.0 | 65173ae4eb4a | categoryComics.load | 失败／TLS 错误 | 失败／请求超时 |
+| kavita | 1.0.0 | 65173ae4eb4a | explore[0].load | 失败／网络错误 | 失败／请求超时 |
+| kavita | 1.0.0 | 65173ae4eb4a | search.load | 失败／网络错误 | 失败／请求超时 |
+| kuaikan | 1.0.0 | ad550aa4ecaf | image.decode | 未出现 | 通过 |
+| kuaikan | 1.0.0 | ad550aa4ecaf | image.download | 失败／请求超时 | 通过 |
+| legacy_manmankan | 0.1.0 | e650efd029f2 | search.load | 失败／TLS 错误 | 失败／请求超时 |
+| legacy_manmantai | 0.1.0 | 0540caf28915 | search.load | 失败／请求超时 | 失败／源配置错误 |
+| legacy_wuxiamh | 0.1.0 | 1b4a8cc8c088 | search.load | 失败／TLS 错误 | 失败／请求超时 |
+| liumanhua | 1.0.0 | aa7733f6ccfa | explore[35].load | 通过 | 失败／请求限流 |
+| qimanwu | 1.0.0 | 372767ebd004 | explore[12].load | 失败／源配置错误 | 失败／需要登录 |
+| qimanwu | 1.0.0 | 372767ebd004 | explore[14].load | 失败／需要登录 | 失败／源配置错误 |
+| qimanwu | 1.0.0 | 372767ebd004 | explore[2].load | 失败／需要登录 | 失败／源配置错误 |
+| qimanwu | 1.0.0 | 372767ebd004 | explore[3].load | 失败／源配置错误 | 失败／需要登录 |
+| qimanwu | 1.0.0 | 372767ebd004 | explore[6].load | 失败／需要登录 | 失败／源配置错误 |
+| qimanwu | 1.0.0 | 372767ebd004 | explore[7].load | 失败／源配置错误 | 失败／需要登录 |
+| vomic | 1.2.1 | b9c3012e1500 | categoryComics.load | 通过 | 失败／需要登录 |
+| vomic | 1.2.1 | b9c3012e1500 | comic.idMatch | 通过 | 跳过／缺少样本输入 |
+| vomic | 1.2.1 | b9c3012e1500 | comic.link.linkToId | 通过 | 跳过／缺少样本输入 |
+| vomic | 1.2.1 | b9c3012e1500 | comic.loadEp | 失败／需要登录 | 跳过／缺少样本输入 |
+| vomic | 1.2.1 | b9c3012e1500 | comic.loadInfo | 通过 | 跳过／缺少样本输入 |
+| vomic | 1.2.1 | b9c3012e1500 | explore[0].load | 通过 | 失败／需要登录 |
+| vomic | 1.2.1 | b9c3012e1500 | search.load | 通过 | 失败／需要登录 |
+| vomic | 1.2.1 | b9c3012e1500 | thumbnail.decode | 通过 | 未出现 |
+| vomic | 1.2.1 | b9c3012e1500 | thumbnail.download | 通过 | 未出现 |
+| ykmh | 1.0.7 | ae5fba5713b3 | search.load | 通过 | 失败／HTTP 错误 |
+| ykmh | 1.0.0 | c03ea3696420 | comic.loadInfo | 通过 | 失败／需要登录 |
+| ykmh | 1.0.0 | c03ea3696420 | comic.onClickTag | 失败／源配置错误；失败／源配置错误；失败／源配置错误；通过 | 跳过／缺少样本输入 |
+| ykmh | 1.0.0 | c03ea3696420 | thumbnail.decode | 通过 | 未出现 |
+| ykmh | 1.0.0 | c03ea3696420 | thumbnail.download | 通过 | 未出现 |
+
+## 逐构建对照
 
 | 名称 | key | 版本 | 仓库 | 源码哈希（前12位） | VeneraX 核心／整次 | Next 核心／整次 | 首个失败（X；Next） |
 | --- | --- | --- | --- | --- | --- | --- | --- |
