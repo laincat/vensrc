@@ -1,6 +1,6 @@
 # 隔离账号巡检结果
 
-核验时间：2026-10-24T03:04:12.485451+00:00（UTC）。
+核验时间：2026-10-24T03:35:18.421607+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
@@ -14,6 +14,10 @@
 
 - 绅士漫画／venerax：登录失败，需要登录；需核对账号状态、权限及访问限制。
 - 绅士漫画／venera-next：登录失败，需要登录；需核对账号状态、权限及访问限制。
+
+## 已核对的登录流程差异
+
+- 绅士漫画：2026-10-24 核对：浏览器登录页新增自建滑块及 slider_pass；固定源 1.0.6 尚无此流程。巡检使用最终域名 www.wnacg.com 排除 301 跳转影响；失败不等同于密码错误，详见 WNACG_LOGIN.md。
 
 ## 登录未验证／跳过项
 
@@ -46,4 +50,4 @@
 | 热辣漫画 | hot_manga | venera-next | 通过 | 通过 | 失败 | comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 2 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 account-results.json。
-Actions：https://github.com/laincat/venera-source-index/actions/runs/40056577988
+Actions：https://github.com/laincat/venera-source-index/actions/runs/40058723495
