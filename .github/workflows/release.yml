@@ -1,0 +1,49 @@
+name: Vensrc 滚动 Release
+
+on:
+  workflow_run:
+    workflows: ["反爬与人工验证诊断"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vensrc-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - name: 读取最新的受信任发布器和完整中文报告
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: 检查发布保护与隐私白名单
+        run: |
+          python3 -m unittest discover -s scripts -p '*_test.py'
+          python3 scripts/cloud_audit.py self-test
+      - name: 复核同轮证据，上传草稿并回读校验，发布后只留一个 Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 scripts/release_index.py \
+            --repository "$GITHUB_REPOSITORY" \
+            --output "$RUNNER_TEMP/vensrc-release" \
+            --publish
+      - name: 写入中文发布摘要
+        if: success()
+        shell: bash
+        run: |
+          cat "$RUNNER_TEMP/vensrc-release/release-notes.md" >> "$GITHUB_STEP_SUMMARY"

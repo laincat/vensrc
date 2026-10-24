@@ -2,7 +2,7 @@ name: 反爬与人工验证诊断
 
 on:
   workflow_run:
-    workflows: ["Venera 漫画源定时巡检与索引更新"]
+    workflows: ["Vensrc 巡检与订阅"]
     types: [completed]
     branches: [main]
   workflow_dispatch:

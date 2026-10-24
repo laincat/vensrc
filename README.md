@@ -1,4 +1,6 @@
-# Venera 可用源订阅索引
+# Vensrc
+
+Venera + source：以 VeneraX 为主、同时对照 Venera-Next 的社区漫画源订阅与巡检项目。
 
 本仓库发布经过 Venera Runtime 和 venera-patrol-cli 有限样本巡检的社区漫画源索引。主要使用场景为 VeneraX；两个 Fork 的接口与验证范围见 [客户端兼容性](CLIENT_COMPATIBILITY.md)，中文结果、源名称和固定漫画／章节 ID 见 [复测摘要](RESULTS.md)。
 
@@ -6,8 +8,10 @@
 
 | 订阅 | 地址 | 收录条件 |
 | --- | --- | --- |
-| 主订阅 | [index.json](https://raw.githubusercontent.com/laincat/venera-source-index/main/index.json) | 同次巡检的核心阅读链路及全部执行项通过 |
-| 扩展订阅 | [extended.json](https://raw.githubusercontent.com/laincat/venera-source-index/main/extended.json) | 同次巡检的核心阅读链路通过，其他能力可能失败或跳过 |
+| 主订阅 | [index.json](https://github.com/laincat/vensrc/releases/latest/download/index.json) | 同次巡检的核心阅读链路及全部执行项通过 |
+| 扩展订阅 | [extended.json](https://github.com/laincat/vensrc/releases/latest/download/extended.json) | 同次巡检的核心阅读链路通过，其他能力可能失败或跳过 |
+
+[最新 Release](https://github.com/laincat/vensrc/releases/latest)同时提供 [完整 ZIP](https://github.com/laincat/vensrc/releases/latest/download/vensrc.zip)、[SHA-256 校验清单](https://github.com/laincat/vensrc/releases/latest/download/SHA256SUMS.txt)、锁定清单、中文 CSV 和报告。下载地址固定，快照标签可以变化；更新结束后仓库只保留一个 Release。分支上的备用地址为 [主索引](https://raw.githubusercontent.com/laincat/vensrc/main/index.json) 和 [扩展索引](https://raw.githubusercontent.com/laincat/vensrc/main/extended.json)。
 
 在 VeneraX 的漫画源库管理中添加对应索引 URL，或在 Venera-Next 的漫画源仓库页添加；两者当前源码均支持保存多个库，可同时添加主、扩展订阅。较旧客户端若只有漫画源列表 URL 设置，则切换列表地址使用。主、扩展索引没有重复 key。这里的地址是源列表，不能当作单个 JS 源导入。
 
@@ -27,7 +31,11 @@
 
 ## 更新安排
 
-已迁移到 [GitHub Actions](https://github.com/laincat/venera-source-index/actions/workflows/patrol.yml)，按香港时间每周一 09:00（UTC 周一 01:00）运行，也可在 Actions 页面手动执行。修改巡检脚本或审阅清单后会自动触发。无需本机或 Codex 在线；GitHub 定时运行可能有延迟，以 Actions 记录为准。
+已迁移到 [GitHub Actions](https://github.com/laincat/vensrc/actions/workflows/patrol.yml)，按香港时间每周一 09:00（UTC 周一 01:00）运行，也可在 Actions 页面手动执行。修改巡检脚本或审阅清单后会自动触发。无需本机或 Codex 在线；GitHub 定时运行可能有延迟，以 Actions 记录为准。
+
+完整巡检成功后执行访问诊断；诊断报告发布成功后，[滚动 Release 工作流](https://github.com/laincat/vensrc/actions/workflows/release.yml)核对同轮的索引、客户端、账号与访问证据，再生成附件。发布器先创建草稿，上传并下载全部 12 个附件逐一核对 SHA-256；通过后才设为最新并清理旧 Release 和对应标签。上传或校验失败时保留上一次完整的公开 Release，不把缺失或跳过的结果计为通过。相同附件快照重跑会复用同一标签。
+
+Release 附件使用文件白名单，只包含生成索引、锁定清单、中文 CSV、报告、ZIP 与校验清单；不打包原始追踪、账号状态、账号结果 JSON、本地密码文件、Cookie 或 Token。不会镜像上游 JS 或漫画内容。
 
 **每次巡检前更新 venera-patrol-cli 到上游默认分支最新提交**，使用该提交的 `package-lock.json` 安装依赖并构建独立容器。巡检开始前再次核对上游 HEAD。获取、安装或报告格式检查失败时停止本次发布，不回退到缓存旧版。中文报告和 `audit-status.json` 记录 CLI 提交、版本、依赖锁 SHA-256、Node 版本和运行地址。
 
@@ -68,6 +76,6 @@
 
 适配层按两套客户端真实拦截器识别 `403` 加 `cf-mitigated: challenge`，明确报告反爬验证；普通 403 不自动认定为 Cloudflare 或密码错误。客户端的 Flutter WebView 验证、Cookie 与浏览器身份同步不能用 Node 版本号替代。
 
-[反爬诊断工作流](https://github.com/laincat/venera-source-index/actions/workflows/access.yml)在完整巡检成功后执行，也可手动触发。它使用最新 CLI 锁定的浏览器依赖，对已审阅的 4 个公开首页和绅士漫画的 2 个公开登录页执行无账号的正常浏览器诊断，只等待页面自身脚本、不点击验证码；结果与真实阅读链路分开。浏览器可访问不使 CLI 失败的源自动进入订阅。绅士漫画的最终域名、站点自建滑块及旧源登录流程差异见 [专项诊断](WNACG_LOGIN.md)。
+[反爬诊断工作流](https://github.com/laincat/vensrc/actions/workflows/access.yml)在完整巡检成功后执行，也可手动触发。它使用最新 CLI 锁定的浏览器依赖，对已审阅的 4 个公开首页和绅士漫画的 2 个公开登录页执行无账号的正常浏览器诊断，只等待页面自身脚本、不点击验证码；结果与真实阅读链路分开。浏览器可访问不使 CLI 失败的源自动进入订阅。绅士漫画的最终域名、站点自建滑块及旧源登录流程差异见 [专项诊断](WNACG_LOGIN.md)。
 
 需要人工时，优先在 VeneraX 自带验证窗口完成正常验证，再在相同网络环境重试。通行 Cookie 不能保证从本机搬到 GitHub runner 后仍有效；长期云端受限需要站点允许的访问方式或出口稳定的独立远程验证环境。未部署此类远程环境，不依赖本机恢复在线来维持基础定时巡检。

@@ -65,7 +65,7 @@ def request(url, api=False):
     allowed = {"api.github.com"} if api else {"raw.githubusercontent.com"}
     if parsed.scheme != "https" or parsed.hostname not in allowed or parsed.username:
         raise ValueError("仅允许 GitHub 官方 HTTPS 地址")
-    headers = {"User-Agent": "venera-source-index", "Accept": "application/vnd.github+json"}
+    headers = {"User-Agent": "vensrc", "Accept": "application/vnd.github+json"}
     if api and os.environ.get("GH_TOKEN"):
         headers["Authorization"] = f"Bearer {os.environ['GH_TOKEN']}"
     with urlopen(Request(url, headers=headers), timeout=35) as response:
@@ -545,6 +545,7 @@ def publish(payload, destination):
         f"本次审阅清单：{len(rows)} 个构建；主索引 **{len(main)}** 项，扩展索引 **{len(extended)}** 项。", "",
         "固定漫画及章节、源码字节哈希和 CLI 提交均保留。主索引必须同次通过入口、详情、章节、图片下载与解码，且整次报告为 passed；"
         "扩展索引要求相同核心链路通过，其他能力可有失败或跳过。旧成功结果不代替新失败。", "",
+        "本报告与订阅快照滚动发布到 Releases，最终只保留最新一版；附件校验不完整时保留上一版。", "",
         "GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证导入或阅读。"
         "全部已审阅构建使用已核验的 VeneraX 原始 bootstrap，"
         "逐个以相同样本对照 Venera-Next。订阅仅按 VeneraX 本次结果选择；"
