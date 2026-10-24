@@ -1,7 +1,7 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-10-24T14:01:56.637890+00:00（UTC）。
-检查 49 个已登记仓库；发现 159 个未审阅源码构建。
+检查时间：2026-10-24T15:49:05.378879+00:00（UTC）。
+检查 49 个已登记仓库；发现 158 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
 
@@ -19,7 +19,6 @@
 | 禁漫天堂 | jm | 1.4.2 | ChopDream/venera-source-hub | 1.5.0 | 1b195b4ecd0bcbed61546d11761f6d0c8b027588564da7d28368f2f4645d5b16 |
 | nhentai | nhentai | 1.1.2 | ChopDream/venera-source-hub | 1.0.0 | 9379d8441f42d06a7835cee6b21519ea8a951eb01c476402d00dce721ffeaec6 |
 | MYCOMIC | mycomic | 1.1.2 | ChopDream/venera-source-hub | 1.4.6 | f35e2e7cb531f7591e81a5edf41ab6303880686f0009c7477f77154e9511f07f |
-| 紳士漫畫 | wnacg | 1.0.9 | ChopDream/venera-source-hub | 1.0.0 | b2886d9c54ae662f2b0da391fe6769779043a6cf01af4174eaec64d7e9f2f734 |
 | Komiic | Komiic | 1.8.3 | Junkrat9527/venera-sources | 1.0.0 | d957a4de13948a967368975b43e947a3dc56cb094f02e4fa9b62f8339a5e678a |
 | 包子漫画 | baozi | 1.2.1 | Junkrat9527/venera-sources | 1.0.0 | 0fe528ef087e092a2d57ec32f2d9414642987e07ceaced9973c6ecf8acb1cb40 |
 | 包子漫画 | baozi | 1.1.7 | zhimouzhou/venera-manga-sources | 1.0.0 | ed698fbc58b216b0a22bc178947f56f637400629cd4a852bcda70b68b34349f3 |
@@ -197,20 +196,23 @@
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
 - `laincat/vensrc`：Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release
-- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
+- `lll152872/venera-lll`：venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、
+- `amke79/venerastudios-site`：
 - `Meloon-dr/venera-sources`：
+- `yuyuyu529/venera`：Venera日语生肉源
+- `opaiopaio/Venera-Nas`：Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中
+- `JUTZUGC/venera-deploy-guide`：Venera 一键安装 + MCP 接入教程｜AI 自动下载校验，小白式指南
 - `moonskycake/venera-next`：venera-next的个人漫画源仓库
+- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
 - `veneraproject/venera-node`：
 - `Kyosee/VeneraX`：A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。
 - `w13630039663-bit/venera-miuix`：一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。
-- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
-- `amke79/venerastudios-site`：
 - `Magic-Miku/venera-store`：
 - `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `ikun5200/venera-prime-server`：
 - `MQ9Reaper/venera-personal-sources`：
-- `yuyuyu529/venera`：Venera日语生肉源
-- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `CangShui/VenHM`：兼容Venera源的鸿蒙开源漫画阅读器
 - `Vulpes-venera/CS50p`：
 - `1148891151a-ui/-veneranext-sources.json`：
@@ -229,7 +231,6 @@
 - `john-cpallc/venerable-grain`：
 - `fave-eng/venera`：
 - `FengHA223/venera-ios12`：
-- `opaiopaio/Venera-Nas`：Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中
 - `a3169249487-sys/Venera-Next-ai-upscale-temp`：Experimental AI upscale build for Venera-Next
 - `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源
 - `Gandum2077/venera-runtime`：A venera runtime that works in both Node and JSBox environments. 
@@ -280,5 +281,3 @@
 - `Tobeinlovewith/veneranext-source`：
 - `noelle-silva/Venera`：
 - `hasanrakib42679-ctrl/venerable-valkyrie-3e891c`：
-- `VenusUK/Ms.-Venera-s-English-Studio`：IE Support
-- `bandcomic/RESTful-venera-source`：

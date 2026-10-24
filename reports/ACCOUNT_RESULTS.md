@@ -1,29 +1,31 @@
 # 隔离账号巡检结果
 
-核验时间：2026-10-24T14:03:03.365411+00:00（UTC）。
+核验时间：2026-10-24T15:50:13.650677+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
 登录通过表示源登录接口满足本次契约；阅读链路独立判断，不代替匿名订阅的收录结果。
 没有接入账号 Secret 的源、无登录接口的源及未登记站点均如实标记。
+绅士漫画只测试 Cookie 登录接口的缺凭据处理；本站密码不再注入，本人在客户端导入会话并完成会员页校验前，登录保持未验证。
 不启用签到、评论、点赞、收藏增删和设置按钮等写操作；不保存跨次会话。
 
 跳过和未执行不计入登录、核心阅读或整次通过。登录拒绝不等同于密码错误。
 
 ## 登录失败项
 
-- 绅士漫画／venerax：登录失败，需要登录；需核对账号状态、权限及访问限制。
-- 绅士漫画／venera-next：登录失败，需要登录；需核对账号状态、权限及访问限制。
+- 禁漫天堂／venera-next：登录失败，需要登录；需核对账号状态、权限及访问限制。
 
 ## 已核对的登录流程差异
 
-- 绅士漫画：2026-10-24 核对：浏览器登录页新增自建滑块及 slider_pass；固定源 1.0.6 尚无此流程。巡检使用最终域名 www.wnacg.com 排除 301 跳转影响；失败不等同于密码错误，详见 WNACG_LOGIN.md。
+- 绅士漫画：Vensrc 独立维护版 1.1.0；站点自建滑块须由本人在对应域名的浏览器完成，再在客户端导入 Cookie 并验证会员页。Actions 不注入本站密码、不接收浏览器会话；缺少 Cookie 如实跳过，不算登录通过。详见 WNACG_LOGIN.md。
 
 ## 登录未验证／跳过项
 
 - 奇漫屋（`qimanwu`）：已保存凭据；当前审阅版本未提供 account.login，未注入密码。
 - AGE动漫（`age_anime`）：已保存凭据；当前已审阅清单无本站源。
 - 动漫屋（`dm5`）：已保存凭据；当前审阅版本未提供 account.login，未注入密码。
+- 绅士漫画／venerax：登录跳过，不计通过。
+- 绅士漫画／venera-next：登录跳过，不计通过。
 - 18ak 漫画（`18ak`）：已保存凭据；当前已审阅清单无本站源。
 
 ## 全部账号结果
@@ -35,12 +37,12 @@
 | 奇漫屋 | qimanwu | — | 已保存凭据；当前审阅版本未提供 account.login，未注入密码 | 未测试 | 跳过 |  | 未执行 |
 | AGE动漫 | age_anime | — | 已保存凭据；当前已审阅清单无本站源 | 未测试 | 跳过 |  | 未执行 |
 | 动漫屋 | dm5 | — | 已保存凭据；当前审阅版本未提供 account.login，未注入密码 | 未测试 | 跳过 |  | 未执行 |
-| 绅士漫画 | wnacg | venerax | 失败 | 通过 | 失败 | account.login：需要登录 | 7 |
-| 绅士漫画 | wnacg | venera-next | 失败 | 通过 | 失败 | account.login：需要登录 | 7 |
+| 绅士漫画 | wnacg | venerax | 跳过 | 通过 | 部分通过 | 无失败 | 7 |
+| 绅士漫画 | wnacg | venera-next | 跳过 | 通过 | 部分通过 | 无失败 | 7 |
 | 禁漫天堂 | jm | venerax | 通过 | 通过 | 部分通过 | 无失败 | 13 |
-| 禁漫天堂 | jm | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 13 |
-| 包子漫画 | baozi | venerax | 通过 | 通过 | 失败 | categoryComics.load：返回结构或样本不满足契约 | 2 |
-| 包子漫画 | baozi | venera-next | 通过 | 通过 | 失败 | categoryComics.load：返回结构或样本不满足契约 | 2 |
+| 禁漫天堂 | jm | venera-next | 失败 | 通过 | 失败 | account.login：需要登录；search.load：源配置错误 | 15 |
+| 包子漫画 | baozi | venerax | 通过 | 通过 | 失败 | categoryComics.load：返回结构或样本不满足契约；thumbnail.download：请求超时 | 2 |
+| 包子漫画 | baozi | venera-next | 通过 | 通过 | 失败 | categoryComics.load：返回结构或样本不满足契约；thumbnail.download：请求超时 | 2 |
 | 18ak 漫画 | 18ak | — | 已保存凭据；当前已审阅清单无本站源 | 未测试 | 跳过 |  | 未执行 |
 | 哔咔漫画 | picacg | venerax | 通过 | 通过 | 部分通过 | 无失败 | 6 |
 | 哔咔漫画 | picacg | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 6 |
@@ -50,4 +52,4 @@
 | 热辣漫画 | hot_manga | venera-next | 通过 | 通过 | 失败 | comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 2 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 ../data/account-results.json。
-Actions：https://github.com/laincat/vensrc/actions/runs/40100621318
+Actions：https://github.com/laincat/vensrc/actions/runs/40108607663

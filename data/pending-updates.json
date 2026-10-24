@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-24T14:01:56.637890+00:00",
+  "checkedAt": "2026-10-24T15:49:05.378879+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -155,26 +155,6 @@
       "sample": {
         "comicId": "1305",
         "epId": "185931",
-        "keyword": "火影"
-      },
-      "trackedBy": [
-        "ChopDream/venera-source-hub"
-      ],
-      "priority": 0,
-      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
-    },
-    {
-      "id": "b2886d9c54ae662f2b0da391fe6769779043a6cf01af4174eaec64d7e9f2f734",
-      "key": "wnacg",
-      "name": "紳士漫畫",
-      "version": "1.0.9",
-      "fileName": "wnacg.js",
-      "url": "https://raw.githubusercontent.com/ChopDream/venera-source-hub/7e032a25d0b3e4e77555fe95c9db35281b7bbd9c/wnacg.js",
-      "sha256": "b2886d9c54ae662f2b0da391fe6769779043a6cf01af4174eaec64d7e9f2f734",
-      "repository": "ChopDream/venera-source-hub",
-      "minAppVersion": "1.0.0",
-      "sample": {
-        "comicId": "397513",
         "keyword": "火影"
       },
       "trackedBy": [
@@ -3500,16 +3480,44 @@
       "description": "Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release"
     },
     {
-      "repository": "CyrilPeng/Venera-Next",
-      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。"
+      "repository": "gallhall/venera-v",
+      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates"
+    },
+    {
+      "repository": "lll152872/venera-lll",
+      "description": "venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、"
+    },
+    {
+      "repository": "amke79/venerastudios-site",
+      "description": ""
     },
     {
       "repository": "Meloon-dr/venera-sources",
       "description": ""
     },
     {
+      "repository": "yuyuyu529/venera",
+      "description": "Venera日语生肉源"
+    },
+    {
+      "repository": "opaiopaio/Venera-Nas",
+      "description": "Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中"
+    },
+    {
+      "repository": "JUTZUGC/venera-deploy-guide",
+      "description": "Venera 一键安装 + MCP 接入教程｜AI 自动下载校验，小白式指南"
+    },
+    {
       "repository": "moonskycake/venera-next",
       "description": "venera-next的个人漫画源仓库"
+    },
+    {
+      "repository": "CyrilPeng/Venera-Next",
+      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。"
+    },
+    {
+      "repository": "Maxll51/EZVenera-Lite",
+      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android"
     },
     {
       "repository": "veneraproject/venera-node",
@@ -3522,14 +3530,6 @@
     {
       "repository": "w13630039663-bit/venera-miuix",
       "description": "一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。"
-    },
-    {
-      "repository": "Maxll51/EZVenera-Lite",
-      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android"
-    },
-    {
-      "repository": "amke79/venerastudios-site",
-      "description": ""
     },
     {
       "repository": "Magic-Miku/venera-store",
@@ -3546,14 +3546,6 @@
     {
       "repository": "MQ9Reaper/venera-personal-sources",
       "description": ""
-    },
-    {
-      "repository": "yuyuyu529/venera",
-      "description": "Venera日语生肉源"
-    },
-    {
-      "repository": "gallhall/venera-v",
-      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates"
     },
     {
       "repository": "CangShui/VenHM",
@@ -3626,10 +3618,6 @@
     {
       "repository": "FengHA223/venera-ios12",
       "description": ""
-    },
-    {
-      "repository": "opaiopaio/Venera-Nas",
-      "description": "Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中"
     },
     {
       "repository": "a3169249487-sys/Venera-Next-ai-upscale-temp",
@@ -3829,14 +3817,6 @@
     },
     {
       "repository": "hasanrakib42679-ctrl/venerable-valkyrie-3e891c",
-      "description": ""
-    },
-    {
-      "repository": "VenusUK/Ms.-Venera-s-English-Studio",
-      "description": "IE Support"
-    },
-    {
-      "repository": "bandcomic/RESTful-venera-source",
       "description": ""
     }
   ],
