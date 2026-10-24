@@ -13,6 +13,7 @@ def fixture(root):
     item = {
         "id": "a" * 64, "sha256": "a" * 64, "key": "fixture", "name": "测试源",
         "url": "https://raw.githubusercontent.com/example/source/" + "b" * 40 + "/fixture.js",
+        "repository": "example/source",
         "version": "1.0.0", "fileName": "fixture.js", "minAppVersion": "1.0.0",
         "sample": {"comicId": "1", "epId": "2", "keyword": "测试"},
         "runtimeProfile": "venerax", "verifyProfiles": ["venera-next"],
@@ -20,6 +21,7 @@ def fixture(root):
     catalog = {"schemaVersion": 1, "priorityRepositories": [], "sources": [item]}
     audit.save(root / "monitor/catalog.json", catalog)
     audit.save(root / "monitor/accounts.json", {"schemaVersion": 1, "sites": []})
+    audit.save(root / "monitor/source-notes.json", {"schemaVersion": 1, "notes": {}})
     exclusions = audit.load(audit.ROOT / "monitor/official-keys.json")
     audit.save(root / "monitor/official-keys.json", exclusions)
     audit.save(root / "official-exclusions.json", exclusions)
@@ -46,6 +48,7 @@ def fixture(root):
                        "status": "passed", "stages": stages},
         })
     entry = {k: item[k] for k in ("name", "key", "version", "fileName", "url", "minAppVersion")}
+    entry["description"] = audit.source_annotation(item, {})
     locked = {**entry, "buildId": item["id"], "sha256": item["sha256"], "channel": "main",
               "runtimeProfile": "venerax", "status": "passed", "sample": item["sample"],
               "checkedAt": checked, "cliCommit": cli["commit"]}

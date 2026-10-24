@@ -130,7 +130,7 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "定时巡检：更新主／扩展订阅及中文报告"
             git -c credential.helper='!gh auth git-credential' fetch origin main
-            git diff --quiet HEAD origin/main -- monitor/catalog.json monitor/clients.json monitor/accounts.json monitor/official-keys.json scripts/client_bridge.mjs scripts/prepare_client.py scripts/cloud_audit.py scripts/account_patrol.py .github/workflows/patrol.yml
+            git diff --quiet HEAD origin/main -- monitor/catalog.json monitor/clients.json monitor/accounts.json monitor/official-keys.json monitor/source-notes.json scripts/client_bridge.mjs scripts/prepare_client.py scripts/cloud_audit.py scripts/account_patrol.py .github/workflows/patrol.yml
             git -c credential.helper='!gh auth git-credential' pull --rebase origin main
             git -c credential.helper='!gh auth git-credential' push origin HEAD:main
           fi

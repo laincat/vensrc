@@ -24,41 +24,41 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 
 以下只保留已有诊断证据，均不进入主索引、扩展索引或锁定清单；核心通过也不会豁免。
 
-| 名称 | key | 选中构建版本 | 核心链路 |
-| --- | --- | --- | --- |
-| Komiic | Komiic | 1.0.3 | 通过；仍排除 |
-| 漫画柜 | ManHuaGui | 1.2.1 | 通过；仍排除 |
-| 包子漫画 | baozi | 1.1.7 | 通过；仍排除 |
-| CCC追漫台 | ccc | 1.0.1 | 通过；仍排除 |
-| カドコミ | comic_walker | 1.0.1 | 未完整通过；排除 |
-| comick | comick | 1.2.0 | 通过；仍排除 |
-| 拷贝漫画 | copy_manga | 1.6.6 | 未完整通过；排除 |
-| 拷贝漫画(多账号) | copy_manga_multi_accounts | 1.4.1 | 未完整通过；排除 |
-| ehentai | ehentai | 1.2.0 | 通过；仍排除 |
-| GoDa漫画 | goda | 1.2.1 | 未完整通过；排除 |
-| 嗨皮漫画 | happy | 1.0.0 | 未完整通过；排除 |
-| H-Comic | hcomic | 1.0.0 | 通过；仍排除 |
-| hitomi.la | hitomi | 1.1.2 | 未完整通过；排除 |
-| 热辣漫画 | hot_manga | 1.0.0 | 通过；仍排除 |
-| 爱看漫 | ikmmh | 1.0.6 | 未完整通过；排除 |
-| jcomic.net | jcomic | 1.0.0 | 未完整通过；排除 |
-| 禁漫天堂 | jm | 1.9.2 | 通过；仍排除 |
-| Kavita | kavita | 1.0.0 | 未完整通过；排除 |
-| Komga | komga | 1.0.0 | 未完整通过；排除 |
-| Lanraragi | lanraragi | 1.2.0 | 通过；仍排除 |
-| MangaDex | manga_dex | 1.1.1 | 通过；仍排除 |
-| 漫画人 | manhuaren | 1.0.1 | 通过；仍排除 |
-| 漫蛙吧 | manwaba | 1.1.3 | 通过；仍排除 |
-| 漫画1234 | mh1234 | 1.0.0 | 未完整通过；排除 |
-| 18漫画 | mh18 | 1.0.0 | 未完整通过；排除 |
-| 漫小肆 | mxs | 1.0.0 | 通过；仍排除 |
-| MYCOMIC | mycomic | 1.1.0 | 通过；仍排除 |
-| nhentai | nhentai | 1.1.0 | 通过；仍排除 |
-| Picacg | picacg | 1.0.6 | 未完整通过；排除 |
-| 少年ジャンプ＋ | shonen_jump_plus | 1.2.0 | 通过；仍排除 |
-| 紳士漫畫 | wnacg | 1.0.6 | 通过；仍排除 |
-| 优酷漫画 | ykmh | 1.0.2 | 通过；仍排除 |
-| 再漫画 | zaimanhua | 1.0.2 | 未完整通过；排除 |
+| 名称 | key | 选中构建版本 | 核心链路 | 源备注 |
+| --- | --- | --- | --- | --- |
+| Komiic | Komiic | 1.0.3 | 通过；仍排除 | 引用源：venera-app/venera-configs |
+| 漫画柜 | ManHuaGui | 1.2.1 | 通过；仍排除 | 引用源：handahao666-boop/venera_comic_source |
+| 包子漫画 | baozi | 1.1.7 | 通过；仍排除 | 引用源：handahao666-boop/venera_comic_source |
+| CCC追漫台 | ccc | 1.0.1 | 通过；仍排除 | 引用源：handahao666-boop/venera_comic_source |
+| カドコミ | comic_walker | 1.0.1 | 未完整通过；排除 | 引用源：handahao666-boop/venera_comic_source |
+| comick | comick | 1.2.0 | 通过；仍排除 | 引用源：handahao666-boop/venera_comic_source |
+| 拷贝漫画 | copy_manga | 1.6.6 | 未完整通过；排除 | 引用源：handahao666-boop/venera_comic_source |
+| 拷贝漫画(多账号) | copy_manga_multi_accounts | 1.4.1 | 未完整通过；排除 | 引用源：venera-app/venera-configs |
+| ehentai | ehentai | 1.2.0 | 通过；仍排除 | 引用源：venera-app/venera-configs |
+| GoDa漫画 | goda | 1.2.1 | 未完整通过；排除 | 引用源：handahao666-boop/venera_comic_source |
+| 嗨皮漫画 | happy | 1.0.0 | 未完整通过；排除 | 引用源：venera-app/venera-configs |
+| H-Comic | hcomic | 1.0.0 | 通过；仍排除 | 引用源：venera-app/venera-configs |
+| hitomi.la | hitomi | 1.1.2 | 未完整通过；排除 | 引用源：venera-app/venera-configs |
+| 热辣漫画 | hot_manga | 1.0.0 | 通过；仍排除 | 引用源：venera-app/venera-configs |
+| 爱看漫 | ikmmh | 1.0.6 | 未完整通过；排除 | 引用源：venera-app/venera-configs |
+| jcomic.net | jcomic | 1.0.0 | 未完整通过；排除 | 引用源：venera-app/venera-configs |
+| 禁漫天堂 | jm | 1.9.2 | 通过；仍排除 | 上游 v1.9.2 更新说明（CHANGELOG）：“修复旧版收藏数据 id 未去混淆导致的 aid 错误”；漫画 ID 归一化修复见上游更新说明。 |
+| Kavita | kavita | 1.0.0 | 未完整通过；排除 | 引用源：venera-app/venera-configs |
+| Komga | komga | 1.0.0 | 未完整通过；排除 | 引用源：venera-app/venera-configs |
+| Lanraragi | lanraragi | 1.2.0 | 通过；仍排除 | 引用源：venera-app/venera-configs |
+| MangaDex | manga_dex | 1.1.1 | 通过；仍排除 | 引用源：handahao666-boop/venera_comic_source |
+| 漫画人 | manhuaren | 1.0.1 | 通过；仍排除 | 引用源：handahao666-boop/venera_comic_source |
+| 漫蛙吧 | manwaba | 1.1.3 | 通过；仍排除 | 引用源：handahao666-boop/venera_comic_source |
+| 漫画1234 | mh1234 | 1.0.0 | 未完整通过；排除 | 引用源：venera-app/venera-configs |
+| 18漫画 | mh18 | 1.0.0 | 未完整通过；排除 | 引用源：venera-app/venera-configs |
+| 漫小肆 | mxs | 1.0.0 | 通过；仍排除 | 引用源：venera-app/venera-configs |
+| MYCOMIC | mycomic | 1.1.0 | 通过；仍排除 | 引用源：handahao666-boop/venera_comic_source |
+| nhentai | nhentai | 1.1.0 | 通过；仍排除 | 引用源：venera-app/venera-configs |
+| Picacg | picacg | 1.0.6 | 未完整通过；排除 | 引用源：venera-app/venera-configs |
+| 少年ジャンプ＋ | shonen_jump_plus | 1.2.0 | 通过；仍排除 | 引用源：handahao666-boop/venera_comic_source |
+| 紳士漫畫 | wnacg | 1.0.6 | 通过；仍排除 | 引用源：venera-app/venera-configs |
+| 优酷漫画 | ykmh | 1.0.2 | 通过；仍排除 | 引用源：zakkida/venera-sources |
+| 再漫画 | zaimanhua | 1.0.2 | 未完整通过；排除 | 引用源：handahao666-boop/venera_comic_source |
 
 ## 逐构建结果
 

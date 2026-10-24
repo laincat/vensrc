@@ -59,6 +59,11 @@ def validate(root, check_latest=False):
         audit.validate_client_record(record, items[record["id"]], {"cli": state["cli"]})
     main, extended = audit.load(root / "index.json"), audit.load(root / "extended.json")
     locks = audit.load(root / "sources.lock.json")
+    note_config = audit.load(root / "monitor/source-notes.json")
+    assert note_config["schemaVersion"] == 1 and isinstance(note_config["notes"], dict)
+    assert set(note_config["notes"]) <= set(items)
+    assert all(items[build_id].get("repository") == "BB-CHICKEN/venera-jm"
+               for build_id in note_config["notes"])
     assert not any(audit.excluded_official(row, latest_exclusions)
                    for row in main + extended + locks), "订阅或锁定清单含官方重复项"
     by_key = {row["key"]: row for row in locks}
@@ -70,6 +75,7 @@ def validate(root, check_latest=False):
             locked = by_key[entry["key"]]
             item = items[locked["buildId"]]
             assert not audit.excluded_official(item, latest_exclusions), "禁止重新收录官方构建"
+            assert entry["description"] == audit.source_annotation(item, note_config["notes"])
             record = records[(item["id"], "venerax")]
             assert locked["runtimeProfile"] == "venerax" and locked["channel"] == channel
             assert locked["sha256"] == item["sha256"] == record["source"]["sourceSha256"]

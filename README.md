@@ -29,6 +29,8 @@ Venera + source：以 VeneraX 为主、同时对照 Venera-Next 的社区漫画�
 
 本订阅排除官方索引中的全部 key，社区仓库沿用这些 key 的改版及转引也不收录；同时排除直接来自 `venera-app/venera-configs` 的构建。因此可与官方源库同时添加，主／扩展订阅与官方索引均无重复 key。不同 key 仍可能是同一网站的别名。
 
+索引条目的 `description` 用于注明来源仓库，例如 `引用源：JunQianNuo/venera-sources`。BB-CHICKEN `jm` 1.9.2 的短注释直接摘自该构建对应的 [上游 CHANGELOG](https://github.com/BB-CHICKEN/venera-jm/blob/a266ff026e08e6c5f17516664ffc0b90c91164a1/CHANGELOG.md)；该源与其他官方同 key 构建一样，仅在巡检报告中保留，不放入订阅。
+
 排除集合及其依据的官方索引提交、原始字节哈希见 [官方 key 排除记录](official-exclusions.json)。每轮检测读取官方最新索引，只追加排除 key；历史排除集合不缩小。Release 发布前再次读取官方最新索引，发现重复项即阻止发布，待下一轮按新集合重新生成。
 
 `jm`（包括 BB-CHICKEN 1.9.2）、`wnacg` 等同 key 构建仍保留已审阅源码、固定样本、双客户端及账号诊断证据，但不进入订阅或锁定清单。需要这些社区替代版时，请从对应上游仓库单独选择。通过巡检不豁免官方 key 排除规则。

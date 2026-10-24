@@ -13,6 +13,7 @@ class OfficialPolicyTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             audit.save(root / "monitor/official-keys.json", baseline)
+            audit.save(root / "monitor/source-notes.json", {"schemaVersion": 1, "notes": {}})
             previous = {**baseline, "keys": sorted(baseline["keys"] + ["historical_fixture"])}
             audit.save(root / "official-exclusions.json", previous)
             raw = b'[{"key":"new_official_fixture"}]'
@@ -38,7 +39,7 @@ class OfficialPolicyTests(unittest.TestCase):
             items = []
             for number, key, repo in (
                 ("a", "fixture", "community/source"),
-                ("b", "jm", "community/source"),
+                ("b", "jm", "BB-CHICKEN/venera-jm"),
                 ("c", "renamed_official_fixture", audit.OFFICIAL_REPOSITORY),
             ):
                 items.append({
@@ -49,6 +50,11 @@ class OfficialPolicyTests(unittest.TestCase):
                 })
             audit.save(root / "monitor/catalog.json", {
                 "schemaVersion": 1, "sources": items, "priorityRepositories": []})
+            audit.save(root / "monitor/source-notes.json", {
+                "schemaVersion": 1, "notes": {
+                    "b" * 64: "上游 CHANGELOG v1.9.2：“修复旧版收藏数据 id 未去混淆导致的 aid 错误”。",
+                },
+            })
             audit.save(root / "sources.lock.json", [])
             payload = {
                 "schemaVersion": 1,
@@ -64,11 +70,19 @@ class OfficialPolicyTests(unittest.TestCase):
             }
             with patch.object(audit, "ROOT", root):
                 audit.publish(payload, root)
-            self.assertEqual([item["key"] for item in audit.load(root / "index.json")], ["fixture"])
+            index = audit.load(root / "index.json")
+            self.assertEqual([item["key"] for item in index], ["fixture"])
+            self.assertEqual(index[0]["description"], "引用源：community/source")
             self.assertEqual([item["key"] for item in audit.load(root / "sources.lock.json")], ["fixture"])
             self.assertEqual(audit.load(root / "audit-status.json")["officialExcludedBuilds"], 2)
             self.assertEqual(len(payload["records"]), 3)
-            self.assertIn("排除官方重复项", (root / "RESULTS.md").read_text(encoding="utf-8"))
+            report = (root / "RESULTS.md").read_text(encoding="utf-8")
+            self.assertIn("排除官方重复项", report)
+            self.assertIn("修复旧版收藏数据 id 未去混淆导致的 aid 错误", report)
+            rows = list(__import__("csv").reader(
+                (root / "sources.zh.csv").read_text(encoding="utf-8-sig").splitlines()))
+            self.assertEqual(rows[0][-1], "源备注")
+            self.assertIn("上游 CHANGELOG v1.9.2", rows[2][-1])
 
     def test_discovery_uses_actual_source_key_and_omits_official_candidates(self):
         baseline = audit.official_policy()

@@ -130,6 +130,15 @@ def excluded_official(item, policy):
             or target == OFFICIAL_REPOSITORY)
 
 
+def source_annotation(item, notes):
+    note = notes.get(item["id"])
+    if note:
+        assert item.get("repository") == "BB-CHICKEN/venera-jm"
+        return note
+    repository = item.get("repository", "")
+    return f"引用源：{repository}" if repository else "引用源：未知仓库"
+
+
 def validate_catalog(catalog):
     assert catalog["schemaVersion"] == 1
     seen = set()
@@ -525,6 +534,13 @@ def validate_client_record(record, item, payload):
 
 def publish(payload, destination):
     catalog = validate_catalog(load(ROOT / "monitor/catalog.json"))
+    note_config = load(ROOT / "monitor/source-notes.json")
+    assert note_config["schemaVersion"] == 1 and isinstance(note_config["notes"], dict)
+    known_builds = {item["id"]: item for item in catalog["sources"]}
+    assert set(note_config["notes"]) <= set(known_builds)
+    assert all(known_builds[build_id].get("repository") == "BB-CHICKEN/venera-jm"
+               for build_id in note_config["notes"])
+    annotations = note_config["notes"]
     exclusions = official_policy(snapshot=payload.get("officialExclusions"))
     assert payload["schemaVersion"] == 1
     assert payload["catalogSha256"] == sha((ROOT / "monitor/catalog.json").read_bytes())
@@ -571,8 +587,7 @@ def publish(payload, destination):
             "name": item["name"], "key": item["key"], "version": item["version"],
             "fileName": item["fileName"], "url": item["url"],
             "minAppVersion": item["minAppVersion"],
-            "description": ("核心阅读链路及本次执行项通过" if status == "passed" else
-                            "核心阅读链路通过；其他能力存在失败或跳过，详见中文巡检报告"),
+            "description": source_annotation(item, annotations),
         }
         channel = "main" if status == "passed" else "extended"
         (main if channel == "main" else extended).append(entry)
@@ -627,15 +642,18 @@ def publish(payload, destination):
                 if excluded_official(item, exclusions)]
     lines += ["", "## 因与官方重复而排除的源", "",
               "以下只保留已有诊断证据，均不进入主索引、扩展索引或锁定清单；核心通过也不会豁免。",
-              "", "| 名称 | key | 选中构建版本 | 核心链路 |", "| --- | --- | --- | --- |"]
+              "", "| 名称 | key | 选中构建版本 | 核心链路 | 源备注 |",
+              "| --- | --- | --- | --- | --- |"]
     for item, source in sorted(excluded, key=lambda pair: pair[0]["key"]):
         lines.append("| " + " | ".join(text(v) for v in (
             item["name"], item["key"], item["version"],
-            "通过；仍排除" if core(source) else "未完整通过；排除")) + " |")
+            "通过；仍排除" if core(source) else "未完整通过；排除",
+            source_annotation(item, annotations))) + " |")
     lines += ["", "## 逐构建结果", "", "| 源名称 | key | 仓库 | 版本 | 巡检环境 | 核心链路 | 整次状态 | 首个失败／跳过 | 收录处理 |",
               "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
     csv_rows = [["源名称", "源标识", "仓库", "版本", "核心阅读链路", "整次状态", "固定漫画ID",
-                 "固定章节ID", "关键词", "失败阶段", "失败类别", "失败说明", "源码SHA256", "源码地址", "巡检环境", "收录处理"]]
+                 "固定章节ID", "关键词", "失败阶段", "失败类别", "失败说明", "源码SHA256", "源码地址",
+                 "巡检环境", "收录处理", "源备注"]]
     for item, source, success in sorted(rows, key=lambda row: (row[0]["key"], -row[0].get("priority", 0))):
         unsuccessful = [s for s in source["stages"] if s["status"] not in ("passed", "recovered")]
         failed = [s for s in unsuccessful if s["status"] == "failed"]
@@ -652,7 +670,8 @@ def publish(payload, destination):
                          "通过" if success else "未完整通过", LABELS[source["status"]],
                         sample.get("comicId", ""), sample.get("epId", ""), sample.get("keyword", ""),
                         first.get("path", ""), category, reason_zh(first.get("reason", "")),
-                        item["sha256"], item["url"], item.get("runtimeProfile", "原版 1.6.3 Runtime"), disposition])
+                        item["sha256"], item["url"], item.get("runtimeProfile", "原版 1.6.3 Runtime"),
+                        disposition, source_annotation(item, annotations)])
     lines += ["", "## 主索引", "", "、".join(i["name"] for i in main) or "本次没有符合主索引标准的源。",
               "", "## 扩展索引", "", "、".join(i["name"] for i in extended) or "本次没有扩展源。", ""]
     destination.mkdir(parents=True, exist_ok=True)
@@ -896,6 +915,7 @@ def self_test():
                 "version": "1.0.0", "fileName": "a.js", "repository": "a/b",
                 "minAppVersion": "1.0.0", "sample": {"comicId": "1", "epId": "2", "keyword": "漫画"},
             }
+            save(ROOT / "monitor/source-notes.json", {"schemaVersion": 1, "notes": {}})
             save(ROOT / "monitor/catalog.json", {
                 "schemaVersion": 1, "priorityRepositories": catalog["priorityRepositories"],
                 "sources": [item]})
