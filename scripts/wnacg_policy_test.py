@@ -15,7 +15,7 @@ class WnacgPolicyTests(unittest.TestCase):
         self.assertEqual(item["repository"], "laincat/vensrc")
         self.assertEqual(item["sha256"], audit.sha((audit.ROOT / "sources/wnacg.js").read_bytes()))
         self.assertEqual(item["sample"], {"comicId": "397513", "keyword": "火影"})
-        self.assertEqual(item["minAppVersion"], "1.0.0")
+        self.assertEqual(item["minAppVersion"], "1.3.4")
         self.assertFalse(audit.excluded_official(item, audit.official_policy()))
         plan = accounts.validate_plan(audit.load(audit.ROOT / "monitor/accounts.json"), catalog)
         site = next(site for site in plan["sites"] if site["key"] == "wnacg")
