@@ -1,5 +1,7 @@
 # 账号巡检与 Actions Secrets
 
+绅士漫画浏览器可登录、旧源接口仍失败的原因，以及最终域名和滑块验证差异，见 [绅士漫画登录诊断](WNACG_LOGIN.md)。
+
 ## 已接入的方式
 
 凭据按站点分别保存在仓库 Settings → Secrets and variables → Actions 中，公开仓库只保存 Secret 名称、站点映射和已审阅源码哈希。原始密码文件不进入仓库、日志或 artifact。

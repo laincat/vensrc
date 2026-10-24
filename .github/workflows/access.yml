@@ -54,7 +54,7 @@ jobs:
           npx playwright install --with-deps chromium
           test "$commit" = "$(git ls-remote https://github.com/Gandum2077/venera-patrol-cli.git HEAD | cut -f1)"
           echo "BROWSER_CLI_COMMIT=$commit" >> "$GITHUB_ENV"
-      - name: 正常浏览器诊断，不提供账号或代解验证码
+      - name: 正常浏览器诊断公开首页与登录页，不提交账号
         shell: bash
         run: |
           cp scripts/access_browser.mjs "$RUNNER_TEMP/browser-cli/access_browser.mjs"

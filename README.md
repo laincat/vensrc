@@ -68,6 +68,6 @@
 
 适配层按两套客户端真实拦截器识别 `403` 加 `cf-mitigated: challenge`，明确报告反爬验证；普通 403 不自动认定为 Cloudflare 或密码错误。客户端的 Flutter WebView 验证、Cookie 与浏览器身份同步不能用 Node 版本号替代。
 
-[反爬诊断工作流](https://github.com/laincat/venera-source-index/actions/workflows/access.yml)在完整巡检成功后执行，也可手动触发。它使用最新 CLI 锁定的浏览器依赖，对已审阅的 4 个公开首页执行无账号的正常浏览器诊断，只等待页面自身脚本、不点击验证码；结果与真实阅读链路分开。浏览器可访问不使 CLI 失败的源自动进入订阅。
+[反爬诊断工作流](https://github.com/laincat/venera-source-index/actions/workflows/access.yml)在完整巡检成功后执行，也可手动触发。它使用最新 CLI 锁定的浏览器依赖，对已审阅的 4 个公开首页和绅士漫画的 2 个公开登录页执行无账号的正常浏览器诊断，只等待页面自身脚本、不点击验证码；结果与真实阅读链路分开。浏览器可访问不使 CLI 失败的源自动进入订阅。绅士漫画的最终域名、站点自建滑块及旧源登录流程差异见 [专项诊断](WNACG_LOGIN.md)。
 
 需要人工时，优先在 VeneraX 自带验证窗口完成正常验证，再在相同网络环境重试。通行 Cookie 不能保证从本机搬到 GitHub runner 后仍有效；长期云端受限需要站点允许的访问方式或出口稳定的独立远程验证环境。未部署此类远程环境，不依赖本机恢复在线来维持基础定时巡检。

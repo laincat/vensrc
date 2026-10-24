@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import re
+from urllib.parse import urlsplit
 
 import cloud_audit as audit
 
@@ -49,12 +50,18 @@ def publish(payload, destination, browser=None):
     assert browser["schemaVersion"] == 1
     if browser.get("browserCliCommit"):
         assert re.fullmatch(r"[a-f0-9]{40}", browser["browserCliCommit"])
-    allowed = {i["key"]: i["url"].rstrip("/") for i in audit.load(
+    allowed = {i["key"]: i["url"] for i in audit.load(
         ROOT / "monitor/access-targets.json")["targets"]}
     for result in browser["results"]:
-        assert result["key"] in allowed and result["origin"] == allowed[result["key"]]
+        assert result["key"] in allowed
+        expected = urlsplit(allowed[result["key"]])
+        assert result["origin"] == f"{expected.scheme}://{expected.netloc}"
+        assert result.get("page", allowed[result["key"]]) == allowed[result["key"]]
+        if "loginInteractionObserved" in result:
+            assert type(result["loginInteractionObserved"]) is bool
         assert result["status"] in BROWSER_LABELS
-        assert set(result) <= {"key", "origin", "status", "httpStatus", "cloudflareHeaderObserved"}
+        assert set(result) <= {"key", "origin", "page", "status", "httpStatus", "cloudflareHeaderObserved",
+                               "loginInteractionObserved"}
     payload = {**payload, "browser": browser["results"],
                "browserCliCommit": browser.get("browserCliCommit"),
                "diagnosticRunUrl": os.environ.get("AUDIT_RUN_URL", "")}
@@ -73,15 +80,17 @@ def publish(payload, destination, browser=None):
         "4. GitHub runner 无法复用本机浏览器身份。若云端持续受限，需要站点允许的访问方式、站点监控白名单，或独立且出口稳定的远程验证环境；不会假报通过。",
         "5. 429 应降低请求频率并尊重 Retry-After；地区限制与账号权限单独核对。", "",
         "## 正常浏览器对照", "",
-        "仅对已审阅的公开站点首页做无账号诊断；不提交密码、不提取或发布 Cookie。",
+        "仅对已审阅的公开首页或登录页做无账号诊断；不提交密码、不提取或发布 Cookie。",
         "Actions 使用无界面 Chromium；其 IP、浏览器身份和 VeneraX WebView 不同，结果分别记录。",
-        "| key | 公开站点 | 浏览器结果 | 观察到 CF challenge 响应头 |",
-        "| --- | --- | --- | --- |",
+        "登录页能打开不表示登录成功；登录页同时出现登录表单与滑块模块时，单列人工交互要求。", "",
+        "| key | 公开页面 | 浏览器结果 | 观察到 CF challenge 响应头 | 登录交互验证模块 |",
+        "| --- | --- | --- | --- | --- |",
     ]
     for result in browser["results"]:
         lines.append("| " + " | ".join(audit.text(v) for v in (
-            result["key"], result["origin"], BROWSER_LABELS[result["status"]],
-            "是" if result.get("cloudflareHeaderObserved") else "否／未观察到")) + " |")
+            result["key"], result.get("page", result["origin"]), BROWSER_LABELS[result["status"]],
+            "是" if result.get("cloudflareHeaderObserved") else "否／未观察到",
+            "观察到滑块模块" if result.get("loginInteractionObserved") else "未观察到")) + " |")
     manual_browser = [r for r in browser["results"] if r["status"] == "manual_verification_required"]
     anti_bot_keys = sorted({r["key"] for r in payload["rows"]
                             if any(f["category"] == "anti_bot" for f in r["failures"])})
@@ -90,6 +99,10 @@ def publish(payload, destination, browser=None):
         f"- `{r['key']}`（{r['origin']}）：Actions 正常浏览器等待后仍出现验证，需本人在 VeneraX 验证窗口处理并在同环境重试。"
         for r in manual_browser
     ] or ["本轮已诊断首页没有确认仍停留在人工验证的站点；网络失败和普通 HTTP 拒绝仍未验证。"]
+    lines += [
+        f"- `{r['key']}`（{r.get('page', r['origin'])}）：登录页加载滑块验证模块，需本人完成交互；这与 CF 挑战分别记录，未执行账号登录。"
+        for r in browser["results"] if r.get("loginInteractionObserved")
+    ]
     if anti_bot_keys:
         lines += ["", "CLI 检测到反爬的源 key：" + "、".join(f"`{audit.text(k)}`" for k in anti_bot_keys) + "。",
                   "未纳入首页浏览器对照的源仍未完成人工验证；首页诊断成功也不代表正文接口通过。"]

@@ -60,3 +60,21 @@ class AccessReportTests(unittest.TestCase):
             self.assertIn("rawkuma", manual)
             self.assertNotIn("nhentai", manual)
             self.assertIn("search.load；comic.loadInfo", report)
+
+    def test_accessible_login_page_with_slider_does_not_mean_login_passed(self):
+        payload = {"checkedAt": "2026-10-24", "rows": []}
+        result = {
+            "key": "wnacg", "origin": "https://www.wnacg.com",
+            "page": "https://www.wnacg.com/users-login.html",
+            "status": "browser_accessible", "loginInteractionObserved": True,
+        }
+        browser = {"schemaVersion": 1, "results": [result]}
+        with tempfile.TemporaryDirectory() as directory:
+            access.publish(payload, Path(directory), browser)
+            report = (Path(directory) / "ACCESS_RESULTS.md").read_text(encoding="utf-8")
+            self.assertIn("登录页加载滑块验证模块", report)
+            self.assertIn("未执行账号登录", report)
+            self.assertIn("不表示登录成功", report)
+            result["page"] = "https://www.wnacg.com/users-delete.html"
+            with self.assertRaises(AssertionError):
+                access.publish(payload, Path(directory), browser)

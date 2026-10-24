@@ -31,7 +31,8 @@
       "key": "wnacg",
       "secret": "PATROL_AUTH_WNACG",
       "buildId": "545a6d818d012c1e5799d6aaf7ecd09798969acb840166ee7c56de6d02201df0",
-      "loginReviewed": true
+      "loginReviewed": true,
+      "note": "2026-10-24 核对：浏览器登录页新增自建滑块及 slider_pass；固定源 1.0.6 尚无此流程。巡检使用最终域名 www.wnacg.com 排除 301 跳转影响；失败不等同于密码错误，详见 WNACG_LOGIN.md。"
     },
     {
       "site": "禁漫天堂",

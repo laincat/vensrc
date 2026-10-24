@@ -77,6 +77,10 @@ def render(payload, destination):
             elif login.get("status") not in ("passed", "recovered"):
                 login_unverified.append(f"- {label}：登录{audit.LABELS.get(login.get('status'), '未执行')}，不计通过。")
     lines += login_failures or ["本轮没有已执行且失败的登录接口；未执行项另列。"]
+    notes = [f"- {audit.text(e['site'])}：{audit.text(e['note'])}"
+             for e in payload["sites"] if e.get("records") and e.get("note")]
+    if notes:
+        lines += ["", "## 已核对的登录流程差异", "", *notes]
     lines += ["", "## 登录未验证／跳过项", ""]
     lines += login_unverified or ["无。"]
     lines += [

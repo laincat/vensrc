@@ -46,7 +46,7 @@ class AccountIsolationTests(unittest.TestCase):
         payload = {
             "checkedAt": "2026-10-24", "cli": {"commit": "a" * 40},
             "sites": [
-                {"site": "登录拒绝", "key": "fixture", "records": [{
+                {"site": "登录拒绝", "key": "fixture", "note": "旧源没有滑块验证流程", "records": [{
                     "runtimeProfile": "venerax", "source": {
                         "status": "failed", "stages": [
                             {"path": "account.login", "status": "failed", "category": "auth_required"},
@@ -66,6 +66,8 @@ class AccountIsolationTests(unittest.TestCase):
             self.assertIn("account.login：需要登录；comic.loadInfo：源配置错误", report)
             self.assertIn("未测试 | 跳过", report)
             self.assertNotIn("首个失败类别", report)
+            self.assertIn("## 已核对的登录流程差异", report)
+            self.assertIn("旧源没有滑块验证流程", report)
 
 
 if __name__ == "__main__":
