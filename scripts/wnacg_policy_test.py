@@ -43,6 +43,15 @@ class WnacgPolicyTests(unittest.TestCase):
         self.assertFalse(audit.excluded_wnacg({
             "key": "unrelated", "name": "绅士会所", "repository": "other/source"}))
 
+    def test_release_lock_can_identify_dedicated_source_without_repository_field(self):
+        item = next(item for item in audit.load(
+            audit.ROOT / "monitor/catalog.json")["sources"] if item["key"] == "wnacg")
+        lock = {key: value for key, value in item.items() if key != "repository"}
+        self.assertFalse(audit.excluded_wnacg(lock))
+        with self.assertRaisesRegex(AssertionError, "只允许"):
+            audit.validate_catalog({"schemaVersion": 1, "sources": [lock],
+                                    "priorityRepositories": []})
+
 
 if __name__ == "__main__":
     unittest.main()

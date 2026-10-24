@@ -168,10 +168,13 @@ def excluded_wnacg(item):
     family = (item.get("key") in ("wnacg", "hj_wnacg") or
               bool(re.search(r"wnacg|[紳绅]士漫[畫画]", " ".join(
                   str(item.get(field, "")) for field in ("name", "fileName", "url")), re.I)))
-    return family and not (
-        item.get("key") == "wnacg" and item.get("repository") == "laincat/vensrc" and
-        re.fullmatch(r"https://raw\.githubusercontent\.com/laincat/vensrc/[a-f0-9]{40}/sources/wnacg\.js",
-                     item.get("url", "")))
+    repository = item.get("repository")
+    dedicated = (
+        item.get("key") == "wnacg" and
+        repository in (None, "laincat/vensrc") and
+        bool(re.fullmatch(r"https://raw\.githubusercontent\.com/laincat/vensrc/[a-f0-9]{40}/sources/wnacg\.js",
+                          item.get("url", ""))))
+    return family and not dedicated
 
 
 def source_annotation(item, notes):
@@ -188,6 +191,8 @@ def validate_catalog(catalog):
     seen = set()
     for item in catalog["sources"]:
         assert not excluded_wnacg(item), "绅士漫画只允许 laincat/vensrc 独立维护版"
+        if item["key"] == "wnacg":
+            assert item.get("repository") == "laincat/vensrc"
         assert re.fullmatch(r"[a-f0-9]{64}", item["sha256"])
         assert pinned(item["url"]), item["url"]
         assert item["id"] == item["sha256"], "构建 ID 必须是完整源码哈希"
