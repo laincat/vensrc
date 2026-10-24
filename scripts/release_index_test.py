@@ -20,6 +20,9 @@ def fixture(root):
     catalog = {"schemaVersion": 1, "priorityRepositories": [], "sources": [item]}
     audit.save(root / "monitor/catalog.json", catalog)
     audit.save(root / "monitor/accounts.json", {"schemaVersion": 1, "sites": []})
+    exclusions = audit.load(audit.ROOT / "monitor/official-keys.json")
+    audit.save(root / "monitor/official-keys.json", exclusions)
+    audit.save(root / "official-exclusions.json", exclusions)
     profiles = audit.load(audit.ROOT / "monitor/clients.json")["profiles"]
     cli = {
         "commit": "c" * 40, "clientProfiles": profiles,
@@ -49,9 +52,12 @@ def fixture(root):
     state = {
         "main": 1, "extended": 0, "builds": 1, "checkedAt": checked, "runUrl": run, "cli": cli,
         "catalogSha256": audit.sha((root / "monitor/catalog.json").read_bytes()),
+        "officialExclusionsSha256": audit.sha((root / "official-exclusions.json").read_bytes()),
+        "officialExcludedKeys": len(exclusions["keys"]), "officialExcludedBuilds": 0,
     }
     data = {
         "index.json": [entry], "extended.json": [], "sources.lock.json": [locked],
+        "official-exclusions.json": exclusions,
         "audit-status.json": state, "client-results.json": {"runUrl": run, "cli": cli, "records": records},
         "account-results.json": {
             "runUrl": run, "cli": cli, "catalogSha256": state["catalogSha256"], "sites": [],
@@ -90,7 +96,32 @@ class ReleaseIndexTests(unittest.TestCase):
                 self.assertEqual(set(archive.namelist()), set(release.FILES))
                 self.assertNotIn("account-results.json", archive.namelist())
                 self.assertNotIn("comic-pw.txt", archive.namelist())
-            self.assertEqual(len(release.ASSETS), 12)
+            self.assertEqual(len(release.ASSETS), 13)
+
+    def test_official_key_cannot_be_reintroduced_even_with_passing_community_source(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            data = fixture(root)
+            snapshot = data["official-exclusions.json"]
+            snapshot["keys"] = sorted(snapshot["keys"] + ["fixture"])
+            audit.save(root / "official-exclusions.json", snapshot)
+            data["audit-status.json"].update(
+                officialExclusionsSha256=audit.sha((root / "official-exclusions.json").read_bytes()),
+                officialExcludedKeys=len(snapshot["keys"]), officialExcludedBuilds=1)
+            audit.save(root / "audit-status.json", data["audit-status.json"])
+            with self.assertRaisesRegex(AssertionError, "官方重复项"):
+                release.validate(root)
+
+    def test_new_official_key_at_release_time_blocks_an_older_snapshot(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            fixture(root)
+            latest = audit.official_policy(root)
+            latest["keys"] = sorted(latest["keys"] + ["fixture"])
+            with patch.object(audit, "refresh_official_policy", return_value=latest) as refreshed:
+                with self.assertRaisesRegex(AssertionError, "官方重复项"):
+                    release.validate(root, check_latest=True)
+            refreshed.assert_called_once_with(root)
 
     def test_skipped_image_decode_blocks_subscription_release(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -18,6 +18,7 @@ FILES = (
     "index.json", "extended.json", "sources.lock.json", "sources.zh.csv",
     "client-compatibility.zh.csv", "audit-status.json", "RESULTS.md",
     "CLIENT_RESULTS.md", "ACCOUNT_RESULTS.md", "ACCESS_RESULTS.md",
+    "official-exclusions.json",
 )
 ASSETS = (*FILES, "vensrc.zip", "SHA256SUMS.txt")
 
@@ -32,13 +33,20 @@ def releases(repository):
     return [release for page in pages for release in page]
 
 
-def validate(root):
+def validate(root, check_latest=False):
     for name in FILES:
         if not (root / name).is_file():
             raise ValueError(f"Release 附件缺失：{name}")
     catalog = audit.validate_catalog(audit.load(root / "monitor/catalog.json"))
     items = {item["id"]: item for item in catalog["sources"]}
     state = audit.load(root / "audit-status.json")
+    exclusions = audit.official_policy(root)
+    assert state["officialExclusionsSha256"] == audit.sha(
+        (root / "official-exclusions.json").read_bytes()), "官方排除集合哈希不匹配"
+    assert state["officialExcludedKeys"] == len(exclusions["keys"])
+    assert state["officialExcludedBuilds"] == sum(
+        audit.excluded_official(item, exclusions) for item in items.values())
+    latest_exclusions = audit.refresh_official_policy(root) if check_latest else exclusions
     assert state["catalogSha256"] == audit.sha((root / "monitor/catalog.json").read_bytes())
     assert state["builds"] == len(items)
     clients = audit.load(root / "client-results.json")
@@ -51,6 +59,8 @@ def validate(root):
         audit.validate_client_record(record, items[record["id"]], {"cli": state["cli"]})
     main, extended = audit.load(root / "index.json"), audit.load(root / "extended.json")
     locks = audit.load(root / "sources.lock.json")
+    assert not any(audit.excluded_official(row, latest_exclusions)
+                   for row in main + extended + locks), "订阅或锁定清单含官方重复项"
     by_key = {row["key"]: row for row in locks}
     assert len(by_key) == len(locks) == len(main) + len(extended) > 0
     assert len({row["key"] for row in main + extended}) == len(locks)
@@ -59,6 +69,7 @@ def validate(root):
         for entry in entries:
             locked = by_key[entry["key"]]
             item = items[locked["buildId"]]
+            assert not audit.excluded_official(item, latest_exclusions), "禁止重新收录官方构建"
             record = records[(item["id"], "venerax")]
             assert locked["runtimeProfile"] == "venerax" and locked["channel"] == channel
             assert locked["sha256"] == item["sha256"] == record["source"]["sourceSha256"]
@@ -94,8 +105,8 @@ def validate(root):
     return state, access
 
 
-def stage(root, destination, repository):
-    state, access = validate(root)
+def stage(root, destination, repository, check_latest=False):
+    state, access = validate(root, check_latest)
     destination.mkdir(parents=True)
     for name in FILES:
         shutil.copyfile(root / name, destination / name)
@@ -117,6 +128,9 @@ def stage(root, destination, repository):
         "# Vensrc 最新订阅\n\n"
         f"巡检时间：{state['checkedAt']}（UTC）；已审阅构建 {state['builds']} 个。\n\n"
         f"主索引 **{state['main']}** 项；扩展索引 **{state['extended']}** 项。\n\n"
+        f"已排除官方 **{state['officialExcludedKeys']}** 个 key，社区同 key 改版也不收录；"
+        "官方与同 key 构建仅保留诊断证据。排除集合、上游提交和原始索引哈希见附件 "
+        "`official-exclusions.json`。\n\n"
         f"- [主订阅 index.json]({prefix}/index.json)：核心阅读及整次执行通过。\n"
         f"- [扩展订阅 extended.json]({prefix}/extended.json)：核心阅读通过，其他能力可能受限。\n"
         f"- [全部附件 ZIP]({prefix}/vensrc.zip)\n"
@@ -185,7 +199,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", args.repository):
         raise ValueError("仓库名称不合法")
-    release_tag = stage(ROOT, args.output.resolve(), args.repository)
+    release_tag = stage(ROOT, args.output.resolve(), args.repository, check_latest=args.publish)
     print(f"快照已校验并打包：{release_tag}；主／扩展标准及固定样本未变。")
     if args.publish:
         publish(args.repository, args.output.resolve(), release_tag)

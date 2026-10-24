@@ -19,6 +19,7 @@ from urllib.request import Request, urlopen
 from prepare_client import prepare
 
 ROOT = Path(__file__).resolve().parents[1]
+OFFICIAL_REPOSITORY = "venera-app/venera-configs"
 POLICY = {
     "concurrency": 4, "pages": 1, "imageSamples": 1, "retries": 0,
     "requestTimeoutMs": 10000, "stageTimeoutMs": 20000,
@@ -80,6 +81,53 @@ def request(url, api=False):
 def pinned(url):
     return bool(re.fullmatch(
         r"https://raw\.githubusercontent\.com/[^/]+/[^/]+/[a-f0-9]{40}/.+\.js", url))
+
+
+def official_policy(root=None, snapshot=None):
+    root = root or ROOT
+    baseline = load(root / "monitor/official-keys.json")
+    path = root / "official-exclusions.json"
+    previous = load(path) if path.exists() else baseline
+    if snapshot is None:
+        snapshot = previous
+    for policy in (baseline, previous, snapshot):
+        assert set(policy) == {
+            "schemaVersion", "repository", "indexCommit", "indexSha256", "checkedAt", "keys"}
+        assert policy["schemaVersion"] == 1
+        assert policy["repository"] == OFFICIAL_REPOSITORY
+        assert re.fullmatch(r"[a-f0-9]{40}", policy["indexCommit"])
+        assert re.fullmatch(r"[a-f0-9]{64}", policy["indexSha256"])
+        assert policy["keys"] and all(isinstance(key, str) and key for key in policy["keys"])
+        assert policy["keys"] == sorted(set(policy["keys"]))
+    assert set(baseline["keys"]) | set(previous["keys"]) <= set(snapshot["keys"]), \
+        "官方 key 排除集合不得缩小"
+    return snapshot
+
+
+def refresh_official_policy(root=None):
+    previous = official_policy(root)
+    commit = json.loads(request(
+        f"https://api.github.com/repos/{OFFICIAL_REPOSITORY}/commits/HEAD", api=True))["sha"]
+    assert re.fullmatch(r"[a-f0-9]{40}", commit)
+    data = request(f"https://raw.githubusercontent.com/{OFFICIAL_REPOSITORY}/{commit}/index.json")
+    entries = json.loads(data)
+    assert isinstance(entries, list) and entries
+    keys = {entry["key"] for entry in entries}
+    assert all(isinstance(key, str) and key for key in keys)
+    return official_policy(root, {
+        "schemaVersion": 1, "repository": OFFICIAL_REPOSITORY,
+        "indexCommit": commit, "indexSha256": sha(data),
+        "checkedAt": datetime.now(timezone.utc).isoformat(),
+        "keys": sorted(set(previous["keys"]) | keys),
+    })
+
+
+def excluded_official(item, policy):
+    path = urlparse(item.get("url", "")).path.strip("/").split("/")
+    target = "/".join(path[:2]).casefold()
+    return (item["key"] in policy["keys"] or item.get("officialKey", False)
+            or item.get("repository", "").casefold() == OFFICIAL_REPOSITORY
+            or target == OFFICIAL_REPOSITORY)
 
 
 def validate_catalog(catalog):
@@ -193,6 +241,8 @@ def setup_cli(work):
 def discover(work):
     catalog = validate_catalog(load(ROOT / "monitor/catalog.json"))
     config = load(ROOT / "monitor/upstreams.json")
+    exclusions = refresh_official_policy()
+    save(work / "artifact/official-exclusions.json", exclusions)
     known = {i["sha256"] for i in catalog["sources"]}
     samples = {i["key"]: i["sample"] for i in catalog["sources"]}
     commits = {}
@@ -239,6 +289,8 @@ def discover(work):
                 elif url and not url.startswith(f"https://github.com/{repo}/releases/"):
                     errors.append(f"{text(name)}：暂不执行非 GitHub 原始地址")
                     continue
+                if target.casefold() == OFFICIAL_REPOSITORY:
+                    continue
                 try:
                     ref = resolve(target, ref)
                     fixed = f"https://raw.githubusercontent.com/{target}/{ref}/{quote(unquote(file), safe='/')}"
@@ -252,6 +304,8 @@ def discover(work):
                         if match:
                             entry[field] = match.group(1)
                     actual_key = entry.get("key", key)
+                    if excluded_official({"key": actual_key, "repository": target}, exclusions):
+                        continue
                     updates.append({
                         "id": digest, "key": actual_key, "name": name,
                         "version": entry.get("version", ""), "fileName": Path(unquote(file)).name,
@@ -269,7 +323,9 @@ def discover(work):
 
     updates, repositories = {}, []
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-        for candidates, repository in pool.map(inspect, config["repositories"]):
+        for candidates, repository in pool.map(
+                inspect, [repo for repo in config["repositories"]
+                          if repo.casefold() != OFFICIAL_REPOSITORY]):
             repositories.append(repository)
             for candidate in candidates:
                 if candidate["id"] in updates:
@@ -283,7 +339,8 @@ def discover(work):
             "https://api.github.com/search/repositories?q=venera+in:name,description&sort=updated&per_page=100",
             api=True))
         for item in result["items"]:
-            if item["full_name"] not in config["repositories"]:
+            if (item["full_name"] not in config["repositories"]
+                    and item["full_name"].casefold() != OFFICIAL_REPOSITORY):
                 new_repositories.append({"repository": item["full_name"],
                                          "description": text(item.get("description") or "")})
     except Exception as error:
@@ -430,7 +487,9 @@ def patrol(work):
             (client_records if item.get("verificationOnly") else records).append(record)
     payload = {"schemaVersion": 1, "catalogSha256": sha((ROOT / "monitor/catalog.json").read_bytes()),
                "checkedAt": datetime.now(timezone.utc).isoformat(), "cli": metadata,
-               "policy": POLICY, "records": records, "clientRecords": client_records}
+               "policy": POLICY, "records": records, "clientRecords": client_records,
+               "officialExclusions": official_policy(
+                   snapshot=load(work / "artifact/official-exclusions.json"))}
     # 一份持久结构化证据；原始 trace 不上传、不进入带写权限的发布任务。
     save(work / "artifact/patrol.json", payload)
     publish(payload, work / "artifact/preview")
@@ -466,6 +525,7 @@ def validate_client_record(record, item, payload):
 
 def publish(payload, destination):
     catalog = validate_catalog(load(ROOT / "monitor/catalog.json"))
+    exclusions = official_policy(snapshot=payload.get("officialExclusions"))
     assert payload["schemaVersion"] == 1
     assert payload["catalogSha256"] == sha((ROOT / "monitor/catalog.json").read_bytes())
     items = {i["id"]: i for i in catalog["sources"]}
@@ -495,14 +555,15 @@ def publish(payload, destination):
                  tuple(int(x) for x in re.findall(r"\d+", item["version"])[:3]))
         if item["key"] not in selected or score > selected[item["key"]][0]:
             selected[item["key"]] = (score, item, source, record.get("sample", item["sample"]))
-    current_core = sum(core(source) for _, _, source, _ in selected.values())
+    current_core = sum(core(source) for _, item, source, _ in selected.values()
+                       if not excluded_official(item, exclusions))
     previous = load(ROOT / "sources.lock.json")
     if previous and current_core == 0:
         raise ValueError("全批核心链路失败；保留上次订阅，本次运行不得发布为成功")
     main, extended, locks = [], [], []
     checked = payload["checkedAt"]
     for _, item, source, sample in selected.values():
-        if not core(source):
+        if excluded_official(item, exclusions) or not core(source):
             continue
         assert pinned(item["url"])
         status = source["status"]
@@ -534,6 +595,7 @@ def publish(payload, destination):
     assert len({i["key"] for i in main + extended}) == len(locks)
     for name, data in (("index.json", main), ("extended.json", extended), ("sources.lock.json", locks)):
         save(destination / name, data)
+    save(destination / "official-exclusions.json", exclusions)
     zone_date = datetime.fromisoformat(checked).astimezone(
         timezone(timedelta(hours=8), "Asia/Hong_Kong")).isoformat()
     lines = [
@@ -543,6 +605,11 @@ def publish(payload, destination):
         f"提交 `{payload['cli']['commit']}`。",
         f"依赖锁 SHA-256：`{payload['cli']['packageLockSha256']}`。",
         f"本次审阅清单：{len(rows)} 个构建；主索引 **{len(main)}** 项，扩展索引 **{len(extended)}** 项。", "",
+        f"订阅排除官方索引中的 **{len(exclusions['keys'])}** 个 key，包括社区同 key 改版及转引。"
+        "官方仓库原始 JS 同样禁止收录；已有兼容与账号证据仅供诊断，不获得订阅资格。",
+        f"排除集合依据官方索引提交 `{exclusions['indexCommit']}`，"
+        f"原始索引 SHA-256：`{exclusions['indexSha256']}`。"
+        "后续检测追加官方 key，历史排除集合不缩小，清单见 official-exclusions.json。", "",
         "固定漫画及章节、源码字节哈希和 CLI 提交均保留。主索引必须同次通过入口、详情、章节、图片下载与解码，且整次报告为 passed；"
         "扩展索引要求相同核心链路通过，其他能力可有失败或跳过。旧成功结果不代替新失败。", "",
         "本报告与订阅快照滚动发布到 Releases，最终只保留最新一版；附件校验不完整时保留上一版。", "",
@@ -556,32 +623,42 @@ def publish(payload, destination):
     for repo in catalog["priorityRepositories"]:
         group = [(i, s, ok) for i, s, ok in rows if repo in i.get("trackedBy", [])]
         lines.append(f"- `{repo}`：已审阅构建 {len(group)} 个，核心链路通过 {sum(ok for _, _, ok in group)} 个。")
-    lines += ["", "## 逐构建结果", "", "| 源名称 | key | 仓库 | 版本 | 巡检环境 | 核心链路 | 整次状态 | 首个失败／跳过 |",
-              "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+    excluded = [(item, source) for _, item, source, _ in selected.values()
+                if excluded_official(item, exclusions)]
+    lines += ["", "## 因与官方重复而排除的源", "",
+              "以下只保留已有诊断证据，均不进入主索引、扩展索引或锁定清单；核心通过也不会豁免。",
+              "", "| 名称 | key | 选中构建版本 | 核心链路 |", "| --- | --- | --- | --- |"]
+    for item, source in sorted(excluded, key=lambda pair: pair[0]["key"]):
+        lines.append("| " + " | ".join(text(v) for v in (
+            item["name"], item["key"], item["version"],
+            "通过；仍排除" if core(source) else "未完整通过；排除")) + " |")
+    lines += ["", "## 逐构建结果", "", "| 源名称 | key | 仓库 | 版本 | 巡检环境 | 核心链路 | 整次状态 | 首个失败／跳过 | 收录处理 |",
+              "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
     csv_rows = [["源名称", "源标识", "仓库", "版本", "核心阅读链路", "整次状态", "固定漫画ID",
-                 "固定章节ID", "关键词", "失败阶段", "失败类别", "失败说明", "源码SHA256", "源码地址", "巡检环境"]]
+                 "固定章节ID", "关键词", "失败阶段", "失败类别", "失败说明", "源码SHA256", "源码地址", "巡检环境", "收录处理"]]
     for item, source, success in sorted(rows, key=lambda row: (row[0]["key"], -row[0].get("priority", 0))):
         unsuccessful = [s for s in source["stages"] if s["status"] not in ("passed", "recovered")]
         failed = [s for s in unsuccessful if s["status"] == "failed"]
         first = (failed or unsuccessful or [{}])[0]
         category = CATEGORIES.get(first.get("category"), first.get("category", ""))
         problem = f"{first.get('path', '')}：{category}" if first else ""
+        disposition = "排除官方重复项" if excluded_official(item, exclusions) else "按原有收录标准审核"
         lines.append("| " + " | ".join(text(v) for v in (
             item["name"], item["key"], item["repository"], item["version"],
             item.get("runtimeProfile", "原版 1.6.3 Runtime"),
-            "通过" if success else "未完整通过", LABELS[source["status"]], problem)) + " |")
+            "通过" if success else "未完整通过", LABELS[source["status"]], problem, disposition)) + " |")
         sample = item["sample"]
         csv_rows.append([item["name"], item["key"], item["repository"], item["version"],
                          "通过" if success else "未完整通过", LABELS[source["status"]],
                         sample.get("comicId", ""), sample.get("epId", ""), sample.get("keyword", ""),
                         first.get("path", ""), category, reason_zh(first.get("reason", "")),
-                        item["sha256"], item["url"], item.get("runtimeProfile", "原版 1.6.3 Runtime")])
+                        item["sha256"], item["url"], item.get("runtimeProfile", "原版 1.6.3 Runtime"), disposition])
     lines += ["", "## 主索引", "", "、".join(i["name"] for i in main) or "本次没有符合主索引标准的源。",
               "", "## 扩展索引", "", "、".join(i["name"] for i in extended) or "本次没有扩展源。", ""]
     destination.mkdir(parents=True, exist_ok=True)
     (destination / "RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
     with (destination / "sources.zh.csv").open("w", encoding="utf-8-sig", newline="") as stream:
-        writer = csv.writer(stream)
+        writer = csv.writer(stream, lineterminator="\n")
         for row in csv_rows:
             writer.writerow(["'" + str(value) if str(value).startswith(("=", "+", "-", "@")) else value
                              for value in row])
@@ -590,6 +667,9 @@ def publish(payload, destination):
         "builds": len(rows), "main": len(main), "extended": len(extended),
         "runUrl": os.environ.get("AUDIT_RUN_URL", ""),
         "clientExecutions": len(payload["records"]) + len(payload.get("clientRecords", [])),
+        "officialExclusionsSha256": sha((destination / "official-exclusions.json").read_bytes()),
+        "officialExcludedKeys": len(exclusions["keys"]),
+        "officialExcludedBuilds": sum(excluded_official(i, exclusions) for i, _, _ in rows),
     })
     publish_clients(payload, catalog, destination)
     print(f"中文报告已生成：主索引 {len(main)} 项、扩展索引 {len(extended)} 项。", flush=True)
@@ -606,6 +686,7 @@ def publish_clients(payload, catalog, destination):
              f"核验时间：{payload['checkedAt']}（UTC）。",
              f"最新上游 CLI 提交：`{payload['cli']['commit']}`；同时加载本仓库记录哈希的接口适配层。",
              "全部已审阅源码逐个使用相同固定输入；VeneraX 为订阅选择依据，Next 为独立对照。",
+             "官方同 key 构建仅保留兼容与账号诊断证据，不进入任何订阅；社区同 key 改版也适用。",
              "结果为 Node 宿主上的真实客户端 JS 接口巡检，不代表 Flutter UI 或用户设备实测。",
              "两边分时执行，差异也可能来自网络、限流或源站变化，不能全部归因于 Fork 接口。",
              "账号巡检另见 ACCOUNT_RESULTS.md，不以账号通过替代匿名订阅收录标准。",
@@ -720,13 +801,20 @@ def publish_clients(payload, catalog, destination):
         "records": clean_records, "runUrl": os.environ.get("AUDIT_RUN_URL", "")})
     (destination / "CLIENT_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
     with (destination / "client-compatibility.zh.csv").open("w", encoding="utf-8-sig", newline="") as stream:
-        writer = csv.writer(stream)
+        writer = csv.writer(stream, lineterminator="\n")
         for row in csv_rows:
             writer.writerow(["'" + str(v) if str(v).startswith(("=", "+", "-", "@")) else v for v in row])
 
 
 def publish_discovery(discovery, destination):
     assert discovery["schemaVersion"] == 1
+    exclusions = official_policy()
+    discovery = {**discovery,
+                 "updates": [i for i in discovery["updates"] if not excluded_official(i, exclusions)],
+                 "repositories": [i for i in discovery["repositories"]
+                                  if i["repository"].casefold() != OFFICIAL_REPOSITORY],
+                 "newRepositories": [i for i in discovery["newRepositories"]
+                                     if i["repository"].casefold() != OFFICIAL_REPOSITORY]}
     for item in discovery["updates"]:
         assert pinned(item["url"]) and item["id"] == item["sha256"]
         assert re.fullmatch(r"[a-f0-9]{64}", item["sha256"])
@@ -739,6 +827,7 @@ def publish_discovery(discovery, destination):
         "新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。"
         "维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；"
         "后续 Actions 才会执行巡检并按主／扩展标准自动收录。", "",
+        "候选已排除官方仓库及官方同 key 源；社区改版或转引也不重新加入订阅。", "",
         "## 源码变动", "", "| 名称 | key | 版本 | 仓库 | 最低应用版本 | SHA-256 |",
         "| --- | --- | --- | --- | --- | --- |",
     ]
@@ -796,9 +885,11 @@ def self_test():
         except AssertionError:
             pass
     original_root = ROOT
+    exclusions = official_policy()
     with tempfile.TemporaryDirectory() as directory:
         ROOT = Path(directory)
         try:
+            save(ROOT / "monitor/official-keys.json", exclusions)
             item = {
                 "id": "a" * 64, "sha256": "a" * 64, "key": "sample", "name": "测试漫画源",
                 "url": "https://raw.githubusercontent.com/a/b/" + "c" * 40 + "/a.js",

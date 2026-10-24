@@ -126,11 +126,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- index.json extended.json sources.lock.json sources.zh.csv RESULTS.md audit-status.json UPDATES.md pending-updates.json CLIENT_RESULTS.md client-results.json client-compatibility.zh.csv ACCOUNT_RESULTS.md account-results.json
+          git add -- index.json extended.json sources.lock.json sources.zh.csv RESULTS.md audit-status.json official-exclusions.json UPDATES.md pending-updates.json CLIENT_RESULTS.md client-results.json client-compatibility.zh.csv ACCOUNT_RESULTS.md account-results.json
           if ! git diff --cached --quiet; then
             git commit -m "定时巡检：更新主／扩展订阅及中文报告"
             git -c credential.helper='!gh auth git-credential' fetch origin main
-            git diff --quiet HEAD origin/main -- monitor/catalog.json monitor/clients.json monitor/accounts.json scripts/client_bridge.mjs scripts/prepare_client.py scripts/cloud_audit.py scripts/account_patrol.py .github/workflows/patrol.yml
+            git diff --quiet HEAD origin/main -- monitor/catalog.json monitor/clients.json monitor/accounts.json monitor/official-keys.json scripts/client_bridge.mjs scripts/prepare_client.py scripts/cloud_audit.py scripts/account_patrol.py .github/workflows/patrol.yml
             git -c credential.helper='!gh auth git-credential' pull --rebase origin main
             git -c credential.helper='!gh auth git-credential' push origin HEAD:main
           fi
