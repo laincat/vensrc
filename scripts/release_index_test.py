@@ -82,6 +82,26 @@ def fixture(root):
 
 
 class ReleaseIndexTests(unittest.TestCase):
+    def test_subscription_tables_show_name_version_and_source(self):
+        url = "https://raw.githubusercontent.com/JunQianNuo/venera-sources/" + "a" * 40 + "/fixture.js"
+        entry = {"name": "测试源", "key": "fixture", "version": "1.2.3", "url": url}
+        source = {"name": "测试源", "version": "1.2.3", "url": url,
+                  "repository": "JunQianNuo/venera-sources"}
+        main = release.subscription_table("主订阅", [entry], {"fixture": source})
+        self.assertIn("| 测试源 | 1.2.3 | JunQianNuo/venera-sources |", main)
+        self.assertIn("主订阅（1 项）", main)
+        extended = release.subscription_table("扩展订阅", [], {})
+        self.assertIn("扩展订阅（0 项）", extended)
+        self.assertIn("| 暂无符合条件的源 |", extended)
+
+    def test_source_table_rejects_repository_that_disagrees_with_source_url(self):
+        url = "https://raw.githubusercontent.com/example/source/" + "a" * 40 + "/fixture.js"
+        entry = {"name": "测试源", "key": "fixture", "version": "1.0.0", "url": url}
+        source = {"name": "测试源", "version": "1.0.0", "url": url,
+                  "repository": "wrong/repository"}
+        with self.assertRaisesRegex(AssertionError, "来源仓库与固定源码地址不一致"):
+            release.subscription_table("主订阅", [entry], {"fixture": source})
+
     def test_missing_file_is_rejected_before_network(self):
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaisesRegex(ValueError, "发布证据缺失"):
@@ -100,7 +120,11 @@ class ReleaseIndexTests(unittest.TestCase):
             self.assertEqual(set(release.ASSETS), {"index.json", "extended.json"})
             self.assertEqual(set(p.name for p in first.iterdir()),
                              {"index.json", "extended.json", "release-notes.md"})
-            self.assertIn("SHA-256", (first / "release-notes.md").read_text(encoding="utf-8"))
+            notes = (first / "release-notes.md").read_text(encoding="utf-8")
+            self.assertIn("SHA-256", notes)
+            self.assertIn("| 测试源 | 1.0.0 | example/source |", notes)
+            self.assertIn("## 主订阅（1 项）", notes)
+            self.assertIn("## 扩展订阅（0 项）", notes)
 
     def test_same_official_version_cannot_be_reintroduced_even_with_passing_community_source(self):
         with tempfile.TemporaryDirectory() as directory:

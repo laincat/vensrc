@@ -7,6 +7,7 @@ import re
 import shutil
 import subprocess
 import tempfile
+from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 import account_patrol as accounts
@@ -118,9 +119,38 @@ def validate(root, check_latest=False):
     return state, access
 
 
+def subscription_table(title, entries, sources):
+    lines = [
+        f"## {title}（{len(entries)} 项）",
+        "",
+        "| 名称 | 版本 | 来源 |",
+        "| --- | --- | --- |",
+    ]
+    for entry in entries:
+        item = sources[entry["key"]]
+        parsed = urlparse(item["url"])
+        url_repository = "/".join(parsed.path.strip("/").split("/")[:2])
+        assert parsed.hostname == "raw.githubusercontent.com"
+        assert url_repository.casefold() == item["repository"].casefold(), \
+            "订阅显示的来源仓库与固定源码地址不一致"
+        assert (entry["name"], entry["version"], entry["url"]) == (
+            item["name"], item["version"], item["url"])
+        lines.append("| " + " | ".join(audit.text(value) for value in (
+            entry["name"], entry["version"], item["repository"])) + " |")
+    if not entries:
+        lines.append("| 暂无符合条件的源 | — | — |")
+    return "\n".join(lines)
+
+
 def stage(root, destination, repository, check_latest=False):
     state, access = validate(root, check_latest)
     destination.mkdir(parents=True)
+    main = audit.load(root / "subscriptions/index.json")
+    extended = audit.load(root / "subscriptions/extended.json")
+    catalog = {item["id"]: item for item in audit.load(root / "monitor/catalog.json")["sources"]}
+    locks = audit.load(root / "data/sources.lock.json")
+    sources = {lock["key"]: catalog[lock["buildId"]] for lock in locks}
+    assert set(sources) == {entry["key"] for entry in main + extended}
     for name in ASSETS:
         shutil.copyfile(audit.generated_path(root, name), destination / name)
     checksums = "".join(
@@ -139,6 +169,8 @@ def stage(root, destination, repository, check_latest=False):
         f"- [主订阅 index.json]({prefix}/index.json)：核心阅读及整次执行通过。\n"
         f"- [扩展订阅 extended.json]({prefix}/extended.json)：核心阅读通过，其他能力可能受限。\n"
         "\n"
+        f"{subscription_table('主订阅', main, sources)}\n\n"
+        f"{subscription_table('扩展订阅', extended, sources)}\n\n"
         "稳定订阅地址不随快照标签变化。先上传草稿并回读核验全部附件，发布后才清理旧版，"
         "最终只保留一个 Release。\n\n"
         "附件严格只有主订阅和扩展订阅两个 JSON；中文报告与锁定清单保存在仓库 reports/、data/。"
