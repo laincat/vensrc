@@ -16,7 +16,7 @@ class OfficialPolicyTests(unittest.TestCase):
             audit.save(root / "monitor/source-notes.json", {"schemaVersion": 1, "notes": {}})
             previous = {**baseline, "keys": sorted(baseline["keys"] + ["historical_fixture"]),
                         "versions": {**baseline["versions"], "historical_fixture": "2.0.0"}}
-            audit.save(root / "official-exclusions.json", previous)
+            audit.save(root / "data/official-exclusions.json", previous)
             raw = b'[{"key":"new_official_fixture","version":"1.0.0"},{"key":"historical_fixture","version":"1.0.0"}]'
             with patch.object(audit, "request", side_effect=[
                 json.dumps({"sha": "b" * 40}).encode(), raw,
@@ -84,7 +84,7 @@ class OfficialPolicyTests(unittest.TestCase):
                     "b" * 64: "上游 CHANGELOG v1.9.2：“修复旧版收藏数据 id 未去混淆导致的 aid 错误”。",
                 },
             })
-            audit.save(root / "sources.lock.json", [])
+            audit.save(root / "data/sources.lock.json", [])
             payload = {
                 "schemaVersion": 1,
                 "catalogSha256": audit.sha((root / "monitor/catalog.json").read_bytes()),
@@ -99,17 +99,17 @@ class OfficialPolicyTests(unittest.TestCase):
             }
             with patch.object(audit, "ROOT", root):
                 audit.publish(payload, root)
-            index = audit.load(root / "index.json")
+            index = audit.load(root / "subscriptions/index.json")
             self.assertEqual([item["key"] for item in index], ["fixture"])
             self.assertEqual(index[0]["description"], "引用源：community/source")
-            self.assertEqual([item["key"] for item in audit.load(root / "sources.lock.json")], ["fixture"])
-            self.assertEqual(audit.load(root / "audit-status.json")["officialExcludedBuilds"], 2)
+            self.assertEqual([item["key"] for item in audit.load(root / "data/sources.lock.json")], ["fixture"])
+            self.assertEqual(audit.load(root / "data/audit-status.json")["officialExcludedBuilds"], 2)
             self.assertEqual(len(payload["records"]), 3)
-            report = (root / "RESULTS.md").read_text(encoding="utf-8")
+            report = (root / "reports/RESULTS.md").read_text(encoding="utf-8")
             self.assertIn("排除官方原版／未高于官方版本", report)
             self.assertIn("修复旧版收藏数据 id 未去混淆导致的 aid 错误", report)
             rows = list(__import__("csv").reader(
-                (root / "sources.zh.csv").read_text(encoding="utf-8-sig").splitlines()))
+                (root / "data/sources.zh.csv").read_text(encoding="utf-8-sig").splitlines()))
             self.assertEqual(rows[0][-1], "源备注")
             self.assertIn("上游 CHANGELOG v1.9.2", rows[2][-1])
 
@@ -134,12 +134,12 @@ class OfficialPolicyTests(unittest.TestCase):
             payload["catalogSha256"] = audit.sha((root / "monitor/catalog.json").read_bytes())
             with patch.object(audit, "ROOT", root):
                 audit.publish(payload, root)
-            extended = audit.load(root / "extended.json")
+            extended = audit.load(root / "subscriptions/extended.json")
             self.assertEqual([(row["key"], row["version"]) for row in extended], [("jm", "1.9.2")])
-            lock = next(row for row in audit.load(root / "sources.lock.json") if row["key"] == "jm")
+            lock = next(row for row in audit.load(root / "data/sources.lock.json") if row["key"] == "jm")
             self.assertEqual(lock["officialVersion"], baseline["versions"]["jm"])
             self.assertEqual(lock["buildId"], "b" * 64)
-            self.assertEqual(audit.load(root / "audit-status.json")["officialOverrides"], 1)
+            self.assertEqual(audit.load(root / "data/audit-status.json")["officialOverrides"], 1)
 
     def test_discovery_uses_actual_source_key_and_omits_official_candidates(self):
         baseline = audit.official_policy()

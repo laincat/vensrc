@@ -8,19 +8,18 @@ import shutil
 import subprocess
 import tempfile
 from urllib.request import Request, urlopen
-import zipfile
 
 import account_patrol as accounts
 import cloud_audit as audit
 
 ROOT = Path(__file__).resolve().parents[1]
-FILES = (
+EVIDENCE = (
     "index.json", "extended.json", "sources.lock.json", "sources.zh.csv",
     "client-compatibility.zh.csv", "audit-status.json", "RESULTS.md",
     "CLIENT_RESULTS.md", "ACCOUNT_RESULTS.md", "ACCESS_RESULTS.md",
     "official-exclusions.json",
 )
-ASSETS = (*FILES, "vensrc.zip", "SHA256SUMS.txt")
+ASSETS = ("index.json", "extended.json")
 
 
 def gh(*args):
@@ -34,22 +33,22 @@ def releases(repository):
 
 
 def validate(root, check_latest=False):
-    for name in FILES:
-        if not (root / name).is_file():
+    for name in EVIDENCE:
+        if not (audit.generated_path(root, name)).is_file():
             raise ValueError(f"Release 附件缺失：{name}")
     catalog = audit.validate_catalog(audit.load(root / "monitor/catalog.json"))
     items = {item["id"]: item for item in catalog["sources"]}
-    state = audit.load(root / "audit-status.json")
+    state = audit.load(root / "data/audit-status.json")
     exclusions = audit.official_policy(root)
     assert state["officialExclusionsSha256"] == audit.sha(
-        (root / "official-exclusions.json").read_bytes()), "官方排除集合哈希不匹配"
+        (root / "data/official-exclusions.json").read_bytes()), "官方排除集合哈希不匹配"
     assert state["officialBaselineKeys"] == len(exclusions["keys"])
     assert state["officialExcludedBuilds"] == sum(
         audit.excluded_official(item, exclusions) for item in items.values())
     latest_exclusions = audit.refresh_official_policy(root) if check_latest else exclusions
     assert state["catalogSha256"] == audit.sha((root / "monitor/catalog.json").read_bytes())
     assert state["builds"] == len(items)
-    clients = audit.load(root / "client-results.json")
+    clients = audit.load(root / "data/client-results.json")
     assert state["runUrl"] == clients["runUrl"] and state["cli"] == clients["cli"]
     records = {(r["id"], r["runtimeProfile"]): r for r in clients["records"]}
     expected = {(i["id"], p) for i in items.values()
@@ -57,8 +56,8 @@ def validate(root, check_latest=False):
     assert len(records) == len(clients["records"]) == len(expected) and set(records) == expected
     for record in records.values():
         audit.validate_client_record(record, items[record["id"]], {"cli": state["cli"]})
-    main, extended = audit.load(root / "index.json"), audit.load(root / "extended.json")
-    locks = audit.load(root / "sources.lock.json")
+    main, extended = audit.load(root / "subscriptions/index.json"), audit.load(root / "subscriptions/extended.json")
+    locks = audit.load(root / "data/sources.lock.json")
     note_config = audit.load(root / "monitor/source-notes.json")
     assert note_config["schemaVersion"] == 1 and isinstance(note_config["notes"], dict)
     assert set(note_config["notes"]) <= set(items)
@@ -94,7 +93,7 @@ def validate(root, check_latest=False):
                 assert entry[key] == item[key]
             for key, value in item["sample"].items():
                 assert locked["sample"][key] == value
-    account = audit.load(root / "account-results.json")
+    account = audit.load(root / "data/account-results.json")
     plan = accounts.validate_plan(audit.load(root / "monitor/accounts.json"), catalog)
     assert account["catalogSha256"] == state["catalogSha256"]
     assert account["accountPlanSha256"] == audit.sha((root / "monitor/accounts.json").read_bytes())
@@ -107,7 +106,7 @@ def validate(root, check_latest=False):
             assert record == accounts.sanitized(record), "账号结果含非公开字段"
             assert record["id"] == expected_site["buildId"]
             assert record["inputs"] == items[record["id"]]["sample"]
-    access = audit.load(root / "access-results.json")
+    access = audit.load(root / "data/access-results.json")
     assert access["catalogSha256"] == state["catalogSha256"]
     assert access["patrolRunUrl"] == state["runUrl"], "诊断与订阅不是同轮结果，暂不发布"
     assert access["diagnosticRunUrl"]
@@ -119,20 +118,11 @@ def validate(root, check_latest=False):
 def stage(root, destination, repository, check_latest=False):
     state, access = validate(root, check_latest)
     destination.mkdir(parents=True)
-    for name in FILES:
-        shutil.copyfile(root / name, destination / name)
-    # 固定 ZIP 时间与权限，使相同订阅快照在重跑时产生相同字节。
-    with zipfile.ZipFile(destination / "vensrc.zip", "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        for name in FILES:
-            entry = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
-            entry.create_system = 3
-            entry.compress_type = zipfile.ZIP_DEFLATED
-            entry.external_attr = 0o100644 << 16
-            archive.writestr(entry, (destination / name).read_bytes())
+    for name in ASSETS:
+        shutil.copyfile(audit.generated_path(root, name), destination / name)
     checksums = "".join(
         f"{audit.sha((destination / name).read_bytes())}  {name}\n"
-        for name in sorted((*FILES, "vensrc.zip")))
-    (destination / "SHA256SUMS.txt").write_text(checksums, encoding="ascii", newline="\n")
+        for name in sorted(ASSETS))
     tag = "rolling-" + audit.sha(checksums.encode("ascii"))[:16]
     prefix = f"https://github.com/{repository}/releases/latest/download"
     notes = (
@@ -141,17 +131,18 @@ def stage(root, destination, repository, check_latest=False):
         f"主索引 **{state['main']}** 项；扩展索引 **{state['extended']}** 项。\n\n"
         f"官方版本基线 **{state['officialBaselineKeys']}** 个 key；"
         f"本次收录 **{state['officialOverrides']}** 个严格高于官方版本的社区替代源。"
-        "官方原版、同版和低版继续排除；版本基线、上游提交和原始索引哈希见附件 "
-        "`official-exclusions.json`。\n\n"
+        "官方原版、同版和低版继续排除；版本基线、上游提交和原始索引哈希见仓库 "
+        f"[官方基线](https://github.com/{repository}/blob/main/data/official-exclusions.json)。\n\n"
         f"- [主订阅 index.json]({prefix}/index.json)：核心阅读及整次执行通过。\n"
         f"- [扩展订阅 extended.json]({prefix}/extended.json)：核心阅读通过，其他能力可能受限。\n"
-        f"- [全部附件 ZIP]({prefix}/vensrc.zip)\n"
-        f"- [SHA-256 校验清单]({prefix}/SHA256SUMS.txt)\n\n"
+        "\n"
         "稳定订阅地址不随快照标签变化。先上传草稿并回读核验全部附件，发布后才清理旧版，"
         "最终只保留一个 Release。\n\n"
-        "附件只有生成索引、锁定清单、中文 CSV 和报告；JS 地址仍固定到已审阅的上游提交。"
+        "附件严格只有主订阅和扩展订阅两个 JSON；中文报告与锁定清单保存在仓库 reports/、data/。"
+        "JS 地址仍固定到已审阅的上游提交。"
         "不打包账号凭据、Cookie、Token、原始追踪、认证状态或漫画内容。\n\n"
         f"CLI：`{state['cli']['commit']}`（本轮巡检开始前获取的最新版本）。\n\n"
+        f"附件 SHA-256：\n\n```text\n{checksums}```\n\n"
         f"巡检 Actions：{state['runUrl']}\n\n诊断 Actions：{access['diagnosticRunUrl']}\n"
     )
     (destination / "release-notes.md").write_text(notes, encoding="utf-8", newline="\n")

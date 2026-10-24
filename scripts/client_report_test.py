@@ -32,7 +32,7 @@ class ClientReportTests(unittest.TestCase):
         }
         with tempfile.TemporaryDirectory() as directory, patch.object(audit, "validate_client_record"):
             audit.publish_clients(payload, {"sources": [item], "priorityRepositories": []}, Path(directory))
-            report = (Path(directory) / "CLIENT_RESULTS.md").read_text(encoding="utf-8")
+            report = (Path(directory) / "reports/CLIENT_RESULTS.md").read_text(encoding="utf-8")
             self.assertIn("| venerax | 1 | 0 | 0 | 1 | 0 | 0 | 1 |", report)
             self.assertIn("共 1 个构建", report)
             self.assertIn("| fixture | 1.0 | fixture/repo | 未通过 | 通过 |", report)

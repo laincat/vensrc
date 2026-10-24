@@ -3,7 +3,6 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
-import zipfile
 
 import cloud_audit as audit
 import release_index as release
@@ -24,7 +23,7 @@ def fixture(root):
     audit.save(root / "monitor/source-notes.json", {"schemaVersion": 1, "notes": {}})
     exclusions = audit.load(audit.ROOT / "monitor/official-keys.json")
     audit.save(root / "monitor/official-keys.json", exclusions)
-    audit.save(root / "official-exclusions.json", exclusions)
+    audit.save(root / "data/official-exclusions.json", exclusions)
     profiles = audit.load(audit.ROOT / "monitor/clients.json")["profiles"]
     cli = {
         "commit": "c" * 40, "clientProfiles": profiles,
@@ -55,7 +54,7 @@ def fixture(root):
     state = {
         "main": 1, "extended": 0, "builds": 1, "checkedAt": checked, "runUrl": run, "cli": cli,
         "catalogSha256": audit.sha((root / "monitor/catalog.json").read_bytes()),
-        "officialExclusionsSha256": audit.sha((root / "official-exclusions.json").read_bytes()),
+        "officialExclusionsSha256": audit.sha((root / "data/official-exclusions.json").read_bytes()),
         "officialBaselineKeys": len(exclusions["keys"]), "officialExcludedBuilds": 0,
         "officialOverrides": 0,
     }
@@ -72,11 +71,13 @@ def fixture(root):
             "catalogSha256": state["catalogSha256"],
         },
     }
-    for name in release.FILES:
+    for name in release.EVIDENCE:
         if name not in data:
-            (root / name).write_text("测试公开文件\n", encoding="utf-8")
+            target = audit.generated_path(root, name)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text("测试公开文件\n", encoding="utf-8")
     for name, value in data.items():
-        audit.save(root / name, value)
+        audit.save(audit.generated_path(root, name), value)
     return data
 
 
@@ -96,11 +97,10 @@ class ReleaseIndexTests(unittest.TestCase):
                              release.stage(root, second, "example/source"))
             for name in release.ASSETS:
                 self.assertEqual((first / name).read_bytes(), (second / name).read_bytes())
-            with zipfile.ZipFile(first / "vensrc.zip") as archive:
-                self.assertEqual(set(archive.namelist()), set(release.FILES))
-                self.assertNotIn("account-results.json", archive.namelist())
-                self.assertNotIn("comic-pw.txt", archive.namelist())
-            self.assertEqual(len(release.ASSETS), 13)
+            self.assertEqual(set(release.ASSETS), {"index.json", "extended.json"})
+            self.assertEqual(set(p.name for p in first.iterdir()),
+                             {"index.json", "extended.json", "release-notes.md"})
+            self.assertIn("SHA-256", (first / "release-notes.md").read_text(encoding="utf-8"))
 
     def test_same_official_version_cannot_be_reintroduced_even_with_passing_community_source(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -109,11 +109,11 @@ class ReleaseIndexTests(unittest.TestCase):
             snapshot = data["official-exclusions.json"]
             snapshot["keys"] = sorted(snapshot["keys"] + ["fixture"])
             snapshot["versions"]["fixture"] = "1.0.0"
-            audit.save(root / "official-exclusions.json", snapshot)
+            audit.save(root / "data/official-exclusions.json", snapshot)
             data["audit-status.json"].update(
-                officialExclusionsSha256=audit.sha((root / "official-exclusions.json").read_bytes()),
+                officialExclusionsSha256=audit.sha((root / "data/official-exclusions.json").read_bytes()),
                 officialBaselineKeys=len(snapshot["keys"]), officialExcludedBuilds=1)
-            audit.save(root / "audit-status.json", data["audit-status.json"])
+            audit.save(root / "data/audit-status.json", data["audit-status.json"])
             with self.assertRaisesRegex(AssertionError, "未高于官方版本"):
                 release.validate(root)
 
@@ -136,23 +136,23 @@ class ReleaseIndexTests(unittest.TestCase):
             snapshot = data["official-exclusions.json"]
             snapshot["keys"] = sorted(snapshot["keys"] + ["fixture"])
             snapshot["versions"]["fixture"] = "0.9.0"
-            audit.save(root / "official-exclusions.json", snapshot)
+            audit.save(root / "data/official-exclusions.json", snapshot)
             state = data["audit-status.json"]
             state.update(
-                officialExclusionsSha256=audit.sha((root / "official-exclusions.json").read_bytes()),
+                officialExclusionsSha256=audit.sha((root / "data/official-exclusions.json").read_bytes()),
                 officialBaselineKeys=len(snapshot["keys"]), officialOverrides=1)
-            audit.save(root / "audit-status.json", state)
+            audit.save(root / "data/audit-status.json", state)
             data["sources.lock.json"][0]["officialVersion"] = "0.9.0"
-            audit.save(root / "sources.lock.json", data["sources.lock.json"])
+            audit.save(root / "data/sources.lock.json", data["sources.lock.json"])
             release.validate(root)
             primary = next(record for record in data["client-results.json"]["records"]
                            if record["runtimeProfile"] == "venerax")
             primary["source"]["version"] = "0.8.0"
-            audit.save(root / "client-results.json", data["client-results.json"])
+            audit.save(root / "data/client-results.json", data["client-results.json"])
             with self.assertRaisesRegex(AssertionError, "CLI 实际版本"):
                 release.validate(root)
             primary["source"]["version"] = "1.0.0"
-            audit.save(root / "client-results.json", data["client-results.json"])
+            audit.save(root / "data/client-results.json", data["client-results.json"])
             latest = {**snapshot, "versions": {**snapshot["versions"], "fixture": "1.0.0"}}
             with patch.object(audit, "refresh_official_policy", return_value=latest):
                 with self.assertRaisesRegex(AssertionError, "未高于官方版本"):
@@ -165,7 +165,7 @@ class ReleaseIndexTests(unittest.TestCase):
             for r in data["client-results.json"]["records"]:
                 if r["runtimeProfile"] == "venerax":
                     next(s for s in r["source"]["stages"] if s["path"] == "image.decode")["status"] = "skipped"
-            audit.save(root / "client-results.json", data["client-results.json"])
+            audit.save(root / "data/client-results.json", data["client-results.json"])
             with self.assertRaises(AssertionError):
                 release.validate(root)
 
@@ -176,13 +176,13 @@ class ReleaseIndexTests(unittest.TestCase):
                 data = fixture(root)
                 if problem == "hash":
                     data["sources.lock.json"][0]["sha256"] = "f" * 64
-                    audit.save(root / "sources.lock.json", data["sources.lock.json"])
+                    audit.save(root / "data/sources.lock.json", data["sources.lock.json"])
                 elif problem == "minimum_version":
                     data["index.json"][0]["minAppVersion"] = "0.0.1"
-                    audit.save(root / "index.json", data["index.json"])
+                    audit.save(root / "subscriptions/index.json", data["index.json"])
                 else:
                     data["access-results.json"]["patrolRunUrl"] += "other"
-                    audit.save(root / "access-results.json", data["access-results.json"])
+                    audit.save(root / "data/access-results.json", data["access-results.json"])
                 with self.assertRaises(AssertionError):
                     release.validate(root)
 
@@ -190,8 +190,8 @@ class ReleaseIndexTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             data = fixture(root)
-            audit.save(root / "extended.json", data["index.json"])
-            audit.save(root / "sources.lock.json", data["sources.lock.json"] * 2)
+            audit.save(root / "subscriptions/extended.json", data["index.json"])
+            audit.save(root / "data/sources.lock.json", data["sources.lock.json"] * 2)
             with self.assertRaises(AssertionError):
                 release.validate(root)
 
@@ -238,6 +238,19 @@ class ReleaseIndexTests(unittest.TestCase):
         self.assertLess(events.index(("verified",)), events.index(("release", "edit")))
         self.assertLess(events.index(("release", "edit")), events.index(("release", "delete")))
         self.assertLess(events.index(("public",)), events.index(("release", "delete")))
+
+    def test_failed_public_download_preserves_previous_release(self):
+        current = {"tag_name": "rolling-fixture", "draft": True}
+        old = {"tag_name": "old", "draft": False}
+        with tempfile.TemporaryDirectory() as directory, \
+                patch.object(release, "releases", return_value=[old, current]), \
+                patch.object(release, "verify"), \
+                patch.object(release, "verify_public", side_effect=AssertionError("public hash")), \
+                patch.object(release, "gh", return_value=json.dumps(current)) as command:
+            with self.assertRaisesRegex(AssertionError, "public hash"):
+                release.publish("example/source", Path(directory), current["tag_name"])
+            self.assertNotIn(("release", "delete"),
+                             [call.args[:2] for call in command.call_args_list])
 
 
 if __name__ == "__main__":

@@ -94,7 +94,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- ACCESS_RESULTS.md access-results.json
+          git add -- reports/ACCESS_RESULTS.md data/access-results.json
           if ! git diff --cached --quiet; then
             git commit -m "更新反爬与人工验证中文处理清单"
             git -c credential.helper='!gh auth git-credential' pull --rebase origin main

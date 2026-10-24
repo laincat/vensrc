@@ -29,7 +29,8 @@ class AccessReportTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             target = Path(directory)
             access.publish(result, target)
-            self.assertEqual(set(p.name for p in target.iterdir()), {"ACCESS_RESULTS.md", "access-results.json"})
+            self.assertEqual(set(str(p.relative_to(target)).replace("\\", "/") for p in target.rglob("*") if p.is_file()),
+                             {"reports/ACCESS_RESULTS.md", "data/access-results.json"})
 
     def test_browser_results_cannot_inject_other_origins(self):
         payload = {"checkedAt": "2026-10-24", "rows": []}
@@ -55,7 +56,7 @@ class AccessReportTests(unittest.TestCase):
         ]}
         with tempfile.TemporaryDirectory() as directory:
             access.publish(payload, Path(directory), browser)
-            report = (Path(directory) / "ACCESS_RESULTS.md").read_text(encoding="utf-8")
+            report = (Path(directory) / "reports/ACCESS_RESULTS.md").read_text(encoding="utf-8")
             manual = report.split("## 需要本人验证的站点")[1].split("## 逐构建处理清单")[0]
             self.assertIn("rawkuma", manual)
             self.assertNotIn("nhentai", manual)
@@ -71,7 +72,7 @@ class AccessReportTests(unittest.TestCase):
         browser = {"schemaVersion": 1, "results": [result]}
         with tempfile.TemporaryDirectory() as directory:
             access.publish(payload, Path(directory), browser)
-            report = (Path(directory) / "ACCESS_RESULTS.md").read_text(encoding="utf-8")
+            report = (Path(directory) / "reports/ACCESS_RESULTS.md").read_text(encoding="utf-8")
             self.assertIn("登录页加载滑块验证模块", report)
             self.assertIn("未执行账号登录", report)
             self.assertIn("不表示登录成功", report)

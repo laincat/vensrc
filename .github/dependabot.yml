@@ -1,0 +1,18 @@
+# 每天检查 Actions；minor/patch 经 CI 验证后合并，major 单独审阅。
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+      time: "09:00"
+      timezone: Asia/Hong_Kong
+    open-pull-requests-limit: 5
+    groups:
+      github-actions:
+        patterns: ["*"]
+        update-types: [minor, patch]
+    commit-message:
+      prefix: ci
+    labels: [dependencies]
+    assignees: [laincat]

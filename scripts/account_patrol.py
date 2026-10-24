@@ -49,8 +49,9 @@ def validate_plan(plan, catalog):
 
 
 def render(payload, destination):
+    (destination / "reports").mkdir(parents=True, exist_ok=True)
     destination.mkdir(parents=True, exist_ok=True)
-    audit.save(destination / "account-results.json", payload)
+    audit.save(destination / "data/account-results.json", payload)
     lines = [
         "# 隔离账号巡检结果", "",
         f"核验时间：{payload['checkedAt']}（UTC）。",
@@ -104,9 +105,9 @@ def render(payload, destination):
                 audit.LABELS.get(login.get("status"), "未执行"),
                 "通过" if audit.core(source) else "未通过", audit.LABELS[source["status"]],
                 "；".join(failures) or "无失败", sum(s["status"] == "skipped" for s in source["stages"]))) + " |")
-    lines += ["", "固定源码哈希、客户端提交、依赖锁和样本输入见 account-results.json。",
+    lines += ["", "固定源码哈希、客户端提交、依赖锁和样本输入见 ../data/account-results.json。",
               f"Actions：{payload.get('runUrl', '')}", ""]
-    (destination / "ACCOUNT_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    (destination / "reports/ACCOUNT_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
 
 
 def patrol(work):

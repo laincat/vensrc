@@ -2,8 +2,8 @@ name: Vensrc 巡检与订阅
 
 on:
   schedule:
-    # 香港时间每周一 09:00；GitHub cron 使用 UTC。
-    - cron: "0 1 * * 1"
+    # 香港时间每天 09:00；GitHub cron 使用 UTC。
+    - cron: "0 1 * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -47,8 +47,8 @@ jobs:
         if: always()
         shell: bash
         run: |
-          if test -f "$RUNNER_TEMP/venera/artifact/preview/RESULTS.md"; then
-            cat "$RUNNER_TEMP/venera/artifact/preview/RESULTS.md" >> "$GITHUB_STEP_SUMMARY"
+          if test -f "$RUNNER_TEMP/venera/artifact/preview/reports/RESULTS.md"; then
+            cat "$RUNNER_TEMP/venera/artifact/preview/reports/RESULTS.md" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "本次巡检未完整完成，不更新订阅。请查看失败步骤；不会使用缓存旧版 CLI 冒充最新。" >> "$GITHUB_STEP_SUMMARY"
           fi
@@ -118,7 +118,9 @@ jobs:
           name: venera-account-results
           path: .account-results
       - name: 复核账号白名单并生成中文报告
-        run: python3 scripts/account_patrol.py publish --input .account-results/account-results.json
+        run: python3 scripts/account_patrol.py publish --input .account-results/data/account-results.json
+      - name: 单列七个社区替代构建与三个自用仓库的双客户端和登录结果
+        run: python3 scripts/focus_report.py
       - name: 提交中文报告与订阅
         env:
           GH_TOKEN: ${{ github.token }}
@@ -126,11 +128,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- index.json extended.json sources.lock.json sources.zh.csv RESULTS.md audit-status.json official-exclusions.json UPDATES.md pending-updates.json CLIENT_RESULTS.md client-results.json client-compatibility.zh.csv ACCOUNT_RESULTS.md account-results.json
+          git add -- subscriptions/ data/ reports/
           if ! git diff --cached --quiet; then
             git commit -m "定时巡检：更新主／扩展订阅及中文报告"
             git -c credential.helper='!gh auth git-credential' fetch origin main
-            git diff --quiet HEAD origin/main -- monitor/catalog.json monitor/clients.json monitor/accounts.json monitor/official-keys.json monitor/source-notes.json scripts/client_bridge.mjs scripts/prepare_client.py scripts/cloud_audit.py scripts/account_patrol.py .github/workflows/patrol.yml
+            git diff --quiet HEAD origin/main -- monitor/ scripts/ .github/workflows/patrol.yml
             git -c credential.helper='!gh auth git-credential' pull --rebase origin main
             git -c credential.helper='!gh auth git-credential' push origin HEAD:main
           fi

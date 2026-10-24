@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "monitor/**"
+      - ".github/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vensrc-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: 校验脚本、收录标准与发布保护
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: 读取待验证提交，不保存凭据
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: 测试固定样本、跳过项和发布保护
+        run: |
+          python3 -m unittest discover -s scripts -p '*_test.py'
+          python3 scripts/cloud_audit.py self-test
+          for script in scripts/*.mjs; do node --check "$script"; done
+      - name: 用最新 CLI 构建并测试两个真实客户端接口
+        run: python3 scripts/cloud_audit.py setup-cli --work "$RUNNER_TEMP/ci-cli"

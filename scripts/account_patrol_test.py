@@ -60,7 +60,7 @@ class AccountIsolationTests(unittest.TestCase):
         }
         with tempfile.TemporaryDirectory() as directory:
             accounts.render(payload, Path(directory))
-            report = (Path(directory) / "ACCOUNT_RESULTS.md").read_text(encoding="utf-8")
+            report = (Path(directory) / "reports/ACCOUNT_RESULTS.md").read_text(encoding="utf-8")
             self.assertIn("## 登录失败项", report)
             self.assertIn("## 登录未验证／跳过项", report)
             self.assertIn("account.login：需要登录；comic.loadInfo：源配置错误", report)

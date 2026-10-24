@@ -49,6 +49,16 @@ def load(path):
     return json.loads(Path(path).read_text(encoding="utf-8-sig"))
 
 
+def generated_path(root, name):
+    if name in ("index.json", "extended.json"):
+        folder = "subscriptions"
+    elif name.endswith(".md"):
+        folder = "reports"
+    else:
+        folder = "data"
+    return root / folder / name
+
+
 def save(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -92,7 +102,7 @@ def version_parts(version):
 def official_policy(root=None, snapshot=None):
     root = root or ROOT
     baseline = load(root / "monitor/official-keys.json")
-    path = root / "official-exclusions.json"
+    path = root / "data/official-exclusions.json"
     previous = load(path) if path.exists() else baseline
     if snapshot is None:
         snapshot = previous
@@ -420,7 +430,7 @@ def patrol(work):
     output = work / "container"
     output.mkdir()
     items = catalog["sources"]
-    old_samples = {i["sha256"]: i["sample"] for i in load(ROOT / "sources.lock.json")}
+    old_samples = {i["sha256"]: i["sample"] for i in load(ROOT / "data/sources.lock.json")}
     for item in items:
         # 清单中的显式样本优先；新通过构建也沿用上次同字节源码的已记录样本。
         item["effectiveSample"] = {**old_samples.get(item["sha256"], {}), **item["sample"]}
@@ -558,6 +568,7 @@ def validate_client_record(record, item, payload):
 
 
 def publish(payload, destination):
+    (destination / "reports").mkdir(parents=True, exist_ok=True)
     catalog = validate_catalog(load(ROOT / "monitor/catalog.json"))
     note_config = load(ROOT / "monitor/source-notes.json")
     assert note_config["schemaVersion"] == 1 and isinstance(note_config["notes"], dict)
@@ -601,7 +612,7 @@ def publish(payload, destination):
             selected[item["key"]] = (score, item, source, record.get("sample", item["sample"]))
     current_core = sum(core(source) for _, item, source, _ in selected.values()
                        if not excluded_official(item, exclusions))
-    previous = load(ROOT / "sources.lock.json")
+    previous = load(ROOT / "data/sources.lock.json")
     if previous and current_core == 0:
         raise ValueError("全批核心链路失败；保留上次订阅，本次运行不得发布为成功")
     main, extended, locks = [], [], []
@@ -639,8 +650,8 @@ def publish(payload, destination):
     locks.sort(key=lambda i: i["key"])
     assert len({i["key"] for i in main + extended}) == len(locks)
     for name, data in (("index.json", main), ("extended.json", extended), ("sources.lock.json", locks)):
-        save(destination / name, data)
-    save(destination / "official-exclusions.json", exclusions)
+        save(generated_path(destination, name), data)
+    save(destination / "data/official-exclusions.json", exclusions)
     zone_date = datetime.fromisoformat(checked).astimezone(
         timezone(timedelta(hours=8), "Asia/Hong_Kong")).isoformat()
     lines = [
@@ -655,10 +666,11 @@ def publish(payload, destination):
         f"版本基线依据官方索引提交 `{exclusions['indexCommit']}`，"
         f"原始索引 SHA-256：`{exclusions['indexSha256']}`。"
         "按三段数字比较版本；后续检测追加 key 并提高官方版本基线，不降低历史基线，"
-        "清单见 official-exclusions.json。", "",
+        "清单见 ../data/official-exclusions.json。", "",
         "固定漫画及章节、源码字节哈希和 CLI 提交均保留。主索引必须同次通过入口、详情、章节、图片下载与解码，且整次报告为 passed；"
         "扩展索引要求相同核心链路通过，其他能力可有失败或跳过。旧成功结果不代替新失败。", "",
-        "本报告与订阅快照滚动发布到 Releases，最终只保留最新一版；附件校验不完整时保留上一版。", "",
+        "订阅快照滚动发布到 Releases，仅有主订阅和扩展订阅两个附件；中文报告与完整证据保存在仓库 reports/、data/。"
+        "最终只保留最新一版；附件校验不完整时保留上一版。", "",
         "GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证导入或阅读。"
         "全部已审阅构建使用已核验的 VeneraX 原始 bootstrap，"
         "逐个以相同样本对照 Venera-Next。订阅仅按 VeneraX 本次结果选择；"
@@ -720,18 +732,18 @@ def publish(payload, destination):
     lines += ["", "## 主索引", "", "、".join(i["name"] for i in main) or "本次没有符合主索引标准的源。",
               "", "## 扩展索引", "", "、".join(i["name"] for i in extended) or "本次没有扩展源。", ""]
     destination.mkdir(parents=True, exist_ok=True)
-    (destination / "RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
-    with (destination / "sources.zh.csv").open("w", encoding="utf-8-sig", newline="") as stream:
+    (destination / "reports/RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    with (destination / "data/sources.zh.csv").open("w", encoding="utf-8-sig", newline="") as stream:
         writer = csv.writer(stream, lineterminator="\n")
         for row in csv_rows:
             writer.writerow(["'" + str(value) if str(value).startswith(("=", "+", "-", "@")) else value
                              for value in row])
-    save(destination / "audit-status.json", {
+    save(destination / "data/audit-status.json", {
         "checkedAt": checked, "cli": payload["cli"], "catalogSha256": payload["catalogSha256"],
         "builds": len(rows), "main": len(main), "extended": len(extended),
         "runUrl": os.environ.get("AUDIT_RUN_URL", ""),
         "clientExecutions": len(payload["records"]) + len(payload.get("clientRecords", [])),
-        "officialExclusionsSha256": sha((destination / "official-exclusions.json").read_bytes()),
+        "officialExclusionsSha256": sha((destination / "data/official-exclusions.json").read_bytes()),
         "officialBaselineKeys": len(exclusions["keys"]),
         "officialExcludedBuilds": sum(excluded_official(i, exclusions) for i, _, _ in rows),
         "officialOverrides": len(upgrades),
@@ -741,6 +753,8 @@ def publish(payload, destination):
 
 
 def publish_clients(payload, catalog, destination):
+    (destination / "reports").mkdir(parents=True, exist_ok=True)
+    (destination / "data").mkdir(parents=True, exist_ok=True)
     items = {i["id"]: i for i in catalog["sources"]}
     expected = {(i["id"], profile) for i in items.values() for profile in i.get("verifyProfiles", [])}
     actual = [(r["id"], r.get("runtimeProfile")) for r in payload.get("clientRecords", [])]
@@ -755,7 +769,7 @@ def publish_clients(payload, catalog, destination):
              "结果为 Node 宿主上的真实客户端 JS 接口巡检，不代表 Flutter UI 或用户设备实测。",
              "两边分时执行，差异也可能来自网络、限流或源站变化，不能全部归因于 Fork 接口。",
              "账号巡检另见 ACCOUNT_RESULTS.md，不以账号通过替代匿名订阅收录标准。",
-             "完整阶段、输入和哈希保存在 client-results.json 与 sources.zh.csv。", ""]
+             "完整阶段、输入和哈希保存在 ../data/client-results.json 与 ../data/sources.zh.csv。", ""]
     clean_records = []
     grouped = {}
     csv_rows = [["源名称", "源标识", "版本", "仓库", "客户端环境", "核心阅读链路", "整次状态",
@@ -861,17 +875,18 @@ def publish_clients(payload, catalog, destination):
             item["name"], item["key"], item["version"], item["repository"],
             item["sha256"][:12], *cells, "；".join(problems))) + " |")
     lines.append("")
-    save(destination / "client-results.json", {
+    save(destination / "data/client-results.json", {
         "schemaVersion": 1, "checkedAt": payload["checkedAt"], "cli": payload["cli"],
         "records": clean_records, "runUrl": os.environ.get("AUDIT_RUN_URL", "")})
-    (destination / "CLIENT_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
-    with (destination / "client-compatibility.zh.csv").open("w", encoding="utf-8-sig", newline="") as stream:
+    (destination / "reports/CLIENT_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    with (destination / "data/client-compatibility.zh.csv").open("w", encoding="utf-8-sig", newline="") as stream:
         writer = csv.writer(stream, lineterminator="\n")
         for row in csv_rows:
             writer.writerow(["'" + str(v) if str(v).startswith(("=", "+", "-", "@")) else v for v in row])
 
 
 def publish_discovery(discovery, destination):
+    (destination / "reports").mkdir(parents=True, exist_ok=True)
     assert discovery["schemaVersion"] == 1
     exclusions = official_policy()
     discovery = {**discovery,
@@ -883,7 +898,7 @@ def publish_discovery(discovery, destination):
     for item in discovery["updates"]:
         assert pinned(item["url"]) and item["id"] == item["sha256"]
         assert re.fullmatch(r"[a-f0-9]{64}", item["sha256"])
-    save(destination / "pending-updates.json", discovery)
+    save(destination / "data/pending-updates.json", discovery)
     lines = [
         "# 上游变更与待审阅候选", "",
         f"检查时间：{discovery['checkedAt']}（UTC）。",
@@ -909,7 +924,7 @@ def publish_discovery(discovery, destination):
         lines.append(f"- `{text(item['repository'])}`：{text(item['description'])}")
     if discovery["searchError"]:
         lines.append("仓库搜索未完整完成：" + text(discovery["searchError"]))
-    (destination / "UPDATES.md").write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+    (destination / "reports/UPDATES.md").write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
 
 
 def self_test():
@@ -965,7 +980,7 @@ def self_test():
             save(ROOT / "monitor/catalog.json", {
                 "schemaVersion": 1, "priorityRepositories": catalog["priorityRepositories"],
                 "sources": [item]})
-            save(ROOT / "sources.lock.json", [{"key": "sample"}])
+            save(ROOT / "data/sources.lock.json", [{"key": "sample"}])
             source = {"key": "sample", "sourceSha256": item["sha256"],
                       "status": "passed", "stages": stages}
             payload = {
@@ -977,13 +992,14 @@ def self_test():
             }
             with contextlib.redirect_stdout(io.StringIO()):
                 publish(payload, ROOT / "out")
-            assert len(load(ROOT / "out/index.json")) == 1
+            assert len(load(ROOT / "out/subscriptions/index.json")) == 1
             source["status"] = "partial"
             source["stages"] = stages + [{"path": "account.login", "status": "skipped",
                                          "category": "credentials_missing"}]
             with contextlib.redirect_stdout(io.StringIO()):
                 publish(payload, ROOT / "out")
-            assert not load(ROOT / "out/index.json") and len(load(ROOT / "out/extended.json")) == 1
+            assert not load(ROOT / "out/subscriptions/index.json") and len(
+                load(ROOT / "out/subscriptions/extended.json")) == 1
             source["sourceSha256"] = "b" * 64
             try:
                 publish(payload, ROOT / "out")

@@ -46,6 +46,7 @@ def collect(payload):
 
 
 def publish(payload, destination, browser=None):
+    (destination / "reports").mkdir(parents=True, exist_ok=True)
     browser = browser or {"schemaVersion": 1, "results": []}
     assert browser["schemaVersion"] == 1
     if browser.get("browserCliCommit"):
@@ -66,7 +67,7 @@ def publish(payload, destination, browser=None):
                "browserCliCommit": browser.get("browserCliCommit"),
                "diagnosticRunUrl": os.environ.get("AUDIT_RUN_URL", "")}
     destination.mkdir(parents=True, exist_ok=True)
-    audit.save(destination / "access-results.json", payload)
+    audit.save(destination / "data/access-results.json", payload)
     lines = [
         "# 反爬、网络限制与人工处理清单", "",
         f"来源巡检时间：{payload['checkedAt']}（UTC）。",
@@ -127,7 +128,7 @@ def publish(payload, destination, browser=None):
               "- [Cloudflare 官方通行说明](https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/)：通行 Cookie 绑定访问者和设备，不能保证跨机器复用。",
               "- [挑战限制](https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/)：不同 IP 发起挑战和完成验证可能导致循环。",
               "", f"浏览器诊断 Actions：{payload['diagnosticRunUrl']}", ""]
-    (destination / "ACCESS_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    (destination / "reports/ACCESS_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":
