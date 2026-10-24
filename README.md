@@ -27,9 +27,27 @@
 
 ## 更新安排
 
-由本地维护任务每周一 09:00（香港时间）检查上游和 GitHub 新来源，调整关键词、复核固定漫画样本，再生成并发布索引。新代码先审阅后运行；更新失败不记为成功。维护机器需在线且工作区可访问，仓库自身没有定时运行器。
+已迁移到 [GitHub Actions](https://github.com/laincat/venera-source-index/actions/workflows/patrol.yml)，按香港时间每周一 09:00（UTC 周一 01:00）运行，也可在 Actions 页面手动执行。修改巡检脚本或审阅清单后会自动触发。无需本机或 Codex 在线；GitHub 定时运行可能有延迟，以 Actions 记录为准。
 
-源码 URL 固定到已验证的提交；只有新版本复测并通过后才更新索引。最新复测核心链路失败时从对应订阅移除，不用旧成功结果冒充当前通过。公开文件的提交时间和摘要中的巡检时间可用于判断新鲜度。
+**每次巡检前更新 venera-patrol-cli 到上游默认分支最新提交**，使用该提交的 `package-lock.json` 安装依赖并构建独立容器。巡检开始前再次核对上游 HEAD。获取、安装或报告格式检查失败时停止本次发布，不回退到缓存旧版。中文报告和 `audit-status.json` 记录 CLI 提交、版本、依赖锁 SHA-256、Node 版本和运行地址。
+
+固定漫画与章节 ID 保存在 `monitor/catalog.json`；每个构建的 JS URL 固定到 Git 提交，下载字节 SHA-256 必须与已审阅清单完全相同。源码只在没有 GitHub 凭据、没有 Docker socket、源码只读的容器中运行；不提供账号，不启用 mutations。发布放在另一个有写权限的 job，重新核对清单哈希、源码哈希及主／扩展标准，只提交生成的 JSON、中文 CSV 和报告。
+
+上游变更检测覆盖登记仓库及 GitHub 仓库搜索。新字节只下载、计算哈希和读取声明，不加载或执行；待审阅版本见 [上游变更报告](UPDATES.md) 和 `pending-updates.json`。维护者在 GitHub 审阅固定提交代码后，将对应构建加入 `monitor/catalog.json`，后续 Actions 会自动巡检并按结果收录。这一步不需要本机在线，也不会以自动扫描替代代码审阅。
+
+最新复测核心链路失败时从对应订阅移除，不用旧成功结果冒充当前通过；全批核心失败或批量下载异常则停止发布，避免一次 runner 故障清空订阅。同 key 的不同构建分别巡检，最终优先选核心通过、整次通过的构建，再按自用仓库优先级及版本选择。失败构建仍保留在中文清单。
+
+三个自用仓库作为重点跟踪对象：`hea784/venera-configs`、`BB-CHICKEN/venera-jm`、`handahao666-boop/venera_comic_source`。它们的逐构建结果在中文报告中单列；具体格式及客户端兼容性见 [自用源说明](OWN_SOURCES.md)。
+
+## 报告与维护
+
+- [中文巡检报告](RESULTS.md)：逐构建结果、固定样本的核心链路、主／扩展名单。
+- [中文完整清单](sources.zh.csv)：源版本、样本输入、首个失败阶段及源码哈希。
+- `audit-status.json`：本次执行环境、工具版本和 Actions 运行链接。
+- Actions 的 `venera-patrol-results` artifact：结构化逐阶段证据及中文预览，保留 30 天；不上传原始 trace 或认证状态。
+- `monitor/catalog.json`：已审阅源码及固定样本；不要通过修改 `minAppVersion` 或伪造通过阶段绕过兼容性问题。
+
+已有源的固定样本变化也应在清单中审阅后提交，不因某本漫画临时不可读而自动替换成未记录的样本。仓库只发布元数据与报告，不发布漫画图片或上游 JS 镜像。
 
 ## 上游与范围
 

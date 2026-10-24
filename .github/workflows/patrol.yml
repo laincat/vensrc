@@ -1,0 +1,94 @@
+name: Venera 漫画源定时巡检与索引更新
+
+on:
+  schedule:
+    # 香港时间每周一 09:00；GitHub cron 使用 UTC。
+    - cron: "0 1 * * 1"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/patrol.yml"
+      - "scripts/**"
+      - "monitor/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: venera-source-patrol
+  cancel-in-progress: false
+
+jobs:
+  patrol:
+    name: 获取最新工具、巡检固定样本并生成中文报告
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - name: 读取订阅仓库
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: 校验审阅清单和索引标准
+        run: python3 scripts/cloud_audit.py self-test
+      - name: 每次巡检前获取最新 venera-patrol-cli 并安装锁定依赖
+        run: python3 scripts/cloud_audit.py setup-cli --work "$RUNNER_TEMP/venera"
+      - name: 检查上游及三个自用仓库的变动（不执行新代码）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/cloud_audit.py discover --work "$RUNNER_TEMP/venera"
+      - name: 在无 GitHub 凭据的容器中巡检已审阅源码
+        env:
+          AUDIT_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python3 scripts/cloud_audit.py patrol --work "$RUNNER_TEMP/venera"
+      - name: 展示中文巡检摘要
+        if: always()
+        shell: bash
+        run: |
+          if test -f "$RUNNER_TEMP/venera/artifact/preview/RESULTS.md"; then
+            cat "$RUNNER_TEMP/venera/artifact/preview/RESULTS.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "本次巡检未完整完成，不更新订阅。请查看失败步骤；不会使用缓存旧版 CLI 冒充最新。" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: 保存结构化证据和中文预览
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: venera-patrol-results
+          path: ${{ runner.temp }}/venera/artifact/
+          if-no-files-found: warn
+          retention-days: 30
+
+  publish:
+    name: 复核证据后发布主／扩展订阅
+    needs: patrol
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - name: 读取受信任的生成脚本
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: 下载本次巡检证据
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: venera-patrol-results
+          path: .audit-results
+      - name: 核对清单哈希、固定样本和收录标准
+        env:
+          AUDIT_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python3 scripts/cloud_audit.py publish --input .audit-results/patrol.json
+      - name: 提交中文报告与订阅
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- index.json extended.json sources.lock.json sources.zh.csv RESULTS.md audit-status.json UPDATES.md pending-updates.json
+          if ! git diff --cached --quiet; then
+            git commit -m "定时巡检：更新主／扩展订阅及中文报告"
+            git -c credential.helper='!gh auth git-credential' push origin HEAD:main
+          fi
