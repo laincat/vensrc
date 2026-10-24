@@ -1,0 +1,1160 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-24T02:03:23.142990+00:00",
+  "cli": {
+    "repository": "Gandum2077/venera-patrol-cli",
+    "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "version": "1.0.0",
+    "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
+    "checkedAt": "2026-10-24T01:55:01.728693+00:00",
+    "adapterSha256": {
+      "scripts/client_bridge.mjs": "f7f14aa29ce16c3053525f1a568c3ad0bf6955579e0a8c4f28c98f8f48a2ef47",
+      "scripts/prepare_client.py": "9a76a34c9520b52ae2f25bd779fecc311a2bccdf4dc0b1c827a3beb852c4ec39",
+      "monitor/clients.json": "a9ec9ac8eb1ccc834d9752c0c0d2b8f34c4c3c0956451afb5b0396eae558dc69"
+    },
+    "clientProfiles": {
+      "venerax": {
+        "repository": "Kyosee/VeneraX",
+        "commit": "a4e20b9f14061fd333e89ca31c6458571e7a7e00",
+        "version": "2.3.6",
+        "files": {
+          "assets/init.js": "bd9066a761b8aa0d7fa156c69917138072166c80667f7505d09fd26464bedc3a",
+          "pubspec.yaml": "4e72d6c7ac25d10554d5e73c765b66eb6aae54c032002efd99b2f08b302d8384",
+          "lib/foundation/js_engine.dart": "62b03d9ec7c8d10316e50c8c681df546caed1ec14aeda90119a56d386193b08d",
+          "lib/foundation/comic_source/parser.dart": "7a1c37a365f747ba324f8fcb4c550813abfb2e0ef44cc53a7dc380e75003427a"
+        },
+        "scope": "jm 1.9.2 单源接口巡检；不是完整 Flutter 客户端模拟"
+      },
+      "venera-next": {
+        "repository": "CyrilPeng/Venera-Next",
+        "commit": "47f7416cecc2dbbc97c7618f8dd53aa92f587601",
+        "version": "1.18.0",
+        "files": {
+          "assets/init.js": "5854a85bc3822819c2742529906ab3b56bd233323034e6d3e7dc062d8e992a35",
+          "pubspec.yaml": "50a246f003c2e099efe441564bf90060647a254068aec527a34cc084ced7ff66",
+          "lib/foundation/js_engine.dart": "74613ef66731313b1632dc3e1bddb2997bc040b6a4b26c398744c9d018c569fb",
+          "lib/features/comic_source/parser.dart": "77cb151a2cab6718c743f8acd38fd396007ae79c18132f90cc6ed769e881587d"
+        },
+        "scope": "jm 1.9.2 单源接口巡检；不是完整 Flutter 客户端模拟"
+      }
+    },
+    "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "nodeVersion": "v22.23.4",
+    "imageId": "sha256:e74b66ef353fee1523ffc7b26ad48cece254a9b0544843159771ec5c5420a7db"
+  },
+  "records": [
+    {
+      "id": "e50a45d1c3b33198ab3a154335c31f4e689652106135dcc367334a3325b8be3d",
+      "inputs": {
+        "keyword": "火影",
+        "comicId": "1485211",
+        "epId": "ep_1485211"
+      },
+      "sample": {
+        "comicId": "1485211",
+        "epId": "ep_1485211",
+        "keyword": "火影"
+      },
+      "runtimeProfile": "venerax",
+      "source": {
+        "key": "jm",
+        "name": "禁漫天堂",
+        "version": "1.9.2",
+        "sourceSha256": "e50a45d1c3b33198ab3a154335c31f4e689652106135dcc367334a3325b8be3d",
+        "status": "partial",
+        "startedAt": "2026-10-24T02:03:08.442Z",
+        "stages": [
+          {
+            "id": "stage-1",
+            "path": "runtime.load",
+            "status": "passed",
+            "durationMs": 120,
+            "output": {
+              "type": "string",
+              "value": "{\"name\":\"venerax\",\"repository\":\"Kyosee/VeneraX\",\"commit\":\"a4e20b9f14061fd333e89ca31c6458571e7a7e00\",\"version\":\"2.3.6\",\"bootstrapSha256\":\"bd9066a761b8aa0d7fa156c69917138072166c80667f7505d09fd26464bedc3a\",\"bridge\":\"/opt/patrol/client_bridge.mjs\",\"scope\":\"jm 1.9.2 单源接口巡检；不是完整 Flutter 客户端模拟\"}"
+            }
+          },
+          {
+            "id": "stage-2",
+            "path": "source.load",
+            "status": "passed",
+            "durationMs": 28,
+            "output": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "id": "stage-3",
+            "path": "configuration.apply",
+            "status": "passed",
+            "durationMs": 21,
+            "output": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "id": "stage-4",
+            "path": "init",
+            "status": "passed",
+            "durationMs": 1,
+            "output": {
+              "type": "undefined"
+            }
+          },
+          {
+            "id": "stage-5",
+            "path": "configuration.capabilities",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "id": "stage-6",
+            "path": "account.login",
+            "status": "skipped",
+            "category": "credentials_missing",
+            "reason": "Provide credentials.username and password",
+            "durationMs": 1
+          },
+          {
+            "id": "stage-7",
+            "path": "category",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "title",
+                "parts",
+                "enableRankingPage"
+              ],
+              "counts": {
+                "parts": 6
+              }
+            }
+          },
+          {
+            "id": "stage-8",
+            "path": "settings",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "refreshDomains",
+                "refreshDomainsOnStart",
+                "apiDomain",
+                "imageStream",
+                "optimizeNodes",
+                "imageSpeedTest",
+                "dailyCheckInTask",
+                "dailyCheckIn",
+                "favoriteOrder"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-9",
+            "path": "search.load",
+            "status": "passed",
+            "durationMs": 278,
+            "output": {
+              "type": "object",
+              "keys": [
+                "comics",
+                "maxPage"
+              ],
+              "counts": {
+                "comics": 80
+              }
+            }
+          },
+          {
+            "id": "stage-10",
+            "path": "explore[0].load",
+            "status": "passed",
+            "durationMs": 440,
+            "output": {
+              "type": "array",
+              "length": 6
+            }
+          },
+          {
+            "id": "stage-11",
+            "path": "categoryComics.optionLoader",
+            "status": "passed",
+            "durationMs": 246,
+            "output": {
+              "type": "array",
+              "length": 2
+            }
+          },
+          {
+            "id": "stage-12",
+            "path": "categoryComics.load",
+            "status": "passed",
+            "durationMs": 313,
+            "output": {
+              "type": "object",
+              "keys": [
+                "comics",
+                "maxPage"
+              ],
+              "counts": {
+                "comics": 20
+              }
+            }
+          },
+          {
+            "id": "stage-13",
+            "path": "categoryComics.ranking.load",
+            "status": "passed",
+            "durationMs": 3314,
+            "output": {
+              "type": "object",
+              "keys": [
+                "comics",
+                "maxPage"
+              ],
+              "counts": {
+                "comics": 80
+              }
+            }
+          },
+          {
+            "id": "stage-14",
+            "path": "favorites.loadFolders",
+            "status": "skipped",
+            "category": "credentials_missing",
+            "reason": "Favorites require authenticated account data",
+            "durationMs": 1
+          },
+          {
+            "id": "stage-15",
+            "path": "favorites.loadComics",
+            "status": "skipped",
+            "category": "credentials_missing",
+            "reason": "Favorites require authenticated account data",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-16",
+            "path": "comic.loadInfo",
+            "status": "passed",
+            "durationMs": 600,
+            "output": {
+              "type": "object",
+              "keys": [
+                "title",
+                "subtitle",
+                "cover",
+                "description",
+                "tags",
+                "chapters",
+                "isFavorite",
+                "subId",
+                "thumbnails",
+                "recommend",
+                "commentCount",
+                "likesCount",
+                "isLiked",
+                "uploader",
+                "updateTime",
+                "uploadTime",
+                "url",
+                "stars",
+                "maxPage",
+                "comments"
+              ],
+              "counts": {
+                "recommend": 12
+              }
+            }
+          },
+          {
+            "id": "stage-17",
+            "path": "comic.loadEp",
+            "status": "passed",
+            "durationMs": 634,
+            "output": {
+              "type": "object",
+              "keys": [
+                "images"
+              ],
+              "counts": {
+                "images": 214
+              }
+            }
+          },
+          {
+            "id": "stage-18",
+            "path": "comic.loadComments",
+            "status": "passed",
+            "durationMs": 273,
+            "output": {
+              "type": "object",
+              "keys": [
+                "comments",
+                "maxPage"
+              ],
+              "counts": {
+                "comments": 7
+              }
+            }
+          },
+          {
+            "id": "stage-19",
+            "path": "comic.loadChapterComments",
+            "status": "passed",
+            "durationMs": 339,
+            "output": {
+              "type": "object",
+              "keys": [
+                "comments",
+                "maxPage"
+              ],
+              "counts": {
+                "comments": 7
+              }
+            }
+          },
+          {
+            "id": "stage-20",
+            "path": "comic.onClickTag",
+            "status": "passed",
+            "durationMs": 1,
+            "output": {
+              "type": "object",
+              "keys": [
+                "page",
+                "attributes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-21",
+            "path": "comic.onClickTag",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "page",
+                "attributes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-22",
+            "path": "comic.onClickTag",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "page",
+                "attributes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-23",
+            "path": "comic.onClickTag",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "page",
+                "attributes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-24",
+            "path": "comic.onClickTag",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "page",
+                "attributes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-25",
+            "path": "comic.idMatch",
+            "status": "passed",
+            "durationMs": 1,
+            "output": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "id": "stage-26",
+            "path": "comic.onImageLoad",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "headers",
+                "modifyImage",
+                "onLoadFailed"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-27",
+            "path": "image.download",
+            "status": "passed",
+            "durationMs": 290,
+            "output": {
+              "type": "bytes",
+              "length": 95024
+            }
+          },
+          {
+            "id": "stage-28",
+            "path": "comic.onImageLoad.modifyImage",
+            "status": "passed",
+            "durationMs": 82,
+            "output": {
+              "type": "bytes",
+              "length": 1272474
+            }
+          },
+          {
+            "id": "stage-29",
+            "path": "image.decode",
+            "status": "passed",
+            "durationMs": 11,
+            "output": {
+              "type": "object",
+              "keys": [
+                "width",
+                "height",
+                "bytes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-30",
+            "path": "comic.onImageLoad.onLoadFailed",
+            "status": "skipped",
+            "category": "not_triggered",
+            "reason": "Image succeeded; failure recovery was not invoked",
+            "durationMs": 1
+          },
+          {
+            "id": "stage-31",
+            "path": "comic.onThumbnailLoad",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "headers"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-32",
+            "path": "thumbnail.download",
+            "status": "passed",
+            "durationMs": 109,
+            "output": {
+              "type": "bytes",
+              "length": 63627
+            }
+          },
+          {
+            "id": "stage-33",
+            "path": "thumbnail.decode",
+            "status": "passed",
+            "durationMs": 3,
+            "output": {
+              "type": "object",
+              "keys": [
+                "width",
+                "height",
+                "bytes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-34",
+            "path": "account.logout",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-35",
+            "path": "favorites.addOrDelFavorite",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-36",
+            "path": "favorites.addFolder",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-37",
+            "path": "favorites.deleteFolder",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-38",
+            "path": "comic._makeImageRetry",
+            "status": "skipped",
+            "category": "missing_input",
+            "reason": "No automatic adapter; provide cases[path].args and expect",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-39",
+            "path": "comic.likeComic",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 1
+          },
+          {
+            "id": "stage-40",
+            "path": "comic.sendComment",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-41",
+            "path": "comic.sendChapterComment",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-42",
+            "path": "settings.refreshDomains.callback",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-43",
+            "path": "settings.optimizeNodes.callback",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-44",
+            "path": "settings.imageSpeedTest.callback",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-45",
+            "path": "settings.dailyCheckIn.callback",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "e50a45d1c3b33198ab3a154335c31f4e689652106135dcc367334a3325b8be3d",
+      "inputs": {
+        "keyword": "火影",
+        "comicId": "1485211",
+        "epId": "ep_1485211"
+      },
+      "sample": {
+        "comicId": "1485211",
+        "epId": "ep_1485211",
+        "keyword": "火影"
+      },
+      "runtimeProfile": "venera-next",
+      "source": {
+        "key": "jm",
+        "name": "禁漫天堂",
+        "version": "1.9.2",
+        "sourceSha256": "e50a45d1c3b33198ab3a154335c31f4e689652106135dcc367334a3325b8be3d",
+        "status": "partial",
+        "startedAt": "2026-10-24T02:03:15.837Z",
+        "stages": [
+          {
+            "id": "stage-1",
+            "path": "runtime.load",
+            "status": "passed",
+            "durationMs": 127,
+            "output": {
+              "type": "string",
+              "value": "{\"name\":\"venera-next\",\"repository\":\"CyrilPeng/Venera-Next\",\"commit\":\"47f7416cecc2dbbc97c7618f8dd53aa92f587601\",\"version\":\"1.18.0\",\"bootstrapSha256\":\"5854a85bc3822819c2742529906ab3b56bd233323034e6d3e7dc062d8e992a35\",\"bridge\":\"/opt/patrol/client_bridge.mjs\",\"scope\":\"jm 1.9.2 单源接口巡检；不是完整 Flutter 客户端模拟\"}"
+            }
+          },
+          {
+            "id": "stage-2",
+            "path": "source.load",
+            "status": "passed",
+            "durationMs": 19,
+            "output": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "id": "stage-3",
+            "path": "configuration.apply",
+            "status": "passed",
+            "durationMs": 20,
+            "output": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "id": "stage-4",
+            "path": "init",
+            "status": "passed",
+            "durationMs": 1,
+            "output": {
+              "type": "undefined"
+            }
+          },
+          {
+            "id": "stage-5",
+            "path": "configuration.capabilities",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "id": "stage-6",
+            "path": "account.login",
+            "status": "skipped",
+            "category": "credentials_missing",
+            "reason": "Provide credentials.username and password",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-7",
+            "path": "category",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "title",
+                "parts",
+                "enableRankingPage"
+              ],
+              "counts": {
+                "parts": 6
+              }
+            }
+          },
+          {
+            "id": "stage-8",
+            "path": "settings",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "refreshDomains",
+                "refreshDomainsOnStart",
+                "apiDomain",
+                "imageStream",
+                "optimizeNodes",
+                "imageSpeedTest",
+                "dailyCheckInTask",
+                "dailyCheckIn",
+                "favoriteOrder"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-9",
+            "path": "search.load",
+            "status": "passed",
+            "durationMs": 212,
+            "output": {
+              "type": "object",
+              "keys": [
+                "comics",
+                "maxPage"
+              ],
+              "counts": {
+                "comics": 80
+              }
+            }
+          },
+          {
+            "id": "stage-10",
+            "path": "explore[0].load",
+            "status": "passed",
+            "durationMs": 467,
+            "output": {
+              "type": "array",
+              "length": 6
+            }
+          },
+          {
+            "id": "stage-11",
+            "path": "categoryComics.optionLoader",
+            "status": "passed",
+            "durationMs": 295,
+            "output": {
+              "type": "array",
+              "length": 2
+            }
+          },
+          {
+            "id": "stage-12",
+            "path": "categoryComics.load",
+            "status": "passed",
+            "durationMs": 295,
+            "output": {
+              "type": "object",
+              "keys": [
+                "comics",
+                "maxPage"
+              ],
+              "counts": {
+                "comics": 20
+              }
+            }
+          },
+          {
+            "id": "stage-13",
+            "path": "categoryComics.ranking.load",
+            "status": "passed",
+            "durationMs": 3310,
+            "output": {
+              "type": "object",
+              "keys": [
+                "comics",
+                "maxPage"
+              ],
+              "counts": {
+                "comics": 80
+              }
+            }
+          },
+          {
+            "id": "stage-14",
+            "path": "favorites.loadFolders",
+            "status": "skipped",
+            "category": "credentials_missing",
+            "reason": "Favorites require authenticated account data",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-15",
+            "path": "favorites.loadComics",
+            "status": "skipped",
+            "category": "credentials_missing",
+            "reason": "Favorites require authenticated account data",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-16",
+            "path": "comic.loadInfo",
+            "status": "passed",
+            "durationMs": 589,
+            "output": {
+              "type": "object",
+              "keys": [
+                "title",
+                "subtitle",
+                "cover",
+                "description",
+                "tags",
+                "chapters",
+                "isFavorite",
+                "subId",
+                "thumbnails",
+                "recommend",
+                "commentCount",
+                "likesCount",
+                "isLiked",
+                "uploader",
+                "updateTime",
+                "uploadTime",
+                "url",
+                "stars",
+                "maxPage",
+                "comments"
+              ],
+              "counts": {
+                "recommend": 12
+              }
+            }
+          },
+          {
+            "id": "stage-17",
+            "path": "comic.loadEp",
+            "status": "passed",
+            "durationMs": 593,
+            "output": {
+              "type": "object",
+              "keys": [
+                "images"
+              ],
+              "counts": {
+                "images": 214
+              }
+            }
+          },
+          {
+            "id": "stage-18",
+            "path": "comic.loadComments",
+            "status": "passed",
+            "durationMs": 309,
+            "output": {
+              "type": "object",
+              "keys": [
+                "comments",
+                "maxPage"
+              ],
+              "counts": {
+                "comments": 7
+              }
+            }
+          },
+          {
+            "id": "stage-19",
+            "path": "comic.loadChapterComments",
+            "status": "passed",
+            "durationMs": 318,
+            "output": {
+              "type": "object",
+              "keys": [
+                "comments",
+                "maxPage"
+              ],
+              "counts": {
+                "comments": 7
+              }
+            }
+          },
+          {
+            "id": "stage-20",
+            "path": "comic.onClickTag",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "page",
+                "attributes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-21",
+            "path": "comic.onClickTag",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "page",
+                "attributes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-22",
+            "path": "comic.onClickTag",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "page",
+                "attributes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-23",
+            "path": "comic.onClickTag",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "page",
+                "attributes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-24",
+            "path": "comic.onClickTag",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "page",
+                "attributes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-25",
+            "path": "comic.idMatch",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "id": "stage-26",
+            "path": "comic.onImageLoad",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "headers",
+                "modifyImage",
+                "onLoadFailed"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-27",
+            "path": "image.download",
+            "status": "passed",
+            "durationMs": 341,
+            "output": {
+              "type": "bytes",
+              "length": 100880
+            }
+          },
+          {
+            "id": "stage-28",
+            "path": "comic.onImageLoad.modifyImage",
+            "status": "passed",
+            "durationMs": 86,
+            "output": {
+              "type": "bytes",
+              "length": 1389313
+            }
+          },
+          {
+            "id": "stage-29",
+            "path": "image.decode",
+            "status": "passed",
+            "durationMs": 11,
+            "output": {
+              "type": "object",
+              "keys": [
+                "width",
+                "height",
+                "bytes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-30",
+            "path": "comic.onImageLoad.onLoadFailed",
+            "status": "skipped",
+            "category": "not_triggered",
+            "reason": "Image succeeded; failure recovery was not invoked",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-31",
+            "path": "comic.onThumbnailLoad",
+            "status": "passed",
+            "durationMs": 0,
+            "output": {
+              "type": "object",
+              "keys": [
+                "headers"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-32",
+            "path": "thumbnail.download",
+            "status": "passed",
+            "durationMs": 146,
+            "output": {
+              "type": "bytes",
+              "length": 63627
+            }
+          },
+          {
+            "id": "stage-33",
+            "path": "thumbnail.decode",
+            "status": "passed",
+            "durationMs": 3,
+            "output": {
+              "type": "object",
+              "keys": [
+                "width",
+                "height",
+                "bytes"
+              ],
+              "counts": {}
+            }
+          },
+          {
+            "id": "stage-34",
+            "path": "account.logout",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-35",
+            "path": "favorites.addOrDelFavorite",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-36",
+            "path": "favorites.addFolder",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-37",
+            "path": "favorites.deleteFolder",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-38",
+            "path": "comic._makeImageRetry",
+            "status": "skipped",
+            "category": "missing_input",
+            "reason": "No automatic adapter; provide cases[path].args and expect",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-39",
+            "path": "comic.likeComic",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-40",
+            "path": "comic.sendComment",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-41",
+            "path": "comic.sendChapterComment",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-42",
+            "path": "settings.refreshDomains.callback",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-43",
+            "path": "settings.optimizeNodes.callback",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-44",
+            "path": "settings.imageSpeedTest.callback",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          },
+          {
+            "id": "stage-45",
+            "path": "settings.dailyCheckIn.callback",
+            "status": "skipped",
+            "category": "mutation_disabled",
+            "reason": "Requires allowMutations:true and an explicit case",
+            "durationMs": 0
+          }
+        ]
+      }
+    }
+  ],
+  "runUrl": "https://github.com/laincat/venera-source-index/actions/runs/40051922347"
+}
