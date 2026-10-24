@@ -34,6 +34,10 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     globals.__clientSourceLoaded?.(source);
     assert.equal(source.isAppVersionAfter("1.16.0"), name === "venerax");
     if (name === "venerax") assert.equal(source.isAppVersionAfter("99.0.0"), false);
+    const numericKey = runtime.loadVeneraConfigBySourceCode(
+      sourceCode.replace('key="fixture"', 'key="18fixture"'), globals, false);
+    assert.throws(() => globals.__clientSourceLoaded(numericKey),
+      name === "venera-next" ? /key 18fixture is invalid/ : SyntaxError);
     assert.equal(source.loadSetting("dailyCheckInTask"), false);
     source.saveData("fixture", "value");
     assert.equal(source.loadData("fixture"), "value");

@@ -204,19 +204,27 @@ return { Convert, Network, fetch, Comic, ComicDetails, Comment, ImageLoadingConf
   )(sendMessage, version);
   const { Image, __sourceRuntime, ...api } = client;
   Object.assign(globals, api);
+  const parserPath = Object.keys(profile.files).find((file) => file.endsWith("/parser.dart"));
+  const parser = await readFile(new URL(`${name}/${parserPath}`, base));
+  if (createHash("sha256").update(parser).digest("hex") !== profile.files[parserPath])
+    throw new Error("Client parser hash mismatch");
+  const keyPattern = parser.toString().match(
+    /\n\s*(?:void )?_checkKeyValidation\(\)\s*\{[\s\S]*?RegExp\(r"([^"]+)"\)/)?.[1];
+  if (!keyPattern) throw new Error("Client source key validation is unavailable");
+  const validateKey = new RegExp(keyPattern);
+  let sourceHook = null;
   if (name === "venerax") {
-    const parserPath = "lib/foundation/comic_source/parser.dart";
-    const parser = await readFile(new URL(`${name}/${parserPath}`, base));
-    if (createHash("sha256").update(parser).digest("hex") !== profile.files[parserPath])
-      throw new Error("Client parser hash mismatch");
-    const script = parser.toString().match(
+    sourceHook = parser.toString().match(
       /\/\/ Fix broken isAppVersionAfter[\s\S]*?JsEngine\(\)\.runCode\("""([\s\S]*?)"""\);/)?.[1];
-    if (!script) throw new Error("Client source hook is unavailable");
-    globals.__clientSourceLoaded = (source) => {
-      const actual = script.replaceAll("$_key", source.key);
-      new Function("ComicSource", "APP", actual)(client.ComicSource, client.APP);
-    };
+    if (!sourceHook) throw new Error("Client source hook is unavailable");
   }
+  globals.__clientSourceLoaded = (source) => {
+    if (!validateKey.test(source.key)) throw new Error(`key ${source.key} is invalid`);
+    if (sourceHook) {
+      const actual = sourceHook.replaceAll("$_key", source.key);
+      new Function("ComicSource", "APP", actual)(client.ComicSource, client.APP);
+    }
+  };
   globals.__modifyImage = async (bytes, script) => {
     try {
       const input = new Image(addImage(await images.decode(bytes)));
