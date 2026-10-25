@@ -144,6 +144,15 @@
     "description": "引用源：YUIRIKIiii/venera-sources"
   },
   {
+    "name": "花火漫画",
+    "key": "hanabimanga",
+    "version": "1.0.0",
+    "fileName": "hanabimanga.js",
+    "url": "https://raw.githubusercontent.com/xiaoxingmian/venera-configs/aa9fea3526294435982e765cc96ce916be6748a6/hanabimanga.js",
+    "minAppVersion": "1.4.0",
+    "description": "引用源：xiaoxingmian/venera-configs"
+  },
+  {
     "name": "爱飒漫画",
     "key": "isamanhua",
     "version": "1.0.0",
@@ -371,11 +380,11 @@
   {
     "name": "紳士漫畫",
     "key": "wnacg",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "fileName": "wnacg.js",
-    "url": "https://raw.githubusercontent.com/laincat/vensrc/01da3a95de6ae6ad53a568c50bf4412c23414388/sources/wnacg.js",
+    "url": "https://raw.githubusercontent.com/laincat/vensrc/095894b5ac22b4993ef2ff007c54ef78a2e782e1/sources/wnacg.js",
     "minAppVersion": "1.3.4",
-    "description": "引用源：laincat/vensrc。独立维护版；修复导入，发布页备用地址每日同步、手动切换；App 内网页登录使用 www.wnacg.com；支持获取 Cookie，缺会话不计通过。"
+    "description": "引用源：laincat/vensrc。独立维护版；网页登录后自动验证并保存会话；支持获取 Cookie 和从剪贴板一键导入；发布页备用地址每日同步，缺会话不计通过。"
   },
   {
     "name": "Xiutaku",
@@ -387,13 +396,13 @@
     "description": "引用源：meaninglesslyy/venera-config"
   },
   {
-    "name": "优酷漫画 (修复版)",
+    "name": "优酷漫画",
     "key": "ykmh",
-    "version": "1.0.7",
-    "fileName": "youku.js",
-    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/youku.js",
+    "version": "1.0.2",
+    "fileName": "ykmh.js",
+    "url": "https://raw.githubusercontent.com/zakkida/venera-sources/a5d8118da700c44f4823e82494d4ca816054afaf/ykmh.js",
     "minAppVersion": "1.4.0",
-    "description": "引用源：handahao666-boop/venera_comic_source"
+    "description": "引用源：zakkida/venera-sources"
   },
   {
     "name": "zero搬运网",
