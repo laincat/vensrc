@@ -426,10 +426,10 @@ index 24af6df..8c618cf 100644
            setState(() {
 diff --git a/lib/pages/webview_login.dart b/lib/pages/webview_login.dart
 new file mode 100644
-index 0000000..8b0b45b
+index 0000000..8b626eb
 --- /dev/null
 +++ b/lib/pages/webview_login.dart
-@@ -0,0 +1,94 @@
+@@ -0,0 +1,103 @@
 +import 'dart:async';
 +
 +import 'package:flutter/material.dart';
@@ -455,9 +455,14 @@ index 0000000..8b0b45b
 +class _WebviewLoginPageState extends State<WebviewLoginPage> {
 +  bool _busy = false;
 +  bool _done = false;
++  bool _retry = false;
 +
 +  Future<void> _capture(InAppWebViewController controller, {bool manual = false}) async {
-+    if (_busy || _done || !mounted) return;
++    if (_done || !mounted) return;
++    if (_busy) {
++      _retry = true;
++      return;
++    }
 +    _busy = true;
 +    final source = widget.source;
 +    const keys = ['account', 'activeDomain', '_webviewUserAgent', '_localStorage'];
@@ -513,6 +518,10 @@ index 0000000..8b0b45b
 +      }
 +    } finally {
 +      _busy = false;
++      if (_retry && !_done && mounted) {
++        _retry = false;
++        unawaited(_capture(controller));
++      }
 +    }
 +  }
 +
@@ -539,7 +548,7 @@ index 4675d08..95238a3 100644
    flutter_lints: ^5.0.0
 diff --git a/test/webview_login_session_test.dart b/test/webview_login_session_test.dart
 new file mode 100644
-index 0000000..3360176
+index 0000000..fca02db
 --- /dev/null
 +++ b/test/webview_login_session_test.dart
 @@ -0,0 +1,64 @@
@@ -597,7 +606,7 @@ index 0000000..3360176
 +    for (final page in [
 +      Uri.parse('https://untrusted.test/'),
 +      Uri.parse('http://login.example.test/'),
-+      Uri.parse('https://user:password@login.example.test/'),
++      uri.replace(userInfo: 'fixture-user'),
 +      uri,
 +    ]) {
 +      await expectLater(verifyWebviewSession(
