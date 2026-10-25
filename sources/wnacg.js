@@ -1,9 +1,9 @@
 // Vensrc 独立维护版；阅读解析基于 venera-app/venera-configs 的 wnacg 1.0.6。
-// 上游提交 a04e05591f7832f7166d6660546613c114d6738a；保留最低版本与阅读功能。
+// 上游提交 a04e05591f7832f7166d6660546613c114d6738a；保留阅读功能。
 class Wnacg extends ComicSource {
     name = "紳士漫畫"
     key = "wnacg"
-    version = "1.2.0"
+    version = "1.2.1"
     minAppVersion = "1.3.4"
     url = "https://raw.githubusercontent.com/laincat/vensrc/main/sources/wnacg.js"
 
@@ -19,7 +19,8 @@ class Wnacg extends ComicSource {
         const source = this
         return {
             loginWithWebview: {
-                url: `${source.baseUrl}/users-login.html`,
+                // 客户端在源注册前解析此地址，此时不能调用 loadSetting。
+                url: "https://www.wnacg.com/users-login.html",
                 checkStatus: (url, title) => {
                     const base = source.baseUrl
                     const memberUrl = `${base}/users-index.html`
@@ -575,7 +576,7 @@ class Wnacg extends ComicSource {
 
     settings = {
         domain: {
-            title: "访问域名（切换后需重新导入该域名的 Cookie）",
+            title: "访问域名（App 内网页登录请选 www.wnacg.com）",
             type: "select",
             options: [
                 { value: "www.wnacg.com", text: "www.wnacg.com" },
