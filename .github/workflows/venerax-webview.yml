@@ -1,0 +1,80 @@
+name: VeneraX 原生网页登录验证
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_ipa:
+        description: "原生测试通过后构建未签名 iOS 测试包"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  native:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - name: 读取客户端补丁与固定基线
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: 独立获取源码，校验哈希并应用补丁
+        run: python3 clients/venerax/prepare.py "$RUNNER_TEMP/venerax"
+      - name: 安装客户端指定的 Flutter
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          channel: stable
+          flutter-version-file: ${{ runner.temp }}/venerax/pubspec.yaml
+          cache: true
+      - name: 安装客户端依赖并核对修改过的原生代码
+        working-directory: ${{ runner.temp }}/venerax
+        run: |
+          flutter pub get
+          flutter analyze --no-pub --no-fatal-infos \
+            lib/pages/webview.dart lib/pages/webview_login.dart \
+            lib/pages/comic_source_page.dart lib/network/webview_login_session.dart \
+            lib/foundation/comic_source/comic_source.dart \
+            lib/foundation/comic_source/parser.dart \
+            integration_test/webview_login_test.dart test/webview_login_session_test.dart
+          flutter test --no-pub test/webview_login_session_test.dart test/cookie_jar_test.dart
+      - name: 启动 iPhone 模拟器
+        run: |
+          device=$(xcrun simctl list devices available -j | python3 -c '
+          import json,sys
+          devices=json.load(sys.stdin)["devices"]
+          print(next(d["udid"] for ds in devices.values() for d in ds
+                     if d["name"].startswith("iPhone") and d["isAvailable"]))')
+          xcrun simctl boot "$device"
+          xcrun simctl bootstatus "$device" -b
+          echo "SIMULATOR=$device" >> "$GITHUB_ENV"
+      - name: 真正 WKWebView 测试横滑、HttpOnly、会话校验和持久化
+        working-directory: ${{ runner.temp }}/venerax
+        run: |
+          cp ios/Runner/Info.plist "$RUNNER_TEMP/original-Info.plist"
+          /usr/libexec/PlistBuddy -c 'Add :NSAppTransportSecurity dict' ios/Runner/Info.plist
+          /usr/libexec/PlistBuddy -c 'Add :NSAppTransportSecurity:NSAllowsLocalNetworking bool true' ios/Runner/Info.plist
+          flutter test --no-pub integration_test/webview_login_test.dart \
+            -d "$SIMULATOR" --reporter expanded
+      - name: 恢复测试专用的本机网络许可并构建 iOS 包
+        if: success() && inputs.build_ipa
+        working-directory: ${{ runner.temp }}/venerax
+        run: |
+          cp "$RUNNER_TEMP/original-Info.plist" ios/Runner/Info.plist
+          flutter build ios --release --no-codesign
+          mkdir -p "$RUNNER_TEMP/venerax-package/Payload"
+          cp -R build/ios/iphoneos/Runner.app "$RUNNER_TEMP/venerax-package/Payload/"
+          cd "$RUNNER_TEMP/venerax-package"
+          zip -q -r VeneraX-webview-test-unsigned.ipa Payload
+          shasum -a 256 VeneraX-webview-test-unsigned.ipa > SHA256SUMS.txt
+      - name: 保存供本人实机验证的未签名测试包
+        if: success() && inputs.build_ipa
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: VeneraX-webview-test-ios-unsigned
+          path: |
+            ${{ runner.temp }}/venerax-package/*.ipa
+            ${{ runner.temp }}/venerax-package/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 14
