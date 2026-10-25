@@ -25,7 +25,7 @@ export async function installClientProfile(globals, runtime, images) {
   const config = runtime.configManager;
   const handles = new Map();
   const documents = new Map();
-  let client, nextImage = 0;
+  let client, parsingSource, nextImage = 0;
   const addImage = (handle) => {
     const key = ++nextImage;
     handles.set(key, handle);
@@ -38,6 +38,8 @@ export async function installClientProfile(globals, runtime, images) {
   function sourceFor(message) {
     const source = client.ComicSource.sources[message.key];
     if (!source) throw new Error("Source instance is unavailable");
+    if (source === parsingSource)
+      throw new Error("Native source is unavailable during account configuration parsing");
     if (name === "venera-next" &&
         client.__sourceRuntime.identity(source) !== message.source_id)
       throw new Error("Source instance has been replaced or removed");
@@ -223,6 +225,22 @@ return { Convert, Network, fetch, Comic, ComicDetails, Comment, ImageLoadingConf
     if (sourceHook) {
       const actual = sourceHook.replaceAll("$_key", source.key);
       new Function("ComicSource", "APP", actual)(client.ComicSource, client.APP);
+    }
+    // 原生解析器先读取账号配置，再构造并注册 Dart ComicSource。
+    parsingSource = source;
+    try {
+      const account = source.account;
+      if (account != null) {
+        void account.login;
+        void account.loginWithWebview?.url;
+        void account.loginWithWebview?.checkStatus;
+        void account.loginWithWebview?.onLoginSuccess;
+        void account.registerWebsite;
+        void account.loginWithCookies?.fields;
+        void account.loginWithCookies?.validate;
+      }
+    } finally {
+      parsingSource = null;
     }
   };
   globals.__modifyImage = async (bytes, script) => {

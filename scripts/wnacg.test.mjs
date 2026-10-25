@@ -37,7 +37,7 @@ test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在�
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="/users-logout.html">退出</a>',
   });
-  assert.equal(source.version, "1.2.0");
+  assert.equal(source.version, "1.2.1");
   assert.equal(source.minAppVersion, "1.3.4");
   assert.equal(source.account.login, undefined);
   assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
@@ -94,15 +94,17 @@ test("拒绝多行、重复 Cookie、Set-Cookie 和任意域名，且不发请�
     await assert.rejects(source.account.loginWithCookies.validate([value]));
     assert.equal(calls.length, 0);
   }
-  const invalid = fixture({}, "other.invalid").source;
-  assert.throws(() => invalid.account, /请选择已核对的绅士漫画域名/);
+  const { source: invalid, calls } = fixture({}, "other.invalid");
+  assert.throws(() => invalid.baseUrl, /请选择已核对的绅士漫画域名/);
+  await assert.rejects(invalid.account.loginWithCookies.validate(["session=test-only"]));
+  assert.equal(calls.length, 0);
 });
 
 test("备用域名仅接收本域会话；登出清理两个受支持域名", async () => {
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="https://www.wnacg.ru/users-logout.html">退出</a>',
   }, "www.wnacg.ru");
-  assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.ru/users-login.html");
+  assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
   await source.account.loginWithCookies.validate(["session=test-only"]);
   assert.equal(cookies()[0].domain, "www.wnacg.ru");
   assert.ok(calls.every(([, url]) => url.startsWith("https://www.wnacg.ru")));

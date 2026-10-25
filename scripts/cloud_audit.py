@@ -282,6 +282,7 @@ def setup_cli(work):
             target.write_bytes(data)
     (directory / "client_bridge.test.mjs").write_bytes(
         (ROOT / "scripts/client_bridge.test.mjs").read_bytes())
+    (directory / "wnacg.import.js").write_bytes((ROOT / "sources/wnacg.js").read_bytes())
     metadata["clientProfiles"] = profiles["profiles"]
     # 构建上下文只含 CLI 文件，不把 runner 的凭据、仓库或 Docker socket 传给源。
     dockerfile = ROOT / "scripts/patrol.Dockerfile"

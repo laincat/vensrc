@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp } from "node:fs/promises";
+import { mkdtemp, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
@@ -10,6 +10,27 @@ const { runtimeImages } = await import("venera-runtime/platform");
 const { installClientProfile } = await import("./client_bridge.mjs");
 
 for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]]) {
+  test(`${name}: 绅士漫画导入顺序，注册原生源前不允许读取设置`, async () => {
+    process.env.VENERA_CLIENT_PROFILE = name;
+    const globals = runtime.createVeneraRuntime();
+    await installClientProfile(globals, runtime, runtimeImages);
+    const code = await readFile(new URL("./wnacg.import.js", import.meta.url), "utf8");
+    const fixedUrl = 'url: "https://www.wnacg.com/users-login.html"';
+    assert.ok(code.includes(fixedUrl));
+    // 重现 1.2.0 的导入错误；只在测试夹具中恢复提前读取设置的调用。
+    const broken = code.replace(fixedUrl, 'url: `${source.baseUrl}/users-login.html`');
+    const previous = runtime.loadVeneraConfigBySourceCode(broken, globals, false);
+    assert.throws(() => globals.__clientSourceLoaded(previous),
+      /Native source is unavailable during account configuration parsing/);
+    delete globals.ComicSource.sources.wnacg;
+    const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
+    assert.doesNotThrow(() => globals.__clientSourceLoaded(source));
+    assert.equal(source.version, "1.2.1");
+    assert.equal(source.minAppVersion, "1.3.4");
+    assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
+    assert.equal(source.baseUrl, "https://www.wnacg.com");
+    assert.equal(typeof source.settings.copyCookies.callback, "function");
+  });
   test(`${name}: 真实 bootstrap、HTML、加密、版本检查与逐像素重排`, async () => {
     process.env.VENERA_CLIENT_PROFILE = name;
     const globals = runtime.createVeneraRuntime();

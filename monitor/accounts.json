@@ -30,9 +30,9 @@
       "site": "绅士漫画",
       "key": "wnacg",
       "secret": "PATROL_AUTH_WNACG",
-      "buildId": "938c47bdd8f9641bd31c6beb7373e576cf6902002651922d155f06878a908dbc",
+      "buildId": "b0972dad3ae26d77000ac1570773152f2fe64707efaa88211f63fb78b32d27c7",
       "loginReviewed": true,
-      "note": "Vensrc 独立维护版 1.2.0；支持 App 内网页登录和剪贴板导出 Cookie，仍需会员页验证。Actions 不注入本站密码、不接收浏览器会话；缺少 Cookie 如实跳过，不算登录通过。详见 WNACG_LOGIN.md。",
+      "note": "Vensrc 独立维护版 1.2.1；修复原生客户端导入，App 内网页登录固定 www.wnacg.com，备用域名仍可导入 Cookie。Actions 不注入本站密码、不接收浏览器会话；缺少 Cookie 如实跳过，不算登录通过。详见 WNACG_LOGIN.md。",
       "authMode": "browser_cookie"
     },
     {
