@@ -3,7 +3,7 @@
 class Wnacg extends ComicSource {
     name = "紳士漫畫"
     key = "wnacg"
-    version = "1.3.0"
+    version = "1.3.1"
     minAppVersion = "1.3.4"
     url = "https://raw.githubusercontent.com/laincat/vensrc/main/sources/wnacg.js"
 
@@ -94,14 +94,19 @@ class Wnacg extends ComicSource {
                 // 客户端在源注册前解析此地址，此时不能调用 loadSetting。
                 url: "https://www.wnacg.com/users-login.html",
                 checkStatus: (url, title) => {
-                    const base = source.baseUrl
-                    const memberUrl = `${base}/users-index.html`
                     const current = String(url || "").split(/[?#]/)[0].replace(/\/$/, "")
-                    const pageTitle = String(title || "").trim()
-                    // 登录页也可能直接打开会员 URL；标题必须出现会员中心字样。
-                    return current === memberUrl &&
-                        /(?:用戶|用户|會員|会员|個人|个人|我的).*(?:中心|主頁|主页)/.test(pageTitle) &&
-                        !/登[錄录]|登录|您沒有權限|您没有权限|權限不足|权限不足/.test(pageTitle)
+                    // 标题会因站点模板和语言变化；成功后再请求会员页核对正文。
+                    return current === "https://www.wnacg.com/users-index.html" &&
+                        !/您沒有權限|您没有权限|需要登錄|需要登录/.test(String(title || ""))
+                },
+                onLoginSuccess: async () => {
+                    try {
+                        await source._captureSession("https://www.wnacg.com", false)
+                    } catch (error) {
+                        await source.deleteData("account")
+                        await Network.deleteCookies("https://www.wnacg.com")
+                        UI.showMessage(`网页登录未通过会员页校验：${error}`)
+                    }
                 },
             },
             loginWithCookies: {
@@ -110,34 +115,8 @@ class Wnacg extends ComicSource {
                     if (!Array.isArray(values) || values.length !== 1 || typeof values[0] !== "string") {
                         throw "请填写浏览器请求中的 Cookie，勿填写账号密码或 Set-Cookie"
                     }
-                    const text = values[0].trim().replace(/^Cookie:\s*/i, "")
-                    if (!text || text.length > 16384 || /[\r\n]/.test(text)) {
-                        throw "Cookie 格式无效，请只复制一行 Cookie 请求头"
-                    }
-                    const base = source.baseUrl
-                    const domain = base.slice("https://".length)
-                    const names = new Set()
-                    const cookies = text.split(";").map((part) => {
-                        const match = part.trim().match(/^([!#$%&'*+\-.^_`|~0-9A-Za-z]+)=([^\x00-\x20\x7f;,]*)$/)
-                        if (!match || names.has(match[1]) || /^(path|domain|expires|max-age|samesite)$/i.test(match[1])) {
-                            throw "Cookie 格式无效，请复制 Cookie 请求头，勿复制 Set-Cookie"
-                        }
-                        names.add(match[1])
-                        return new Cookie({ name: match[1], value: match[2], domain })
-                    })
-                    const previous = await Network.getCookies(base)
-                    try {
-                        await Network.deleteCookies(base)
-                        await Network.setCookies(base, cookies)
-                        if (!await source._checkSession(base)) {
-                            throw "会员会话未验证；请确认登录域名一致、Cookie 未过期，并在正常浏览器完成滑块"
-                        }
-                        return true
-                    } catch (error) {
-                        await Network.deleteCookies(base)
-                        await Network.setCookies(base, previous)
-                        throw error
-                    }
+                    await source._installCookies(values[0])
+                    return true
                 },
             },
             logout: async () => {
@@ -161,14 +140,46 @@ class Wnacg extends ComicSource {
                 (match[1].startsWith(base) &&
                     /^\/users-logout\.html(?:\?[^#]*)?$/.test(match[1].slice(base.length)))) &&
             !/您沒有權限|您没有权限|需要登錄|需要登录/.test(response.body || "")
-        if (!loggedIn || this.baseUrl !== base) {
+        if (!loggedIn) {
             throw "会员会话未验证；请在 App 内登录页完成滑块，并确认域名一致、会话未过期"
         }
         return true
     }
 
-    async _copyCookies() {
-        const base = this.baseUrl
+    _cookieObjects(text, domain) {
+        text = String(text || "").trim().replace(/^Cookie:\s*/i, "")
+        if (!text || text.length > 16384 || /[\r\n]/.test(text)) {
+            throw "Cookie 格式无效，请只复制一行 Cookie 请求头"
+        }
+        const names = new Set()
+        return text.split(";").map((part) => {
+            const match = part.trim().match(/^([!#$%&'*+\-.^_`|~0-9A-Za-z]+)=([^\x00-\x20\x7f;,]*)$/)
+            if (!match || names.has(match[1]) || /^(path|domain|expires|max-age|samesite)$/i.test(match[1])) {
+                throw "Cookie 格式无效，请复制 Cookie 请求头，勿复制 Set-Cookie"
+            }
+            names.add(match[1])
+            return new Cookie({ name: match[1], value: match[2], domain })
+        })
+    }
+
+    async _installCookies(text, base = this.baseUrl) {
+        const domain = base.slice("https://".length)
+        const cookies = this._cookieObjects(text, domain)
+        const previous = await Network.getCookies(base)
+        try {
+            await Network.deleteCookies(base)
+            await Network.setCookies(base, cookies)
+            await this._checkSession(base)
+            await this.saveData("account", "ok")
+            return true
+        } catch (error) {
+            await Network.deleteCookies(base)
+            await Network.setCookies(base, previous)
+            throw error
+        }
+    }
+
+    async _cookieHeader(base) {
         const host = base.slice("https://".length)
         const cookies = await Network.getCookies(base)
         const header = (Array.isArray(cookies) ? cookies : [])
@@ -180,9 +191,32 @@ class Wnacg extends ComicSource {
             .map((cookie) => `${cookie.name}=${cookie.value ?? ""}`)
             .join("; ")
         if (!header || header.length > 16384) throw "当前域名没有可导出的有效 Cookie"
+        return header
+    }
+
+    async _captureSession(base = this.baseUrl, copy = true) {
         await this._checkSession(base)
-        await setClipboard(header)
-        UI.showMessage("已复制当前会员 Cookie；不要分享给他人")
+        const header = await this._cookieHeader(base)
+        await this.saveData("account", "ok")
+        const host = base.slice("https://".length)
+        if (this.baseUrl !== base) await this.saveData("activeDomain", host)
+        if (copy) await setClipboard(header)
+        UI.showMessage(copy
+            ? "会员会话已验证并自动登录；Cookie 已复制，请勿分享"
+            : "会员会话已验证并自动登录")
+        return header
+    }
+
+    async _copyCookies() {
+        return this._captureSession(this.baseUrl, true)
+    }
+
+    async _importClipboard() {
+        const text = await getClipboard()
+        if (!text) throw "剪贴板中没有 Cookie，请先复制一行 Cookie 请求头"
+        await this._installCookies(text)
+        await setClipboard("")
+        UI.showMessage("剪贴板 Cookie 已验证，已自动填入并登录")
     }
 
     parseComic(c) {
@@ -667,10 +701,16 @@ class Wnacg extends ComicSource {
             },
         },
         copyCookies: {
-            title: "获取 Cookie（仅复制到剪贴板）",
+            title: "获取并保存当前会员 Cookie",
             type: "callback",
             buttonText: "获取 Cookie",
             callback: () => this._copyCookies(),
+        },
+        importCookies: {
+            title: "从剪贴板自动填入 Cookie（验证成功后登录）",
+            type: "callback",
+            buttonText: "自动填入",
+            callback: () => this._importClipboard(),
         },
     }
 }
