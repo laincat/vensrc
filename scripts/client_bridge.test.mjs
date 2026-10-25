@@ -25,7 +25,7 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     delete globals.ComicSource.sources.wnacg;
     const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
     assert.doesNotThrow(() => globals.__clientSourceLoaded(source));
-    assert.equal(source.version, "1.3.1");
+    assert.equal(source.version, "1.3.2");
     assert.equal(source.minAppVersion, "1.3.4");
     assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
     assert.equal(source.baseUrl, "https://www.wnacg.com");

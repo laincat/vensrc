@@ -12,6 +12,7 @@ function fixture(response, domain = "www.wnacg.com", selection = null) {
   let clipboard = "";
   let cookies = [{ name: "old_session", value: "test-only", domain }];
   const sandbox = {
+    APP: { webviewCookieCapture: true },
     ComicSource: class {
       loadSetting() { return domain; }
       loadData(key) { return data.get(key); }
@@ -26,7 +27,7 @@ function fixture(response, domain = "www.wnacg.com", selection = null) {
     setClipboard: async (text) => { clipboard = text; },
     getClipboard: async () => clipboard,
     Network: {
-      getCookies: async () => cookies.filter((cookie) => {
+      getCookies: () => cookies.filter((cookie) => {
         const candidate = String(cookie.domain || "").replace(/^\./, "");
         return !candidate || domain === candidate || domain.endsWith(`.${candidate}`);
       }),
@@ -41,6 +42,7 @@ function fixture(response, domain = "www.wnacg.com", selection = null) {
   };
   const source = vm.runInNewContext(`${code}\nnew Wnacg()`, sandbox);
   return {
+    app: sandbox.APP,
     source, calls, cookies: () => cookies, messages, data,
     clipboard: () => clipboard,
     setClipboard: (text) => { clipboard = text; },
@@ -51,23 +53,25 @@ test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在�
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="/users-logout.html">退出</a>',
   });
-  assert.equal(source.version, "1.3.1");
+  assert.equal(source.version, "1.3.2");
   assert.equal(source.minAppVersion, "1.3.4");
   assert.equal(source.account.login, undefined);
   assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
   assert.equal(source.account.loginWithWebview.checkStatus(
-    "https://www.wnacg.com/users-index.html", "用戶中心 紳士漫畫"), true);
+    "https://www.wnacg.com/users-index.html", "我的空間 紳士漫畫"), true);
   assert.equal(source.account.loginWithWebview.checkStatus(
     "https://www.wnacg.com/users-index.html", "您沒有權限，需要登錄！"), false);
   assert.equal(source.account.loginWithWebview.checkStatus(
-    "https://www.wnacg.com/users-index.html", ""), true);
+    "https://www.wnacg.com/users-index.html", ""), false);
+  assert.equal(source.account.loginWithWebview.checkStatus(
+    "https://www.wnacg.com/users-users_fav.html", "我的空间 紳士漫畫"), true);
   assert.equal(source.account.loginWithWebview.checkStatus(
     "https://evil.invalid/users-index.html", "用戶中心 紳士漫畫"), false);
   assert.equal(await source.account.loginWithCookies.validate(["Cookie: session=test-only; flag=x=y"]), true);
   assert.equal(cookies().length, 2);
   assert.equal(cookies()[1].value, "x=y");
   assert.deepEqual(calls.filter(([operation]) => operation === "get"),
-    [["get", "https://www.wnacg.com/users-index.html"]]);
+    [["get", "https://www.wnacg.com/users-users_fav.html"]]);
 });
 
 test("获取 Cookie 先验证会员会话，再自动登录并复制到剪贴板", async () => {
@@ -81,7 +85,7 @@ test("获取 Cookie 先验证会员会话，再自动登录并复制到剪贴板
   assert.equal(clipboard(), "old_session=test-only; shared=parent-domain");
   assert.ok(messages.every((message) => !message.includes("test-only")));
   assert.deepEqual(calls.filter(([operation]) => operation === "get"),
-    [["get", "https://www.wnacg.com/users-index.html"]]);
+    [["get", "https://www.wnacg.com/users-users_fav.html"]]);
   const anonymous = fixture({ status: 200, body: '<a href="/users-login.html">登录</a>' }).source;
   await assert.rejects(anonymous.settings.copyCookies.callback(), /会员会话未验证/);
 });
@@ -106,15 +110,31 @@ test("网页登录回调只保存已通过会员页校验的主域名会话", as
   const good = fixture({ status: 200, body: '<a href="/users-logout.html">退出</a>' });
   good.data.set("activeDomain", "www.wnacg.ru");
   await good.source.account.loginWithWebview.onLoginSuccess();
-  assert.equal(good.data.get("account"), "ok");
-  assert.equal(good.data.get("activeDomain"), "www.wnacg.com");
+  assert.equal(good.data.has("account"), false);
+  assert.equal(good.data.get("activeDomain"), "www.wnacg.ru");
+  assert.equal(good.source.accountBaseUrl, "https://www.wnacg.com");
+  assert.equal(good.data.get("webLoginVerification"), "http_verified");
 
   const bad = fixture({ status: 200, body: '<a href="/users-login.html">登录</a>' });
   bad.data.set("account", "stale");
-  await bad.source.account.loginWithWebview.onLoginSuccess();
-  assert.equal(bad.data.has("account"), false);
-  assert.equal(bad.cookies().length, 0);
-  assert.match(bad.messages.at(-1), /会员页校验/);
+  await assert.rejects(bad.source.account.loginWithWebview.onLoginSuccess(), /会员会话未验证/);
+  assert.equal(bad.data.get("account"), "stale");
+  assert.equal(bad.cookies()[0].name, "old_session");
+});
+
+test("原版客户端按真实私有页触发同步 Cookie 导入，不把导入当 HTTP 验证", () => {
+  const { source, app, data } = fixture({});
+  app.webviewCookieCapture = false;
+  assert.equal(source.account.loginWithWebview.captureCookies, false);
+  assert.equal(source.account.loginWithWebview.checkStatus(
+    "https://www.wnacg.com/users-index.html", "用戶中心"), false);
+  assert.equal(source.account.loginWithWebview.checkStatus(
+    "https://www.wnacg.com/users-users_fav.html", "我的空间 紳士漫畫"), true);
+  assert.equal(source.account.loginWithWebview.onLoginSuccess(), undefined);
+  assert.equal(data.get("webLoginOrigin"), "https://www.wnacg.com");
+  assert.equal(data.get("webLoginVerification"), "browser_only");
+  assert.equal(data.has("account"), false);
+  assert.throws(() => source.account.loginWithWebview.onLoginSuccess(), /我的收藏/);
 });
 
 test("匿名 HTTP 200、登录页、权限提示及 CF 页面均不能通过；失败恢复旧会话", async () => {

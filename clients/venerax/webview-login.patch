@@ -278,7 +278,7 @@ index 0000000..338a142
 +  }
 +}
 diff --git a/lib/pages/comic_source_page.dart b/lib/pages/comic_source_page.dart
-index 16bd794..a47d9a3 100644
+index 16bd794..c4259e0 100644
 --- a/lib/pages/comic_source_page.dart
 +++ b/lib/pages/comic_source_page.dart
 @@ -17,6 +17,8 @@ import 'package:venera/network/cookie_jar.dart';
@@ -305,21 +305,31 @@ index 16bd794..a47d9a3 100644
      var url = widget.config.loginWebsite!;
      var title = '';
      bool success = false;
-@@ -2817,7 +2827,7 @@ class _LoginPageState extends State<_LoginPage> {
+@@ -2816,8 +2826,12 @@ class _LoginPageState extends State<_LoginPage> {
+             fallbackDomain: Uri.parse(url).host,
            ),
          );
++        try {
++          await widget.config.onLoginWithWebviewSuccess?.call();
++        } catch (_) {
++          return;
++        }
          success = true;
 -        widget.config.onLoginWithWebviewSuccess?.call();
-+        await widget.config.onLoginWithWebviewSuccess?.call();
          App.mainNavigatorKey?.currentContext?.pop();
        }
      }
-@@ -2888,7 +2898,7 @@ class _LoginPageState extends State<_LoginPage> {
+@@ -2887,8 +2901,12 @@ class _LoginPageState extends State<_LoginPage> {
+         }
          widget.source.data['_localStorage'] = localStorage;
          await widget.source.saveData();
++        try {
++          await widget.config.onLoginWithWebviewSuccess?.call();
++        } catch (_) {
++          return;
++        }
          success = true;
 -        widget.config.onLoginWithWebviewSuccess?.call();
-+        await widget.config.onLoginWithWebviewSuccess?.call();
          webview.close();
          onClose();
        }
@@ -426,10 +436,10 @@ index 24af6df..8c618cf 100644
            setState(() {
 diff --git a/lib/pages/webview_login.dart b/lib/pages/webview_login.dart
 new file mode 100644
-index 0000000..8b626eb
+index 0000000..4149000
 --- /dev/null
 +++ b/lib/pages/webview_login.dart
-@@ -0,0 +1,103 @@
+@@ -0,0 +1,104 @@
 +import 'dart:async';
 +
 +import 'package:flutter/material.dart';
@@ -465,7 +475,8 @@ index 0000000..8b626eb
 +    }
 +    _busy = true;
 +    final source = widget.source;
-+    const keys = ['account', 'activeDomain', '_webviewUserAgent', '_localStorage'];
++    const keys = ['account', 'activeDomain', 'webLoginOrigin',
++      'webLoginVerification', '_webviewUserAgent', '_localStorage'];
 +    final oldData = {
 +      for (final key in keys) if (source.data.containsKey(key)) key: source.data[key],
 +    };

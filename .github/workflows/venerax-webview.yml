@@ -27,10 +27,13 @@ jobs:
         with:
           channel: stable
           flutter-version-file: ${{ runner.temp }}/venerax/pubspec.yaml
+          architecture: x64
           cache: true
       - name: 安装客户端依赖并核对修改过的原生代码
         working-directory: ${{ runner.temp }}/venerax
         run: |
+          sudo xcode-select --switch /Applications/Xcode_16.4.app
+          flutter config --no-enable-swift-package-manager
           flutter pub get
           flutter analyze --no-pub --no-fatal-infos \
             lib/pages/webview.dart lib/pages/webview_login.dart \
