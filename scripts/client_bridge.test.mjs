@@ -10,9 +10,17 @@ const { runtimeImages } = await import("venera-runtime/platform");
 const { installClientProfile } = await import("./client_bridge.mjs");
 
 for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]]) {
-  test(`${name}: 绅士漫画导入顺序，注册原生源前不允许读取设置`, async () => {
+  test(`${name}: 绅士漫画导入顺序及真实 bootstrap 的字节正文转换`, async () => {
     process.env.VENERA_CLIENT_PROFILE = name;
     const globals = runtime.createVeneraRuntime();
+    const requests = [];
+    globals.Network = { ...globals.Network, sendRequest: async (...args) => {
+      requests.push(args);
+      return {
+        status: 200, headers: {},
+        body: new TextEncoder().encode('<a href="/users-logout.html">退出</a>'),
+      };
+    }};
     await installClientProfile(globals, runtime, runtimeImages);
     const code = await readFile(new URL("./wnacg.import.js", import.meta.url), "utf8");
     const fixedUrl = 'url: "https://www.wnacg.com/users-login.html"';
@@ -25,12 +33,16 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     delete globals.ComicSource.sources.wnacg;
     const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
     assert.doesNotThrow(() => globals.__clientSourceLoaded(source));
-    assert.equal(source.version, "1.3.2");
+    assert.equal(source.version, "1.3.3");
     assert.equal(source.minAppVersion, "1.3.4");
     assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
     assert.equal(source.baseUrl, "https://www.wnacg.com");
     assert.equal(typeof source.settings.copyCookies.callback, "function");
     assert.equal(typeof source.settings.importCookies.callback, "function");
+    assert.equal(typeof source.settings.loginStatus.callback, "function");
+    assert.equal(await source._checkSession(source.baseUrl), true);
+    assert.equal(requests[0][1], "https://www.wnacg.com/users-users_fav.html");
+    assert.equal(requests[0][2]["cache-time"], "no");
   });
   test(`${name}: 发布页解析、备用发布页、每日同步及失败保留缓存`, async () => {
     process.env.VENERA_CLIENT_PROFILE = name;
