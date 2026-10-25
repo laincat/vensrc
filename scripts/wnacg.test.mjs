@@ -22,6 +22,15 @@ function fixture(response, domain = "www.wnacg.com", selection = null) {
       deleteData(key) { data.delete(key); }
     },
     Cookie: function (values) { Object.assign(this, values); },
+    HtmlDocument: class {
+      constructor(body) { this.body = body; }
+      querySelector(selector) {
+        if (selector !== "title") return null;
+        const title = this.body.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1];
+        return title === undefined ? null : { text: title.replace(/<[^>]*>/g, "") };
+      }
+      dispose() {}
+    },
     Convert: {
       decodeUtf8: (value) => new TextDecoder().decode(Array.isArray(value) ? Uint8Array.from(value) : value),
     },
@@ -60,7 +69,7 @@ test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在�
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="/users-logout.html">退出</a>',
   });
-  assert.equal(source.version, "1.3.3");
+  assert.equal(source.version, "1.3.4");
   assert.equal(source.minAppVersion, "1.3.4");
   assert.equal(source.account.login, undefined);
   assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
@@ -73,12 +82,28 @@ test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在�
   assert.equal(source.account.loginWithWebview.checkStatus(
     "https://www.wnacg.com/users-users_fav.html", "我的空间 紳士漫畫"), true);
   assert.equal(source.account.loginWithWebview.checkStatus(
+    "https://www.wnacg.com/users-users_fav.html", "我的書架-紳士漫畫移動版"), true);
+  assert.equal(source.account.loginWithWebview.checkStatus(
     "https://evil.invalid/users-index.html", "用戶中心 紳士漫畫"), false);
   assert.equal(await source.account.loginWithCookies.validate(["Cookie: session=test-only; flag=x=y"]), true);
   assert.equal(cookies().length, 2);
   assert.equal(cookies()[1].value, "x=y");
   assert.deepEqual(calls.filter(([operation]) => operation === "get"),
     [["get", "https://www.wnacg.com/users-users_fav.html"]]);
+});
+
+test("识别新版我的书架登录标题；匿名权限提示仍拒绝", async () => {
+  const body = "<!doctype html><title>我的書架-紳士漫畫移動版</title><div>我的书架</div>";
+  const { source } = fixture({ status: 200, body });
+  assert.equal(await source._checkSession(source.baseUrl), true);
+
+  const denied = fixture({
+    status: 200,
+    body: `${body}<div>您沒有權限，需要登錄</div>`,
+  });
+  await assert.rejects(denied.source._checkSession(denied.source.baseUrl), /会员会话未验证/);
+  const anonymous = fixture({ status: 200, body: "" });
+  await assert.rejects(anonymous.source._checkSession(anonymous.source.baseUrl), /会员会话未验证/);
 });
 
 test("获取 Cookie 先验证会员会话，再自动登录并复制到剪贴板", async () => {

@@ -14,11 +14,12 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     process.env.VENERA_CLIENT_PROFILE = name;
     const globals = runtime.createVeneraRuntime();
     const requests = [];
+    let shelfBody = "<!doctype html><title>我的書架-紳士漫畫移動版</title><div>我的書架</div>";
     globals.Network = { ...globals.Network, sendRequest: async (...args) => {
       requests.push(args);
       return {
         status: 200, headers: {},
-        body: new TextEncoder().encode('<a href="/users-logout.html">退出</a>'),
+        body: new TextEncoder().encode(shelfBody),
       };
     }};
     await installClientProfile(globals, runtime, runtimeImages);
@@ -33,16 +34,20 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     delete globals.ComicSource.sources.wnacg;
     const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
     assert.doesNotThrow(() => globals.__clientSourceLoaded(source));
-    assert.equal(source.version, "1.3.3");
+    assert.equal(source.version, "1.3.4");
     assert.equal(source.minAppVersion, "1.3.4");
     assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
     assert.equal(source.baseUrl, "https://www.wnacg.com");
     assert.equal(typeof source.settings.copyCookies.callback, "function");
     assert.equal(typeof source.settings.importCookies.callback, "function");
     assert.equal(typeof source.settings.loginStatus.callback, "function");
+    assert.equal(source.account.loginWithWebview.checkStatus(
+      "https://www.wnacg.com/users-users_fav.html", "我的書架-紳士漫畫移動版"), true);
     assert.equal(await source._checkSession(source.baseUrl), true);
     assert.equal(requests[0][1], "https://www.wnacg.com/users-users_fav.html");
     assert.equal(requests[0][2]["cache-time"], "no");
+    shelfBody += "<div>您沒有權限，需要登錄</div>";
+    await assert.rejects(source._checkSession(source.baseUrl), /会员会话未验证/);
   });
   test(`${name}: 发布页解析、备用发布页、每日同步及失败保留缓存`, async () => {
     process.env.VENERA_CLIENT_PROFILE = name;
