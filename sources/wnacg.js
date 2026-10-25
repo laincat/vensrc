@@ -3,7 +3,7 @@
 class Wnacg extends ComicSource {
     name = "紳士漫畫"
     key = "wnacg"
-    version = "1.3.3"
+    version = "1.3.4"
     minAppVersion = "1.3.4"
     url = "https://raw.githubusercontent.com/laincat/vensrc/main/sources/wnacg.js"
 
@@ -124,7 +124,7 @@ class Wnacg extends ComicSource {
                     // 参考 Gandum2077/cbde997：登录后打开站点“我的收藏”触发原版客户端导入。
                     if (typeof url !== "string" || typeof title !== "string") return false
                     const valid = /^https:\/\/www\.wnacg\.com\/users-(?:users_fav|index)\.html(?:\?[^#]*)?$/.test(url) &&
-                        /紳士漫畫|绅士漫画/.test(title) && /我的空间|我的空間/.test(title) &&
+                        /紳士漫畫|绅士漫画/.test(title) && /我的空間|我的空间|我的書架|我的书架/.test(title) &&
                         !/登[錄录入]|login|註冊|注册|滑[塊块]|驗證|验证|captcha|challenge|just a moment|cloudflare|權限|权限|錯誤|错误|error|forbidden|denied|\b40[134]\b/i.test(title)
                     source._webLoginReady = valid
                     return valid
@@ -180,13 +180,22 @@ class Wnacg extends ComicSource {
         if (typeof userAgent === "string" && userAgent) requestHeaders["User-Agent"] = userAgent
         const response = await this._get(`${base}/users-users_fav.html`, requestHeaders)
         if (response.status !== 200) throw `Invalid Status Code ${response.status}`
+        const document = new HtmlDocument(response.body || "")
+        let title = ""
+        try {
+            title = document.querySelector("title")?.text || ""
+        } finally {
+            document.dispose()
+        }
         const logoutLinks = (response.body || "").matchAll(/<a\b[^>]*href\s*=\s*["']([^"']+)["']/gi)
-        const loggedIn = response.status === 200 &&
-            [...logoutLinks].some((match) => /^\/users-logout\.html(?:\?[^#]*)?$/.test(match[1]) ||
+        const hasLogoutLink = [...logoutLinks].some((match) =>
+            /^\/users-logout\.html(?:\?[^#]*)?$/.test(match[1]) ||
                 (match[1].startsWith(base) &&
-                    /^\/users-logout\.html(?:\?[^#]*)?$/.test(match[1].slice(base.length)))) &&
-            !/您沒有權限|您没有权限|需要登錄|需要登录/.test(response.body || "")
-        if (!loggedIn) {
+                    /^\/users-logout\.html(?:\?[^#]*)?$/.test(match[1].slice(base.length))))
+        const hasPrivateShelfTitle =
+            /我的(?:空間|空间|書架|书架).*(?:紳士漫畫|绅士漫画)/.test(title)
+        const denied = /您沒有權限|您没有权限|需要登錄|需要登录/.test(response.body || "")
+        if (denied || (!hasLogoutLink && !hasPrivateShelfTitle)) {
             throw "会员会话未验证；请在 App 内登录页完成滑块，并确认域名一致、会话未过期"
         }
         return true
