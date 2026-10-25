@@ -5,15 +5,24 @@ import vm from "node:vm";
 
 const code = readFileSync(new URL("../sources/wnacg.js", import.meta.url), "utf8");
 
-function fixture(response, domain = "www.wnacg.com") {
+function fixture(response, domain = "www.wnacg.com", selection = null) {
   const calls = [];
   const messages = [];
+  const data = new Map();
   let clipboard = "";
   let cookies = [{ name: "old_session", value: "test-only", domain }];
   const sandbox = {
-    ComicSource: class { loadSetting() { return domain; } },
+    ComicSource: class {
+      loadSetting() { return domain; }
+      loadData(key) { return data.get(key); }
+      saveData(key, value) { data.set(key, value); }
+      deleteData(key) { data.delete(key); }
+    },
     Cookie: function (values) { Object.assign(this, values); },
-    UI: { showMessage: (message) => messages.push(message) },
+    UI: {
+      showMessage: (message) => messages.push(message),
+      showSelectDialog: async () => selection,
+    },
     setClipboard: async (text) => { clipboard = text; },
     Network: {
       getCookies: async () => cookies.filter((cookie) => {
@@ -30,14 +39,14 @@ function fixture(response, domain = "www.wnacg.com") {
     },
   };
   const source = vm.runInNewContext(`${code}\nnew Wnacg()`, sandbox);
-  return { source, calls, cookies: () => cookies, messages, clipboard: () => clipboard };
+  return { source, calls, cookies: () => cookies, messages, clipboard: () => clipboard, data };
 }
 
 test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在会员中心成立", async () => {
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="/users-logout.html">退出</a>',
   });
-  assert.equal(source.version, "1.2.1");
+  assert.equal(source.version, "1.3.0");
   assert.equal(source.minAppVersion, "1.3.4");
   assert.equal(source.account.login, undefined);
   assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
@@ -95,12 +104,44 @@ test("拒绝多行、重复 Cookie、Set-Cookie 和任意域名，且不发请�
     assert.equal(calls.length, 0);
   }
   const { source: invalid, calls } = fixture({}, "other.invalid");
-  assert.throws(() => invalid.baseUrl, /请选择已核对的绅士漫画域名/);
+  assert.throws(() => invalid.baseUrl, /请选择内置或发布页公布的绅士漫画域名/);
   await assert.rejects(invalid.account.loginWithCookies.validate(["session=test-only"]));
   assert.equal(calls.length, 0);
 });
 
-test("备用域名仅接收本域会话；登出清理两个受支持域名", async () => {
+test("内置发布页备用地址；切换地址清除登录标记，且不迁移 Cookie", async () => {
+  const { source, calls, data, cookies } = fixture({}, "www.wnacg.com", 2);
+  data.set("account", "test-only");
+  assert.ok(source._domains().includes("www.wn003.cfd"));
+  assert.ok(source._domains().includes("www.wn004.cfd"));
+  await source.settings.domain.callback();
+  assert.equal(source.baseUrl, "https://www.wn003.cfd");
+  assert.equal(data.has("account"), false);
+  assert.equal(cookies()[0].domain, "www.wnacg.com");
+  assert.equal(calls.length, 0);
+  for (const selection of [null, -1, 99, "2", 0]) {
+    const cancelled = fixture({}, "www.wnacg.com", selection);
+    cancelled.data.set("account", "test-only");
+    await cancelled.source.settings.domain.callback();
+    assert.equal(cancelled.data.get("account"), "test-only");
+    assert.equal(cancelled.data.has("activeDomain"), false);
+  }
+});
+
+test("备用地址会话仅验证当前域名，拒绝其他域名的退出链接", async () => {
+  for (const [href, valid] of [
+    ["/users-logout.html", true],
+    ["https://www.wn003.cfd/users-logout.html", true],
+    ["https://www.wn004.cfd/users-logout.html", false],
+    ["https://www.wn003.cfd.evil.invalid/users-logout.html", false],
+  ]) {
+    const { source } = fixture({ status: 200, body: `<a href="${href}">退出</a>` }, "www.wn003.cfd");
+    if (valid) assert.equal(await source._checkSession(source.baseUrl), true);
+    else await assert.rejects(source._checkSession(source.baseUrl));
+  }
+});
+
+test("备用域名仅接收本域会话；登出清理主域名及缓存备用域名", async () => {
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="https://www.wnacg.ru/users-logout.html">退出</a>',
   }, "www.wnacg.ru");
@@ -109,7 +150,8 @@ test("备用域名仅接收本域会话；登出清理两个受支持域名", as
   assert.equal(cookies()[0].domain, "www.wnacg.ru");
   assert.ok(calls.every(([, url]) => url.startsWith("https://www.wnacg.ru")));
   await source.account.logout();
-  assert.deepEqual(calls.slice(-2), [
+  assert.deepEqual(calls.slice(-4), [
     ["delete", "https://www.wnacg.com"], ["delete", "https://www.wnacg.ru"],
+    ["delete", "https://www.wn003.cfd"], ["delete", "https://www.wn004.cfd"],
   ]);
 });

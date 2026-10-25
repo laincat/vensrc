@@ -25,11 +25,55 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     delete globals.ComicSource.sources.wnacg;
     const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
     assert.doesNotThrow(() => globals.__clientSourceLoaded(source));
-    assert.equal(source.version, "1.2.1");
+    assert.equal(source.version, "1.3.0");
     assert.equal(source.minAppVersion, "1.3.4");
     assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
     assert.equal(source.baseUrl, "https://www.wnacg.com");
     assert.equal(typeof source.settings.copyCookies.callback, "function");
+  });
+  test(`${name}: 发布页解析、备用发布页、每日同步及失败保留缓存`, async () => {
+    process.env.VENERA_CLIENT_PROFILE = name;
+    const globals = runtime.createVeneraRuntime();
+    const requests = [];
+    let unavailable = false;
+    const html = `<title>紳士漫畫地址發布頁</title><ul>
+      <li>紳士漫畫最新地址 <a href="https://www.wn003.cfd/">一</a></li>
+      <li>紳士漫畫最新地址 <a href="https://www.wn004.cfd/">二</a></li>
+      <li>紳士漫畫最新地址 <a href="https://www.wn005.cfd/">新</a>
+        <a href="https://www.wn005.cfd/">重复</a>
+        <a href="https://www.wn006.cfd.evil.invalid/">假</a>
+        <a href="https://user@www.wn007.cfd/">凭据</a>
+        <a href="http://www.wn008.cfd/">非 HTTPS</a>
+        <a href="https://www.wn009.cfd:8080/">端口</a>
+        <a href="https://www.wn010.cfd/path">非首页</a></li>
+      <li>发布页 <a href="https://wnacg02.link/">发布页</a></li>
+      <li>其他 <a href="https://www.wn011.cfd/">非地址栏</a></li></ul>`;
+    globals.Network = { ...globals.Network, sendRequest: async (_method, url) => {
+      requests.push(url);
+      return url === "https://wnacg01.link/" || unavailable
+        ? { status: 503, body: "" } : { status: 200, body: html };
+    }};
+    await installClientProfile(globals, runtime, runtimeImages);
+    const code = await readFile(new URL("./wnacg.import.js", import.meta.url), "utf8");
+    const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
+    globals.__clientSourceLoaded(source);
+    for (const key of ["mirrorCache", "activeDomain"]) await source.deleteData(key);
+    assert.deepEqual(source._parseDomains(html),
+      ["www.wn003.cfd", "www.wn004.cfd", "www.wn005.cfd"]);
+    assert.throws(() => source._parseDomains("<title>Just a moment...</title>"), /标题不符/);
+    assert.throws(() => source._parseDomains("<title>紳士漫畫地址發布頁</title>"), /没有可接受/);
+    await source.init();
+    assert.deepEqual(requests, ["https://wnacg01.link/", "https://wnacg02.link/"]);
+    assert.ok(source._domains().includes("www.wn005.cfd"));
+    assert.equal(source.loadData("activeDomain"), undefined);
+    const checkedAt = source.loadData("mirrorCache").checkedAt;
+    await source.init();
+    assert.equal(requests.length, 2);
+    unavailable = true;
+    await assert.rejects(source._refreshDomains(), /两个发布页均未能同步/);
+    assert.equal(source.loadData("mirrorCache").checkedAt, checkedAt);
+    assert.ok(source._domains().includes("www.wn005.cfd"));
+    for (const key of ["mirrorCache", "activeDomain"]) await source.deleteData(key);
   });
   test(`${name}: 真实 bootstrap、HTML、加密、版本检查与逐像素重排`, async () => {
     process.env.VENERA_CLIENT_PROFILE = name;
