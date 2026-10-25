@@ -3,7 +3,7 @@
 class Wnacg extends ComicSource {
     name = "紳士漫畫"
     key = "wnacg"
-    version = "1.3.1"
+    version = "1.3.2"
     minAppVersion = "1.3.4"
     url = "https://raw.githubusercontent.com/laincat/vensrc/main/sources/wnacg.js"
 
@@ -21,6 +21,14 @@ class Wnacg extends ComicSource {
         }
         return `https://${domain}`
     }
+
+    get accountBaseUrl() {
+        const origin = this.loadData("webLoginOrigin")
+        return typeof origin === "string" && origin.startsWith("https://") &&
+            this._validDomain(origin.slice(8)) ? origin : this.baseUrl
+    }
+
+    _webLoginReady = false
 
     _domains() {
         const cached = this.loadData("mirrorCache")?.domains
@@ -93,19 +101,32 @@ class Wnacg extends ComicSource {
             loginWithWebview: {
                 // 客户端在源注册前解析此地址，此时不能调用 loadSetting。
                 url: "https://www.wnacg.com/users-login.html",
+                captureCookies: APP.webviewCookieCapture === true,
                 checkStatus: (url, title) => {
-                    const current = String(url || "").split(/[?#]/)[0].replace(/\/$/, "")
-                    // 标题会因站点模板和语言变化；成功后再请求会员页核对正文。
-                    return current === "https://www.wnacg.com/users-index.html" &&
-                        !/您沒有權限|您没有权限|需要登錄|需要登录/.test(String(title || ""))
+                    source._webLoginReady = false
+                    // 参考 Gandum2077/cbde997：登录后打开站点“我的收藏”触发原版客户端导入。
+                    if (typeof url !== "string" || typeof title !== "string") return false
+                    const valid = /^https:\/\/www\.wnacg\.com\/users-(?:users_fav|index)\.html(?:\?[^#]*)?$/.test(url) &&
+                        /紳士漫畫|绅士漫画/.test(title) && /我的空间|我的空間/.test(title) &&
+                        !/登[錄录入]|login|註冊|注册|滑[塊块]|驗證|验证|captcha|challenge|just a moment|cloudflare|權限|权限|錯誤|错误|error|forbidden|denied|\b40[134]\b/i.test(title)
+                    source._webLoginReady = valid
+                    return valid
                 },
-                onLoginSuccess: async () => {
+                onLoginSuccess: () => {
+                    if (APP.webviewCookieCapture === true) return source._verifyWebLogin()
+                    // 原版宿主不等待 Promise；此分支只能同步核对导入，不能冒充 HTTP 权限验证。
                     try {
-                        await source._captureSession("https://www.wnacg.com", false)
-                    } catch (error) {
-                        await source.deleteData("account")
-                        await Network.deleteCookies("https://www.wnacg.com")
-                        UI.showMessage(`网页登录未通过会员页校验：${error}`)
+                        if (!source._webLoginReady) throw "请在网页登录后打开站点的“我的收藏”"
+                        const cookies = Network.getCookies("https://www.wnacg.com")
+                        if (!Array.isArray(cookies) || !cookies.some(cookie =>
+                            cookie && typeof cookie.name === "string" && cookie.name.trim() &&
+                            typeof cookie.value === "string" && cookie.value.trim())) {
+                            throw "客户端未取得网页登录 Cookie，请重新登录"
+                        }
+                        source.saveData("webLoginOrigin", "https://www.wnacg.com")
+                        source.saveData("webLoginVerification", "browser_only")
+                    } finally {
+                        source._webLoginReady = false
                     }
                 },
             },
@@ -122,12 +143,24 @@ class Wnacg extends ComicSource {
             logout: async () => {
                 const domains = new Set([...source._domains(), source.baseUrl.slice("https://".length)])
                 for (const domain of domains) await Network.deleteCookies(`https://${domain}`)
+                await source.deleteData("webLoginOrigin")
+                await source.deleteData("webLoginVerification")
+                source._webLoginReady = false
             },
         }
     }
 
+    async _verifyWebLogin() {
+        await this._checkSession("https://www.wnacg.com")
+        await this.saveData("webLoginOrigin", "https://www.wnacg.com")
+        await this.saveData("webLoginVerification", "http_verified")
+    }
+
     async _checkSession(base) {
-        const response = await Network.get(`${base}/users-index.html`, {})
+        const userAgent = this.loadData("_webviewUserAgent")
+        const requestHeaders = { "cache-time": "no" }
+        if (typeof userAgent === "string" && userAgent) requestHeaders["User-Agent"] = userAgent
+        const response = await Network.get(`${base}/users-users_fav.html`, requestHeaders)
         const headers = response.headers || {}
         if (Object.entries(headers).some(([key, value]) =>
             key.toLowerCase() === "cf-mitigated" && String(value).toLowerCase() === "challenge") ||
@@ -170,6 +203,8 @@ class Wnacg extends ComicSource {
             await Network.deleteCookies(base)
             await Network.setCookies(base, cookies)
             await this._checkSession(base)
+            await this.saveData("webLoginOrigin", base)
+            await this.saveData("webLoginVerification", "http_verified")
             await this.saveData("account", "ok")
             return true
         } catch (error) {
@@ -198,8 +233,8 @@ class Wnacg extends ComicSource {
         await this._checkSession(base)
         const header = await this._cookieHeader(base)
         await this.saveData("account", "ok")
-        const host = base.slice("https://".length)
-        if (this.baseUrl !== base) await this.saveData("activeDomain", host)
+        await this.saveData("webLoginOrigin", base)
+        await this.saveData("webLoginVerification", "http_verified")
         if (copy) await setClipboard(header)
         UI.showMessage(copy
             ? "会员会话已验证并自动登录；Cookie 已复制，请勿分享"
@@ -208,7 +243,7 @@ class Wnacg extends ComicSource {
     }
 
     async _copyCookies() {
-        return this._captureSession(this.baseUrl, true)
+        return this._captureSession(this.accountBaseUrl, true)
     }
 
     async _importClipboard() {
@@ -480,12 +515,12 @@ class Wnacg extends ComicSource {
 
         addOrDelFavorite: async (comicId, folderId, isAdding, favoriteId) => {
             if (!isAdding) {
-                let res = await Network.get(`${this.baseUrl}/users-fav_del-id-${favoriteId}.html?ajax=true&_t=${randomDouble(0, 1)}`, {})
+                let res = await Network.get(`${this.accountBaseUrl}/users-fav_del-id-${favoriteId}.html?ajax=true&_t=${randomDouble(0, 1)}`, {})
                 if (res.status !== 200) {
                     throw 'Delete failed'
                 }
             } else {
-                let res = await Network.post(`${this.baseUrl}/users-save_fav-id-${comicId}.html`, {
+                let res = await Network.post(`${this.accountBaseUrl}/users-save_fav-id-${comicId}.html`, {
                     'content-type': 'application/x-www-form-urlencoded'
                 }, `favc_id=${folderId}`)
                 if (res.status !== 200) {
@@ -496,7 +531,9 @@ class Wnacg extends ComicSource {
         },
 
         loadFolders: async (comicId) => {
-            let res = await Network.get(`${this.baseUrl}/users-addfav-id-210814.html`, {})
+            await this._checkSession(this.accountBaseUrl)
+            await this.saveData("webLoginVerification", "http_verified")
+            let res = await Network.get(`${this.accountBaseUrl}/users-addfav-id-210814.html`, {})
             if (res.status !== 200) {
                 throw 'Load failed'
             }
@@ -513,7 +550,7 @@ class Wnacg extends ComicSource {
         },
 
         addFolder: async (name) => {
-            let res = await Network.post(`${this.baseUrl}/users-favc_save-id.html`, {
+            let res = await Network.post(`${this.accountBaseUrl}/users-favc_save-id.html`, {
                 'content-type': 'application/x-www-form-urlencoded'
             }, `favc_name=${encodeURIComponent(name)}`)
             if (res.status !== 200) {
@@ -523,7 +560,7 @@ class Wnacg extends ComicSource {
         },
 
         deleteFolder: async (folderId) => {
-            let res = await Network.get(`${this.baseUrl}/users-favclass_del-id-${folderId}.html?ajax=true&_t=${randomDouble()}`, {})
+            let res = await Network.get(`${this.accountBaseUrl}/users-favclass_del-id-${folderId}.html?ajax=true&_t=${randomDouble()}`, {})
             if (res.status !== 200) {
                 throw 'Delete failed'
             }
@@ -531,7 +568,9 @@ class Wnacg extends ComicSource {
         },
 
         loadComics: async (page, folder) => {
-            let url = `${this.baseUrl}/users-users_fav-page-${page}-c-${folder}.html.html`
+            await this._checkSession(this.accountBaseUrl)
+            await this.saveData("webLoginVerification", "http_verified")
+            let url = `${this.accountBaseUrl}/users-users_fav-page-${page}-c-${folder || "0"}.html`
             let res = await Network.get(url, {})
             if (res.status !== 200) {
                 throw `Invalid Status Code ${res.status}`
