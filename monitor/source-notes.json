@@ -2,6 +2,6 @@
   "schemaVersion": 1,
   "notes": {
     "e50a45d1c3b33198ab3a154335c31f4e689652106135dcc367334a3325b8be3d": "上游 v1.9.2 更新说明（CHANGELOG）：“修复旧版收藏数据 id 未去混淆导致的 aid 错误”；漫画 ID 归一化修复见上游更新说明。",
-    "07c835c5d58545f088c35a3eae43fc65c1231436ded26a6857e1563223cbee81": "引用源：laincat/vensrc。参考 Gandum2077 私有页判定；原版网页登录后打开“我的收藏”触发 Cookie 导入；不等于 HTTP 权限已验证。原生捕获按钮及滑块手势补丁另行验收。"
+    "1ceee2884c45268523c2b17ef8c941e12ea02cd0ee11b9b3f659fe7de0e69197": "引用源：laincat/vensrc。原版 App 网页登录后打开“我的收藏”触发 Cookie 导入；新增导入提示及“检查登录与浏览”只读诊断。Cookie 导入不等于会员权限和阅读已通过。"
   }
 }

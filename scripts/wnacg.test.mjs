@@ -8,6 +8,8 @@ const code = readFileSync(new URL("../sources/wnacg.js", import.meta.url), "utf8
 function fixture(response, domain = "www.wnacg.com", selection = null) {
   const calls = [];
   const messages = [];
+  const dialogs = [];
+  const requestHeaders = [];
   const data = new Map();
   let clipboard = "";
   let cookies = [{ name: "old_session", value: "test-only", domain }];
@@ -20,8 +22,12 @@ function fixture(response, domain = "www.wnacg.com", selection = null) {
       deleteData(key) { data.delete(key); }
     },
     Cookie: function (values) { Object.assign(this, values); },
+    Convert: {
+      decodeUtf8: (value) => new TextDecoder().decode(Array.isArray(value) ? Uint8Array.from(value) : value),
+    },
     UI: {
       showMessage: (message) => messages.push(message),
+      showDialog: (title, content) => dialogs.push([title, content]),
       showSelectDialog: async () => selection,
     },
     setClipboard: async (text) => { clipboard = text; },
@@ -33,8 +39,9 @@ function fixture(response, domain = "www.wnacg.com", selection = null) {
       }),
       deleteCookies: async (url) => { calls.push(["delete", url]); cookies = []; },
       setCookies: async (url, values) => { calls.push(["set", url]); cookies = values; },
-      get: async (url) => {
+      get: async (url, headers) => {
         calls.push(["get", url]);
+        requestHeaders.push(headers);
         if (response instanceof Error) throw response;
         return response;
       },
@@ -43,7 +50,7 @@ function fixture(response, domain = "www.wnacg.com", selection = null) {
   const source = vm.runInNewContext(`${code}\nnew Wnacg()`, sandbox);
   return {
     app: sandbox.APP,
-    source, calls, cookies: () => cookies, messages, data,
+    source, calls, cookies: () => cookies, messages, dialogs, requestHeaders, data,
     clipboard: () => clipboard,
     setClipboard: (text) => { clipboard = text; },
   };
@@ -53,7 +60,7 @@ test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在�
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="/users-logout.html">退出</a>',
   });
-  assert.equal(source.version, "1.3.2");
+  assert.equal(source.version, "1.3.3");
   assert.equal(source.minAppVersion, "1.3.4");
   assert.equal(source.account.login, undefined);
   assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
@@ -123,7 +130,7 @@ test("网页登录回调只保存已通过会员页校验的主域名会话", as
 });
 
 test("原版客户端按真实私有页触发同步 Cookie 导入，不把导入当 HTTP 验证", () => {
-  const { source, app, data } = fixture({});
+  const { source, app, data, messages } = fixture({});
   app.webviewCookieCapture = false;
   assert.equal(source.account.loginWithWebview.captureCookies, false);
   assert.equal(source.account.loginWithWebview.checkStatus(
@@ -133,6 +140,8 @@ test("原版客户端按真实私有页触发同步 Cookie 导入，不把导入
   assert.equal(source.account.loginWithWebview.onLoginSuccess(), undefined);
   assert.equal(data.get("webLoginOrigin"), "https://www.wnacg.com");
   assert.equal(data.get("webLoginVerification"), "browser_only");
+  assert.match(messages[0], /App 已接收网页 Cookie/);
+  assert.doesNotMatch(messages[0], /test-only|old_session/);
   assert.equal(data.has("account"), false);
   assert.throws(() => source.account.loginWithWebview.onLoginSuccess(), /我的收藏/);
 });
@@ -213,4 +222,62 @@ test("备用域名仅接收本域会话；登出清理主域名及缓存备用�
     ["delete", "https://www.wnacg.com"], ["delete", "https://www.wnacg.ru"],
     ["delete", "https://www.wn003.cfd"], ["delete", "https://www.wn004.cfd"],
   ]);
+});
+
+test("登录状态诊断不显示 Cookie 内容且不把本地标记当成会员验证", async () => {
+  const good = fixture({ status: 200, body: '<a href="/users-logout.html">退出</a>' });
+  good.source.explore[0].load = async () => [{ comics: [{}] }];
+  good.source.comic.loadInfo = async (id) => {
+    assert.equal(id, "397513");
+    return { title: "fixture" };
+  };
+  good.data.set("account", "ok");
+  await good.source.settings.loginStatus.callback();
+  assert.equal(good.dialogs.length, 1);
+  assert.match(good.dialogs[0][1], /会员页验证：通过/);
+  assert.match(good.dialogs[0][1], /适用于会员页的 Cookie：1 项/);
+  assert.doesNotMatch(good.dialogs[0][1], /test-only/);
+  assert.doesNotMatch(good.dialogs[0][1], /old_session/);
+  assert.match(good.dialogs[0][1], /首页解析：通过/);
+  assert.match(good.dialogs[0][1], /固定漫画详情（397513）：通过/);
+  assert.equal(good.data.get("webLoginVerification"), "http_verified");
+
+  const bad = fixture({ status: 200, body: '<a href="/users-login.html">登录</a>' });
+  bad.data.set("account", "ok");
+  await bad.source.settings.loginStatus.callback();
+  assert.match(bad.dialogs[0][1], /会员页验证：未通过/);
+  assert.match(bad.dialogs[0][1], /仅表示本地登录标记/);
+  assert.equal(bad.data.get("webLoginVerification"), undefined);
+});
+
+test("兼容 VeneraX 共享缓存的字节正文，且会员 GET 显式禁用缓存", async () => {
+  const value = '<a href="/users-logout.html">退出</a>';
+  for (const body of [value, new TextEncoder().encode(value), Array.from(new TextEncoder().encode(value))]) {
+    const { source, requestHeaders } = fixture({ status: 200, body });
+    assert.equal(await source._checkSession("https://www.wnacg.com"), true);
+    assert.equal(requestHeaders[0]["cache-time"], "no");
+  }
+  const challenged = fixture({
+    status: 403, body: new TextEncoder().encode('<script src="/cdn-cgi/challenge-platform/test"></script>'),
+  });
+  await assert.rejects(challenged.source._checkSession("https://www.wnacg.com"), /Cloudflare/);
+});
+
+test("诊断失败不展示异常原文，且能显示阅读与登录域名差异", async () => {
+  const { source, dialogs, data } = fixture(new Error("sensitive-test-only"));
+  data.set("webLoginOrigin", "https://www.wnacg.com");
+  data.set("activeDomain", "www.wnacg.ru");
+  data.set("webLoginVerification", "http_verified");
+  await source.settings.loginStatus.callback();
+  assert.match(dialogs[0][1], /阅读与登录域名不同/);
+  assert.doesNotMatch(dialogs[0][1], /sensitive-test-only/);
+  assert.equal(data.get("webLoginVerification"), "browser_only");
+});
+
+test("诊断区分会员权限、HTTP 状态与源解析异常，且不输出异常详情", () => {
+  const { source } = fixture({});
+  assert.equal(source._failureSummary("Invalid Status Code 403"), "HTTP 403");
+  assert.equal(source._failureSummary("会员会话未验证"), "站点未确认会员权限");
+  assert.match(source._failureSummary(new TypeError("sensitive-test-only")), /源解析错误/);
+  assert.doesNotMatch(source._failureSummary(new TypeError("sensitive-test-only")), /sensitive/);
 });
