@@ -24,6 +24,7 @@ function fixture(response, domain = "www.wnacg.com", selection = null) {
       showSelectDialog: async () => selection,
     },
     setClipboard: async (text) => { clipboard = text; },
+    getClipboard: async () => clipboard,
     Network: {
       getCookies: async () => cookies.filter((cookie) => {
         const candidate = String(cookie.domain || "").replace(/^\./, "");
@@ -39,14 +40,18 @@ function fixture(response, domain = "www.wnacg.com", selection = null) {
     },
   };
   const source = vm.runInNewContext(`${code}\nnew Wnacg()`, sandbox);
-  return { source, calls, cookies: () => cookies, messages, clipboard: () => clipboard, data };
+  return {
+    source, calls, cookies: () => cookies, messages, data,
+    clipboard: () => clipboard,
+    setClipboard: (text) => { clipboard = text; },
+  };
 }
 
 test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在会员中心成立", async () => {
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="/users-logout.html">退出</a>',
   });
-  assert.equal(source.version, "1.3.0");
+  assert.equal(source.version, "1.3.1");
   assert.equal(source.minAppVersion, "1.3.4");
   assert.equal(source.account.login, undefined);
   assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
@@ -54,6 +59,8 @@ test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在�
     "https://www.wnacg.com/users-index.html", "用戶中心 紳士漫畫"), true);
   assert.equal(source.account.loginWithWebview.checkStatus(
     "https://www.wnacg.com/users-index.html", "您沒有權限，需要登錄！"), false);
+  assert.equal(source.account.loginWithWebview.checkStatus(
+    "https://www.wnacg.com/users-index.html", ""), true);
   assert.equal(source.account.loginWithWebview.checkStatus(
     "https://evil.invalid/users-index.html", "用戶中心 紳士漫畫"), false);
   assert.equal(await source.account.loginWithCookies.validate(["Cookie: session=test-only; flag=x=y"]), true);
@@ -63,19 +70,51 @@ test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在�
     [["get", "https://www.wnacg.com/users-index.html"]]);
 });
 
-test("获取 Cookie 先验证会员会话，再仅复制到剪贴板且不在界面显示", async () => {
-  const { source, calls, messages, clipboard, cookies } = fixture({
+test("获取 Cookie 先验证会员会话，再自动登录并复制到剪贴板", async () => {
+  const { source, calls, messages, clipboard, cookies, data } = fixture({
     status: 200, body: '<a href="/users-logout.html">退出</a>',
   });
   cookies().push({ name: "shared", value: "parent-domain", domain: ".wnacg.com" });
   cookies().push({ name: "wrong", value: "other-domain", domain: ".wnacg.ru" });
   await source.settings.copyCookies.callback();
+  assert.equal(data.get("account"), "ok");
   assert.equal(clipboard(), "old_session=test-only; shared=parent-domain");
   assert.ok(messages.every((message) => !message.includes("test-only")));
   assert.deepEqual(calls.filter(([operation]) => operation === "get"),
     [["get", "https://www.wnacg.com/users-index.html"]]);
   const anonymous = fixture({ status: 200, body: '<a href="/users-login.html">登录</a>' }).source;
   await assert.rejects(anonymous.settings.copyCookies.callback(), /会员会话未验证/);
+});
+
+test("从剪贴板自动填入 Cookie，验证成功后登录并清空剪贴板", async () => {
+  const { source, data, clipboard, cookies, messages, setClipboard } = fixture({
+    status: 200, body: '<a href="/users-logout.html">退出</a>',
+  });
+  setClipboard("Cookie: session=copied; extra=x=y");
+  await source.settings.importCookies.callback();
+  assert.equal(data.get("account"), "ok");
+  assert.equal(cookies().length, 2);
+  assert.equal(clipboard(), "");
+  assert.ok(messages.every((message) => !message.includes("copied")));
+  const anonymous = fixture({ status: 200, body: '<a href="/users-login.html">登录</a>' });
+  anonymous.setClipboard("session=copied");
+  await assert.rejects(anonymous.source.settings.importCookies.callback(), /会员会话未验证/);
+  assert.equal(anonymous.cookies()[0].name, "old_session");
+});
+
+test("网页登录回调只保存已通过会员页校验的主域名会话", async () => {
+  const good = fixture({ status: 200, body: '<a href="/users-logout.html">退出</a>' });
+  good.data.set("activeDomain", "www.wnacg.ru");
+  await good.source.account.loginWithWebview.onLoginSuccess();
+  assert.equal(good.data.get("account"), "ok");
+  assert.equal(good.data.get("activeDomain"), "www.wnacg.com");
+
+  const bad = fixture({ status: 200, body: '<a href="/users-login.html">登录</a>' });
+  bad.data.set("account", "stale");
+  await bad.source.account.loginWithWebview.onLoginSuccess();
+  assert.equal(bad.data.has("account"), false);
+  assert.equal(bad.cookies().length, 0);
+  assert.match(bad.messages.at(-1), /会员页校验/);
 });
 
 test("匿名 HTTP 200、登录页、权限提示及 CF 页面均不能通过；失败恢复旧会话", async () => {

@@ -18,18 +18,19 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     const fixedUrl = 'url: "https://www.wnacg.com/users-login.html"';
     assert.ok(code.includes(fixedUrl));
     // 重现 1.2.0 的导入错误；只在测试夹具中恢复提前读取设置的调用。
-    const broken = code.replace(fixedUrl, 'url: `${source.baseUrl}/users-login.html`');
+    const broken = code.replace(fixedUrl, 'url: source.loadSetting("domain")');
     const previous = runtime.loadVeneraConfigBySourceCode(broken, globals, false);
     assert.throws(() => globals.__clientSourceLoaded(previous),
       /Native source is unavailable during account configuration parsing/);
     delete globals.ComicSource.sources.wnacg;
     const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
     assert.doesNotThrow(() => globals.__clientSourceLoaded(source));
-    assert.equal(source.version, "1.3.0");
+    assert.equal(source.version, "1.3.1");
     assert.equal(source.minAppVersion, "1.3.4");
     assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
     assert.equal(source.baseUrl, "https://www.wnacg.com");
     assert.equal(typeof source.settings.copyCookies.callback, "function");
+    assert.equal(typeof source.settings.importCookies.callback, "function");
   });
   test(`${name}: 发布页解析、备用发布页、每日同步及失败保留缓存`, async () => {
     process.env.VENERA_CLIENT_PROFILE = name;

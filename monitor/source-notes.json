@@ -2,6 +2,6 @@
   "schemaVersion": 1,
   "notes": {
     "e50a45d1c3b33198ab3a154335c31f4e689652106135dcc367334a3325b8be3d": "上游 v1.9.2 更新说明（CHANGELOG）：“修复旧版收藏数据 id 未去混淆导致的 aid 错误”；漫画 ID 归一化修复见上游更新说明。",
-    "f0cf741edcd1fb588d428e6a1edcc71a7ad4a23769f899c7344216109d72bcb1": "引用源：laincat/vensrc。独立维护版；修复导入，发布页备用地址每日同步、手动切换；App 内网页登录使用 www.wnacg.com；支持获取 Cookie，缺会话不计通过。"
+    "67f05e1edc38763cf95423c4d2b956af4942fd5727a75b5309dd22084d12e4e5": "引用源：laincat/vensrc。独立维护版；网页登录后自动验证并保存会话；支持获取 Cookie 和从剪贴板一键导入；发布页备用地址每日同步，缺会话不计通过。"
   }
 }
