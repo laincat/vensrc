@@ -1,6 +1,6 @@
 # 隔离账号巡检结果
 
-核验时间：2026-10-25T07:49:31.953260+00:00（UTC）。
+核验时间：2026-10-25T08:23:12.793292+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
@@ -17,7 +17,7 @@
 
 ## 已核对的登录流程差异
 
-- 绅士漫画：独立源 1.3.3；不修改 VeneraX。原版网页登录后打开站点“我的收藏”触发 Cookie 导入，新增导入提示及源设置“检查登录与浏览”。会员权限、首页解析、固定漫画详情和图片下载分别判断；实机结果仍需本人验证。Actions 不注入本站密码或会话，交互跳过不算通过。
+- 绅士漫画：独立源 1.3.4；不修改 VeneraX。识别站点实际返回的“我的书架”账户页标题，修复源端误判登录；匿名权限页仍拒绝。源设置“检查登录与浏览”分别检查会员页、首页和固定漫画详情；实机重启后会话保留仍待验证。Actions 不注入本站密码或会话，交互跳过不算通过。
 
 ## 登录未验证／跳过项
 
@@ -41,8 +41,8 @@
 | 绅士漫画 | wnacg | venera-next | 跳过 | 通过 | 部分通过 | 无失败 | 14 |
 | 禁漫天堂 | jm | venerax | 通过 | 通过 | 部分通过 | 无失败 | 13 |
 | 禁漫天堂 | jm | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 13 |
-| 包子漫画 | baozi | venerax | 通过 | 通过 | 失败 | categoryComics.load：返回结构或样本不满足契约 | 2 |
-| 包子漫画 | baozi | venera-next | 通过 | 通过 | 失败 | categoryComics.load：返回结构或样本不满足契约 | 2 |
+| 包子漫画 | baozi | venerax | 通过 | 通过 | 失败 | categoryComics.load：返回结构或样本不满足契约；thumbnail.download：请求超时 | 2 |
+| 包子漫画 | baozi | venera-next | 通过 | 通过 | 失败 | categoryComics.load：返回结构或样本不满足契约；thumbnail.download：请求超时 | 2 |
 | 18ak 漫画 | 18ak | — | 已保存凭据；当前已审阅清单无本站源 | 未测试 | 跳过 |  | 未执行 |
 | 哔咔漫画 | picacg | venerax | 通过 | 通过 | 部分通过 | 无失败 | 6 |
 | 哔咔漫画 | picacg | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 6 |
@@ -52,4 +52,4 @@
 | 热辣漫画 | hot_manga | venera-next | 通过 | 通过 | 失败 | comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 2 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 ../data/account-results.json。
-Actions：https://github.com/laincat/vensrc/actions/runs/40174106771
+Actions：https://github.com/laincat/vensrc/actions/runs/40176266155
