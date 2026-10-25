@@ -1,6 +1,6 @@
 # 隔离账号巡检结果
 
-核验时间：2026-10-25T05:39:17.679499+00:00（UTC）。
+核验时间：2026-10-25T06:37:05.524006+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
@@ -17,7 +17,7 @@
 
 ## 已核对的登录流程差异
 
-- 绅士漫画：Vensrc 独立维护版 1.3.1；网页登录成功后自动验证并保存会话，支持获取 Cookie 与从剪贴板一键导入；发布页备用地址每日同步。Actions 不注入本站密码、不接收会话，缺凭据不算登录通过。详见 WNACG_LOGIN.md。
+- 绅士漫画：独立源 1.3.2；参考 Gandum2077 私有页判定，原版需在网页登录后打开站点“我的收藏”触发导入。Cookie 导入与 App HTTP 权限验证分别记录；原生按钮及横滑修复见客户端补丁，实机仍待验收。Actions 不注入本站密码或会话，交互跳过不算通过。
 
 ## 登录未验证／跳过项
 
@@ -52,4 +52,4 @@
 | 热辣漫画 | hot_manga | venera-next | 通过 | 通过 | 失败 | comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 2 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 ../data/account-results.json。
-Actions：https://github.com/laincat/vensrc/actions/runs/40166204159
+Actions：https://github.com/laincat/vensrc/actions/runs/40169611812
