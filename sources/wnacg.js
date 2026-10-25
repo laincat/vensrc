@@ -3,16 +3,88 @@
 class Wnacg extends ComicSource {
     name = "紳士漫畫"
     key = "wnacg"
-    version = "1.2.1"
+    version = "1.3.0"
     minAppVersion = "1.3.4"
     url = "https://raw.githubusercontent.com/laincat/vensrc/main/sources/wnacg.js"
 
+    _builtinDomains = ["www.wnacg.com", "www.wnacg.ru", "www.wn003.cfd", "www.wn004.cfd"]
+
+    _validDomain(domain) {
+        return typeof domain === "string" &&
+            (this._builtinDomains.includes(domain) || /^www\.wn[0-9]{3,6}\.cfd$/.test(domain))
+    }
+
     get baseUrl() {
-        const domain = this.loadSetting("domain") || "www.wnacg.com"
-        if (!["www.wnacg.com", "www.wnacg.ru"].includes(domain)) {
-            throw "请选择已核对的绅士漫画域名"
+        const domain = this.loadData("activeDomain") || this.loadSetting("domain") || "www.wnacg.com"
+        if (!this._validDomain(domain)) {
+            throw "请选择内置或发布页公布的绅士漫画域名"
         }
         return `https://${domain}`
+    }
+
+    _domains() {
+        const cached = this.loadData("mirrorCache")?.domains
+        return [...new Set([...this._builtinDomains,
+            ...(Array.isArray(cached) ? cached.filter((domain) => this._validDomain(domain)).slice(0, 20) : [])])]
+    }
+
+    _parseDomains(body) {
+        const doc = new HtmlDocument(body)
+        const domains = []
+        try {
+            if (!/紳士漫畫地址發布頁/.test(doc.querySelector("title")?.text || "")) {
+                throw "发布页标题不符，保留已有地址"
+            }
+            for (const row of doc.querySelectorAll("li")) {
+                if (!/紳士漫畫最新地址/.test(row.text)) continue
+                for (const link of row.querySelectorAll("a")) {
+                    const match = String(link.attributes.href || "").match(/^https:\/\/([^/?#:@\s]+)\/?$/i)
+                    const domain = match?.[1].toLowerCase()
+                    if (this._validDomain(domain) && !domains.includes(domain)) domains.push(domain)
+                }
+            }
+        } finally {
+            doc.dispose()
+        }
+        if (!domains.length || domains.length > 20) throw "发布页没有可接受的漫画地址，保留已有地址"
+        return domains
+    }
+
+    async _refreshDomains() {
+        for (const page of ["https://wnacg01.link/", "https://wnacg02.link/"]) {
+            try {
+                const response = await Network.get(page, { "cache-time": "no" })
+                if (response.status !== 200) continue
+                const domains = this._parseDomains(response.body || "")
+                await this.saveData("mirrorCache", { domains, checkedAt: Date.now() })
+                return domains.length
+            } catch (_) {
+                // 发布页暂不可用时尝试备用发布页；不覆盖原有地址。
+            }
+        }
+        throw "两个发布页均未能同步地址，继续使用已有地址；可稍后手动刷新"
+    }
+
+    async init() {
+        const cache = this.loadData("mirrorCache")
+        const checkedAt = cache?.checkedAt
+        const age = Date.now() - checkedAt
+        if (typeof checkedAt === "number" && age >= 0 && age < 86400000 &&
+            Array.isArray(cache.domains) && cache.domains.length) return
+        await this._refreshDomains()
+    }
+
+    async _chooseDomain() {
+        const domains = this._domains()
+        const current = this.baseUrl.slice("https://".length)
+        const selected = await UI.showSelectDialog(
+            "选择访问地址（发布页列出不代表当前网络可用）", domains, Math.max(0, domains.indexOf(current)))
+        if (!Number.isInteger(selected) || selected < 0 || selected >= domains.length) return
+        const domain = domains[selected]
+        if (domain === current) return
+        await this.deleteData("account")
+        await this.saveData("activeDomain", domain)
+        UI.showMessage(`已切换为 ${domain}，请重新登录；App 内网页登录仅使用 www.wnacg.com`)
     }
 
     get account() {
@@ -69,8 +141,8 @@ class Wnacg extends ComicSource {
                 },
             },
             logout: async () => {
-                await Network.deleteCookies("https://www.wnacg.com")
-                await Network.deleteCookies("https://www.wnacg.ru")
+                const domains = new Set([...source._domains(), source.baseUrl.slice("https://".length)])
+                for (const domain of domains) await Network.deleteCookies(`https://${domain}`)
             },
         }
     }
@@ -83,8 +155,11 @@ class Wnacg extends ComicSource {
             /cdn-cgi\/challenge-platform|cf-chl-/.test(response.body || "")) {
             throw "Cloudflare 仍要求验证；请在 App 内登录页完成验证，会话可能绑定网络或设备"
         }
+        const logoutLinks = (response.body || "").matchAll(/<a\b[^>]*href\s*=\s*["']([^"']+)["']/gi)
         const loggedIn = response.status === 200 &&
-            /<a\b[^>]*href\s*=\s*["'](?:https:\/\/www\.wnacg\.(?:com|ru))?\/users-logout\.html(?:\?[^"']*)?["']/i.test(response.body || "") &&
+            [...logoutLinks].some((match) => /^\/users-logout\.html(?:\?[^#]*)?$/.test(match[1]) ||
+                (match[1].startsWith(base) &&
+                    /^\/users-logout\.html(?:\?[^#]*)?$/.test(match[1].slice(base.length)))) &&
             !/您沒有權限|您没有权限|需要登錄|需要登录/.test(response.body || "")
         if (!loggedIn || this.baseUrl !== base) {
             throw "会员会话未验证；请在 App 内登录页完成滑块，并确认域名一致、会话未过期"
@@ -576,13 +651,20 @@ class Wnacg extends ComicSource {
 
     settings = {
         domain: {
-            title: "访问域名（App 内网页登录请选 www.wnacg.com）",
-            type: "select",
-            options: [
-                { value: "www.wnacg.com", text: "www.wnacg.com" },
-                { value: "www.wnacg.ru", text: "www.wnacg.ru" },
-            ],
+            title: "访问地址（切换后需重新登录）",
+            type: "callback",
+            buttonText: "选择地址",
             default: "www.wnacg.com",
+            callback: () => this._chooseDomain(),
+        },
+        refreshDomains: {
+            title: "备用地址（每天自动同步，失败保留原地址）",
+            type: "callback",
+            buttonText: "从发布页刷新",
+            callback: async () => {
+                const count = await this._refreshDomains()
+                UI.showMessage(`已同步 ${count} 个发布页地址，请点击“选择地址”切换；不代表可用性验证通过`)
+            },
         },
         copyCookies: {
             title: "获取 Cookie（仅复制到剪贴板）",
