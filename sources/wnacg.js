@@ -3,7 +3,7 @@
 class Wnacg extends ComicSource {
     name = "紳士漫畫"
     key = "wnacg"
-    version = "1.3.2"
+    version = "1.3.3"
     minAppVersion = "1.3.4"
     url = "https://raw.githubusercontent.com/laincat/vensrc/main/sources/wnacg.js"
 
@@ -29,6 +29,23 @@ class Wnacg extends ComicSource {
     }
 
     _webLoginReady = false
+
+    async _get(url, headers = {}) {
+        // VeneraX 的共享缓存可能把文本 GET 返回为字节；会员页必须重新请求。
+        if (/\/users-/.test(url)) headers = { ...headers, "cache-time": "no" }
+        const response = await Network.get(url, headers)
+        let body = response.body
+        if (typeof body !== "string") {
+            if (body === undefined || body === null) throw "站点没有返回页面正文"
+            body = Convert.decodeUtf8(body)
+        }
+        if (Object.entries(response.headers || {}).some(([key, value]) =>
+            key.toLowerCase() === "cf-mitigated" && String(value).toLowerCase() === "challenge") ||
+            /cdn-cgi\/challenge-platform|cf-chl-/.test(body)) {
+            throw "Cloudflare 仍要求验证；请在 App 内完成验证后重试"
+        }
+        return { ...response, body }
+    }
 
     _domains() {
         const cached = this.loadData("mirrorCache")?.domains
@@ -61,7 +78,7 @@ class Wnacg extends ComicSource {
     async _refreshDomains() {
         for (const page of ["https://wnacg01.link/", "https://wnacg02.link/"]) {
             try {
-                const response = await Network.get(page, { "cache-time": "no" })
+                const response = await this._get(page, { "cache-time": "no" })
                 if (response.status !== 200) continue
                 const domains = this._parseDomains(response.body || "")
                 await this.saveData("mirrorCache", { domains, checkedAt: Date.now() })
@@ -125,6 +142,7 @@ class Wnacg extends ComicSource {
                         }
                         source.saveData("webLoginOrigin", "https://www.wnacg.com")
                         source.saveData("webLoginVerification", "browser_only")
+                        UI.showMessage("App 已接收网页 Cookie；会员权限尚未验证，可在源设置中点击“检查登录与浏览”。")
                     } finally {
                         source._webLoginReady = false
                     }
@@ -160,13 +178,8 @@ class Wnacg extends ComicSource {
         const userAgent = this.loadData("_webviewUserAgent")
         const requestHeaders = { "cache-time": "no" }
         if (typeof userAgent === "string" && userAgent) requestHeaders["User-Agent"] = userAgent
-        const response = await Network.get(`${base}/users-users_fav.html`, requestHeaders)
-        const headers = response.headers || {}
-        if (Object.entries(headers).some(([key, value]) =>
-            key.toLowerCase() === "cf-mitigated" && String(value).toLowerCase() === "challenge") ||
-            /cdn-cgi\/challenge-platform|cf-chl-/.test(response.body || "")) {
-            throw "Cloudflare 仍要求验证；请在 App 内登录页完成验证，会话可能绑定网络或设备"
-        }
+        const response = await this._get(`${base}/users-users_fav.html`, requestHeaders)
+        if (response.status !== 200) throw `Invalid Status Code ${response.status}`
         const logoutLinks = (response.body || "").matchAll(/<a\b[^>]*href\s*=\s*["']([^"']+)["']/gi)
         const loggedIn = response.status === 200 &&
             [...logoutLinks].some((match) => /^\/users-logout\.html(?:\?[^#]*)?$/.test(match[1]) ||
@@ -177,6 +190,60 @@ class Wnacg extends ComicSource {
             throw "会员会话未验证；请在 App 内登录页完成滑块，并确认域名一致、会话未过期"
         }
         return true
+    }
+
+    _failureSummary(error) {
+        const message = String(error)
+        if (/Cloudflare/.test(message)) return "仍被 Cloudflare 挑战拦截"
+        const status = message.match(/Invalid Status Code (\d{3})/)
+        if (status) return `HTTP ${status[1]}`
+        if (/会员会话未验证/.test(message)) return "站点未确认会员权限"
+        if (["TypeError", "ReferenceError", "SyntaxError"].includes(error?.name)) {
+            return "源解析错误（页面结构或返回类型不符）"
+        }
+        return "网络或响应异常（不显示异常原文）"
+    }
+
+    async _loginStatus() {
+        const base = this.accountBaseUrl
+        const cookies = await Network.getCookies(`${base}/users-users_fav.html`)
+        const count = Array.isArray(cookies) ? cookies.length : 0
+        const lines = [
+            `本地登录标记：${this.loadData("account") ? "已设置" : "未设置"}`,
+            `会话域名：${base}`,
+            `阅读域名：${this.baseUrl}`,
+            `适用于会员页的 Cookie：${count} 项（不显示名称或值）`,
+        ]
+        try {
+            await this._checkSession(base)
+            await this.saveData("webLoginOrigin", base)
+            await this.saveData("webLoginVerification", "http_verified")
+            lines.push("会员页验证：通过（本次 App 请求）")
+        } catch (error) {
+            lines.push(`会员页验证：未通过；${this._failureSummary(error)}`)
+            if (count && this.loadData("webLoginOrigin")) {
+                await this.saveData("webLoginVerification", "browser_only")
+            } else {
+                await this.deleteData("webLoginVerification")
+            }
+        }
+        if (this.baseUrl !== base) lines.push("阅读与登录域名不同；不会跨域传递 Cookie。")
+        for (const [label, probe] of [
+            ["首页解析", async () => {
+                const parts = await this.explore[0].load(0)
+                if (!parts.some(part => part.comics?.length)) throw "首页未解析出漫画"
+            }],
+            ["固定漫画详情（397513）", () => this.comic.loadInfo("397513")],
+        ]) {
+            try {
+                await probe()
+                lines.push(`${label}：通过（本次 App 请求）`)
+            } catch (error) {
+                lines.push(`${label}：未通过；${this._failureSummary(error)}`)
+            }
+        }
+        lines.push("", "“可注销”仅表示本地登录标记；本检查不下载漫画图片、不修改收藏。")
+        UI.showDialog("绅士漫画登录状态", lines.join("\n"), [{ text: "关闭", callback: () => {} }])
     }
 
     _cookieObjects(text, domain) {
@@ -279,7 +346,7 @@ class Wnacg extends ComicSource {
             type: "multiPartPage",
 
             load: async (page) => {
-                let res = await Network.get(this.baseUrl, {})
+                let res = await this._get(this.baseUrl, {})
                 if (res.status !== 200) {
                     throw `Invalid Status Code ${res.status}`
                 }
@@ -424,7 +491,7 @@ class Wnacg extends ComicSource {
                 url = `${lr[0]}albums-${lr[1]}`;
             }
 
-            let res = await Network.get(url, {})
+            let res = await this._get(url, {})
             if (res.status !== 200) {
                 throw `Invalid Status Code ${res.status}`
             }
@@ -454,7 +521,7 @@ class Wnacg extends ComicSource {
                     url = `${this.baseUrl}/albums-favorite_ranking-page-${page}-type-${option}.html`
                 }
 
-                let res = await Network.get(url, {})
+                let res = await this._get(url, {})
                 if (res.status !== 200) {
                     throw `Invalid Status Code ${res.status}`
                 }
@@ -488,7 +555,7 @@ class Wnacg extends ComicSource {
             if (page !== 0) {
                 url += `&p=${page}`
             }
-            let res = await Network.get(url, {})
+            let res = await this._get(url, {})
             if (res.status !== 200) {
                 throw `Invalid Status Code ${res.status}`
             }
@@ -515,7 +582,7 @@ class Wnacg extends ComicSource {
 
         addOrDelFavorite: async (comicId, folderId, isAdding, favoriteId) => {
             if (!isAdding) {
-                let res = await Network.get(`${this.accountBaseUrl}/users-fav_del-id-${favoriteId}.html?ajax=true&_t=${randomDouble(0, 1)}`, {})
+                let res = await this._get(`${this.accountBaseUrl}/users-fav_del-id-${favoriteId}.html?ajax=true&_t=${randomDouble(0, 1)}`, {})
                 if (res.status !== 200) {
                     throw 'Delete failed'
                 }
@@ -533,7 +600,7 @@ class Wnacg extends ComicSource {
         loadFolders: async (comicId) => {
             await this._checkSession(this.accountBaseUrl)
             await this.saveData("webLoginVerification", "http_verified")
-            let res = await Network.get(`${this.accountBaseUrl}/users-addfav-id-210814.html`, {})
+            let res = await this._get(`${this.accountBaseUrl}/users-addfav-id-210814.html`, {})
             if (res.status !== 200) {
                 throw 'Load failed'
             }
@@ -560,7 +627,7 @@ class Wnacg extends ComicSource {
         },
 
         deleteFolder: async (folderId) => {
-            let res = await Network.get(`${this.accountBaseUrl}/users-favclass_del-id-${folderId}.html?ajax=true&_t=${randomDouble()}`, {})
+            let res = await this._get(`${this.accountBaseUrl}/users-favclass_del-id-${folderId}.html?ajax=true&_t=${randomDouble()}`, {})
             if (res.status !== 200) {
                 throw 'Delete failed'
             }
@@ -571,7 +638,7 @@ class Wnacg extends ComicSource {
             await this._checkSession(this.accountBaseUrl)
             await this.saveData("webLoginVerification", "http_verified")
             let url = `${this.accountBaseUrl}/users-users_fav-page-${page}-c-${folder || "0"}.html`
-            let res = await Network.get(url, {})
+            let res = await this._get(url, {})
             if (res.status !== 200) {
                 throw `Invalid Status Code ${res.status}`
             }
@@ -610,7 +677,7 @@ class Wnacg extends ComicSource {
     comic = {
 
         loadInfo: async (id) => {
-            let res = await Network.get(`${this.baseUrl}/photos-index-page-1-aid-${id}.html?order=asc&mode=list`, {})
+            let res = await this._get(`${this.baseUrl}/photos-index-page-1-aid-${id}.html?order=asc&mode=list`, {})
             if (res.status !== 200) {
                 throw `Invalid Status Code ${res.status}`
             }
@@ -650,7 +717,7 @@ class Wnacg extends ComicSource {
                         page++
                         document.dispose()
                         document = null
-                        let chapterRes = await Network.get(`${this.baseUrl}/photos-index-page-${page}-aid-${id}.html?order=asc&mode=list`, {})
+                        let chapterRes = await this._get(`${this.baseUrl}/photos-index-page-${page}-aid-${id}.html?order=asc&mode=list`, {})
                         if (chapterRes.status !== 200) {
                             throw `Invalid Status Code ${chapterRes.status}`
                         }
@@ -677,7 +744,7 @@ class Wnacg extends ComicSource {
 
         loadThumbnails: async (id, next) => {
             next = next || '1'
-            let res = await Network.get(`${this.baseUrl}/photos-index-page-${next}-aid-${id}.html`, {});
+            let res = await this._get(`${this.baseUrl}/photos-index-page-${next}-aid-${id}.html`, {});
             if (res.status !== 200) {
                 throw `Invalid Status Code ${res.status}`
             }
@@ -703,7 +770,7 @@ class Wnacg extends ComicSource {
         },
 
         loadEp: async (comicId, epId) => {
-            let res = await Network.get(`${this.baseUrl}/photos-gallery-aid-${epId || comicId}.html`, {})
+            let res = await this._get(`${this.baseUrl}/photos-gallery-aid-${epId || comicId}.html`, {})
             if (res.status !== 200) {
                 throw `Invalid Status Code ${res.status}`
             }
@@ -750,6 +817,12 @@ class Wnacg extends ComicSource {
             type: "callback",
             buttonText: "自动填入",
             callback: () => this._importClipboard(),
+        },
+        loginStatus: {
+            title: "在 App 内验证 Cookie、会员页和阅读页面（只读，不显示 Cookie 内容）",
+            type: "callback",
+            buttonText: "检查登录与浏览",
+            callback: () => this._loginStatus(),
         },
     }
 }
