@@ -20,11 +20,11 @@
   {
     "name": "百合会",
     "key": "baihehui",
-    "version": "1.0.2",
+    "version": "1.0.0",
     "fileName": "baihehui.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/baihehui.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/baihehui.js",
     "minAppVersion": "1.4.0",
-    "description": "引用源：Junkrat9527/venera-sources"
+    "description": "引用源：handahao666-boop/venera_comic_source"
   },
   {
     "name": "包子漫画",
@@ -43,15 +43,6 @@
     "url": "https://raw.githubusercontent.com/JunQianNuo/venera-sources/b489d5e2d8c53e6a2a03af9a8bf87dab25a0df0a/dist/baozi_fixed.js",
     "minAppVersion": "1.4.0",
     "description": "引用源：JunQianNuo/venera-sources"
-  },
-  {
-    "name": "布卡漫画",
-    "key": "bukamh",
-    "version": "1.2.9",
-    "fileName": "bukamh.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/bukamh.js",
-    "minAppVersion": "1.4.0",
-    "description": "引用源：Junkrat9527/venera-sources"
   },
   {
     "name": "Buon Dua",
@@ -126,15 +117,6 @@
     "description": "引用源：handahao666-boop/venera_comic_source"
   },
   {
-    "name": "飞翔漫画",
-    "key": "ffppt",
-    "version": "1.0.2",
-    "fileName": "ffppt.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/ffppt.js",
-    "minAppVersion": "1.0.0",
-    "description": "引用源：Junkrat9527/venera-sources"
-  },
-  {
     "name": "4KHD Cosplay",
     "key": "fourkhd_cosplay",
     "version": "2.0.0",
@@ -178,6 +160,15 @@
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/jjcos.js",
     "minAppVersion": "1.6.0",
     "description": "引用源：meaninglesslyy/venera-config"
+  },
+  {
+    "name": "禁漫天堂",
+    "key": "jm",
+    "version": "1.9.2",
+    "fileName": "recode-jm.js",
+    "url": "https://raw.githubusercontent.com/BB-CHICKEN/venera-jm/a266ff026e08e6c5f17516664ffc0b90c91164a1/recode-jm.js",
+    "minAppVersion": "1.16.0",
+    "description": "上游 v1.9.2 更新说明（CHANGELOG）：“修复旧版收藏数据 id 未去混淆导致的 aid 错误”；漫画 ID 归一化修复见上游更新说明。"
   },
   {
     "name": "禁漫天堂X",
@@ -225,6 +216,15 @@
     "description": "引用源：meaninglesslyy/venera-config"
   },
   {
+    "name": "MangaForFree",
+    "key": "mangaforfree",
+    "version": "0.7.4",
+    "fileName": "mangaforfree.js",
+    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/raw_comic/mangaforfree.js",
+    "minAppVersion": "1.6.0",
+    "description": "引用源：meaninglesslyy/venera-config"
+  },
+  {
     "name": "178漫画网",
     "key": "manhua178",
     "version": "1.0.0",
@@ -234,6 +234,15 @@
     "description": "引用源：token1008/venera-cn-64bit"
   },
   {
+    "name": "漫舍",
+    "key": "manshe",
+    "version": "1.0.8",
+    "fileName": "manshe.js",
+    "url": "https://raw.githubusercontent.com/Micqiyue/venera-sources/cee408d01603fd2466eefd66bbd2084218862965/manshe.js",
+    "minAppVersion": "1.0.0",
+    "description": "引用源：Micqiyue/venera-sources"
+  },
+  {
     "name": "漫蛙吧",
     "key": "manwaba",
     "version": "1.1.3",
@@ -241,15 +250,6 @@
     "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/manwaba_fixed_v113.js",
     "minAppVersion": "1.6.0",
     "description": "引用源：handahao666-boop/venera_comic_source"
-  },
-  {
-    "name": "漫蛙吧（图片修复版）",
-    "key": "manwaba_imagefix",
-    "version": "1.0.7",
-    "fileName": "manwaba_fixed.js",
-    "url": "https://raw.githubusercontent.com/YongkeDet/venera-configs/1205b22129ba226413084a0a292a9daa532a15c7/manwaba_fixed.js",
-    "minAppVersion": "1.4.0",
-    "description": "引用源：YongkeDet/venera-configs"
   },
   {
     "name": "漫画manga",
@@ -371,11 +371,11 @@
   {
     "name": "紳士漫畫",
     "key": "wnacg",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "fileName": "wnacg.js",
-    "url": "https://raw.githubusercontent.com/laincat/vensrc/347994cf75ab48cf5c6af3aceb3b7c0ae1d4fa2f/sources/wnacg.js",
+    "url": "https://raw.githubusercontent.com/laincat/vensrc/01da3a95de6ae6ad53a568c50bf4412c23414388/sources/wnacg.js",
     "minAppVersion": "1.3.4",
-    "description": "引用源：laincat/vensrc。独立维护版；支持 App 内网页登录和剪贴板导出 Cookie，会员页验证通过才接受登录；云端缺少会话不计通过。"
+    "description": "引用源：laincat/vensrc。独立维护版；修复导入，发布页备用地址每日同步、手动切换；App 内网页登录使用 www.wnacg.com；支持获取 Cookie，缺会话不计通过。"
   },
   {
     "name": "Xiutaku",
@@ -385,6 +385,15 @@
     "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/xiutaku.js",
     "minAppVersion": "1.6.0",
     "description": "引用源：meaninglesslyy/venera-config"
+  },
+  {
+    "name": "优酷漫画 (修复版)",
+    "key": "ykmh",
+    "version": "1.0.7",
+    "fileName": "youku.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/youku.js",
+    "minAppVersion": "1.4.0",
+    "description": "引用源：handahao666-boop/venera_comic_source"
   },
   {
     "name": "zero搬运网",
