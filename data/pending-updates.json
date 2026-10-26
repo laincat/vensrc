@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-25T08:22:15.226656+00:00",
+  "checkedAt": "2026-10-26T00:59:48.072203+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -2514,25 +2514,6 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "9ad7272a59dd26ea7f59e471ef140a63acbbdd16bcdcf694615e2c9201794816",
-      "key": "baozi",
-      "name": "包子漫画",
-      "version": "1.1.9",
-      "fileName": "baozi.js",
-      "url": "https://raw.githubusercontent.com/YongkeDet/venera-configs/1205b22129ba226413084a0a292a9daa532a15c7/baozi.js",
-      "sha256": "9ad7272a59dd26ea7f59e471ef140a63acbbdd16bcdcf694615e2c9201794816",
-      "repository": "YongkeDet/venera-configs",
-      "minAppVersion": "1.5.0",
-      "sample": {
-        "keyword": "海贼王"
-      },
-      "trackedBy": [
-        "YongkeDet/venera-configs"
-      ],
-      "priority": 0,
-      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
-    },
-    {
       "id": "feffe371db3a294e17202041e2da0b0b021f1a0f810c3eaf55e79ab847cf0fde",
       "key": "noymanga",
       "name": "NoyManga",
@@ -3331,7 +3312,7 @@
     },
     {
       "repository": "WEP-56/EZvenera-config",
-      "commit": "22fb56aefa4514a0349c3f414bf9f01346ad149e",
+      "commit": "f78aeaf641b8d87f40d1c56eef58b5d0add6b12b",
       "errors": []
     },
     {
@@ -3346,8 +3327,9 @@
     },
     {
       "repository": "YongkeDet/venera-configs",
-      "commit": "1205b22129ba226413084a0a292a9daa532a15c7",
-      "errors": []
+      "errors": [
+        "HTTP Error 404: Not Found"
+      ]
     },
     {
       "repository": "casthan321/Venera-community-URL",
@@ -3480,6 +3462,42 @@
       "description": "Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release"
     },
     {
+      "repository": "Maxll51/EZVenera-Lite",
+      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android"
+    },
+    {
+      "repository": "veneraproject/venera-node",
+      "description": ""
+    },
+    {
+      "repository": "fave-eng/venera",
+      "description": ""
+    },
+    {
+      "repository": "markiianklymchuk-hash/kingdoms-of-venera",
+      "description": ""
+    },
+    {
+      "repository": "matloporokjl-tech/https-venerable-malasada-5a1196.netlify.app-",
+      "description": "Google Keep clone (HTML and CSS)"
+    },
+    {
+      "repository": "CyrilPeng/Venera-Next",
+      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。"
+    },
+    {
+      "repository": "Kyosee/VeneraX",
+      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
+    },
+    {
+      "repository": "JUTZUGC/venera-deploy-guide",
+      "description": "Venera 一键安装｜本地和网络漫画都能看，装完导入漫画源即可｜自动校验三平台包｜第三方一键部署方案"
+    },
+    {
+      "repository": "Magic-Miku/venera-store",
+      "description": ""
+    },
+    {
       "repository": "amke79/venerastudios-site",
       "description": ""
     },
@@ -3488,20 +3506,16 @@
       "description": "Venera Hasanova · Imoti Premier · Property in Greece"
     },
     {
-      "repository": "Maxll51/EZVenera-Lite",
-      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android"
-    },
-    {
       "repository": "lll152872/venera-lll",
       "description": "venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、"
     },
     {
-      "repository": "CyrilPeng/Venera-Next",
-      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。"
-    },
-    {
       "repository": "opaiopaio/Venera-Nas",
       "description": "Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中"
+    },
+    {
+      "repository": "Walter498/Venera-Max",
+      "description": "以 VeneraX 為基礎、按我們自己閱讀習慣深度改裝的漫畫閱讀器（栗子漫畫源優先）。加了什麼、修了什麼，全部寫在 README。"
     },
     {
       "repository": "gallhall/venera-v",
@@ -3516,28 +3530,12 @@
       "description": "Venera日语生肉源"
     },
     {
-      "repository": "JUTZUGC/venera-deploy-guide",
-      "description": "Venera 一键安装 + MCP 接入教程｜AI 自动下载校验，小白式指南"
-    },
-    {
       "repository": "moonskycake/venera-next",
       "description": "venera-next的个人漫画源仓库"
     },
     {
-      "repository": "veneraproject/venera-node",
-      "description": ""
-    },
-    {
-      "repository": "Kyosee/VeneraX",
-      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
-    },
-    {
       "repository": "w13630039663-bit/venera-miuix",
       "description": "一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。"
-    },
-    {
-      "repository": "Magic-Miku/venera-store",
-      "description": ""
     },
     {
       "repository": "ikun5200/venera-prime-server",
@@ -3608,15 +3606,7 @@
       "description": ""
     },
     {
-      "repository": "Walter498/Venera-Max",
-      "description": "以 VeneraX 為基礎、按我們自己閱讀習慣深度改裝的漫畫閱讀器（栗子漫畫源優先）。加了什麼、修了什麼，全部寫在 README。"
-    },
-    {
       "repository": "john-cpallc/venerable-grain",
-      "description": ""
-    },
-    {
-      "repository": "fave-eng/venera",
       "description": ""
     },
     {
@@ -3813,10 +3803,6 @@
     },
     {
       "repository": "noelle-silva/Venera",
-      "description": ""
-    },
-    {
-      "repository": "hasanrakib42679-ctrl/venerable-valkyrie-3e891c",
       "description": ""
     }
   ],
