@@ -15,6 +15,8 @@ class WnacgPolicyTests(unittest.TestCase):
             self.assertEqual(evidence["source"][key], item[key])
         self.assertIn(evidence["source"]["commit"], item["url"])
         self.assertTrue(evidence["unverified"])
+        self.assertEqual(sum(row["checked"] for row in evidence["cardFields"]), 528)
+        self.assertTrue(all(row["mismatches"] == 0 for row in evidence["cardFields"]))
         for row in evidence["replay"]:
             self.assertTrue(row["ok"] or row.get("expectedRejection"))
             if row.get("expectedRejection"):

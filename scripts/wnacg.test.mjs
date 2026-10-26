@@ -69,7 +69,7 @@ test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在�
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="/users-logout.html">退出</a>',
   });
-  assert.equal(source.version, "1.4.0");
+  assert.equal(source.version, "1.4.1");
   assert.equal(source.minAppVersion, "1.3.4");
   assert.equal(source.account.login, undefined);
   assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");

@@ -34,7 +34,7 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     delete globals.ComicSource.sources.wnacg;
     const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
     assert.doesNotThrow(() => globals.__clientSourceLoaded(source));
-    assert.equal(source.version, "1.4.0");
+    assert.equal(source.version, "1.4.1");
     assert.equal(source.minAppVersion, "1.3.4");
     assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
     assert.equal(source.baseUrl, "https://www.wnacg.com");
@@ -54,7 +54,7 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     const globals = runtime.createVeneraRuntime();
     // 匿名真实页面提取的 DOM，标题和地址置换；收藏仅为结构用例，不代表会员实测。
     const entry = `<li><a class="ImgA" href="/photos-index-aid-397513.html">
-      <img src="//covers.invalid/397513.webp"></a><a class="txtA">固定样本</a>
+      <img src="//covers.invalid/397513.webp"><span class="sr_tags"><span>连载</span></span></a><a class="txtA">固定样本</a>
       <span class="info">2026-10-26, 131P</span></li>`;
     const list = `<div class="imgBox"><div class="Sub_H2"><span class="Title">最新上架</span>
       <a href="albums.html">更多</a></div><ul>${entry}
@@ -79,7 +79,7 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
             <a href="/photos-index-aid-397513.html"><img src="//covers.invalid/397513.webp"></a></div>
             <div class="itemTxt"><a class="title">固定样本</a><span class="date">日期</span></div></div></div>`
           : url.includes("/search/")
-          ? list.replaceAll('</a><a class="txtA">固定样本</a>', '<span>固定样本</span></a>')
+          ? list.replaceAll('</a><a class="txtA">固定样本</a>', '<span style="color:white">固定样本</span></a>')
           : list) + `<div class="page"><span class="thispage">1</span>
           <a href="/albums-index-page-30.html">30</a><a href="/albums-index-page-2.html">後頁&gt;</a></div>`;
       if (url.includes("page-2-aid-390033")) body = detail +
@@ -92,12 +92,14 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     globals.__clientSourceLoaded(source);
     const home = await source.explore[0].load(1);
     assert.equal(home[0].comics[0].id, "397513");
+    assert.equal(home[0].comics[0].title, "固定样本");
     assert.equal(home[0].viewMore, "category:最新上架@/albums.html");
     const category = await source.categoryComics.load("最新", "/albums.html", [], 1);
     assert.equal(category.comics.length, 1);
     assert.equal(category.maxPage, 30);
     const search = await source.search.load("火影", [], 1);
     assert.equal(search.comics.length, 1);
+    assert.equal(search.comics[0].title, "固定样本");
     assert.equal(search.maxPage, 30);
     const ranking = await source.categoryComics.ranking.load("day", 1);
     assert.equal(ranking.comics.length, 1);
