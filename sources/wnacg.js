@@ -3,7 +3,7 @@
 class Wnacg extends ComicSource {
     name = "紳士漫畫"
     key = "wnacg"
-    version = "1.3.4"
+    version = "1.4.0"
     minAppVersion = "1.3.4"
     url = "https://raw.githubusercontent.com/laincat/vensrc/main/sources/wnacg.js"
 
@@ -31,6 +31,8 @@ class Wnacg extends ComicSource {
     _webLoginReady = false
 
     async _get(url, headers = {}) {
+        const userAgent = this.loadData("_webviewUserAgent")
+        if (typeof userAgent === "string" && userAgent) headers = { "User-Agent": userAgent, ...headers }
         // VeneraX 的共享缓存可能把文本 GET 返回为字节；会员页必须重新请求。
         if (/\/users-/.test(url)) headers = { ...headers, "cache-time": "no" }
         const response = await Network.get(url, headers)
@@ -207,7 +209,8 @@ class Wnacg extends ComicSource {
         const status = message.match(/Invalid Status Code (\d{3})/)
         if (status) return `HTTP ${status[1]}`
         if (/会员会话未验证/.test(message)) return "站点未确认会员权限"
-        if (["TypeError", "ReferenceError", "SyntaxError"].includes(error?.name)) {
+        if (["TypeError", "ReferenceError", "SyntaxError"].includes(error?.name) ||
+            /结构|未找到漫画分区/.test(message)) {
             return "源解析错误（页面结构或返回类型不符）"
         }
         return "网络或响应异常（不显示异常原文）"
@@ -223,8 +226,10 @@ class Wnacg extends ComicSource {
             `阅读域名：${this.baseUrl}`,
             `适用于会员页的 Cookie：${count} 项（不显示名称或值）`,
         ]
+        let memberVerified = false
         try {
             await this._checkSession(base)
+            memberVerified = true
             await this.saveData("webLoginOrigin", base)
             await this.saveData("webLoginVerification", "http_verified")
             lines.push("会员页验证：通过（本次 App 请求）")
@@ -235,6 +240,16 @@ class Wnacg extends ComicSource {
             } else {
                 await this.deleteData("webLoginVerification")
             }
+        }
+        if (memberVerified) {
+            try {
+                const result = await this.favorites.loadComics(1, null)
+                lines.push(`收藏列表解析：通过（本次 App 请求，${result.comics.length} 项）`)
+            } catch (error) {
+                lines.push(`收藏列表解析：未通过；${this._failureSummary(error)}`)
+            }
+        } else {
+            lines.push("收藏列表解析：跳过（会员页未验证，不计通过）")
         }
         if (this.baseUrl !== base) lines.push("阅读与登录域名不同；不会跨域传递 Cookie。")
         for (const [label, probe] of [
@@ -330,21 +345,53 @@ class Wnacg extends ComicSource {
         UI.showMessage("剪贴板 Cookie 已验证，已自动填入并登录")
     }
 
+    _imageUrl(value) {
+        if (typeof value !== "string" || !value.trim()) throw "漫画页面缺少图片地址"
+        value = value.trim()
+        if (/^\/\//.test(value)) return "https:" + value.replace(/^\/+/, "//")
+        if (/^https?:\/\//.test(value)) return value
+        if (value.startsWith("/")) return this.baseUrl + value
+        throw "漫画图片地址格式不符"
+    }
+
+    _listElements(document) {
+        // 翻页会混入站内 /link- 和外站广告卡片，只解析漫画路由。
+        return document.querySelectorAll("div.gallary_wrap > ul.cc > li, .imgBox li, .rand_rq .itemBox")
+            .filter(element => /\/photos-index-(?:page-\d+-)?aid-\d+\.html(?:[?#]|$)/.test(
+                element.querySelector("div.pic_box > a, a.ImgA, .itemImg > a")?.attributes.href || ""))
+    }
+
+    _maxPage(document) {
+        let pages = 1
+        for (const link of document.querySelectorAll(".paginator a, .page a, .paginator .thispage, .page .thispage")) {
+            const href = link.attributes.href || ""
+            const match = href.match(/-page-(\d+)|[?&]p=(\d+)/)
+            const value = match ? Number(match[1] || match[2]) : Number(link.text.trim())
+            if (Number.isSafeInteger(value) && value > pages) pages = value
+        }
+        const more = document.querySelector("#dv-ch-more")
+        if (more) {
+            const total = Number(more.attributes["data-total"])
+            const limit = Number(more.attributes["data-limit"])
+            if (Number.isSafeInteger(total) && total > 0 && Number.isSafeInteger(limit) && limit > 0) {
+                pages = Math.max(pages, Math.ceil(total / limit))
+            }
+        }
+        return pages
+    }
+
     parseComic(c) {
-        let link = c.querySelector("div.pic_box > a").attributes["href"];
-        let id = RegExp("(?<=-aid-)[0-9]+").exec(link)[0];
-        let image =
-            c.querySelector("div.pic_box > a > img").attributes["src"];
-        image = `https:${image}`;
-        let name = c.querySelector("div.info > div.title > a").text;
-        let info = c.querySelector("div.info > div.info_col").text.trim();
-        info = info.replaceAll('\n', '');
-        info = info.replaceAll('\t', '');
+        const anchor = c.querySelector("div.pic_box > a, a.ImgA, .itemImg > a")
+        const id = (anchor?.attributes.href || "").match(/\/photos-index-(?:page-\d+-)?aid-(\d+)\.html(?:[?#]|$)/)?.[1]
+        const image = c.querySelector("div.pic_box > a > img, a.ImgA > img, .itemImg > a > img")
+        const title = c.querySelector("div.info > div.title > a, a.txtA, a.ImgA > span, .itemTxt > a.title")?.text.trim()
+        if (!id || !image || !title) throw "漫画列表结构已变化，无法解析条目"
+        const info = c.querySelector("div.info > div.info_col, span.info, .itemTxt .date")?.text.trim() || ""
         return new Comic({
             id: id,
-            title: name,
-            cover: image,
-            description: info,
+            title: title,
+            cover: this._imageUrl(image.attributes["data-original"] || image.attributes.src),
+            description: info.replaceAll(/[\n\t]/g, ""),
         })
     }
 
@@ -360,9 +407,30 @@ class Wnacg extends ComicSource {
                     throw `Invalid Status Code ${res.status}`
                 }
                 let document = new HtmlDocument(res.body)
+                if (document.querySelector(".imgBox")) {
+                    try {
+                        const result = []
+                        for (const block of document.querySelectorAll(".imgBox")) {
+                            const heading = block.querySelector(".Sub_H2 .Title")
+                            const elements = this._listElements(block)
+                            if (!heading || !elements.length) continue
+                            const link = block.querySelector(".Sub_H2 > a")?.attributes.href
+                            result.push({
+                                title: heading.text.trim(),
+                                comics: elements.map(element => this.parseComic(element)),
+                                ...(link ? { viewMore: `category:${heading.text.trim()}@/${link.replace(/^\/+/, "")}` } : {}),
+                            })
+                        }
+                        if (!result.length) throw "移动版首页未找到漫画分区"
+                        return result
+                    } finally {
+                        document.dispose()
+                    }
+                }
                 let titleBlocks = document.querySelectorAll("div.title_sort");
                 let comicBlocks = document.querySelectorAll("div.bodywrap");
-                if (titleBlocks.length !== comicBlocks.length) {
+                if (!titleBlocks.length || titleBlocks.length !== comicBlocks.length) {
+                    document.dispose()
                     throw "Invalid Page"
                 }
                 let result = []
@@ -371,7 +439,7 @@ class Wnacg extends ComicSource {
                     let link = titleBlocks[i].querySelector("div.r > a").attributes["href"]
                     let comics = []
                     let comicBlock = comicBlocks[i]
-                    let comicElements = comicBlock.querySelectorAll("div.gallary_wrap > ul.cc > li")
+                    let comicElements = this._listElements(comicBlock)
                     for (let comicElement of comicElements) {
                         comics.push(this.parseComic(comicElement))
                     }
@@ -505,13 +573,12 @@ class Wnacg extends ComicSource {
                 throw `Invalid Status Code ${res.status}`
             }
             let document = new HtmlDocument(res.body)
-            let comicElements = document.querySelectorAll("div.grid div.gallary_wrap > ul.cc > li")
+            let comicElements = this._listElements(document)
             let comics = []
             for (let comicElement of comicElements) {
                 comics.push(this.parseComic(comicElement))
             }
-            let pagesLink = document.querySelectorAll("div.f_left.paginator > a");
-            let pages = Number(pagesLink[pagesLink.length - 1].text)
+            let pages = this._maxPage(document)
             document.dispose()
             return {
                 comics: comics,
@@ -536,17 +603,13 @@ class Wnacg extends ComicSource {
                 }
 
                 let document = new HtmlDocument(res.body)
-                let comicElements = document.querySelectorAll("div.grid div.gallary_wrap > ul.cc > li")
+                let comicElements = this._listElements(document)
                 let comics = []
                 for (let comicElement of comicElements) {
                     comics.push(this.parseComic(comicElement))
                 }
 
-                let pagesLink = document.querySelectorAll("div.f_left.paginator > a")
-                let pages = 1
-                if (pagesLink.length > 0) {
-                    pages = Number(pagesLink[pagesLink.length - 1].text)
-                }
+                let pages = this._maxPage(document)
 
                 document.dispose()
                 return {
@@ -569,14 +632,14 @@ class Wnacg extends ComicSource {
                 throw `Invalid Status Code ${res.status}`
             }
             let document = new HtmlDocument(res.body)
-            let comicElements = document.querySelectorAll("div.grid div.gallary_wrap > ul.cc > li")
+            let comicElements = this._listElements(document)
             let comics = []
             for (let comicElement of comicElements) {
                 comics.push(this.parseComic(comicElement))
             }
-            let total = document.querySelectorAll("p.result > b")[0].text.replaceAll(',', '')
+            let total = document.querySelector("p.result > b")?.text.replaceAll(',', '')
             const comicsPerPage = 24
-            let pages = Math.ceil(Number(total) / comicsPerPage)
+            let pages = total ? Math.ceil(Number(total) / comicsPerPage) : this._maxPage(document)
             document.dispose()
             return {
                 comics: comics,
@@ -591,6 +654,9 @@ class Wnacg extends ComicSource {
 
         addOrDelFavorite: async (comicId, folderId, isAdding, favoriteId) => {
             if (!isAdding) {
+                if (!/^\d+$/.test(String(favoriteId || ""))) {
+                    throw "站点未提供此条目的收藏编号，请在网页内删除，避免误操作"
+                }
                 let res = await this._get(`${this.accountBaseUrl}/users-fav_del-id-${favoriteId}.html?ajax=true&_t=${randomDouble(0, 1)}`, {})
                 if (res.status !== 200) {
                     throw 'Delete failed'
@@ -619,6 +685,7 @@ class Wnacg extends ComicSource {
                 if (option.attributes["value"] === "") return
                 data[option.attributes["value"]] = option.text
             }))
+            document.dispose()
             return {
                 folders: data,
                 favorited: []
@@ -652,10 +719,40 @@ class Wnacg extends ComicSource {
                 throw `Invalid Status Code ${res.status}`
             }
             let document = new HtmlDocument(res.body)
+            if (/您沒有權限|您没有权限|需要登錄|需要登录/.test(res.body)) {
+                document.dispose()
+                throw "会员会话未验证；收藏请求返回了登录提示"
+            }
+            if (document.querySelector(".imgBox")) {
+                try {
+                    const elements = this._listElements(document)
+                    if (!elements.length && !/暫無|暂无|沒有收藏|没有收藏|尚未收藏|尚無|尚无/.test(res.body)) {
+                        throw "收藏页结构尚未识别；不会将其视为空收藏"
+                    }
+                    const comics = elements.map(element => {
+                        const comic = this.parseComic(element)
+                        const action = element.querySelector("a[onclick*='del-id-'], a[href*='fav_del-id-']")
+                        const favoriteId = String(action?.attributes.onclick || action?.attributes.href || "")
+                            .match(/del-id-(\d+)/)?.[1]
+                        return new Comic({
+                            id: comic.id, title: comic.title, cover: comic.cover,
+                            subtitle: comic.description, favoriteId,
+                        })
+                    })
+                    return { comics, maxPage: this._maxPage(document) }
+                } finally {
+                    document.dispose()
+                }
+            }
             let comicBlocks = document.querySelectorAll("div.asTB")
+            // 未取得真实会员列表时不能把未知版式伪装成空收藏。
+            if (!comicBlocks.length && !/暫無|暂无|沒有收藏|没有收藏|尚未收藏|尚無|尚无/.test(res.body)) {
+                document.dispose()
+                throw "收藏页结构尚未识别；请保留脱敏诊断，不会将其视为空收藏"
+            }
             let comics = comicBlocks.map((comic) => {
                 let cover = comic.querySelector("div.asTBcell.thumb > div > img").attributes["src"]
-                cover = 'https:' + cover
+                cover = this._imageUrl(cover)
                 let time = comic.querySelector("div.box_cel.u_listcon > p.l_catg > span").text.replaceAll("創建時間：", "")
                 let name = comic.querySelector("div.box_cel.u_listcon > p.l_title > a").text;
                 let link = comic.querySelector("div.box_cel.u_listcon > p.l_title > a").attributes["href"];
@@ -670,11 +767,7 @@ class Wnacg extends ComicSource {
                     favoriteId: favoriteId,
                 })
             })
-            let pages = 1
-            let pagesLink = document.querySelectorAll("div.f_left.paginator > a")
-            if (pagesLink.length > 0) {
-                pages = Number(pagesLink[pagesLink.length - 1].text)
-            }
+            let pages = this._maxPage(document)
             document.dispose()
             return {
                 comics: comics,
@@ -691,22 +784,31 @@ class Wnacg extends ComicSource {
                 throw `Invalid Status Code ${res.status}`
             }
             let document = new HtmlDocument(res.body)
-            let title = document.querySelector("div.userwrap > h2").text
-            let cover = document.querySelector("div.userwrap > div.asTB > div.asTBcell.uwthumb > img").attributes["src"]
-            cover = 'https:' + cover
-            cover = cover.substring(0, 6) + cover.substring(8)
+            const mobile = document.querySelector("#comicName") !== null
+            let title = document.querySelector("div.userwrap > h2, #comicName")?.text.trim()
+            let coverElement = document.querySelector("div.asTBcell.uwthumb > img, #Cover > img")
+            if (!title || !coverElement) {
+                document.dispose()
+                throw "漫画详情结构已变化，缺少标题或封面"
+            }
+            let cover = this._imageUrl(coverElement.attributes.src)
             let labels = document.querySelectorAll("div.asTBcell.uwconn > label")
-            let category = labels[0].text.split("：")[1]
-            let isSeries = document.querySelector("#sr_pub") !== null
-            let tagsDom = document.querySelectorAll("div.asTBcell.uwconn a.tagshow");
+            let category = mobile
+                ? document.querySelector(".sub_r a[href*='albums-index-cate-']")?.text.trim()
+                : labels[0]?.text.split("：")[1]
+            let isSeries = document.querySelector("#sr_pub, #dv-ch-list") !== null
+            let tagsDom = document.querySelectorAll("div.asTBcell.uwconn a.tagshow, .dv-tags a");
             let tags = new Map()
-            tags.set(isSeries ? "章節" : "頁數", [labels[1].text.split("：")[1]])
-            tags.set("分類", [category])
+            const count = mobile
+                ? document.querySelector(isSeries ? ".dv-ch-cnt" : ".sub_r .date")?.text.trim()
+                : labels[1]?.text.split("：")[1]
+            if (count) tags.set(isSeries ? "章節" : "頁數", [count])
+            if (category) tags.set("分類", [category])
             if (tagsDom.length > 0) {
                 tags.set("標籤", tagsDom.map((e) => e.text))
             }
-            let description = document.querySelector("div.asTBcell.uwconn > p").text;
-            let uploader = document.querySelector("div.asTBcell.uwuinfo > a > p").text;
+            let description = document.querySelector("div.asTBcell.uwconn > p, .dv-desc-text")?.text.trim() || "";
+            let uploader = document.querySelector("div.asTBcell.uwuinfo > a > p, .sub_r a.introName")?.text.trim() || "";
 
             let chapters
             if (isSeries) {
@@ -715,13 +817,12 @@ class Wnacg extends ComicSource {
                 let maxPage = 1
                 try {
                     while (true) {
-                        for (let chapter of document.querySelectorAll("a[data-chid]")) {
-                            chapters.set(chapter.attributes["data-chid"], chapter.text.trim())
+                        for (let chapter of document.querySelectorAll("a[data-chid], #dv-ch-list li[data-chid]")) {
+                            const anchor = chapter.querySelector("a")
+                            chapters.set(chapter.attributes["data-chid"],
+                                anchor?.attributes.title || chapter.text.trim())
                         }
-                        for (let link of document.querySelectorAll("div.f_left.paginator a[href]")) {
-                            let match = link.attributes["href"].match(/-page-(\d+)-/)
-                            if (match) maxPage = Math.max(maxPage, Number(match[1]))
-                        }
+                        maxPage = Math.max(maxPage, this._maxPage(document))
                         if (page >= maxPage) break
                         page++
                         document.dispose()
@@ -758,9 +859,18 @@ class Wnacg extends ComicSource {
                 throw `Invalid Status Code ${res.status}`
             }
             let document = new HtmlDocument(res.body)
-            if (document.querySelector("#sr_pub")) {
+            if (document.querySelector("#sr_pub, #dv-ch-list")) {
                 document.dispose()
                 return { thumbnails: [], next: null }
+            }
+            if (document.querySelector("#comicName")) {
+                document.dispose()
+                const { images } = await this.comic.loadEp(id, null)
+                const offset = (Number(next) - 1) * 12
+                return {
+                    thumbnails: images.slice(offset, offset + 12),
+                    next: offset + 12 < images.length ? String(Number(next) + 1) : null,
+                }
             }
             let thumbnails = document.querySelectorAll("div.pic_box.tb > a > img").map((e) => {
                 return 'https:' + e.attributes["src"]
