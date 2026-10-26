@@ -1,0 +1,846 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-26T00:39:31.277114+00:00",
+  "source": {
+    "version": "1.4.0",
+    "commit": "bebdddd51c9fc0b16b469b384955575a20ec6ce9",
+    "sha256": "3fde434021bd399828b384df2a2a6e987dfd23aae1ed1c7a11707adf002aef70",
+    "minAppVersion": "1.3.4",
+    "sample": {
+      "comicId": "397513",
+      "keyword": "火影"
+    }
+  },
+  "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+  "scope": "公开 HTML 对照、原始客户端 bootstrap 回放、移动 UA 在线匿名巡检；不代表真实 App 交互登录或会员收藏通过",
+  "before": {
+    "version": "1.3.4",
+    "sha256": "0f137e588e9ccc6e1744644227c0098b81da780a15aca0728c8d9ee0b0867696",
+    "mobileFailures": [
+      "首页为空",
+      "分类解析报错",
+      "搜索解析报错",
+      "详情解析报错"
+    ]
+  },
+  "htmlSnapshots": [
+    {
+      "page": "分类第二页",
+      "layout": "桌面版",
+      "bodySha256": "708c06dae29c6d0f90ec06f0fc13a7d445af206b59a6fd954c7f820f6e07f77c",
+      "bytes": 35774,
+      "capturedAt": "2026-10-26T00:34:22.994832+00:00"
+    },
+    {
+      "page": "分类第一页",
+      "layout": "桌面版",
+      "bodySha256": "0ea670e8f630a1459d4ef9201d218ba665cdd2301df7994d3113cdb3178972cf",
+      "bytes": 37350,
+      "capturedAt": "2026-10-26T00:22:22.417272+00:00"
+    },
+    {
+      "page": "固定详情",
+      "layout": "桌面版",
+      "bodySha256": "d26e88a13408c008a6a72c0b0fa2aedaa68ac4e3c593d8a4a06d640db423974d",
+      "bytes": 34212,
+      "capturedAt": "2026-10-26T00:22:24.347478+00:00"
+    },
+    {
+      "page": "匿名收藏页",
+      "layout": "桌面版",
+      "bodySha256": "1673b7303726d64d65d5d7af638f6029fbd1b6922b65e30980718e42c5c39393",
+      "bytes": 8814,
+      "capturedAt": "2026-10-26T00:22:25.924459+00:00"
+    },
+    {
+      "page": "图片目录",
+      "layout": "桌面版",
+      "bodySha256": "3e9a6b73418ce7a9453d4478d746cdfb1ef271726c368a86f844d6d2560af955",
+      "bytes": 19672,
+      "capturedAt": "2026-10-26T00:22:25.143077+00:00"
+    },
+    {
+      "page": "首页",
+      "layout": "桌面版",
+      "bodySha256": "bb55f6f62ccedc502a593851cd0eef6f74fbe11978a38c7a0506de86b41711df",
+      "bytes": 68041,
+      "capturedAt": "2026-10-26T00:22:21.545955+00:00"
+    },
+    {
+      "page": "日榜",
+      "layout": "桌面版",
+      "bodySha256": "a4eeca984dbadf9ab085a40545293dbf827cab9989e5913861c0623e53530200",
+      "bytes": 75023,
+      "capturedAt": "2026-10-26T00:34:23.868183+00:00"
+    },
+    {
+      "page": "搜索",
+      "layout": "桌面版",
+      "bodySha256": "2c73e7bdb64e9b3027b94a9c495c247d7b7c2253dbe85d56eba3d09a165bceaf",
+      "bytes": 50047,
+      "capturedAt": "2026-10-26T00:22:23.488657+00:00"
+    },
+    {
+      "page": "连载第二页",
+      "layout": "桌面版",
+      "bodySha256": "8af6f2e929ba34704380b732a6035e15b526c6b38560c91be71e598244eb2023",
+      "bytes": 28661,
+      "capturedAt": "2026-10-26T00:27:58.918613+00:00"
+    },
+    {
+      "page": "连载第一页",
+      "layout": "桌面版",
+      "bodySha256": "c4ec6d38d9a90ccfcd4e14caa214b718ca449e2d10b0e706b72dfd1f59831ff6",
+      "bytes": 30653,
+      "capturedAt": "2026-10-26T00:27:23.418803+00:00"
+    },
+    {
+      "page": "分类第二页",
+      "layout": "移动版",
+      "bodySha256": "7d6c86f5c98e4da520a04c26d14c098e78babb95ea07aee4ba792cff5f215ae0",
+      "bytes": 26070,
+      "capturedAt": "2026-10-26T00:34:22.529422+00:00"
+    },
+    {
+      "page": "分类第一页",
+      "layout": "移动版",
+      "bodySha256": "44b7a8bdb8d5fca0cfff81691a04e6ce655fe4fc1978556630f41671a573f803",
+      "bytes": 24768,
+      "capturedAt": "2026-10-26T00:22:21.960635+00:00"
+    },
+    {
+      "page": "固定详情",
+      "layout": "移动版",
+      "bodySha256": "658c560a4c6f063161b9fb3fdbbaa2bbff4f2420fc9b126de1da83ca108d49ca",
+      "bytes": 20568,
+      "capturedAt": "2026-10-26T00:22:23.919927+00:00"
+    },
+    {
+      "page": "匿名收藏页",
+      "layout": "移动版",
+      "bodySha256": "56927a808926d6deb659c5749c31e37839f48ff64b06dadf43b715476f5f52f4",
+      "bytes": 10413,
+      "capturedAt": "2026-10-26T00:22:25.548858+00:00"
+    },
+    {
+      "page": "图片目录",
+      "layout": "移动版",
+      "bodySha256": "3e9a6b73418ce7a9453d4478d746cdfb1ef271726c368a86f844d6d2560af955",
+      "bytes": 19672,
+      "capturedAt": "2026-10-26T00:22:24.743247+00:00"
+    },
+    {
+      "page": "首页",
+      "layout": "移动版",
+      "bodySha256": "526f8adf4082ee231b8a35afc5c46dc69f7b14bde9a1fda92392232ff1a0d6f3",
+      "bytes": 32732,
+      "capturedAt": "2026-10-26T00:24:37.694458+00:00"
+    },
+    {
+      "page": "日榜",
+      "layout": "移动版",
+      "bodySha256": "1090b196f544408962453808b5b64e62f642750b1f7bf363007a1831c2865fc6",
+      "bytes": 55721,
+      "capturedAt": "2026-10-26T00:34:23.427280+00:00"
+    },
+    {
+      "page": "搜索",
+      "layout": "移动版",
+      "bodySha256": "29f2b2e724c3964f9f163bc1874ddeafc832b4cb1af1629e110e2728e426ee6c",
+      "bytes": 45627,
+      "capturedAt": "2026-10-26T00:22:22.849058+00:00"
+    },
+    {
+      "page": "连载第二页",
+      "layout": "移动版",
+      "bodySha256": "af33a3446a6ccd12cb41723b011b6e282bcc4b41cbd6b2af78c97c502cb93c69",
+      "bytes": 30230,
+      "capturedAt": "2026-10-26T00:27:58.494409+00:00"
+    },
+    {
+      "page": "连载第一页",
+      "layout": "移动版",
+      "bodySha256": "98865dcb3f177b1b32bd76465798aa378b9896908691178a6f38a9e58ba97a30",
+      "bytes": 32152,
+      "capturedAt": "2026-10-26T00:27:23.011704+00:00"
+    }
+  ],
+  "replay": [
+    {
+      "client": "venerax",
+      "stage": "首页",
+      "ok": true,
+      "count": 66,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venerax",
+      "stage": "分类第一页",
+      "ok": true,
+      "count": 20,
+      "maxPage": 15193,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venerax",
+      "stage": "分类第二页",
+      "ok": true,
+      "count": 20,
+      "maxPage": 15221,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venerax",
+      "stage": "日榜",
+      "ok": true,
+      "count": 20,
+      "maxPage": 768,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venerax",
+      "stage": "搜索",
+      "ok": true,
+      "count": 24,
+      "maxPage": 28,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venerax",
+      "stage": "固定详情",
+      "ok": true,
+      "count": null,
+      "hasTitle": true,
+      "validCover": true,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venerax",
+      "stage": "连载完整目录",
+      "ok": true,
+      "count": 14,
+      "hasTitle": true,
+      "validCover": true,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venerax",
+      "stage": "图片目录",
+      "ok": true,
+      "count": 131,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venerax",
+      "stage": "缩略图目录",
+      "ok": true,
+      "count": 12,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venerax",
+      "stage": "匿名收藏拒绝",
+      "ok": false,
+      "reason": "站点未确认会员权限",
+      "expectedRejection": true,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venerax",
+      "stage": "首页",
+      "ok": true,
+      "count": 30,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venerax",
+      "stage": "分类第一页",
+      "ok": true,
+      "count": 20,
+      "maxPage": 15193,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venerax",
+      "stage": "分类第二页",
+      "ok": true,
+      "count": 20,
+      "maxPage": 15221,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venerax",
+      "stage": "日榜",
+      "ok": true,
+      "count": 20,
+      "maxPage": 768,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venerax",
+      "stage": "搜索",
+      "ok": true,
+      "count": 24,
+      "maxPage": 10,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venerax",
+      "stage": "固定详情",
+      "ok": true,
+      "count": null,
+      "hasTitle": true,
+      "validCover": true,
+      "layout": "移动版"
+    },
+    {
+      "client": "venerax",
+      "stage": "连载完整目录",
+      "ok": true,
+      "count": 14,
+      "hasTitle": true,
+      "validCover": true,
+      "layout": "移动版"
+    },
+    {
+      "client": "venerax",
+      "stage": "图片目录",
+      "ok": true,
+      "count": 131,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venerax",
+      "stage": "缩略图目录",
+      "ok": true,
+      "count": 12,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venerax",
+      "stage": "匿名收藏拒绝",
+      "ok": false,
+      "reason": "站点未确认会员权限",
+      "expectedRejection": true,
+      "layout": "移动版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "首页",
+      "ok": true,
+      "count": 66,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "分类第一页",
+      "ok": true,
+      "count": 20,
+      "maxPage": 15193,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "分类第二页",
+      "ok": true,
+      "count": 20,
+      "maxPage": 15221,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "日榜",
+      "ok": true,
+      "count": 20,
+      "maxPage": 768,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "搜索",
+      "ok": true,
+      "count": 24,
+      "maxPage": 28,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "固定详情",
+      "ok": true,
+      "count": null,
+      "hasTitle": true,
+      "validCover": true,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "连载完整目录",
+      "ok": true,
+      "count": 14,
+      "hasTitle": true,
+      "validCover": true,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "图片目录",
+      "ok": true,
+      "count": 131,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "缩略图目录",
+      "ok": true,
+      "count": 12,
+      "hasTitle": false,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "匿名收藏拒绝",
+      "ok": false,
+      "reason": "站点未确认会员权限",
+      "expectedRejection": true,
+      "layout": "桌面版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "首页",
+      "ok": true,
+      "count": 30,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "分类第一页",
+      "ok": true,
+      "count": 20,
+      "maxPage": 15193,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "分类第二页",
+      "ok": true,
+      "count": 20,
+      "maxPage": 15221,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "日榜",
+      "ok": true,
+      "count": 20,
+      "maxPage": 768,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "搜索",
+      "ok": true,
+      "count": 24,
+      "maxPage": 10,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "固定详情",
+      "ok": true,
+      "count": null,
+      "hasTitle": true,
+      "validCover": true,
+      "layout": "移动版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "连载完整目录",
+      "ok": true,
+      "count": 14,
+      "hasTitle": true,
+      "validCover": true,
+      "layout": "移动版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "图片目录",
+      "ok": true,
+      "count": 131,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "缩略图目录",
+      "ok": true,
+      "count": 12,
+      "hasTitle": false,
+      "layout": "移动版"
+    },
+    {
+      "client": "venera-next",
+      "stage": "匿名收藏拒绝",
+      "ok": false,
+      "reason": "站点未确认会员权限",
+      "expectedRejection": true,
+      "layout": "移动版"
+    }
+  ],
+  "online": [
+    {
+      "client": "venerax",
+      "runId": "e7dd40df-7e4d-4865-889d-c49ae1fa9d3c",
+      "startedAt": "2026-10-26T00:36:00.632Z",
+      "finishedAt": "2026-10-26T00:36:08.708Z",
+      "status": "未完整检查（交互与会员能力跳过）",
+      "counts": {
+        "passed": 23,
+        "failed": 0,
+        "skipped": 14
+      },
+      "stages": [
+        {
+          "path": "runtime.load",
+          "status": "通过"
+        },
+        {
+          "path": "source.load",
+          "status": "通过"
+        },
+        {
+          "path": "configuration.apply",
+          "status": "通过"
+        },
+        {
+          "path": "init",
+          "status": "通过"
+        },
+        {
+          "path": "configuration.capabilities",
+          "status": "通过"
+        },
+        {
+          "path": "account.loginWithCookies.validate",
+          "status": "跳过"
+        },
+        {
+          "path": "account.loginWithWebview.checkStatus",
+          "status": "跳过"
+        },
+        {
+          "path": "account.loginWithWebview.onLoginSuccess",
+          "status": "跳过"
+        },
+        {
+          "path": "category",
+          "status": "通过"
+        },
+        {
+          "path": "settings",
+          "status": "通过"
+        },
+        {
+          "path": "search.load",
+          "status": "通过"
+        },
+        {
+          "path": "search.load.page[2]",
+          "status": "通过"
+        },
+        {
+          "path": "explore[0].load",
+          "status": "通过"
+        },
+        {
+          "path": "categoryComics.load",
+          "status": "通过"
+        },
+        {
+          "path": "categoryComics.load.page[2]",
+          "status": "通过"
+        },
+        {
+          "path": "categoryComics.ranking.load",
+          "status": "通过"
+        },
+        {
+          "path": "categoryComics.ranking.load.page[2]",
+          "status": "通过"
+        },
+        {
+          "path": "favorites.loadFolders",
+          "status": "跳过"
+        },
+        {
+          "path": "favorites.loadComics",
+          "status": "跳过"
+        },
+        {
+          "path": "comic.loadInfo",
+          "status": "通过"
+        },
+        {
+          "path": "comic.loadEp",
+          "status": "通过"
+        },
+        {
+          "path": "comic.loadThumbnails",
+          "status": "通过"
+        },
+        {
+          "path": "comic.onClickTag",
+          "status": "通过"
+        },
+        {
+          "path": "comic.onClickTag",
+          "status": "通过"
+        },
+        {
+          "path": "image.download",
+          "status": "通过"
+        },
+        {
+          "path": "image.decode",
+          "status": "通过"
+        },
+        {
+          "path": "thumbnail.download",
+          "status": "通过"
+        },
+        {
+          "path": "thumbnail.decode",
+          "status": "通过"
+        },
+        {
+          "path": "account.logout",
+          "status": "跳过"
+        },
+        {
+          "path": "favorites.addOrDelFavorite",
+          "status": "跳过"
+        },
+        {
+          "path": "favorites.addFolder",
+          "status": "跳过"
+        },
+        {
+          "path": "favorites.deleteFolder",
+          "status": "跳过"
+        },
+        {
+          "path": "settings.domain.callback",
+          "status": "跳过"
+        },
+        {
+          "path": "settings.refreshDomains.callback",
+          "status": "跳过"
+        },
+        {
+          "path": "settings.copyCookies.callback",
+          "status": "跳过"
+        },
+        {
+          "path": "settings.importCookies.callback",
+          "status": "跳过"
+        },
+        {
+          "path": "settings.loginStatus.callback",
+          "status": "跳过"
+        }
+      ]
+    },
+    {
+      "client": "venera-next",
+      "runId": "ce80ce47-9099-4b5d-b54d-49a4c699d7b3",
+      "startedAt": "2026-10-26T00:37:20.102Z",
+      "finishedAt": "2026-10-26T00:37:33.851Z",
+      "status": "未完整检查（交互与会员能力跳过）",
+      "counts": {
+        "passed": 23,
+        "failed": 0,
+        "skipped": 14
+      },
+      "stages": [
+        {
+          "path": "runtime.load",
+          "status": "通过"
+        },
+        {
+          "path": "source.load",
+          "status": "通过"
+        },
+        {
+          "path": "configuration.apply",
+          "status": "通过"
+        },
+        {
+          "path": "init",
+          "status": "通过"
+        },
+        {
+          "path": "configuration.capabilities",
+          "status": "通过"
+        },
+        {
+          "path": "account.loginWithCookies.validate",
+          "status": "跳过"
+        },
+        {
+          "path": "account.loginWithWebview.checkStatus",
+          "status": "跳过"
+        },
+        {
+          "path": "account.loginWithWebview.onLoginSuccess",
+          "status": "跳过"
+        },
+        {
+          "path": "category",
+          "status": "通过"
+        },
+        {
+          "path": "settings",
+          "status": "通过"
+        },
+        {
+          "path": "search.load",
+          "status": "通过"
+        },
+        {
+          "path": "search.load.page[2]",
+          "status": "通过"
+        },
+        {
+          "path": "explore[0].load",
+          "status": "通过"
+        },
+        {
+          "path": "categoryComics.load",
+          "status": "通过"
+        },
+        {
+          "path": "categoryComics.load.page[2]",
+          "status": "通过"
+        },
+        {
+          "path": "categoryComics.ranking.load",
+          "status": "通过"
+        },
+        {
+          "path": "categoryComics.ranking.load.page[2]",
+          "status": "通过"
+        },
+        {
+          "path": "favorites.loadFolders",
+          "status": "跳过"
+        },
+        {
+          "path": "favorites.loadComics",
+          "status": "跳过"
+        },
+        {
+          "path": "comic.loadInfo",
+          "status": "通过"
+        },
+        {
+          "path": "comic.loadEp",
+          "status": "通过"
+        },
+        {
+          "path": "comic.loadThumbnails",
+          "status": "通过"
+        },
+        {
+          "path": "comic.onClickTag",
+          "status": "通过"
+        },
+        {
+          "path": "comic.onClickTag",
+          "status": "通过"
+        },
+        {
+          "path": "image.download",
+          "status": "通过"
+        },
+        {
+          "path": "image.decode",
+          "status": "通过"
+        },
+        {
+          "path": "thumbnail.download",
+          "status": "通过"
+        },
+        {
+          "path": "thumbnail.decode",
+          "status": "通过"
+        },
+        {
+          "path": "account.logout",
+          "status": "跳过"
+        },
+        {
+          "path": "favorites.addOrDelFavorite",
+          "status": "跳过"
+        },
+        {
+          "path": "favorites.addFolder",
+          "status": "跳过"
+        },
+        {
+          "path": "favorites.deleteFolder",
+          "status": "跳过"
+        },
+        {
+          "path": "settings.domain.callback",
+          "status": "跳过"
+        },
+        {
+          "path": "settings.refreshDomains.callback",
+          "status": "跳过"
+        },
+        {
+          "path": "settings.copyCookies.callback",
+          "status": "跳过"
+        },
+        {
+          "path": "settings.importCookies.callback",
+          "status": "跳过"
+        },
+        {
+          "path": "settings.loginStatus.callback",
+          "status": "跳过"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "真实会员收藏列表",
+    "App 内滑块与网页登录交互",
+    "退出并重启 App 后的 Cookie 持久化"
+  ],
+  "privacy": "仅保存页面哈希、数量和阶段状态；不含 HTML 正文、账号、Cookie、Token 或图片内容"
+}

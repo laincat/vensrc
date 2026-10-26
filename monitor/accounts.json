@@ -30,9 +30,9 @@
       "site": "绅士漫画",
       "key": "wnacg",
       "secret": "PATROL_AUTH_WNACG",
-      "buildId": "0f137e588e9ccc6e1744644227c0098b81da780a15aca0728c8d9ee0b0867696",
+      "buildId": "3fde434021bd399828b384df2a2a6e987dfd23aae1ed1c7a11707adf002aef70",
       "loginReviewed": true,
-      "note": "独立源 1.3.4；不修改 VeneraX。识别站点实际返回的“我的书架”账户页标题，修复源端误判登录；匿名权限页仍拒绝。源设置“检查登录与浏览”分别检查会员页、首页和固定漫画详情；实机重启后会话保留仍待验证。Actions 不注入本站密码或会话，交互跳过不算通过。",
+      "note": "独立源 1.4.0；只改源，不修改 VeneraX。修复移动版首页、列表、搜索、排行榜、详情及连载翻页；真实移动 UA 匿名阅读在两套接口环境复测。会员收藏仅有结构回归，真实登录、收藏和重启后会话保留仍待实机验证。Actions 不注入本站密码或会话，跳过不计通过。",
       "authMode": "browser_cookie"
     },
     {

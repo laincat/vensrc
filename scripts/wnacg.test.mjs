@@ -69,7 +69,7 @@ test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在�
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="/users-logout.html">退出</a>',
   });
-  assert.equal(source.version, "1.3.4");
+  assert.equal(source.version, "1.4.0");
   assert.equal(source.minAppVersion, "1.3.4");
   assert.equal(source.account.login, undefined);
   assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
@@ -256,6 +256,7 @@ test("登录状态诊断不显示 Cookie 内容且不把本地标记当成会员
     assert.equal(id, "397513");
     return { title: "fixture" };
   };
+  good.source.favorites.loadComics = async () => ({ comics: [{}], maxPage: 1 });
   good.data.set("account", "ok");
   await good.source.settings.loginStatus.callback();
   assert.equal(good.dialogs.length, 1);
@@ -264,6 +265,7 @@ test("登录状态诊断不显示 Cookie 内容且不把本地标记当成会员
   assert.doesNotMatch(good.dialogs[0][1], /test-only/);
   assert.doesNotMatch(good.dialogs[0][1], /old_session/);
   assert.match(good.dialogs[0][1], /首页解析：通过/);
+  assert.match(good.dialogs[0][1], /收藏列表解析：通过/);
   assert.match(good.dialogs[0][1], /固定漫画详情（397513）：通过/);
   assert.equal(good.data.get("webLoginVerification"), "http_verified");
 
@@ -271,6 +273,7 @@ test("登录状态诊断不显示 Cookie 内容且不把本地标记当成会员
   bad.data.set("account", "ok");
   await bad.source.settings.loginStatus.callback();
   assert.match(bad.dialogs[0][1], /会员页验证：未通过/);
+  assert.match(bad.dialogs[0][1], /收藏列表解析：跳过/);
   assert.match(bad.dialogs[0][1], /仅表示本地登录标记/);
   assert.equal(bad.data.get("webLoginVerification"), undefined);
 });

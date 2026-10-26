@@ -34,7 +34,7 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     delete globals.ComicSource.sources.wnacg;
     const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
     assert.doesNotThrow(() => globals.__clientSourceLoaded(source));
-    assert.equal(source.version, "1.3.4");
+    assert.equal(source.version, "1.4.0");
     assert.equal(source.minAppVersion, "1.3.4");
     assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
     assert.equal(source.baseUrl, "https://www.wnacg.com");
@@ -48,6 +48,84 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     assert.equal(requests[0][2]["cache-time"], "no");
     shelfBody += "<div>您沒有權限，需要登錄</div>";
     await assert.rejects(source._checkSession(source.baseUrl), /会员会话未验证/);
+  });
+  test(`${name}: 绅士漫画移动版首页、搜索、详情、连载分页及收藏结构回归`, async () => {
+    process.env.VENERA_CLIENT_PROFILE = name;
+    const globals = runtime.createVeneraRuntime();
+    // 匿名真实页面提取的 DOM，标题和地址置换；收藏仅为结构用例，不代表会员实测。
+    const entry = `<li><a class="ImgA" href="/photos-index-aid-397513.html">
+      <img src="//covers.invalid/397513.webp"></a><a class="txtA">固定样本</a>
+      <span class="info">2026-10-26, 131P</span></li>`;
+    const list = `<div class="imgBox"><div class="Sub_H2"><span class="Title">最新上架</span>
+      <a href="albums.html">更多</a></div><ul>${entry}
+      ${entry.replace("/photos-index-aid-397513.html", "/link-index-aid-2.html")}
+      ${entry.replace("/photos-index-aid-397513.html", "https://advert.invalid/")}
+      </ul></div>`;
+    const detail = `<div class="Introduct"><div id="comicName">固定样本</div>
+      <div id="Cover"><img src="////covers.invalid/397513.webp"></div>
+      <div class="sub_r"><a class="introName">投稿者</a><a href="/albums-index-cate-1.html">分类</a>
+      <span class="date">131P · 收藏 1</span></div><div class="dv-desc-text">简介</div></div>`;
+    const shelfTitle = "<title>我的書架-紳士漫畫移動版</title>";
+    let shelf = shelfTitle + list;
+    let detailBody = detail;
+    const requests = [];
+    globals.Network = { ...globals.Network, sendRequest: async (_method, url, headers) => {
+      requests.push({ url, headers });
+      let body = url.includes("users-") ? shelf
+        : url.includes("photos-gallery-") ? String.raw`document.writeln("var imglist=[{url:\"//images.invalid/1.webp\",caption:\"[001]\"}];");`
+        : url.includes("photos-index-") ? detailBody
+        : (url.includes("favorite_ranking")
+          ? `<div class="rand_rq"><div class="itemBox"><div class="itemImg">
+            <a href="/photos-index-aid-397513.html"><img src="//covers.invalid/397513.webp"></a></div>
+            <div class="itemTxt"><a class="title">固定样本</a><span class="date">日期</span></div></div></div>`
+          : url.includes("/search/")
+          ? list.replaceAll('</a><a class="txtA">固定样本</a>', '<span>固定样本</span></a>')
+          : list) + `<div class="page"><span class="thispage">1</span>
+          <a href="/albums-index-page-30.html">30</a><a href="/albums-index-page-2.html">後頁&gt;</a></div>`;
+      if (url.includes("page-2-aid-390033")) body = detail +
+        `<ul id="dv-ch-list"><li data-chid="398836"><a title="第 2 話">2</a></li></ul>`;
+      return { status: 200, headers: {}, body: new TextEncoder().encode(body) };
+    }};
+    await installClientProfile(globals, runtime, runtimeImages);
+    const code = await readFile(new URL("./wnacg.import.js", import.meta.url), "utf8");
+    const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
+    globals.__clientSourceLoaded(source);
+    const home = await source.explore[0].load(1);
+    assert.equal(home[0].comics[0].id, "397513");
+    assert.equal(home[0].viewMore, "category:最新上架@/albums.html");
+    const category = await source.categoryComics.load("最新", "/albums.html", [], 1);
+    assert.equal(category.comics.length, 1);
+    assert.equal(category.maxPage, 30);
+    const search = await source.search.load("火影", [], 1);
+    assert.equal(search.comics.length, 1);
+    assert.equal(search.maxPage, 30);
+    const ranking = await source.categoryComics.ranking.load("day", 1);
+    assert.equal(ranking.comics.length, 1);
+    assert.equal(ranking.maxPage, 30);
+    const info = await source.comic.loadInfo("397513");
+    assert.equal(info.title, "固定样本");
+    assert.equal(info.cover, "https://covers.invalid/397513.webp");
+    assert.equal(info.uploader, "投稿者");
+    const thumbnails = await source.comic.loadThumbnails("397513", null);
+    assert.deepEqual(thumbnails.thumbnails, ["https://images.invalid/1.webp"]);
+    const favorites = await source.favorites.loadComics(1, null);
+    assert.equal(favorites.comics.length, 1);
+    assert.equal(favorites.comics[0].id, "397513");
+    await assert.rejects(source.favorites.addOrDelFavorite("397513", null, false, undefined), /收藏编号/);
+    shelf = shelfTitle + "<div class='imgBox'></div>";
+    await assert.rejects(source.favorites.loadComics(1, null), /结构尚未识别/);
+    shelf = shelfTitle + "<div class='imgBox'>尚未收藏</div>";
+    assert.equal((await source.favorites.loadComics(1, null)).comics.length, 0);
+    shelf = shelfTitle + list + "<div>您沒有權限，需要登錄</div>";
+    await assert.rejects(source.favorites.loadComics(1, null), /会员会话未验证/);
+    detailBody = detail + `<ul id="dv-ch-list"><li data-chid="357560"><a title="第 1 話">1</a></li></ul>
+      <div id="dv-ch-more" data-total="2" data-limit="1"></div>`;
+    const series = await source.comic.loadInfo("390033");
+    assert.equal(series.chapters.size, 2);
+    assert.deepEqual([...series.chapters.keys()], ["357560", "398836"]);
+    assert.ok(requests.some(request => request.url.includes("page-2-aid-390033")));
+    assert.ok(requests.filter(request => request.url.includes("users-"))
+      .every(request => request.headers["cache-time"] === "no"));
   });
   test(`${name}: 发布页解析、备用发布页、每日同步及失败保留缓存`, async () => {
     process.env.VENERA_CLIENT_PROFILE = name;

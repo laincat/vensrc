@@ -7,6 +7,25 @@ import cloud_audit as audit
 
 
 class WnacgPolicyTests(unittest.TestCase):
+    def test_mobile_evidence_matches_source_and_keeps_membership_unverified(self):
+        evidence = audit.load(audit.ROOT / "data/wnacg-mobile-preflight.json")
+        item = next(item for item in audit.load(
+            audit.ROOT / "monitor/catalog.json")["sources"] if item["key"] == "wnacg")
+        for key in ("version", "sha256", "minAppVersion", "sample"):
+            self.assertEqual(evidence["source"][key], item[key])
+        self.assertIn(evidence["source"]["commit"], item["url"])
+        self.assertTrue(evidence["unverified"])
+        for row in evidence["replay"]:
+            self.assertTrue(row["ok"] or row.get("expectedRejection"))
+            if row.get("expectedRejection"):
+                self.assertEqual(row["stage"], "匿名收藏拒绝")
+        self.assertEqual({row["client"] for row in evidence["online"]},
+                         {"venerax", "venera-next"})
+        for row in evidence["online"]:
+            self.assertEqual(row["counts"]["failed"], 0)
+            self.assertGreater(row["counts"]["skipped"], 0)
+            self.assertIn("未完整检查", row["status"])
+
     def test_only_dedicated_source_remains_and_hash_matches_local_code(self):
         catalog = audit.validate_catalog(audit.load(audit.ROOT / "monitor/catalog.json"))
         sources = [item for item in catalog["sources"] if item["key"] == "wnacg"]
