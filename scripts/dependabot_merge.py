@@ -33,6 +33,21 @@ def eligible_commits(commits):
             return False
         types = re.findall(r"(?m)^  update-type: (\S+)\s*$", metadata[1])
         dependencies = re.findall(r"(?m)^- dependency-name: ", metadata[1])
+
+        # Requirement-only bumps omit update-type; trust only the signed,
+        # single-dependency subject with an unambiguous same-major increase.
+        if not types and len(dependencies) == 1 and "update-type:" not in metadata[1]:
+            subject = data["message"].splitlines()[0]
+            bump = re.fullmatch(
+                r"(?:[\w()/-]+: )?update (\S+) requirement from "
+                r">=(\d+\.\d+\.\d+) to >=(\d+\.\d+\.\d+)", subject,
+                re.IGNORECASE)
+            name = re.search(r"(?m)^- dependency-name: (\S+)\s*$", metadata[1])
+            if bump and name and bump[1] == name[1]:
+                before = tuple(map(int, bump[2].split(".")))
+                after = tuple(map(int, bump[3].split(".")))
+                if after > before and after[0] == before[0]:
+                    types = ["version-update:semver-minor"]
         if not types or len(types) != len(dependencies):
             return False
         if any(t not in {"version-update:semver-patch",
