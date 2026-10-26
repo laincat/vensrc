@@ -351,5 +351,80 @@
         }
       ]
     }
+  },
+  "cloud": {
+    "runUrl": "https://github.com/laincat/vensrc/actions/runs/40255071184",
+    "checkedAt": "2026-10-26T01:52:38.777458+00:00",
+    "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "profiles": {
+      "venerax": {
+        "coreReadingPassed": true,
+        "status": "failed",
+        "summary": {
+          "passed": 19,
+          "failed": 1,
+          "skipped": 8
+        },
+        "inputs": {
+          "comicId": "57229",
+          "epId": "1",
+          "keyword": "火影"
+        },
+        "policy": {
+          "concurrency": 4,
+          "pages": 1,
+          "imageSamples": 1,
+          "retries": 0,
+          "requestTimeoutMs": 30000,
+          "stageTimeoutMs": 60000,
+          "sourceTimeoutMs": 300000,
+          "minRequestIntervalMs": 300,
+          "maxRequests": 300,
+          "maxResponseBytes": 20971520,
+          "maxTraceEvents": 1600
+        },
+        "failures": [
+          {
+            "stage": "explore[0].load",
+            "category": "返回结构或样本不满足契约",
+            "reason": "列表项缺少合法 ID、标题或封面"
+          }
+        ]
+      },
+      "venera-next": {
+        "coreReadingPassed": true,
+        "status": "failed",
+        "summary": {
+          "passed": 19,
+          "failed": 1,
+          "skipped": 8
+        },
+        "inputs": {
+          "comicId": "57229",
+          "epId": "1",
+          "keyword": "火影"
+        },
+        "policy": {
+          "concurrency": 4,
+          "pages": 1,
+          "imageSamples": 1,
+          "retries": 0,
+          "requestTimeoutMs": 30000,
+          "stageTimeoutMs": 60000,
+          "sourceTimeoutMs": 300000,
+          "minRequestIntervalMs": 300,
+          "maxRequests": 300,
+          "maxResponseBytes": 20971520,
+          "maxTraceEvents": 1600
+        },
+        "failures": [
+          {
+            "stage": "explore[0].load",
+            "category": "返回结构或样本不满足契约",
+            "reason": "列表项缺少合法 ID、标题或封面"
+          }
+        ]
+      }
+    }
   }
 }
