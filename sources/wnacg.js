@@ -3,7 +3,7 @@
 class Wnacg extends ComicSource {
     name = "紳士漫畫"
     key = "wnacg"
-    version = "1.4.0"
+    version = "1.4.1"
     minAppVersion = "1.3.4"
     url = "https://raw.githubusercontent.com/laincat/vensrc/main/sources/wnacg.js"
 
@@ -384,7 +384,8 @@ class Wnacg extends ComicSource {
         const anchor = c.querySelector("div.pic_box > a, a.ImgA, .itemImg > a")
         const id = (anchor?.attributes.href || "").match(/\/photos-index-(?:page-\d+-)?aid-(\d+)\.html(?:[?#]|$)/)?.[1]
         const image = c.querySelector("div.pic_box > a > img, a.ImgA > img, .itemImg > a > img")
-        const title = c.querySelector("div.info > div.title > a, a.txtA, a.ImgA > span, .itemTxt > a.title")?.text.trim()
+        const title = c.querySelector("div.info > div.title > a, a.txtA, .itemTxt > a.title")?.text.trim() ||
+            c.querySelector("a.ImgA > span[style]")?.text.trim()
         if (!id || !image || !title) throw "漫画列表结构已变化，无法解析条目"
         const info = c.querySelector("div.info > div.info_col, span.info, .itemTxt .date")?.text.trim() || ""
         return new Comic({
