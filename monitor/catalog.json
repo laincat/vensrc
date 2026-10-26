@@ -7794,6 +7794,38 @@
         "venera-next"
       ],
       "settings": {}
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Walter498/Walter/d178a498ef561cd2a066d2c67362044ed116569a/lizimh.js",
+      "key": "lizimh",
+      "name": "栗子漫画",
+      "version": "2.33.27",
+      "minAppVersion": "1.2.2",
+      "repository": "Walter498/Walter",
+      "fileName": "lizimh.js",
+      "sample": {
+        "comicId": "57229",
+        "epId": "1",
+        "keyword": "火影"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "Walter498/Walter"
+      ],
+      "id": "12a149b918ecad169fa043a6931e9c091cde560abdee5364a9512c9269857b22",
+      "sha256": "12a149b918ecad169fa043a6931e9c091cde560abdee5364a9512c9269857b22",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "patrolPolicy": {
+        "maxRequests": 300,
+        "stageTimeoutMs": 60000,
+        "sourceTimeoutMs": 300000,
+        "requestTimeoutMs": 30000
+      }
     }
   ]
 }

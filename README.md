@@ -28,6 +28,7 @@ GitHub Actions 每天香港时间 09:00 执行全量巡检、账号任务、浏�
 
 - [订阅与版本规则](docs/订阅与版本规则.md)
 - [巡检与自动化](docs/巡检与自动化.md)
+- [Walter 栗子漫画审阅与双客户端复测](reports/WALTER_REVIEW.md)
 - [双客户端结果](reports/CLIENT_RESULTS.md)
 - [七个社区升级源与自用仓库](reports/FOCUS_RESULTS.md)
 - [账号结果](reports/ACCOUNT_RESULTS.md) · [访问限制与人工验证](reports/ACCESS_RESULTS.md)

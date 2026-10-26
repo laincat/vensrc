@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "repository": "Walter498/Walter",
+  "commit": "d178a498ef561cd2a066d2c67362044ed116569a",
+  "sha256": "12a149b918ecad169fa043a6931e9c091cde560abdee5364a9512c9269857b22",
+  "key": "lizimh",
+  "version": "2.33.27",
+  "minAppVersion": "1.2.2",
+  "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+  "sample": {
+    "comicId": "57229",
+    "epId": "1",
+    "keyword": "火影"
+  },
+  "profiles": {
+    "venerax": {
+      "checkedAt": "2026-10-26T01:31:32.014Z",
+      "client": {
+        "name": "venerax",
+        "repository": "Kyosee/VeneraX",
+        "commit": "a4e20b9f14061fd333e89ca31c6458571e7a7e00",
+        "version": "2.3.6",
+        "bootstrapSha256": "bd9066a761b8aa0d7fa156c69917138072166c80667f7505d09fd26464bedc3a",
+        "scope": "全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟"
+      },
+      "status": "partial",
+      "coreReadingPassed": true,
+      "summary": {
+        "passed": 20,
+        "failed": 0,
+        "skipped": 8,
+        "recovered": 0,
+        "callableCapabilities": 18,
+        "checkedCapabilities": 10
+      },
+      "policy": {
+        "stageTimeoutMs": 60000,
+        "sourceTimeoutMs": 300000,
+        "requestTimeoutMs": 30000,
+        "concurrency": 4,
+        "retries": 0,
+        "minRequestIntervalMs": 300,
+        "maxRequests": 300,
+        "maxResponseBytes": 20971520,
+        "maxTraceEvents": 1600,
+        "pages": 1,
+        "imageSamples": 1
+      },
+      "inputs": {
+        "comicId": "57229",
+        "keyword": "火影"
+      },
+      "observedEpisodeId": "1",
+      "stages": [
+        {
+          "path": "runtime.load",
+          "status": "passed"
+        },
+        {
+          "path": "source.load",
+          "status": "passed"
+        },
+        {
+          "path": "configuration.apply",
+          "status": "passed"
+        },
+        {
+          "path": "init",
+          "status": "passed"
+        },
+        {
+          "path": "configuration.capabilities",
+          "status": "passed"
+        },
+        {
+          "path": "category",
+          "status": "passed"
+        },
+        {
+          "path": "settings",
+          "status": "passed"
+        },
+        {
+          "path": "search.load",
+          "status": "passed"
+        },
+        {
+          "path": "explore[0].load",
+          "status": "passed"
+        },
+        {
+          "path": "categoryComics.load",
+          "status": "passed"
+        },
+        {
+          "path": "comic.loadInfo",
+          "status": "passed"
+        },
+        {
+          "path": "comic.loadEp",
+          "status": "passed"
+        },
+        {
+          "path": "comic.loadComments",
+          "status": "passed"
+        },
+        {
+          "path": "comic.loadChapterComments",
+          "status": "passed"
+        },
+        {
+          "path": "comic.onImageLoad",
+          "status": "passed"
+        },
+        {
+          "path": "image.download",
+          "status": "passed"
+        },
+        {
+          "path": "image.decode",
+          "status": "passed"
+        },
+        {
+          "path": "comic.onImageLoad.onLoadFailed",
+          "status": "skipped",
+          "category": "not_triggered",
+          "reason": "Image succeeded; failure recovery was not invoked"
+        },
+        {
+          "path": "comic.onThumbnailLoad",
+          "status": "passed"
+        },
+        {
+          "path": "thumbnail.download",
+          "status": "passed"
+        },
+        {
+          "path": "thumbnail.decode",
+          "status": "passed"
+        },
+        {
+          "path": "categoryComics.loadWithFilters",
+          "status": "skipped",
+          "category": "missing_input",
+          "reason": "No automatic adapter; provide cases[path].args and expect"
+        },
+        {
+          "path": "comic.loadCommentsWithOptions",
+          "status": "skipped",
+          "category": "missing_input",
+          "reason": "No automatic adapter; provide cases[path].args and expect"
+        },
+        {
+          "path": "comic.loadChapterCommentsWithOptions",
+          "status": "skipped",
+          "category": "missing_input",
+          "reason": "No automatic adapter; provide cases[path].args and expect"
+        },
+        {
+          "path": "comic.loadChapterMetadata",
+          "status": "skipped",
+          "category": "missing_input",
+          "reason": "No automatic adapter; provide cases[path].args and expect"
+        },
+        {
+          "path": "settings.speedTest.callback",
+          "status": "skipped",
+          "category": "mutation_disabled",
+          "reason": "Requires allowMutations:true and an explicit case"
+        },
+        {
+          "path": "settings.imageSpeedTest.callback",
+          "status": "skipped",
+          "category": "mutation_disabled",
+          "reason": "Requires allowMutations:true and an explicit case"
+        },
+        {
+          "path": "settings.communityCheck.callback",
+          "status": "skipped",
+          "category": "mutation_disabled",
+          "reason": "Requires allowMutations:true and an explicit case"
+        }
+      ]
+    },
+    "venera-next": {
+      "checkedAt": "2026-10-26T01:31:57.351Z",
+      "client": {
+        "name": "venera-next",
+        "repository": "CyrilPeng/Venera-Next",
+        "commit": "47f7416cecc2dbbc97c7618f8dd53aa92f587601",
+        "version": "1.18.0",
+        "bootstrapSha256": "5854a85bc3822819c2742529906ab3b56bd233323034e6d3e7dc062d8e992a35",
+        "scope": "全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟"
+      },
+      "status": "partial",
+      "coreReadingPassed": true,
+      "summary": {
+        "passed": 20,
+        "failed": 0,
+        "skipped": 8,
+        "recovered": 0,
+        "callableCapabilities": 18,
+        "checkedCapabilities": 10
+      },
+      "policy": {
+        "stageTimeoutMs": 60000,
+        "sourceTimeoutMs": 300000,
+        "requestTimeoutMs": 30000,
+        "concurrency": 4,
+        "retries": 0,
+        "minRequestIntervalMs": 300,
+        "maxRequests": 300,
+        "maxResponseBytes": 20971520,
+        "maxTraceEvents": 1600,
+        "pages": 1,
+        "imageSamples": 1
+      },
+      "inputs": {
+        "comicId": "57229",
+        "keyword": "火影"
+      },
+      "observedEpisodeId": "1",
+      "stages": [
+        {
+          "path": "runtime.load",
+          "status": "passed"
+        },
+        {
+          "path": "source.load",
+          "status": "passed"
+        },
+        {
+          "path": "configuration.apply",
+          "status": "passed"
+        },
+        {
+          "path": "init",
+          "status": "passed"
+        },
+        {
+          "path": "configuration.capabilities",
+          "status": "passed"
+        },
+        {
+          "path": "category",
+          "status": "passed"
+        },
+        {
+          "path": "settings",
+          "status": "passed"
+        },
+        {
+          "path": "search.load",
+          "status": "passed"
+        },
+        {
+          "path": "explore[0].load",
+          "status": "passed"
+        },
+        {
+          "path": "categoryComics.load",
+          "status": "passed"
+        },
+        {
+          "path": "comic.loadInfo",
+          "status": "passed"
+        },
+        {
+          "path": "comic.loadEp",
+          "status": "passed"
+        },
+        {
+          "path": "comic.loadComments",
+          "status": "passed"
+        },
+        {
+          "path": "comic.loadChapterComments",
+          "status": "passed"
+        },
+        {
+          "path": "comic.onImageLoad",
+          "status": "passed"
+        },
+        {
+          "path": "image.download",
+          "status": "passed"
+        },
+        {
+          "path": "image.decode",
+          "status": "passed"
+        },
+        {
+          "path": "comic.onImageLoad.onLoadFailed",
+          "status": "skipped",
+          "category": "not_triggered",
+          "reason": "Image succeeded; failure recovery was not invoked"
+        },
+        {
+          "path": "comic.onThumbnailLoad",
+          "status": "passed"
+        },
+        {
+          "path": "thumbnail.download",
+          "status": "passed"
+        },
+        {
+          "path": "thumbnail.decode",
+          "status": "passed"
+        },
+        {
+          "path": "categoryComics.loadWithFilters",
+          "status": "skipped",
+          "category": "missing_input",
+          "reason": "No automatic adapter; provide cases[path].args and expect"
+        },
+        {
+          "path": "comic.loadCommentsWithOptions",
+          "status": "skipped",
+          "category": "missing_input",
+          "reason": "No automatic adapter; provide cases[path].args and expect"
+        },
+        {
+          "path": "comic.loadChapterCommentsWithOptions",
+          "status": "skipped",
+          "category": "missing_input",
+          "reason": "No automatic adapter; provide cases[path].args and expect"
+        },
+        {
+          "path": "comic.loadChapterMetadata",
+          "status": "skipped",
+          "category": "missing_input",
+          "reason": "No automatic adapter; provide cases[path].args and expect"
+        },
+        {
+          "path": "settings.speedTest.callback",
+          "status": "skipped",
+          "category": "mutation_disabled",
+          "reason": "Requires allowMutations:true and an explicit case"
+        },
+        {
+          "path": "settings.imageSpeedTest.callback",
+          "status": "skipped",
+          "category": "mutation_disabled",
+          "reason": "Requires allowMutations:true and an explicit case"
+        },
+        {
+          "path": "settings.communityCheck.callback",
+          "status": "skipped",
+          "category": "mutation_disabled",
+          "reason": "Requires allowMutations:true and an explicit case"
+        }
+      ]
+    }
+  }
+}

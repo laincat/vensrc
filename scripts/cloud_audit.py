@@ -202,6 +202,7 @@ def validate_catalog(catalog):
         assert set(item["sample"]) <= {"keyword", "comicId", "epId", "searchOptions"}
         assert not item.get("allowMutations")
         assert isinstance(item.get("settings", {}), dict)
+        execution_policy(item)
         if item.get("runtimeProfile"):
             assert item["runtimeProfile"] == "venerax"
             assert item.get("verifyProfiles") == ["venera-next"]
@@ -209,6 +210,16 @@ def validate_catalog(catalog):
             assert item["settings"].get("dailyCheckInTask") is False
             assert item["sample"].get("comicId") and item["sample"].get("epId")
     return catalog
+
+
+def execution_policy(item):
+    overrides = item.get("patrolPolicy", {})
+    limits = {"maxRequests": 500, "stageTimeoutMs": 60000,
+              "sourceTimeoutMs": 300000, "requestTimeoutMs": 30000}
+    assert isinstance(overrides, dict) and set(overrides) <= set(limits), "仅允许增加巡检资源预算"
+    for key, value in overrides.items():
+        assert type(value) is int and POLICY[key] <= value <= limits[key], "巡检预算超出允许范围"
+    return {**POLICY, **overrides}
 
 
 def core(source):
@@ -322,7 +333,17 @@ def discover(work):
         updates, errors = [], []
         try:
             commit = resolve(repo)
-            entries = json.loads(request(f"https://raw.githubusercontent.com/{repo}/{commit}/index.json"))
+            files = config.get("files", {}).get(repo)
+            if files is not None:
+                if not isinstance(files, list) or not files or any(
+                    not isinstance(file, str) or not re.fullmatch(r"[\w./-]+\.js", file)
+                    or file.startswith("/") or ".." in file.split("/") for file in files
+                ):
+                    raise ValueError("单文件候选必须是仓库内的相对 JS 路径")
+                entries = [{"key": Path(file).stem, "name": Path(file).stem, "fileName": file}
+                           for file in files]
+            else:
+                entries = json.loads(request(f"https://raw.githubusercontent.com/{repo}/{commit}/index.json"))
             if not isinstance(entries, list):
                 raise ValueError("索引不是数组")
             for entry in entries:
@@ -359,10 +380,11 @@ def discover(work):
                     if digest in known:
                         continue
                     code = data.decode("utf-8-sig")
-                    for field in ("key", "version", "minAppVersion"):
+                    for field in ("key", "name", "version", "minAppVersion"):
                         match = re.search(r"(?m)^\s*" + field + r"""\s*=\s*["']([^"']+)["']""", code)
                         if match:
                             entry[field] = match.group(1)
+                    name = entry.get("name", name)
                     actual_key = entry.get("key", key)
                     candidate = {"key": actual_key, "repository": target, "name": name,
                                  "fileName": Path(unquote(file)).name, "url": fixed,
@@ -487,6 +509,7 @@ def patrol(work):
     for item in executions:
         for batch in batches:
             if (batch[0].get("runtimeProfile") == item.get("runtimeProfile") and
+                    execution_policy(batch[0]) == execution_policy(item) and
                     bool(priority.intersection(batch[0].get("trackedBy", []))) ==
                     bool(priority.intersection(item.get("trackedBy", []))) and
                     all(other["key"] != item["key"] for other in batch)):
@@ -504,9 +527,10 @@ def patrol(work):
                      "HEAD", capture_output=True, text=True).stdout.split()[0]
         if latest != metadata["commit"]:
             raise ValueError("本批巡检前 CLI 已更新；停止，重新获取最新 CLI 后再执行")
+        policy = execution_policy(batch[0])
         config = {
             "version": 1, "configPaths": [f"/work/{number}.index.json"],
-            "output": f"/work/reports/{number}", "defaults": POLICY,
+            "output": f"/work/reports/{number}", "defaults": policy,
             "sources": {i["key"]: {"inputs": i["effectiveSample"], "settings": i.get("settings", {})}
                         for i in batch},
         }
@@ -525,7 +549,8 @@ def patrol(work):
             command += ["--env", f"VENERA_CLIENT_PROFILE={batch[0]['runtimeProfile']}"]
         command += [metadata["image"], "check-all", "--config", f"/work/{number}.config.json", "--no-env"]
         print(f"第 {number + 1}/{len(batches)} 批：巡检 {len(batch)} 个已审阅构建。", flush=True)
-        result = subprocess.run(command, timeout=max(300, len(batch) * 95), check=False)
+        result = subprocess.run(command, timeout=max(
+            300, len(batch) * (policy["sourceTimeoutMs"] // 1000 + 5)), check=False)
         if result.returncode not in (0, 1):
             raise ValueError(f"巡检进程异常退出：{result.returncode}")
         reports = list((output / f"reports/{number}").glob("*/report.json"))
@@ -544,6 +569,7 @@ def patrol(work):
                 "id": item["id"], "inputs": item["effectiveSample"],
                 "sample": {**selected, **item["effectiveSample"]},
                 "runtimeProfile": item.get("runtimeProfile"),
+                "policy": policy,
                 "source": {key: source.get(key) for key in (
                     "key", "name", "version", "sourceSha256", "status", "startedAt", "stages")},
             }

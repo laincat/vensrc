@@ -8,6 +8,17 @@ import cloud_audit as audit
 
 
 class OfficialPolicyTests(unittest.TestCase):
+    def test_source_budget_can_only_increase_resources_without_changing_reading_checks(self):
+        item = {"patrolPolicy": {"maxRequests": 300, "sourceTimeoutMs": 300000}}
+        policy = audit.execution_policy(item)
+        self.assertEqual(policy["maxRequests"], 300)
+        self.assertEqual(policy["imageSamples"], audit.POLICY["imageSamples"])
+        self.assertEqual(audit.execution_policy({}), audit.POLICY)
+        for overrides in ({"imageSamples": 0}, {"maxRequests": 1}, {"maxRequests": 501},
+                          {"maxRequests": True}, {"stageTimeoutMs": 60001}):
+            with self.subTest(overrides=overrides), self.assertRaises(AssertionError):
+                audit.execution_policy({"patrolPolicy": overrides})
+
     def test_refresh_keeps_historical_keys_and_adds_new_official_keys(self):
         baseline = audit.official_policy()
         with tempfile.TemporaryDirectory() as directory:
@@ -180,6 +191,43 @@ class OfficialPolicyTests(unittest.TestCase):
             self.assertEqual([item["repository"] for item in result["repositories"]], ["community/source"])
             self.assertEqual([item["repository"] for item in result["newRepositories"]], ["new/community"])
             self.assertFalse(any(audit.OFFICIAL_REPOSITORY in url for url in urls))
+
+    def test_single_file_discovery_pins_source_metadata_without_executing(self):
+        baseline = audit.official_policy()
+        code = ('class Fixture {\nname = "栗子漫画"\nkey = "lizimh"\n'
+                'version = "2.33.27"\nminAppVersion = "1.2.2"\n}').encode()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            audit.save(root / "monitor/catalog.json", {
+                "schemaVersion": 1, "sources": [], "priorityRepositories": []})
+            audit.save(root / "monitor/upstreams.json", {
+                "repositories": ["Walter498/Walter"], "priorityRepositories": [],
+                "files": {"Walter498/Walter": ["lizimh.js"]},
+            })
+            urls = []
+
+            def request(url, api=False):
+                urls.append(url)
+                if "/commits" in url:
+                    return json.dumps([{"sha": "a" * 40}]).encode()
+                if "/search/repositories" in url:
+                    return b'{"items":[]}'
+                self.assertTrue(url.endswith("/" + "a" * 40 + "/lizimh.js"))
+                return code
+
+            with patch.object(audit, "ROOT", root), \
+                    patch.object(audit, "refresh_official_policy", return_value=baseline), \
+                    patch.object(audit, "request", side_effect=request):
+                audit.discover(root / "work")
+            result = audit.load(root / "work/artifact/discovery.json")
+            item, = result["updates"]
+            self.assertEqual((item["name"], item["key"], item["version"], item["minAppVersion"]),
+                             ("栗子漫画", "lizimh", "2.33.27", "1.2.2"))
+            self.assertEqual(item["sha256"], audit.sha(code))
+            self.assertTrue(audit.pinned(item["url"]))
+            self.assertIn("未加载、未执行", item["state"])
+            self.assertFalse(any(url.endswith("/index.json") for url in urls))
+            self.assertEqual(audit.load(root / "monitor/catalog.json")["sources"], [])
 
 
 if __name__ == "__main__":
