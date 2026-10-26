@@ -15,6 +15,11 @@ class WnacgPolicyTests(unittest.TestCase):
             self.assertEqual(evidence["source"][key], item[key])
         self.assertIn(evidence["source"]["commit"], item["url"])
         self.assertTrue(evidence["unverified"])
+        self.assertEqual(evidence["before"]["version"], "1.3.4")
+        self.assertNotEqual(evidence["before"]["sha256"], evidence["source"]["sha256"])
+        self.assertEqual(len(evidence["htmlSnapshots"]), 20)
+        self.assertTrue(all(len(row["bodySha256"]) == 64 and not row.get("body")
+                            for row in evidence["htmlSnapshots"]))
         self.assertEqual(sum(row["checked"] for row in evidence["cardFields"]), 528)
         self.assertTrue(all(row["mismatches"] == 0 for row in evidence["cardFields"]))
         for row in evidence["replay"]:
