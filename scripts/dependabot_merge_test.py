@@ -57,6 +57,24 @@ class MetadataGateTests(unittest.TestCase):
             "version-update:semver-minor", "unknown")
         self.assertFalse(eligible_commits([self.commit]))
 
+
+    def test_signed_requirement_bump_without_update_type(self):
+        self.commit["commit"]["message"] = (
+            "chore: update example requirement from >=7.6.0 to >=7.7.0\n\n"
+            "---\nupdated-dependencies:\n- dependency-name: example\n"
+            "  dependency-type: direct:production\n...\n")
+        self.assertTrue(eligible_commits([self.commit]))
+        original = self.commit["commit"]["message"]
+        for old, new in [("7.7.0", "8.0.0"), ("7.7.0", "7.5.0"),
+                         ("7.7.0", "7.7.0rc1"), ("update example", "update other"),
+                         (">=7.7.0", "<8"),
+                         ("...\n", "  update-type: unknown\n...\n")]:
+            self.commit["commit"]["message"] = original.replace(old, new)
+            self.assertFalse(eligible_commits([self.commit]), new)
+        self.commit["commit"]["message"] = original
+        self.commit["commit"]["verification"]["verified"] = False
+        self.assertFalse(eligible_commits([self.commit]))
+
     def test_empty_commits(self):
         self.assertFalse(eligible_commits([]))
 
