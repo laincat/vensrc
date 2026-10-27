@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-10-26T05:45:34.312683+00:00（UTC）。
+检查时间：2026-10-27T05:58:26.135705+00:00（UTC）。
 检查 54 个已登记仓库；发现 171 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -209,17 +209,26 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
-- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
-- `laincat/vensrc`：Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release
-- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `Kyosee/VeneraX`：A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。
+- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
+- `maplessovo/venera-configs`：
+- `Venera0207/venera-sales`：
+- `AnziibMeepo/VeneraM`：A comic app，自用版，增加了图片超分功能、拆分跨页功、修改了左右连续阅读功能的滑动BUG、修复了很多地方崩溃闪退的问题、换了一个自己很喜欢的图标。
+- `haukuen/venera`：仅自用 ／ For personal use only
+- `Venera0207/venera-portfolio`：
+- `QiongHHHZZZ/VeneraQ`：An Android comic reader. A fork of Venera-Next, Android release only.
+- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
+- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
+- `markiianklymchuk-hash/kingdoms-of-venera`：
+- `Magic-Miku/venera-store`：
+- `Gandum2077/venera-patrol-cli`：
+- `JUTZUGC/venera-deploy-guide`：Venera 一键安装｜本地和网络漫画都能看，装完导入漫画源即可｜自动校验三平台包｜第三方一键部署方案
+- `ZhiLin-Sam/venera-sources`：Venera 源目录 ／ 一条订阅装齐 60 个源（镜像+去重），自带夹具驱动的解析回归测试台
+- `laincat/vensrc`：Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release
+- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
 - `veneraproject/venera-node`：
 - `fave-eng/venera`：
-- `markiianklymchuk-hash/kingdoms-of-venera`：
 - `matloporokjl-tech/https-venerable-malasada-5a1196.netlify.app-`：Google Keep clone (HTML and CSS)
-- `JUTZUGC/venera-deploy-guide`：Venera 一键安装｜本地和网络漫画都能看，装完导入漫画源即可｜自动校验三平台包｜第三方一键部署方案
-- `Magic-Miku/venera-store`：
 - `amke79/venerastudios-site`：
 - `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `lll152872/venera-lll`：venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、
@@ -236,12 +245,10 @@
 - `jnsingh01/venerabullstudios`：Venerabull Studios — a showcase of projects in development.
 - `rytzj2-spec/VeneraX-nagi`：
 - `yanyi05/venera-sources`：Personal JavaScript sources for VeneraNext
-- `Gandum2077/venera-patrol-cli`：
 - `XclusiveM/venera-nailart`：
 - `Kerollos004/venera`：
 - `nightcat3254/venera-sources`：Venera personal source fixes: Baozi domain migration and shared updates.
 - `yuxuan965960/VeneraX-ios`：VeneraX - Flutter app
-- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
 - `KBPZSDP/Venera`：
 - `john-cpallc/venerable-grain`：
 - `FengHA223/venera-ios12`：
@@ -259,7 +266,6 @@
 - `940440952/comic-sources`：双生态漫画源：Venera / VeneraNext / VeneraPlus JavaScript + Aidoku Rust/WASM；目前维护 manhuazhan.com。
 - `venera-app/venera-prime`：A comic app,but prime
 - `Venera0207/venera-bot`：
-- `Venera0207/venera-portfolio`：
 - `PrincessGods/venera`：
 - `Venera-Works/Venera-Native-Prebuilts`：
 - `venerahm/venerahm.github.io`：Website
@@ -268,7 +274,6 @@
 - `FDEAABH6/Venera`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
 - `xiati007/venera-project`：
 - `LiliaKhazieva/VeneraStore`：Интернет магазин украшений Venera
-- `maplessovo/venera-configs`：
 - `Teresian/VeneraL`：
 - `NagasakiAno/VENERA_NEXT`：强大！可爱！自动化！一往无前！
 - `tide23333-max/venera-photo-sources`：Personal VeneraNext photo source scripts and update catalog
@@ -288,8 +293,3 @@
 - `yuanshenmingri/venera_comic_source`：Legado ????(???? id72 ??,75 ?)
 - `yuanshenmingri/venera-comick-sources`：Venera ???:Comick ??(69 ?)+ MangaDex v2.0
 - `hlf2016/venera-config`：
-- `haukuen/venera`：仅自用 ／ For personal use only
-- `lizhenghe616/venera-baozi-source`：
-- `ZhiLin-Sam/venera-sources`：Venera 源目录 ／ 一条订阅装齐 56 个源（镜像+去重），自带夹具驱动的解析回归测试台
-- `Tobeinlovewith/veneranext-source`：
-- `noelle-silva/Venera`：

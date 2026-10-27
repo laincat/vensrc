@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-26T05:45:34.312683+00:00",
+  "checkedAt": "2026-10-27T05:58:26.135705+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -3057,7 +3057,7 @@
       "name": "嗶哩漫畫",
       "version": "1.2.0",
       "fileName": "bilimanga.js",
-      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/normal_comic/bilimanga.js",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/7e68bf94ef9a98c170f4d396f111acfedd2238cb/normal_comic/bilimanga.js",
       "sha256": "e21b7984e309e0a1b730d737da914834ce15908b59c45c0d4d2be2627cecbbe2",
       "repository": "meaninglesslyy/venera-config",
       "minAppVersion": "1.6.0",
@@ -3079,7 +3079,7 @@
       "name": "如漫画",
       "version": "1.0.0",
       "fileName": "rumanhua.js",
-      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/normal_comic/rumanhua.js",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/7e68bf94ef9a98c170f4d396f111acfedd2238cb/normal_comic/rumanhua.js",
       "sha256": "017847c6901f8e491c28e6cb7b3da2a3475e6512b88374ecd41b7922dcca38a7",
       "repository": "meaninglesslyy/venera-config",
       "minAppVersion": "1.6.0",
@@ -3681,7 +3681,7 @@
     },
     {
       "repository": "meaninglesslyy/venera-config",
-      "commit": "5f4407e0b06ebc2d5a5f66b219ade6f07b20a290",
+      "commit": "7e68bf94ef9a98c170f4d396f111acfedd2238cb",
       "errors": []
     },
     {
@@ -3763,24 +3763,72 @@
   ],
   "newRepositories": [
     {
-      "repository": "CyrilPeng/Venera-Next",
-      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。"
+      "repository": "Kyosee/VeneraX",
+      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
     },
     {
       "repository": "Maxll51/EZVenera-Lite",
       "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android"
     },
     {
-      "repository": "laincat/vensrc",
-      "description": "Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release"
+      "repository": "maplessovo/venera-configs",
+      "description": ""
+    },
+    {
+      "repository": "Venera0207/venera-sales",
+      "description": ""
+    },
+    {
+      "repository": "AnziibMeepo/VeneraM",
+      "description": "A comic app，自用版，增加了图片超分功能、拆分跨页功、修改了左右连续阅读功能的滑动BUG、修复了很多地方崩溃闪退的问题、换了一个自己很喜欢的图标。"
+    },
+    {
+      "repository": "haukuen/venera",
+      "description": "仅自用 ／ For personal use only"
+    },
+    {
+      "repository": "Venera0207/venera-portfolio",
+      "description": ""
+    },
+    {
+      "repository": "QiongHHHZZZ/VeneraQ",
+      "description": "An Android comic reader. A fork of Venera-Next, Android release only."
     },
     {
       "repository": "gallhall/venera-v",
       "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates"
     },
     {
-      "repository": "Kyosee/VeneraX",
-      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
+      "repository": "lwtor/venera-native",
+      "description": "Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。"
+    },
+    {
+      "repository": "markiianklymchuk-hash/kingdoms-of-venera",
+      "description": ""
+    },
+    {
+      "repository": "Magic-Miku/venera-store",
+      "description": ""
+    },
+    {
+      "repository": "Gandum2077/venera-patrol-cli",
+      "description": ""
+    },
+    {
+      "repository": "JUTZUGC/venera-deploy-guide",
+      "description": "Venera 一键安装｜本地和网络漫画都能看，装完导入漫画源即可｜自动校验三平台包｜第三方一键部署方案"
+    },
+    {
+      "repository": "ZhiLin-Sam/venera-sources",
+      "description": "Venera 源目录 ／ 一条订阅装齐 60 个源（镜像+去重），自带夹具驱动的解析回归测试台"
+    },
+    {
+      "repository": "laincat/vensrc",
+      "description": "Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release"
+    },
+    {
+      "repository": "CyrilPeng/Venera-Next",
+      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。"
     },
     {
       "repository": "veneraproject/venera-node",
@@ -3791,20 +3839,8 @@
       "description": ""
     },
     {
-      "repository": "markiianklymchuk-hash/kingdoms-of-venera",
-      "description": ""
-    },
-    {
       "repository": "matloporokjl-tech/https-venerable-malasada-5a1196.netlify.app-",
       "description": "Google Keep clone (HTML and CSS)"
-    },
-    {
-      "repository": "JUTZUGC/venera-deploy-guide",
-      "description": "Venera 一键安装｜本地和网络漫画都能看，装完导入漫画源即可｜自动校验三平台包｜第三方一键部署方案"
-    },
-    {
-      "repository": "Magic-Miku/venera-store",
-      "description": ""
     },
     {
       "repository": "amke79/venerastudios-site",
@@ -3871,10 +3907,6 @@
       "description": "Personal JavaScript sources for VeneraNext"
     },
     {
-      "repository": "Gandum2077/venera-patrol-cli",
-      "description": ""
-    },
-    {
       "repository": "XclusiveM/venera-nailart",
       "description": ""
     },
@@ -3889,10 +3921,6 @@
     {
       "repository": "yuxuan965960/VeneraX-ios",
       "description": "VeneraX - Flutter app"
-    },
-    {
-      "repository": "lwtor/venera-native",
-      "description": "Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。"
     },
     {
       "repository": "KBPZSDP/Venera",
@@ -3963,10 +3991,6 @@
       "description": ""
     },
     {
-      "repository": "Venera0207/venera-portfolio",
-      "description": ""
-    },
-    {
       "repository": "PrincessGods/venera",
       "description": ""
     },
@@ -3997,10 +4021,6 @@
     {
       "repository": "LiliaKhazieva/VeneraStore",
       "description": "Интернет магазин украшений Venera"
-    },
-    {
-      "repository": "maplessovo/venera-configs",
-      "description": ""
     },
     {
       "repository": "Teresian/VeneraL",
@@ -4076,26 +4096,6 @@
     },
     {
       "repository": "hlf2016/venera-config",
-      "description": ""
-    },
-    {
-      "repository": "haukuen/venera",
-      "description": "仅自用 ／ For personal use only"
-    },
-    {
-      "repository": "lizhenghe616/venera-baozi-source",
-      "description": ""
-    },
-    {
-      "repository": "ZhiLin-Sam/venera-sources",
-      "description": "Venera 源目录 ／ 一条订阅装齐 56 个源（镜像+去重），自带夹具驱动的解析回归测试台"
-    },
-    {
-      "repository": "Tobeinlovewith/veneranext-source",
-      "description": ""
-    },
-    {
-      "repository": "noelle-silva/Venera",
       "description": ""
     }
   ],
