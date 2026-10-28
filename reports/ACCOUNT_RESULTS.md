@@ -1,6 +1,6 @@
 # 隔离账号巡检结果
 
-核验时间：2026-10-27T05:59:02.690233+00:00（UTC）。
+核验时间：2026-10-28T06:37:36.554652+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
@@ -41,15 +41,15 @@
 | 绅士漫画 | wnacg | venera-next | 跳过 | 未通过 | 失败 | init：源配置错误 | 22 |
 | 禁漫天堂 | jm | venerax | 通过 | 通过 | 部分通过 | 无失败 | 13 |
 | 禁漫天堂 | jm | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 13 |
-| 包子漫画 | baozi | venerax | 通过 | 通过 | 失败 | categoryComics.load：返回结构或样本不满足契约 | 2 |
-| 包子漫画 | baozi | venera-next | 通过 | 通过 | 失败 | categoryComics.load：返回结构或样本不满足契约 | 2 |
+| 包子漫画 | baozi | venerax | 通过 | 通过 | 失败 | explore[0].load：返回结构或样本不满足契约；categoryComics.load：返回结构或样本不满足契约 | 2 |
+| 包子漫画 | baozi | venera-next | 通过 | 通过 | 失败 | explore[0].load：返回结构或样本不满足契约；categoryComics.load：返回结构或样本不满足契约 | 2 |
 | 18ak 漫画 | 18ak | — | 已保存凭据；当前已审阅清单无本站源 | 未测试 | 跳过 |  | 未执行 |
 | 哔咔漫画 | picacg | venerax | 通过 | 通过 | 部分通过 | 无失败 | 6 |
 | 哔咔漫画 | picacg | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 6 |
 | 拷贝漫画 | copy_manga | venerax | 通过 | 未通过 | 失败 | settings：返回结构或样本不满足契约；search.load：源配置错误；explore[0].load：源配置错误；categoryComics.load：源配置错误；favorites.loadComics：源配置错误 | 11 |
 | 拷贝漫画 | copy_manga | venera-next | 通过 | 未通过 | 失败 | settings：返回结构或样本不满足契约；search.load：源配置错误；explore[0].load：源配置错误；categoryComics.load：源配置错误；favorites.loadComics：源配置错误 | 11 |
-| 热辣漫画 | hot_manga | venerax | 通过 | 通过 | 失败 | explore[0].load：网络错误；comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 2 |
+| 热辣漫画 | hot_manga | venerax | 通过 | 通过 | 失败 | comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 2 |
 | 热辣漫画 | hot_manga | venera-next | 通过 | 通过 | 失败 | comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 2 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 ../data/account-results.json。
-Actions：https://github.com/laincat/vensrc/actions/runs/40458231802
+Actions：https://github.com/laincat/vensrc/actions/runs/40644805475
