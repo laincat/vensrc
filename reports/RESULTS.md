@@ -1,6 +1,6 @@
 # Venera 漫画源云端巡检报告
 
-核验时间：2026-10-28T14:53:10.033651+08:00（香港时间）。
+核验时间：2026-10-29T15:00:13.592253+08:00（香港时间）。
 巡检工具：`Gandum2077/venera-patrol-cli` 1.0.0，提交 `dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 依赖锁 SHA-256：`7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de`。
 本次审阅清单：313 个构建；主索引 **27** 项，扩展索引 **43** 项。
@@ -84,7 +84,7 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 | 一本漫画-A | a_49_189b7b | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：返回结构或样本不满足契约 | 按原有收录标准审核 |
 | A漫🔞 | a_54_aaf8eb | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | comic.loadInfo：返回结构或样本不满足契约 | 按原有收录标准审核 |
 | 漫客栈-A | a_62_528fe9 | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：返回结构或样本不满足契约 | 按原有收录标准审核 |
-| 腾讯动漫 | ac_qq | Angus-fw/venera-configs | 1.0.1 | venerax | 通过 | 部分通过 | comic.link.linkToId：缺少样本输入 | 按原有收录标准审核 |
+| 腾讯动漫 | ac_qq | Angus-fw/venera-configs | 1.0.1 | venerax | 未完整通过 | 失败 | comic.loadEp：需要登录 | 按原有收录标准审核 |
 | 腾讯漫画 | acqq | token1008/venera-cn-64bit | 1.0.0 | venerax | 未完整通过 | 失败 | comic.loadInfo：源配置错误 | 按原有收录标准审核 |
 | 爱漫岛 | aiman | Junkrat9527/venera-sources | 2.3.6 | venerax | 未完整通过 | 失败 | search.load：反爬拦截 | 按原有收录标准审核 |
 | A漫 | aman8 | Junkrat9527/venera-sources | 1.0.0 | venerax | 通过 | 通过 |  | 按原有收录标准审核 |
@@ -115,7 +115,7 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 | comick | comick | l233333333/venera-sources | 1.1.1 | venerax | 未完整通过 | 失败 | search.load：HTTP 错误 | 排除官方原版／未高于官方版本 |
 | 拷贝漫画 | copy_manga | handahao666-boop/venera_comic_source | 1.6.6 | venerax | 未完整通过 | 失败 | explore[0].load：源配置错误 | 高于官方 1.4.3；按原收录标准审核 |
 | 拷贝漫画 | copy_manga | venera-app/venera-configs | 1.4.3 | venerax | 未完整通过 | 失败 | explore[0].load：源配置错误 | 排除官方原版／未高于官方版本 |
-| 拷贝漫画 | copy_manga | zakkida/venera-sources | 1.4.4 | venerax | 未完整通过 | 失败 | explore[0].load：源配置错误 | 高于官方 1.4.3；按原收录标准审核 |
+| 拷贝漫画 | copy_manga | zakkida/venera-sources | 1.4.4 | venerax | 未完整通过 | 失败 | categoryComics.load：源配置错误 | 高于官方 1.4.3；按原收录标准审核 |
 | 拷贝漫画(多账号) | copy_manga_multi_accounts | venera-app/venera-configs | 1.4.1 | venerax | 未完整通过 | 失败 | explore[0].load：源配置错误 | 排除官方原版／未高于官方版本 |
 | CosplayTele | cosplaytele | meaninglesslyy/venera-config | 1.7.0 | venerax | 通过 | 通过 |  | 按原有收录标准审核 |
 | CosplayTele | cosplaytele_25_190983 | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | comic.loadEp：HTTP 错误 | 按原有收录标准审核 |
@@ -136,7 +136,7 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 | ehentai | ehentai | venera-app/venera-configs | 1.2.0 | venerax | 通过 | 失败 | explore[2].loadNext：返回结构或样本不满足契约 | 排除官方原版／未高于官方版本 |
 | ehentai | ehentai | yelongyue197-svg/venera-sources | 1.1.8 | venerax | 通过 | 失败 | comic.archive.getArchives：需要登录 | 排除官方原版／未高于官方版本 |
 | Everia图集 | everia_14_efa23b | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：请求超时 | 按原有收录标准审核 |
-| 810114 漫画源 | ex_810114_xyz | xuzhen2905-pixel/venera-source | 1.0.0 | venerax | 未完整通过 | 失败 | explore[0].load：返回结构或样本不满足契约 | 按原有收录标准审核 |
+| 810114 漫画源 | ex_810114_xyz | xuzhen2905-pixel/venera-source | 1.0.0 | venerax | 未完整通过 | 失败 | explore[0].load：请求超时 | 按原有收录标准审核 |
 | ExHentai (fangliding 镜像) | ex_fangliding | zakkida/venera-sources | 1.2.0 | venerax | 未完整通过 | 失败 | search.loadNext：反爬拦截 | 按原有收录标准审核 |
 | 飞翔漫画 | ffppt | handahao666-boop/venera_comic_source | 1.0.3 | venerax | 通过 | 通过 |  | 按原有收录标准审核 |
 | 飞翔漫画 | ffppt | Junkrat9527/venera-sources | 1.0.2 | venerax | 通过 | 通过 |  | 按原有收录标准审核 |
@@ -177,10 +177,10 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 | 禁漫天堂 | jm | yelongyue197-svg/venera-sources | 1.3.1 | venerax | 通过 | 部分通过 | account.login：未提供账号凭据 | 排除官方原版／未高于官方版本 |
 | 禁漫天堂X | jmx | Junkrat9527/venera-sources | 2.1.0 | venerax | 通过 | 部分通过 | account.login：未提供账号凭据 | 按原有收录标准审核 |
 | 看漫画 | kanman | Junkrat9527/venera-sources | 2.2.7 | venerax | 通过 | 失败 | search.load：返回结构或样本不满足契约 | 按原有收录标准审核 |
-| Kavita | kavita | venera-app/venera-configs | 1.0.0 | venerax | 未完整通过 | 失败 | search.load：网络错误 | 排除官方原版／未高于官方版本 |
+| Kavita | kavita | venera-app/venera-configs | 1.0.0 | venerax | 未完整通过 | 失败 | search.load：请求超时 | 排除官方原版／未高于官方版本 |
 | Kiutaku | kiutaku | meaninglesslyy/venera-config | 1.1.0 | venerax | 通过 | 失败 | comic.idMatch：返回结构或样本不满足契约 | 按原有收录标准审核 |
 | Komga | komga | venera-app/venera-configs | 1.0.0 | venerax | 未完整通过 | 失败 | search.load：源配置错误 | 排除官方原版／未高于官方版本 |
-| Komga | komga | zakkida/venera-sources | 1.0.1 | venerax | 未完整通过 | 失败 | search.load：请求超时 | 高于官方 1.0.0；按原收录标准审核 |
+| Komga | komga | zakkida/venera-sources | 1.0.1 | venerax | 未完整通过 | 失败 | search.load：需要登录 | 高于官方 1.0.0；按原收录标准审核 |
 | Komiic漫画 | komiic_69_259947 | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：HTTP 错误 | 按原有收录标准审核 |
 | Komiic 多账号 | komiic_multi | snowf14k3/venera-komiic-multi | 1.6.2 | venerax | 未完整通过 | 失败 | explore[0].load：返回结构或样本不满足契约 | 按原有收录标准审核 |
 | 快看漫画 | kuaikan | cattoldme/venera-configs | 1.0.0 | venerax | 通过 | 通过 |  | 按原有收录标准审核 |
@@ -200,15 +200,15 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 | 百年漫画 | legacy_bnmanhua | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：请求超时 | 按原有收录标准审核 |
 | 漫画联合国 | legacy_comicun | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：源配置错误 | 按原有收录标准审核 |
 | 大魔兔 | legacy_damotu | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：源配置错误 | 按原有收录标准审核 |
-| 蒂亚漫画 | legacy_diya1 | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：网络错误 | 按原有收录标准审核 |
+| 蒂亚漫画 | legacy_diya1 | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：请求超时 | 按原有收录标准审核 |
 | 好漫6 | legacy_haoman6 | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：网络错误 | 按原有收录标准审核 |
 | 六漫画 | legacy_hbdsfj | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：DNS 错误 | 按原有收录标准审核 |
 | 冰氪漫画 | legacy_icekr | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：请求超时 | 按原有收录标准审核 |
 | 爱米推漫画 | legacy_imitui | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：DNS 错误 | 按原有收录标准审核 |
 | 看漫画 | legacy_kanman | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | comic.loadInfo：源配置错误 | 按原有收录标准审核 |
 | 漫画羊 | legacy_manhuayang | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：DNS 错误 | 按原有收录标准审核 |
-| 漫漫看漫画网 | legacy_manmankan | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：TLS 错误 | 按原有收录标准审核 |
-| 漫漫睇 | legacy_manmantai | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：源配置错误 | 按原有收录标准审核 |
+| 漫漫看漫画网 | legacy_manmankan | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：请求超时 | 按原有收录标准审核 |
+| 漫漫睇 | legacy_manmantai | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：请求超时 | 按原有收录标准审核 |
 | 漫画芯 | legacy_mhxin | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：TLS 错误 | 按原有收录标准审核 |
 | 奇妙漫画 | legacy_qimiaomh | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：TLS 错误 | 按原有收录标准审核 |
 | 奇热漫画 | legacy_qiremanhua | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：DNS 错误 | 按原有收录标准审核 |
@@ -220,7 +220,7 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 | 360漫画 | legacy_xd5s | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：请求超时 | 按原有收录标准审核 |
 | 土豆漫画网 | legacy_xm124 | wuliaoe/venera-extra-sources | 0.1.0 | venerax | 未完整通过 | 失败 | search.load：DNS 错误 | 按原有收录标准审核 |
 | 六漫画 | liumanhua | token1008/venera-cn-64bit | 1.0.0 | venerax | 未完整通过 | 失败 | explore[1].load：需要登录 | 按原有收录标准审核 |
-| 栗子漫画 | lizimh | Walter498/Walter | 2.33.27 | venerax | 通过 | 部分通过 | comic.onImageLoad.onLoadFailed：本次成功路径未触发 | 按原有收录标准审核 |
+| 栗子漫画 | lizimh | Walter498/Walter | 2.33.27 | venerax | 通过 | 失败 | explore[0].load：返回结构或样本不满足契约 | 按原有收录标准审核 |
 | 漫漫漫画-M | m_37_824ad0 | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：HTTP 错误 | 按原有收录标准审核 |
 | 咚漫-M | m_47_c0f177 | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：返回结构或样本不满足契约 | 按原有收录标准审核 |
 | 漫画台-M | m_50_2be8b8 | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：TLS 错误 | 按原有收录标准审核 |
@@ -234,7 +234,7 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 | 51漫画 | manga51 | Junkrat9527/venera-sources | 1.3.0 | venerax | 通过 | 部分通过 | comic.getShareLink：缺少样本输入 | 按原有收录标准审核 |
 | MangaDex | manga_dex | handahao666-boop/venera_comic_source | 1.1.1 | venerax | 通过 | 部分通过 | categoryComics.load：缺少样本输入 | 排除官方原版／未高于官方版本 |
 | MangaDex | manga_dex | venera-app/venera-configs | 1.2.0 | venerax | 通过 | 部分通过 | account.loginWithWebview.checkStatus：需要交互 | 排除官方原版／未高于官方版本 |
-| MangaDex | manga_dex | yelongyue197-svg/venera-sources | 1.1.0 | venerax | 未完整通过 | 失败 | comic.loadComments：运行时不支持 | 排除官方原版／未高于官方版本 |
+| MangaDex | manga_dex | yelongyue197-svg/venera-sources | 1.1.0 | venerax | 通过 | 失败 | comic.loadComments：运行时不支持 | 排除官方原版／未高于官方版本 |
 | MANGA Plus | manga_plus | WEP-56/EZvenera-config | 1.0.2 | venerax | 未完整通过 | 失败 | search.load：需要登录 | 按原有收录标准审核 |
 | Mangabz | mangabz | hea784/venera-configs | 0.2.0 | venerax | 未完整通过 | 失败 | comic.loadEp：源配置错误 | 按原有收录标准审核 |
 | Mangabz | mangabz | handahao666-boop/venera_comic_source | 1.0.0 | venerax | 通过 | 通过 |  | 按原有收录标准审核 |
@@ -249,12 +249,12 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 | 漫画人 | manhuaren | handahao666-boop/venera_comic_source | 1.0.1 | venerax | 通过 | 通过 |  | 高于官方 1.0.0；按原收录标准审核 |
 | 漫画人 | manhuaren | venera-app/venera-configs | 1.0.0 | venerax | 通过 | 通过 |  | 排除官方原版／未高于官方版本 |
 | 香蕉漫画 | manhuauo_banana_v2 | handahao666-boop/venera_comic_source | 1.0.3 | venerax | 未完整通过 | 失败 | search.load：需要登录 | 按原有收录标准审核 |
-| 漫漫漫画 | manman | token1008/venera-cn-64bit | 1.0.0 | venerax | 未完整通过 | 失败 | explore[1].load：HTTP 错误 | 按原有收录标准审核 |
+| 漫漫漫画 | manman | token1008/venera-cn-64bit | 1.0.0 | venerax | 未完整通过 | 失败 | comic.loadInfo：HTTP 错误 | 按原有收录标准审核 |
 | 漫舍 | manshe | Micqiyue/venera-sources | 1.0.8 | venerax | 未完整通过 | 失败 | search.load：HTTP 错误 | 按原有收录标准审核 |
 | 漫蛙 | manwa | YHQY-Dev/venera-sources | 1.1.6 | venerax | 未完整通过 | 失败 | search.load：返回结构或样本不满足契约 | 按原有收录标准审核 |
 | 漫蛙吧 | manwaba | handahao666-boop/venera_comic_source | 1.1.3 | venerax | 通过 | 失败 | categoryComics.load：HTTP 错误 | 高于官方 1.0.2；按原收录标准审核 |
 | 漫蛙吧 | manwaba | venera-app/venera-configs | 1.0.3 | venerax | 未完整通过 | 失败 | categoryComics.load：HTTP 错误 | 排除官方原版／未高于官方版本 |
-| 漫蛙吧（图片修复版） | manwaba_imagefix | YongkeDet/venera-configs | 1.0.7 | venerax | 未完整通过 | 失败 | source.download：源码下载失败 | 按原有收录标准审核 |
+| 漫蛙吧（图片修复版） | manwaba_imagefix | YongkeDet/venera-configs | 1.0.7 | venerax | 通过 | 失败 | categoryComics.load：HTTP 错误 | 按原有收录标准审核 |
 | 漫网 | manwang | handahao666-boop/venera_comic_source | 1.2.0 | venerax | 未完整通过 | 失败 | search.load：反爬拦截 | 按原有收录标准审核 |
 | 漫网 | manwang | Junkrat9527/venera-sources | 1.3.4 | venerax | 未完整通过 | 失败 | search.load：反爬拦截 | 按原有收录标准审核 |
 | 漫画manga | mh03 | Magentadots/venera-configs | 1.0.1 | venerax | 通过 | 失败 | explore[0].load：需要登录 | 按原有收录标准审核 |
@@ -324,7 +324,7 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 | 漫画联合国 | source_32_e5ebaf | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：返回结构或样本不满足契约 | 按原有收录标准审核 |
 | 漫畫櫃 | source_33_05aedf | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：HTTP 错误 | 按原有收录标准审核 |
 | 特漫网 | source_34_0dc3b2 | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：HTTP 错误 | 按原有收录标准审核 |
-| 漫画人 | source_35_667a4f | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：HTTP 错误 | 按原有收录标准审核 |
+| 漫画人 | source_35_667a4f | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：返回结构或样本不满足契约 | 按原有收录标准审核 |
 | 咚漫 | source_36_d33fb7 | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：需要登录 | 按原有收录标准审核 |
 | 动漫戏说 | source_38_17bca1 | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：网络错误 | 按原有收录标准审核 |
 | 极速漫画 | source_39_7cc572 | KadishJoey/venera-json | 0.2.0 | venerax | 未完整通过 | 失败 | search.load：需要登录 | 按原有收录标准审核 |
@@ -384,4 +384,4 @@ GitHub 托管 runner 的网络与用户设备不同；未在用户设备验证�
 
 ## 扩展索引
 
-腾讯动漫、Asura Scans、百合会、包子漫画、包子漫画（修订版）、Buon Dua、CCC追漫台、Cosplay啦、CxC、大魔兔、顶漫画、动漫啦、4KHD Cosplay、瓜子漫画、Hachiraw、爱飒漫画、JJCOS、禁漫天堂、禁漫天堂X、看漫画、Kiutaku、来漫画（分流）、栗子漫画、Manga18FX、178漫画网、漫蛙吧、漫画manga、漫画1234（新版网站）、MOJOIN、MOJOIN、魅影画廊（私人）、如漫画、如漫画、如漫画、SF漫画、少年ジャンプ＋、サンデーうぇぶり、图库漫画、Xiutaku、优酷漫画 (修复版)、zero搬运网、zero搬运网、知音漫客
+Asura Scans、百合会、包子漫画、包子漫画（修订版）、Buon Dua、CCC追漫台、Cosplay啦、CxC、大魔兔、顶漫画、动漫啦、4KHD Cosplay、瓜子漫画、Hachiraw、爱飒漫画、JJCOS、禁漫天堂、禁漫天堂X、看漫画、Kiutaku、来漫画（分流）、栗子漫画、Manga18FX、178漫画网、漫蛙吧、漫蛙吧（图片修复版）、漫画manga、漫画1234（新版网站）、MOJOIN、MOJOIN、魅影画廊（私人）、如漫画、如漫画、如漫画、SF漫画、少年ジャンプ＋、サンデーうぇぶり、图库漫画、Xiutaku、优酷漫画 (修复版)、zero搬运网、zero搬运网、知音漫客
