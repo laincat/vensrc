@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-29T06:44:48.099720+00:00",
+  "checkedAt": "2026-10-30T06:46:28.530823+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -2134,13 +2134,32 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "51499d6c68f15cb2a565187a1fe5ac6d48882cce6cce60f928d620f03cfbe01d",
+      "id": "91ba937d50da1717136e9bf9e67111b58fb08e0e52222791e3bab49989ee0275",
+      "key": "zaimanhua",
+      "name": "再漫画",
+      "version": "1.0.3",
+      "fileName": "zaimanhua.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/ven/zaimanhua.js",
+      "sha256": "91ba937d50da1717136e9bf9e67111b58fb08e0e52222791e3bab49989ee0275",
+      "repository": "Taototo/venera-comic-sources",
+      "minAppVersion": "1.0.0",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "Taototo/venera-comic-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "fefba47b02bd4b0086cd3c78da3c0058932e5fbb52f96411d76c2c18cff0a40f",
       "key": "mxs",
-      "name": "漫小肆（Ven）",
-      "version": "1.0.5",
+      "name": "漫小肆（18+）",
+      "version": "1.0.7",
       "fileName": "mxs.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/4296b44fb143cb4e39666f5cbd86805f3c325906/sources/ven/mxs.js",
-      "sha256": "51499d6c68f15cb2a565187a1fe5ac6d48882cce6cce60f928d620f03cfbe01d",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/ven/mxs.js",
+      "sha256": "fefba47b02bd4b0086cd3c78da3c0058932e5fbb52f96411d76c2c18cff0a40f",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.5.0",
       "sample": {
@@ -2155,13 +2174,116 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "76500ab3cf7c31b2c9e353574543b4044cb9c6a40f4c6f6a9e9f0a039eea585c",
-      "key": "private_csmanhua",
-      "name": "成色漫画（私人）",
+      "id": "2fbb6236652b0ea8776cd46d1b44e4ffc57d7812576550ddfe824ec8688ec42d",
+      "key": "manhuaren",
+      "name": "漫画人",
       "version": "1.0.1",
+      "fileName": "manhuaren.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/ven/manhuaren.js",
+      "sha256": "2fbb6236652b0ea8776cd46d1b44e4ffc57d7812576550ddfe824ec8688ec42d",
+      "repository": "Taototo/venera-comic-sources",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "https://www.manhuaren.com/manhua-manbucangqiong/",
+        "epId": "https://www.manhuaren.com/m969149/",
+        "keyword": "斗破苍穹"
+      },
+      "trackedBy": [
+        "Taototo/venera-comic-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "4d0b8897c919c41ef2d44a55c9960ba931c46cc936fc808858e8dccf818cb39b",
+      "key": "jm",
+      "name": "禁漫天堂（18+）",
+      "version": "1.4.1",
+      "fileName": "jm.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/ven/jm.js",
+      "sha256": "4d0b8897c919c41ef2d44a55c9960ba931c46cc936fc808858e8dccf818cb39b",
+      "repository": "Taototo/venera-comic-sources",
+      "minAppVersion": "1.5.0",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "1485211",
+        "epId": "1485211"
+      },
+      "trackedBy": [
+        "Taototo/venera-comic-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "4bac3f88dbf5eee3d7d0bc6a6867f57a981965657ff6dcfc7cd5fbe2b80bf111",
+      "key": "hj_baozi",
+      "name": "包子漫画",
+      "version": "1.1.8",
+      "fileName": "baozi.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/private/baozi.js",
+      "sha256": "4bac3f88dbf5eee3d7d0bc6a6867f57a981965657ff6dcfc7cd5fbe2b80bf111",
+      "repository": "Taototo/venera-comic-sources",
+      "minAppVersion": "1.0.0",
+      "sample": {
+        "keyword": "海贼王"
+      },
+      "trackedBy": [
+        "Taototo/venera-comic-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "898fd65f78c53deaa6f7850b58ec499d76c4d55a7c9024208e35263c134b4eea",
+      "key": "private_myhl",
+      "name": "魅影画廊",
+      "version": "1.0.2",
+      "fileName": "myhl.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/private/myhl.js",
+      "sha256": "898fd65f78c53deaa6f7850b58ec499d76c4d55a7c9024208e35263c134b4eea",
+      "repository": "Taototo/venera-comic-sources",
+      "minAppVersion": "1.2.0",
+      "sample": {
+        "comicId": "https://tk.myhl03.sbs/2026/10/%e5%b0%8f%e4%b8%81ding%e3%80%8anikke-%e6%af%92%e8%9b%87%e3%80%8b/",
+        "epId": "https://tk.myhl03.sbs/2026/10/%e5%b0%8f%e4%b8%81ding%e3%80%8anikke-%e6%af%92%e8%9b%87%e3%80%8b/",
+        "keyword": "斗破苍穹"
+      },
+      "trackedBy": [
+        "Taototo/venera-comic-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "8f19da0af3a241cd5bad72970aeefdd792c2c846e6709c285c5044c178b0f9e0",
+      "key": "private_drmh3",
+      "name": "大人漫画（18+）",
+      "version": "1.0.1",
+      "fileName": "drmh3.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/private/drmh3.js",
+      "sha256": "8f19da0af3a241cd5bad72970aeefdd792c2c846e6709c285c5044c178b0f9e0",
+      "repository": "Taototo/venera-comic-sources",
+      "minAppVersion": "1.0.0",
+      "sample": {
+        "comicId": "/comics-reading/35840.html",
+        "epId": "/comics-reading/35840/BkHKfpyYanChfcbWksJF.html",
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "Taototo/venera-comic-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "2fcb55afdb4ec089109efa40560cbeea1e97b213ad42487a491d0f676616c205",
+      "key": "private_csmanhua",
+      "name": "成色漫画（18+）",
+      "version": "1.0.2",
       "fileName": "csmanhua.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/4296b44fb143cb4e39666f5cbd86805f3c325906/sources/private/csmanhua.js",
-      "sha256": "76500ab3cf7c31b2c9e353574543b4044cb9c6a40f4c6f6a9e9f0a039eea585c",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/private/csmanhua.js",
+      "sha256": "2fcb55afdb4ec089109efa40560cbeea1e97b213ad42487a491d0f676616c205",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.0.0",
       "sample": {
@@ -2174,13 +2296,13 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "868ec10cc4ed40dfdc171ebc482cfe7bf21aceffd416c9a568913e7820e0d8e1",
+      "id": "d25285c25f90f3fe4c482c41b4ae23790c11e3af7afc70a12d2a303aa00f2efa",
       "key": "private_kxmanhua",
-      "name": "开心看漫画（私人）",
-      "version": "1.0.3",
+      "name": "开心看漫画（18+）",
+      "version": "1.0.4",
       "fileName": "kxmanhua.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/4296b44fb143cb4e39666f5cbd86805f3c325906/sources/private/kxmanhua.js",
-      "sha256": "868ec10cc4ed40dfdc171ebc482cfe7bf21aceffd416c9a568913e7820e0d8e1",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/private/kxmanhua.js",
+      "sha256": "d25285c25f90f3fe4c482c41b4ae23790c11e3af7afc70a12d2a303aa00f2efa",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.0.0",
       "sample": {
@@ -2193,32 +2315,51 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "a9ff1969ac5ccfd19eb1b676da658aa69862e5876b711934009a8e2fce6c1da2",
-      "key": "private_nnhanman",
-      "name": "鸟鸟韩漫（私人）",
-      "version": "1.0.3",
-      "fileName": "nnhanman.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/4296b44fb143cb4e39666f5cbd86805f3c325906/sources/private/nnhanman.js",
-      "sha256": "a9ff1969ac5ccfd19eb1b676da658aa69862e5876b711934009a8e2fce6c1da2",
-      "repository": "Taototo/venera-comic-sources",
-      "minAppVersion": "1.0.0",
-      "sample": {
-        "keyword": "火影"
-      },
-      "trackedBy": [
-        "Taototo/venera-comic-sources"
-      ],
-      "priority": 0,
-      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
-    },
-    {
-      "id": "bad606259afd2aee7979cb01ed8b4f450737139d13ac60b9e6fc08ea86e023af",
+      "id": "7cb3d5e94170e02558624fbe387c3567ba638a083306b3f2d3ea6f6ed582cc4d",
       "key": "private_jm_uu",
-      "name": "禁漫天堂（网页）",
-      "version": "1.0.0",
+      "name": "禁漫天堂（网页）（18+）",
+      "version": "1.0.1",
       "fileName": "jm_uu.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/4296b44fb143cb4e39666f5cbd86805f3c325906/sources/private/jm_uu.js",
-      "sha256": "bad606259afd2aee7979cb01ed8b4f450737139d13ac60b9e6fc08ea86e023af",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/private/jm_uu.js",
+      "sha256": "7cb3d5e94170e02558624fbe387c3567ba638a083306b3f2d3ea6f6ed582cc4d",
+      "repository": "Taototo/venera-comic-sources",
+      "minAppVersion": "1.0.0",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "Taototo/venera-comic-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "9d0be11ce76a7027a8a1e990b2159dc9d534acfb98778e05d447555ed9288d48",
+      "key": "private_hmanwu",
+      "name": "韩漫屋（18+）",
+      "version": "1.1.2",
+      "fileName": "hmanwu.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/private/hmanwu.js",
+      "sha256": "9d0be11ce76a7027a8a1e990b2159dc9d534acfb98778e05d447555ed9288d48",
+      "repository": "Taototo/venera-comic-sources",
+      "minAppVersion": "1.0.0",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "Taototo/venera-comic-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "429547fe52f669feb2f4fd570b014690a54a2626c251975f88291bbafe37fb3c",
+      "key": "private_manhuazhan",
+      "name": "漫画站",
+      "version": "1.0.0",
+      "fileName": "manhuazhan.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/6ade10761f25290e102c0a1f1af8843635a63001/sources/private/manhuazhan.js",
+      "sha256": "429547fe52f669feb2f4fd570b014690a54a2626c251975f88291bbafe37fb3c",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.0.0",
       "sample": {
@@ -3709,8 +3850,10 @@
     },
     {
       "repository": "Taototo/venera-comic-sources",
-      "commit": "4296b44fb143cb4e39666f5cbd86805f3c325906",
-      "errors": []
+      "commit": "6ade10761f25290e102c0a1f1af8843635a63001",
+      "errors": [
+        "鸟鸟韩漫（18+）：HTTP Error 404: Not Found"
+      ]
     },
     {
       "repository": "VComic-org/venera-comic-source",
@@ -3884,12 +4027,64 @@
   ],
   "newRepositories": [
     {
-      "repository": "gallhall/venera-v",
-      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates"
+      "repository": "laincat/VeneraCat-Core",
+      "description": "Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0"
+    },
+    {
+      "repository": "noorlightazaz-gif/https-venerable-sunshine-623dd3.netlify.app-",
+      "description": ""
     },
     {
       "repository": "CyrilPeng/Venera-Next",
       "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。"
+    },
+    {
+      "repository": "gallhall/venera-v",
+      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates"
+    },
+    {
+      "repository": "Maxll51/EZVenera-Lite",
+      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android"
+    },
+    {
+      "repository": "Ryuzxy/Analisis-Veneralbility-WebGoat-Ilkom-Unej",
+      "description": ""
+    },
+    {
+      "repository": "hp5588/venera-sources",
+      "description": "借助 Codex 开发与维护的 VeneraNext 个人漫画源分发清单：包子、拷贝、漫蛙。使用前请阅读说明与隐私注意事项。"
+    },
+    {
+      "repository": "Venera-Works/Venera-Plus",
+      "description": "VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源"
+    },
+    {
+      "repository": "Venera0207/venera-portfolio",
+      "description": ""
+    },
+    {
+      "repository": "morpuct/venera-sources-hub",
+      "description": "Venera 漫画源合订索引：汇总官方与社区仓库共 105 个源，每条指向原作者仓库原文，用于逐个比对效果"
+    },
+    {
+      "repository": "amke79/venerastudios-site",
+      "description": ""
+    },
+    {
+      "repository": "lwtor/venera-native",
+      "description": "Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。"
+    },
+    {
+      "repository": "Magic-Miku/venera-store",
+      "description": ""
+    },
+    {
+      "repository": "venerahome/venerahome.github.io",
+      "description": "Venera Hasanova · Imoti Premier · Property in Greece"
+    },
+    {
+      "repository": "laincat/vensrc",
+      "description": "Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release"
     },
     {
       "repository": "Taototo/venera-manmankan",
@@ -3898,14 +4093,6 @@
     {
       "repository": "CangShui/VenHM",
       "description": "兼容Venera源的鸿蒙开源漫画阅读器"
-    },
-    {
-      "repository": "Maxll51/EZVenera-Lite",
-      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android"
-    },
-    {
-      "repository": "amke79/venerastudios-site",
-      "description": ""
     },
     {
       "repository": "john-cpallc/venerable-grain",
@@ -3920,32 +4107,12 @@
       "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
     },
     {
-      "repository": "morpuct/venera-sources-hub",
-      "description": "Venera 漫画源合订索引：汇总官方与社区仓库共 105 个源，每条指向原作者仓库原文，用于逐个比对效果"
-    },
-    {
-      "repository": "Venera0207/venera-portfolio",
-      "description": ""
-    },
-    {
       "repository": "AnziibMeepo/VeneraM",
       "description": "A comic app，自用版，增加了图片超分功能、拆分跨页功、修改了左右连续阅读功能的滑动BUG、修复了很多地方崩溃闪退的问题、换了一个自己很喜欢的图标。"
     },
     {
       "repository": "Venera0207/venera-sales",
       "description": ""
-    },
-    {
-      "repository": "Magic-Miku/venera-store",
-      "description": ""
-    },
-    {
-      "repository": "laincat/vensrc",
-      "description": "Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release"
-    },
-    {
-      "repository": "Venera-Works/Venera-Plus",
-      "description": "VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源"
     },
     {
       "repository": "veneraproject/venera-node",
@@ -3992,10 +4159,6 @@
       "description": "An Android comic reader. A fork of Venera-Next, Android release only."
     },
     {
-      "repository": "lwtor/venera-native",
-      "description": "Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。"
-    },
-    {
       "repository": "markiianklymchuk-hash/kingdoms-of-venera",
       "description": ""
     },
@@ -4018,10 +4181,6 @@
     {
       "repository": "matloporokjl-tech/https-venerable-malasada-5a1196.netlify.app-",
       "description": "Google Keep clone (HTML and CSS)"
-    },
-    {
-      "repository": "venerahome/venerahome.github.io",
-      "description": "Venera Hasanova · Imoti Premier · Property in Greece"
     },
     {
       "repository": "lll152872/venera-lll",
@@ -4205,14 +4364,6 @@
     },
     {
       "repository": "venerandahospital/ihms_online_ui_for_local_veneranda",
-      "description": ""
-    },
-    {
-      "repository": "shehabeldeen/venera-theme-guide",
-      "description": "Venera Salla theme guide — setup, home blocks, product data and support"
-    },
-    {
-      "repository": "ismoses62-svg/venerable-kitten-41cd16",
       "description": ""
     }
   ],
