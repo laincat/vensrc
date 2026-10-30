@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-29T07:00:13.592253+00:00",
+  "checkedAt": "2026-10-30T07:02:05.052803+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-10-29T06:43:33.906910+00:00",
+    "checkedAt": "2026-10-30T06:44:47.978793+00:00",
     "adapterSha256": {
       "scripts/client_bridge.mjs": "ec822f73af3def047ae82031ce89deb80930619cf966bfc0b280b2e8c011e5e5",
       "scripts/prepare_client.py": "335905c1f43ca70cfae3daea5dd3d11b7b54cafa1fe6e695a86b32347bc48ac8",
@@ -42,7 +42,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:3fc3f8d9f5e8346f401c1482276caf6855184c45a3b8f32a03cc4c935d67c160"
+    "imageId": "sha256:f47e7c16549db766c25ab02a241179b68c847af2cea574fdb87b54940dcd3a51"
   },
   "catalogSha256": "87172c62cfde6c123cc6982e881b688d2a4ed4765ec1d6e06af70c3d2a264ab6",
   "rows": [
@@ -572,21 +572,6 @@
       ]
     },
     {
-      "id": "c36110d27ea41a64fdd9f1180bc3cf4b0936b0cdffa0fb30a14c5c8c64612236",
-      "key": "ac_qq",
-      "name": "腾讯动漫",
-      "repository": "Angus-fw/venera-configs",
-      "version": "1.0.1",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "18c0c8b324346da24ba58992d1493facb91d50fae789d320d07968b2fa452f83",
       "key": "aiman",
       "name": "爱漫岛",
@@ -806,6 +791,25 @@
         {
           "stage": "explore[0].load",
           "category": "auth_required"
+        }
+      ]
+    },
+    {
+      "id": "fd12333c3e2a5eea0371a166bab3cb2d77c8c94ccdf0441f136477ec5a1e7277",
+      "key": "comick",
+      "name": "comick",
+      "repository": "l233333333/venera-sources",
+      "version": "1.1.1",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
         }
       ]
     },
@@ -1152,21 +1156,6 @@
         {
           "stage": "comic.loadEp",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "e8d71c02d79cf0e370882d11f9bfd52e6620db34b479b099ce81f9e46701fca0",
-      "key": "hanabimanga",
-      "name": "花火漫画",
-      "repository": "xiaoxingmian/venera-configs",
-      "version": "1.0.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadEp",
-          "category": "rate_limited"
         }
       ]
     },
@@ -1542,10 +1531,6 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "anti_bot"
         }
       ]
     },
@@ -1855,10 +1840,6 @@
         {
           "stage": "explore[1].load",
           "category": "auth_required"
-        },
-        {
-          "stage": "explore[3].load",
-          "category": "auth_required"
         }
       ]
     },
@@ -2091,7 +2072,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "comic.loadEp",
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadInfo",
           "category": "auth_required"
         }
       ]
@@ -2927,6 +2916,25 @@
       ]
     },
     {
+      "id": "fd12333c3e2a5eea0371a166bab3cb2d77c8c94ccdf0441f136477ec5a1e7277",
+      "key": "comick",
+      "name": "comick",
+      "repository": "l233333333/venera-sources",
+      "version": "1.1.1",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
       "id": "3db355237cecd70b8441ecd8c5b34e71de832300d1bfbaa9e7c9a076a87e0112",
       "key": "cycomic",
       "name": "次元漫画",
@@ -3031,25 +3039,6 @@
         {
           "stage": "comic.loadEp",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "a0fc9199723dba45be5c9adae42b6ccbaf66b2a096c085f4bec15469fcf4c3e0",
-      "key": "fourkhd",
-      "name": "4KHD",
-      "repository": "meaninglesslyy/venera-config",
-      "version": "2.0.7",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "rate_limited"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "rate_limited"
         }
       ]
     },
@@ -3678,10 +3667,6 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "anti_bot"
         }
       ]
     },
@@ -3980,29 +3965,6 @@
       ]
     },
     {
-      "id": "372767ebd00430e5085a904954fc814dc5b5cc07a12a6c185630a5bd2aaafb74",
-      "key": "qimanwu",
-      "name": "奇漫屋",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "explore[1].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[6].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[12].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "f15ad92098c3d54c60436f33c3098febbae84bb1cef8a9eae855f5f990fd0f26",
       "key": "rawkuma",
       "name": "Rawkuma",
@@ -4231,6 +4193,10 @@
       "corePassed": false,
       "failures": [
         {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
           "stage": "comic.loadEp",
           "category": "auth_required"
         }
@@ -4368,7 +4334,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/40830928258",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/41015869240",
   "browser": [
     {
       "key": "bakamh",
@@ -4459,5 +4425,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/40832676800"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/41017621187"
 }
