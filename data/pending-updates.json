@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-30T06:46:28.530823+00:00",
+  "checkedAt": "2026-10-31T06:36:15.963119+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -3950,7 +3950,7 @@
     },
     {
       "repository": "moonskycake/venera-next",
-      "commit": "347e3b98efa15c7a4737708e4dc4059d87c93c54",
+      "commit": "29d0335e8128083d9b8566fb9336dcabf2c319d3",
       "errors": []
     },
     {
@@ -4027,28 +4027,24 @@
   ],
   "newRepositories": [
     {
-      "repository": "laincat/VeneraCat-Core",
-      "description": "Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0"
-    },
-    {
-      "repository": "noorlightazaz-gif/https-venerable-sunshine-623dd3.netlify.app-",
-      "description": ""
+      "repository": "vonhezhou/mansou",
+      "description": "漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。"
     },
     {
       "repository": "CyrilPeng/Venera-Next",
       "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。"
     },
     {
-      "repository": "gallhall/venera-v",
-      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates"
+      "repository": "redsoap-blip/fxVenera",
+      "description": "基于 EZVenera 的 Android 漫画阅读器分支（GPL-3.0）"
+    },
+    {
+      "repository": "laincat/VeneraCat-Core",
+      "description": "Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0"
     },
     {
       "repository": "Maxll51/EZVenera-Lite",
       "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android"
-    },
-    {
-      "repository": "Ryuzxy/Analisis-Veneralbility-WebGoat-Ilkom-Unej",
-      "description": ""
     },
     {
       "repository": "hp5588/venera-sources",
@@ -4057,6 +4053,38 @@
     {
       "repository": "Venera-Works/Venera-Plus",
       "description": "VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源"
+    },
+    {
+      "repository": "Kyosee/VeneraX",
+      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
+    },
+    {
+      "repository": "Magic-Miku/venera-store",
+      "description": ""
+    },
+    {
+      "repository": "Gandum2077/venera-patrol-cli",
+      "description": ""
+    },
+    {
+      "repository": "CangShui/VenHM",
+      "description": "兼容Venera源的鸿蒙开源漫画阅读器"
+    },
+    {
+      "repository": "laincat/vensrc",
+      "description": "Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release"
+    },
+    {
+      "repository": "noorlightazaz-gif/https-venerable-sunshine-623dd3.netlify.app-",
+      "description": ""
+    },
+    {
+      "repository": "gallhall/venera-v",
+      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates"
+    },
+    {
+      "repository": "Ryuzxy/Analisis-Veneralbility-WebGoat-Ilkom-Unej",
+      "description": ""
     },
     {
       "repository": "Venera0207/venera-portfolio",
@@ -4075,24 +4103,12 @@
       "description": "Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。"
     },
     {
-      "repository": "Magic-Miku/venera-store",
-      "description": ""
-    },
-    {
       "repository": "venerahome/venerahome.github.io",
       "description": "Venera Hasanova · Imoti Premier · Property in Greece"
     },
     {
-      "repository": "laincat/vensrc",
-      "description": "Vensrc：VeneraX / Venera-Next 漫画源巡检、订阅与单一滚动 Release"
-    },
-    {
       "repository": "Taototo/venera-manmankan",
       "description": "venera-漫漫看：Android 漫画阅读应用定制版"
-    },
-    {
-      "repository": "CangShui/VenHM",
-      "description": "兼容Venera源的鸿蒙开源漫画阅读器"
     },
     {
       "repository": "john-cpallc/venerable-grain",
@@ -4101,10 +4117,6 @@
     {
       "repository": "huangjun7hb/venera-next-sources",
       "description": ""
-    },
-    {
-      "repository": "Kyosee/VeneraX",
-      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。"
     },
     {
       "repository": "AnziibMeepo/VeneraM",
@@ -4125,6 +4137,10 @@
     {
       "repository": "Kerollos004/venera",
       "description": ""
+    },
+    {
+      "repository": "Walter498/Venera-Max",
+      "description": "以 VeneraX 為基礎、按我們自己閱讀習慣深度改裝的漫畫閱讀器（栗子漫畫源優先）。加了什麼、修了什麼，全部寫在 README。"
     },
     {
       "repository": "SYXZyt/Venera",
@@ -4163,10 +4179,6 @@
       "description": ""
     },
     {
-      "repository": "Gandum2077/venera-patrol-cli",
-      "description": ""
-    },
-    {
       "repository": "JUTZUGC/venera-deploy-guide",
       "description": "Venera 一键安装｜本地和网络漫画都能看，装完导入漫画源即可｜自动校验三平台包｜第三方一键部署方案"
     },
@@ -4189,10 +4201,6 @@
     {
       "repository": "opaiopaio/Venera-Nas",
       "description": "Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中"
-    },
-    {
-      "repository": "Walter498/Venera-Max",
-      "description": "以 VeneraX 為基礎、按我們自己閱讀習慣深度改裝的漫畫閱讀器（栗子漫畫源優先）。加了什麼、修了什麼，全部寫在 README。"
     },
     {
       "repository": "Meloon-dr/venera-sources",
@@ -4360,10 +4368,6 @@
     },
     {
       "repository": "aidar41k/venera-uzatuu",
-      "description": ""
-    },
-    {
-      "repository": "venerandahospital/ihms_online_ui_for_local_veneranda",
       "description": ""
     }
   ],
