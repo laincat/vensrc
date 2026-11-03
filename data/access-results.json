@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-02T07:26:11.715204+00:00",
+  "checkedAt": "2026-11-03T07:48:25.329608+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-02T07:10:16.743281+00:00",
+    "checkedAt": "2026-11-03T07:31:31.094169+00:00",
     "adapterSha256": {
       "scripts/client_bridge.mjs": "ec822f73af3def047ae82031ce89deb80930619cf966bfc0b280b2e8c011e5e5",
       "scripts/prepare_client.py": "335905c1f43ca70cfae3daea5dd3d11b7b54cafa1fe6e695a86b32347bc48ac8",
@@ -42,7 +42,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:55779217ceb45fd3213a4a1e2b131cfd559b0505b728aabdfdf5bc65b27d3ac0"
+    "imageId": "sha256:194f8aad0f09c3337cd97daf2316d5e961478a93b12b4e1043ac42272a4e22d0"
   },
   "catalogSha256": "87172c62cfde6c123cc6982e881b688d2a4ed4765ec1d6e06af70c3d2a264ab6",
   "rows": [
@@ -239,6 +239,21 @@
       ]
     },
     {
+      "id": "3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5",
+      "key": "laimanhua_split",
+      "name": "来漫画（分流）",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.2.1",
+      "runtimeProfile": "venerax",
+      "corePassed": true,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
       "id": "4943789e628385a2936f32d7e87146a9f4dae517a334f9f230e348f83c6d9c89",
       "key": "manga_dex",
       "name": "MangaDex",
@@ -361,10 +376,6 @@
         },
         {
           "stage": "image.download",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
           "category": "anti_bot"
         }
       ]
@@ -992,6 +1003,25 @@
       ]
     },
     {
+      "id": "a0fc9199723dba45be5c9adae42b6ccbaf66b2a096c085f4bec15469fcf4c3e0",
+      "key": "fourkhd",
+      "name": "4KHD",
+      "repository": "meaninglesslyy/venera-config",
+      "version": "2.0.7",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "image.download",
+          "category": "rate_limited"
+        },
+        {
+          "stage": "thumbnail.download",
+          "category": "rate_limited"
+        }
+      ]
+    },
+    {
       "id": "d87412d3bf9dbb0d0775bcc03aab0ea216451bbbb896e611d7761f8cca396943",
       "key": "gmanhua_59_ee9658",
       "name": "GMANHUA",
@@ -1379,6 +1409,21 @@
       ]
     },
     {
+      "id": "ed9c0d8a088d31aa8b45d311a7280c35d4b971c728c74b9fe3eead94e08cbb9b",
+      "key": "laimanhua_split",
+      "name": "来漫画（分流）",
+      "repository": "Junkrat9527/venera-sources",
+      "version": "1.2.2",
+      "runtimeProfile": "venerax",
+      "corePassed": true,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
       "id": "c502bad23746384baf352bee7a4425a92b5d2293d0de6d464989c02040cdd823",
       "key": "legacy_733so",
       "name": "733漫画",
@@ -1643,6 +1688,10 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
+        },
+        {
+          "stage": "thumbnail.download",
+          "category": "anti_bot"
         }
       ]
     },
@@ -1823,7 +1872,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "comic.loadInfo",
+          "stage": "search.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
           "category": "anti_bot"
         }
       ]
@@ -1950,15 +2007,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[3].load",
+          "stage": "explore[7].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[12].load",
+          "stage": "explore[8].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[14].load",
+          "stage": "explore[9].load",
           "category": "auth_required"
         }
       ]
@@ -2314,25 +2371,6 @@
       ]
     },
     {
-      "id": "f862f6aaac364564740ea77672fa248811d94c9176a6b1c73a42387bc9430ffe",
-      "key": "ykmh",
-      "name": "优酷漫画",
-      "repository": "zakkida/venera-sources",
-      "version": "1.0.2",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "810c02550b8d61cbfaa0b2817f5e3318debe8ebebe88911b22a0f9271151181e",
       "key": "yyds_04_86b037",
       "name": "◯ YYDS",
@@ -2525,6 +2563,21 @@
       ]
     },
     {
+      "id": "3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5",
+      "key": "laimanhua_split",
+      "name": "来漫画（分流）",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.2.1",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
       "id": "4943789e628385a2936f32d7e87146a9f4dae517a334f9f230e348f83c6d9c89",
       "key": "manga_dex",
       "name": "MangaDex",
@@ -2647,10 +2700,6 @@
         },
         {
           "stage": "image.download",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
           "category": "anti_bot"
         }
       ]
@@ -3631,6 +3680,21 @@
       ]
     },
     {
+      "id": "ed9c0d8a088d31aa8b45d311a7280c35d4b971c728c74b9fe3eead94e08cbb9b",
+      "key": "laimanhua_split",
+      "name": "来漫画（分流）",
+      "repository": "Junkrat9527/venera-sources",
+      "version": "1.2.2",
+      "runtimeProfile": "venera-next",
+      "corePassed": true,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
       "id": "c502bad23746384baf352bee7a4425a92b5d2293d0de6d464989c02040cdd823",
       "key": "legacy_733so",
       "name": "733漫画",
@@ -3895,6 +3959,10 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
+        },
+        {
+          "stage": "thumbnail.download",
+          "category": "anti_bot"
         }
       ]
     },
@@ -4075,7 +4143,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "comic.loadInfo",
+          "stage": "search.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
           "category": "anti_bot"
         }
       ]
@@ -4202,11 +4278,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[7].load",
+          "stage": "explore[9].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[8].load",
+          "stage": "explore[12].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[13].load",
           "category": "auth_required"
         }
       ]
@@ -4577,7 +4657,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/41404532929",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/41596865999",
   "browser": [
     {
       "key": "bakamh",
@@ -4668,5 +4748,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/41406327828"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/41598808877"
 }
