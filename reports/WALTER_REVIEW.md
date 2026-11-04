@@ -58,3 +58,24 @@
 本地整次结果为部分通过，只允许扩展订阅，不进入主订阅。订阅备注保持 `引用源：Walter498/Walter`。Release 继续只提供主订阅和扩展订阅两个 JSON，正文列出各自名称、版本和来源。
 
 另已登记 `gallhall/venerav-configs` 与 `moonskycake/venera-next` 的每日发现，三个新增仓库在本轮云端发现中均无错误。前者索引 36 项，含官方同步源、Pixiv、视频及漫画；后者索引 4 项，源码版本也均带 `-debug1`。它们不因登记而自动收录。官方同步版本、视频源和 debug 版本需要分别审阅，不能沿用 Walter 的结果。
+
+## 2026-11-04 接口域名下线与复检方式
+
+当日巡检中该源 7 个网络阶段全部 `dns_error`（`search.load`、`explore[0].load`、`categoryComics.load`、
+`comic.loadInfo`、`comic.loadEp`、`comic.loadComments`、`comic.loadChapterComments`），上游三个仓库
+（`Walter498/Walter` 2.33.34、`handahao666-boop/venera_comic_source` 1.2.3、`LX7kM9/venera-configs` 1.2.4）
+仍都把接口写死为 `http://ai.xajtl.com` 与 `http://ai.qsmm.fun`。
+
+查证结果：这两个域名在 Google DoH 与阿里 DoH 均为 `NXDOMAIN`（`ai.xajtl.com` 的 CNAME
+`*.cname.clondfroont.com` 也已无记录），不是本仓库或客户端的问题。官方 App（包名 `com.jy.zyds`）
+的自举配置里现在写的正是 `http://ai.qsmm.fun`，说明官方接口同样处于下线状态，源没有可替换的地址。
+
+因此本轮不动固定构建、不改写源、不发布该源的任何"修复"版本；等官方恢复或更换域名后按下面的方式复检：
+
+```bash
+python3 scripts/lizimh_api.py discover        # 读官方自举配置，得到当前接口域名
+python3 scripts/lizimh_api.py probe           # 用源的签名规则对候选地址发真实请求
+```
+
+`discover` 复现官方 App 的解密步骤（AES-256-ECB，密钥在 `libapp.so` 里），因此官方换域名时可第一时间发现，
+不必等上游作者或抓包；`probe` 判定为可用后再按正常审阅流程更新固定构建并重跑巡检。
