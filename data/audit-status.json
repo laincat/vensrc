@@ -1,11 +1,11 @@
 {
-  "checkedAt": "2026-11-03T07:48:25.329608+00:00",
+  "checkedAt": "2026-11-04T09:38:58.513259+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-03T07:31:31.094169+00:00",
+    "checkedAt": "2026-11-04T09:23:06.363741+00:00",
     "adapterSha256": {
       "scripts/client_bridge.mjs": "ec822f73af3def047ae82031ce89deb80930619cf966bfc0b280b2e8c011e5e5",
       "scripts/prepare_client.py": "335905c1f43ca70cfae3daea5dd3d11b7b54cafa1fe6e695a86b32347bc48ac8",
@@ -41,15 +41,15 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:194f8aad0f09c3337cd97daf2316d5e961478a93b12b4e1043ac42272a4e22d0"
+    "imageId": "sha256:5c64fb255fa9f2dafd54318b0a1529557c311111e8ba22b18628bc2ec48eb895"
   },
   "catalogSha256": "87172c62cfde6c123cc6982e881b688d2a4ed4765ec1d6e06af70c3d2a264ab6",
   "builds": 313,
   "main": 26,
   "extended": 44,
-  "runUrl": "https://github.com/laincat/vensrc/actions/runs/41596865999",
+  "runUrl": "https://github.com/laincat/vensrc/actions/runs/41807015234",
   "clientExecutions": 626,
-  "officialExclusionsSha256": "6b960da86a57ea036718a8f5e4fe2403c63f3a809cf78b30858cc2d4b1934082",
+  "officialExclusionsSha256": "2b2e9905e2253bbbdf37c7a6b7510a114cac7d4c0b591d01227ac76cb282fb1e",
   "officialBaselineKeys": 33,
   "officialExcludedBuilds": 43,
   "officialOverrides": 7
