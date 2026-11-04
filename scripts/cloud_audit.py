@@ -584,8 +584,31 @@ def patrol(work):
     publish(payload, work / "artifact/preview")
 
 
+SURROGATES = re.compile(r"[\ud800-\udfff]")
+
+
+def encodable(value):
+    """把孤立代理字符换成 U+FFFD，保证结果一定能用 UTF-8 写出。
+
+    站点返回的非法 UTF-8 会在运行时变成孤立代理（如 \\udd65），直接写
+    UTF-8 文件会抛 UnicodeEncodeError 并中断整次发布。
+    """
+    return SURROGATES.sub("\ufffd", str(value))
+
+
 def text(value):
-    return re.sub(r"[\x00-\x1f\x7f]", " ", str(value)).replace("|", "／")[:300]
+    plain = re.sub(r"[\x00-\x1f\x7f]", " ", encodable(value))
+    return plain.replace("|", "／")[:300]
+
+
+def csv_cell(value):
+    # 表格注入防护与 markdown 共用同一套清洗，避免代理字符写崩 CSV。
+    value = encodable(value)
+    return "'" + value if value.startswith(("=", "+", "-", "@")) else value
+
+
+def write_report(path, lines):
+    path.write_text("\n".join(lines), encoding="utf-8", newline="\n")
 
 
 def validate_client_record(record, item, payload):
@@ -780,12 +803,11 @@ def publish(payload, destination):
     lines += ["", "## 主索引", "", "、".join(i["name"] for i in main) or "本次没有符合主索引标准的源。",
               "", "## 扩展索引", "", "、".join(i["name"] for i in extended) or "本次没有扩展源。", ""]
     destination.mkdir(parents=True, exist_ok=True)
-    (destination / "reports/RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    write_report(destination / "reports/RESULTS.md", lines)
     with (destination / "data/sources.zh.csv").open("w", encoding="utf-8-sig", newline="") as stream:
         writer = csv.writer(stream, lineterminator="\n")
         for row in csv_rows:
-            writer.writerow(["'" + str(value) if str(value).startswith(("=", "+", "-", "@")) else value
-                             for value in row])
+            writer.writerow([csv_cell(value) for value in row])
     save(destination / "data/audit-status.json", {
         "checkedAt": checked, "cli": payload["cli"], "catalogSha256": payload["catalogSha256"],
         "builds": len(rows), "main": len(main), "extended": len(extended),
@@ -926,11 +948,11 @@ def publish_clients(payload, catalog, destination):
     save(destination / "data/client-results.json", {
         "schemaVersion": 1, "checkedAt": payload["checkedAt"], "cli": payload["cli"],
         "records": clean_records, "runUrl": os.environ.get("AUDIT_RUN_URL", "")})
-    (destination / "reports/CLIENT_RESULTS.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    write_report(destination / "reports/CLIENT_RESULTS.md", lines)
     with (destination / "data/client-compatibility.zh.csv").open("w", encoding="utf-8-sig", newline="") as stream:
         writer = csv.writer(stream, lineterminator="\n")
         for row in csv_rows:
-            writer.writerow(["'" + str(v) if str(v).startswith(("=", "+", "-", "@")) else v for v in row])
+            writer.writerow([csv_cell(value) for value in row])
 
 
 def publish_discovery(discovery, destination):
@@ -973,7 +995,7 @@ def publish_discovery(discovery, destination):
         lines.append(f"- `{text(item['repository'])}`：{text(item['description'])}")
     if discovery["searchError"]:
         lines.append("仓库搜索未完整完成：" + text(discovery["searchError"]))
-    (destination / "reports/UPDATES.md").write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+    write_report(destination / "reports/UPDATES.md", lines + [""])
 
 
 def self_test():
@@ -984,6 +1006,9 @@ def self_test():
     assert core({"stages": stages})
     assert not core({"stages": stages[:-1]})
     assert not core({"stages": stages[:1] + stages[2:]})
+    # 站点数据里的孤立代理字符不能写崩发布（现实里就是 \udd65 这种）。
+    assert text("a\udbffb") == "a\ufffdb"
+    assert csv_cell("=\ud800") == "'=\ufffd"
     assert not pinned("https://github.com/a/b/blob/main/a.js")
     assert pinned("https://raw.githubusercontent.com/a/b/" + "a" * 40 + "/a.js")
     catalog = validate_catalog(load(ROOT / "monitor/catalog.json"))
@@ -1042,6 +1067,10 @@ def self_test():
             with contextlib.redirect_stdout(io.StringIO()):
                 publish(payload, ROOT / "out")
             assert len(load(ROOT / "out/subscriptions/index.json")) == 1
+            payload["records"][0]["sample"] = {**item["sample"], "comicId": "1\udd65"}
+            with contextlib.redirect_stdout(io.StringIO()):
+                publish(payload, ROOT / "out")
+            assert "1\ufffd" in (ROOT / "out/data/sources.zh.csv").read_text(encoding="utf-8-sig")
             source["status"] = "partial"
             source["stages"] = stages + [{"path": "account.login", "status": "skipped",
                                          "category": "credentials_missing"}]
