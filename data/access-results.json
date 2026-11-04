@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-04T09:38:58.513259+00:00",
+  "checkedAt": "2026-11-04T13:09:58.682430+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-04T09:23:06.363741+00:00",
+    "checkedAt": "2026-11-04T12:57:42.967607+00:00",
     "adapterSha256": {
       "scripts/client_bridge.mjs": "ec822f73af3def047ae82031ce89deb80930619cf966bfc0b280b2e8c011e5e5",
       "scripts/prepare_client.py": "335905c1f43ca70cfae3daea5dd3d11b7b54cafa1fe6e695a86b32347bc48ac8",
@@ -42,10 +42,25 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:5c64fb255fa9f2dafd54318b0a1529557c311111e8ba22b18628bc2ec48eb895"
+    "imageId": "sha256:6061099267a39f694651062596694dc4db302458d9077f9fd16c9e673214c005"
   },
-  "catalogSha256": "87172c62cfde6c123cc6982e881b688d2a4ed4765ec1d6e06af70c3d2a264ab6",
+  "catalogSha256": "fd06283a349a3e29adc680b465b9e9fef17ac9f5883b1212941c9a0290dd3a8d",
   "rows": [
+    {
+      "id": "ad74a243c07ebc549254e75162fceb81097e6755054e1902ca81e0327370bd68",
+      "key": "Komiic",
+      "name": "Komiic",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.0.8",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "comic.loadEp",
+          "category": "auth_required"
+        }
+      ]
+    },
     {
       "id": "ba1520f9cad1d0d960d8c0d5520c5db02d874e809e1e59c7fe41f43c474c7ccf",
       "key": "baihehui",
@@ -53,83 +68,10 @@
       "repository": "handahao666-boop/venera_comic_source",
       "version": "1.0.0",
       "runtimeProfile": "venerax",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "6ccb52e7734e54c6dfcfcb9729adb46409f1e5c9d83bbda54313b066013e4255",
-      "key": "baozi",
-      "name": "包子漫画",
-      "repository": "venera-app/venera-configs",
-      "version": "1.1.6",
-      "runtimeProfile": "venerax",
       "corePassed": false,
       "failures": [
         {
           "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "dd8fd0160934165191cd45549b5c5f7a0ba9f385e6ddff6df53b62083dec8dfc",
-      "key": "bilimanga",
-      "name": "嗶哩漫畫",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.1.7",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[1].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "736c49789faf020d054217677088e0e87b4eddf29b847ab268f6eddac559621b",
-      "key": "comic_walker",
-      "name": "カドコミ",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.0.1",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "init",
           "category": "auth_required"
         }
       ]
@@ -173,37 +115,6 @@
         {
           "stage": "comic.loadInfo",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "a5382a807db16123c5dec210552ab3abde1f842fb4ac2027813773d62c53dd7a",
-      "key": "ikmmh",
-      "name": "爱看漫",
-      "repository": "venera-app/venera-configs",
-      "version": "1.0.6",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
         }
       ]
     },
@@ -435,21 +346,17 @@
       ]
     },
     {
-      "id": "a8a18249a4f30d907b82eec276d9bda0631c975118ae75dfcb252a6a9cdbe264",
+      "id": "22407b426ed6610b559cc7eecd32748ebd5a20e9f2c46ac75932c7640245b954",
       "key": "shonen_jump_plus",
       "name": "少年ジャンプ＋",
-      "repository": "venera-app/venera-configs",
-      "version": "1.1.1",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.2.0",
       "runtimeProfile": "venerax",
-      "corePassed": false,
+      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
+          "category": "anti_bot"
         }
       ]
     },
@@ -554,85 +461,32 @@
       ]
     },
     {
-      "id": "ad74a243c07ebc549254e75162fceb81097e6755054e1902ca81e0327370bd68",
-      "key": "Komiic",
-      "name": "Komiic",
+      "id": "ae5fba5713b3398d6d40b9dc3a016050078d692af10d4f99d7d786c05a4d0d40",
+      "key": "ykmh",
+      "name": "优酷漫画 (修复版)",
       "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.0.8",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "d039289f0aacda36990f090f93779bf54116e4d0e20c626c7ac29c73ec1e3513",
-      "key": "comic_walker",
-      "name": "カドコミ",
-      "repository": "venera-app/venera-configs",
-      "version": "1.0.1",
+      "version": "1.0.7",
       "runtimeProfile": "venerax",
       "corePassed": false,
       "failures": [
         {
           "stage": "search.load",
-          "category": "auth_required"
+          "category": "anti_bot"
         },
         {
           "stage": "explore[0].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "c8beb84262da8fa3922ff0392fc2f79f03ee36ae08933d10571172ef6c8ce21d",
-      "key": "manga_dex",
-      "name": "MangaDex",
-      "repository": "venera-app/venera-configs",
-      "version": "1.2.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
+          "category": "anti_bot"
         },
         {
-          "stage": "explore[0].load",
-          "category": "auth_required"
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
         },
         {
           "stage": "comic.loadInfo",
-          "category": "auth_required"
+          "category": "anti_bot"
         },
         {
           "stage": "comic.loadEp",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadComments",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadChapterComments",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "22407b426ed6610b559cc7eecd32748ebd5a20e9f2c46ac75932c7640245b954",
-      "key": "shonen_jump_plus",
-      "name": "少年ジャンプ＋",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.2.0",
-      "runtimeProfile": "venerax",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "search.load",
           "category": "anti_bot"
         }
       ]
@@ -669,21 +523,6 @@
       ]
     },
     {
-      "id": "356372e99f8b6836151cca6ddbd5bc46a8085cdc7ec06a91ea2442289e401758",
-      "key": "baihehui",
-      "name": "百合会",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.0.2",
-      "runtimeProfile": "venerax",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "43e5d34767e7d3054960a9e9e342cd1198ed54cb49f10c9a117e6378202a5386",
       "key": "bakamh",
       "name": "巴卡漫画",
@@ -715,52 +554,6 @@
         {
           "stage": "categoryComics.load",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "8ed30b390d9c74c696d045f6067336a0a46e607764a4c7d76357c46585595515",
-      "key": "banana",
-      "name": "香蕉漫画",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.0.4",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "ff9a4842a06b992452ca8f2c101df9463fc0298da42a4e71b930b11825c1a431",
-      "key": "baozi",
-      "name": "包子漫画",
-      "repository": "l233333333/venera-sources",
-      "version": "1.1.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
         }
       ]
     },
@@ -807,79 +600,6 @@
       ]
     },
     {
-      "id": "0480d3d33192a99f19c458dc3248996988a73a4493b829a8ea0c15f3083e0a63",
-      "key": "bilimanga",
-      "name": "哔哩漫画",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.6.2",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[1].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "b2ad2816bfa5c6d51709a5a3f6cff970c890b63be49324054dcdc65fe983ff92",
-      "key": "comic_walker",
-      "name": "カドコミ",
-      "repository": "zakkida/venera-sources",
-      "version": "1.0.1",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "fd12333c3e2a5eea0371a166bab3cb2d77c8c94ccdf0441f136477ec5a1e7277",
-      "key": "comick",
-      "name": "comick",
-      "repository": "l233333333/venera-sources",
-      "version": "1.1.1",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "3db355237cecd70b8441ecd8c5b34e71de832300d1bfbaa9e7c9a076a87e0112",
       "key": "cycomic",
       "name": "次元漫画",
@@ -914,21 +634,6 @@
         },
         {
           "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "a6af9c97e6c5cbf81bf39f5b2729ee2c1a45ecb738e43b7182c234ce50ce5439",
-      "key": "ehentai",
-      "name": "ehentai",
-      "repository": "yelongyue197-svg/venera-sources",
-      "version": "1.1.8",
-      "runtimeProfile": "venerax",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "comic.archive.getArchives",
           "category": "auth_required"
         }
       ]
@@ -1287,79 +992,6 @@
       ]
     },
     {
-      "id": "c18c32e12b3ffa9e489c0d9792ee828b9df16ff8948b15eee8b718503871ec91",
-      "key": "ikmmh",
-      "name": "爱看漫",
-      "repository": "yelongyue197-svg/venera-sources",
-      "version": "1.0.8",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "2a2874b992ab5d632c5e68bbac2b044f022ebe05649c7be5a8d5580af4bc7e79",
-      "key": "jisu_1kkk",
-      "name": "极速漫画",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "auth_required"
-        },
-        {
-          "stage": "image.download",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "550a18cf941e8f63904b0248ebc39329d124f8b8e259f7cc925873d89930bb79",
-      "key": "komga",
-      "name": "Komga",
-      "repository": "zakkida/venera-sources",
-      "version": "1.0.1",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "96036813d0211f2908736133788e3403f7a03dbe8d5001830f2c612413e1c24b",
       "key": "komiic_multi",
       "name": "Komiic 多账号",
@@ -1439,33 +1071,6 @@
       ]
     },
     {
-      "id": "5c0e59731aa37853c5f07920f3251978046b5a60138ef3d39613040121da8386",
-      "key": "manga_dex",
-      "name": "MangaDex",
-      "repository": "yelongyue197-svg/venera-sources",
-      "version": "1.1.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "7a29a3460780bf860bd8257c1567c16f57df702691e7d11170f16f5644396685",
       "key": "manga_plus",
       "name": "MANGA Plus",
@@ -1484,25 +1089,6 @@
         },
         {
           "stage": "categoryComics.ranking.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "45ea62f02ef64fa0ad1f176fe125572b78d326060d06bf2964c7f8bc5dd63192",
-      "key": "mangabz",
-      "name": "Mangabz",
-      "repository": "YHQY-Dev/venera-sources",
-      "version": "1.0.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
           "category": "auth_required"
         }
       ]
@@ -1578,37 +1164,6 @@
       ]
     },
     {
-      "id": "f4864ddfe001645b8b3e05285cc037ed844ddaa95802ff3a8863b177d40f5fb9",
-      "key": "manwang",
-      "name": "漫网",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.3.4",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "fb0043c114e1916b99164727b2c8b2a5331ebdcad25dba3bf1bfd93af76fdf12",
       "key": "mh03",
       "name": "漫画manga",
@@ -1620,25 +1175,6 @@
         {
           "stage": "explore[0].load",
           "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "4e25bc428ac5284288bc680eadcb810216b00c2e0df6840550eb198bc04647de",
-      "key": "mh4399",
-      "name": "4399漫画网",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.0.5",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "image.download",
-          "category": "anti_bot"
         }
       ]
     },
@@ -1833,29 +1369,6 @@
       ]
     },
     {
-      "id": "40d2742d0f7bff46abda291d5a564c221bcc8ac0ff019cdc83bf833fdc4f52b0",
-      "key": "nhentai",
-      "name": "nhentai",
-      "repository": "yelongyue197-svg/venera-sources",
-      "version": "1.2.1",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "7ac204fad268c74491215dcb14413a7e4948624a2de9cf33d7a79501b71ffdee",
       "key": "noyacg",
       "name": "NoyACG",
@@ -1954,7 +1467,7 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[0].load",
+          "stage": "explore[1].load",
           "category": "auth_required"
         },
         {
@@ -1966,53 +1479,7 @@
           "category": "auth_required"
         },
         {
-          "stage": "explore[6].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[9].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "f15ad92098c3d54c60436f33c3098febbae84bb1cef8a9eae855f5f990fd0f26",
-      "key": "rawkuma",
-      "name": "Rawkuma",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.1.3",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "3b1f2c677db6e6ae8217e32af8d191bc3352bd23e58f9965cee21daa9521344b",
-      "key": "shonen_jump_plus",
-      "name": "少年ジャンプ＋",
-      "repository": "yelongyue197-svg/venera-sources",
-      "version": "1.1.3",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
+          "stage": "explore[7].load",
           "category": "auth_required"
         }
       ]
@@ -2033,21 +1500,6 @@
       ]
     },
     {
-      "id": "398e1fc8e4707b4eb1b0eeae8ae29f6b5c542c0484bc798ef927959d0ebc51ce",
-      "key": "source_16_d622ad",
-      "name": "绅士会所",
-      "repository": "KadishJoey/venera-json",
-      "version": "0.2.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "3d02227f24f6c7563ff8e602e138705f672b5f274b7769cca8801e1175ba851c",
       "key": "source_19_50ee2a",
       "name": "中国人能飞",
@@ -2063,54 +1515,9 @@
       ]
     },
     {
-      "id": "12015b6a608982e0cac02fcd3b7f883745843fc892eb9c00fbd726e9bb1c6149",
-      "key": "source_36_d33fb7",
-      "name": "咚漫",
-      "repository": "KadishJoey/venera-json",
-      "version": "0.2.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "1a6eca09cbb922586a5029cad9606a9caf0a9f2a0a35b66c7c3dedf74c661046",
-      "key": "source_39_7cc572",
-      "name": "极速漫画",
-      "repository": "KadishJoey/venera-json",
-      "version": "0.2.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "d14ca9af41fbb04308cc34246ab4bdece2d100f74bcfec1037f9e211e91e6d1e",
       "key": "source_45_d76464",
       "name": "漫畫狗",
-      "repository": "KadishJoey/venera-json",
-      "version": "0.2.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "25131c16e19fd2649ba44730cd61b40c11cb30bd34d22d3d7d26da3cfdaa8b2e",
-      "key": "source_48_074d4f",
-      "name": "漫画皮",
       "repository": "KadishJoey/venera-json",
       "version": "0.2.0",
       "runtimeProfile": "venerax",
@@ -2149,21 +1556,6 @@
         {
           "stage": "search.load",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "59c79f140dd68c1e848473a17a5916ff52ef009e539cf8a1de94a1b29d4a1b26",
-      "key": "tuku_cc",
-      "name": "图库漫画",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.0.2",
-      "runtimeProfile": "venerax",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
         }
       ]
     },
@@ -2252,76 +1644,6 @@
         {
           "stage": "categoryComics.load",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "6e60a7ec42164ec8b4bc3e8dad7fa4500fd43c6a1b65b20f021758f54cc476b5",
-      "key": "wmanhua",
-      "name": "W漫画",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.0.2",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "42b53d66e34198ec4d1cacb31808e9386ac0392e305016d87c98a703f608c25e",
-      "key": "yemancomic",
-      "name": "野蛮漫画",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.3.8",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[1].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.ranking.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
         }
       ]
     },
@@ -2356,64 +1678,6 @@
       ]
     },
     {
-      "id": "6ccb52e7734e54c6dfcfcb9729adb46409f1e5c9d83bbda54313b066013e4255",
-      "key": "baozi",
-      "name": "包子漫画",
-      "repository": "venera-app/venera-configs",
-      "version": "1.1.6",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "dd8fd0160934165191cd45549b5c5f7a0ba9f385e6ddff6df53b62083dec8dfc",
-      "key": "bilimanga",
-      "name": "嗶哩漫畫",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.1.7",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[1].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "ef15f80d8090cb9ec1fcb18b502017a47694484e81d51c85e6b06ea162c58e4a",
       "key": "ehentai",
       "name": "ehentai",
@@ -2452,37 +1716,6 @@
         {
           "stage": "comic.loadInfo",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "a5382a807db16123c5dec210552ab3abde1f842fb4ac2027813773d62c53dd7a",
-      "key": "ikmmh",
-      "name": "爱看漫",
-      "repository": "venera-app/venera-configs",
-      "version": "1.0.6",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
         }
       ]
     },
@@ -2714,21 +1947,17 @@
       ]
     },
     {
-      "id": "a8a18249a4f30d907b82eec276d9bda0631c975118ae75dfcb252a6a9cdbe264",
+      "id": "22407b426ed6610b559cc7eecd32748ebd5a20e9f2c46ac75932c7640245b954",
       "key": "shonen_jump_plus",
       "name": "少年ジャンプ＋",
-      "repository": "venera-app/venera-configs",
-      "version": "1.1.1",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.2.0",
       "runtimeProfile": "venera-next",
-      "corePassed": false,
+      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
+          "category": "anti_bot"
         }
       ]
     },
@@ -2833,51 +2062,32 @@
       ]
     },
     {
-      "id": "c8beb84262da8fa3922ff0392fc2f79f03ee36ae08933d10571172ef6c8ce21d",
-      "key": "manga_dex",
-      "name": "MangaDex",
-      "repository": "venera-app/venera-configs",
-      "version": "1.2.0",
+      "id": "ae5fba5713b3398d6d40b9dc3a016050078d692af10d4f99d7d786c05a4d0d40",
+      "key": "ykmh",
+      "name": "优酷漫画 (修复版)",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.0.7",
       "runtimeProfile": "venera-next",
       "corePassed": false,
       "failures": [
         {
           "stage": "search.load",
-          "category": "auth_required"
+          "category": "anti_bot"
         },
         {
           "stage": "explore[0].load",
-          "category": "auth_required"
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
         },
         {
           "stage": "comic.loadInfo",
-          "category": "auth_required"
+          "category": "anti_bot"
         },
         {
           "stage": "comic.loadEp",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadComments",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadChapterComments",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "22407b426ed6610b559cc7eecd32748ebd5a20e9f2c46ac75932c7640245b954",
-      "key": "shonen_jump_plus",
-      "name": "少年ジャンプ＋",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.2.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "search.load",
           "category": "anti_bot"
         }
       ]
@@ -2914,21 +2124,6 @@
       ]
     },
     {
-      "id": "356372e99f8b6836151cca6ddbd5bc46a8085cdc7ec06a91ea2442289e401758",
-      "key": "baihehui",
-      "name": "百合会",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.0.2",
-      "runtimeProfile": "venera-next",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "43e5d34767e7d3054960a9e9e342cd1198ed54cb49f10c9a117e6378202a5386",
       "key": "bakamh",
       "name": "巴卡漫画",
@@ -2960,52 +2155,6 @@
         {
           "stage": "categoryComics.load",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "8ed30b390d9c74c696d045f6067336a0a46e607764a4c7d76357c46585595515",
-      "key": "banana",
-      "name": "香蕉漫画",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.0.4",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "ff9a4842a06b992452ca8f2c101df9463fc0298da42a4e71b930b11825c1a431",
-      "key": "baozi",
-      "name": "包子漫画",
-      "repository": "l233333333/venera-sources",
-      "version": "1.1.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
         }
       ]
     },
@@ -3052,79 +2201,6 @@
       ]
     },
     {
-      "id": "0480d3d33192a99f19c458dc3248996988a73a4493b829a8ea0c15f3083e0a63",
-      "key": "bilimanga",
-      "name": "哔哩漫画",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.6.2",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[1].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "b2ad2816bfa5c6d51709a5a3f6cff970c890b63be49324054dcdc65fe983ff92",
-      "key": "comic_walker",
-      "name": "カドコミ",
-      "repository": "zakkida/venera-sources",
-      "version": "1.0.1",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "fd12333c3e2a5eea0371a166bab3cb2d77c8c94ccdf0441f136477ec5a1e7277",
-      "key": "comick",
-      "name": "comick",
-      "repository": "l233333333/venera-sources",
-      "version": "1.1.1",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "3db355237cecd70b8441ecd8c5b34e71de832300d1bfbaa9e7c9a076a87e0112",
       "key": "cycomic",
       "name": "次元漫画",
@@ -3159,21 +2235,6 @@
         },
         {
           "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "a6af9c97e6c5cbf81bf39f5b2729ee2c1a45ecb738e43b7182c234ce50ce5439",
-      "key": "ehentai",
-      "name": "ehentai",
-      "repository": "yelongyue197-svg/venera-sources",
-      "version": "1.1.8",
-      "runtimeProfile": "venera-next",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "comic.archive.getArchives",
           "category": "auth_required"
         }
       ]
@@ -3532,79 +2593,6 @@
       ]
     },
     {
-      "id": "c18c32e12b3ffa9e489c0d9792ee828b9df16ff8948b15eee8b718503871ec91",
-      "key": "ikmmh",
-      "name": "爱看漫",
-      "repository": "yelongyue197-svg/venera-sources",
-      "version": "1.0.8",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "2a2874b992ab5d632c5e68bbac2b044f022ebe05649c7be5a8d5580af4bc7e79",
-      "key": "jisu_1kkk",
-      "name": "极速漫画",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "auth_required"
-        },
-        {
-          "stage": "image.download",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "550a18cf941e8f63904b0248ebc39329d124f8b8e259f7cc925873d89930bb79",
-      "key": "komga",
-      "name": "Komga",
-      "repository": "zakkida/venera-sources",
-      "version": "1.0.1",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "96036813d0211f2908736133788e3403f7a03dbe8d5001830f2c612413e1c24b",
       "key": "komiic_multi",
       "name": "Komiic 多账号",
@@ -3684,48 +2672,6 @@
       ]
     },
     {
-      "id": "5a505f80319071bddf6f0de2b1bc2f32d9153bcb7c5d11679e7c1fe88ab3221e",
-      "key": "manga51",
-      "name": "51漫画",
-      "repository": "huajiaoshu520/venera-cimoc",
-      "version": "1.1.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "categoryComics.load",
-          "category": "rate_limited"
-        }
-      ]
-    },
-    {
-      "id": "5c0e59731aa37853c5f07920f3251978046b5a60138ef3d39613040121da8386",
-      "key": "manga_dex",
-      "name": "MangaDex",
-      "repository": "yelongyue197-svg/venera-sources",
-      "version": "1.1.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "7a29a3460780bf860bd8257c1567c16f57df702691e7d11170f16f5644396685",
       "key": "manga_plus",
       "name": "MANGA Plus",
@@ -3744,25 +2690,6 @@
         },
         {
           "stage": "categoryComics.ranking.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "45ea62f02ef64fa0ad1f176fe125572b78d326060d06bf2964c7f8bc5dd63192",
-      "key": "mangabz",
-      "name": "Mangabz",
-      "repository": "YHQY-Dev/venera-sources",
-      "version": "1.0.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
           "category": "auth_required"
         }
       ]
@@ -3838,67 +2765,21 @@
       ]
     },
     {
-      "id": "f4864ddfe001645b8b3e05285cc037ed844ddaa95802ff3a8863b177d40f5fb9",
-      "key": "manwang",
-      "name": "漫网",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.3.4",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "fb0043c114e1916b99164727b2c8b2a5331ebdcad25dba3bf1bfd93af76fdf12",
       "key": "mh03",
       "name": "漫画manga",
       "repository": "Magentadots/venera-configs",
       "version": "1.0.1",
       "runtimeProfile": "venera-next",
-      "corePassed": true,
+      "corePassed": false,
       "failures": [
         {
           "stage": "explore[0].load",
           "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "4e25bc428ac5284288bc680eadcb810216b00c2e0df6840550eb198bc04647de",
-      "key": "mh4399",
-      "name": "4399漫画网",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.0.5",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "anti_bot"
         },
         {
           "stage": "image.download",
-          "category": "anti_bot"
+          "category": "rate_limited"
         }
       ]
     },
@@ -4093,29 +2974,6 @@
       ]
     },
     {
-      "id": "40d2742d0f7bff46abda291d5a564c221bcc8ac0ff019cdc83bf833fdc4f52b0",
-      "key": "nhentai",
-      "name": "nhentai",
-      "repository": "yelongyue197-svg/venera-sources",
-      "version": "1.2.1",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "7ac204fad268c74491215dcb14413a7e4948624a2de9cf33d7a79501b71ffdee",
       "key": "noyacg",
       "name": "NoyACG",
@@ -4214,53 +3072,19 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[4].load",
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[2].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[8].load",
           "category": "auth_required"
         },
         {
           "stage": "explore[14].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "f15ad92098c3d54c60436f33c3098febbae84bb1cef8a9eae855f5f990fd0f26",
-      "key": "rawkuma",
-      "name": "Rawkuma",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.1.3",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "3b1f2c677db6e6ae8217e32af8d191bc3352bd23e58f9965cee21daa9521344b",
-      "key": "shonen_jump_plus",
-      "name": "少年ジャンプ＋",
-      "repository": "yelongyue197-svg/venera-sources",
-      "version": "1.1.3",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
           "category": "auth_required"
         }
       ]
@@ -4281,21 +3105,6 @@
       ]
     },
     {
-      "id": "398e1fc8e4707b4eb1b0eeae8ae29f6b5c542c0484bc798ef927959d0ebc51ce",
-      "key": "source_16_d622ad",
-      "name": "绅士会所",
-      "repository": "KadishJoey/venera-json",
-      "version": "0.2.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "3d02227f24f6c7563ff8e602e138705f672b5f274b7769cca8801e1175ba851c",
       "key": "source_19_50ee2a",
       "name": "中国人能飞",
@@ -4311,54 +3120,9 @@
       ]
     },
     {
-      "id": "12015b6a608982e0cac02fcd3b7f883745843fc892eb9c00fbd726e9bb1c6149",
-      "key": "source_36_d33fb7",
-      "name": "咚漫",
-      "repository": "KadishJoey/venera-json",
-      "version": "0.2.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "1a6eca09cbb922586a5029cad9606a9caf0a9f2a0a35b66c7c3dedf74c661046",
-      "key": "source_39_7cc572",
-      "name": "极速漫画",
-      "repository": "KadishJoey/venera-json",
-      "version": "0.2.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "d14ca9af41fbb04308cc34246ab4bdece2d100f74bcfec1037f9e211e91e6d1e",
       "key": "source_45_d76464",
       "name": "漫畫狗",
-      "repository": "KadishJoey/venera-json",
-      "version": "0.2.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "25131c16e19fd2649ba44730cd61b40c11cb30bd34d22d3d7d26da3cfdaa8b2e",
-      "key": "source_48_074d4f",
-      "name": "漫画皮",
       "repository": "KadishJoey/venera-json",
       "version": "0.2.0",
       "runtimeProfile": "venera-next",
@@ -4397,21 +3161,6 @@
         {
           "stage": "search.load",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "59c79f140dd68c1e848473a17a5916ff52ef009e539cf8a1de94a1b29d4a1b26",
-      "key": "tuku_cc",
-      "name": "图库漫画",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.0.2",
-      "runtimeProfile": "venera-next",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
         }
       ]
     },
@@ -4500,76 +3249,6 @@
         {
           "stage": "categoryComics.load",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "6e60a7ec42164ec8b4bc3e8dad7fa4500fd43c6a1b65b20f021758f54cc476b5",
-      "key": "wmanhua",
-      "name": "W漫画",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.0.2",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "42b53d66e34198ec4d1cacb31808e9386ac0392e305016d87c98a703f608c25e",
-      "key": "yemancomic",
-      "name": "野蛮漫画",
-      "repository": "Junkrat9527/venera-sources",
-      "version": "1.3.8",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[1].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.ranking.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "auth_required"
-        },
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
         }
       ]
     },
@@ -4589,7 +3268,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/41807015234",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/41833760570",
   "browser": [
     {
       "key": "bakamh",
@@ -4680,5 +3359,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/41812384906"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/41835697180"
 }
