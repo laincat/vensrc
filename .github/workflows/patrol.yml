@@ -132,5 +132,8 @@ jobs:
           git add -- subscriptions/ data/ reports/
           git -c credential.helper='!gh auth git-credential' fetch origin main
           # 本轮之后受信任的清单或脚本被改过时，不能用旧证据发布。
-          git diff --quiet HEAD origin/main -- monitor/ scripts/ sources/ .github/workflows/patrol.yml .github/scripts/
+          if ! git diff --quiet HEAD origin/main -- monitor/ scripts/ sources/ .github/workflows/patrol.yml .github/scripts/; then
+            echo "main 上的受信任清单或脚本在本轮巡检之后有更新，放弃本次发布；重跑巡检即可。" >&2
+            exit 1
+          fi
           bash .github/scripts/push_generated.sh "定时巡检：更新主／扩展订阅及中文报告"
