@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-05T01:50:51.917586+00:00",
+  "checkedAt": "2026-11-05T02:15:10.334864+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-05T01:39:21.175723+00:00",
+    "checkedAt": "2026-11-05T02:03:14.039816+00:00",
     "adapterSha256": {
       "scripts/client_bridge.mjs": "ec822f73af3def047ae82031ce89deb80930619cf966bfc0b280b2e8c011e5e5",
       "scripts/prepare_client.py": "335905c1f43ca70cfae3daea5dd3d11b7b54cafa1fe6e695a86b32347bc48ac8",
@@ -42,9 +42,9 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:50b820753c3032905285dbc42f2c060a14acd066690a3e16eb32c4a3b7f42392"
+    "imageId": "sha256:c1f2de3dde3027fc4b574a7dc23150b7157efaac5e2ad42e2b9d24142e571207"
   },
-  "catalogSha256": "a27698fcf721f7edfa5ce68d9330d9c21a03a2ca8d370e09f0fc0d1c47e31131",
+  "catalogSha256": "f0827bf2911b13c6af1388d5069993f371c6a72dfcea8d6c38e33845099953a3",
   "rows": [
     {
       "id": "ba1520f9cad1d0d960d8c0d5520c5db02d874e809e1e59c7fe41f43c474c7ccf",
@@ -261,6 +261,10 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
+        },
+        {
+          "stage": "thumbnail.download",
+          "category": "anti_bot"
         }
       ]
     },
@@ -957,21 +961,6 @@
       ]
     },
     {
-      "id": "96036813d0211f2908736133788e3403f7a03dbe8d5001830f2c612413e1c24b",
-      "key": "komiic_multi",
-      "name": "Komiic 多账号",
-      "repository": "snowf14k3/venera-komiic-multi",
-      "version": "1.6.2",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "6734f0154be350ebf6480659066fe30aadf06d3b1ccd6b191bae45c56c1900ba",
       "key": "legacy_soudongman",
       "name": "搜动漫",
@@ -1453,10 +1442,6 @@
       "failures": [
         {
           "stage": "explore[7].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[9].load",
           "category": "auth_required"
         }
       ]
@@ -1839,6 +1824,10 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
+        },
+        {
+          "stage": "thumbnail.download",
+          "category": "anti_bot"
         }
       ]
     },
@@ -3030,15 +3019,19 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[2].load",
-          "category": "auth_required"
-        },
-        {
           "stage": "explore[5].load",
           "category": "auth_required"
         },
         {
+          "stage": "explore[9].load",
+          "category": "auth_required"
+        },
+        {
           "stage": "explore[12].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[14].load",
           "category": "auth_required"
         }
       ]
@@ -3207,7 +3200,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/41949958221",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/41952597099",
   "browser": [
     {
       "key": "bakamh",
@@ -3298,5 +3291,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/41951295875"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/41954003740"
 }
