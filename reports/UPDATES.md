@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-05T01:40:59.766734+00:00（UTC）。
+检查时间：2026-11-05T02:05:18.633367+00:00（UTC）。
 检查 70 个已登记仓库；发现 478 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -517,7 +517,7 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `veneraproject/native-gui-wallet`：Electron wallet for the native Venera GUI wallet
+- `veneraproject/native-gui-wallet`：Electron GUI for native Venera wallets and services
 - `laincat/VeneraCat-Core`：Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0
 - `venera-app/venera-prime`：A comic app,but prime
 - `Taototo/ManComic`：A Flutter comic reader app based on Venera

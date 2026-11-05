@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-05T01:41:10.009287+00:00",
+  "checkedAt": "2026-11-05T02:05:08.933589+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-05T01:39:20.632177+00:00",
+    "checkedAt": "2026-11-05T02:03:14.521648+00:00",
     "adapterSha256": {
       "scripts/client_bridge.mjs": "ec822f73af3def047ae82031ce89deb80930619cf966bfc0b280b2e8c011e5e5",
       "scripts/prepare_client.py": "335905c1f43ca70cfae3daea5dd3d11b7b54cafa1fe6e695a86b32347bc48ac8",
@@ -42,11 +42,11 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:9baba004ddfc795acb88f9273cbbf06720f9ba45841ec5fce5304a4356dca43f"
+    "imageId": "sha256:28342cdbf0714a1e57c8bc988be8486bb8115f06971fa18004b46de1c1c5beb9"
   },
-  "catalogSha256": "a27698fcf721f7edfa5ce68d9330d9c21a03a2ca8d370e09f0fc0d1c47e31131",
-  "accountPlanSha256": "6b39e102e3ee9ee234d406fd8b48299816502f6ec4581ffb8f8e68945a9c2773",
-  "runUrl": "https://github.com/laincat/vensrc/actions/runs/41949958221",
+  "catalogSha256": "f0827bf2911b13c6af1388d5069993f371c6a72dfcea8d6c38e33845099953a3",
+  "accountPlanSha256": "618e4d4f995e0ce87ca80831bd6f7343089ac2f8dee08f44935b376f936e9f27",
+  "runUrl": "https://github.com/laincat/vensrc/actions/runs/41952597099",
   "sites": [
     {
       "site": "漫画柜",
@@ -69,12 +69,12 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 168
+                "durationMs": 204
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 39
+                "durationMs": 64
               },
               {
                 "path": "configuration.apply",
@@ -84,7 +84,7 @@
               {
                 "path": "init",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "configuration.capabilities",
@@ -94,7 +94,7 @@
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 1136
+                "durationMs": 1105
               },
               {
                 "path": "category",
@@ -104,42 +104,42 @@
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 708
+                "durationMs": 705
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 360
+                "durationMs": 400
               },
               {
                 "path": "categoryComics.load",
                 "status": "passed",
-                "durationMs": 469
+                "durationMs": 443
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 783
+                "durationMs": 817
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 187
+                "durationMs": 201
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 634
+                "durationMs": 941
               },
               {
                 "path": "comic.loadComments",
                 "status": "passed",
-                "durationMs": 618
+                "durationMs": 623
               },
               {
                 "path": "comic.onClickTag",
                 "status": "passed",
-                "durationMs": 1
+                "durationMs": 0
               },
               {
                 "path": "comic.onClickTag",
@@ -164,17 +164,17 @@
               {
                 "path": "comic.onImageLoad",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 550
+                "durationMs": 537
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 53
+                "durationMs": 66
               },
               {
                 "path": "comic.onThumbnailLoad",
@@ -184,18 +184,18 @@
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 111
+                "durationMs": 93
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 2
+                "durationMs": 7
               },
               {
                 "path": "account.logout",
                 "status": "skipped",
                 "category": "mutation_disabled",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "favorites.addOrDelFavorite",
@@ -228,32 +228,32 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 160
+                "durationMs": 209
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 40
+                "durationMs": 53
               },
               {
                 "path": "configuration.apply",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "init",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "configuration.capabilities",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 1110
+                "durationMs": 1169
               },
               {
                 "path": "category",
@@ -263,37 +263,42 @@
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 703
+                "durationMs": 678
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 368
+                "durationMs": 413
               },
               {
                 "path": "categoryComics.load",
                 "status": "passed",
-                "durationMs": 465
+                "durationMs": 434
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 792
+                "durationMs": 834
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 187
+                "durationMs": 212
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 639
+                "durationMs": 626
               },
               {
                 "path": "comic.loadComments",
                 "status": "passed",
-                "durationMs": 629
+                "durationMs": 625
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "passed",
+                "durationMs": 0
               },
               {
                 "path": "comic.onClickTag",
@@ -314,26 +319,21 @@
                 "path": "comic.onClickTag",
                 "status": "passed",
                 "durationMs": 1
-              },
-              {
-                "path": "comic.onClickTag",
-                "status": "passed",
-                "durationMs": 0
               },
               {
                 "path": "comic.onImageLoad",
                 "status": "passed",
-                "durationMs": 1
+                "durationMs": 0
               },
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 572
+                "durationMs": 509
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 53
+                "durationMs": 66
               },
               {
                 "path": "comic.onThumbnailLoad",
@@ -343,12 +343,12 @@
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 104
+                "durationMs": 112
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 3
+                "durationMs": 2
               },
               {
                 "path": "account.logout",
@@ -394,10 +394,10 @@
     {
       "site": "绅士漫画",
       "key": "wnacg",
-      "note": "独立源 1.4.1；只改源，不修改 VeneraX。修复移动版首页、列表、搜索、排行榜、详情及连载翻页；真实移动 UA 匿名阅读在两套接口环境复测。会员收藏仅有结构回归，真实登录、收藏和重启后会话保留仍待实机验证。Actions 不注入本站密码或会话，跳过不计通过。",
+      "note": "独立源 1.4.2；发布页同步失败不再中断初始化，会员登录与收藏验证流程不变；只改源，不修改 VeneraX。修复移动版首页、列表、搜索、排行榜、详情及连载翻页；真实移动 UA 匿名阅读在两套接口环境复测。会员收藏仅有结构回归，真实登录、收藏和重启后会话保留仍待实机验证。Actions 不注入本站密码或会话，跳过不计通过。",
       "records": [
         {
-          "id": "4f23dfbe3ab52eecf4a6e35e9cd89624866b2512b97b6bb7facbb43a735a5970",
+          "id": "86df16976e3db28bedb3aed5ef14b8e79b9116dd8e2f7389207d48ed998c8212",
           "runtimeProfile": "venerax",
           "inputs": {
             "comicId": "397513",
@@ -405,18 +405,18 @@
           },
           "source": {
             "key": "wnacg",
-            "sourceSha256": "4f23dfbe3ab52eecf4a6e35e9cd89624866b2512b97b6bb7facbb43a735a5970",
-            "status": "failed",
+            "sourceSha256": "86df16976e3db28bedb3aed5ef14b8e79b9116dd8e2f7389207d48ed998c8212",
+            "status": "partial",
             "stages": [
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 162
+                "durationMs": 209
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 25
+                "durationMs": 39
               },
               {
                 "path": "configuration.apply",
@@ -425,15 +425,25 @@
               },
               {
                 "path": "init",
-                "status": "failed",
-                "category": "config_error",
-                "durationMs": 884
+                "status": "passed",
+                "durationMs": 895
+              },
+              {
+                "path": "configuration.capabilities",
+                "status": "passed",
+                "durationMs": 0
+              },
+              {
+                "path": "account.loginWithCookies.validate",
+                "status": "skipped",
+                "category": "credentials_missing",
+                "durationMs": 1
               },
               {
                 "path": "account.loginWithWebview.checkStatus",
                 "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
+                "category": "interactive_required",
+                "durationMs": 1
               },
               {
                 "path": "account.loginWithWebview.onLoginSuccess",
@@ -442,130 +452,151 @@
                 "durationMs": 0
               },
               {
-                "path": "account.loginWithCookies.validate",
-                "status": "skipped",
-                "category": "dependency_failed",
+                "path": "category",
+                "status": "passed",
                 "durationMs": 0
               },
               {
-                "path": "account.logout",
-                "status": "skipped",
-                "category": "dependency_failed",
+                "path": "settings",
+                "status": "passed",
                 "durationMs": 0
+              },
+              {
+                "path": "search.load",
+                "status": "passed",
+                "durationMs": 549
               },
               {
                 "path": "explore[0].load",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
+                "status": "passed",
+                "durationMs": 319
               },
               {
                 "path": "categoryComics.load",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
+                "status": "passed",
+                "durationMs": 277
               },
               {
                 "path": "categoryComics.ranking.load",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "favorites.addOrDelFavorite",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
+                "status": "passed",
+                "durationMs": 297
               },
               {
                 "path": "favorites.loadFolders",
                 "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "favorites.addFolder",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "favorites.deleteFolder",
-                "status": "skipped",
-                "category": "dependency_failed",
+                "category": "credentials_missing",
                 "durationMs": 0
               },
               {
                 "path": "favorites.loadComics",
                 "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "search.load",
-                "status": "skipped",
-                "category": "dependency_failed",
+                "category": "credentials_missing",
                 "durationMs": 0
               },
               {
                 "path": "comic.loadInfo",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "comic.loadThumbnails",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
+                "status": "passed",
+                "durationMs": 309
               },
               {
                 "path": "comic.loadEp",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
+                "status": "passed",
+                "durationMs": 262
+              },
+              {
+                "path": "comic.loadThumbnails",
+                "status": "passed",
+                "durationMs": 325
               },
               {
                 "path": "comic.onClickTag",
+                "status": "passed",
+                "durationMs": 1
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "passed",
+                "durationMs": 0
+              },
+              {
+                "path": "image.download",
+                "status": "passed",
+                "durationMs": 443
+              },
+              {
+                "path": "image.decode",
+                "status": "passed",
+                "durationMs": 319
+              },
+              {
+                "path": "thumbnail.download",
+                "status": "passed",
+                "durationMs": 132
+              },
+              {
+                "path": "thumbnail.decode",
+                "status": "passed",
+                "durationMs": 12
+              },
+              {
+                "path": "account.logout",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
+                "durationMs": 1
+              },
+              {
+                "path": "favorites.addOrDelFavorite",
+                "status": "skipped",
+                "category": "mutation_disabled",
+                "durationMs": 0
+              },
+              {
+                "path": "favorites.addFolder",
+                "status": "skipped",
+                "category": "mutation_disabled",
+                "durationMs": 0
+              },
+              {
+                "path": "favorites.deleteFolder",
+                "status": "skipped",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "settings.domain.callback",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "settings.refreshDomains.callback",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "settings.copyCookies.callback",
                 "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
+                "category": "mutation_disabled",
+                "durationMs": 1
               },
               {
                 "path": "settings.importCookies.callback",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "settings.loginStatus.callback",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               }
             ]
           }
         },
         {
-          "id": "4f23dfbe3ab52eecf4a6e35e9cd89624866b2512b97b6bb7facbb43a735a5970",
+          "id": "86df16976e3db28bedb3aed5ef14b8e79b9116dd8e2f7389207d48ed998c8212",
           "runtimeProfile": "venera-next",
           "inputs": {
             "comicId": "397513",
@@ -573,18 +604,18 @@
           },
           "source": {
             "key": "wnacg",
-            "sourceSha256": "4f23dfbe3ab52eecf4a6e35e9cd89624866b2512b97b6bb7facbb43a735a5970",
-            "status": "failed",
+            "sourceSha256": "86df16976e3db28bedb3aed5ef14b8e79b9116dd8e2f7389207d48ed998c8212",
+            "status": "partial",
             "stages": [
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 166
+                "durationMs": 213
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 32
+                "durationMs": 34
               },
               {
                 "path": "configuration.apply",
@@ -593,140 +624,171 @@
               },
               {
                 "path": "init",
-                "status": "failed",
-                "category": "config_error",
-                "durationMs": 906
+                "status": "passed",
+                "durationMs": 911
+              },
+              {
+                "path": "configuration.capabilities",
+                "status": "passed",
+                "durationMs": 1
+              },
+              {
+                "path": "account.loginWithCookies.validate",
+                "status": "skipped",
+                "category": "credentials_missing",
+                "durationMs": 0
               },
               {
                 "path": "account.loginWithWebview.checkStatus",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "interactive_required",
                 "durationMs": 0
               },
               {
                 "path": "account.loginWithWebview.onLoginSuccess",
                 "status": "skipped",
                 "category": "dependency_failed",
+                "durationMs": 1
+              },
+              {
+                "path": "category",
+                "status": "passed",
                 "durationMs": 0
               },
               {
-                "path": "account.loginWithCookies.validate",
-                "status": "skipped",
-                "category": "dependency_failed",
+                "path": "settings",
+                "status": "passed",
                 "durationMs": 0
+              },
+              {
+                "path": "search.load",
+                "status": "passed",
+                "durationMs": 505
+              },
+              {
+                "path": "explore[0].load",
+                "status": "passed",
+                "durationMs": 299
+              },
+              {
+                "path": "categoryComics.load",
+                "status": "passed",
+                "durationMs": 306
+              },
+              {
+                "path": "categoryComics.ranking.load",
+                "status": "passed",
+                "durationMs": 279
+              },
+              {
+                "path": "favorites.loadFolders",
+                "status": "skipped",
+                "category": "credentials_missing",
+                "durationMs": 1
+              },
+              {
+                "path": "favorites.loadComics",
+                "status": "skipped",
+                "category": "credentials_missing",
+                "durationMs": 0
+              },
+              {
+                "path": "comic.loadInfo",
+                "status": "passed",
+                "durationMs": 314
+              },
+              {
+                "path": "comic.loadEp",
+                "status": "passed",
+                "durationMs": 282
+              },
+              {
+                "path": "comic.loadThumbnails",
+                "status": "passed",
+                "durationMs": 353
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "passed",
+                "durationMs": 1
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "passed",
+                "durationMs": 0
+              },
+              {
+                "path": "image.download",
+                "status": "passed",
+                "durationMs": 76
+              },
+              {
+                "path": "image.decode",
+                "status": "passed",
+                "durationMs": 313
+              },
+              {
+                "path": "thumbnail.download",
+                "status": "passed",
+                "durationMs": 126
+              },
+              {
+                "path": "thumbnail.decode",
+                "status": "passed",
+                "durationMs": 13
               },
               {
                 "path": "account.logout",
                 "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "explore[0].load",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "categoryComics.load",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "categoryComics.ranking.load",
-                "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "favorites.addOrDelFavorite",
                 "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "favorites.loadFolders",
-                "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "favorites.addFolder",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "favorites.deleteFolder",
                 "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "favorites.loadComics",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "search.load",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "comic.loadInfo",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "comic.loadThumbnails",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "comic.loadEp",
-                "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
-              },
-              {
-                "path": "comic.onClickTag",
-                "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "settings.domain.callback",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "settings.refreshDomains.callback",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "settings.copyCookies.callback",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               },
               {
                 "path": "settings.importCookies.callback",
                 "status": "skipped",
-                "category": "dependency_failed",
-                "durationMs": 0
+                "category": "mutation_disabled",
+                "durationMs": 1
               },
               {
                 "path": "settings.loginStatus.callback",
                 "status": "skipped",
-                "category": "dependency_failed",
+                "category": "mutation_disabled",
                 "durationMs": 0
               }
             ]
@@ -755,17 +817,17 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 160
+                "durationMs": 201
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 29
+                "durationMs": 42
               },
               {
                 "path": "configuration.apply",
                 "status": "passed",
-                "durationMs": 19
+                "durationMs": 30
               },
               {
                 "path": "init",
@@ -780,7 +842,7 @@
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 322
+                "durationMs": 311
               },
               {
                 "path": "category",
@@ -795,62 +857,57 @@
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 454
+                "durationMs": 478
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 325
+                "durationMs": 367
               },
               {
                 "path": "categoryComics.optionLoader",
                 "status": "passed",
-                "durationMs": 3228
+                "durationMs": 3212
               },
               {
                 "path": "categoryComics.load",
                 "status": "passed",
-                "durationMs": 598
+                "durationMs": 550
               },
               {
                 "path": "categoryComics.ranking.load",
                 "status": "passed",
-                "durationMs": 622
+                "durationMs": 662
               },
               {
                 "path": "favorites.loadFolders",
                 "status": "passed",
-                "durationMs": 586
+                "durationMs": 521
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 288
+                "durationMs": 295
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 297
+                "durationMs": 303
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 298
+                "durationMs": 304
               },
               {
                 "path": "comic.loadComments",
                 "status": "passed",
-                "durationMs": 304
+                "durationMs": 296
               },
               {
                 "path": "comic.loadChapterComments",
                 "status": "passed",
-                "durationMs": 395
-              },
-              {
-                "path": "comic.onClickTag",
-                "status": "passed",
-                "durationMs": 0
+                "durationMs": 307
               },
               {
                 "path": "comic.onClickTag",
@@ -871,31 +928,36 @@
                 "path": "comic.onClickTag",
                 "status": "passed",
                 "durationMs": 1
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "passed",
+                "durationMs": 0
               },
               {
                 "path": "comic.idMatch",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "comic.onImageLoad",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 201
+                "durationMs": 224
               },
               {
                 "path": "comic.onImageLoad.modifyImage",
                 "status": "passed",
-                "durationMs": 108
+                "durationMs": 129
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 14
+                "durationMs": 15
               },
               {
                 "path": "comic.onImageLoad.onLoadFailed",
@@ -906,17 +968,17 @@
               {
                 "path": "comic.onThumbnailLoad",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 76
+                "durationMs": 132
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 5
+                "durationMs": 4
               },
               {
                 "path": "account.logout",
@@ -934,7 +996,7 @@
                 "path": "favorites.addFolder",
                 "status": "skipped",
                 "category": "mutation_disabled",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "favorites.deleteFolder",
@@ -946,7 +1008,7 @@
                 "path": "comic._makeImageRetry",
                 "status": "skipped",
                 "category": "missing_input",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "comic.likeComic",
@@ -970,7 +1032,7 @@
                 "path": "settings.refreshDomains.callback",
                 "status": "skipped",
                 "category": "mutation_disabled",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "settings.optimizeNodes.callback",
@@ -1009,32 +1071,32 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 164
+                "durationMs": 204
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 26
+                "durationMs": 41
               },
               {
                 "path": "configuration.apply",
                 "status": "passed",
-                "durationMs": 20
+                "durationMs": 26
               },
               {
                 "path": "init",
                 "status": "passed",
-                "durationMs": 1
+                "durationMs": 2
               },
               {
                 "path": "configuration.capabilities",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 305
+                "durationMs": 324
               },
               {
                 "path": "category",
@@ -1049,57 +1111,62 @@
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 466
+                "durationMs": 480
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 306
+                "durationMs": 335
               },
               {
                 "path": "categoryComics.optionLoader",
                 "status": "passed",
-                "durationMs": 3248
+                "durationMs": 3263
               },
               {
                 "path": "categoryComics.load",
                 "status": "passed",
-                "durationMs": 586
+                "durationMs": 524
               },
               {
                 "path": "categoryComics.ranking.load",
                 "status": "passed",
-                "durationMs": 624
+                "durationMs": 657
               },
               {
                 "path": "favorites.loadFolders",
                 "status": "passed",
-                "durationMs": 580
+                "durationMs": 522
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 296
+                "durationMs": 303
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 299
+                "durationMs": 293
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 310
+                "durationMs": 322
               },
               {
                 "path": "comic.loadComments",
                 "status": "passed",
-                "durationMs": 305
+                "durationMs": 293
               },
               {
                 "path": "comic.loadChapterComments",
                 "status": "passed",
-                "durationMs": 299
+                "durationMs": 310
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "passed",
+                "durationMs": 1
               },
               {
                 "path": "comic.onClickTag",
@@ -1114,12 +1181,7 @@
               {
                 "path": "comic.onClickTag",
                 "status": "passed",
-                "durationMs": 0
-              },
-              {
-                "path": "comic.onClickTag",
-                "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "comic.onClickTag",
@@ -1139,17 +1201,17 @@
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 286
+                "durationMs": 221
               },
               {
                 "path": "comic.onImageLoad.modifyImage",
                 "status": "passed",
-                "durationMs": 100
+                "durationMs": 129
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 15
+                "durationMs": 17
               },
               {
                 "path": "comic.onImageLoad.onLoadFailed",
@@ -1165,12 +1227,12 @@
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 88
+                "durationMs": 107
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 3
+                "durationMs": 4
               },
               {
                 "path": "account.logout",
@@ -1206,7 +1268,7 @@
                 "path": "comic.likeComic",
                 "status": "skipped",
                 "category": "mutation_disabled",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "comic.sendComment",
@@ -1218,13 +1280,13 @@
                 "path": "comic.sendChapterComment",
                 "status": "skipped",
                 "category": "mutation_disabled",
-                "durationMs": 1
+                "durationMs": 0
               },
               {
                 "path": "settings.refreshDomains.callback",
                 "status": "skipped",
                 "category": "mutation_disabled",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "settings.optimizeNodes.callback",
@@ -1270,27 +1332,27 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 163
+                "durationMs": 204
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 24
+                "durationMs": 35
               },
               {
                 "path": "configuration.apply",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "configuration.capabilities",
                 "status": "passed",
-                "durationMs": 1
+                "durationMs": 0
               },
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 804
+                "durationMs": 798
               },
               {
                 "path": "category",
@@ -1305,58 +1367,58 @@
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 61
+                "durationMs": 109
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 356
+                "durationMs": 312
               },
               {
                 "path": "categoryComics.load",
                 "status": "failed",
                 "category": "contract_violation",
-                "durationMs": 229
+                "durationMs": 197
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 301
+                "durationMs": 482
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 321
+                "durationMs": 187
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 1983
+                "durationMs": 1301
               },
               {
                 "path": "comic.onImageLoad",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 403
+                "durationMs": 351
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 39
+                "durationMs": 48
               },
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 98
+                "durationMs": 119
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 3
+                "durationMs": 4
               },
               {
                 "path": "account.logout",
@@ -1389,12 +1451,12 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 165
+                "durationMs": 202
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 24
+                "durationMs": 34
               },
               {
                 "path": "configuration.apply",
@@ -1409,7 +1471,7 @@
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 827
+                "durationMs": 839
               },
               {
                 "path": "category",
@@ -1424,33 +1486,33 @@
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 69
+                "durationMs": 127
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 314
+                "durationMs": 293
               },
               {
                 "path": "categoryComics.load",
                 "status": "failed",
                 "category": "contract_violation",
-                "durationMs": 258
+                "durationMs": 266
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 292
+                "durationMs": 271
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 333
+                "durationMs": 327
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 1438
+                "durationMs": 1833
               },
               {
                 "path": "comic.onImageLoad",
@@ -1460,22 +1522,22 @@
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 390
+                "durationMs": 383
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 39
+                "durationMs": 49
               },
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 131
+                "durationMs": 99
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 3
+                "durationMs": 4
               },
               {
                 "path": "account.logout",
@@ -1519,12 +1581,12 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 166
+                "durationMs": 204
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 24
+                "durationMs": 39
               },
               {
                 "path": "configuration.apply",
@@ -1539,7 +1601,7 @@
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 349
+                "durationMs": 340
               },
               {
                 "path": "category",
@@ -1554,62 +1616,62 @@
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 219
+                "durationMs": 246
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 361
+                "durationMs": 918
               },
               {
                 "path": "explore[1].load",
                 "status": "passed",
-                "durationMs": 226
+                "durationMs": 221
               },
               {
                 "path": "explore[2].load",
                 "status": "passed",
-                "durationMs": 328
+                "durationMs": 302
               },
               {
                 "path": "explore[3].load",
                 "status": "passed",
-                "durationMs": 286
+                "durationMs": 332
               },
               {
                 "path": "explore[4].load",
                 "status": "passed",
-                "durationMs": 341
+                "durationMs": 294
               },
               {
                 "path": "categoryComics.load",
                 "status": "passed",
-                "durationMs": 267
+                "durationMs": 274
               },
               {
                 "path": "categoryComics.ranking.load",
                 "status": "passed",
-                "durationMs": 325
+                "durationMs": 336
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 256
+                "durationMs": 232
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 902
+                "durationMs": 939
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 595
+                "durationMs": 582
               },
               {
                 "path": "comic.loadComments",
                 "status": "passed",
-                "durationMs": 445
+                "durationMs": 279
               },
               {
                 "path": "comic.onClickTag",
@@ -1634,17 +1696,17 @@
               {
                 "path": "comic.onImageLoad",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 256
+                "durationMs": 237
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 144
+                "durationMs": 160
               },
               {
                 "path": "comic.onThumbnailLoad",
@@ -1654,12 +1716,12 @@
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 145
+                "durationMs": 205
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 7
+                "durationMs": 8
               },
               {
                 "path": "account.reLogin",
@@ -1714,12 +1776,12 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 159
+                "durationMs": 208
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 27
+                "durationMs": 36
               },
               {
                 "path": "configuration.apply",
@@ -1734,7 +1796,7 @@
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 387
+                "durationMs": 321
               },
               {
                 "path": "category",
@@ -1749,62 +1811,62 @@
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 208
+                "durationMs": 221
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 411
+                "durationMs": 357
               },
               {
                 "path": "explore[1].load",
                 "status": "passed",
-                "durationMs": 195
+                "durationMs": 234
               },
               {
                 "path": "explore[2].load",
                 "status": "passed",
-                "durationMs": 318
+                "durationMs": 320
               },
               {
                 "path": "explore[3].load",
                 "status": "passed",
-                "durationMs": 337
+                "durationMs": 301
               },
               {
                 "path": "explore[4].load",
                 "status": "passed",
-                "durationMs": 272
+                "durationMs": 357
               },
               {
                 "path": "categoryComics.load",
                 "status": "passed",
-                "durationMs": 283
+                "durationMs": 247
               },
               {
                 "path": "categoryComics.ranking.load",
                 "status": "passed",
-                "durationMs": 351
+                "durationMs": 301
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 269
+                "durationMs": 300
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 872
+                "durationMs": 871
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 620
+                "durationMs": 622
               },
               {
                 "path": "comic.loadComments",
                 "status": "passed",
-                "durationMs": 286
+                "durationMs": 284
               },
               {
                 "path": "comic.onClickTag",
@@ -1824,37 +1886,37 @@
               {
                 "path": "comic.onClickTag",
                 "status": "passed",
-                "durationMs": 1
+                "durationMs": 0
               },
               {
                 "path": "comic.onImageLoad",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 312
+                "durationMs": 324
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 142
+                "durationMs": 161
               },
               {
                 "path": "comic.onThumbnailLoad",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 156
+                "durationMs": 122
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 7
+                "durationMs": 8
               },
               {
                 "path": "account.reLogin",
@@ -1866,7 +1928,7 @@
                 "path": "account.logout",
                 "status": "skipped",
                 "category": "mutation_disabled",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "favorites.addOrDelFavorite",
@@ -1916,22 +1978,22 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 160
+                "durationMs": 230
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 31
+                "durationMs": 44
               },
               {
                 "path": "configuration.apply",
                 "status": "passed",
-                "durationMs": 23
+                "durationMs": 26
               },
               {
                 "path": "init",
                 "status": "passed",
-                "durationMs": 21
+                "durationMs": 25
               },
               {
                 "path": "configuration.capabilities",
@@ -1941,7 +2003,7 @@
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 1602
+                "durationMs": 1586
               },
               {
                 "path": "category",
@@ -1957,27 +2019,27 @@
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 280
+                "durationMs": 245
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 252
+                "durationMs": 286
               },
               {
                 "path": "categoryComics.load",
                 "status": "passed",
-                "durationMs": 291
+                "durationMs": 300
               },
               {
                 "path": "favorites.loadFolders",
                 "status": "passed",
-                "durationMs": 314
+                "durationMs": 297
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 811
+                "durationMs": 859
               },
               {
                 "path": "comic.loadInfo",
@@ -1987,28 +2049,17 @@
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 326
+                "durationMs": 325
               },
               {
                 "path": "comic.loadComments",
                 "status": "passed",
-                "durationMs": 293
+                "durationMs": 279
               },
               {
                 "path": "comic.loadChapterComments",
                 "status": "passed",
-                "durationMs": 489
-              },
-              {
-                "path": "comic.onClickTag",
-                "status": "passed",
-                "durationMs": 0
-              },
-              {
-                "path": "comic.onClickTag",
-                "status": "failed",
-                "category": "config_error",
-                "durationMs": 0
+                "durationMs": 465
               },
               {
                 "path": "comic.onClickTag",
@@ -2022,24 +2073,35 @@
                 "durationMs": 0
               },
               {
+                "path": "comic.onClickTag",
+                "status": "passed",
+                "durationMs": 0
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "failed",
+                "category": "config_error",
+                "durationMs": 1
+              },
+              {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 135
+                "durationMs": 60
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 73
+                "durationMs": 91
               },
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 114
+                "durationMs": 164
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 3
+                "durationMs": 4
               },
               {
                 "path": "account.logout",
@@ -2106,22 +2168,22 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 164
+                "durationMs": 206
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 36
+                "durationMs": 51
               },
               {
                 "path": "configuration.apply",
                 "status": "passed",
-                "durationMs": 22
+                "durationMs": 27
               },
               {
                 "path": "init",
                 "status": "passed",
-                "durationMs": 18
+                "durationMs": 23
               },
               {
                 "path": "configuration.capabilities",
@@ -2131,63 +2193,63 @@
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 1623
+                "durationMs": 1566
               },
               {
                 "path": "category",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "settings",
                 "status": "failed",
                 "category": "contract_violation",
-                "durationMs": 1
+                "durationMs": 0
               },
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 262
+                "durationMs": 241
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 269
+                "durationMs": 285
               },
               {
                 "path": "categoryComics.load",
                 "status": "passed",
-                "durationMs": 297
+                "durationMs": 315
               },
               {
                 "path": "favorites.loadFolders",
                 "status": "passed",
-                "durationMs": 322
+                "durationMs": 285
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 834
+                "durationMs": 883
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 831
+                "durationMs": 827
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 337
+                "durationMs": 343
               },
               {
                 "path": "comic.loadComments",
                 "status": "passed",
-                "durationMs": 271
+                "durationMs": 274
               },
               {
                 "path": "comic.loadChapterComments",
                 "status": "passed",
-                "durationMs": 467
+                "durationMs": 477
               },
               {
                 "path": "comic.onClickTag",
@@ -2198,7 +2260,7 @@
                 "path": "comic.onClickTag",
                 "status": "failed",
                 "category": "config_error",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "comic.onClickTag",
@@ -2214,17 +2276,17 @@
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 119
+                "durationMs": 64
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 72
+                "durationMs": 90
               },
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 132
+                "durationMs": 156
               },
               {
                 "path": "thumbnail.decode",
@@ -2305,32 +2367,32 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 157
+                "durationMs": 202
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 27
+                "durationMs": 41
               },
               {
                 "path": "configuration.apply",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "init",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "configuration.capabilities",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 1136
+                "durationMs": 1099
               },
               {
                 "path": "category",
@@ -2340,53 +2402,53 @@
               {
                 "path": "settings",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 268
+                "durationMs": 282
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 258
+                "durationMs": 251
               },
               {
                 "path": "categoryComics.load",
                 "status": "passed",
-                "durationMs": 304
+                "durationMs": 297
               },
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 297
+                "durationMs": 386
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 895
+                "durationMs": 898
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 352
+                "durationMs": 351
               },
               {
                 "path": "comic.onClickTag",
                 "status": "passed",
-                "durationMs": 1
+                "durationMs": 0
               },
               {
                 "path": "comic.onClickTag",
                 "status": "failed",
                 "category": "config_error",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "comic.onClickTag",
                 "status": "passed",
-                "durationMs": 1
+                "durationMs": 0
               },
               {
                 "path": "comic.onClickTag",
@@ -2397,22 +2459,22 @@
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 123
+                "durationMs": 88
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 69
+                "durationMs": 84
               },
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 151
+                "durationMs": 166
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 3
+                "durationMs": 5
               },
               {
                 "path": "account.logout",
@@ -2445,22 +2507,22 @@
               {
                 "path": "runtime.load",
                 "status": "passed",
-                "durationMs": 161
+                "durationMs": 204
               },
               {
                 "path": "source.load",
                 "status": "passed",
-                "durationMs": 25
+                "durationMs": 39
               },
               {
                 "path": "configuration.apply",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "init",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "configuration.capabilities",
@@ -2470,7 +2532,7 @@
               {
                 "path": "account.login",
                 "status": "passed",
-                "durationMs": 1092
+                "durationMs": 1062
               },
               {
                 "path": "category",
@@ -2480,17 +2542,17 @@
               {
                 "path": "settings",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "search.load",
                 "status": "passed",
-                "durationMs": 261
+                "durationMs": 472
               },
               {
                 "path": "explore[0].load",
                 "status": "passed",
-                "durationMs": 270
+                "durationMs": 225
               },
               {
                 "path": "categoryComics.load",
@@ -2500,33 +2562,33 @@
               {
                 "path": "favorites.loadComics",
                 "status": "passed",
-                "durationMs": 310
+                "durationMs": 307
               },
               {
                 "path": "comic.loadInfo",
                 "status": "passed",
-                "durationMs": 894
+                "durationMs": 895
               },
               {
                 "path": "comic.loadEp",
                 "status": "passed",
-                "durationMs": 331
+                "durationMs": 342
               },
               {
                 "path": "comic.onClickTag",
                 "status": "passed",
-                "durationMs": 1
+                "durationMs": 0
               },
               {
                 "path": "comic.onClickTag",
                 "status": "failed",
                 "category": "config_error",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "comic.onClickTag",
                 "status": "passed",
-                "durationMs": 0
+                "durationMs": 1
               },
               {
                 "path": "comic.onClickTag",
@@ -2537,28 +2599,28 @@
               {
                 "path": "image.download",
                 "status": "passed",
-                "durationMs": 104
+                "durationMs": 81
               },
               {
                 "path": "image.decode",
                 "status": "passed",
-                "durationMs": 67
+                "durationMs": 83
               },
               {
                 "path": "thumbnail.download",
                 "status": "passed",
-                "durationMs": 175
+                "durationMs": 179
               },
               {
                 "path": "thumbnail.decode",
                 "status": "passed",
-                "durationMs": 3
+                "durationMs": 4
               },
               {
                 "path": "account.logout",
                 "status": "skipped",
                 "category": "mutation_disabled",
-                "durationMs": 1
+                "durationMs": 0
               },
               {
                 "path": "favorites.addOrDelFavorite",
