@@ -45,10 +45,26 @@ def validate_plan(plan, catalog):
             assert item["key"] == site["key"]
             assert item["runtimeProfile"] == "venerax"
             assert site["loginReviewed"] is True
+        if "credentialKey" in site:
+            # 站点改名后可以继续沿用旧 Secret 里的凭据；口令本身由 Actions Secret 保存，不写入仓库。
+            assert re.fullmatch(r"[\w.-]{1,120}", site["credentialKey"])
+            assert site.get("buildId")
         assert site.get("authMode", "password") in ("password", "browser_cookie")
         if site.get("authMode") == "browser_cookie":
             assert site.get("buildId") and site["key"] == "wnacg"
     return plan
+
+
+def credentials_from_secret(secret, site):
+    """按本站授权契约解析 Secret；`credentialKey` 允许站点 key 改名后继续沿用旧凭据。"""
+    payload = json.loads(secret)
+    expected = site.get("credentialKey", site["key"])
+    assert set(payload) == {expected}
+    assert set(payload[expected]) == {"credentials"}
+    credentials = payload[expected]["credentials"]
+    assert set(credentials) == {"username", "password"}
+    assert all(isinstance(v, str) and v for v in credentials.values())
+    return credentials
 
 
 def login_stage(source):
@@ -151,14 +167,13 @@ def patrol(work):
         # 错误信息不能包含 Secret 本身或解析异常中的片段。
         if not browser_cookie:
             try:
-                auth = json.loads(secret)
-                assert set(auth) == {site["key"]}
-                assert set(auth[site["key"]]) == {"credentials"}
-                credentials = auth[site["key"]]["credentials"]
-                assert set(credentials) == {"username", "password"}
-                assert all(isinstance(v, str) and v for v in credentials.values())
+                credentials = credentials_from_secret(secret, site)
             except Exception:
                 raise ValueError(f"{site['secret']} 格式不符合本站授权契约") from None
+            expected = site.get("credentialKey", site["key"])
+            if expected != site["key"]:
+                # 源码 key 改过，但 Secret 里的键名还是旧的：按当前 key 重新封装后交给巡检容器。
+                secret = json.dumps({site["key"]: {"credentials": credentials}}, ensure_ascii=False)
         item = items[site["buildId"]]
         data = audit.request(item["url"])
         if audit.sha(data) != item["sha256"]:

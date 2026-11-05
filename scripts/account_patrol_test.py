@@ -36,6 +36,27 @@ class AccountIsolationTests(unittest.TestCase):
         with self.assertRaises(AssertionError):
             accounts.validate_plan(altered, catalog)
 
+    def test_secret_can_keep_the_old_key_after_the_source_key_is_renamed(self):
+        secret = json.dumps({"copy_manga": {"credentials": {"username": "u", "password": "p"}}})
+        site = {"key": "copy_manga_multi_accounts", "credentialKey": "copy_manga"}
+        self.assertEqual(accounts.credentials_from_secret(secret, site),
+                         {"username": "u", "password": "p"})
+        self.assertEqual(accounts.credentials_from_secret(secret, {"key": "copy_manga"}),
+                         {"username": "u", "password": "p"})
+        plan = audit.load(accounts.ROOT / "monitor/accounts.json")
+        accounts.validate_plan(plan, audit.load(accounts.ROOT / "monitor/catalog.json"))
+        for site in plan["sites"]:
+            if site.get("credentialKey"):
+                self.assertNotEqual(site["credentialKey"], site["key"])
+                self.assertTrue(site.get("buildId"))
+        catalog = {"schemaVersion": 1, "priorityRepositories": [], "sources": [
+            {"id": "a" * 64, "key": "k", "runtimeProfile": "venerax"}]}
+        for bad in ("", "bad/key"):
+            site = {"key": "k", "credentialKey": bad, "buildId": "a" * 64,
+                    "secret": "PATROL_AUTH_FIXTURE", "loginReviewed": True}
+            with self.subTest(credentialKey=bad), self.assertRaises(AssertionError):
+                accounts.validate_plan({"schemaVersion": 1, "sites": [site]}, catalog)
+
     def test_all_catalog_sources_have_both_client_profiles(self):
         catalog = audit.load(accounts.ROOT / "monitor/catalog.json")
         for item in catalog["sources"]:
