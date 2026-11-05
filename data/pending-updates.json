@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-05T02:43:32.749199+00:00",
+  "checkedAt": "2026-11-05T05:30:49.008988+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -9030,6 +9030,25 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
+      "id": "fcb90412e0d16323340337e815267bb02c6ca0491c00cbfabe55241ed67029ac",
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.4.4",
+      "fileName": "copy_manga.js",
+      "url": "https://raw.githubusercontent.com/zakkida/venera-sources/a5d8118da700c44f4823e82494d4ca816054afaf/copy_manga.js",
+      "sha256": "fcb90412e0d16323340337e815267bb02c6ca0491c00cbfabe55241ed67029ac",
+      "repository": "zakkida/venera-sources",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "zakkida/venera-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
       "id": "e2ba75d47461ea726af9fdd933e779ce8ec1bb24cd40ddca033650d6026b99a2",
       "key": "copy_manga",
       "name": "拷贝漫画M",
@@ -9884,9 +9903,7 @@
     {
       "repository": "token1008/venera-cn-64bit",
       "commit": "a47957c657f39731c3a082e7bab82113d6fc693e",
-      "errors": [
-        "jcomic.net（官方·需代理）：HTTP Error 503: between bytes timeout"
-      ]
+      "errors": []
     },
     {
       "repository": "VComic-org/venera-comic-source",
@@ -9916,9 +9933,7 @@
     {
       "repository": "xiaoxingmian/venera-configs",
       "commit": "aa9fea3526294435982e765cc96ce916be6748a6",
-      "errors": [
-        "Komga：HTTP Error 503: between bytes timeout"
-      ]
+      "errors": []
     },
     {
       "repository": "xuzhen2905-pixel/venera-source",
@@ -9963,9 +9978,7 @@
     {
       "repository": "zakkida/venera-sources",
       "commit": "a5d8118da700c44f4823e82494d4ca816054afaf",
-      "errors": [
-        "拷贝漫画：HTTP Error 503: between bytes timeout"
-      ]
+      "errors": []
     },
     {
       "repository": "zetriumyx/noyacg-source-venera",
@@ -9991,6 +10004,26 @@
   ],
   "newRepositories": [
     {
+      "repository": "Kyosee/VeneraX",
+      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "gallhall/venera-v",
+      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Taototo/ManComic",
+      "description": "A Flutter comic reader app based on Venera",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Maxll51/EZVenera-Lite",
+      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android",
+      "foundBy": "venera in:name,description"
+    },
+    {
       "repository": "veneraproject/native-gui-wallet",
       "description": "Electron GUI for native Venera wallets and services",
       "foundBy": "venera in:name,description"
@@ -10001,18 +10034,8 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "gallhall/venera-v",
-      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "venera-app/venera-prime",
       "description": "A comic app,but prime",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Taototo/ManComic",
-      "description": "A Flutter comic reader app based on Venera",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10023,11 +10046,6 @@
     {
       "repository": "jnsingh01/venerabulllife",
       "description": "Venerabull Life — public website.",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Maxll51/EZVenera-Lite",
-      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10128,11 +10146,6 @@
     {
       "repository": "Manjit53/venerable-dasik-a5e0ff",
       "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Kyosee/VeneraX",
-      "description": "A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。",
       "foundBy": "venera in:name,description"
     },
     {

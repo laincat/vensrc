@@ -1,7 +1,7 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-05T02:43:32.749199+00:00（UTC）。
-检查 70 个已登记仓库；发现 477 个未审阅源码构建。
+检查时间：2026-11-05T05:30:49.008988+00:00（UTC）。
+检查 70 个已登记仓库；发现 478 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
 
@@ -463,6 +463,7 @@
 | 툰코 Toonkor | toonkor | 1.0.0 | yuyuyu529/venera | 1.0.0 | 6e48ef757a254e46506f40e1633d5b22b23c97601094045525847a60881e6f0c |
 | マガポケ Magazine Pocket | magazinepocket | 1.0.1 | yuyuyu529/venera | 1.0.5 | dea854e67e2ad373a5cd21727e064a415f5b3a38bf15b9db83559df579532476 |
 | Mangabz | mangabz | 1.0.0 | zakkida/venera-sources | 1.6.0 | 8ec53577ba8e5a865589884f3d2be53ec108aff1085610124e66444e943c91b3 |
+| 拷贝漫画 | copy_manga | 1.4.4 | zakkida/venera-sources | 1.6.0 | fcb90412e0d16323340337e815267bb02c6ca0491c00cbfabe55241ed67029ac |
 | 拷贝漫画M | copy_manga | 1.4.4 | zakkida/venera-sources | 1.6.0 | e2ba75d47461ea726af9fdd933e779ce8ec1bb24cd40ddca033650d6026b99a2 |
 | Komiic | Komiic | 1.1.0 | zakkida/venera-sources | 1.0.0 | c01d8348577ca1fa83264d29071af81eca2346aaa026da42ab55c6dce0c32955 |
 | hitomi.la | hitomi | 1.1.3 | zakkida/venera-sources | 1.4.6 | 7aeef0e996adbf5a8ee49bd8079f8c9d1fedbde3b9205782647212734f94f7a1 |
@@ -509,24 +510,22 @@
 - `QWWWQ-MIX/venera-sources`：HTTP Error 409: Conflict
 - `snowf14k3/venera-komiic-multi`：Komiic 多账号：暂不执行非 GitHub 原始地址
 - `Taototo/venera-comic-sources`：漫小肆（18+）：HTTP Error 404: Not Found；包子漫画：HTTP Error 404: Not Found；鸟鸟韩漫（18+）：HTTP Error 404: Not Found
-- `token1008/venera-cn-64bit`：jcomic.net（官方·需代理）：HTTP Error 503: between bytes timeout
-- `xiaoxingmian/venera-configs`：Komga：HTTP Error 503: between bytes timeout
 - `yelongyue197-svg/venera-sources`：动漫啦：暂不执行非 GitHub 原始地址；妙趣漫画：暂不执行非 GitHub 原始地址；六漫画：暂不执行非 GitHub 原始地址；动漫屋：暂不执行非 GitHub 原始地址
-- `zakkida/venera-sources`：拷贝漫画：HTTP Error 503: between bytes timeout
 - `zetriumyx/noyacg-source-venera`：HTTP Error 404: Not Found
 
 ## 新仓库线索
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
+- `Kyosee/VeneraX`：A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。
+- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
+- `Taototo/ManComic`：A Flutter comic reader app based on Venera
+- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
 - `veneraproject/native-gui-wallet`：Electron GUI for native Venera wallets and services
 - `laincat/VeneraCat-Core`：Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0
-- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `venera-app/venera-prime`：A comic app,but prime
-- `Taototo/ManComic`：A Flutter comic reader app based on Venera
 - `Ciaodar/VenerableKnowledge`：a minecraft mod with a potion effect.
 - `jnsingh01/venerabulllife`：Venerabull Life — public website.
-- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
 - `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `jnsingh01/venerabullstudios`：Venerabull Studios — a showcase of projects in development.
 - `jnsingh01/venerabullinteractive`：Venerabull Interactive — public website.
@@ -547,7 +546,6 @@
 - `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
 - `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
 - `Manjit53/venerable-dasik-a5e0ff`：
-- `Kyosee/VeneraX`：A personal-use fork of the original Venera, maintained and enhanced to suit my own needs. ／ Fork自原版Venera，仅进行自用需求维护及增强。
 - `huangjun7hb/venera-next-sources`：
 - `Venera-d1/heart-python`：Draw a heart with Python Turtle
 - `wnzmb/venera-configs-wujiajun`：Venera 漫画源：nhentai / e-hentai / hitomi，指向自建 Cloudflare Worker 反代

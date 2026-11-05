@@ -1,6 +1,6 @@
 # 隔离账号巡检结果
 
-核验时间：2026-11-05T02:43:20.868902+00:00（UTC）。
+核验时间：2026-11-05T05:30:19.805081+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
@@ -42,7 +42,7 @@
 | 绅士漫画 | wnacg | venerax | 跳过 | 通过 | 部分通过 | 无失败 | 14 |
 | 绅士漫画 | wnacg | venera-next | 跳过 | 通过 | 部分通过 | 无失败 | 14 |
 | 禁漫天堂 | jm | venerax | 通过 | 通过 | 部分通过 | 无失败 | 13 |
-| 禁漫天堂 | jm | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 13 |
+| 禁漫天堂 | jm | venera-next | 通过 | 通过 | 失败 | search.load：HTTP 错误 | 13 |
 | 包子漫画 | baozi | venerax | 通过 | 通过 | 部分通过 | 无失败 | 2 |
 | 包子漫画 | baozi | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 2 |
 | 18ak 漫画 | 18ak | — | 已保存凭据；当前已审阅清单无本站源 | 未测试 | 跳过 |  | 未执行 |
@@ -53,4 +53,4 @@
 | 热辣漫画 | hot_manga | — | 已保存凭据；1.0.1 是自建读取版，尚未实现账号登录（没有可复测账号，不写未验证流程）；补上账户能力后再纳入登录巡检。 | 未测试 | 跳过 |  | 未执行 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 ../data/account-results.json。
-Actions：https://github.com/laincat/vensrc/actions/runs/41956841331
+Actions：https://github.com/laincat/vensrc/actions/runs/41974223743
