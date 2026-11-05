@@ -1,6 +1,6 @@
 # 隔离账号巡检结果
 
-核验时间：2026-11-05T00:30:31.588615+00:00（UTC）。
+核验时间：2026-11-05T01:41:10.009287+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
@@ -18,6 +18,7 @@
 ## 已核对的登录流程差异
 
 - 绅士漫画：独立源 1.4.1；只改源，不修改 VeneraX。修复移动版首页、列表、搜索、排行榜、详情及连载翻页；真实移动 UA 匿名阅读在两套接口环境复测。会员收藏仅有结构回归，真实登录、收藏和重启后会话保留仍待实机验证。Actions 不注入本站密码或会话，跳过不计通过。
+- 拷贝漫画：多账号版主账号登录与单账号版同源同接口（/api/v3/login）；单账号构建已并入本构建。
 
 ## 登录未验证／跳过项
 
@@ -46,10 +47,10 @@
 | 18ak 漫画 | 18ak | — | 已保存凭据；当前已审阅清单无本站源 | 未测试 | 跳过 |  | 未执行 |
 | 哔咔漫画 | picacg | venerax | 通过 | 通过 | 部分通过 | 无失败 | 6 |
 | 哔咔漫画 | picacg | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 6 |
-| 拷贝漫画 | copy_manga | venerax | 通过 | 未通过 | 失败 | settings：返回结构或样本不满足契约；search.load：源配置错误；explore[0].load：源配置错误；categoryComics.load：源配置错误；favorites.loadComics：源配置错误 | 11 |
-| 拷贝漫画 | copy_manga | venera-next | 通过 | 未通过 | 失败 | settings：返回结构或样本不满足契约；search.load：源配置错误；explore[0].load：源配置错误；categoryComics.load：源配置错误；favorites.loadComics：源配置错误 | 11 |
+| 拷贝漫画 | copy_manga_multi_accounts | venerax | 通过 | 通过 | 失败 | settings：返回结构或样本不满足契约；comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 8 |
+| 拷贝漫画 | copy_manga_multi_accounts | venera-next | 通过 | 通过 | 失败 | settings：返回结构或样本不满足契约；comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 8 |
 | 热辣漫画 | hot_manga | venerax | 通过 | 通过 | 失败 | comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 2 |
 | 热辣漫画 | hot_manga | venera-next | 通过 | 通过 | 失败 | comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 2 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 ../data/account-results.json。
-Actions：https://github.com/laincat/vensrc/actions/runs/41941606566
+Actions：https://github.com/laincat/vensrc/actions/runs/41949958221
