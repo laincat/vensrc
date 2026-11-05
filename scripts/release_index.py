@@ -39,13 +39,15 @@ def validate(root, check_latest=False):
             raise ValueError(f"发布证据缺失：{name}")
     catalog = audit.validate_catalog(audit.load(root / "monitor/catalog.json"))
     items = {item["id"]: item for item in catalog["sources"]}
+    community = audit.community_keys(items.values())
     state = audit.load(root / "data/audit-status.json")
     exclusions = audit.official_policy(root)
     assert state["officialExclusionsSha256"] == audit.sha(
         (root / "data/official-exclusions.json").read_bytes()), "官方排除集合哈希不匹配"
     assert state["officialBaselineKeys"] == len(exclusions["keys"])
     assert state["officialExcludedBuilds"] == sum(
-        audit.excluded_official(item, exclusions) for item in items.values())
+        audit.excluded_official(item, exclusions, community) for item in items.values()), \
+        "官方排除构建数与审阅清单不匹配"
     latest_exclusions = audit.refresh_official_policy(root) if check_latest else exclusions
     assert state["catalogSha256"] == audit.sha((root / "monitor/catalog.json").read_bytes())
     assert state["builds"] == len(items)
@@ -65,9 +67,11 @@ def validate(root, check_latest=False):
     assert all(items[build_id].get("repository") in ("BB-CHICKEN/venera-jm", "laincat/vensrc")
                for build_id in note_config["notes"])
     assert not any(audit.excluded_wnacg(row) for row in main + extended + locks), "绅士漫画含其他来源"
-    assert not any(audit.excluded_official(row, latest_exclusions)
+    assert not any(audit.excluded_official(row, latest_exclusions, community)
                    for row in main + extended + locks), "订阅含官方原版或未高于官方版本的同 key 源"
-    assert state["officialOverrides"] == sum(row["key"] in exclusions["versions"] for row in locks)
+    assert state["officialOverrides"] == sum(
+        row["key"] in exclusions["versions"] and not audit.is_official_item(row)
+        for row in locks), "社区升级源数量不匹配，官方原版不得计入"
     by_key = {row["key"]: row for row in locks}
     assert len(by_key) == len(locks) == len(main) + len(extended) > 0
     assert len({row["key"] for row in main + extended}) == len(locks)
@@ -79,7 +83,10 @@ def validate(root, check_latest=False):
             }, "公开订阅含白名单以外字段"
             locked = by_key[entry["key"]]
             item = items[locked["buildId"]]
-            assert not audit.excluded_official(item, latest_exclusions), "禁止重新收录官方构建"
+            assert not audit.excluded_official(item, latest_exclusions, community), \
+                "禁止收录不符合官方版本规则的构建"
+            assert locked.get("officialOriginal", False) == audit.is_official_item(item), \
+                "官方原版标记与审阅来源不匹配"
             if item["key"] in exclusions["versions"]:
                 assert locked["officialVersion"] == exclusions["versions"][item["key"]]
             assert entry["description"] == audit.source_annotation(item, note_config["notes"])
@@ -165,7 +172,8 @@ def stage(root, destination, repository, check_latest=False):
         f"主索引 **{state['main']}** 项；扩展索引 **{state['extended']}** 项。\n\n"
         f"官方版本基线 **{state['officialBaselineKeys']}** 个 key；"
         f"本次收录 **{state['officialOverrides']}** 个严格高于官方版本的社区替代源。"
-        "官方原版、同版和低版继续排除；版本基线、上游提交和原始索引哈希见仓库 "
+        "官方原版仅在同一 key 没有社区构建时作为补充，并须通过相同阅读门槛；"
+        "社区同版和低版继续排除。版本基线、上游提交和原始索引哈希见仓库 "
         f"[官方基线](https://github.com/{repository}/blob/main/data/official-exclusions.json)。\n\n"
         f"- [主订阅 index.json]({prefix}/index.json)：核心阅读及整次执行通过。\n"
         f"- [扩展订阅 extended.json]({prefix}/extended.json)：核心阅读通过，其他能力可能受限。\n"

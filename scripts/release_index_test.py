@@ -1,4 +1,6 @@
+import copy
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -8,11 +10,11 @@ import cloud_audit as audit
 import release_index as release
 
 
-def fixture(root):
+def fixture(root, repository="example/source", official_version=None):
     item = {
         "id": "a" * 64, "sha256": "a" * 64, "key": "fixture", "name": "测试源",
-        "url": "https://raw.githubusercontent.com/example/source/" + "b" * 40 + "/fixture.js",
-        "repository": "example/source",
+        "url": f"https://raw.githubusercontent.com/{repository}/" + "b" * 40 + "/fixture.js",
+        "repository": repository,
         "version": "1.0.0", "fileName": "fixture.js", "minAppVersion": "1.0.0",
         "sample": {"comicId": "1", "epId": "2", "keyword": "测试"},
         "runtimeProfile": "venerax", "verifyProfiles": ["venera-next"],
@@ -22,6 +24,9 @@ def fixture(root):
     audit.save(root / "monitor/accounts.json", {"schemaVersion": 1, "sites": []})
     audit.save(root / "monitor/source-notes.json", {"schemaVersion": 1, "notes": {}})
     exclusions = audit.load(audit.ROOT / "monitor/official-keys.json")
+    if official_version is not None:
+        exclusions["keys"] = sorted(exclusions["keys"] + [item["key"]])
+        exclusions["versions"][item["key"]] = official_version
     audit.save(root / "monitor/official-keys.json", exclusions)
     audit.save(root / "data/official-exclusions.json", exclusions)
     profiles = audit.load(audit.ROOT / "monitor/clients.json")["profiles"]
@@ -50,7 +55,10 @@ def fixture(root):
     entry["description"] = audit.source_annotation(item, {})
     locked = {**entry, "buildId": item["id"], "sha256": item["sha256"], "channel": "main",
               "runtimeProfile": "venerax", "status": "passed", "sample": item["sample"],
-              "checkedAt": checked, "cliCommit": cli["commit"]}
+              "checkedAt": checked, "cliCommit": cli["commit"],
+              "officialOriginal": audit.is_official_item(item)}
+    if official_version is not None:
+        locked["officialVersion"] = official_version
     state = {
         "main": 1, "extended": 0, "builds": 1, "checkedAt": checked, "runUrl": run, "cli": cli,
         "catalogSha256": audit.sha((root / "monitor/catalog.json").read_bytes()),
@@ -82,6 +90,95 @@ def fixture(root):
 
 
 class ReleaseIndexTests(unittest.TestCase):
+    def test_patrol_official_fallback_roundtrip_releases_main_and_extended(self):
+        for status in ("passed", "partial"):
+            with self.subTest(status=status), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                data = fixture(root, audit.OFFICIAL_REPOSITORY, "1.0.0")
+                for name in ("scripts/client_bridge.mjs", "scripts/prepare_client.py", "monitor/clients.json"):
+                    target = root / name
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_bytes((audit.ROOT / name).read_bytes())
+                state = data["audit-status.json"]
+                records = data["client-results.json"]["records"]
+                for record in records:
+                    record["source"]["status"] = status
+                cli = {**state["cli"], "version": "fixture", "packageLockSha256": "d" * 64}
+                payload = {
+                    "schemaVersion": 1, "catalogSha256": state["catalogSha256"],
+                    "checkedAt": state["checkedAt"], "cli": cli,
+                    "officialExclusions": data["official-exclusions.json"],
+                    "records": [r for r in records if r["runtimeProfile"] == "venerax"],
+                    "clientRecords": [r for r in records if r["runtimeProfile"] == "venera-next"],
+                }
+                # Exercise the actual patrol producer and release consumer together.
+                with patch.object(audit, "ROOT", root), \
+                        patch.dict(os.environ, {"AUDIT_RUN_URL": state["runUrl"]}):
+                    audit.publish(payload, root)
+                destination = root / "release"
+                with patch.object(audit, "refresh_official_policy",
+                                  return_value=data["official-exclusions.json"]) as refreshed:
+                    release.stage(root, destination, "example/source", check_latest=True)
+                refreshed.assert_called_once_with(root)
+                current = audit.load(root / "data/audit-status.json")
+                self.assertEqual(current["officialExcludedBuilds"], 0)
+                self.assertEqual(current["officialOverrides"], 0)
+                self.assertEqual((current["main"], current["extended"]),
+                                 (1, 0) if status == "passed" else (0, 1))
+                notes = (destination / "release-notes.md").read_text(encoding="utf-8")
+                self.assertIn("同一 key 没有社区构建", notes)
+                self.assertIn("**0** 个严格高于官方版本", notes)
+
+    def test_official_fallback_is_rejected_when_any_community_build_exists(self):
+        for version, status in (("0.9.0", "failed"), ("1.0.0", "passed"), ("1.1.0", "failed")):
+            with self.subTest(version=version, status=status), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                data = fixture(root, audit.OFFICIAL_REPOSITORY, "1.0.0")
+                catalog = audit.load(root / "monitor/catalog.json")
+                item = {**catalog["sources"][0], "id": "d" * 64, "sha256": "d" * 64,
+                        "repository": "example/community", "version": version,
+                        "url": "https://raw.githubusercontent.com/example/community/" + "b" * 40 + "/fixture.js"}
+                catalog["sources"].append(item)
+                audit.save(root / "monitor/catalog.json", catalog)
+                state = data["audit-status.json"]
+                state.update(catalogSha256=audit.sha((root / "monitor/catalog.json").read_bytes()),
+                             builds=2, officialExcludedBuilds=1 + (version != "1.1.0"))
+                audit.save(root / "data/audit-status.json", state)
+                records = data["client-results.json"]["records"]
+                for record in copy.deepcopy(records):
+                    record["id"] = item["id"]
+                    record["source"].update(sourceSha256=item["sha256"], version=version, status=status)
+                    records.append(record)
+                audit.save(root / "data/client-results.json", data["client-results.json"])
+                with self.assertRaisesRegex(AssertionError, "订阅含官方原版"):
+                    release.validate(root)
+
+    def test_official_fallback_cannot_hide_wrong_counts_or_origin_marker(self):
+        for field, message in (("officialExcludedBuilds", "官方排除构建数"),
+                               ("officialOverrides", "社区升级源数量"),
+                               ("officialOriginal", "官方原版标记")):
+            with self.subTest(field=field), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                data = fixture(root, audit.OFFICIAL_REPOSITORY, "1.0.0")
+                if field == "officialOriginal":
+                    data["sources.lock.json"][0][field] = False
+                    audit.save(root / "data/sources.lock.json", data["sources.lock.json"])
+                else:
+                    data["audit-status.json"][field] = 1
+                    audit.save(root / "data/audit-status.json", data["audit-status.json"])
+                with self.assertRaisesRegex(AssertionError, message):
+                    release.validate(root)
+
+    def test_official_fallback_still_requires_reading_evidence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            data = fixture(root, audit.OFFICIAL_REPOSITORY, "1.0.0")
+            for record in data["client-results.json"]["records"]:
+                record["source"]["stages"][-1]["status"] = "skipped"
+            audit.save(root / "data/client-results.json", data["client-results.json"])
+            with self.assertRaises(AssertionError):
+                release.validate(root)
+
     def test_other_wnacg_origin_in_public_subscription_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
