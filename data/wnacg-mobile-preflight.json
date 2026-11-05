@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "checkedAt": "2026-10-26T00:53:55.773928+00:00",
   "source": {
-    "version": "1.4.1",
-    "commit": "685494cc7b63c1f0834374558d3516acb3f5c734",
-    "sha256": "4f23dfbe3ab52eecf4a6e35e9cd89624866b2512b97b6bb7facbb43a735a5970",
+    "version": "1.4.2",
+    "commit": "8c827da3230406c2f6b70aacb0e93a628efbf699",
+    "sha256": "86df16976e3db28bedb3aed5ef14b8e79b9116dd8e2f7389207d48ed998c8212",
     "minAppVersion": "1.3.4",
     "sample": {
       "comicId": "397513",
@@ -870,5 +870,21 @@
       "checked": 114,
       "mismatches": 0
     }
-  ]
+  ],
+  "carriedForwardFrom": {
+    "version": "1.4.1",
+    "commit": "685494cc7b63c1f0834374558d3516acb3f5c734",
+    "sha256": "4f23dfbe3ab52eecf4a6e35e9cd89624866b2512b97b6bb7facbb43a735a5970",
+    "minAppVersion": "1.3.4",
+    "sample": {
+      "comicId": "397513",
+      "keyword": "火影"
+    },
+    "checkedAt": "2026-10-26T00:53:55.773928+00:00",
+    "changed": [
+      "init() 内发布页同步失败改为记录 mirrorError 后继续，不再抛错中断初始化",
+      "settings.refreshDomains 成功后清除 mirrorError"
+    ],
+    "reason": "1.4.2 只改这两处，页面解析、分页与会员校验代码与取证时逐字节相同，因此 1.4.1 采到的页面快照、字段统计与回放结果继续有效。"
+  }
 }

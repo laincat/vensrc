@@ -14,6 +14,17 @@ class WnacgPolicyTests(unittest.TestCase):
         for key in ("version", "sha256", "minAppVersion", "sample"):
             self.assertEqual(evidence["source"][key], item[key])
         self.assertIn(evidence["source"]["commit"], item["url"])
+        # 手机端取证只能整轮重跑，改动范围明确时可以沿用上一版测量结果 —— 但必须留下
+        # 「从哪一版沿用、改了哪几处」的记录，且改动范围只能是初始化与刷新回调。
+        carried = evidence.get("carriedForwardFrom")
+        if carried:
+            self.assertNotEqual(carried["sha256"], evidence["source"]["sha256"])
+            self.assertEqual((carried["minAppVersion"], carried["sample"]),
+                             (evidence["source"]["minAppVersion"], evidence["source"]["sample"]))
+            self.assertTrue(carried["reason"])
+            self.assertTrue(carried["changed"])
+            for scope in carried["changed"]:
+                self.assertRegex(scope, r"^(init\(\)|settings\.refreshDomains)")
         self.assertTrue(evidence["unverified"])
         self.assertEqual(evidence["before"]["version"], "1.3.4")
         self.assertNotEqual(evidence["before"]["sha256"], evidence["source"]["sha256"])
