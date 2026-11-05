@@ -75,6 +75,15 @@ class CliPatchTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "需要人工复核"):
                 audit.apply_cli_patches(directory)
 
+    def test_image_tag_changes_only_when_a_patch_is_actually_applied(self):
+        commit = "a" * 40
+        self.assertEqual(audit.cli_image_tag(commit, []), f"venera-patrol:{commit}")
+        self.assertEqual(audit.cli_image_tag(commit, [{"sha256": "b" * 64, "status": "upstream"}]),
+                         f"venera-patrol:{commit}")
+        applied = audit.cli_image_tag(commit, [{"sha256": "b" * 64, "status": "applied"}])
+        self.assertRegex(applied, rf"^venera-patrol:{commit}-p[0-9a-f]{{8}}$")
+        self.assertNotEqual(applied, audit.cli_image_tag(commit, [{"sha256": "c" * 64, "status": "applied"}]))
+
     def test_every_declared_patch_exists_and_is_a_clean_diff(self):
         for entry in audit.CLI_PATCHES:
             path = audit.ROOT / entry["file"]

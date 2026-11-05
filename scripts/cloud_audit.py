@@ -314,6 +314,12 @@ def apply_cli_patches(directory):
     return applied
 
 
+def cli_image_tag(commit, patches):
+    """打了补丁的镜像不能复用上游镜像名，否则同一次运行里两个 CLI 副本可能互相命中缓存。"""
+    applied = [entry["sha256"] for entry in patches if entry.get("status") == "applied"]
+    return f"venera-patrol:{commit}" + (f"-p{sha(''.join(applied).encode())[:8]}" if applied else "")
+
+
 def setup_cli(work):
     """不使用旧缓存：每次先取得上游默认分支的最新提交，随后安装其锁定依赖。"""
     work.mkdir(parents=True, exist_ok=True)
@@ -352,9 +358,7 @@ def setup_cli(work):
     metadata["clientProfiles"] = profiles["profiles"]
     # 构建上下文只含 CLI 文件，不把 runner 的凭据、仓库或 Docker socket 传给源。
     dockerfile = ROOT / "scripts/patrol.Dockerfile"
-    # 打了补丁的镜像不能复用上游镜像名，否则同一次运行里两个 CLI 副本可能互相命中缓存。
-    patched = [p["sha256"] for p in metadata["patches"] if p["status"] == "applied"]
-    image = f"venera-patrol:{commit}" + (f"-p{sha(''.join(patched))[:8]}" if patched else "")
+    image = cli_image_tag(commit, metadata["patches"])
     run("docker", "build", "--pull", "--tag", image, "--file", str(dockerfile), str(directory))
     metadata["image"] = image
     metadata["nodeVersion"] = run(
