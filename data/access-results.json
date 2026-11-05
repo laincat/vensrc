@@ -1,12 +1,20 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-05T02:15:10.334864+00:00",
+  "checkedAt": "2026-11-05T02:54:21.185932+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-05T02:03:14.039816+00:00",
+    "checkedAt": "2026-11-05T02:41:38.512234+00:00",
+    "patches": [
+      {
+        "file": "patches/venera-patrol-cli-maxpage-null.patch",
+        "sha256": "d475afb7e2da5dd05efed3172d410a6c487daf266561bf8db8c7ad7615e0526c",
+        "target": "src/validate.js",
+        "status": "applied"
+      }
+    ],
     "adapterSha256": {
       "scripts/client_bridge.mjs": "ec822f73af3def047ae82031ce89deb80930619cf966bfc0b280b2e8c011e5e5",
       "scripts/prepare_client.py": "335905c1f43ca70cfae3daea5dd3d11b7b54cafa1fe6e695a86b32347bc48ac8",
@@ -40,11 +48,11 @@
         "scope": "全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟"
       }
     },
-    "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+    "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:c1f2de3dde3027fc4b574a7dc23150b7157efaac5e2ad42e2b9d24142e571207"
+    "imageId": "sha256:7beca58826ebeb2ba5dc7ac417e49534e03c2d12c4d4724c8afd41fc51923882"
   },
-  "catalogSha256": "f0827bf2911b13c6af1388d5069993f371c6a72dfcea8d6c38e33845099953a3",
+  "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
   "rows": [
     {
       "id": "ba1520f9cad1d0d960d8c0d5520c5db02d874e809e1e59c7fe41f43c474c7ccf",
@@ -260,10 +268,6 @@
         },
         {
           "stage": "image.download",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
           "category": "anti_bot"
         }
       ]
@@ -961,6 +965,21 @@
       ]
     },
     {
+      "id": "96036813d0211f2908736133788e3403f7a03dbe8d5001830f2c612413e1c24b",
+      "key": "komiic_multi",
+      "name": "Komiic 多账号",
+      "repository": "snowf14k3/venera-komiic-multi",
+      "version": "1.6.2",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "comic.loadEp",
+          "category": "auth_required"
+        }
+      ]
+    },
+    {
       "id": "6734f0154be350ebf6480659066fe30aadf06d3b1ccd6b191bae45c56c1900ba",
       "key": "legacy_soudongman",
       "name": "搜动漫",
@@ -1441,7 +1460,15 @@
       "corePassed": false,
       "failures": [
         {
+          "stage": "explore[4].load",
+          "category": "auth_required"
+        },
+        {
           "stage": "explore[7].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[14].load",
           "category": "auth_required"
         }
       ]
@@ -1823,10 +1850,6 @@
         },
         {
           "stage": "image.download",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
           "category": "anti_bot"
         }
       ]
@@ -3019,19 +3042,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[5].load",
+          "stage": "search.load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[9].load",
+          "stage": "explore[3].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[12].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[14].load",
+          "stage": "explore[10].load",
           "category": "auth_required"
         }
       ]
@@ -3200,7 +3219,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/41952597099",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/41956841331",
   "browser": [
     {
       "key": "bakamh",
@@ -3291,5 +3310,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/41954003740"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/41958223155"
 }
