@@ -20,6 +20,14 @@ from prepare_client import prepare
 
 ROOT = Path(__file__).resolve().parents[1]
 OFFICIAL_REPOSITORY = "venera-app/venera-configs"
+# 上游线索检索：社区仓库的命名并不统一，单一关键词会漏掉大量在维护的源仓库。
+SEARCH_QUERIES = (
+    "venera in:name,description",
+    "topic:venera",
+    "venera-configs in:name",
+    "venera-sources in:name",
+    "venera 漫画源 in:name,description",
+)
 POLICY = {
     "concurrency": 4, "pages": 1, "imageSamples": 1, "retries": 0,
     "requestTimeoutMs": 10000, "stageTimeoutMs": 20000,
@@ -150,11 +158,22 @@ def refresh_official_policy(root=None):
     })
 
 
-def excluded_official(item, policy):
+def is_official_item(item):
     path = urlparse(item.get("url", "")).path.strip("/").split("/")
     target = "/".join(path[:2]).casefold()
-    if item.get("repository", "").casefold() == OFFICIAL_REPOSITORY or target == OFFICIAL_REPOSITORY:
-        return True
+    return (item.get("repository", "").casefold() == OFFICIAL_REPOSITORY
+            or target == OFFICIAL_REPOSITORY)
+
+
+def community_keys(items):
+    """同一批构建里由社区仓库提供的 key 集合。"""
+    return {item["key"] for item in items if not is_official_item(item)}
+
+
+def excluded_official(item, policy, community=None):
+    if is_official_item(item):
+        # 官方原版默认只作诊断证据；仅当同一 key 没有任何社区构建时，才作为唯一可用版本参与订阅。
+        return community is None or item["key"] in community
     official_version = policy["versions"].get(item["key"])
     if official_version is None:
         return bool(item.get("officialKey", False))
@@ -417,19 +436,26 @@ def discover(work):
                     candidate["trackedBy"] = sorted(set(
                         updates[candidate["id"]]["trackedBy"] + candidate["trackedBy"]))
                 updates[candidate["id"]] = candidate
-    new_repositories = []
-    search_error = ""
-    try:
-        result = json.loads(request(
-            "https://api.github.com/search/repositories?q=venera+in:name,description&sort=updated&per_page=100",
-            api=True))
-        for item in result["items"]:
-            if (item["full_name"] not in config["repositories"]
-                    and item["full_name"].casefold() != OFFICIAL_REPOSITORY):
-                new_repositories.append({"repository": item["full_name"],
-                                         "description": text(item.get("description") or "")})
-    except Exception as error:
-        search_error = text(error)
+    new_repositories, seen_repositories, search_errors = [], set(), []
+    for query in SEARCH_QUERIES:
+        try:
+            result = json.loads(request(
+                "https://api.github.com/search/repositories?q=" + quote(query, safe=":+")
+                + "&sort=updated&per_page=100", api=True))
+        except Exception as error:
+            search_errors.append(f"{query}：{text(error)}")
+            continue
+        for item in result.get("items", []):
+            name = item["full_name"]
+            marker = name.casefold()
+            if (marker in seen_repositories or name in config["repositories"]
+                    or marker == OFFICIAL_REPOSITORY):
+                continue
+            seen_repositories.add(marker)
+            new_repositories.append({"repository": name,
+                                     "description": text(item.get("description") or ""),
+                                     "foundBy": query})
+    search_error = "；".join(search_errors)
     save(work / "artifact/discovery.json", {
         "schemaVersion": 1, "checkedAt": datetime.now(timezone.utc).isoformat(),
         "updates": list(updates.values()), "repositories": repositories,
@@ -646,6 +672,11 @@ def publish(payload, destination):
                for build_id in note_config["notes"])
     annotations = note_config["notes"]
     exclusions = official_policy(snapshot=payload.get("officialExclusions"))
+    community = community_keys(catalog["sources"])
+
+    def excluded(item):
+        return excluded_official(item, exclusions, community)
+
     assert payload["schemaVersion"] == 1
     assert payload["catalogSha256"] == sha((ROOT / "monitor/catalog.json").read_bytes())
     items = {i["id"]: i for i in catalog["sources"]}
@@ -669,24 +700,24 @@ def publish(payload, destination):
         success = core(source)
         if success:
             assert source["sourceSha256"] == item["sha256"]
-            if item["key"] in exclusions["versions"] and not excluded_official(item, exclusions):
+            if item["key"] in exclusions["versions"] and not excluded(item):
                 assert source["version"] == item["version"], "社区升级版必须使用 CLI 实际加载版本比较"
         display_item = {**item, "sample": record.get("sample", item["sample"])}
         rows.append((display_item, source, success))
-        score = (not excluded_official(item, exclusions), success,
+        score = (not excluded(item), success,
                  source["status"] == "passed", item.get("priority", 0),
                  tuple(int(x) for x in re.findall(r"\d+", item["version"])[:3]))
         if item["key"] not in selected or score > selected[item["key"]][0]:
             selected[item["key"]] = (score, item, source, record.get("sample", item["sample"]))
     current_core = sum(core(source) for _, item, source, _ in selected.values()
-                       if not excluded_official(item, exclusions))
+                       if not excluded(item))
     previous = load(ROOT / "data/sources.lock.json")
     if previous and current_core == 0:
         raise ValueError("全批核心链路失败；保留上次订阅，本次运行不得发布为成功")
     main, extended, locks = [], [], []
     checked = payload["checkedAt"]
     for _, item, source, sample in selected.values():
-        if excluded_official(item, exclusions) or not core(source):
+        if excluded(item) or not core(source):
             continue
         assert pinned(item["url"])
         status = source["status"]
@@ -702,7 +733,9 @@ def publish(payload, destination):
             **entry, "sha256": item["sha256"], "minAppVersion": item["minAppVersion"],
             **({"officialVersion": exclusions["versions"][item["key"]]}
                if item["key"] in exclusions["versions"] else {}),
-            "officialKey": item.get("officialKey", False), "status": status, "channel": channel,
+            "officialKey": item.get("officialKey", False),
+            "officialOriginal": is_official_item(item),
+            "status": status, "channel": channel,
             "sample": sample, "checkedAt": checked, "buildId": item["id"],
             "trackedBy": item.get("trackedBy", []), "cliCommit": payload["cli"]["commit"],
             "runtimeProfile": item.get("runtimeProfile", "venera-original-1.6.3"),
@@ -729,8 +762,9 @@ def publish(payload, destination):
         f"提交 `{payload['cli']['commit']}`。",
         f"依赖锁 SHA-256：`{payload['cli']['packageLockSha256']}`。",
         f"本次审阅清单：{len(rows)} 个构建；主索引 **{len(main)}** 项，扩展索引 **{len(extended)}** 项。", "",
-        f"官方版本基线覆盖 **{len(exclusions['keys'])}** 个 key。官方仓库原版及转引继续排除；"
-        "社区同 key 构建仅在版本严格高于官方且满足原巡检门槛时收录。同版、低版或版本无法比较均排除。",
+        f"官方版本基线覆盖 **{len(exclusions['keys'])}** 个 key。官方仓库原版仅在「同一 key 没有社区构建」时"
+        "作为唯一可用版本参与订阅，其余只保留诊断证据；社区同 key 构建仍需版本严格高于官方基线。"
+        "同版、低版或版本无法比较均排除。",
         "绅士漫画只保留 `laincat/vensrc` 独立维护版；其他来源不再巡检或收录。"
         "账号改为本人完成滑块后导入浏览器 Cookie，并以会员页的真实登录标志验证；"
         "缺少会话不计登录通过，详见 WNACG_LOGIN.md。",
@@ -752,9 +786,10 @@ def publish(payload, destination):
     for repo in catalog["priorityRepositories"]:
         group = [(i, s, ok) for i, s, ok in rows if repo in i.get("trackedBy", [])]
         lines.append(f"- `{repo}`：已审阅构建 {len(group)} 个，核心链路通过 {sum(ok for _, _, ok in group)} 个。")
-    excluded = [(item, source) for _, item, source, _ in selected.values()
-                if excluded_official(item, exclusions)]
-    upgrades = [item for item in locks if item.get("officialVersion")]
+    excluded_rows = [(item, source) for _, item, source, _ in selected.values()
+                     if excluded(item)]
+    upgrades = [item for item in locks
+                if item.get("officialVersion") and not item.get("officialOriginal")]
     lines += ["", "## 高于官方版本的社区替代源", "",
               "以下每个构建都严格高于所列官方版本，并通过本次核心阅读门槛；同 key 源在客户端作为替代版本使用。",
               "", "| 名称 | key | 社区版本 | 官方版本 | 订阅 |",
@@ -763,14 +798,16 @@ def publish(payload, destination):
         lines.append("| " + " | ".join(text(value) for value in (
             item["name"], item["key"], item["version"], item["officialVersion"],
             "主索引" if item["channel"] == "main" else "扩展索引")) + " |")
-    lines += ["", "## 官方原版及未高于官方版本的排除项", "",
-              "以下只保留已有诊断证据，均不进入主索引、扩展索引或锁定清单；核心通过也不能豁免版本门槛。",
-              "", "| 名称 | key | 选中构建版本 | 核心链路 | 源备注 |",
-              "| --- | --- | --- | --- | --- |"]
-    for item, source in sorted(excluded, key=lambda pair: pair[0]["key"]):
+    lines += ["", "## 未进入订阅的官方原版与低版本构建", "",
+              "官方仓库原版仅在「同一 key 没有社区构建」时作为补充参与订阅；已有社区构建时只保留诊断证据。"
+              "社区同 key 构建仍须版本严格高于官方基线，核心通过也不能豁免版本门槛。",
+              "", "| 名称 | key | 选中构建版本 | 核心链路 | 排除原因 | 源备注 |",
+              "| --- | --- | --- | --- | --- | --- |"]
+    for item, source in sorted(excluded_rows, key=lambda pair: pair[0]["key"]):
         lines.append("| " + " | ".join(text(v) for v in (
             item["name"], item["key"], item["version"],
             "通过；仍排除" if core(source) else "未完整通过；排除",
+            "同一 key 已有社区构建" if is_official_item(item) else "未高于官方版本基线",
             source_annotation(item, annotations))) + " |")
     lines += ["", "## 逐构建结果", "", "| 源名称 | key | 仓库 | 版本 | 巡检环境 | 核心链路 | 整次状态 | 首个失败／跳过 | 收录处理 |",
               "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
@@ -783,8 +820,11 @@ def publish(payload, destination):
         first = (failed or unsuccessful or [{}])[0]
         category = CATEGORIES.get(first.get("category"), first.get("category", ""))
         problem = f"{first.get('path', '')}：{category}" if first else ""
-        if excluded_official(item, exclusions):
-            disposition = "排除官方原版／未高于官方版本"
+        if excluded(item):
+            disposition = ("排除官方原版（同一 key 已有社区构建）" if is_official_item(item)
+                           else "排除：未高于官方版本基线")
+        elif is_official_item(item):
+            disposition = "官方原版补充（无社区构建）；按原收录标准审核"
         elif item["key"] in exclusions["versions"]:
             disposition = f"高于官方 {exclusions['versions'][item['key']]}；按原收录标准审核"
         else:
@@ -815,7 +855,7 @@ def publish(payload, destination):
         "clientExecutions": len(payload["records"]) + len(payload.get("clientRecords", [])),
         "officialExclusionsSha256": sha((destination / "data/official-exclusions.json").read_bytes()),
         "officialBaselineKeys": len(exclusions["keys"]),
-        "officialExcludedBuilds": sum(excluded_official(i, exclusions) for i, _, _ in rows),
+        "officialExcludedBuilds": sum(excluded(i) for i, _, _ in rows),
         "officialOverrides": len(upgrades),
     })
     publish_clients(payload, catalog, destination)

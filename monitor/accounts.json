@@ -64,10 +64,11 @@
     },
     {
       "site": "拷贝漫画",
-      "key": "copy_manga",
+      "key": "copy_manga_multi_accounts",
       "secret": "PATROL_AUTH_COPY_MANGA",
-      "buildId": "06ea2676323e40e980cb8f8fba2b53a70733e7cade267e0261763c55e6b30155",
-      "loginReviewed": true
+      "buildId": "1d8d8f855fed67ab34b6b349001731795abeae8c41ef008a2557fc8aadaf4859",
+      "loginReviewed": true,
+      "note": "多账号版主账号登录与单账号版同源同接口（/api/v3/login）；单账号构建已并入本构建。"
     },
     {
       "site": "热辣漫画",

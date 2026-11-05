@@ -67,6 +67,21 @@ class OfficialPolicyTests(unittest.TestCase):
             "url": f"https://raw.githubusercontent.com/{audit.OFFICIAL_REPOSITORY}/main/jm.js",
         }, policy))
 
+    def test_official_origin_is_adopted_only_when_the_key_has_no_community_build(self):
+        policy = {"versions": {"jm": "1.4.0"}}
+        official = {"key": "fresh_fixture", "version": "1.0.0",
+                    "repository": audit.OFFICIAL_REPOSITORY, "officialKey": True}
+        # 没有社区构建：作为唯一可用版本参与订阅。
+        self.assertFalse(audit.excluded_official(official, policy, community=set()))
+        self.assertFalse(audit.excluded_official(official, policy, community={"jm"}))
+        # 同一 key 已有社区构建：官方原版仍然排除。
+        self.assertTrue(audit.excluded_official(official, policy, community={"fresh_fixture"}))
+        # 上游检测阶段没有社区信息，继续排除官方来源，避免未审阅候选混入。
+        self.assertTrue(audit.excluded_official(official, policy))
+        self.assertEqual(audit.community_keys([
+            official, {"key": "jm", "repository": "BB-CHICKEN/venera-jm"},
+        ]), {"jm"})
+
     def test_generator_excludes_official_keys_and_origins_but_keeps_community_evidence(self):
         baseline = audit.official_policy()
         stages = [{"path": path, "status": "passed"} for path in (
@@ -111,13 +126,15 @@ class OfficialPolicyTests(unittest.TestCase):
             with patch.object(audit, "ROOT", root):
                 audit.publish(payload, root)
             index = audit.load(root / "subscriptions/index.json")
-            self.assertEqual([item["key"] for item in index], ["fixture"])
+            # 官方原版在「同一 key 没有社区构建」时作为唯一可用版本进入订阅。
+            self.assertEqual([item["key"] for item in index], ["fixture", "renamed_official_fixture"])
             self.assertEqual(index[0]["description"], "引用源：community/source")
-            self.assertEqual([item["key"] for item in audit.load(root / "data/sources.lock.json")], ["fixture"])
-            self.assertEqual(audit.load(root / "data/audit-status.json")["officialExcludedBuilds"], 2)
+            self.assertEqual([item["key"] for item in audit.load(root / "data/sources.lock.json")],
+                             ["fixture", "renamed_official_fixture"])
+            self.assertEqual(audit.load(root / "data/audit-status.json")["officialExcludedBuilds"], 1)
             self.assertEqual(len(payload["records"]), 3)
             report = (root / "reports/RESULTS.md").read_text(encoding="utf-8")
-            self.assertIn("排除官方原版／未高于官方版本", report)
+            self.assertIn("排除：未高于官方版本基线", report)
             self.assertIn("修复旧版收藏数据 id 未去混淆导致的 aid 错误", report)
             rows = list(__import__("csv").reader(
                 (root / "data/sources.zh.csv").read_text(encoding="utf-8-sig").splitlines()))
