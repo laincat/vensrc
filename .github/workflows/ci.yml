@@ -35,6 +35,8 @@ jobs:
           python3 scripts/cloud_audit.py self-test
           for script in scripts/*.mjs; do node --check "$script"; done
           node --check sources/wnacg.js
+          node --check sources/hot_manga.js
           node --test scripts/wnacg.test.mjs
+          node --test scripts/hot_manga.test.mjs
       - name: 用最新 CLI 构建并测试两个真实客户端接口
         run: python3 scripts/cloud_audit.py setup-cli --work "$RUNNER_TEMP/ci-cli"

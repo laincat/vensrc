@@ -279,6 +279,41 @@ def run(*args, **kwargs):
     return subprocess.run(list(args), check=True, **kwargs)
 
 
+CLI_PATCHES = (
+    {
+        # 上游只接受非负整数，但 VeneraX 的 Res.subData 明确允许 null（表示没有上限）。
+        # 包子漫画、Komiic 多账号在「还有下一页」时就是返回 null，被误判成 contract_violation。
+        "file": "patches/venera-patrol-cli-maxpage-null.patch",
+        "target": "src/validate.js",
+        "requires": "if (result?.maxPage !== undefined)",
+        "provides": "if (result?.maxPage != null)",
+    },
+)
+
+
+def apply_cli_patches(directory):
+    """给上游 CLI 副本打上仓库内复核过的补丁；上游自己修好后自动跳过。"""
+    applied = []
+    for entry in CLI_PATCHES:
+        patch_file = ROOT / entry["file"]
+        data = patch_file.read_bytes()
+        target = directory / entry["target"]
+        text = target.read_text(encoding="utf-8", errors="replace")
+        record = {"file": entry["file"], "sha256": sha(data), "target": entry["target"]}
+        if entry["provides"] in text:
+            applied.append({**record, "status": "upstream"})
+            continue
+        if entry["requires"] not in text:
+            raise ValueError(f"上游 {entry['target']} 的实现变了，{entry['file']} 需要人工复核")
+        run("git", "-C", str(directory), "apply", "--check", str(patch_file))
+        run("git", "-C", str(directory), "apply", str(patch_file))
+        updated = target.read_text(encoding="utf-8")
+        if entry["provides"] not in updated or entry["requires"] in updated:
+            raise ValueError(f"{entry['file']} 没有生效")
+        applied.append({**record, "status": "applied"})
+    return applied
+
+
 def setup_cli(work):
     """不使用旧缓存：每次先取得上游默认分支的最新提交，随后安装其锁定依赖。"""
     work.mkdir(parents=True, exist_ok=True)
@@ -299,6 +334,7 @@ def setup_cli(work):
         "version": package["version"], "packageLockSha256": sha((directory / "package-lock.json").read_bytes()),
         "checkedAt": datetime.now(timezone.utc).isoformat(),
     }
+    metadata["patches"] = apply_cli_patches(directory)
     metadata["adapterSha256"] = prepare(directory)
     profiles = load(ROOT / "monitor/clients.json")
     for name, profile in profiles["profiles"].items():
@@ -316,7 +352,9 @@ def setup_cli(work):
     metadata["clientProfiles"] = profiles["profiles"]
     # 构建上下文只含 CLI 文件，不把 runner 的凭据、仓库或 Docker socket 传给源。
     dockerfile = ROOT / "scripts/patrol.Dockerfile"
-    image = f"venera-patrol:{commit}"
+    # 打了补丁的镜像不能复用上游镜像名，否则同一次运行里两个 CLI 副本可能互相命中缓存。
+    patched = [p["sha256"] for p in metadata["patches"] if p["status"] == "applied"]
+    image = f"venera-patrol:{commit}" + (f"-p{sha(''.join(patched))[:8]}" if patched else "")
     run("docker", "build", "--pull", "--tag", image, "--file", str(dockerfile), str(directory))
     metadata["image"] = image
     metadata["nodeVersion"] = run(
