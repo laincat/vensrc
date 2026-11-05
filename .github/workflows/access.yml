@@ -11,8 +11,9 @@ permissions:
   contents: read
   actions: read
 
+# 与巡检共用 vensrc-main 并发组，避免两个工作流同时往 main 写生成文件。
 concurrency:
-  group: venera-access-diagnostics
+  group: vensrc-main
   cancel-in-progress: false
 
 jobs:
@@ -95,8 +96,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- reports/ACCESS_RESULTS.md data/access-results.json
-          if ! git diff --cached --quiet; then
-            git commit -m "更新反爬与人工验证中文处理清单"
-            git -c credential.helper='!gh auth git-credential' pull --rebase origin main
-            git -c credential.helper='!gh auth git-credential' push origin HEAD:main
-          fi
+          bash .github/scripts/push_generated.sh "更新反爬与人工验证中文处理清单"
