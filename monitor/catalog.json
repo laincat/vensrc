@@ -1652,13 +1652,13 @@
       "settings": {}
     },
     {
-      "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/hot_manga.js",
+      "url": "https://raw.githubusercontent.com/laincat/vensrc/1c490abf4721628bc3eb0533995de47ee03f2887/sources/hot_manga.js",
       "key": "hot_manga",
       "name": "热辣漫画",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minAppVersion": "1.6.0",
-      "repository": "venera-app/venera-configs",
-      "fileName": "hot_manga.js",
+      "repository": "laincat/vensrc",
+      "fileName": "sources/hot_manga.js",
       "sample": {
         "comicId": "huoyingrenzhetedian",
         "epId": "09a0024c-e0fb-11e8-a1df-00163e0ca5bd",
@@ -1667,11 +1667,10 @@
       "officialKey": true,
       "priority": 10,
       "trackedBy": [
-        "hea784/venera-configs",
-        "yelongyue197-svg/venera-sources"
+        "laincat/vensrc"
       ],
-      "id": "d5f440d1a2e5d41e53189eb8d3e7ba19864c43b1d6592e20eb65ef326a410fd4",
-      "sha256": "d5f440d1a2e5d41e53189eb8d3e7ba19864c43b1d6592e20eb65ef326a410fd4",
+      "id": "519ec86d7ad3215c4f0db55c10fa6724ec6c99a100870907131cd54f7923be16",
+      "sha256": "519ec86d7ad3215c4f0db55c10fa6724ec6c99a100870907131cd54f7923be16",
       "runtimeProfile": "venerax",
       "verifyProfiles": [
         "venera-next"
