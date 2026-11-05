@@ -3,7 +3,7 @@
 class Wnacg extends ComicSource {
     name = "紳士漫畫"
     key = "wnacg"
-    version = "1.4.1"
+    version = "1.4.2"
     minAppVersion = "1.3.4"
     url = "https://raw.githubusercontent.com/laincat/vensrc/main/sources/wnacg.js"
 
@@ -98,7 +98,18 @@ class Wnacg extends ComicSource {
         const age = Date.now() - checkedAt
         if (typeof checkedAt === "number" && age >= 0 && age < 86400000 &&
             Array.isArray(cache.domains) && cache.domains.length) return
-        await this._refreshDomains()
+        try {
+            await this._refreshDomains()
+            await this.deleteData("mirrorError")
+        } catch (error) {
+            // 发布页可能被墙、被 Cloudflare 拦或者出口 IP 访问不到；这不代表源坏了：
+            // 内置地址和上次同步的备用地址仍然可用，所以只记录原因，不打断初始化与阅读。
+            // 原因留在 mirrorError 里；「从发布页刷新」手动重试时失败仍会直接报给界面。
+            await this.saveData("mirrorError", { reason: String(error), at: Date.now() })
+            if (typeof console !== "undefined" && typeof console.log === "function") {
+                console.log(`绅士漫画：${error}`)
+            }
+        }
     }
 
     async _chooseDomain() {
@@ -923,6 +934,7 @@ class Wnacg extends ComicSource {
             buttonText: "从发布页刷新",
             callback: async () => {
                 const count = await this._refreshDomains()
+                await this.deleteData("mirrorError")
                 UI.showMessage(`已同步 ${count} 个发布页地址，请点击“选择地址”切换；不代表可用性验证通过`)
             },
         },

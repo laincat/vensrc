@@ -29,6 +29,18 @@ function fixture(response, domain = "www.wnacg.com", selection = null) {
         const title = this.body.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1];
         return title === undefined ? null : { text: title.replace(/<[^>]*>/g, "") };
       }
+      // 只实现发布页解析用到的两种选择器：li 列表项与项内 a 链接。
+      querySelectorAll(selector) {
+        if (selector !== "li") return [];
+        return [...this.body.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)].map(([, inner]) => ({
+          text: inner.replace(/<[^>]*>/g, ""),
+          querySelectorAll: (innerSelector) => innerSelector === "a"
+            ? [...inner.matchAll(/<a\b([^>]*)>/gi)].map(([, attributes]) => ({
+              attributes: { href: attributes.match(/href\s*=\s*"([^"]*)"/i)?.[1] || "" },
+            }))
+            : [],
+        }));
+      }
       dispose() {}
     },
     Convert: {
@@ -69,7 +81,7 @@ test("Cookie 验证仅接受会员页的明确登录标志，网页登录只在�
   const { source, calls, cookies } = fixture({
     status: 200, body: '<a href="/users-logout.html">退出</a>',
   });
-  assert.equal(source.version, "1.4.1");
+  assert.equal(source.version, "1.4.2");
   assert.equal(source.minAppVersion, "1.3.4");
   assert.equal(source.account.login, undefined);
   assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
@@ -200,6 +212,35 @@ test("拒绝多行、重复 Cookie、Set-Cookie 和任意域名，且不发请�
   assert.throws(() => invalid.baseUrl, /请选择内置或发布页公布的绅士漫画域名/);
   await assert.rejects(invalid.account.loginWithCookies.validate(["session=test-only"]));
   assert.equal(calls.length, 0);
+});
+
+test("发布页同步失败不打断初始化，内置地址仍可用", async () => {
+  const failing = fixture({ status: 503, body: "" });
+  await failing.source.init();
+  const recorded = failing.data.get("mirrorError");
+  assert.match(recorded.reason, /两个发布页均未能同步地址/);
+  assert.equal(typeof recorded.at, "number");
+  assert.equal(failing.source.baseUrl, "https://www.wnacg.com");
+  assert.ok(failing.source._domains().includes("www.wn003.cfd"));
+  // 云端巡检（出口 IP 访问不到发布页）与新装用户都走这条路：初始化不得整源判失败。
+
+  const throwing = fixture(new Error("network down"));
+  await throwing.source.init();
+  assert.match(throwing.data.get("mirrorError").reason, /两个发布页均未能同步地址/);
+
+  const page = `<title>紳士漫畫地址發布頁</title><li>紳士漫畫最新地址` +
+    `<a href="https://www.wn003.cfd/">a</a><a href="https://www.wn004.cfd/">b</a></li>`;
+  const ok = fixture({ status: 200, body: page });
+  ok.data.set("mirrorError", { reason: "两个发布页均未能同步地址", at: 1 });
+  await ok.source.init();
+  assert.equal(ok.data.has("mirrorError"), false);
+  assert.deepEqual([...ok.data.get("mirrorCache").domains], ["www.wn003.cfd", "www.wn004.cfd"]);
+
+  const cached = fixture({ status: 503, body: "" });
+  cached.data.set("mirrorCache", { domains: ["www.wn003.cfd"], checkedAt: Date.now() });
+  await cached.source.init();
+  assert.equal(cached.calls.length, 0);
+  assert.equal(cached.data.has("mirrorError"), false);
 });
 
 test("内置发布页备用地址；切换地址清除登录标记，且不迁移 Cookie", async () => {
