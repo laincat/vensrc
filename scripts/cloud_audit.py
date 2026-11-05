@@ -328,6 +328,11 @@ def setup_cli(work):
     print(f"已安装最新巡检 CLI：{commit}，版本 {metadata['version']}。", flush=True)
 
 
+def self_repository():
+    """本仓库不列入自己的上游线索，避免每轮都把自身当成新仓库。"""
+    return os.environ.get("GITHUB_REPOSITORY", "laincat/vensrc").casefold()
+
+
 def discover(work):
     catalog = validate_catalog(load(ROOT / "monitor/catalog.json"))
     config = load(ROOT / "monitor/upstreams.json")
@@ -449,7 +454,7 @@ def discover(work):
             name = item["full_name"]
             marker = name.casefold()
             if (marker in seen_repositories or name in config["repositories"]
-                    or marker == OFFICIAL_REPOSITORY):
+                    or marker in (OFFICIAL_REPOSITORY, self_repository())):
                 continue
             seen_repositories.add(marker)
             new_repositories.append({"repository": name,

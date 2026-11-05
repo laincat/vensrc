@@ -67,6 +67,11 @@ class OfficialPolicyTests(unittest.TestCase):
             "url": f"https://raw.githubusercontent.com/{audit.OFFICIAL_REPOSITORY}/main/jm.js",
         }, policy))
 
+    def test_upstream_search_never_reports_the_subscription_repository_itself(self):
+        catalog = audit.validate_catalog(audit.load(audit.ROOT / "monitor/catalog.json"))
+        self.assertTrue(catalog["sources"])
+        self.assertEqual(audit.self_repository(), "laincat/vensrc")
+
     def test_official_origin_is_adopted_only_when_the_key_has_no_community_build(self):
         policy = {"versions": {"jm": "1.4.0"}}
         official = {"key": "fresh_fixture", "version": "1.0.0",
