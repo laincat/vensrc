@@ -34,7 +34,7 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     delete globals.ComicSource.sources.wnacg;
     const source = runtime.loadVeneraConfigBySourceCode(code, globals, false);
     assert.doesNotThrow(() => globals.__clientSourceLoaded(source));
-    assert.equal(source.version, "1.4.1");
+    assert.equal(source.version, "1.4.2");
     assert.equal(source.minAppVersion, "1.3.4");
     assert.equal(source.account.loginWithWebview.url, "https://www.wnacg.com/users-login.html");
     assert.equal(source.baseUrl, "https://www.wnacg.com");
@@ -171,7 +171,13 @@ for (const [name, version] of [["venerax", "2.3.6"], ["venera-next", "1.18.0"]])
     await assert.rejects(source._refreshDomains(), /两个发布页均未能同步/);
     assert.equal(source.loadData("mirrorCache").checkedAt, checkedAt);
     assert.ok(source._domains().includes("www.wn005.cfd"));
-    for (const key of ["mirrorCache", "activeDomain"]) await source.deleteData(key);
+    // 发布页全挂时初始化只记录原因、不中断：内置地址与缓存备用地址仍可用。
+    for (const key of ["mirrorCache", "activeDomain", "mirrorError"]) await source.deleteData(key);
+    await source.init();
+    assert.match(source.loadData("mirrorError").reason, /两个发布页均未能同步/);
+    assert.equal(source.baseUrl, "https://www.wnacg.com");
+    assert.ok(source._domains().includes("www.wn003.cfd"));
+    for (const key of ["mirrorCache", "activeDomain", "mirrorError"]) await source.deleteData(key);
   });
   test(`${name}: 真实 bootstrap、HTML、加密、版本检查与逐像素重排`, async () => {
     process.env.VENERA_CLIENT_PROFILE = name;
