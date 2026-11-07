@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-06T07:49:51.935607+00:00",
+  "checkedAt": "2026-11-07T07:00:07.535705+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-06T07:37:34.195765+00:00",
+    "checkedAt": "2026-11-07T06:47:50.244588+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -50,7 +50,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:af6261f1a7fa4f7f521536767fc133e64447ae1ea27e63cc73d8601b62b34c8d"
+    "imageId": "sha256:92fe15ec93ade449badb39efd26a5db598d1511ec4efa6476b7c507341e82784"
   },
   "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
   "rows": [
@@ -403,6 +403,45 @@
       ]
     },
     {
+      "id": "46ccc7b1b4951f9ebe0b0c4cd04e88cc46ce460abeadfb56e3c5e85d3290b113",
+      "key": "yemancomic",
+      "name": "野蛮漫画",
+      "repository": "hea784/venera-configs",
+      "version": "0.1.2",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.ranking.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadEp",
+          "category": "auth_required"
+        }
+      ]
+    },
+    {
       "id": "18c0c8b324346da24ba58992d1493facb91d50fae789d320d07968b2fa452f83",
       "key": "aiman",
       "name": "爱漫岛",
@@ -511,6 +550,45 @@
       ]
     },
     {
+      "id": "3db355237cecd70b8441ecd8c5b34e71de832300d1bfbaa9e7c9a076a87e0112",
+      "key": "cycomic",
+      "name": "次元漫画",
+      "repository": "Junkrat9527/venera-sources",
+      "version": "1.0.3",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.ranking.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadEp",
+          "category": "auth_required"
+        }
+      ]
+    },
+    {
       "id": "19fdc46bcfeb4dd0ecbe5191db865a60791a3dd1bf1c024a7a001d1b770be591",
       "key": "ex_fangliding",
       "name": "ExHentai (fangliding 镜像)",
@@ -561,25 +639,6 @@
         {
           "stage": "comic.loadEp",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "a0fc9199723dba45be5c9adae42b6ccbaf66b2a096c085f4bec15469fcf4c3e0",
-      "key": "fourkhd",
-      "name": "4KHD",
-      "repository": "meaninglesslyy/venera-config",
-      "version": "2.0.7",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "rate_limited"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "rate_limited"
         }
       ]
     },
@@ -1416,11 +1475,11 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[0].load",
+          "stage": "explore[7].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[12].load",
+          "stage": "explore[13].load",
           "category": "auth_required"
         }
       ]
@@ -1570,6 +1629,21 @@
         {
           "stage": "categoryComics.load",
           "category": "anti_bot"
+        }
+      ]
+    },
+    {
+      "id": "810c02550b8d61cbfaa0b2817f5e3318debe8ebebe88911b22a0f9271151181e",
+      "key": "yyds_04_86b037",
+      "name": "◯ YYDS",
+      "repository": "KadishJoey/venera-json",
+      "version": "0.2.0",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
         }
       ]
     },
@@ -1922,6 +1996,45 @@
       ]
     },
     {
+      "id": "46ccc7b1b4951f9ebe0b0c4cd04e88cc46ce460abeadfb56e3c5e85d3290b113",
+      "key": "yemancomic",
+      "name": "野蛮漫画",
+      "repository": "hea784/venera-configs",
+      "version": "0.1.2",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.ranking.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadEp",
+          "category": "auth_required"
+        }
+      ]
+    },
+    {
       "id": "18c0c8b324346da24ba58992d1493facb91d50fae789d320d07968b2fa452f83",
       "key": "aiman",
       "name": "爱漫岛",
@@ -2030,6 +2143,45 @@
       ]
     },
     {
+      "id": "3db355237cecd70b8441ecd8c5b34e71de832300d1bfbaa9e7c9a076a87e0112",
+      "key": "cycomic",
+      "name": "次元漫画",
+      "repository": "Junkrat9527/venera-sources",
+      "version": "1.0.3",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.ranking.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadEp",
+          "category": "auth_required"
+        }
+      ]
+    },
+    {
       "id": "19fdc46bcfeb4dd0ecbe5191db865a60791a3dd1bf1c024a7a001d1b770be591",
       "key": "ex_fangliding",
       "name": "ExHentai (fangliding 镜像)",
@@ -2080,25 +2232,6 @@
         {
           "stage": "comic.loadEp",
           "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "a0fc9199723dba45be5c9adae42b6ccbaf66b2a096c085f4bec15469fcf4c3e0",
-      "key": "fourkhd",
-      "name": "4KHD",
-      "repository": "meaninglesslyy/venera-config",
-      "version": "2.0.7",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "rate_limited"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "rate_limited"
         }
       ]
     },
@@ -2935,7 +3068,11 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[14].load",
+          "stage": "explore[2].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[4].load",
           "category": "auth_required"
         }
       ]
@@ -3087,9 +3224,24 @@
           "category": "anti_bot"
         }
       ]
+    },
+    {
+      "id": "810c02550b8d61cbfaa0b2817f5e3318debe8ebebe88911b22a0f9271151181e",
+      "key": "yyds_04_86b037",
+      "name": "◯ YYDS",
+      "repository": "KadishJoey/venera-json",
+      "version": "0.2.0",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
+        }
+      ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/42182097947",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/42348552979",
   "browser": [
     {
       "key": "bakamh",
@@ -3180,5 +3332,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/42183483747"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/42349422004"
 }
