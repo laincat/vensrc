@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-08T06:55:56.458056+00:00",
+  "checkedAt": "2026-11-09T07:38:41.482081+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -5503,13 +5503,13 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "1f29d6abb87816caf5fad3a7c206e02aa9073a14dc2befa751b0d3de8ac7b167",
+      "id": "53ed0f543cb49388572264a145faefd423ccbb871cf937f07b07bc010299b29a",
       "key": "fantia_personal",
       "name": "Fantia（个人订阅）",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "fileName": "fantia.js",
-      "url": "https://raw.githubusercontent.com/MQ9Reaper/venera-personal-sources/c4ccc0ade11116008e3161b842127af2aceda926/fantia.js",
-      "sha256": "1f29d6abb87816caf5fad3a7c206e02aa9073a14dc2befa751b0d3de8ac7b167",
+      "url": "https://raw.githubusercontent.com/MQ9Reaper/venera-personal-sources/59a58818d03f2aad1ea4beba7edc95029fb1017d/fantia.js",
+      "sha256": "53ed0f543cb49388572264a145faefd423ccbb871cf937f07b07bc010299b29a",
       "repository": "MQ9Reaper/venera-personal-sources",
       "minAppVersion": "1.6.0",
       "sample": {
@@ -5527,7 +5527,7 @@
       "name": "FANBOX（个人订阅）",
       "version": "0.1.1",
       "fileName": "fanbox.js",
-      "url": "https://raw.githubusercontent.com/MQ9Reaper/venera-personal-sources/c4ccc0ade11116008e3161b842127af2aceda926/fanbox.js",
+      "url": "https://raw.githubusercontent.com/MQ9Reaper/venera-personal-sources/59a58818d03f2aad1ea4beba7edc95029fb1017d/fanbox.js",
       "sha256": "1556d3a02fbf77ded1c46d68044d16c2a0bbf7b0d893f76d990a189d29f57ffe",
       "repository": "MQ9Reaper/venera-personal-sources",
       "minAppVersion": "1.6.0",
@@ -9920,7 +9920,7 @@
     },
     {
       "repository": "MQ9Reaper/venera-personal-sources",
-      "commit": "c4ccc0ade11116008e3161b842127af2aceda926",
+      "commit": "59a58818d03f2aad1ea4beba7edc95029fb1017d",
       "errors": []
     },
     {
@@ -10103,18 +10103,13 @@
   ],
   "newRepositories": [
     {
-      "repository": "jnsingh01/venerabulllife",
-      "description": "Venerabull Life — public website.",
+      "repository": "laincat/Nekophage",
+      "description": "Nekularity 的桌面端：Venera 兼容源阅读与视频播放（Go + MyGo）",
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "Taototo/ManComic",
-      "description": "A Flutter comic reader app based on Venera",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Kyosee/VeneraX",
-      "description": "A continually enhanced, cross-platform comic reader based on Venera, with experimental AI translation. ／ 基于 Venera 持续增强的跨平台漫画阅读器，支持 AI 翻译（实验性）。",
+      "repository": "1753454035/hentai20-venera",
+      "description": "1",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10128,8 +10123,23 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "yanxiangwang521-ui/venera-fix-source",
-      "description": "",
+      "repository": "venera-tropnikova/Alexs-Amazing-Garage-play",
+      "description": "Test play build of Alex's Amazing Garage (dist only). Source stays private.",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Kyosee/VeneraX",
+      "description": "A continually enhanced, cross-platform comic reader based on Venera, with experimental AI translation. ／ 基于 Venera 持续增强的跨平台漫画阅读器，支持 AI 翻译（实验性）。",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Yo1sing/venera-edge",
+      "description": "A comic app, but built with FRB (Flutter Rust Bridge).",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Yo1sing/venera-frb",
+      "description": "A comic app, but built with FRB (Flutter Rust Bridge).",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10138,8 +10148,8 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "yanxiangwang521-ui/venera-fix-source-",
-      "description": "Venera修复漫画源",
+      "repository": "Kerollos004/venera",
+      "description": "",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10148,18 +10158,53 @@
       "foundBy": "venera in:name,description"
     },
     {
+      "repository": "jnsingh01/venerabulllife",
+      "description": "Venerabull Life — public website.",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "LeylaKhojasteh/venera-jewelry-store",
+      "description": "Venera — Persian RTL jewellery storefront with Next.js, PostgreSQL, Prisma and Three.js",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Venera-Works/Venera-Plus",
+      "description": "VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源",
+      "foundBy": "venera in:name,description"
+    },
+    {
       "repository": "CyrilPeng/Venera-Next",
       "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "CangShui/VenHM",
-      "description": "兼容Venera源的鸿蒙开源漫画阅读器",
+      "repository": "haukuen/venera",
+      "description": "仅自用 ／ For personal use only",
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "haukuen/venera",
-      "description": "仅自用 ／ For personal use only",
+      "repository": "Taototo/ManComic",
+      "description": "A Flutter comic reader app based on Venera",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Venera-Works/Venera-Native-Prebuilts",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "yanxiangwang521-ui/venera-fix-source",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "yanxiangwang521-ui/venera-fix-source-",
+      "description": "Venera修复漫画源",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "CangShui/VenHM",
+      "description": "兼容Venera源的鸿蒙开源漫画阅读器",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10195,11 +10240,6 @@
     {
       "repository": "venera-kuz/uchebnaya-praktika",
       "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Venera-Works/Venera-Plus",
-      "description": "VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10243,18 +10283,8 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "LeylaKhojasteh/venera-jewelry-store",
-      "description": "Venera — Persian RTL jewellery storefront with Next.js, PostgreSQL, Prisma and Three.js",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "staciepomar-spec/venera-glass-build",
       "description": "CI build of venera v1.6.3 with a Pure-spec liquid glass bottom bar",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Venera-Works/Venera-Native-Prebuilts",
-      "description": "",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10270,11 +10300,6 @@
     {
       "repository": "ryanp-cloud/venera-ai",
       "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "venera-tropnikova/Alexs-Amazing-Garage-play",
-      "description": "Test play build of Alex's Amazing Garage (dist only). Source stays private.",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10364,11 +10389,6 @@
     },
     {
       "repository": "MatthewLestermun/venera-salon",
-      "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Kerollos004/venera",
       "description": "",
       "foundBy": "venera in:name,description"
     },
@@ -10473,21 +10493,6 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "SnowDreamXUE/venera-next-config",
-      "description": "转换venera-config漫画源配置文件格式为venera-next要求",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "cylendra-info/Venera",
-      "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "venera-tech-art/Dashboard",
-      "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "buzhidao10068/venera2picacomic",
       "description": "把 Venera 导出的 .venera 转成 PicaComic 能导入的 .picadata，迁移收藏夹与阅读历史 ／ Convert a Venera (.venera) export into a PicaComic (.picadata) import, migrating favourites and reading history",
       "foundBy": "topic:venera"
@@ -10571,6 +10576,11 @@
       "repository": "istayheart/my-venera-sources",
       "description": "sources_copymanga",
       "foundBy": "venera-sources in:name"
+    },
+    {
+      "repository": "SnowDreamXUE/venera-next-config",
+      "description": "转换venera-config漫画源配置文件格式为venera-next要求",
+      "foundBy": "venera 漫画源 in:name,description"
     },
     {
       "repository": "940440952/comic-sources",

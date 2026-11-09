@@ -1,6 +1,6 @@
 # 隔离账号巡检结果
 
-核验时间：2026-11-08T06:56:37.844209+00:00（UTC）。
+核验时间：2026-11-09T07:37:28.020996+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
@@ -42,15 +42,15 @@
 | 绅士漫画 | wnacg | venerax | 跳过 | 通过 | 部分通过 | 无失败 | 14 |
 | 绅士漫画 | wnacg | venera-next | 跳过 | 通过 | 部分通过 | 无失败 | 14 |
 | 禁漫天堂 | jm | venerax | 通过 | 通过 | 失败 | favorites.loadFolders：需要登录 | 14 |
-| 禁漫天堂 | jm | venera-next | 通过 | 通过 | 失败 | categoryComics.optionLoader：请求超时；favorites.loadFolders：需要登录 | 15 |
-| 包子漫画 | baozi | venerax | 通过 | 未通过 | 失败 | image.download：请求超时 | 2 |
-| 包子漫画 | baozi | venera-next | 通过 | 未通过 | 失败 | image.download：请求超时 | 2 |
+| 禁漫天堂 | jm | venera-next | 通过 | 通过 | 失败 | favorites.loadFolders：需要登录 | 14 |
+| 包子漫画 | baozi | venerax | 通过 | 通过 | 部分通过 | 无失败 | 2 |
+| 包子漫画 | baozi | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 2 |
 | 18ak 漫画 | 18ak | — | 已保存凭据；当前已审阅清单无本站源 | 未测试 | 跳过 |  | 未执行 |
 | 哔咔漫画 | picacg | venerax | 通过 | 通过 | 部分通过 | 无失败 | 6 |
 | 哔咔漫画 | picacg | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 6 |
-| 拷贝漫画 | copy_manga_multi_accounts | venerax | 通过 | 通过 | 失败 | settings：返回结构或样本不满足契约；explore[0].load：网络错误；comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 8 |
-| 拷贝漫画 | copy_manga_multi_accounts | venera-next | 通过 | 通过 | 失败 | settings：返回结构或样本不满足契约；comic.loadChapterComments：网络错误；comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 8 |
+| 拷贝漫画 | copy_manga_multi_accounts | venerax | 通过 | 通过 | 失败 | settings：返回结构或样本不满足契约；comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 8 |
+| 拷贝漫画 | copy_manga_multi_accounts | venera-next | 通过 | 通过 | 失败 | settings：返回结构或样本不满足契约；comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 8 |
 | 热辣漫画 | hot_manga | — | 已保存凭据；1.0.1 是自建读取版，尚未实现账号登录（没有可复测账号，不写未验证流程）；补上账户能力后再纳入登录巡检。 | 未测试 | 跳过 |  | 未执行 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 ../data/account-results.json。
-Actions：https://github.com/laincat/vensrc/actions/runs/42456594877
+Actions：https://github.com/laincat/vensrc/actions/runs/42580304431
