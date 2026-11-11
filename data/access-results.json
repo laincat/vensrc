@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-10T08:12:09.526925+00:00",
+  "checkedAt": "2026-11-11T07:42:26.603780+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-10T07:58:27.096133+00:00",
+    "checkedAt": "2026-11-11T07:28:11.024728+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -50,7 +50,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.4",
-    "imageId": "sha256:de7dd01ad04a2943abe0850066af001d12171823cef773c5d7150e01ba0dd7bd"
+    "imageId": "sha256:4e400691c641f7ad887e15c3a612ac6a88f4940ac3105e14ded9dbc8cbc53238"
   },
   "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
   "rows": [
@@ -269,10 +269,6 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "anti_bot"
         }
       ]
     },
@@ -409,6 +405,45 @@
         },
         {
           "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadEp",
+          "category": "auth_required"
+        }
+      ]
+    },
+    {
+      "id": "46ccc7b1b4951f9ebe0b0c4cd04e88cc46ce460abeadfb56e3c5e85d3290b113",
+      "key": "yemancomic",
+      "name": "野蛮漫画",
+      "repository": "hea784/venera-configs",
+      "version": "0.1.2",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.ranking.load",
           "category": "auth_required"
         },
         {
@@ -561,6 +596,45 @@
         {
           "stage": "explore[0].load",
           "category": "anti_bot"
+        }
+      ]
+    },
+    {
+      "id": "3db355237cecd70b8441ecd8c5b34e71de832300d1bfbaa9e7c9a076a87e0112",
+      "key": "cycomic",
+      "name": "次元漫画",
+      "repository": "Junkrat9527/venera-sources",
+      "version": "1.0.3",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.ranking.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadEp",
+          "category": "auth_required"
         }
       ]
     },
@@ -1514,7 +1588,7 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[5].load",
+          "stage": "explore[6].load",
           "category": "auth_required"
         }
       ]
@@ -1590,6 +1664,10 @@
       "failures": [
         {
           "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
           "category": "auth_required"
         }
       ]
@@ -1679,6 +1757,21 @@
         {
           "stage": "categoryComics.load",
           "category": "anti_bot"
+        }
+      ]
+    },
+    {
+      "id": "810c02550b8d61cbfaa0b2817f5e3318debe8ebebe88911b22a0f9271151181e",
+      "key": "yyds_04_86b037",
+      "name": "◯ YYDS",
+      "repository": "KadishJoey/venera-json",
+      "version": "0.2.0",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
         }
       ]
     },
@@ -1897,10 +1990,6 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "anti_bot"
         }
       ]
     },
@@ -2032,11 +2121,46 @@
           "category": "auth_required"
         },
         {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadEp",
+          "category": "auth_required"
+        }
+      ]
+    },
+    {
+      "id": "46ccc7b1b4951f9ebe0b0c4cd04e88cc46ce460abeadfb56e3c5e85d3290b113",
+      "key": "yemancomic",
+      "name": "野蛮漫画",
+      "repository": "hea784/venera-configs",
+      "version": "0.1.2",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
           "stage": "explore[0].load",
           "category": "auth_required"
         },
         {
+          "stage": "explore[1].load",
+          "category": "auth_required"
+        },
+        {
           "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.ranking.load",
           "category": "auth_required"
         },
         {
@@ -2189,6 +2313,45 @@
         {
           "stage": "explore[0].load",
           "category": "anti_bot"
+        }
+      ]
+    },
+    {
+      "id": "3db355237cecd70b8441ecd8c5b34e71de832300d1bfbaa9e7c9a076a87e0112",
+      "key": "cycomic",
+      "name": "次元漫画",
+      "repository": "Junkrat9527/venera-sources",
+      "version": "1.0.3",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.ranking.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadEp",
+          "category": "auth_required"
         }
       ]
     },
@@ -3142,15 +3305,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "search.load",
+          "stage": "explore[3].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[0].load",
+          "stage": "explore[7].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[9].load",
+          "stage": "explore[14].load",
           "category": "auth_required"
         }
       ]
@@ -3227,6 +3390,10 @@
         {
           "stage": "explore[0].load",
           "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
         }
       ]
     },
@@ -3266,14 +3433,6 @@
       "runtimeProfile": "venera-next",
       "corePassed": false,
       "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
         {
           "stage": "comic.loadEp",
           "category": "auth_required"
@@ -3325,9 +3484,24 @@
           "category": "anti_bot"
         }
       ]
+    },
+    {
+      "id": "810c02550b8d61cbfaa0b2817f5e3318debe8ebebe88911b22a0f9271151181e",
+      "key": "yyds_04_86b037",
+      "name": "◯ YYDS",
+      "repository": "KadishJoey/venera-json",
+      "version": "0.2.0",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "auth_required"
+        }
+      ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/42779037186",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/42979699576",
   "browser": [
     {
       "key": "bakamh",
@@ -3418,5 +3592,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/42780819816"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/42981484521"
 }
