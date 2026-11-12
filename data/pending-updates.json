@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-11T07:29:56.740792+00:00",
+  "checkedAt": "2026-11-12T07:58:11.343778+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -700,7 +700,7 @@
       "name": "包子漫画",
       "version": "1.1.8",
       "fileName": "baozi.js",
-      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/51c3520207c617ff2c65495ab12f9eaa7e9d8424/baozi.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/baozi.js",
       "sha256": "db40b64506f7002420eb5d6e23b3f7829a0fe3c6c36afff77991ec1097d78f25",
       "repository": "handahao666-boop/venera_comic_source",
       "minAppVersion": "1.0.0",
@@ -813,7 +813,7 @@
       "name": "W漫画",
       "version": "1.0.3",
       "fileName": "wmanhua.js",
-      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/51c3520207c617ff2c65495ab12f9eaa7e9d8424/wmanhua.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/wmanhua.js",
       "sha256": "113b94d281f16f53877f75c18df909c2e0b3e3233746cb99ac7b3976e6cc0398",
       "repository": "handahao666-boop/venera_comic_source",
       "minAppVersion": "1.4.0",
@@ -857,7 +857,7 @@
       "name": "栗子漫画",
       "version": "1.2.4",
       "fileName": "lizimh.js",
-      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/51c3520207c617ff2c65495ab12f9eaa7e9d8424/lizimh.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/lizimh.js",
       "sha256": "51450326c6bff18d8fde7744aff9d822e2341908c4863fd7c48af28ce42f9ac7",
       "repository": "handahao666-boop/venera_comic_source",
       "minAppVersion": "1.2.2",
@@ -865,6 +865,367 @@
         "comicId": "57229",
         "epId": "1",
         "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "dc79b8b0721d51f51e6e764ecc7ad54e6e7b8ce25b0dd888f9709f310de18416",
+      "key": "xkcd",
+      "name": "xkcd 中文",
+      "version": "1.0.2",
+      "fileName": "xkcd.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/xkcd.js",
+      "sha256": "dc79b8b0721d51f51e6e764ecc7ad54e6e7b8ce25b0dd888f9709f310de18416",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "5c36eae4b3db1b6d0de22869ba22305ae7fd8580821d985330f3368a3f6c1b6b",
+      "key": "bh3",
+      "name": "《崩坏3》IP站",
+      "version": "1.0.2",
+      "fileName": "bh3.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/bh3.js",
+      "sha256": "5c36eae4b3db1b6d0de22869ba22305ae7fd8580821d985330f3368a3f6c1b6b",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "4e2c017de4fdc437ecd1ad792b45f6da33f967f00c5feb31ee94f0171a0b96d8",
+      "key": "manhuashe",
+      "name": "漫画社",
+      "version": "1.0.2",
+      "fileName": "manhuashe.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/manhuashe.js",
+      "sha256": "4e2c017de4fdc437ecd1ad792b45f6da33f967f00c5feb31ee94f0171a0b96d8",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "957666403736b4428038068d2df591b3aeb328689661757662a357bf0164c4ba",
+      "key": "zazhimi",
+      "name": "杂志迷",
+      "version": "1.0.2",
+      "fileName": "zazhimi.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/zazhimi.js",
+      "sha256": "957666403736b4428038068d2df591b3aeb328689661757662a357bf0164c4ba",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "0d3210279f763ccd5869fd833adef4b35227d2ebefabe3a8049e642382d972a7",
+      "key": "terrahistoricus",
+      "name": "泰拉记事社",
+      "version": "1.0.1",
+      "fileName": "terrahistoricus.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/terrahistoricus.js",
+      "sha256": "0d3210279f763ccd5869fd833adef4b35227d2ebefabe3a8049e642382d972a7",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "f35000f0f4b331017dfbf9f9041eaebdc4061d9a8dd23937c7714302c8a4524a",
+      "key": "manhuawu",
+      "name": "漫画屋",
+      "version": "1.0.1",
+      "fileName": "manhuawu.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/manhuawu.js",
+      "sha256": "f35000f0f4b331017dfbf9f9041eaebdc4061d9a8dd23937c7714302c8a4524a",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "98a3f42e0108cf9921ea35c11d7a607c0f504a532cf9c0298b5802b36829f084",
+      "key": "sixmh",
+      "name": "六漫画",
+      "version": "1.0.1",
+      "fileName": "sixmh.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/sixmh.js",
+      "sha256": "98a3f42e0108cf9921ea35c11d7a607c0f504a532cf9c0298b5802b36829f084",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "128fa2bafac08ee8765d55409562823e1c3995a6dad396707c8f2802ecf6f6dc",
+      "key": "mh160",
+      "name": "漫画160",
+      "version": "1.0.0",
+      "fileName": "mh160.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/mh160.js",
+      "sha256": "128fa2bafac08ee8765d55409562823e1c3995a6dad396707c8f2802ecf6f6dc",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "7c01a03df62049c6ea6842909dd891b5393cbf3a2e7ab01a0a3fe8c152edbbbc",
+      "key": "globalcomix",
+      "name": "GlobalComix 中文",
+      "version": "1.0.0",
+      "fileName": "globalcomix.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/globalcomix.js",
+      "sha256": "7c01a03df62049c6ea6842909dd891b5393cbf3a2e7ab01a0a3fe8c152edbbbc",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "58374211f1bd2fdc04b877d21ff487b104b09954bc23eddc91660af7c0ecfee4",
+      "key": "namicomi",
+      "name": "NamiComi 中文",
+      "version": "1.0.0",
+      "fileName": "namicomi.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/namicomi.js",
+      "sha256": "58374211f1bd2fdc04b877d21ff487b104b09954bc23eddc91660af7c0ecfee4",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "3151796678a25b83f3f1e52222f89b2c1d28af85c52f093e9750db013270c5ee",
+      "key": "toomics",
+      "name": "Toomics 玩漫（繁中）",
+      "version": "1.0.0",
+      "fileName": "toomics.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/toomics.js",
+      "sha256": "3151796678a25b83f3f1e52222f89b2c1d28af85c52f093e9750db013270c5ee",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "27c142534cee69f5f66a60697cf5d34ceed69cc49730f76a662bfda693e76ec2",
+      "key": "kuaikanmanhua",
+      "name": "快看漫画",
+      "version": "1.0.0",
+      "fileName": "kuaikanmanhua.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/kuaikanmanhua.js",
+      "sha256": "27c142534cee69f5f66a60697cf5d34ceed69cc49730f76a662bfda693e76ec2",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "02e74b777aa3e51bc06a0bb6550c73a785be98e0bb79f55baa83bce5e9106e59",
+      "key": "relamanhua",
+      "name": "熱辣漫畫",
+      "version": "1.0.0",
+      "fileName": "relamanhua.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/relamanhua.js",
+      "sha256": "02e74b777aa3e51bc06a0bb6550c73a785be98e0bb79f55baa83bce5e9106e59",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "139f25c4afc5516a2eb359c4e82fb5d0081302f4001b531306f8594fab1cd02e",
+      "key": "comicfury",
+      "name": "Comic Fury 中文",
+      "version": "1.0.0",
+      "fileName": "comicfury.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/comicfury.js",
+      "sha256": "139f25c4afc5516a2eb359c4e82fb5d0081302f4001b531306f8594fab1cd02e",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "dd1acef0061d04bd134e21bdcb37d250407a362358e0feb27b917ca116bd3597",
+      "key": "comicabc",
+      "name": "無限動漫",
+      "version": "1.0.0",
+      "fileName": "comicabc.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/comicabc.js",
+      "sha256": "dd1acef0061d04bd134e21bdcb37d250407a362358e0feb27b917ca116bd3597",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "b7190951bd24f1adc6a1d7df4a73d69d8e0bcb7bb0e8cb14f3a152479755c844",
+      "key": "favcomic",
+      "name": "喜漫漫画",
+      "version": "1.0.0",
+      "fileName": "favcomic.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/favcomic.js",
+      "sha256": "b7190951bd24f1adc6a1d7df4a73d69d8e0bcb7bb0e8cb14f3a152479755c844",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "38eb4053fc3342a4872b30371d7f28966cdd422ffd9e14828eab92b74143768e",
+      "key": "jisumanhua",
+      "name": "极速漫画",
+      "version": "1.0.0",
+      "fileName": "jisumanhua.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/jisumanhua.js",
+      "sha256": "38eb4053fc3342a4872b30371d7f28966cdd422ffd9e14828eab92b74143768e",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "cb3c96f259cf31e7688aa309866e3e7a43489211c84684d3151d444afb6c51ed",
+      "key": "mikagogo",
+      "name": "米卡插画",
+      "version": "1.0.0",
+      "fileName": "mikagogo.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/mikagogo.js",
+      "sha256": "cb3c96f259cf31e7688aa309866e3e7a43489211c84684d3151d444afb6c51ed",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "handahao666-boop/venera_comic_source"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "d043c8fd82bbdbda1d3be667688ed0e6fb9a7be9bc26c146721ce26b8e05e250",
+      "key": "manben",
+      "name": "漫本",
+      "version": "1.0.1",
+      "fileName": "manben.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/f74b80b247dab8a264da5b4e53b01020e8c2d812/manben.js",
+      "sha256": "d043c8fd82bbdbda1d3be667688ed0e6fb9a7be9bc26c146721ce26b8e05e250",
+      "repository": "handahao666-boop/venera_comic_source",
+      "minAppVersion": "1.6.3",
+      "sample": {
+        "keyword": "斗破苍穹"
       },
       "trackedBy": [
         "handahao666-boop/venera_comic_source"
@@ -6144,7 +6505,7 @@
       "name": "漫画人",
       "version": "1.0.1",
       "fileName": "manhuaren.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/0438dbcde4a79e1f28f9a13eb805f5829a12177b/sources/ven/manhuaren.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/e781f75e77c263354a7e663fa99535f1f86964cf/sources/ven/manhuaren.js",
       "sha256": "2fbb6236652b0ea8776cd46d1b44e4ffc57d7812576550ddfe824ec8688ec42d",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.6.0",
@@ -6165,7 +6526,7 @@
       "name": "禁漫天堂（18+）",
       "version": "1.4.1",
       "fileName": "jm.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/0438dbcde4a79e1f28f9a13eb805f5829a12177b/sources/ven/jm.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/e781f75e77c263354a7e663fa99535f1f86964cf/sources/ven/jm.js",
       "sha256": "4d0b8897c919c41ef2d44a55c9960ba931c46cc936fc808858e8dccf818cb39b",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.5.0",
@@ -6186,7 +6547,7 @@
       "name": "魅影画廊",
       "version": "1.0.2",
       "fileName": "myhl.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/0438dbcde4a79e1f28f9a13eb805f5829a12177b/sources/private/myhl.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/e781f75e77c263354a7e663fa99535f1f86964cf/sources/private/myhl.js",
       "sha256": "898fd65f78c53deaa6f7850b58ec499d76c4d55a7c9024208e35263c134b4eea",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.2.0",
@@ -6202,31 +6563,12 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "2fcb55afdb4ec089109efa40560cbeea1e97b213ad42487a491d0f676616c205",
-      "key": "private_csmanhua",
-      "name": "成色漫画（18+）",
-      "version": "1.0.2",
-      "fileName": "csmanhua.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/0438dbcde4a79e1f28f9a13eb805f5829a12177b/sources/private/csmanhua.js",
-      "sha256": "2fcb55afdb4ec089109efa40560cbeea1e97b213ad42487a491d0f676616c205",
-      "repository": "Taototo/venera-comic-sources",
-      "minAppVersion": "1.0.0",
-      "sample": {
-        "keyword": "火影"
-      },
-      "trackedBy": [
-        "Taototo/venera-comic-sources"
-      ],
-      "priority": 0,
-      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
-    },
-    {
       "id": "9d0be11ce76a7027a8a1e990b2159dc9d534acfb98778e05d447555ed9288d48",
       "key": "private_hmanwu",
       "name": "韩漫屋（18+）",
       "version": "1.1.2",
       "fileName": "hmanwu.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/0438dbcde4a79e1f28f9a13eb805f5829a12177b/sources/private/hmanwu.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/e781f75e77c263354a7e663fa99535f1f86964cf/sources/private/hmanwu.js",
       "sha256": "9d0be11ce76a7027a8a1e990b2159dc9d534acfb98778e05d447555ed9288d48",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.0.0",
@@ -9704,7 +10046,7 @@
     },
     {
       "repository": "handahao666-boop/venera_comic_source",
-      "commit": "51c3520207c617ff2c65495ab12f9eaa7e9d8424",
+      "commit": "f74b80b247dab8a264da5b4e53b01020e8c2d812",
       "errors": []
     },
     {
@@ -9947,7 +10289,7 @@
     },
     {
       "repository": "Taototo/venera-comic-sources",
-      "commit": "0438dbcde4a79e1f28f9a13eb805f5829a12177b",
+      "commit": "e781f75e77c263354a7e663fa99535f1f86964cf",
       "errors": [
         "再漫画：HTTP Error 404: Not Found",
         "漫小肆（18+）：HTTP Error 404: Not Found",
@@ -10067,31 +10409,6 @@
   ],
   "newRepositories": [
     {
-      "repository": "940440952/comic-sources",
-      "description": "双生态漫画源：Venera / VeneraNext / VeneraPlus JavaScript + Aidoku Rust/WASM；目前维护 manhuazhan.com。",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "qhu91it/h3r0-venera-configs",
-      "description": "My custom config for venera",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Yo1sing/Venera-Edge",
-      "description": "A comic app based on Venera",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Kyosee/VeneraX",
-      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Aleksanaa/Venera",
-      "description": "QEMU Windows 11 guest Direct3D9~12 driver, without host changes",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "gallhall/venera-v",
       "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates",
       "foundBy": "venera in:name,description"
@@ -10102,18 +10419,78 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "CyrilPeng/Venera-Next",
-      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
+      "repository": "Kyosee/VeneraX",
+      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "daodao0326/venera",
-      "description": "漫画源",
+      "repository": "Yo1sing/Venera-Edge",
+      "description": "A comic app, but built with FRB (Flutter Rust Bridge).",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "qhu91it/h3r0-venera-configs",
+      "description": "My custom config for venera",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "dxmsk/Venera-Sources",
+      "description": "Venera custom comic sources — 巴卡漫画 bakamh.com",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Majveia/Veneration",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "haukuen/venera",
+      "description": "仅自用 ／ For personal use only",
       "foundBy": "venera in:name,description"
     },
     {
       "repository": "venerahome/venerahome.github.io",
       "description": "Venera Hasanova · Imoti Premier · Property in Greece",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "jnsingh01/venerabulllife",
+      "description": "Venerabull Life — public website.",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Aleksanaa/Venera",
+      "description": "QEMU Windows 11 guest Direct3D9~12 driver, without host changes",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "CyrilPeng/Venera-Next",
+      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Kerollos004/venera",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "venera-tropnikova/Alexs-Amazing-Garage-play",
+      "description": "Test play build of Alex's Amazing Garage (dist only). Source stays private.",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "940440952/comic-sources",
+      "description": "双生态漫画源：Venera / VeneraNext / VeneraPlus JavaScript + Aidoku Rust/WASM；目前维护 manhuazhan.com。",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Taototo/ManComic",
+      "description": "A Flutter comic reader app based on Venera",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "daodao0326/venera",
+      "description": "漫画源",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10129,16 +10506,6 @@
     {
       "repository": "venera-app/venera-prime",
       "description": "A comic app,but prime",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Taototo/ManComic",
-      "description": "A Flutter comic reader app based on Venera",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Kerollos004/venera",
-      "description": "",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10167,11 +10534,6 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "jnsingh01/venerabulllife",
-      "description": "Venerabull Life — public website.",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "vonhezhou/mansou",
       "description": "漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。",
       "foundBy": "venera in:name,description"
@@ -10192,18 +10554,8 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "venera-tropnikova/Alexs-Amazing-Garage-play",
-      "description": "Test play build of Alex's Amazing Garage (dist only). Source stays private.",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "Venera-Works/Venera-Plus",
       "description": "VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "haukuen/venera",
-      "description": "仅自用 ／ For personal use only",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10402,11 +10754,6 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "JUTZUGC/venera-deploy-guide",
-      "description": "Venera 一键安装｜本地和网络漫画都能看，装完导入漫画源即可｜自动校验三平台包｜第三方一键部署方案",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "fave-eng/venera",
       "description": "",
       "foundBy": "venera in:name,description"
@@ -10449,11 +10796,6 @@
     {
       "repository": "XclusiveM/venera-nailart",
       "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "yuxuan965960/VeneraX-ios",
-      "description": "VeneraX - Flutter app",
       "foundBy": "venera in:name,description"
     },
     {
