@@ -1,6 +1,6 @@
 # 反爬、网络限制与人工处理清单
 
-来源巡检时间：2026-11-12T08:08:27.947965+00:00（UTC）。
+来源巡检时间：2026-11-13T07:46:17.559686+00:00（UTC）。
 anti_bot 表示检测到人机验证或反爬特征，未单凭 403 就认定 Cloudflare。
 auth_required 也可能是权限、地区或站点拒绝，不能据此认定密码错误。
 正常浏览器可访问不代表 CLI 阅读链路通过，本报告不修改主／扩展订阅。
@@ -42,7 +42,7 @@ Actions 使用无界面 Chromium；其 IP、浏览器身份和 VeneraX WebView �
 - `wnacg_ru`（https://www.wnacg.ru/users-login.html）：登录页加载滑块验证模块，需本人完成交互；这与 CF 挑战分别记录，未执行账号登录。
 - `wnacg_003`（https://www.wn003.cfd/users-login.html）：登录页加载滑块验证模块，需本人完成交互；这与 CF 挑战分别记录，未执行账号登录。
 
-CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz`、`bilimanga`、`ex_fangliding`、`foamgirl`、`goda`、`guoman8`、`haokan_txt`、`hentaiclub`、`hj_baozi`、`legacy_bdido`、`manhuaba`、`manhuapi`、`manwang`、`mh03`、`mh18`、`mh4399`、`miaoqu`、`mitaku`、`ososedki`、`rawkuma`、`shonen_jump_plus`、`source_19_50ee2a`、`source_45_d76464`、`source_65_8717b6`、`sunday_webry`、`v2ph`、`weebcentral`。
+CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz`、`bilimanga`、`ex_fangliding`、`foamgirl`、`goda`、`guoman8`、`haokan_txt`、`hentaiclub`、`hj_baozi`、`legacy_bdido`、`manhuaba`、`manhuapi`、`manwang`、`mh03`、`mh18`、`mh4399`、`miaoqu`、`mitaku`、`ososedki`、`rawkuma`、`shonen_jump_plus`、`source_19_50ee2a`、`source_45_d76464`、`source_65_8717b6`、`sunday_webry`、`v2ph`、`weebcentral`、`ykmh`。
 未纳入首页浏览器对照的源仍未完成人工验证；首页诊断成功也不代表正文接口通过。
 
 ## 逐构建处理清单
@@ -50,23 +50,22 @@ CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz
 | 名称 | key | 版本 | 仓库 | 环境 | 核心阅读 | 受限阶段 | 类别／处理 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 百合会 | baihehui | 1.0.0 | handahao666-boop/venera_comic_source | venerax | 通过（其他能力受限） | search.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
-| 嗶哩漫畫 | bilimanga | 1.1.7 | handahao666-boop/venera_comic_source | venerax | 未通过 | image.download；image.download | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
+| 嗶哩漫畫 | bilimanga | 1.1.7 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；image.download；image.download | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | ehentai | ehentai | 1.2.0 | venera-app/venera-configs | venerax | 通过（其他能力受限） | comic.archive.getArchives | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | GoDa漫画 | goda | 1.2.1 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 爱看漫 | ikmmh_v2 | 3.0.0 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 香蕉漫画 | manhuauo_banana_v2 | 1.0.3 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 漫网 | manwang | 1.2.0 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 18漫画 | mh18 | 1.0.0 | venera-app/venera-configs | venerax | 未通过 | search.load；explore[0].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
-| 4399漫画网 | mh4399 | 1.0.3 | handahao666-boop/venera_comic_source | venerax | 未通过 | image.download；image.download；thumbnail.download | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
+| 4399漫画网 | mh4399 | 1.0.3 | handahao666-boop/venera_comic_source | venerax | 未通过 | image.download；image.download | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | NoyManga | noymanga | 1.1.5 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | Picacg | picacg | 1.0.6 | venera-app/venera-configs | venerax | 未通过 | search.load；categoryComics.load；categoryComics.ranking.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | Rawkuma | rawkuma | 1.1.0 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 少年ジャンプ＋ | shonen_jump_plus | 1.2.0 | handahao666-boop/venera_comic_source | venerax | 通过（其他能力受限） | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | サンデーうぇぶり | sunday_webry | 1.0.0 | handahao666-boop/venera_comic_source | venerax | 通过（其他能力受限） | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
-| 图库漫画 | tuku_cc | 1.0.1 | handahao666-boop/venera_comic_source | venerax | 通过（其他能力受限） | explore[0].load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | W漫画 | wmanhua | 1.0.1 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 野蛮漫画 | yemancomic | 0.1.2 | hea784/venera-configs | venerax | 未通过 | search.load；explore[0].load；explore[1].load；categoryComics.load；categoryComics.ranking.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
-| 优酷漫画 (修复版) | ykmh | 1.0.7 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
+| 优酷漫画 (修复版) | ykmh | 1.0.7 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 爱漫岛 | aiman | 2.3.6 | Junkrat9527/venera-sources | venerax | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | Asura Scans | asura_scans | 1.3.0 | Micqiyue/venera-sources | venerax | 未通过 | search.load；explore[0].load；explore[1].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 巴卡漫画 | bakamh | 1.0.1 | Magentadots/venera-configs | venerax | 未通过 | search.load；explore[0].load；explore[1].load；explore[2].load；explore[3].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
@@ -97,7 +96,7 @@ CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz
 | NoyACG | noyacg | 1.4.0 | zetriumyx/noyacg-source-venera | venerax | 未通过 | explore[0].load；categoryComics.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | Ososedki | ososedki | 1.1.1 | meaninglesslyy/venera-config | venerax | 未通过 | search.load；explore[0].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | Pixiv | pixiv | 1.9.0 | Junkrat9527/venera-sources | venerax | 未通过 | search.loadNext；explore[0].loadNext；explore[1].loadNext；explore[3].loadNext；explore[4].loadNext；explore[5].loadNext；explore[6].loadNext；categoryComics.load；categoryComics.ranking.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
-| 奇漫屋 | qimanwu | 1.0.0 | token1008/venera-cn-64bit | venerax | 未通过 | explore[5].load；explore[13].load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
+| 奇漫屋 | qimanwu | 1.0.0 | token1008/venera-cn-64bit | venerax | 未通过 | search.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | ☄️ 最次元 | source_07_49effa | 0.2.0 | KadishJoey/venera-json | venerax | 未通过 | search.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 中国人能飞 | source_19_50ee2a | 0.2.0 | KadishJoey/venera-json | venerax | 未通过 | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 漫畫狗 | source_45_d76464 | 0.2.0 | KadishJoey/venera-json | venerax | 未通过 | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
@@ -109,23 +108,22 @@ CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz
 | WeebCentral | weebcentral | 1.0.0 | yelongyue197-svg/venera-sources | venerax | 未通过 | search.load；explore[0].load；explore[1].load；explore[2].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | ◯ YYDS | yyds_04_86b037 | 0.2.0 | KadishJoey/venera-json | venerax | 未通过 | search.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 百合会 | baihehui | 1.0.0 | handahao666-boop/venera_comic_source | venera-next | 通过（其他能力受限） | search.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
-| 嗶哩漫畫 | bilimanga | 1.1.7 | handahao666-boop/venera_comic_source | venera-next | 未通过 | image.download；image.download | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
+| 嗶哩漫畫 | bilimanga | 1.1.7 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；image.download；image.download | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | ehentai | ehentai | 1.2.0 | venera-app/venera-configs | venera-next | 通过（其他能力受限） | comic.archive.getArchives | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | GoDa漫画 | goda | 1.2.1 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 爱看漫 | ikmmh_v2 | 3.0.0 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 香蕉漫画 | manhuauo_banana_v2 | 1.0.3 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 漫网 | manwang | 1.2.0 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 18漫画 | mh18 | 1.0.0 | venera-app/venera-configs | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
-| 4399漫画网 | mh4399 | 1.0.3 | handahao666-boop/venera_comic_source | venera-next | 未通过 | image.download；image.download；thumbnail.download | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
+| 4399漫画网 | mh4399 | 1.0.3 | handahao666-boop/venera_comic_source | venera-next | 未通过 | image.download；image.download | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | NoyManga | noymanga | 1.1.5 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | Picacg | picacg | 1.0.6 | venera-app/venera-configs | venera-next | 未通过 | search.load；categoryComics.load；categoryComics.ranking.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | Rawkuma | rawkuma | 1.1.0 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 少年ジャンプ＋ | shonen_jump_plus | 1.2.0 | handahao666-boop/venera_comic_source | venera-next | 通过（其他能力受限） | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | サンデーうぇぶり | sunday_webry | 1.0.0 | handahao666-boop/venera_comic_source | venera-next | 通过（其他能力受限） | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
-| 图库漫画 | tuku_cc | 1.0.1 | handahao666-boop/venera_comic_source | venera-next | 通过（其他能力受限） | explore[0].load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | W漫画 | wmanhua | 1.0.1 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 野蛮漫画 | yemancomic | 0.1.2 | hea784/venera-configs | venera-next | 未通过 | search.load；explore[0].load；explore[1].load；categoryComics.load；categoryComics.ranking.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
-| 优酷漫画 (修复版) | ykmh | 1.0.7 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
+| 优酷漫画 (修复版) | ykmh | 1.0.7 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 爱漫岛 | aiman | 2.3.6 | Junkrat9527/venera-sources | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | Asura Scans | asura_scans | 1.3.0 | Micqiyue/venera-sources | venera-next | 未通过 | search.load；explore[0].load；explore[1].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 巴卡漫画 | bakamh | 1.0.1 | Magentadots/venera-configs | venera-next | 未通过 | search.load；explore[0].load；explore[1].load；explore[2].load；explore[3].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
@@ -156,7 +154,7 @@ CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz
 | NoyACG | noyacg | 1.4.0 | zetriumyx/noyacg-source-venera | venera-next | 未通过 | explore[0].load；categoryComics.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | Ososedki | ososedki | 1.1.1 | meaninglesslyy/venera-config | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | Pixiv | pixiv | 1.9.0 | Junkrat9527/venera-sources | venera-next | 未通过 | search.loadNext；explore[0].loadNext；explore[1].loadNext；explore[3].loadNext；explore[4].loadNext；explore[5].loadNext；explore[6].loadNext；categoryComics.load；categoryComics.ranking.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
-| 奇漫屋 | qimanwu | 1.0.0 | token1008/venera-cn-64bit | venera-next | 未通过 | explore[1].load；explore[6].load；explore[12].load；explore[13].load；explore[14].load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
+| 奇漫屋 | qimanwu | 1.0.0 | token1008/venera-cn-64bit | venera-next | 未通过 | explore[5].load；explore[8].load；explore[12].load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | ☄️ 最次元 | source_07_49effa | 0.2.0 | KadishJoey/venera-json | venera-next | 未通过 | search.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 中国人能飞 | source_19_50ee2a | 0.2.0 | KadishJoey/venera-json | venera-next | 未通过 | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 漫畫狗 | source_45_d76464 | 0.2.0 | KadishJoey/venera-json | venera-next | 未通过 | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
@@ -175,4 +173,4 @@ CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz
 - [Cloudflare 官方通行说明](https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/)：通行 Cookie 绑定访问者和设备，不能保证跨机器复用。
 - [挑战限制](https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/)：不同 IP 发起挑战和完成验证可能导致循环。
 
-浏览器诊断 Actions：https://github.com/laincat/vensrc/actions/runs/43180573121
+浏览器诊断 Actions：https://github.com/laincat/vensrc/actions/runs/43388209589

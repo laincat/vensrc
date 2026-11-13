@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-12T08:08:27.947965+00:00",
+  "checkedAt": "2026-11-13T07:46:17.559686+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-12T07:55:53.097561+00:00",
+    "checkedAt": "2026-11-13T07:34:29.169233+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -50,7 +50,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.5",
-    "imageId": "sha256:4483ad96f8e59ac2fa9e2468ce934dfcc6ed453cb44257dcd6aaa4ebb6915fcb"
+    "imageId": "sha256:1297d491319e17ee0315d421e5380f42ecae23e125b99457567df09f5ff9f7c1"
   },
   "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
   "rows": [
@@ -78,6 +78,10 @@
       "runtimeProfile": "venerax",
       "corePassed": false,
       "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        },
         {
           "stage": "image.download",
           "category": "anti_bot"
@@ -254,10 +258,6 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "anti_bot"
         }
       ]
     },
@@ -361,21 +361,6 @@
       ]
     },
     {
-      "id": "235e01bc5009b5aab75a21c95730d4be41fbc834322ba989b37d7c68d94f9150",
-      "key": "tuku_cc",
-      "name": "图库漫画",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.0.1",
-      "runtimeProfile": "venerax",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "621a3e063f15cdfba06499e3535a81e9ebbc1837070605ae578508abee8d5db9",
       "key": "wmanhua",
       "name": "W漫画",
@@ -456,15 +441,23 @@
       "failures": [
         {
           "stage": "search.load",
-          "category": "auth_required"
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
         },
         {
           "stage": "comic.loadInfo",
-          "category": "auth_required"
+          "category": "anti_bot"
         },
         {
           "stage": "comic.loadEp",
-          "category": "auth_required"
+          "category": "anti_bot"
         }
       ]
     },
@@ -1600,11 +1593,7 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[5].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[13].load",
+          "stage": "search.load",
           "category": "auth_required"
         }
       ]
@@ -1820,6 +1809,10 @@
       "corePassed": false,
       "failures": [
         {
+          "stage": "search.load",
+          "category": "anti_bot"
+        },
+        {
           "stage": "image.download",
           "category": "anti_bot"
         },
@@ -1995,10 +1988,6 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "anti_bot"
         }
       ]
     },
@@ -2102,21 +2091,6 @@
       ]
     },
     {
-      "id": "235e01bc5009b5aab75a21c95730d4be41fbc834322ba989b37d7c68d94f9150",
-      "key": "tuku_cc",
-      "name": "图库漫画",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.0.1",
-      "runtimeProfile": "venera-next",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "621a3e063f15cdfba06499e3535a81e9ebbc1837070605ae578508abee8d5db9",
       "key": "wmanhua",
       "name": "W漫画",
@@ -2197,15 +2171,23 @@
       "failures": [
         {
           "stage": "search.load",
-          "category": "auth_required"
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
         },
         {
           "stage": "comic.loadInfo",
-          "category": "auth_required"
+          "category": "anti_bot"
         },
         {
           "stage": "comic.loadEp",
-          "category": "auth_required"
+          "category": "anti_bot"
         }
       ]
     },
@@ -3341,23 +3323,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[1].load",
+          "stage": "explore[5].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[6].load",
+          "stage": "explore[8].load",
           "category": "auth_required"
         },
         {
           "stage": "explore[12].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[13].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[14].load",
           "category": "auth_required"
         }
       ]
@@ -3549,7 +3523,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/43178882308",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/43386702145",
   "browser": [
     {
       "key": "bakamh",
@@ -3640,5 +3614,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/43180573121"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/43388209589"
 }
