@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-14T09:08:03.828446+00:00",
+  "checkedAt": "2026-11-14T16:00:41.928941+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-14T08:54:39.153601+00:00",
+    "checkedAt": "2026-11-14T15:44:50.028126+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -50,25 +50,10 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.5",
-    "imageId": "sha256:26cdbe85288096cbd4a650637c105b8bb75422e2d0bd1fb15a5bd8440f30f8c4"
+    "imageId": "sha256:82c861ab4132afbbb66991d1c1e3b64bca72625cee421c8b2a499ad92763aa53"
   },
   "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
   "rows": [
-    {
-      "id": "ba1520f9cad1d0d960d8c0d5520c5db02d874e809e1e59c7fe41f43c474c7ccf",
-      "key": "baihehui",
-      "name": "百合会",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.0.0",
-      "runtimeProfile": "venerax",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        }
-      ]
-    },
     {
       "id": "dd8fd0160934165191cd45549b5c5f7a0ba9f385e6ddff6df53b62083dec8dfc",
       "key": "bilimanga",
@@ -257,10 +242,6 @@
         },
         {
           "stage": "image.download",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
           "category": "anti_bot"
         }
       ]
@@ -1577,19 +1558,11 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[3].load",
+          "stage": "explore[2].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[4].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[10].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[11].load",
+          "stage": "explore[14].load",
           "category": "auth_required"
         }
       ]
@@ -1714,7 +1687,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "comic.loadEp",
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "comic.loadInfo",
           "category": "auth_required"
         }
       ]
@@ -1773,21 +1754,6 @@
       "version": "0.2.0",
       "runtimeProfile": "venerax",
       "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "ba1520f9cad1d0d960d8c0d5520c5db02d874e809e1e59c7fe41f43c474c7ccf",
-      "key": "baihehui",
-      "name": "百合会",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.0.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
@@ -2761,21 +2727,6 @@
       ]
     },
     {
-      "id": "96036813d0211f2908736133788e3403f7a03dbe8d5001830f2c612413e1c24b",
-      "key": "komiic_multi",
-      "name": "Komiic 多账号",
-      "repository": "snowf14k3/venera-komiic-multi",
-      "version": "1.6.2",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "42f5b36dbd386a063c594b230e3e90b07014165eaf0bb08cf10439856afd6c5f",
       "key": "legacy_bdido",
       "name": "1359漫画网",
@@ -3303,19 +3254,7 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[5].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[6].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[13].load",
+          "stage": "search.load",
           "category": "auth_required"
         }
       ]
@@ -3507,7 +3446,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/43578008974",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/43611809519",
   "browser": [
     {
       "key": "bakamh",
@@ -3598,5 +3537,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/43579120598"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/43613263847"
 }
