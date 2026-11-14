@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-14T08:56:14.595724+00:00",
+  "checkedAt": "2026-11-14T15:46:53.797901+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -136,7 +136,7 @@
       "name": "禁漫天堂",
       "version": "1.9.3",
       "fileName": "recode-jm.js",
-      "url": "https://raw.githubusercontent.com/BB-CHICKEN/venera-jm/96a45d2e81dbb59eecfec36ee4321b2c4747d83a/recode-jm.js",
+      "url": "https://raw.githubusercontent.com/BB-CHICKEN/venera-jm/c8136f54b3225a203796c502f6165c628615a8c7/recode-jm.js",
       "sha256": "9c19985db94d3653290e0b45f9cef5b4022535dd03fdce3ea53098f22214bf74",
       "repository": "BB-CHICKEN/venera-jm",
       "minAppVersion": "1.16.0",
@@ -9107,7 +9107,7 @@
       "name": "拷贝漫画M",
       "version": "1.4.1",
       "fileName": "copy_manga_multi_accounts.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/6a11f54feb4003aeecd97f7a03acecc66ee6bf3e/copy_manga_multi_accounts.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/996e32a1e4a572c76d718ddec0742d8b76c7f04a/copy_manga_multi_accounts.js",
       "sha256": "71722c9f639f36b85dfe74a09298821ab8c1988e98416326fc5c6bad30dac834",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.6.0",
@@ -9126,7 +9126,7 @@
       "name": "Picacg",
       "version": "1.0.12",
       "fileName": "picacg.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/6a11f54feb4003aeecd97f7a03acecc66ee6bf3e/picacg.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/996e32a1e4a572c76d718ddec0742d8b76c7f04a/picacg.js",
       "sha256": "85e7991f4755a11bb1bc400b93afc9ab4fa0b96ccc81785cee28199f33ce679d",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "2.0.0",
@@ -9140,13 +9140,13 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "50f92a3a66b5c625cbcc0df93007e5c269efdd55780c57b0e010e0dfcec75c25",
+      "id": "7272eb24b4798c3d3ee5c0f34f160e5c9501e83d021f4fe1f3298924154fb219",
       "key": "manwa",
       "name": "漫蛙",
-      "version": "1.0.8",
+      "version": "1.0.12",
       "fileName": "manwa.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/6a11f54feb4003aeecd97f7a03acecc66ee6bf3e/manwa.js",
-      "sha256": "50f92a3a66b5c625cbcc0df93007e5c269efdd55780c57b0e010e0dfcec75c25",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/996e32a1e4a572c76d718ddec0742d8b76c7f04a/manwa.js",
+      "sha256": "7272eb24b4798c3d3ee5c0f34f160e5c9501e83d021f4fe1f3298924154fb219",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.6.0",
       "sample": {
@@ -10006,7 +10006,7 @@
     },
     {
       "repository": "BB-CHICKEN/venera-jm",
-      "commit": "96a45d2e81dbb59eecfec36ee4321b2c4747d83a",
+      "commit": "c8136f54b3225a203796c502f6165c628615a8c7",
       "errors": []
     },
     {
@@ -10393,7 +10393,7 @@
     },
     {
       "repository": "yuxuanmian/venera-configs",
-      "commit": "6a11f54feb4003aeecd97f7a03acecc66ee6bf3e",
+      "commit": "996e32a1e4a572c76d718ddec0742d8b76c7f04a",
       "errors": []
     },
     {
@@ -10430,13 +10430,8 @@
   ],
   "newRepositories": [
     {
-      "repository": "gallhall/venera-v",
-      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Taototo/ManComic",
-      "description": "A Flutter comic reader app based on Venera",
+      "repository": "Kyosee/VeneraX",
+      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10445,8 +10440,48 @@
       "foundBy": "venera in:name,description"
     },
     {
+      "repository": "venerahome/venerahome.github.io",
+      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "yuxuanmian/venera",
+      "description": "A comic app",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Vulpes-venera/CS50p",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "opaiopaio/Venera-Nas",
+      "description": "Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Taototo/ManComic",
+      "description": "A Flutter comic reader app based on Venera",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Venera-Works/Venera-Plus",
+      "description": "VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源",
+      "foundBy": "venera in:name,description"
+    },
+    {
       "repository": "saber1008611/venera-configs",
       "description": "Venera ?????(??)",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Venera-Works/Venera-Native-Prebuilts",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "gallhall/venera-v",
+      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10457,11 +10492,6 @@
     {
       "repository": "laincat/VeneraCat-Core",
       "description": "Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "yuxuanmian/venera",
-      "description": "A comic app",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10482,16 +10512,6 @@
     {
       "repository": "venera-tropnikova/Alexs-Amazing-Garage-play",
       "description": "Test play build of Alex's Amazing Garage (dist only). Source stays private.",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Kyosee/VeneraX",
-      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "venerahome/venerahome.github.io",
-      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10600,16 +10620,6 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "Venera-Works/Venera-Plus",
-      "description": "VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Venera-Works/Venera-Native-Prebuilts",
-      "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "yanxiangwang521-ui/venera-fix-source",
       "description": "",
       "foundBy": "venera in:name,description"
@@ -10682,11 +10692,6 @@
     {
       "repository": "staciepomar-spec/venera-glass-build",
       "description": "CI build of venera v1.6.3 with a Pure-spec liquid glass bottom bar",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Vulpes-venera/CS50p",
-      "description": "",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10807,11 +10812,6 @@
     {
       "repository": "lll152872/venera-lll",
       "description": "venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "opaiopaio/Venera-Nas",
-      "description": "Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中",
       "foundBy": "venera in:name,description"
     },
     {
