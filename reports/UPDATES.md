@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-14T15:46:53.797901+00:00（UTC）。
+检查时间：2026-11-14T20:40:42.623636+00:00（UTC）。
 检查 70 个已登记仓库；发现 500 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -540,8 +540,12 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
+- `Kerollos004/venera`：
 - `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
+- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
+- `Aleksanaa/Venera`：QEMU Windows 11 guest Direct3D9~12 driver, without host changes
+- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
 - `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `yuxuanmian/venera`：A comic app
 - `Vulpes-venera/CS50p`：
@@ -551,16 +555,12 @@
 - `saber1008611/venera-configs`：Venera ?????(??)
 - `Venera-Works/Venera-Native-Prebuilts`：
 - `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
-- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
 - `laincat/VeneraCat-Core`：Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0
-- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
 - `zmf678/venera-sources`：Venera 漫画源整合：148 个去重源，index.json 一键订阅
-- `Kerollos004/venera`：
 - `venera-tropnikova/Alexs-Amazing-Garage-play`：Test play build of Alex's Amazing Garage (dist only). Source stays private.
 - `yemaoziben/venera-sources`：Venera 漫画源（44 个，含检测报告）
 - `veneraproject/venera-node`：
 - `NagasakiAno/VENERA_NEXT`：强大！可爱！自动化！一往无前！
-- `Aleksanaa/Venera`：QEMU Windows 11 guest Direct3D9~12 driver, without host changes
 - `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
 - `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
 - `qhu91it/h3r0-venera-configs`：My custom config for venera

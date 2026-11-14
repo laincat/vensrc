@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-14T15:46:53.797901+00:00",
+  "checkedAt": "2026-11-14T20:40:42.623636+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -10430,13 +10430,33 @@
   ],
   "newRepositories": [
     {
-      "repository": "Kyosee/VeneraX",
-      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
+      "repository": "Kerollos004/venera",
+      "description": "",
       "foundBy": "venera in:name,description"
     },
     {
       "repository": "lwtor/venera-native",
       "description": "Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Maxll51/EZVenera-Lite",
+      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Aleksanaa/Venera",
+      "description": "QEMU Windows 11 guest Direct3D9~12 driver, without host changes",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "CyrilPeng/Venera-Next",
+      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Kyosee/VeneraX",
+      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10485,28 +10505,13 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "Maxll51/EZVenera-Lite",
-      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "laincat/VeneraCat-Core",
       "description": "Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0",
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "CyrilPeng/Venera-Next",
-      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "zmf678/venera-sources",
       "description": "Venera 漫画源整合：148 个去重源，index.json 一键订阅",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Kerollos004/venera",
-      "description": "",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10527,11 +10532,6 @@
     {
       "repository": "NagasakiAno/VENERA_NEXT",
       "description": "强大！可爱！自动化！一往无前！",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Aleksanaa/Venera",
-      "description": "QEMU Windows 11 guest Direct3D9~12 driver, without host changes",
       "foundBy": "venera in:name,description"
     },
     {
