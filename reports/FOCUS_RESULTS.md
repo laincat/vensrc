@@ -1,6 +1,6 @@
 # 社区替代源与自用仓库重点复测
 
-核验时间：2026-11-13T07:46:17.559686+00:00（UTC）；CLI：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
+核验时间：2026-11-14T02:13:32.743056+00:00（UTC）；CLI：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 VeneraX 为订阅依据，Venera-Next 单独对照；固定样本、最低应用版本与源码哈希保持不变。
 表内“核心／整次”分别表示阅读链路和报告总状态。登录只采用完全相同构建的独立账号任务证据。
 未执行、跳过、缺少凭据和未触发回调均不计通过；两边分时执行的差异也可能来自源站或网络。
@@ -100,4 +100,4 @@ VeneraX 为订阅依据，Venera-Next 单独对照；固定样本、最低应用
 - [源码哈希及固定样本](../data/sources.lock.json)
 - [全部已审阅构建](../monitor/catalog.json)
 
-巡检 Actions：https://github.com/laincat/vensrc/actions/runs/43386702145
+巡检 Actions：https://github.com/laincat/vensrc/actions/runs/43543719138

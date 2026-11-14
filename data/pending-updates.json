@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-13T07:36:12.179628+00:00",
+  "checkedAt": "2026-11-14T02:01:05.954794+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -1720,7 +1720,7 @@
       "name": "51漫画",
       "version": "1.1.0",
       "fileName": "51manga.js",
-      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/e21c4000081d107f241e244ddc814b8fc1161bbe/normal_comic/51manga.js",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/f03f92904446812986dd8f58a198f7b29c2af83d/normal_comic/51manga.js",
       "sha256": "5a505f80319071bddf6f0de2b1bc2f32d9153bcb7c5d11679e7c1fe88ab3221e",
       "repository": "meaninglesslyy/venera-config",
       "minAppVersion": "1.6.0",
@@ -1742,7 +1742,7 @@
       "name": "嗶哩漫畫",
       "version": "1.2.0",
       "fileName": "bilimanga.js",
-      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/e21c4000081d107f241e244ddc814b8fc1161bbe/normal_comic/bilimanga.js",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/f03f92904446812986dd8f58a198f7b29c2af83d/normal_comic/bilimanga.js",
       "sha256": "e21b7984e309e0a1b730d737da914834ce15908b59c45c0d4d2be2627cecbbe2",
       "repository": "meaninglesslyy/venera-config",
       "minAppVersion": "1.6.0",
@@ -1764,7 +1764,7 @@
       "name": "如漫画",
       "version": "1.0.0",
       "fileName": "rumanhua.js",
-      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/e21c4000081d107f241e244ddc814b8fc1161bbe/normal_comic/rumanhua.js",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/f03f92904446812986dd8f58a198f7b29c2af83d/normal_comic/rumanhua.js",
       "sha256": "017847c6901f8e491c28e6cb7b3da2a3475e6512b88374ecd41b7922dcca38a7",
       "repository": "meaninglesslyy/venera-config",
       "minAppVersion": "1.6.0",
@@ -1784,7 +1784,7 @@
       "name": "zero搬运网",
       "version": "1.2.0",
       "fileName": "zerobyw33.js",
-      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/e21c4000081d107f241e244ddc814b8fc1161bbe/normal_comic/zerobyw33.js",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/f03f92904446812986dd8f58a198f7b29c2af83d/normal_comic/zerobyw33.js",
       "sha256": "17b9a4ae12100e367b54c116d5ee9810a9520eacbf7ab46cf930fe6485dd2fe7",
       "repository": "meaninglesslyy/venera-config",
       "minAppVersion": "1.6.0",
@@ -5679,7 +5679,7 @@
       "name": "鸟鸟韩漫",
       "version": "1.1.1",
       "fileName": "nnhanman.js",
-      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/e21c4000081d107f241e244ddc814b8fc1161bbe/translated/nnhanman.js",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/f03f92904446812986dd8f58a198f7b29c2af83d/translated/nnhanman.js",
       "sha256": "41b72c230bf6336f67cd99002beca4032be3023cb43ab982288cad29574554a1",
       "repository": "meaninglesslyy/venera-config",
       "minAppVersion": "1.6.0",
@@ -5698,8 +5698,27 @@
       "name": "Everia Club",
       "version": "1.1.0",
       "fileName": "everiaclub.js",
-      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/e21c4000081d107f241e244ddc814b8fc1161bbe/real_person_photo_book/everiaclub.js",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/f03f92904446812986dd8f58a198f7b29c2af83d/real_person_photo_book/everiaclub.js",
       "sha256": "c93c0d36386bcc781d7edadb27a88c81f4d18c0c1c806ee778206a45cbdd31b4",
+      "repository": "meaninglesslyy/venera-config",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "meaninglesslyy/venera-config"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "bd1902405a618cd93132674566f9c8885fbf1b2fcaa9101177107e6449ea5165",
+      "key": "pic12345",
+      "name": "美女图库",
+      "version": "1.0.1",
+      "fileName": "pic12345.js",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/f03f92904446812986dd8f58a198f7b29c2af83d/real_person_photo_book/pic12345.js",
+      "sha256": "bd1902405a618cd93132674566f9c8885fbf1b2fcaa9101177107e6449ea5165",
       "repository": "meaninglesslyy/venera-config",
       "minAppVersion": "1.6.0",
       "sample": {
@@ -6505,7 +6524,7 @@
       "name": "漫画人",
       "version": "1.0.1",
       "fileName": "manhuaren.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/e781f75e77c263354a7e663fa99535f1f86964cf/sources/ven/manhuaren.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/c200eee10dae7c758b0e09d727f2e02f455aa85d/sources/ven/manhuaren.js",
       "sha256": "2fbb6236652b0ea8776cd46d1b44e4ffc57d7812576550ddfe824ec8688ec42d",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.6.0",
@@ -6526,7 +6545,7 @@
       "name": "禁漫天堂（18+）",
       "version": "1.4.1",
       "fileName": "jm.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/e781f75e77c263354a7e663fa99535f1f86964cf/sources/ven/jm.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/c200eee10dae7c758b0e09d727f2e02f455aa85d/sources/ven/jm.js",
       "sha256": "4d0b8897c919c41ef2d44a55c9960ba931c46cc936fc808858e8dccf818cb39b",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.5.0",
@@ -6547,7 +6566,7 @@
       "name": "魅影画廊",
       "version": "1.0.2",
       "fileName": "myhl.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/e781f75e77c263354a7e663fa99535f1f86964cf/sources/private/myhl.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/c200eee10dae7c758b0e09d727f2e02f455aa85d/sources/private/myhl.js",
       "sha256": "898fd65f78c53deaa6f7850b58ec499d76c4d55a7c9024208e35263c134b4eea",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.2.0",
@@ -6568,7 +6587,7 @@
       "name": "韩漫屋（18+）",
       "version": "1.1.2",
       "fileName": "hmanwu.js",
-      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/e781f75e77c263354a7e663fa99535f1f86964cf/sources/private/hmanwu.js",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/c200eee10dae7c758b0e09d727f2e02f455aa85d/sources/private/hmanwu.js",
       "sha256": "9d0be11ce76a7027a8a1e990b2159dc9d534acfb98778e05d447555ed9288d48",
       "repository": "Taototo/venera-comic-sources",
       "minAppVersion": "1.0.0",
@@ -9088,7 +9107,7 @@
       "name": "拷贝漫画M",
       "version": "1.4.1",
       "fileName": "copy_manga_multi_accounts.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/7f15e7857d99ddd7194f3a66550fd830b0e2a543/copy_manga_multi_accounts.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/6a11f54feb4003aeecd97f7a03acecc66ee6bf3e/copy_manga_multi_accounts.js",
       "sha256": "71722c9f639f36b85dfe74a09298821ab8c1988e98416326fc5c6bad30dac834",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.6.0",
@@ -9102,15 +9121,15 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "168318286191f9848702847ac487e3a91061341779597575fc59bd6ce3f44510",
+      "id": "85e7991f4755a11bb1bc400b93afc9ab4fa0b96ccc81785cee28199f33ce679d",
       "key": "picacg",
       "name": "Picacg",
-      "version": "1.0.8",
+      "version": "1.0.12",
       "fileName": "picacg.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/7f15e7857d99ddd7194f3a66550fd830b0e2a543/picacg.js",
-      "sha256": "168318286191f9848702847ac487e3a91061341779597575fc59bd6ce3f44510",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/6a11f54feb4003aeecd97f7a03acecc66ee6bf3e/picacg.js",
+      "sha256": "85e7991f4755a11bb1bc400b93afc9ab4fa0b96ccc81785cee28199f33ce679d",
       "repository": "yuxuanmian/venera-configs",
-      "minAppVersion": "1.0.0",
+      "minAppVersion": "2.0.0",
       "sample": {
         "keyword": "火影"
       },
@@ -9126,7 +9145,7 @@
       "name": "漫蛙",
       "version": "1.0.8",
       "fileName": "manwa.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/7f15e7857d99ddd7194f3a66550fd830b0e2a543/manwa.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/6a11f54feb4003aeecd97f7a03acecc66ee6bf3e/manwa.js",
       "sha256": "50f92a3a66b5c625cbcc0df93007e5c269efdd55780c57b0e010e0dfcec75c25",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.6.0",
@@ -10131,7 +10150,7 @@
     },
     {
       "repository": "meaninglesslyy/venera-config",
-      "commit": "e21c4000081d107f241e244ddc814b8fc1161bbe",
+      "commit": "f03f92904446812986dd8f58a198f7b29c2af83d",
       "errors": []
     },
     {
@@ -10289,7 +10308,7 @@
     },
     {
       "repository": "Taototo/venera-comic-sources",
-      "commit": "e781f75e77c263354a7e663fa99535f1f86964cf",
+      "commit": "c200eee10dae7c758b0e09d727f2e02f455aa85d",
       "errors": [
         "再漫画：HTTP Error 404: Not Found",
         "漫小肆（18+）：HTTP Error 404: Not Found",
@@ -10297,7 +10316,9 @@
         "包子漫画：HTTP Error 404: Not Found",
         "大人漫画（18+）：HTTP Error 404: Not Found",
         "开心看漫画（18+）：HTTP Error 404: Not Found",
-        "鸟鸟韩漫（18+）：HTTP Error 404: Not Found"
+        "鸟鸟韩漫（18+）：HTTP Error 404: Not Found",
+        "大鸟禁漫（18+）：HTTP Error 404: Not Found",
+        "漫画大湿（18+）：HTTP Error 404: Not Found"
       ]
     },
     {
@@ -10327,7 +10348,7 @@
     },
     {
       "repository": "WEP-56/EZvenera-config",
-      "commit": "d928fb1c490dc7bf906d2e04cd1a7fda15577f01",
+      "commit": "5471dd9cd50878a2bc2e026c41639c7e8ef8925c",
       "errors": []
     },
     {
@@ -10372,7 +10393,7 @@
     },
     {
       "repository": "yuxuanmian/venera-configs",
-      "commit": "7f15e7857d99ddd7194f3a66550fd830b0e2a543",
+      "commit": "6a11f54feb4003aeecd97f7a03acecc66ee6bf3e",
       "errors": []
     },
     {
@@ -10409,6 +10430,26 @@
   ],
   "newRepositories": [
     {
+      "repository": "Maxll51/EZVenera-Lite",
+      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "saber1008611/venera-configs",
+      "description": "Venera ?????(??)",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Kerollos004/venera",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "venera-tropnikova/Alexs-Amazing-Garage-play",
+      "description": "Test play build of Alex's Amazing Garage (dist only). Source stays private.",
+      "foundBy": "venera in:name,description"
+    },
+    {
       "repository": "CyrilPeng/Venera-Next",
       "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
       "foundBy": "venera in:name,description"
@@ -10419,23 +10460,23 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "DimaLaptev/venera_test_cases",
-      "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Taototo/ManComic",
-      "description": "A Flutter comic reader app based on Venera",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Maxll51/EZVenera-Lite",
-      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android",
+      "repository": "yuxuanmian/venera",
+      "description": "A comic app",
       "foundBy": "venera in:name,description"
     },
     {
       "repository": "Kyosee/VeneraX",
       "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "venerahome/venerahome.github.io",
+      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Taototo/ManComic",
+      "description": "A Flutter comic reader app based on Venera",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10449,18 +10490,8 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "venerahome/venerahome.github.io",
-      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "NagasakiAno/VENERA_NEXT",
       "description": "强大！可爱！自动化！一往无前！",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Kerollos004/venera",
-      "description": "",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10504,11 +10535,6 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "venera-tropnikova/Alexs-Amazing-Garage-play",
-      "description": "Test play build of Alex's Amazing Garage (dist only). Source stays private.",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "940440952/comic-sources",
       "description": "双生态漫画源：Venera / VeneraNext / VeneraPlus JavaScript + Aidoku Rust/WASM；目前维护 manhuazhan.com。",
       "foundBy": "venera in:name,description"
@@ -10526,11 +10552,6 @@
     {
       "repository": "venera-app/venera-prime",
       "description": "A comic app,but prime",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "yuxuanmian/venera",
-      "description": "A comic app",
       "foundBy": "venera in:name,description"
     },
     {
