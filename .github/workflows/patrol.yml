@@ -2,8 +2,8 @@ name: Vensrc 巡检与订阅
 
 on:
   schedule:
-    # 香港时间每天 09:00；GitHub cron 使用 UTC。
-    - cron: "0 1 * * *"
+    # 每小时第 7 分钟运行（GitHub cron 按 UTC 解释，整点后 7 分）。
+    - cron: "7 * * * *"
   workflow_dispatch:
   push:
     branches: [main]
