@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-15T15:50:48.059481+00:00",
+  "checkedAt": "2026-11-15T21:11:49.348368+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-15T15:36:47.339150+00:00",
+    "checkedAt": "2026-11-15T20:59:36.066686+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -50,7 +50,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.5",
-    "imageId": "sha256:b1d5b1ba15780ead5690d729f1f957127700fcc4038c638e680d959332aa7d24"
+    "imageId": "sha256:81c214b0e3f1159f4d02eeba2d57b92244d4ae2269df64024dea5a26507c9df5"
   },
   "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
   "rows": [
@@ -166,21 +166,6 @@
       ]
     },
     {
-      "id": "3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5",
-      "key": "laimanhua_split",
-      "name": "来漫画（分流）",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.2.1",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "af540832b7f08e571fea7baae2e0bb545b760c82b5965ab4f20e21b046bb9e20",
       "key": "manhuauo_banana_v2",
       "name": "香蕉漫画",
@@ -272,6 +257,49 @@
         },
         {
           "stage": "image.download",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
+      "id": "85432d15a15e71a03192a27e73ee61b09cd68878561c9f5543ecb5dcb2933c67",
+      "key": "mycomic",
+      "name": "MYCOMIC",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.1.0",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[2].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.ranking.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "comic.loadEp",
           "category": "anti_bot"
         }
       ]
@@ -595,6 +623,41 @@
         },
         {
           "stage": "explore[0].load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
+      "id": "2cba3e6205a4e09059de879a6891a16f1b660f44bd7c54614ddd3966923493b3",
+      "key": "buondua",
+      "name": "Buon Dua",
+      "repository": "meaninglesslyy/venera-config",
+      "version": "1.2.0",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "comic.loadEp",
           "category": "anti_bot"
         }
       ]
@@ -1183,6 +1246,25 @@
       ]
     },
     {
+      "id": "d7361f1ec9128df35d0ccc7ea4bf6aef18c44065f51ed7a397228dcadbb6363f",
+      "key": "manhua178",
+      "name": "178漫画网",
+      "repository": "token1008/venera-cn-64bit",
+      "version": "1.0.0",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "image.download",
+          "category": "auth_required"
+        },
+        {
+          "stage": "image.download",
+          "category": "auth_required"
+        }
+      ]
+    },
+    {
       "id": "51636f60ed1f983ea2033cbfc8d1207a0063a0d0578ee5639da02d7867300d76",
       "key": "manhuaba",
       "name": "漫画吧网",
@@ -1579,25 +1661,6 @@
       ]
     },
     {
-      "id": "372767ebd00430e5085a904954fc814dc5b5cc07a12a6c185630a5bd2aaafb74",
-      "key": "qimanwu",
-      "name": "奇漫屋",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "explore[1].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[13].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "d9d3f92061a97793f33ccd780f68a63f39dcd47bfbc7d0140c71aec89debcfdf",
       "key": "source_07_49effa",
       "name": "☄️ 最次元",
@@ -1664,14 +1727,10 @@
       "repository": "xiaoxingmian/venera-configs",
       "version": "1.0.0",
       "runtimeProfile": "venerax",
-      "corePassed": false,
+      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
           "category": "auth_required"
         }
       ]
@@ -1713,15 +1772,7 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "categoryComics.load",
+          "stage": "comic.loadEp",
           "category": "auth_required"
         }
       ]
@@ -1899,21 +1950,6 @@
       ]
     },
     {
-      "id": "3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5",
-      "key": "laimanhua_split",
-      "name": "来漫画（分流）",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.2.1",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "af540832b7f08e571fea7baae2e0bb545b760c82b5965ab4f20e21b046bb9e20",
       "key": "manhuauo_banana_v2",
       "name": "香蕉漫画",
@@ -2005,6 +2041,49 @@
         },
         {
           "stage": "image.download",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
+      "id": "85432d15a15e71a03192a27e73ee61b09cd68878561c9f5543ecb5dcb2933c67",
+      "key": "mycomic",
+      "name": "MYCOMIC",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.1.0",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[2].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.ranking.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "comic.loadEp",
           "category": "anti_bot"
         }
       ]
@@ -2328,6 +2407,41 @@
         },
         {
           "stage": "explore[0].load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
+      "id": "2cba3e6205a4e09059de879a6891a16f1b660f44bd7c54614ddd3966923493b3",
+      "key": "buondua",
+      "name": "Buon Dua",
+      "repository": "meaninglesslyy/venera-config",
+      "version": "1.2.0",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "explore[1].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "comic.loadInfo",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "comic.loadEp",
           "category": "anti_bot"
         }
       ]
@@ -2916,6 +3030,25 @@
       ]
     },
     {
+      "id": "d7361f1ec9128df35d0ccc7ea4bf6aef18c44065f51ed7a397228dcadbb6363f",
+      "key": "manhua178",
+      "name": "178漫画网",
+      "repository": "token1008/venera-cn-64bit",
+      "version": "1.0.0",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "image.download",
+          "category": "auth_required"
+        },
+        {
+          "stage": "image.download",
+          "category": "auth_required"
+        }
+      ]
+    },
+    {
       "id": "51636f60ed1f983ea2033cbfc8d1207a0063a0d0578ee5639da02d7867300d76",
       "key": "manhuaba",
       "name": "漫画吧网",
@@ -3312,25 +3445,6 @@
       ]
     },
     {
-      "id": "372767ebd00430e5085a904954fc814dc5b5cc07a12a6c185630a5bd2aaafb74",
-      "key": "qimanwu",
-      "name": "奇漫屋",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "explore[8].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[13].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "d9d3f92061a97793f33ccd780f68a63f39dcd47bfbc7d0140c71aec89debcfdf",
       "key": "source_07_49effa",
       "name": "☄️ 最次元",
@@ -3397,14 +3511,10 @@
       "repository": "xiaoxingmian/venera-configs",
       "version": "1.0.0",
       "runtimeProfile": "venera-next",
-      "corePassed": false,
+      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[0].load",
           "category": "auth_required"
         }
       ]
@@ -3513,7 +3623,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/43730845218",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/43761103130",
   "browser": [
     {
       "key": "bakamh",
@@ -3604,5 +3714,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/43732167466"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/43762362756"
 }
