@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-15T01:01:04.561059+00:00",
+  "checkedAt": "2026-11-15T07:49:40.602242+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -1234,72 +1234,41 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "0adf399b0eab25937f07a9b6b23c044b7ebee8b75f1d30dcd55a1a8a4a5a400a",
-      "key": "dm5",
-      "name": "动漫屋",
-      "version": "0.2.0",
-      "fileName": "dm5.js",
-      "url": "https://raw.githubusercontent.com/zhimouzhou/venera-manga-sources/b3b22aaf832fb2382004b5be10a314e59c47e328/sources/dm5.js",
-      "sha256": "0adf399b0eab25937f07a9b6b23c044b7ebee8b75f1d30dcd55a1a8a4a5a400a",
-      "repository": "zhimouzhou/venera-manga-sources",
+      "id": "cfc7ddb4645bd99fe7fdf2c161cccd45c9cbb62e1164570c5f220cc16536af40",
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.4.4",
+      "fileName": "copy_manga.js",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/copy_manga.js",
+      "sha256": "cfc7ddb4645bd99fe7fdf2c161cccd45c9cbb62e1164570c5f220cc16536af40",
+      "repository": "hea784/venera-configs",
       "minAppVersion": "1.6.0",
       "sample": {
-        "comicId": "manhua-manbucangqiong",
-        "epId": "m938318",
-        "keyword": "斗破苍穹"
-      },
-      "trackedBy": [
-        "Junkrat9527/venera-sources",
-        "hea784/venera-configs",
-        "zhimouzhou/venera-manga-sources"
-      ],
-      "priority": 0,
-      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
-    },
-    {
-      "id": "ac1d497bfe0ba800b84ae3f5f5d4d0bf07dccd1174e8e24198cf5eadf00623b1",
-      "key": "mangabz",
-      "name": "Mangabz",
-      "version": "0.2.0",
-      "fileName": "mangabz.js",
-      "url": "https://raw.githubusercontent.com/zhimouzhou/venera-manga-sources/b3b22aaf832fb2382004b5be10a314e59c47e328/sources/mangabz.js",
-      "sha256": "ac1d497bfe0ba800b84ae3f5f5d4d0bf07dccd1174e8e24198cf5eadf00623b1",
-      "repository": "zhimouzhou/venera-manga-sources",
-      "minAppVersion": "1.6.0",
-      "sample": {
-        "comicId": "142",
-        "epId": "14224",
         "keyword": "火影"
       },
       "trackedBy": [
-        "Junkrat9527/venera-sources",
-        "hea784/venera-configs",
-        "zhimouzhou/venera-manga-sources"
+        "hea784/venera-configs"
       ],
-      "priority": 0,
+      "priority": 20,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "f71e0d2db4c2771915fd3916eefe1d73440f9cc2611829e300e9b920ff9bb569",
-      "key": "one_kkk",
-      "name": "极速漫画",
-      "version": "0.2.0",
-      "fileName": "one_kkk.js",
-      "url": "https://raw.githubusercontent.com/zhimouzhou/venera-manga-sources/b3b22aaf832fb2382004b5be10a314e59c47e328/sources/one_kkk.js",
-      "sha256": "f71e0d2db4c2771915fd3916eefe1d73440f9cc2611829e300e9b920ff9bb569",
-      "repository": "zhimouzhou/venera-manga-sources",
+      "id": "015642798121aa45426c7677e73c50b2b298d9dfb5650dd2e28342f010911341",
+      "key": "copy_manga_multi_accounts",
+      "name": "拷贝漫画M",
+      "version": "1.4.2",
+      "fileName": "copy_manga_multi_accounts.js",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/copy_manga_multi_accounts.js",
+      "sha256": "015642798121aa45426c7677e73c50b2b298d9dfb5650dd2e28342f010911341",
+      "repository": "hea784/venera-configs",
       "minAppVersion": "1.6.0",
       "sample": {
-        "comicId": "manhua55465",
-        "epId": "https://m.1kkk.com/ch15-969149/",
-        "keyword": "斗破苍穹"
+        "keyword": "火影"
       },
       "trackedBy": [
-        "Junkrat9527/venera-sources",
-        "hea784/venera-configs",
-        "zhimouzhou/venera-manga-sources"
+        "hea784/venera-configs"
       ],
-      "priority": 0,
+      "priority": 20,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
@@ -1308,7 +1277,7 @@
       "name": "禁漫天堂",
       "version": "1.4.1",
       "fileName": "jm.js",
-      "url": "https://raw.githubusercontent.com/hea784/venera-configs/c45e8178894cc760b24f9dc19caf4a59264a357c/jm.js",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/jm.js",
       "sha256": "490504eb906339d352c86dc8afdd40a772ac775bcdddb4a2de2eb683db23a08f",
       "repository": "hea784/venera-configs",
       "minAppVersion": "1.5.0",
@@ -1316,6 +1285,90 @@
         "comicId": "1485211",
         "epId": "ep_1485211",
         "keyword": "火影"
+      },
+      "trackedBy": [
+        "hea784/venera-configs"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "f6d6edf89affd1609b0d2a76b61ca1f004fe261e51754ce05666d381c0ac3e6a",
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "0.2.0",
+      "fileName": "dm5.js",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/dm5.js",
+      "sha256": "f6d6edf89affd1609b0d2a76b61ca1f004fe261e51754ce05666d381c0ac3e6a",
+      "repository": "hea784/venera-configs",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "manhua-manbucangqiong",
+        "epId": "m938318",
+        "keyword": "斗破苍穹"
+      },
+      "trackedBy": [
+        "hea784/venera-configs"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "3f11e684b26440402293a33318fddd5583d416edf754481036bd7fd3d84de8d3",
+      "key": "mangabz",
+      "name": "Mangabz",
+      "version": "0.2.0",
+      "fileName": "mangabz.js",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/mangabz.js",
+      "sha256": "3f11e684b26440402293a33318fddd5583d416edf754481036bd7fd3d84de8d3",
+      "repository": "hea784/venera-configs",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "142",
+        "epId": "14224",
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "hea784/venera-configs"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "9f51fa9aa2e95e64d3297d4a8d4800e1dc6012831740439c19851cb0dc7c460f",
+      "key": "one_kkk",
+      "name": "极速漫画",
+      "version": "0.2.0",
+      "fileName": "one_kkk.js",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/one_kkk.js",
+      "sha256": "9f51fa9aa2e95e64d3297d4a8d4800e1dc6012831740439c19851cb0dc7c460f",
+      "repository": "hea784/venera-configs",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "manhua55465",
+        "epId": "https://m.1kkk.com/ch15-969149/",
+        "keyword": "斗破苍穹"
+      },
+      "trackedBy": [
+        "hea784/venera-configs"
+      ],
+      "priority": 20,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "8e9564b9d048ae8c916a71aea7adf53b3b7cbcc941baea4bd2662f34be7d21c6",
+      "key": "yemancomic",
+      "name": "野蛮漫画",
+      "version": "0.1.2",
+      "fileName": "yemancomic.js",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/yemancomic.js",
+      "sha256": "8e9564b9d048ae8c916a71aea7adf53b3b7cbcc941baea4bd2662f34be7d21c6",
+      "repository": "hea784/venera-configs",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "https://yemancomic.com/book/7530/",
+        "epId": "https://yemancomic.com/chapter/7530/772668.html",
+        "keyword": "海贼王"
       },
       "trackedBy": [
         "hea784/venera-configs"
@@ -2008,6 +2061,28 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
+      "id": "0adf399b0eab25937f07a9b6b23c044b7ebee8b75f1d30dcd55a1a8a4a5a400a",
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "0.2.0",
+      "fileName": "dm5.js",
+      "url": "https://raw.githubusercontent.com/zhimouzhou/venera-manga-sources/b3b22aaf832fb2382004b5be10a314e59c47e328/sources/dm5.js",
+      "sha256": "0adf399b0eab25937f07a9b6b23c044b7ebee8b75f1d30dcd55a1a8a4a5a400a",
+      "repository": "zhimouzhou/venera-manga-sources",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "manhua-manbucangqiong",
+        "epId": "m938318",
+        "keyword": "斗破苍穹"
+      },
+      "trackedBy": [
+        "Junkrat9527/venera-sources",
+        "zhimouzhou/venera-manga-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
       "id": "a4e34d9681a48022640c072842dc37ccb4099fd1f9c04d8ab51cc38ebfa57669",
       "key": "dongman",
       "name": "咚漫",
@@ -2365,6 +2440,28 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
+      "id": "ac1d497bfe0ba800b84ae3f5f5d4d0bf07dccd1174e8e24198cf5eadf00623b1",
+      "key": "mangabz",
+      "name": "Mangabz",
+      "version": "0.2.0",
+      "fileName": "mangabz.js",
+      "url": "https://raw.githubusercontent.com/zhimouzhou/venera-manga-sources/b3b22aaf832fb2382004b5be10a314e59c47e328/sources/mangabz.js",
+      "sha256": "ac1d497bfe0ba800b84ae3f5f5d4d0bf07dccd1174e8e24198cf5eadf00623b1",
+      "repository": "zhimouzhou/venera-manga-sources",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "142",
+        "epId": "14224",
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "Junkrat9527/venera-sources",
+        "zhimouzhou/venera-manga-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
       "id": "b7f7995704b42b31010edf007c6a069bef77d3a96d03b5dca2d3456c6e2b29a4",
       "key": "manhuagui",
       "name": "漫画柜",
@@ -2567,6 +2664,28 @@
       "trackedBy": [
         "Junkrat9527/venera-sources",
         "VComic-org/venera-comic-source"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "f71e0d2db4c2771915fd3916eefe1d73440f9cc2611829e300e9b920ff9bb569",
+      "key": "one_kkk",
+      "name": "极速漫画",
+      "version": "0.2.0",
+      "fileName": "one_kkk.js",
+      "url": "https://raw.githubusercontent.com/zhimouzhou/venera-manga-sources/b3b22aaf832fb2382004b5be10a314e59c47e328/sources/one_kkk.js",
+      "sha256": "f71e0d2db4c2771915fd3916eefe1d73440f9cc2611829e300e9b920ff9bb569",
+      "repository": "zhimouzhou/venera-manga-sources",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "manhua55465",
+        "epId": "https://m.1kkk.com/ch15-969149/",
+        "keyword": "斗破苍穹"
+      },
+      "trackedBy": [
+        "Junkrat9527/venera-sources",
+        "zhimouzhou/venera-manga-sources"
       ],
       "priority": 0,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
@@ -10070,7 +10189,7 @@
     },
     {
       "repository": "hea784/venera-configs",
-      "commit": "c45e8178894cc760b24f9dc19caf4a59264a357c",
+      "commit": "36daf741b976bcd496f2084628543ee4bafed1ff",
       "errors": []
     },
     {
@@ -10430,23 +10549,23 @@
   ],
   "newRepositories": [
     {
-      "repository": "Maxll51/EZVenera-Lite",
-      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "lwtor/venera-native",
-      "description": "Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "Kerollos004/venera",
       "description": "",
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "Aleksanaa/Venera",
-      "description": "QEMU Windows 11 guest Direct3D9~12 driver, without host changes",
+      "repository": "Kyosee/VeneraX",
+      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "ikun5200/venera-prime-server",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Maxll51/EZVenera-Lite",
+      "description": "EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10455,8 +10574,23 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "Kyosee/VeneraX",
-      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
+      "repository": "Venera-Works/Venera-Plus",
+      "description": "VeneraPlus 是一个跨平台漫画阅读器。",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Venera-Works/Venera-Native-Prebuilts",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "lwtor/venera-native",
+      "description": "Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Aleksanaa/Venera",
+      "description": "QEMU Windows 11 guest Direct3D9~12 driver, without host changes",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10485,18 +10619,8 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "Venera-Works/Venera-Plus",
-      "description": "VeneraPlus 是一个跨平台漫画阅读器，支持本地漫画、网盘 漫画源、第三方网络漫画源",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "saber1008611/venera-configs",
       "description": "Venera ?????(??)",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Venera-Works/Venera-Native-Prebuilts",
-      "description": "",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10812,11 +10936,6 @@
     {
       "repository": "lll152872/venera-lll",
       "description": "venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "ikun5200/venera-prime-server",
-      "description": "",
       "foundBy": "venera in:name,description"
     },
     {
