@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-15T15:38:10.280422+00:00（UTC）。
+检查时间：2026-11-15T21:01:20.256249+00:00（UTC）。
 检查 70 个已登记仓库；发现 508 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -548,15 +548,17 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
-- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
 - `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `Kerollos004/venera`：
+- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
 - `0rion833/Venera`：
+- `Walter498/Venera-Max`：以 VeneraX 為基礎、按我們自己閱讀習慣深度改裝的漫畫閱讀器（栗子漫畫源優先）。加了什麼、修了什麼，全部寫在 README。
+- `Alevig1/VeneratohClient`：
+- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
+- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
 - `will040124-ctrl/LightReader`：轻阅：Kotlin / Jetpack Compose 小说、漫画与文档阅读器，支持 Venera 风格漫画源
 - `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
 - `Taototo/ManComic`：A Flutter comic reader app based on Venera
-- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
-- `Kerollos004/venera`：
 - `ikun5200/venera-prime-server`：
 - `Venera-Works/Venera-Native-Prebuilts`：
 - `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
@@ -604,7 +606,6 @@
 - `jnsingh01/venerabullstudios`：Venerabull Studios — a showcase of projects in development.
 - `jnsingh01/venerabullinteractive`：Venerabull Interactive — public website.
 - `staciepomar-spec/venera-glass-build`：CI build of venera v1.6.3 with a Pure-spec liquid glass bottom bar
-- `Walter498/Venera-Max`：以 VeneraX 為基礎、按我們自己閱讀習慣深度改裝的漫畫閱讀器（栗子漫畫源優先）。加了什麼、修了什麼，全部寫在 README。
 - `ryanp-cloud/venera-ai`：
 - `markiianklymchuk-hash/kingdoms-of-venera`：
 - `Manjit53/venerable-dasik-a5e0ff`：
