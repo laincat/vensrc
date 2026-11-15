@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-14T20:53:05.921995+00:00",
+  "checkedAt": "2026-11-15T01:12:46.199189+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-14T20:39:30.699567+00:00",
+    "checkedAt": "2026-11-15T00:59:16.697079+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -50,7 +50,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.5",
-    "imageId": "sha256:3837722b2c9e87faf92dd84c67106e69f8d7b04186ea0f10f1b1f117a3f0f0e5"
+    "imageId": "sha256:cd4233e56292d63c643cc8fa97ae97c97fee5417927b3d27e904f0bbef785b12"
   },
   "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
   "rows": [
@@ -258,10 +258,6 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "anti_bot"
         }
       ]
     },
@@ -920,21 +916,6 @@
       ]
     },
     {
-      "id": "e8d71c02d79cf0e370882d11f9bfd52e6620db34b479b099ce81f9e46701fca0",
-      "key": "hanabimanga",
-      "name": "花火漫画",
-      "repository": "xiaoxingmian/venera-configs",
-      "version": "1.0.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadEp",
-          "category": "rate_limited"
-        }
-      ]
-    },
-    {
       "id": "88e1a9b1d513975bb86f8fae43a3dc64977bbaed470106d440c6e359d98a3839",
       "key": "haokan_txt",
       "name": "好看漫画",
@@ -1091,14 +1072,6 @@
         {
           "stage": "explore[1].load",
           "category": "auth_required"
-        },
-        {
-          "stage": "explore[21].load",
-          "category": "rate_limited"
-        },
-        {
-          "stage": "explore[32].load",
-          "category": "rate_limited"
         },
         {
           "stage": "comic.loadEp",
@@ -1517,6 +1490,14 @@
         {
           "stage": "search.load",
           "category": "anti_bot"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "categoryComics.load",
+          "category": "anti_bot"
         }
       ]
     },
@@ -1577,15 +1558,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[5].load",
+          "stage": "explore[3].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[9].load",
+          "stage": "explore[8].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[11].load",
+          "stage": "explore[10].load",
           "category": "auth_required"
         }
       ]
@@ -1665,6 +1646,10 @@
         },
         {
           "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "categoryComics.load",
           "category": "auth_required"
         }
       ]
@@ -1976,10 +1961,6 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
-          "category": "anti_bot"
         }
       ]
     },
@@ -2638,21 +2619,6 @@
       ]
     },
     {
-      "id": "e8d71c02d79cf0e370882d11f9bfd52e6620db34b479b099ce81f9e46701fca0",
-      "key": "hanabimanga",
-      "name": "花火漫画",
-      "repository": "xiaoxingmian/venera-configs",
-      "version": "1.0.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadEp",
-          "category": "rate_limited"
-        }
-      ]
-    },
-    {
       "id": "88e1a9b1d513975bb86f8fae43a3dc64977bbaed470106d440c6e359d98a3839",
       "key": "haokan_txt",
       "name": "好看漫画",
@@ -2809,14 +2775,6 @@
         {
           "stage": "explore[1].load",
           "category": "auth_required"
-        },
-        {
-          "stage": "explore[23].load",
-          "category": "rate_limited"
-        },
-        {
-          "stage": "explore[34].load",
-          "category": "rate_limited"
         },
         {
           "stage": "comic.loadEp",
@@ -3303,23 +3261,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[0].load",
+          "stage": "explore[4].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[6].load",
+          "stage": "explore[5].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[8].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[10].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[13].load",
+          "stage": "explore[12].load",
           "category": "auth_required"
         }
       ]
@@ -3507,7 +3457,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/43638638291",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/43660871676",
   "browser": [
     {
       "key": "bakamh",
@@ -3598,5 +3548,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/43639868389"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/43662022590"
 }
