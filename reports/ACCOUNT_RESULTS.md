@@ -1,6 +1,6 @@
 # 隔离账号巡检结果
 
-核验时间：2026-11-15T07:50:06.871532+00:00（UTC）。
+核验时间：2026-11-15T15:39:34.791752+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
@@ -13,7 +13,7 @@
 
 ## 登录失败项
 
-- 禁漫天堂／venera-next：登录失败，请求超时；需核对账号状态、权限及访问限制。
+本轮没有已执行且失败的登录接口；未执行项另列。
 
 ## 已核对的登录流程差异
 
@@ -34,23 +34,23 @@
 
 | 站点 | key | 环境 | 登录 | 核心阅读 | 整次 | 全部失败阶段及类别 | 跳过阶段数 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 漫画柜 | ManHuaGui | venerax | 通过 | 通过 | 部分通过 | 无失败 | 3 |
-| 漫画柜 | ManHuaGui | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 3 |
+| 漫画柜 | ManHuaGui | venerax | 通过 | 通过 | 失败 | search.load：HTTP 错误 | 3 |
+| 漫画柜 | ManHuaGui | venera-next | 通过 | 通过 | 失败 | search.load：HTTP 错误 | 3 |
 | 奇漫屋 | qimanwu | — | 已保存凭据；当前审阅版本未提供 account.login，未注入密码 | 未测试 | 跳过 |  | 未执行 |
 | AGE动漫 | age_anime | — | 已保存凭据；当前已审阅清单无本站源 | 未测试 | 跳过 |  | 未执行 |
 | 动漫屋 | dm5 | — | 已保存凭据；当前审阅版本未提供 account.login，未注入密码 | 未测试 | 跳过 |  | 未执行 |
 | 绅士漫画 | wnacg | venerax | 跳过 | 通过 | 部分通过 | 无失败 | 14 |
 | 绅士漫画 | wnacg | venera-next | 跳过 | 通过 | 部分通过 | 无失败 | 14 |
 | 禁漫天堂 | jm | venerax | 通过 | 通过 | 失败 | favorites.loadFolders：需要登录 | 14 |
-| 禁漫天堂 | jm | venera-next | 失败 | 通过 | 失败 | account.login：请求超时 | 15 |
+| 禁漫天堂 | jm | venera-next | 通过 | 通过 | 失败 | favorites.loadFolders：需要登录 | 14 |
 | 包子漫画 | baozi | venerax | 通过 | 通过 | 部分通过 | 无失败 | 2 |
 | 包子漫画 | baozi | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 2 |
 | 18ak 漫画 | 18ak | — | 已保存凭据；当前已审阅清单无本站源 | 未测试 | 跳过 |  | 未执行 |
 | 哔咔漫画 | picacg | venerax | 通过 | 通过 | 部分通过 | 无失败 | 6 |
 | 哔咔漫画 | picacg | venera-next | 通过 | 通过 | 部分通过 | 无失败 | 6 |
-| 拷贝漫画 | copy_manga_multi_accounts | venerax | 通过 | 通过 | 失败 | settings：返回结构或样本不满足契约；comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 8 |
-| 拷贝漫画 | copy_manga_multi_accounts | venera-next | 通过 | 通过 | 失败 | settings：返回结构或样本不满足契约；categoryComics.load：网络错误；comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 8 |
+| 拷贝漫画 | copy_manga_multi_accounts | venerax | 通过 | 未通过 | 失败 | settings：返回结构或样本不满足契约；comic.loadInfo：网络错误；comic.loadComments：HTTP 错误 | 12 |
+| 拷贝漫画 | copy_manga_multi_accounts | venera-next | 通过 | 通过 | 失败 | settings：返回结构或样本不满足契约；comic.onClickTag：源配置错误；comic.onClickTag：源配置错误 | 8 |
 | 热辣漫画 | hot_manga | — | 已保存凭据；1.0.1 是自建读取版，尚未实现账号登录（没有可复测账号，不写未验证流程）；补上账户能力后再纳入登录巡检。 | 未测试 | 跳过 |  | 未执行 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 ../data/account-results.json。
-Actions：https://github.com/laincat/vensrc/actions/runs/43691511260
+Actions：https://github.com/laincat/vensrc/actions/runs/43730845218

@@ -1,7 +1,7 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-15T07:49:40.602242+00:00（UTC）。
-检查 70 个已登记仓库；发现 506 个未审阅源码构建。
+检查时间：2026-11-15T15:38:10.280422+00:00（UTC）。
+检查 70 个已登记仓库；发现 508 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
 
@@ -300,6 +300,8 @@
 | 鸟鸟韩漫 | nnhanman | 1.1.1 | meaninglesslyy/venera-config | 1.6.0 | 41b72c230bf6336f67cd99002beca4032be3023cb43ab982288cad29574554a1 |
 | Everia Club | everiaclub | 1.1.0 | meaninglesslyy/venera-config | 1.6.0 | c93c0d36386bcc781d7edadb27a88c81f4d18c0c1c806ee778206a45cbdd31b4 |
 | 美女图库 | pic12345 | 1.0.1 | meaninglesslyy/venera-config | 1.6.0 | bd1902405a618cd93132674566f9c8885fbf1b2fcaa9101177107e6449ea5165 |
+| TWOIMG 美女 | twoimg_people | 1.1.1 | meaninglesslyy/venera-config | 1.6.0 | 7077e87e4a3af7b72a19f9ea7055bfdfa0770f96d6c1fa4e3de544bb1d98c1b7 |
+| 闺秀网 | guixiu_pic | 1.2.0 | meaninglesslyy/venera-config | 1.6.0 | cbd3a432215b9ebc8ed290a98825ebeee8bb3588c3368191fe114d96a80c3e01 |
 | 香蕉漫画｜仅外部入口 | banana_external | 1.0.0 | Meloon-dr/venera-sources | 1.16.0 | 164c97511925503496ca1072f21b2d4cb7bd36cf5ad74dc8b52141010ef87529 |
 | 包子漫画｜仅外部入口 | baozi_external | 1.0.0 | Meloon-dr/venera-sources | 1.16.0 | 27f1e31e78a06be99888aefe5c608e28ff45aa7478d7ae979df6878f8c716d82 |
 | 动漫屋 | dm5_comics | 0.2.2 | Meloon-dr/venera-sources | 1.16.0 | f40677fdcd9f50868dec7604ce926f96054c4c8b5f521b2d6e6473a6b2a33660 |
@@ -546,20 +548,22 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `Kerollos004/venera`：
-- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
-- `ikun5200/venera-prime-server`：
-- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
 - `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `0rion833/Venera`：
+- `will040124-ctrl/LightReader`：轻阅：Kotlin / Jetpack Compose 小说、漫画与文档阅读器，支持 Venera 风格漫画源
+- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
+- `Taototo/ManComic`：A Flutter comic reader app based on Venera
 - `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
+- `Kerollos004/venera`：
+- `ikun5200/venera-prime-server`：
 - `Venera-Works/Venera-Native-Prebuilts`：
 - `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
 - `Aleksanaa/Venera`：QEMU Windows 11 guest Direct3D9~12 driver, without host changes
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `yuxuanmian/venera`：A comic app
 - `Vulpes-venera/CS50p`：
 - `opaiopaio/Venera-Nas`：Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中
-- `Taototo/ManComic`：A Flutter comic reader app based on Venera
 - `saber1008611/venera-configs`：Venera ?????(??)
 - `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `laincat/VeneraCat-Core`：Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0
@@ -624,7 +628,6 @@
 - `fave-eng/venera`：
 - `matloporokjl-tech/https-venerable-malasada-5a1196.netlify.app-`：Google Keep clone (HTML and CSS)
 - `lll152872/venera-lll`：venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、
-- `1148891151a-ui/-veneranext-sources.json`：
 - `buzhidao10068/venera2picacomic`：把 Venera 导出的 .venera 转成 PicaComic 能导入的 .picadata，迁移收藏夹与阅读历史 ／ Convert a Venera (.venera) export into a PicaComic (.picadata) import, migrating favourites and reading history
 - `venerasf/Venera`：A modular exploitation framework extensible with Lua
 - `venvnft/venv-sc`：Smart contract serving as a marketplace for music in NFT format, facilitating sales and auctions for ERC721 and ERC1155 NFT.
@@ -635,6 +638,7 @@
 - `Day-Day-S-t-u-d-y/venera-configs-custom`：
 - `clxin43/venera-my-configs`：public
 - `StevenSun121/venera-configs`：
+- `1148891151a-ui/-veneranext-sources.json`：
 - `yanyi05/venera-sources`：Personal JavaScript sources for VeneraNext
 - `18846743977-alt/my-venera-sources`：my-venera-sources
 - `fuluoydebende/venera-manga-sources`：Venera manga sources (fixed) - 33 sources + index.json, ready to import in Venera
