@@ -1,7 +1,7 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-16T00:58:52.595432+00:00（UTC）。
-检查 70 个已登记仓库；发现 508 个未审阅源码构建。
+检查时间：2026-11-16T07:55:14.292785+00:00（UTC）。
+检查 70 个已登记仓库；发现 509 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
 
@@ -47,6 +47,7 @@
 | Hanime1 H漫画 | hanime1_comics | 1.2.1 | gallhall/venerav-configs | 1.0.0 | 729836e4e65b01161f5ba1f9998fdc1630d08dd6407e480f063d578cfa7ea7c7 |
 | 包子漫画 | baozi | 1.1.8 | handahao666-boop/venera_comic_source | 1.0.0 | db40b64506f7002420eb5d6e23b3f7829a0fe3c6c36afff77991ec1097d78f25 |
 | 拷贝漫画 | copy_manga | 1.6.6 | ZhiLin-Sam/venera-sources | 1.6.0 | 06ea2676323e40e980cb8f8fba2b53a70733e7cade267e0261763c55e6b30155 |
+| 飞翔漫画 | ffppt | 1.0.7 | handahao666-boop/venera_comic_source | 1.0.0 | df2cf69a863adca6da2c2dcc63649d94e290979f6b13fb84bea58b9643823330 |
 | 瓜子漫画 | guazimanhua | 1.0.4 | ZhiLin-Sam/venera-sources | 1.0.0 | b93ad63c5e0ac1a41c77ab95e7561f20718ad46228fb9b6b8fbb8196c3f56dc6 |
 | Komiic | Komiic | 1.0.8 | ZhiLin-Sam/venera-sources | 1.0.0 | ad74a243c07ebc549254e75162fceb81097e6755054e1902ca81e0327370bd68 |
 | 腾讯动漫（正版） | qq_comic_official_v1 | 1.0.3 | ZhiLin-Sam/venera-sources | 1.0.0 | fd53172968ebc576a69d8bda73b8e576589a28b469e84a46890692b93e1256b6 |
@@ -548,21 +549,22 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
-- `Alevig1/VeneratohClient`：
 - `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
-- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
+- `daodao0326/venera`：漫画源
+- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
 - `0rion833/Venera`：
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
-- `Kerollos004/venera`：
+- `Maxll51/EZVenera-Lite`：EZVenera 2026 Edition: Lightweight Venera Rewrite with Streamlined Plugin Runtime for Windows & Android
+- `Taototo/ManComic`：A Flutter comic reader app based on Venera
+- `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
 - `Walter498/Venera-Max`：以 VeneraX 為基礎、按我們自己閱讀習慣深度改裝的漫畫閱讀器（栗子漫畫源優先）。加了什麼、修了什麼，全部寫在 README。
+- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
+- `Alevig1/VeneratohClient`：
+- `Kerollos004/venera`：
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
 - `will040124-ctrl/LightReader`：轻阅：Kotlin / Jetpack Compose 小说、漫画与文档阅读器，支持 Venera 风格漫画源
-- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
-- `Taototo/ManComic`：A Flutter comic reader app based on Venera
 - `ikun5200/venera-prime-server`：
 - `Venera-Works/Venera-Native-Prebuilts`：
-- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
 - `Aleksanaa/Venera`：QEMU Windows 11 guest Direct3D9~12 driver, without host changes
 - `yuxuanmian/venera`：A comic app
 - `Vulpes-venera/CS50p`：
@@ -582,7 +584,6 @@
 - `haukuen/venera`：仅自用 ／ For personal use only
 - `jnsingh01/venerabulllife`：Venerabull Life — public website.
 - `940440952/comic-sources`：双生态漫画源：Venera / VeneraNext / VeneraPlus JavaScript + Aidoku Rust/WASM；目前维护 manhuazhan.com。
-- `daodao0326/venera`：漫画源
 - `LeylaKhojasteh/venera-jewelry-store`：Venera — Persian RTL jewellery storefront with Next.js, PostgreSQL, Prisma and Three.js
 - `venera-app/venera-prime`：A comic app,but prime
 - `venera-kuz/uchebnaya-praktika`：
@@ -634,7 +635,6 @@
 - `venvnft/venv-sc`：Smart contract serving as a marketplace for music in NFT format, facilitating sales and auctions for ERC721 and ERC1155 NFT.
 - `decker-archive/venera`：Free and Open Source alternative to Discord and Guilded.
 - `nobug-project/venera-configs`：
-- `Tzhl-ovo/venera-configs`：Venera comic source configurations
 - `zzu8493-debug/venera-configs`：
 - `Day-Day-S-t-u-d-y/venera-configs-custom`：
 - `clxin43/venera-my-configs`：public
