@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-17T02:28:26.752424+00:00（UTC）。
+检查时间：2026-11-17T11:43:54.802089+00:00（UTC）。
 检查 70 个已登记仓库；发现 510 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -550,15 +550,19 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
+- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
+- `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
+- `worktogetherwithaldi/venerable-mochi-f155b6`：
+- `eaton0130-design/Eternal-Immortal-Venerable`：我小說改編的遊戲
+- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
 - `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
+- `3176289965f-ai/my-venera-sources`：
+- `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
 - `Alevig1/VeneratohClient`：
 - `Zohrab1998/venera`：
 - `arsa02314/VeneraAirline`：
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
-- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
-- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `Venera-Works/Venera-rhttp`：
 - `Venera-Works/Venera-flutter_qjs`：
 - `Aleksanaa/Venera`：QEMU Windows 11 guest Direct3D9~12 driver, without host changes
@@ -584,7 +588,6 @@
 - `yemaoziben/venera-sources`：Venera 漫画源（44 个，含检测报告）
 - `veneraproject/venera-node`：
 - `NagasakiAno/VENERA_NEXT`：强大！可爱！自动化！一往无前！
-- `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
 - `qhu91it/h3r0-venera-configs`：My custom config for venera
 - `dxmsk/Venera-Sources`：Venera custom comic sources — 巴卡漫画 bakamh.com
 - `Majveia/Veneration`：
@@ -606,7 +609,6 @@
 - `evgeniavakorina-ux/venera`：
 - `AXmishell/veneraGo`：A comic app
 - `amke79/venerastudios-site`：
-- `3176289965f-ai/my-venera-sources`：
 - `shimixihao-bit/Venera-`：分别是81个漫画源和一点非漫画的源，还有一个是GPT改的拷贝漫画修改版，原版导入不进去Venera-next
 - `hlf2016/venera-config`：
 - `Ciaodar/VenerableKnowledge`：a minecraft mod with a potion effect.
@@ -632,7 +634,6 @@
 - `MatthewLestermun/venera-salon`：
 - `SYXZyt/Venera`：Official compiler of the Venera hobby language
 - `ACGNnsj/venera-unified-configs`：Self-hosted source catalog and configs for venera-unified (B4)
-- `rinnki-L/-md3-`：Venera 漫画源移植到阅读MD3的书源（10个漫画源+合集+订阅源）
 - `buzhidao10068/venera2picacomic`：把 Venera 导出的 .venera 转成 PicaComic 能导入的 .picadata，迁移收藏夹与阅读历史 ／ Convert a Venera (.venera) export into a PicaComic (.picadata) import, migrating favourites and reading history
 - `venerasf/Venera`：A modular exploitation framework extensible with Lua
 - `venvnft/venv-sc`：Smart contract serving as a marketplace for music in NFT format, facilitating sales and auctions for ERC721 and ERC1155 NFT.
@@ -652,6 +653,7 @@
 - `kkiki11/venera-comic-sources`：Personal Venera comic source JavaScript files
 - `amenoshigure/venera-sources`：嗨皮漫画源
 - `istayheart/my-venera-sources`：sources_copymanga
+- `rinnki-L/-md3-`：Venera 漫画源移植到阅读MD3的书源（10个漫画源+合集+订阅源）
 - `SnowDreamXUE/venera-next-config`：转换venera-config漫画源配置文件格式为venera-next要求
 - `fuluoydebende/venera-hipmh-source`：Venera 漫画源 - 嬉皮漫畫 hipmh v1.0.2 (API 驱动修复版)
 - `dororo42/EZVenera4KO`：EZVenera/Venera JS 漫画源移植层 for KOReader (LuaJIT + quickjs-ng)

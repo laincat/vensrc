@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-17T02:28:26.752424+00:00",
+  "checkedAt": "2026-11-17T11:43:54.802089+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -10627,8 +10627,28 @@
   ],
   "newRepositories": [
     {
-      "repository": "vonhezhou/mansou",
-      "description": "漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。",
+      "repository": "gallhall/venera-v",
+      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Yo1sing/Venera-Edge",
+      "description": "A comic app, but built with FRB (Flutter Rust Bridge).",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "worktogetherwithaldi/venerable-mochi-f155b6",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "eaton0130-design/Eternal-Immortal-Venerable",
+      "description": "我小說改編的遊戲",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Venera-Works/Venera-Plus",
+      "description": "VeneraPlus 是一个跨平台漫画阅读器。",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10637,8 +10657,23 @@
       "foundBy": "venera in:name,description"
     },
     {
+      "repository": "venerahome/venerahome.github.io",
+      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
+      "foundBy": "venera in:name,description"
+    },
+    {
       "repository": "Kyosee/VeneraX",
       "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "3176289965f-ai/my-venera-sources",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "vonhezhou/mansou",
+      "description": "漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10654,21 +10689,6 @@
     {
       "repository": "arsa02314/VeneraAirline",
       "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "venerahome/venerahome.github.io",
-      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Venera-Works/Venera-Plus",
-      "description": "VeneraPlus 是一个跨平台漫画阅读器。",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "gallhall/venera-v",
-      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10797,11 +10817,6 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "Yo1sing/Venera-Edge",
-      "description": "A comic app, but built with FRB (Flutter Rust Bridge).",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "qhu91it/h3r0-venera-configs",
       "description": "My custom config for venera",
       "foundBy": "venera in:name,description"
@@ -10903,11 +10918,6 @@
     },
     {
       "repository": "amke79/venerastudios-site",
-      "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "3176289965f-ai/my-venera-sources",
       "description": "",
       "foundBy": "venera in:name,description"
     },
@@ -11037,11 +11047,6 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "rinnki-L/-md3-",
-      "description": "Venera 漫画源移植到阅读MD3的书源（10个漫画源+合集+订阅源）",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "buzhidao10068/venera2picacomic",
       "description": "把 Venera 导出的 .venera 转成 PicaComic 能导入的 .picadata，迁移收藏夹与阅读历史 ／ Convert a Venera (.venera) export into a PicaComic (.picadata) import, migrating favourites and reading history",
       "foundBy": "topic:venera"
@@ -11135,6 +11140,11 @@
       "repository": "istayheart/my-venera-sources",
       "description": "sources_copymanga",
       "foundBy": "venera-sources in:name"
+    },
+    {
+      "repository": "rinnki-L/-md3-",
+      "description": "Venera 漫画源移植到阅读MD3的书源（10个漫画源+合集+订阅源）",
+      "foundBy": "venera 漫画源 in:name,description"
     },
     {
       "repository": "SnowDreamXUE/venera-next-config",
