@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-17T11:43:54.802089+00:00",
+  "checkedAt": "2026-11-17T20:50:05.291095+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -9299,13 +9299,13 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "71722c9f639f36b85dfe74a09298821ab8c1988e98416326fc5c6bad30dac834",
+      "id": "f3a0b2618d89d0876c940c6bba5a9f5e682e46d2d701d6fa218a709bf41e0297",
       "key": "copy_manga_multi",
       "name": "拷贝漫画M",
-      "version": "1.4.1",
+      "version": "1.4.2",
       "fileName": "copy_manga_multi_accounts.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/996e32a1e4a572c76d718ddec0742d8b76c7f04a/copy_manga_multi_accounts.js",
-      "sha256": "71722c9f639f36b85dfe74a09298821ab8c1988e98416326fc5c6bad30dac834",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/57d0a16dd76fc11f9fd4013907551ab10da92865/copy_manga_multi_accounts.js",
+      "sha256": "f3a0b2618d89d0876c940c6bba5a9f5e682e46d2d701d6fa218a709bf41e0297",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.6.0",
       "sample": {
@@ -9323,7 +9323,7 @@
       "name": "Picacg",
       "version": "1.0.12",
       "fileName": "picacg.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/996e32a1e4a572c76d718ddec0742d8b76c7f04a/picacg.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/57d0a16dd76fc11f9fd4013907551ab10da92865/picacg.js",
       "sha256": "85e7991f4755a11bb1bc400b93afc9ab4fa0b96ccc81785cee28199f33ce679d",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "2.0.0",
@@ -9342,7 +9342,7 @@
       "name": "漫蛙",
       "version": "1.0.12",
       "fileName": "manwa.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/996e32a1e4a572c76d718ddec0742d8b76c7f04a/manwa.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/57d0a16dd76fc11f9fd4013907551ab10da92865/manwa.js",
       "sha256": "7272eb24b4798c3d3ee5c0f34f160e5c9501e83d021f4fe1f3298924154fb219",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.6.0",
@@ -10590,7 +10590,7 @@
     },
     {
       "repository": "yuxuanmian/venera-configs",
-      "commit": "996e32a1e4a572c76d718ddec0742d8b76c7f04a",
+      "commit": "57d0a16dd76fc11f9fd4013907551ab10da92865",
       "errors": []
     },
     {
@@ -10627,8 +10627,38 @@
   ],
   "newRepositories": [
     {
+      "repository": "Arteiimis/scoop-venera",
+      "description": "Scoop bucket for Venera Lean",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Arteiimis/venera-lean",
+      "description": "Venera Prime 的精简与性能优化 fork（独立发行）",
+      "foundBy": "venera in:name,description"
+    },
+    {
       "repository": "gallhall/venera-v",
       "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "eaton0130-design/Eternal-Immortal-Venerable",
+      "description": "我小說改編的遊戲",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "venerahome/venerahome.github.io",
+      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "CyrilPeng/Venera-Next",
+      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Venera-Works/Venera-Plus",
+      "description": "VeneraPlus 是一个跨平台漫画阅读器。",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10639,26 +10669,6 @@
     {
       "repository": "worktogetherwithaldi/venerable-mochi-f155b6",
       "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "eaton0130-design/Eternal-Immortal-Venerable",
-      "description": "我小說改編的遊戲",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Venera-Works/Venera-Plus",
-      "description": "VeneraPlus 是一个跨平台漫画阅读器。",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "CyrilPeng/Venera-Next",
-      "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "venerahome/venerahome.github.io",
-      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
       "foundBy": "venera in:name,description"
     },
     {
@@ -11037,16 +11047,6 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "SYXZyt/Venera",
-      "description": "Official compiler of the Venera hobby language",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "ACGNnsj/venera-unified-configs",
-      "description": "Self-hosted source catalog and configs for venera-unified (B4)",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "buzhidao10068/venera2picacomic",
       "description": "把 Venera 导出的 .venera 转成 PicaComic 能导入的 .picadata，迁移收藏夹与阅读历史 ／ Convert a Venera (.venera) export into a PicaComic (.picadata) import, migrating favourites and reading history",
       "foundBy": "topic:venera"
@@ -11065,6 +11065,11 @@
       "repository": "decker-archive/venera",
       "description": "Free and Open Source alternative to Discord and Guilded.",
       "foundBy": "topic:venera"
+    },
+    {
+      "repository": "ACGNnsj/venera-unified-configs",
+      "description": "Self-hosted source catalog and configs for venera-unified (B4)",
+      "foundBy": "venera-configs in:name"
     },
     {
       "repository": "nobug-project/venera-configs",

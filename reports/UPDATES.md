@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-17T11:43:54.802089+00:00（UTC）。
+检查时间：2026-11-17T20:50:05.291095+00:00（UTC）。
 检查 70 个已登记仓库；发现 510 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -477,7 +477,7 @@
 | ehentai | ehentai | 1.2.0 | YongkeDet/venera-configs | 1.5.3 | ea4bcfde4f7574141806426a3a842a30378e045b14c58d265458489a29f8ea43 |
 | Lanraragi | lanraragi | 1.2.0 | YongkeDet/venera-configs | 1.4.0 | 5552689d5e7169ad86d8347a136aa38a6c86744c1afc730aa5ca61ed8e86efb5 |
 | 百合会 | baihehui | 1.0.0 | YongkeDet/venera-configs | 1.4.0 | 4b00bf339136b3ed70390b3887c84069eb2e8ac748a564127515d9809f6fd7fc |
-| 拷贝漫画M | copy_manga_multi | 1.4.1 | yuxuanmian/venera-configs | 1.6.0 | 71722c9f639f36b85dfe74a09298821ab8c1988e98416326fc5c6bad30dac834 |
+| 拷贝漫画M | copy_manga_multi | 1.4.2 | yuxuanmian/venera-configs | 1.6.0 | f3a0b2618d89d0876c940c6bba5a9f5e682e46d2d701d6fa218a709bf41e0297 |
 | Picacg | picacg | 1.0.12 | yuxuanmian/venera-configs | 2.0.0 | 85e7991f4755a11bb1bc400b93afc9ab4fa0b96ccc81785cee28199f33ce679d |
 | 漫蛙 | manwa | 1.0.12 | yuxuanmian/venera-configs | 1.6.0 | 7272eb24b4798c3d3ee5c0f34f160e5c9501e83d021f4fe1f3298924154fb219 |
 | X漫画 | xmanhua | 1.0.0 | yuyuyu529/venera | 1.0.0 | ef06cd614412f0d15a594b493c4ebea14091df870d01c1b250aa15affe708187 |
@@ -550,13 +550,15 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
+- `Arteiimis/scoop-venera`：Scoop bucket for Venera Lean
+- `Arteiimis/venera-lean`：Venera Prime 的精简与性能优化 fork（独立发行）
 - `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
+- `eaton0130-design/Eternal-Immortal-Venerable`：我小說改編的遊戲
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
 - `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
 - `worktogetherwithaldi/venerable-mochi-f155b6`：
-- `eaton0130-design/Eternal-Immortal-Venerable`：我小說改編的遊戲
-- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
-- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
 - `3176289965f-ai/my-venera-sources`：
 - `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
@@ -632,12 +634,11 @@
 - `AnziibMeepo/VeneraM`：A comic app，自用版，增加了图片超分功能、拆分跨页功、修改了左右连续阅读功能的滑动BUG、修复了很多地方崩溃闪退的问题、换了一个自己很喜欢的图标。
 - `Venera0207/venera-sales`：
 - `MatthewLestermun/venera-salon`：
-- `SYXZyt/Venera`：Official compiler of the Venera hobby language
-- `ACGNnsj/venera-unified-configs`：Self-hosted source catalog and configs for venera-unified (B4)
 - `buzhidao10068/venera2picacomic`：把 Venera 导出的 .venera 转成 PicaComic 能导入的 .picadata，迁移收藏夹与阅读历史 ／ Convert a Venera (.venera) export into a PicaComic (.picadata) import, migrating favourites and reading history
 - `venerasf/Venera`：A modular exploitation framework extensible with Lua
 - `venvnft/venv-sc`：Smart contract serving as a marketplace for music in NFT format, facilitating sales and auctions for ERC721 and ERC1155 NFT.
 - `decker-archive/venera`：Free and Open Source alternative to Discord and Guilded.
+- `ACGNnsj/venera-unified-configs`：Self-hosted source catalog and configs for venera-unified (B4)
 - `nobug-project/venera-configs`：
 - `zzu8493-debug/venera-configs`：
 - `Day-Day-S-t-u-d-y/venera-configs-custom`：
