@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-18T11:31:55.944572+00:00",
+  "checkedAt": "2026-11-18T20:26:46.078897+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -9323,7 +9323,7 @@
       "name": "拷贝漫画M",
       "version": "1.4.2",
       "fileName": "copy_manga_multi_accounts.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/57d0a16dd76fc11f9fd4013907551ab10da92865/copy_manga_multi_accounts.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/60fb2949ae5c6fc1ec1753b11514858a6e9cb7d5/copy_manga_multi_accounts.js",
       "sha256": "f3a0b2618d89d0876c940c6bba5a9f5e682e46d2d701d6fa218a709bf41e0297",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.6.0",
@@ -9342,7 +9342,7 @@
       "name": "Picacg",
       "version": "1.0.12",
       "fileName": "picacg.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/57d0a16dd76fc11f9fd4013907551ab10da92865/picacg.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/60fb2949ae5c6fc1ec1753b11514858a6e9cb7d5/picacg.js",
       "sha256": "85e7991f4755a11bb1bc400b93afc9ab4fa0b96ccc81785cee28199f33ce679d",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "2.0.0",
@@ -9356,13 +9356,13 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
-      "id": "7272eb24b4798c3d3ee5c0f34f160e5c9501e83d021f4fe1f3298924154fb219",
+      "id": "f5bd1263c5e8451b5af0a902e29af8dd47613bc580f1e9ffea5b28ea978277d3",
       "key": "manwa",
       "name": "漫蛙",
-      "version": "1.0.12",
+      "version": "1.0.13",
       "fileName": "manwa.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/57d0a16dd76fc11f9fd4013907551ab10da92865/manwa.js",
-      "sha256": "7272eb24b4798c3d3ee5c0f34f160e5c9501e83d021f4fe1f3298924154fb219",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/60fb2949ae5c6fc1ec1753b11514858a6e9cb7d5/manwa.js",
+      "sha256": "f5bd1263c5e8451b5af0a902e29af8dd47613bc580f1e9ffea5b28ea978277d3",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.6.0",
       "sample": {
@@ -10609,7 +10609,7 @@
     },
     {
       "repository": "yuxuanmian/venera-configs",
-      "commit": "57d0a16dd76fc11f9fd4013907551ab10da92865",
+      "commit": "60fb2949ae5c6fc1ec1753b11514858a6e9cb7d5",
       "errors": []
     },
     {
@@ -10646,13 +10646,13 @@
   ],
   "newRepositories": [
     {
-      "repository": "Kyosee/VeneraX",
-      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
+      "repository": "venerahome/venerahome.github.io",
+      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "gallhall/venera-v",
-      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates",
+      "repository": "Arteiimis/venera-lean",
+      "description": "Venera Prime 的精简与性能优化 fork（独立发行）",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10661,18 +10661,33 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "Yo1sing/Venera-Edge",
-      "description": "A comic app, but built with FRB (Flutter Rust Bridge).",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "eaton0130-design/Eternal-Immortal-Venerable",
       "description": "我小說改編的遊戲",
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "venerahome/venerahome.github.io",
-      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
+      "repository": "shagovind14/veneratefoundation-media",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Kyosee/VeneraX",
+      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Nakami003/Fujyoshi-VeneraNext",
+      "description": "Fujyoshi's VeneraNext Comic Sources",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "gallhall/venera-v",
+      "description": "venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "Yo1sing/Venera-Edge",
+      "description": "A comic app, but built with FRB (Flutter Rust Bridge).",
       "foundBy": "venera in:name,description"
     },
     {
@@ -10683,11 +10698,6 @@
     {
       "repository": "Arteiimis/scoop-venera",
       "description": "Scoop bucket for Venera Lean",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Arteiimis/venera-lean",
-      "description": "Venera Prime 的精简与性能优化 fork（独立发行）",
       "foundBy": "venera in:name,description"
     },
     {
@@ -11053,16 +11063,6 @@
     {
       "repository": "AnziibMeepo/VeneraM",
       "description": "A comic app，自用版，增加了图片超分功能、拆分跨页功、修改了左右连续阅读功能的滑动BUG、修复了很多地方崩溃闪退的问题、换了一个自己很喜欢的图标。",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Venera0207/venera-sales",
-      "description": "",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "MatthewLestermun/venera-salon",
-      "description": "",
       "foundBy": "venera in:name,description"
     },
     {
