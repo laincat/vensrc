@@ -1,7 +1,7 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-18T02:53:24.023807+00:00（UTC）。
-检查 70 个已登记仓库；发现 510 个未审阅源码构建。
+检查时间：2026-11-18T11:31:55.944572+00:00（UTC）。
+检查 70 个已登记仓库；发现 511 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
 
@@ -304,6 +304,7 @@
 | TWOIMG 美女 | twoimg_people | 1.1.1 | meaninglesslyy/venera-config | 1.6.0 | 7077e87e4a3af7b72a19f9ea7055bfdfa0770f96d6c1fa4e3de544bb1d98c1b7 |
 | 闺秀网 | guixiu_pic | 1.2.0 | meaninglesslyy/venera-config | 1.6.0 | cbd3a432215b9ebc8ed290a98825ebeee8bb3588c3368191fe114d96a80c3e01 |
 | CosBlay | cosblay | 1.0.0 | meaninglesslyy/venera-config | 1.6.0 | b90e424a9b85056d234b340dc1ac02bfe11b3abf07ace4e5424c2d1d522be50e |
+| 风流杂志 | trendszine | 1.1.0 | meaninglesslyy/venera-config | 1.6.0 | e168eec86cbfc44f9aab81debb82cab1b8414dabf62d562e80ca81ab866a4328 |
 | 香蕉漫画｜仅外部入口 | banana_external | 1.0.0 | Meloon-dr/venera-sources | 1.16.0 | 164c97511925503496ca1072f21b2d4cb7bd36cf5ad74dc8b52141010ef87529 |
 | 包子漫画｜仅外部入口 | baozi_external | 1.0.0 | Meloon-dr/venera-sources | 1.16.0 | 27f1e31e78a06be99888aefe5c608e28ff45aa7478d7ae979df6878f8c716d82 |
 | 动漫屋 | dm5_comics | 0.2.2 | Meloon-dr/venera-sources | 1.16.0 | f40677fdcd9f50868dec7604ce926f96054c4c8b5f521b2d6e6473a6b2a33660 |
@@ -550,16 +551,16 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
+- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
+- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
+- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
+- `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
+- `eaton0130-design/Eternal-Immortal-Venerable`：我小說改編的遊戲
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
 - `Arteiimis/scoop-venera`：Scoop bucket for Venera Lean
 - `Arteiimis/venera-lean`：Venera Prime 的精简与性能优化 fork（独立发行）
-- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
-- `eaton0130-design/Eternal-Immortal-Venerable`：我小說改編的遊戲
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
-- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
-- `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
 - `worktogetherwithaldi/venerable-mochi-f155b6`：
-- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
 - `3176289965f-ai/my-venera-sources`：
 - `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
 - `Alevig1/VeneratohClient`：
