@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-18T20:26:46.078897+00:00（UTC）。
+检查时间：2026-11-19T02:32:12.633244+00:00（UTC）。
 检查 70 个已登记仓库；发现 511 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -551,8 +551,10 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `HHHHia/venera-mine`：my Venera comic-source mirror with local patches
+- `sbajtl/massage-web-site`：Venera Massage Center - Built site
 - `Arteiimis/venera-lean`：Venera Prime 的精简与性能优化 fork（独立发行）
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
 - `eaton0130-design/Eternal-Immortal-Venerable`：我小說改編的遊戲
 - `shagovind14/veneratefoundation-media`：
@@ -633,8 +635,6 @@
 - `noorlightazaz-gif/https-venerable-sunshine-623dd3.netlify.app-`：
 - `Ryuzxy/Analisis-Veneralbility-WebGoat-Ilkom-Unej`：
 - `Venera0207/venera-portfolio`：
-- `john-cpallc/venerable-grain`：
-- `AnziibMeepo/VeneraM`：A comic app，自用版，增加了图片超分功能、拆分跨页功、修改了左右连续阅读功能的滑动BUG、修复了很多地方崩溃闪退的问题、换了一个自己很喜欢的图标。
 - `buzhidao10068/venera2picacomic`：把 Venera 导出的 .venera 转成 PicaComic 能导入的 .picadata，迁移收藏夹与阅读历史 ／ Convert a Venera (.venera) export into a PicaComic (.picadata) import, migrating favourites and reading history
 - `venerasf/Venera`：A modular exploitation framework extensible with Lua
 - `venvnft/venv-sc`：Smart contract serving as a marketplace for music in NFT format, facilitating sales and auctions for ERC721 and ERC1155 NFT.
