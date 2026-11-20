@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-20T11:26:21.599415+00:00（UTC）。
+检查时间：2026-11-20T20:04:26.560972+00:00（UTC）。
 检查 70 个已登记仓库；发现 512 个未审阅源码构建。
 
 新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；后续 Actions 才会执行巡检并按主／扩展标准自动收录。
@@ -552,14 +552,16 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
+- `jazzphone/venera`：Accelerated graphics for macOS VMs on QEMU/KVM: a virtio-gpu driver with Metal over Venus (experimental)
+- `KatoSred/Tsumiru-Venera`：Tsumiru 分支版：内置完全独立的 Venera 阅读器引擎，双引擎随选随用
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `tanye2333/venera-sources`：个人维护的 Venera 漫画源
 - `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
+- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
+- `saber1008611/venera-configs`：Venera ?????(??)
 - `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
 - `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
-- `saber1008611/venera-configs`：Venera ?????(??)
 - `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
-- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
-- `jazzphone/venera`：Accelerated graphics for macOS VMs on QEMU/KVM: a virtio-gpu driver with Metal over Venus (experimental)
 - `3176289965f-ai/my-venera-sources`：
 - `yuxuanmian/venera`：A comic app
 - `eaton0130-design/Eternal-Immortal-Venerable`：我小說改編的遊戲
@@ -636,8 +638,6 @@
 - `normalice8/VeneraNext-comic-sources`：
 - `Gandum2077/venera-patrol-cli`：
 - `noorlightazaz-gif/https-venerable-sunshine-623dd3.netlify.app-`：
-- `Ryuzxy/Analisis-Veneralbility-WebGoat-Ilkom-Unej`：
-- `Venera0207/venera-portfolio`：
 - `buzhidao10068/venera2picacomic`：把 Venera 导出的 .venera 转成 PicaComic 能导入的 .picadata，迁移收藏夹与阅读历史 ／ Convert a Venera (.venera) export into a PicaComic (.picadata) import, migrating favourites and reading history
 - `venerasf/Venera`：A modular exploitation framework extensible with Lua
 - `venvnft/venv-sc`：Smart contract serving as a marketplace for music in NFT format, facilitating sales and auctions for ERC721 and ERC1155 NFT.
