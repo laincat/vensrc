@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-21T17:38:20.307138+00:00",
+  "checkedAt": "2026-11-21T23:19:40.328054+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-21T17:24:00.487864+00:00",
+    "checkedAt": "2026-11-21T23:06:37.150290+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -50,7 +50,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.5",
-    "imageId": "sha256:e5d4a0875148847906632fb7ff274d18646ff94b5327fcd25d7cb73366c4eeb0"
+    "imageId": "sha256:4035c78732ac19c0f2133c578c29680383ccf37235b130c8e2b12f773263a943"
   },
   "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
   "rows": [
@@ -61,7 +61,7 @@
       "repository": "handahao666-boop/venera_comic_source",
       "version": "1.0.0",
       "runtimeProfile": "venerax",
-      "corePassed": false,
+      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
@@ -166,6 +166,21 @@
       ]
     },
     {
+      "id": "3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5",
+      "key": "laimanhua_split",
+      "name": "来漫画（分流）",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.2.1",
+      "runtimeProfile": "venerax",
+      "corePassed": true,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
       "id": "af540832b7f08e571fea7baae2e0bb545b760c82b5965ab4f20e21b046bb9e20",
       "key": "manhuauo_banana_v2",
       "name": "香蕉漫画",
@@ -238,29 +253,6 @@
         },
         {
           "stage": "categoryComics.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "ffddebed57a843e59b341df19a11585c03c0244d5be4bddc22c1b6f95557ebca",
-      "key": "mh4399",
-      "name": "4399漫画网",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.0.3",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "image.download",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
           "category": "anti_bot"
         }
       ]
@@ -913,21 +905,6 @@
       ]
     },
     {
-      "id": "e8d71c02d79cf0e370882d11f9bfd52e6620db34b479b099ce81f9e46701fca0",
-      "key": "hanabimanga",
-      "name": "花火漫画",
-      "repository": "xiaoxingmian/venera-configs",
-      "version": "1.0.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "88e1a9b1d513975bb86f8fae43a3dc64977bbaed470106d440c6e359d98a3839",
       "key": "haokan_txt",
       "name": "好看漫画",
@@ -1282,173 +1259,6 @@
       ]
     },
     {
-      "id": "3453e17e695392f647e7cf17c5ee412ad81d87fbab3d419918e39287c10ff1a0",
-      "key": "miaoqu",
-      "name": "喵趣漫画",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[1].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[2].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[3].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[4].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[5].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[6].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[7].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[8].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[9].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[10].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[11].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[12].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[13].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[14].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[15].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[16].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[17].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[18].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[19].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[20].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[21].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[22].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[23].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[24].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[25].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[26].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[27].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[28].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[29].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[30].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[31].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[32].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[33].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[34].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[35].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[36].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[37].load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "775844ab98af77aebdb86b9a5fd25b54cad08d5bc70c053455ddfcfe07dd941b",
       "key": "mitaku",
       "name": "Mitaku",
@@ -1570,15 +1380,19 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[6].load",
+          "stage": "search.load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[7].load",
+          "stage": "explore[3].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[10].load",
+          "stage": "explore[4].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[5].load",
           "category": "auth_required"
         }
       ]
@@ -1681,14 +1495,6 @@
         },
         {
           "stage": "categoryComics.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadEp",
           "category": "anti_bot"
         }
       ]
@@ -1776,7 +1582,7 @@
       "repository": "handahao666-boop/venera_comic_source",
       "version": "1.0.0",
       "runtimeProfile": "venera-next",
-      "corePassed": false,
+      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
@@ -1881,6 +1687,21 @@
       ]
     },
     {
+      "id": "3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5",
+      "key": "laimanhua_split",
+      "name": "来漫画（分流）",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.2.1",
+      "runtimeProfile": "venera-next",
+      "corePassed": true,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
       "id": "af540832b7f08e571fea7baae2e0bb545b760c82b5965ab4f20e21b046bb9e20",
       "key": "manhuauo_banana_v2",
       "name": "香蕉漫画",
@@ -1953,29 +1774,6 @@
         },
         {
           "stage": "categoryComics.load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
-      "id": "ffddebed57a843e59b341df19a11585c03c0244d5be4bddc22c1b6f95557ebca",
-      "key": "mh4399",
-      "name": "4399漫画网",
-      "repository": "handahao666-boop/venera_comic_source",
-      "version": "1.0.3",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "image.download",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "thumbnail.download",
           "category": "anti_bot"
         }
       ]
@@ -2628,21 +2426,6 @@
       ]
     },
     {
-      "id": "e8d71c02d79cf0e370882d11f9bfd52e6620db34b479b099ce81f9e46701fca0",
-      "key": "hanabimanga",
-      "name": "花火漫画",
-      "repository": "xiaoxingmian/venera-configs",
-      "version": "1.0.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadEp",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "88e1a9b1d513975bb86f8fae43a3dc64977bbaed470106d440c6e359d98a3839",
       "key": "haokan_txt",
       "name": "好看漫画",
@@ -2997,173 +2780,6 @@
       ]
     },
     {
-      "id": "3453e17e695392f647e7cf17c5ee412ad81d87fbab3d419918e39287c10ff1a0",
-      "key": "miaoqu",
-      "name": "喵趣漫画",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[0].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[1].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[2].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[3].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[4].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[5].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[6].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[7].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[8].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[9].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[10].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[11].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[12].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[13].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[14].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[15].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[16].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[17].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[18].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[19].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[20].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[21].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[22].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[23].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[24].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[25].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[26].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[27].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[28].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[29].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[30].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[31].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[32].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[33].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[34].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[35].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[36].load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "explore[37].load",
-          "category": "anti_bot"
-        }
-      ]
-    },
-    {
       "id": "775844ab98af77aebdb86b9a5fd25b54cad08d5bc70c053455ddfcfe07dd941b",
       "key": "mitaku",
       "name": "Mitaku",
@@ -3289,19 +2905,15 @@
           "category": "auth_required"
         },
         {
+          "stage": "explore[1].load",
+          "category": "auth_required"
+        },
+        {
           "stage": "explore[4].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[5].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[8].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[11].load",
+          "stage": "explore[13].load",
           "category": "auth_required"
         }
       ]
@@ -3404,14 +3016,6 @@
         },
         {
           "stage": "categoryComics.load",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadInfo",
-          "category": "anti_bot"
-        },
-        {
-          "stage": "comic.loadEp",
           "category": "anti_bot"
         }
       ]
@@ -3493,7 +3097,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/44929821822",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/44960124878",
   "browser": [
     {
       "key": "bakamh",
@@ -3584,5 +3188,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/44931178601"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/44961278339"
 }
