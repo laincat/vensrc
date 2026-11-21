@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-20T20:15:50.169426+00:00",
+  "checkedAt": "2026-11-21T01:39:08.592936+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-20T20:02:09.496665+00:00",
+    "checkedAt": "2026-11-21T01:25:21.827407+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -50,7 +50,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.5",
-    "imageId": "sha256:3cf0b43e3ae3e774ed98e67a181f372087f56b188161bb75847f5324c2f91c65"
+    "imageId": "sha256:472eae9405b843c103d5930cb4ecbaf25eaa8bbdc0b1e3ac86cc9a49947f745c"
   },
   "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
   "rows": [
@@ -166,6 +166,21 @@
       ]
     },
     {
+      "id": "3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5",
+      "key": "laimanhua_split",
+      "name": "来漫画（分流）",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.2.1",
+      "runtimeProfile": "venerax",
+      "corePassed": true,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
       "id": "af540832b7f08e571fea7baae2e0bb545b760c82b5965ab4f20e21b046bb9e20",
       "key": "manhuauo_banana_v2",
       "name": "香蕉漫画",
@@ -1566,15 +1581,11 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[1].load",
+          "stage": "search.load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[2].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[14].load",
+          "stage": "explore[3].load",
           "category": "auth_required"
         }
       ]
@@ -1869,6 +1880,21 @@
       ]
     },
     {
+      "id": "3b82bcbae93217536396031d14601a87584078bcac4c12ac7733d9a1aa8620b5",
+      "key": "laimanhua_split",
+      "name": "来漫画（分流）",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.2.1",
+      "runtimeProfile": "venera-next",
+      "corePassed": true,
+      "failures": [
+        {
+          "stage": "search.load",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
       "id": "af540832b7f08e571fea7baae2e0bb545b760c82b5965ab4f20e21b046bb9e20",
       "key": "manhuauo_banana_v2",
       "name": "香蕉漫画",
@@ -2785,6 +2811,14 @@
           "category": "auth_required"
         },
         {
+          "stage": "explore[11].load",
+          "category": "rate_limited"
+        },
+        {
+          "stage": "explore[22].load",
+          "category": "rate_limited"
+        },
+        {
           "stage": "comic.loadEp",
           "category": "auth_required"
         }
@@ -3269,23 +3303,15 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[0].load",
+          "stage": "explore[1].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[2].load",
+          "stage": "explore[3].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[5].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[11].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[12].load",
+          "stage": "explore[7].load",
           "category": "auth_required"
         }
       ]
@@ -3402,7 +3428,7 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "comic.loadEp",
+          "stage": "comic.loadInfo",
           "category": "auth_required"
         }
       ]
@@ -3469,7 +3495,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/44807627314",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/44850070400",
   "browser": [
     {
       "key": "bakamh",
@@ -3560,5 +3586,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/44809838094"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/44851459834"
 }
