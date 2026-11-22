@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-21T23:08:46.380692+00:00",
+  "checkedAt": "2026-11-22T03:08:13.040222+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -731,7 +731,8 @@
       "trackedBy": [
         "ZhiLin-Sam/venera-sources",
         "handahao666-boop/venera_comic_source",
-        "hgnbh/sw"
+        "hgnbh/sw",
+        "n3114576614-cell/N_venera_source"
       ],
       "priority": 0,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
@@ -774,7 +775,8 @@
         "Junkrat9527/venera-sources",
         "ZhiLin-Sam/venera-sources",
         "handahao666-boop/venera_comic_source",
-        "hgnbh/sw"
+        "hgnbh/sw",
+        "n3114576614-cell/N_venera_source"
       ],
       "priority": 0,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
@@ -796,7 +798,8 @@
         "Junkrat9527/venera-sources",
         "ZhiLin-Sam/venera-sources",
         "handahao666-boop/venera_comic_source",
-        "hgnbh/sw"
+        "hgnbh/sw",
+        "n3114576614-cell/N_venera_source"
       ],
       "priority": 0,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
@@ -819,7 +822,8 @@
         "Magentadots/venera-configs",
         "ZhiLin-Sam/venera-sources",
         "handahao666-boop/venera_comic_source",
-        "hgnbh/sw"
+        "hgnbh/sw",
+        "n3114576614-cell/N_venera_source"
       ],
       "priority": 0,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
@@ -1500,9 +1504,9 @@
       "name": "飞翔漫画",
       "version": "1.0.1",
       "fileName": "ffppt.js",
-      "url": "https://raw.githubusercontent.com/hgnbh/sw/4f1cff24024ab591d245d9a8f01a9cb1c60f6803/ffppt.js",
+      "url": "https://raw.githubusercontent.com/n3114576614-cell/N_venera_source/e7229a5c8121eeb35e80e0c23e9f1fe3889ec342/ffppt.js",
       "sha256": "b86d41220d3fcfafd0799ac569332adfc0978c5ac0509a08cf077b6f51853d3e",
-      "repository": "hgnbh/sw",
+      "repository": "n3114576614-cell/N_venera_source",
       "minAppVersion": "1.0.0",
       "sample": {
         "comicId": "30027",
@@ -1510,7 +1514,8 @@
         "keyword": "火影"
       },
       "trackedBy": [
-        "hgnbh/sw"
+        "hgnbh/sw",
+        "n3114576614-cell/N_venera_source"
       ],
       "priority": 0,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
@@ -1632,6 +1637,7 @@
       "trackedBy": [
         "Junkrat9527/venera-sources",
         "hgnbh/sw",
+        "n3114576614-cell/N_venera_source",
         "yelongyue197-svg/venera-sources"
       ],
       "priority": 0,
@@ -2122,10 +2128,10 @@
       "key": "dongman_la",
       "name": "动漫啦",
       "version": "1.0.1",
-      "fileName": "dongman_la.js",
-      "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/dongman_la.js",
+      "fileName": "dongman_la_fixed_v101.js",
+      "url": "https://raw.githubusercontent.com/n3114576614-cell/N_venera_source/e7229a5c8121eeb35e80e0c23e9f1fe3889ec342/dongman_la_fixed_v101.js",
       "sha256": "f3599e84cdebd39aa3cf752e0b97b015ea673917314572cf52e567d81a12daba",
-      "repository": "Magentadots/venera-configs",
+      "repository": "n3114576614-cell/N_venera_source",
       "minAppVersion": "1.0.0",
       "sample": {
         "comicId": "13331",
@@ -2134,7 +2140,8 @@
       },
       "trackedBy": [
         "Junkrat9527/venera-sources",
-        "Magentadots/venera-configs"
+        "Magentadots/venera-configs",
+        "n3114576614-cell/N_venera_source"
       ],
       "priority": 0,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
@@ -5401,10 +5408,10 @@
       "key": "rumanhua_fixed_v15",
       "name": "如漫画",
       "version": "1.2.6",
-      "fileName": "rumanhua.js",
-      "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/rumanhua.js",
+      "fileName": "rumanhua_fixed_v16.js",
+      "url": "https://raw.githubusercontent.com/n3114576614-cell/N_venera_source/e7229a5c8121eeb35e80e0c23e9f1fe3889ec342/rumanhua_fixed_v16.js",
       "sha256": "bf5b4c9becfbee456bfc02c2cc0851aedb6bde63a568564954208e27d455eec7",
-      "repository": "Magentadots/venera-configs",
+      "repository": "n3114576614-cell/N_venera_source",
       "minAppVersion": "1.0.0",
       "sample": {
         "comicId": "TRxUTBo",
@@ -5412,7 +5419,8 @@
         "keyword": "火影"
       },
       "trackedBy": [
-        "Magentadots/venera-configs"
+        "Magentadots/venera-configs",
+        "n3114576614-cell/N_venera_source"
       ],
       "priority": 0,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
@@ -6143,6 +6151,69 @@
       },
       "trackedBy": [
         "MQ9Reaper/venera-personal-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "0be6c0a5f3bcee229990c90e820f2ec410443d4e0d00dbf01a00155e1eb292f5",
+      "key": "bilimanga",
+      "name": "嗶哩漫畫",
+      "version": "1.1.0",
+      "fileName": "bilimanga.js",
+      "url": "https://raw.githubusercontent.com/n3114576614-cell/N_venera_source/e7229a5c8121eeb35e80e0c23e9f1fe3889ec342/bilimanga.js",
+      "sha256": "0be6c0a5f3bcee229990c90e820f2ec410443d4e0d00dbf01a00155e1eb292f5",
+      "repository": "n3114576614-cell/N_venera_source",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "1230",
+        "epId": "102449",
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "n3114576614-cell/N_venera_source"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "23908d87f455e3d09025ea450a2bf82eafb5a0ae0b9c3eceddb03207abbc7241",
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "7.0.0",
+      "fileName": "dm5.js",
+      "url": "https://raw.githubusercontent.com/n3114576614-cell/N_venera_source/e7229a5c8121eeb35e80e0c23e9f1fe3889ec342/dm5.js",
+      "sha256": "23908d87f455e3d09025ea450a2bf82eafb5a0ae0b9c3eceddb03207abbc7241",
+      "repository": "n3114576614-cell/N_venera_source",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "manhua-manbucangqiong",
+        "epId": "m938318",
+        "keyword": "斗破苍穹"
+      },
+      "trackedBy": [
+        "n3114576614-cell/N_venera_source"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "534e23e43bb016cecb0988e11651da049f39e2a4d1ffa7cd4498c8695fde95ca",
+      "key": "zerobyw33",
+      "name": "zero搬运网",
+      "version": "1.1.0",
+      "fileName": "zerobyw33.js",
+      "url": "https://raw.githubusercontent.com/n3114576614-cell/N_venera_source/e7229a5c8121eeb35e80e0c23e9f1fe3889ec342/zerobyw33.js",
+      "sha256": "534e23e43bb016cecb0988e11651da049f39e2a4d1ffa7cd4498c8695fde95ca",
+      "repository": "n3114576614-cell/N_venera_source",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "comicId": "23009",
+        "epId": "711126",
+        "keyword": "海贼王"
+      },
+      "trackedBy": [
+        "n3114576614-cell/N_venera_source"
       ],
       "priority": 0,
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
@@ -9126,12 +9197,133 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
+      "id": "9ad7272a59dd26ea7f59e471ef140a63acbbdd16bcdcf694615e2c9201794816",
+      "key": "baozi",
+      "name": "包子漫画",
+      "version": "1.1.9",
+      "fileName": "baozi.js",
+      "url": "https://raw.githubusercontent.com/YongkeDet/venera-configs/c728b1611f8b9a5b444c57c4231abb2305616beb/baozi.js",
+      "sha256": "9ad7272a59dd26ea7f59e471ef140a63acbbdd16bcdcf694615e2c9201794816",
+      "repository": "YongkeDet/venera-configs",
+      "minAppVersion": "1.5.0",
+      "sample": {
+        "comicId": "huoyingrenzhe-anbenqishi",
+        "epId": "0",
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "YongkeDet/venera-configs"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "b1a444db46b30b74c5c2852e12e09ce61cf7f68276ec15d5d21e74bd9080a134",
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.4.4",
+      "fileName": "copy_manga.js",
+      "url": "https://raw.githubusercontent.com/YongkeDet/venera-configs/c728b1611f8b9a5b444c57c4231abb2305616beb/copy_manga.js",
+      "sha256": "b1a444db46b30b74c5c2852e12e09ce61cf7f68276ec15d5d21e74bd9080a134",
+      "repository": "YongkeDet/venera-configs",
+      "minAppVersion": "1.6.0",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "YongkeDet/venera-configs"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "ba8f2403ab0f5b42d91950371476b8bd02528dbe38521954475702094fad0b65",
+      "key": "boylove",
+      "name": "香香腐宅",
+      "version": "1.0.0",
+      "fileName": "boylove.js",
+      "url": "https://raw.githubusercontent.com/YongkeDet/venera-configs/c728b1611f8b9a5b444c57c4231abb2305616beb/boylove.js",
+      "sha256": "ba8f2403ab0f5b42d91950371476b8bd02528dbe38521954475702094fad0b65",
+      "repository": "YongkeDet/venera-configs",
+      "minAppVersion": "1.4.0",
+      "sample": {
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "YongkeDet/venera-configs"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "ea4bcfde4f7574141806426a3a842a30378e045b14c58d265458489a29f8ea43",
+      "key": "ehentai",
+      "name": "ehentai",
+      "version": "1.2.0",
+      "fileName": "ehentai.js",
+      "url": "https://raw.githubusercontent.com/YongkeDet/venera-configs/c728b1611f8b9a5b444c57c4231abb2305616beb/ehentai.js",
+      "sha256": "ea4bcfde4f7574141806426a3a842a30378e045b14c58d265458489a29f8ea43",
+      "repository": "YongkeDet/venera-configs",
+      "minAppVersion": "1.5.3",
+      "sample": {
+        "comicId": "https://e-hentai.org/g/4127683/14cef22186/",
+        "keyword": "海贼王"
+      },
+      "trackedBy": [
+        "YongkeDet/venera-configs"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "5552689d5e7169ad86d8347a136aa38a6c86744c1afc730aa5ca61ed8e86efb5",
+      "key": "lanraragi",
+      "name": "Lanraragi",
+      "version": "1.2.0",
+      "fileName": "lanraragi.js",
+      "url": "https://raw.githubusercontent.com/YongkeDet/venera-configs/c728b1611f8b9a5b444c57c4231abb2305616beb/lanraragi.js",
+      "sha256": "5552689d5e7169ad86d8347a136aa38a6c86744c1afc730aa5ca61ed8e86efb5",
+      "repository": "YongkeDet/venera-configs",
+      "minAppVersion": "1.4.0",
+      "sample": {
+        "comicId": "e4c422fd10943dc169e3489a38cdbf57101a5f7e",
+        "epId": "e4c422fd10943dc169e3489a38cdbf57101a5f7e",
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "YongkeDet/venera-configs"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
+      "id": "4b00bf339136b3ed70390b3887c84069eb2e8ac748a564127515d9809f6fd7fc",
+      "key": "baihehui",
+      "name": "百合会",
+      "version": "1.0.0",
+      "fileName": "baihehui.js",
+      "url": "https://raw.githubusercontent.com/YongkeDet/venera-configs/c728b1611f8b9a5b444c57c4231abb2305616beb/baihehui.js",
+      "sha256": "4b00bf339136b3ed70390b3887c84069eb2e8ac748a564127515d9809f6fd7fc",
+      "repository": "YongkeDet/venera-configs",
+      "minAppVersion": "1.4.0",
+      "sample": {
+        "comicId": "171",
+        "epId": "781",
+        "keyword": "海贼王"
+      },
+      "trackedBy": [
+        "YongkeDet/venera-configs"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
       "id": "f3a0b2618d89d0876c940c6bba5a9f5e682e46d2d701d6fa218a709bf41e0297",
       "key": "copy_manga_multi",
       "name": "拷贝漫画M",
       "version": "1.4.2",
       "fileName": "copy_manga_multi_accounts.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/74a113ee1381d87594e478ca64958b55ae9fb6ed/copy_manga_multi_accounts.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/c26e0b970112eaf3237d6aef4078a817bdfd11b1/copy_manga_multi_accounts.js",
       "sha256": "f3a0b2618d89d0876c940c6bba5a9f5e682e46d2d701d6fa218a709bf41e0297",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.6.0",
@@ -9150,7 +9342,7 @@
       "name": "Picacg",
       "version": "1.0.13",
       "fileName": "picacg.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/74a113ee1381d87594e478ca64958b55ae9fb6ed/picacg.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/c26e0b970112eaf3237d6aef4078a817bdfd11b1/picacg.js",
       "sha256": "4cc75abd2b8ec5eb2cbf458260b538639483713fbfdd45514646509d6f3aeb82",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "2.0.0",
@@ -9169,7 +9361,7 @@
       "name": "ehentai",
       "version": "1.2.1",
       "fileName": "ehentai.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/74a113ee1381d87594e478ca64958b55ae9fb6ed/ehentai.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/c26e0b970112eaf3237d6aef4078a817bdfd11b1/ehentai.js",
       "sha256": "977de44db25ee29ce6b80ccec1cccc16b69f3ef846d95a34f8b6c73584241550",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.5.3",
@@ -9189,7 +9381,7 @@
       "name": "漫蛙",
       "version": "1.0.17",
       "fileName": "manwa.js",
-      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/74a113ee1381d87594e478ca64958b55ae9fb6ed/manwa.js",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/c26e0b970112eaf3237d6aef4078a817bdfd11b1/manwa.js",
       "sha256": "690df130768daf4db18d1c4a7fb1765dd22408578e855167f52a5d70b8a9197d",
       "repository": "yuxuanmian/venera-configs",
       "minAppVersion": "1.6.0",
@@ -9787,6 +9979,27 @@
       "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
     },
     {
+      "id": "24bc9bc9f6836790010f2610874765bf0d1978302015523570358cf1dfabb719",
+      "key": "sisimanhua",
+      "name": "思思漫画",
+      "version": "1.0.0",
+      "fileName": "sisimanhua.js",
+      "url": "https://raw.githubusercontent.com/Zicheng0326/my-venera-sources/a87af2423c60b30c6e2e795f76da64b17ffc4e86/sisimanhua.js",
+      "sha256": "24bc9bc9f6836790010f2610874765bf0d1978302015523570358cf1dfabb719",
+      "repository": "Zicheng0326/my-venera-sources",
+      "minAppVersion": "1.0.0",
+      "sample": {
+        "comicId": "yaoshenji",
+        "epId": "1214470",
+        "keyword": "火影"
+      },
+      "trackedBy": [
+        "Zicheng0326/my-venera-sources"
+      ],
+      "priority": 0,
+      "state": "上游变更待审阅；未加载、未执行、不进入可用索引"
+    },
+    {
       "id": "c4e413124508117a54fb268af125e744eeece603a974f045f07c46d174524140",
       "key": "mhkan",
       "name": "漫画看",
@@ -10269,9 +10482,8 @@
     },
     {
       "repository": "n3114576614-cell/N_venera_source",
-      "errors": [
-        "HTTP Error 503: Backend.max_conn reached"
-      ]
+      "commit": "e7229a5c8121eeb35e80e0c23e9f1fe3889ec342",
+      "errors": []
     },
     {
       "repository": "nightcat3254/venera-sources",
@@ -10394,7 +10606,6 @@
       "repository": "yelongyue197-svg/venera-sources",
       "commit": "8d289aedc7598f04ecd71ce690096733b9fb6a12",
       "errors": [
-        "漫蛙吧：HTTP Error 503: Backend.max_conn reached",
         "动漫啦：暂不执行非 GitHub 原始地址",
         "妙趣漫画：暂不执行非 GitHub 原始地址",
         "六漫画：暂不执行非 GitHub 原始地址",
@@ -10404,15 +10615,12 @@
     {
       "repository": "YHQY-Dev/venera-sources",
       "commit": "b84b58ad0935df124b38a12f2d6e369d0715ff32",
-      "errors": [
-        "comick：HTTP Error 503: Backend.max_conn reached"
-      ]
+      "errors": []
     },
     {
       "repository": "YongkeDet/venera-configs",
-      "errors": [
-        "HTTP Error 503: Backend.max_conn reached"
-      ]
+      "commit": "c728b1611f8b9a5b444c57c4231abb2305616beb",
+      "errors": []
     },
     {
       "repository": "YUIRIKIiii/venera-sources",
@@ -10421,7 +10629,7 @@
     },
     {
       "repository": "yuxuanmian/venera-configs",
-      "commit": "74a113ee1381d87594e478ca64958b55ae9fb6ed",
+      "commit": "c26e0b970112eaf3237d6aef4078a817bdfd11b1",
       "errors": []
     },
     {
@@ -10443,9 +10651,7 @@
     {
       "repository": "ZhiLin-Sam/venera-sources",
       "commit": "cfa87d83b41ed02886d9da7b0832265487644bc1",
-      "errors": [
-        "MangaDex：HTTP Error 503: Backend.max_conn reached"
-      ]
+      "errors": []
     },
     {
       "repository": "zhimouzhou/venera-manga-sources",
@@ -10455,12 +10661,15 @@
     {
       "repository": "Zicheng0326/my-venera-sources",
       "commit": "a87af2423c60b30c6e2e795f76da64b17ffc4e86",
-      "errors": [
-        "思思漫画：HTTP Error 503: Backend.max_conn reached"
-      ]
+      "errors": []
     }
   ],
   "newRepositories": [
+    {
+      "repository": "Kyosee/VeneraX",
+      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
+      "foundBy": "venera in:name,description"
+    },
     {
       "repository": "jazzphone/venera",
       "description": "Accelerated graphics for macOS VMs on QEMU/KVM: a virtio-gpu driver with Metal over Venus (experimental)",
@@ -10494,11 +10703,6 @@
     {
       "repository": "Venera-hub145/file-C-Temp-Rar-EXa12520.43072.rartemp-english-grammar-hub-index.html",
       "description": "Present Tenses, Past Tenses, Future Forms, Modal Verbs, Conditionals, Passive Voice, Reported Speech, Relative Clauses, Gerunds & Infinitives, Articles & Determiners.",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "Kyosee/VeneraX",
-      "description": "基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.",
       "foundBy": "venera in:name,description"
     },
     {
