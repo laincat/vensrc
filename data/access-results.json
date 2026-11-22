@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-22T12:14:24.881250+00:00",
+  "checkedAt": "2026-11-22T12:40:13.675696+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-22T11:49:01.421773+00:00",
+    "checkedAt": "2026-11-22T12:17:37.705742+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -51,9 +51,9 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.5",
-    "imageId": "sha256:cf2c3b22bd61af191727b20d018afaa5bdb38967a96bd498d5a2c89e75d5fc6f"
+    "imageId": "sha256:903e6af6267c68b11d581aa9e631909bf32081f80e05f7b461f68da875509ba2"
   },
-  "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
+  "catalogSha256": "8bbfbbcd978de558e16e24260a96225e622b8805cc4ef7efbbc84dd6e5734eaf",
   "rows": [
     {
       "id": "ba1520f9cad1d0d960d8c0d5520c5db02d874e809e1e59c7fe41f43c474c7ccf",
@@ -371,6 +371,14 @@
       "corePassed": false,
       "failures": [
         {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
           "stage": "categoryComics.load",
           "category": "auth_required"
         },
@@ -1545,25 +1553,6 @@
         },
         {
           "stage": "categoryComics.ranking.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "372767ebd00430e5085a904954fc814dc5b5cc07a12a6c185630a5bd2aaafb74",
-      "key": "qimanwu",
-      "name": "奇漫屋",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "explore[5].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[11].load",
           "category": "auth_required"
         }
       ]
@@ -2062,6 +2051,14 @@
       "corePassed": false,
       "failures": [
         {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
           "stage": "categoryComics.load",
           "category": "auth_required"
         },
@@ -3241,25 +3238,6 @@
       ]
     },
     {
-      "id": "372767ebd00430e5085a904954fc814dc5b5cc07a12a6c185630a5bd2aaafb74",
-      "key": "qimanwu",
-      "name": "奇漫屋",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "explore[4].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[5].load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "d9d3f92061a97793f33ccd780f68a63f39dcd47bfbc7d0140c71aec89debcfdf",
       "key": "source_07_49effa",
       "name": "☄️ 最次元",
@@ -3438,7 +3416,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
   "browser": [
     {
       "key": "bakamh",
@@ -3529,5 +3507,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/45021289131"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/45023564716"
 }

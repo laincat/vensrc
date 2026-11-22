@@ -1,6 +1,6 @@
 # 反爬、网络限制与人工处理清单
 
-来源巡检时间：2026-11-22T12:14:24.881250+00:00（UTC）。
+来源巡检时间：2026-11-22T12:40:13.675696+00:00（UTC）。
 anti_bot 表示检测到人机验证或反爬特征，未单凭 403 就认定 Cloudflare。
 auth_required 也可能是权限、地区或站点拒绝，不能据此认定密码错误。
 正常浏览器可访问不代表 CLI 阅读链路通过，本报告不修改主／扩展订阅。
@@ -63,7 +63,7 @@ CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz
 | Rawkuma | rawkuma | 1.1.0 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 少年ジャンプ＋ | shonen_jump_plus | 1.2.0 | handahao666-boop/venera_comic_source | venerax | 通过（其他能力受限） | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | サンデーうぇぶり | sunday_webry | 1.0.0 | handahao666-boop/venera_comic_source | venerax | 通过（其他能力受限） | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
-| W漫画 | wmanhua | 1.0.1 | handahao666-boop/venera_comic_source | venerax | 未通过 | categoryComics.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
+| W漫画 | wmanhua | 1.0.1 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 野蛮漫画 | yemancomic | 0.1.2 | hea784/venera-configs | venerax | 未通过 | search.load；explore[0].load；explore[1].load；categoryComics.load；categoryComics.ranking.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 优酷漫画 (修复版) | ykmh | 1.0.7 | handahao666-boop/venera_comic_source | venerax | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 爱漫岛 | aiman | 2.3.6 | Junkrat9527/venera-sources | venerax | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
@@ -95,7 +95,6 @@ CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz
 | NoyACG | noyacg | 1.4.0 | zetriumyx/noyacg-source-venera | venerax | 未通过 | explore[0].load；categoryComics.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | Ososedki | ososedki | 1.1.1 | meaninglesslyy/venera-config | venerax | 未通过 | search.load；explore[0].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | Pixiv | pixiv | 1.9.0 | Junkrat9527/venera-sources | venerax | 未通过 | search.loadNext；explore[0].loadNext；explore[1].loadNext；explore[3].loadNext；explore[4].loadNext；explore[5].loadNext；explore[6].loadNext；categoryComics.load；categoryComics.ranking.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
-| 奇漫屋 | qimanwu | 1.0.0 | token1008/venera-cn-64bit | venerax | 未通过 | explore[5].load；explore[11].load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | ☄️ 最次元 | source_07_49effa | 0.2.0 | KadishJoey/venera-json | venerax | 未通过 | search.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 中国人能飞 | source_19_50ee2a | 0.2.0 | KadishJoey/venera-json | venerax | 未通过 | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 漫畫狗 | source_45_d76464 | 0.2.0 | KadishJoey/venera-json | venerax | 未通过 | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
@@ -120,7 +119,7 @@ CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz
 | Rawkuma | rawkuma | 1.1.0 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 少年ジャンプ＋ | shonen_jump_plus | 1.2.0 | handahao666-boop/venera_comic_source | venera-next | 通过（其他能力受限） | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | サンデーうぇぶり | sunday_webry | 1.0.0 | handahao666-boop/venera_comic_source | venera-next | 通过（其他能力受限） | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
-| W漫画 | wmanhua | 1.0.1 | handahao666-boop/venera_comic_source | venera-next | 未通过 | categoryComics.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
+| W漫画 | wmanhua | 1.0.1 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 野蛮漫画 | yemancomic | 0.1.2 | hea784/venera-configs | venera-next | 未通过 | search.load；explore[0].load；explore[1].load；categoryComics.load；categoryComics.ranking.load；comic.loadInfo；comic.loadEp | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 优酷漫画 (修复版) | ykmh | 1.0.7 | handahao666-boop/venera_comic_source | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 爱漫岛 | aiman | 2.3.6 | Junkrat9527/venera-sources | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load；comic.loadInfo；comic.loadEp | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
@@ -152,7 +151,6 @@ CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz
 | NoyACG | noyacg | 1.4.0 | zetriumyx/noyacg-source-venera | venera-next | 未通过 | explore[0].load；categoryComics.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | Ososedki | ososedki | 1.1.1 | meaninglesslyy/venera-config | venera-next | 未通过 | search.load；explore[0].load；categoryComics.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | Pixiv | pixiv | 1.9.0 | Junkrat9527/venera-sources | venera-next | 未通过 | search.loadNext；explore[0].loadNext；explore[1].loadNext；explore[3].loadNext；explore[4].loadNext；explore[5].loadNext；explore[6].loadNext；categoryComics.load；categoryComics.ranking.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
-| 奇漫屋 | qimanwu | 1.0.0 | token1008/venera-cn-64bit | venera-next | 未通过 | explore[4].load；explore[5].load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | ☄️ 最次元 | source_07_49effa | 0.2.0 | KadishJoey/venera-json | venera-next | 未通过 | search.load | 权限／访问拒绝：核对登录、会员权限和网络限制；不能断言密码错误 |
 | 中国人能飞 | source_19_50ee2a | 0.2.0 | KadishJoey/venera-json | venera-next | 未通过 | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
 | 漫畫狗 | source_45_d76464 | 0.2.0 | KadishJoey/venera-json | venera-next | 未通过 | search.load | 人机验证／反爬：先在 VeneraX 验证窗口处理，再同环境重试 |
@@ -171,4 +169,4 @@ CLI 检测到反爬的源 key：`aiman`、`asura_scans`、`bakamh`、`batcavebiz
 - [Cloudflare 官方通行说明](https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/)：通行 Cookie 绑定访问者和设备，不能保证跨机器复用。
 - [挑战限制](https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/)：不同 IP 发起挑战和完成验证可能导致循环。
 
-浏览器诊断 Actions：https://github.com/laincat/vensrc/actions/runs/45021289131
+浏览器诊断 Actions：https://github.com/laincat/vensrc/actions/runs/45023564716
