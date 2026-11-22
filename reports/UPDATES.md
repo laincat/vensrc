@@ -1,12 +1,12 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-22T12:44:40.410998+00:00（UTC）。
-检查 73 个已登记仓库；发现 496 个未审阅源码构建。
+检查时间：2026-11-22T19:32:11.405519+00:00（UTC）。
+检查 73 个已登记仓库；发现 489 个未审阅源码构建。
 
 发现阶段只下载计算哈希、读取声明字段和主机名，不通过 list、init 或巡检执行。待审构建分三条通道：
 
-- **自动收录**（125 个）：已登记仓库的新 key 或已有 key 的严格升级；复核来源、排除规则、重复源和两端同轮匿名阅读后写入清单。
-- **试跑但不收录**（371 个）：新增目的地、凭据能力或重复来源等情况照常隔离试跑，结果见 [候选试跑短名单](CANDIDATES.md)，收录仍需人工审阅。
+- **自动收录**（117 个）：已登记仓库的新 key 或已有 key 的严格升级；复核来源、排除规则、重复源和两端同轮匿名阅读后写入清单。
+- **试跑但不收录**（372 个）：新增目的地、凭据能力或重复来源等情况照常隔离试跑，结果见 [候选试跑短名单](CANDIDATES.md)，收录仍需人工审阅。
 - **不执行**（3 个文件）：未登记仓库只列出，不下载、不执行。
 
 每轮最多试跑 40 个候选，自动收录通道优先；本轮安排 40 个。
@@ -39,7 +39,6 @@
 | 肉漫屋 | roum27 | 1.1.0 | coldnighten/venera-configs | 1.6.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 3745f74ccfa8b3b00b5199f2f3946f954bc94e02b9d0e80438e087053215b7e4 |
 | W漫画 | wmanhua | 1.0.3 | coldnighten/venera-configs | 1.6.0 | 试跑但不收录 | 新增主机名：cdn.jsdelivr.net | e7dda68f4770edfad5e0bf4842c7e7ed2b0542112e72627bf67ee08716850446 |
 | 漫画屋 | mhua5 | 1.1.0 | coldnighten/venera-configs | 1.6.0 | 试跑但不收录 | 新 key 涉及凭据能力：account、cookie、login、password | ca3190f8c8195047def754315cbc8c4ff8ec5a5a0f5ba31b1a62a96ac19ae378 |
-| 乐成漫画 | lcmhx | 1.0.1 | coldnighten/venera-configs | 1.6.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 095a6b7f72176785c3460d536977a713722ae3dbf3eddbda7e0067e6f3bdcfd7 |
 | 巴卡漫画（Inkveil预加载版） | dxmsk_bakamh_preload | 0.2.1 | dxmsk/Venera-Sources | 1.6.0 | 试跑但不收录 | 新 key 涉及凭据能力：account、cookie、getcookies、login、loginwithwebview、password | a9131263b147950ef70ae9339652772b9fbce68dca5d882ad2e10819638f7f16 |
 | 包子漫画 | baozi | 1.1.7 | fuluoydebende/venera-configs-fixed | 1.0.0 | 试跑但不收录 | 版本 1.1.7 未严格高于清单现有版本 1.1.7 | dc8902797555ded67e74ea1ce7516b3f9824bfe56c5b6ae0fb6fb5e01a15d217 |
 | Picacg | picacg | 1.0.7 | fuluoydebende/venera-configs-fixed | 1.0.0 | 试跑但不收录 | 新增主机名：picacomic.com | 878fb51af54a06f361ba31053852e80146c75065615bc3098202d83dc1585c77 |
@@ -51,7 +50,7 @@
 | Hanime1.me | hanime1 | 2.4.0 | gallhall/venerav-configs | 2.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 75628a9e8392a0630b713cf443cccfd1c16347ff303420ec7f32702f5e8beafb |
 | Hanime1 H漫画 | hanime1_comics | 1.2.1 | gallhall/venerav-configs | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 729836e4e65b01161f5ba1f9998fdc1630d08dd6407e480f063d578cfa7ea7c7 |
 | 包子漫画 | baozi | 1.1.8 | handahao666-boop/venera_comic_source | 1.0.0 | 自动收录 | 1.1.7 → 1.1.8，未新增主机名 | db40b64506f7002420eb5d6e23b3f7829a0fe3c6c36afff77991ec1097d78f25 |
-| 拷贝漫画 | copy_manga | 1.6.6 | ZhiLin-Sam/venera-sources | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 06ea2676323e40e980cb8f8fba2b53a70733e7cade267e0261763c55e6b30155 |
+| 拷贝漫画 | copy_manga | 1.6.7 | handahao666-boop/venera_comic_source | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | e752dda481ad48c50d2814c4cc176402f3d77f6f3c1b59aacfd2a61fcca493a6 |
 | 飞翔漫画 | ffppt | 1.0.8 | handahao666-boop/venera_comic_source | 1.0.0 | 试跑但不收录 | 新增主机名：dmlimg.youjieke.host、raw.githubusercontent.com | de1f3fc4d01a48908015e4421d73a3b3de258f47bdd8c3135536ef3dc7df9a47 |
 | 瓜子漫画 | guazimanhua | 1.0.4 | ZhiLin-Sam/venera-sources | 1.0.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | b93ad63c5e0ac1a41c77ab95e7561f20718ad46228fb9b6b8fbb8196c3f56dc6 |
 | Komiic | Komiic | 1.0.8 | ZhiLin-Sam/venera-sources | 1.0.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | ad74a243c07ebc549254e75162fceb81097e6755054e1902ca81e0327370bd68 |
@@ -81,11 +80,10 @@
 | AO3 同人图文 | ao3 | 1.0.1 | hgnbh/sw | 1.4.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | fe73cde6653ee4ac991ea871a94ba5ecba381adb5db46b37996f34bf6e9bd125 |
 | 嗶哩漫畫 | bilimanga | 1.1.3 | hgnbh/sw | 1.6.0 | 试跑但不收录 | 版本 1.1.3 未严格高于清单现有版本 1.1.7 | 555e08f8d7dd2f0e8f95541dd644d0ccaf6e09309c41a979de00349ff8738c1a |
 | カドコミ | comic_walker | 1.0.2 | hgnbh/sw | 1.6.0 | 试跑但不收录 | 同 key 有更高版本的候选 1.1.0 | 7d965185909caf11829df04a20e74b6c57dee372a71a9a5528da3b165f48fa52 |
+| 拷贝漫画 | copy_manga | 1.6.6 | ZhiLin-Sam/venera-sources | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 06ea2676323e40e980cb8f8fba2b53a70733e7cade267e0261763c55e6b30155 |
 | 动漫屋 | dm5 | 7.0.2 | hgnbh/sw | 1.6.0 | 试跑但不收录 | 版本 7.0.2 未严格高于清单现有版本 7.0.3 | 25f69ded59266a0ed04d69dfee08f147d5a45bd537e8f474142810dfa996af7e |
 | 动漫啦 | dongman_la | 1.0.2 | hgnbh/sw | 1.4.0 | 试跑但不收录 | 版本 1.0.2 未严格高于清单现有版本 1.0.5 | ae7055749e31d9718abdfb14787c753210395597ca3a54f0c3903f14cb2302bf |
 | 飞翔漫画 | ffppt | 1.0.1 | n3114576614-cell/N_venera_source | 1.0.0 | 试跑但不收录 | 版本 1.0.1 未严格高于清单现有版本 1.0.3 | b86d41220d3fcfafd0799ac569332adfc0978c5ac0509a08cf077b6f51853d3e |
-| HentaiFox 系列 | hentaifox | 1.0.0 | hgnbh/sw | 1.4.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 1521fc63cea10c184d9e9bbf395500698ad5232259b6f991e594a631b9c1c694 |
-| LOFTER 同人图文 | lofter | 1.0.1 | hgnbh/sw | 1.4.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | e9e50018c6574d58d71f969ad429e9ba7f0924e08737f2fd88f6f101171c8db6 |
 | 漫小肆 | mxs | 1.0.1 | hgnbh/sw | 1.5.0 | 试跑但不收录 | 同 key 同版本有多个不同构建，需人工选择 | f7445609e82ce00ca5c40f0895a36857d47da646d44dd4e6e8c6d587a0da410e |
 | Pixiv 同人图 | pixiv | 1.0.1 | hgnbh/sw | 1.4.0 | 试跑但不收录 | 版本 1.0.1 未严格高于清单现有版本 1.9.0 | eb85deae9758c8d27e26c6b126a7383d046356e996f5f35170711eacd89aa8e4 |
 | 如漫画 | rumanhua_fixed_v15 | 1.2.7 | hgnbh/sw | 1.0.0 | 试跑但不收录 | 版本 1.2.7 未严格高于清单现有版本 1.2.8 | 8c0eaf511dc14b14abc85c8e565c900bbe3ed8296a8df5c61fc40022c6d65a3c |
@@ -179,7 +177,7 @@
 | 漫画皮 | source_48_074d4f | 0.2.0 | KadishJoey/venera-json | 1.0.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 25131c16e19fd2649ba44730cd61b40c11cb30bd34d22d3d7d26da3cfdaa8b2e |
 | 漫蛙🌐🔞 | source_56_3ebb0b | 0.2.0 | KadishJoey/venera-json | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 1bf40998a6ec55a8b4845bc4b2d57908939f4aea5ad4a7fa0135c6fc9836e7d6 |
 | 包子漫画cw | cw_57_cc4798 | 0.2.0 | KadishJoey/venera-json | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 6fad2dc6dbc90ebfbc9993b2ca1be598852d3aef8f3d41097e7613c91d453719 |
-| 拷贝漫画 | source_61_acb91b | 0.2.0 | KadishJoey/venera-json | 1.0.0 | 试跑但不收录 | 新 key 涉及凭据能力：cookie | ac108c730710ebc57cac9484a39acf6ee1ffd998b7f824601ffbd1d5ad6b8da6 |
+| 拷贝漫画 | source_61_acb91b | 0.2.0 | KadishJoey/venera-json | 1.0.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | ac108c730710ebc57cac9484a39acf6ee1ffd998b7f824601ffbd1d5ad6b8da6 |
 | 漫客栈-A | a_62_528fe9 | 0.2.0 | KadishJoey/venera-json | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | c49cd93c6fb31c9973b28e5a310e76cb20016b02041cdc51fe2e01e9bb647448 |
 | 無限動漫 | source_64_2e309a | 0.2.0 | KadishJoey/venera-json | 1.0.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 8f662b1b1efb6181e3289c5982a9e928bb4b3c70e70db967eb46a0b7961f8664 |
 | Mangabz | mangabz_72_18ed08 | 0.2.0 | KadishJoey/venera-json | 1.0.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 510e1cca571f7f48fdf5341fa85bc628965ae6bb9b5e42debb58ae754d3fd90c |
@@ -236,10 +234,8 @@
 | Cosplay联盟 | pandadiu | 1.2.3 | LX7kM9/venera-configs | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 629fcf83532f1e816ae1dd8dbde51ee77e70f46a2b1351e8c6ca855019f8c183 |
 | 漫画狗 | dogemanga | 1.0.6 | LX7kM9/venera-configs | 1.6.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | f823b84756dc7048dda5c280fce381fcd4f2ae408f76fe5d983582652b39c557 |
 | Project Gutenberg | project_gutenberg | 5.0.0 | LX7kM9/venera-configs | 1.6.3 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 0b6e3d9c10acd166be0e59a649be68fc7f05855998f21e1b7a7d83ad2507dca4 |
-| Mengteen | mengteen | 1.0.0 | LX7kM9/venera-configs | 1.6.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 1e870bada169704a9d6c548dd8e1b5ed71e5205d747fcdd7d7c4f8e55bc5bd71 |
 | 美图公社 | tooopen | 1.0.6 | LX7kM9/venera-configs | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | b07ef825a30055873ebd386daa7f6a4732f7a7d5b197bbc93693b87e383422d3 |
 | 无限动漫 | wuxian | 1.0.8 | LX7kM9/venera-configs | 1.6.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 192b561d47b1abf2c823f51459d64d649cdb2a086380e5f91eaa2b26426e3adc |
-| 街拍团 | jiepaituan | 1.0.3 | LX7kM9/venera-configs | 1.6.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 491ef6a241f3b54203f3a5cac73034e4f8ce21d2d6878bed63ce99ccdbb69b57 |
 | 美图乐 | meitula | 1.0.8 | LX7kM9/venera-configs | 1.6.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 2a330215eec93051cae7faa26ab79b06e3bd322122492597d78ca3564801c34c |
 | zero搬运网 | zerobyw | 1.2.0 | LX7kM9/venera-configs | 1.0.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 4cc6a768c02333b851ba9427f2897a69af4ed6a8f17adb1de7baf20a66cffa81 |
 | Komiic | Komiic | 1.8.3 | LX7kM9/venera-configs | 1.0.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | cbb3ac23c4389fb73c341bd14d169c011a81913957fa284e321a86df513ebc8f |
@@ -326,7 +322,6 @@
 | 如漫画 | rumanhua_com | 2.1.2 | Ra1nbo-w/mhy-v | 1.16.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 3a383515749605a38609e8b5260e1f9aaf6aefd4f2dde22a38c07d9e606b93f2 |
 | Komiic漫画 | komiic_cc | 2.3.3 | Ra1nbo-w/mhy-v | 1.16.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 0d627b63113b1e0ca2c4180df732fd15f9b50f919919e8efaf7159ba99355514 |
 | 漫画屋 | mhua5 | 2.3.3 | Ra1nbo-w/mhy-v | 1.16.0 | 试跑但不收录 | 新 key 涉及凭据能力：account、cookie、deletecookies、getcookies、loginwithcookies、loginwithwebview、setcookies | 63b165b1065239b07d94c3a83750824fde8a53bc1c2afc9b0af5f0bfd0195b6c |
-| 拷贝漫画 | copy_web_routes | 2.3.2 | Ra1nbo-w/mhy-v | 1.16.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 7a472063e163a7a33f888554c83e1043c3a400641ee9e43d04e6de64b4933b22 |
 | 瓜子漫画 | guazimanhua | 1.0.1 | Ra1nbo-w/mhy-v | 1.16.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 4f94b6801f09db7534de9f98c650e686ff6ff7dfbf5658a81a1b6d38b2ff2d1b |
 | MYCOMIC | mycomic | 2.3.3 | Ra1nbo-w/mhy-v | 1.16.0 | 试跑但不收录 | 新增主机名：raw.githubusercontent.com | 763e7973a8ae82fe2af031bcf24b51796435dd840d45791b87ae2798e38ef826 |
 | 包子漫画 | baozi | 2.3.3 | Ra1nbo-w/mhy-v | 1.18.0 | 试跑但不收录 | 新增凭据能力：getcookies、loginhost、loginwithcookies、loginwithwebview | 445daa4d7caace438f7e1a1f9477b8e39fffb8f87b70c969a78aa63930410114 |
@@ -360,7 +355,7 @@
 | 爱看漫 | ikmmh | 1.0.8 | VComic-org/venera-comic-source | 1.0.0 | 试跑但不收录 | 新增主机名：raw.githubusercontent.com、ymcdnyfqdapp.ikmmh.com | 23ca88878d53f69b783171e968547f6d9fd62521802d1c599721d9dcbae0ce96 |
 | 漫蛙吧 | manwaba | 1.0.3 | VComic-org/venera-comic-source | 1.4.0 | 试跑但不收录 | 版本 1.0.3 未严格高于清单现有版本 1.1.3 | 4f44efdf0626623305e02a8fde4af4cedda906795f26ce3cc3c139c756a0c001 |
 | Lanraragi | lanraragi | 1.2.0 | VComic-org/venera-comic-source | 1.4.0 | 试跑但不收录 | 版本 1.2.0 未严格高于清单现有版本 1.2.1 | 3db60747709d72eff454d96bef13e907397ebd2a7e4e9cebd3279bddc5d768cd |
-| 栗子漫画 | lizimh | 2.33.36 | Walter498/Walter | 1.2.2 | 试跑但不收录 | 新增凭据能力：loginofficialaccount、logintoken、password | 593287454d650ba00f0605437bf9c3875ac44a1001922acb4075dab719490f08 |
+| 栗子漫画 | lizimh | 2.33.37 | Walter498/Walter | 1.2.2 | 试跑但不收录 | 新增凭据能力：loginofficialaccount、logintoken、password | 4782003a73733c27112709bcdef119de01095ac2cb2ce4b6114228487cd3273a |
 | 百年漫画 | bainianmh | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 84501b357e70a8ad932a377a6c6b518a88f93f5535767012effff3d85c5e47eb |
 | MangaDex | mangadex | 1.2.0 | weihanlong267-spec/Venera-Next-sources | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 4f87da9d6d42f8e39d09985bd7aef824f1e7593f329a61c45ceec6dcbd9c98ef |
 | 动漫屋 | dm5 | 1.0.1 | weihanlong267-spec/Venera-Next-sources | 1.6.0 | 试跑但不收录 | 版本 1.0.1 未严格高于清单现有版本 7.0.3 | 78a751955d9ec6c640585220252757ffbc854331657ac0e7bd04d758dbf6d835 |
@@ -476,8 +471,6 @@
 | 卡拉漫画 | kalamanhua | 1.1.0 | yuyuyu529/venera | 1.0.0 | 试跑但不收录 | 新 key 涉及凭据能力：cookie | 40974a240f6993a6e2cfc394dccbdbd61c64dfe54c6ca388443ce73003a48041 |
 | K-Mansin (韩漫) | kmansin09 | 1.0.2 | yuyuyu529/venera | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 02a0d90b34f17d08d873f8abbced467c18b9c071954864f6171ff2a3fd94e4e9 |
 | MangaKuro | mangakuro | 1.0.3 | yuyuyu529/venera | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 53b8c89428c509ff202e295e343c2004b36399df11d6599ee1ff56c78a086f58 |
-| Nicomanga(生肉) | lovehug | 1.0.1 | yuyuyu529/venera | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 926672661ff83cce1b704220b4bede3465be95cdcdb3c76aa106a3055c2740a2 |
-| jmanga(生肉) | jmanga | 1.0.3 | yuyuyu529/venera | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 6b1e1245938cae839f6c444ab6301b06f315c1b325eb336c5195ec7321c63cb2 |
 | KLManga(生肉) | klmanga | 1.0.0 | yuyuyu529/venera | 1.0.0 | 试跑但不收录 | 同 key 同版本有多个不同构建，需人工选择 | c1f129e654e9031bc8582f7d65feeeb2d91b693a37e0835d77adcb4995baa514 |
 | Rawkuma 生肉 | rawkuma | 1.0.0 | yuyuyu529/venera | 1.0.0 | 试跑但不收录 | 版本 1.0.0 未严格高于清单现有版本 1.1.0 | fc9ac7ed1efab09cc477195a302f1316ea2b2e47b9dd036ffc84a2b8fd9c7774 |
 | Dokiraw | dokiraw | 1.0.2 | yuyuyu529/venera | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | fb861b4f57f3bf64466c090fb9e12677000945c0f063d352ed6fffb2850329ab |
@@ -549,10 +542,13 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `yuxuanmian/venera`：A comic app
-- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
-- `Aezir/venera-sources`：VeneraX 漫画源订阅与实测清单
+- `xswlsbhhh/venera-comic-sources`：Venera 漫画源（由阅读/Legado 书源改写）
+- `lc2024924478-del/venera-all-in-one`：
+- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
 - `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
+- `yuxuanmian/venera`：A comic app
+- `Aezir/venera-sources`：VeneraX 漫画源订阅与实测清单
 - `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
 - `AllOut0129/my-venera-sources`：
 - `Venera-hub145/grade9`：Present Tenses, Past Tenses, Future Forms, Modal Verbs, Conditionals, Passive Voice, Reported Speech, Relative Clauses, Gerunds & Infinitives, Articles & Determiners.
@@ -578,7 +574,6 @@
 - `alexanderabigail050-maker/venerable-adrian`：
 - `daodao0326/venera`：漫画源
 - `Taototo/ManComic`：A Flutter comic reader app based on Venera
-- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
 - `will040124-ctrl/LightReader`：轻阅：Kotlin / Jetpack Compose 小说、漫画与文档阅读器，支持 Venera 风格漫画源
 - `ikun5200/venera-prime-server`：
 - `opaiopaio/Venera-Nas`：Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中
@@ -606,26 +601,18 @@
 - `huangjun7hb/venera-next-sources`：
 - `Venera-d1/heart-python`：Draw a heart with Python Turtle
 - `wnzmb/venera-configs-wujiajun`：Venera 漫画源：nhentai / e-hentai / hitomi，指向自建 Cloudflare Worker 反代
-- `buzhidao10068/venera2picacomic`：把 Venera 导出的 .venera 转成 PicaComic 能导入的 .picadata，迁移收藏夹与阅读历史 ／ Convert a Venera (.venera) export into a PicaComic (.picadata) import, migrating favourites and reading history
-- `venerasf/Venera`：A modular exploitation framework extensible with Lua
-- `venvnft/venv-sc`：Smart contract serving as a marketplace for music in NFT format, facilitating sales and auctions for ERC721 and ERC1155 NFT.
-- `decker-archive/venera`：Free and Open Source alternative to Discord and Guilded.
 - `ACGNnsj/venera-unified-configs`：Self-hosted source catalog and configs for venera-unified (B4)
 - `nobug-project/venera-configs`：
 - `zzu8493-debug/venera-configs`：
 - `Day-Day-S-t-u-d-y/venera-configs-custom`：
 - `clxin43/venera-my-configs`：public
 - `StevenSun121/venera-configs`：
-- `normalice8/VeneraNext-comic-sources`：
-- `1148891151a-ui/-veneranext-sources.json`：
 - `yanyi05/venera-sources`：Personal JavaScript sources for VeneraNext
-- `18846743977-alt/my-venera-sources`：my-venera-sources
 - `fuluoydebende/venera-manga-sources`：Venera manga sources (fixed) - 33 sources + index.json, ready to import in Venera
 - `yuanshenmingri/venera-comick-sources`：Venera ???:Comick ??(69 ?)+ MangaDex v2.0
 - `huang7hb-pixel/venera-next-sources-`：
 - `kkiki11/venera-comic-sources`：Personal Venera comic source JavaScript files
 - `amenoshigure/venera-sources`：嗨皮漫画源
-- `rinnki-L/-md3-`：Venera 漫画源移植到阅读MD3的书源（10个漫画源+合集+订阅源）
 - `SnowDreamXUE/venera-next-config`：转换venera-config漫画源配置文件格式为venera-next要求
 - `fuluoydebende/venera-hipmh-source`：Venera 漫画源 - 嬉皮漫畫 hipmh v1.0.2 (API 驱动修复版)
 - `dororo42/EZVenera4KO`：EZVenera/Venera JS 漫画源移植层 for KOReader (LuaJIT + quickjs-ng)
@@ -635,4 +622,4 @@
 - `Kiastr/Venera-SSR`：A manga viewer.support realtime Coloring  and Anime4kSR and OCR translation.All running locally./ 一个支持不同漫画源,阅读实时,本地黑白漫画上色，anime4k超分辨率，本地ocr翻译的改版漫画阅读器
 - `Jieless55/venera-megacomicxadult`：R18漫画源
 
-另有 28 个搜索结果既没有漫画源索引 index.json，也没有 ComicSource 脚本，已从名单滤掉；无法判断的仓库照常列出。
+另有 36 个搜索结果既没有漫画源索引 index.json，也没有 ComicSource 脚本，已从名单滤掉；无法判断的仓库照常列出。
