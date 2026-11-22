@@ -1,11 +1,11 @@
 {
-  "checkedAt": "2026-11-22T11:28:10.856241+00:00",
+  "checkedAt": "2026-11-22T12:14:24.881250+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-22T11:14:03.839992+00:00",
+    "checkedAt": "2026-11-22T11:49:01.421773+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -16,7 +16,8 @@
     ],
     "adapterSha256": {
       "scripts/client_bridge.mjs": "ec822f73af3def047ae82031ce89deb80930619cf966bfc0b280b2e8c011e5e5",
-      "scripts/prepare_client.py": "335905c1f43ca70cfae3daea5dd3d11b7b54cafa1fe6e695a86b32347bc48ac8",
+      "scripts/prepare_client.py": "3db728792aee5f4cc617f09750fa7b42cb1eb39e0aa9fb625674bd940b3b5a5b",
+      "scripts/patrol-worker.c": "a86a0d7bf0b199e94c52c46de47841eb6db2e71ab1d7dd376eead845dae5a75f",
       "monitor/clients.json": "164c9467adfa2dbe8d6080fffe935a95f28faa293e1a087fb6032a27ab8d9e41"
     },
     "clientProfiles": {
@@ -49,15 +50,15 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.5",
-    "imageId": "sha256:70198db5bc14e616d7e8e8499f385ddd42d5c1c123aaa73c47c1b889a6fc3084"
+    "imageId": "sha256:cf2c3b22bd61af191727b20d018afaa5bdb38967a96bd498d5a2c89e75d5fc6f"
   },
   "catalogSha256": "1e1a76c47d8dfac800b51fb5bbe06490b4a046b005fa1b4202a0742d5c58eadc",
   "builds": 207,
-  "main": 24,
-  "extended": 42,
-  "runUrl": "https://github.com/laincat/vensrc/actions/runs/45016293622",
+  "main": 22,
+  "extended": 41,
+  "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
   "clientExecutions": 414,
-  "officialExclusionsSha256": "3ceea018617d643f7db4b2958b894905bdbb7d59d5e46869d85350387e12cd24",
+  "officialExclusionsSha256": "2141d19632fb5e3a8baed0a037f5723546c47e8d4d50d771a4ff1780cedfc8ec",
   "officialBaselineKeys": 33,
   "officialExcludedBuilds": 7,
   "officialOverrides": 8
