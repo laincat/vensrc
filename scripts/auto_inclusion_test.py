@@ -128,6 +128,12 @@ class Workspace:
 
 
 class VersionAndHostTests(unittest.TestCase):
+    def test_metadata_fields_on_one_line_and_computed_values(self):
+        code = '''    name='拷贝漫画'; key='copy_web_routes'; version = "2.3.2"; minAppVersion='1.16.0';'''
+        self.assertEqual(audit.declared_fields(code), {"name": "拷贝漫画", "key": "copy_web_routes",
+                                                      "version": "2.3.2", "minAppVersion": "1.16.0"})
+        self.assertNotIn("key", audit.declared_fields(code.replace("'copy_web_routes'", "'copy' + suffix")))
+
     def test_delegated_identity_requires_literal_config_and_exact_field(self):
         code = 'config = {"key":"fixture", "version":"1.0.2"};\nkey = this.config.key;\nversion = this.config.version;'
         self.assertEqual(audit.declared_fields(code), {"key": "fixture", "version": "1.0.2"})

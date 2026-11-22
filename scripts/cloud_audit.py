@@ -1289,9 +1289,11 @@ def declared_fields(code):
         except ValueError:
             pass
     for field in ("key", "name", "version", "minAppVersion"):
-        match = re.search(r"(?m)^\s*" + field + r"""\s*=\s*["']([^"']+)["']""", code)
+        leading = r'''(?m)^[ \t]*(?:(?:name|key|version|minAppVersion|url)[ \t]*=[ \t]*(?:"[^"\r\n]*"|'[^'\r\n]*')[ \t]*;[ \t]*)*'''
+        match = re.search(leading + field + r'''[ \t]*=[ \t]*(["'])([^\r\n]*?)\1[ \t]*(?=;|//|\r?$)''', code)
         if match:
-            fields[field] = match.group(1)
+            if match.group(1) not in match.group(2):
+                fields[field] = match.group(2)
         elif isinstance(config.get(field), str) and re.search(
                 rf"(?m)^\s*{field}\s*=\s*this\.config\.{field}[ \t]*;?[ \t]*$", code):
             fields[field] = config[field]
@@ -1440,8 +1442,8 @@ def select_trials(updates, results, now, limit=TRIAL_LIMIT):
         if item.get("lane") not in ("auto", "trial"):
             continue
         previous = results.get(item["id"])
-        if (previous and previous.get("outcome") == "rejected" and not previous.get("reviewVersion")
-                and previous.get("detail") in ("源码声明的 key 与候选不一致", "试跑状态不满足主／扩展标准")):
+        if (previous and previous.get("outcome") == "rejected" and previous.get("reviewVersion", 1) < 3
+                and previous.get("detail") in ("源码声明的 key 与候选不一致", "源码声明的版本与候选不一致", "试跑状态不满足主／扩展标准")):
             previous = None
         if previous:
             checked = datetime.fromisoformat(previous["checkedAt"])
@@ -1886,7 +1888,7 @@ def publish_candidates(payload, discovery, destination):
             "reason": text(candidate.get("reason", "")), "detail": text(candidate.get("detail", "")),
             "newHosts": [text(host) for host in candidate.get("newHosts", [])][:50],
             "baselineVersion": text((candidate.get("baseline") or {}).get("version", "")),
-            "reviewVersion": 2,
+            "reviewVersion": 3,
             "checkedAt": checked, "runUrl": run_url,
         }
         try:
