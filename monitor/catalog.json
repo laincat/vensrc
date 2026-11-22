@@ -5826,6 +5826,294 @@
         "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
         "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
       }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/coldnighten/venera-configs/01719d2b363e3a9874839b19a100f2105c13c6e3/lcmh.js",
+      "key": "lcmhx",
+      "name": "乐成漫画",
+      "version": "1.0.1",
+      "minAppVersion": "1.6.0",
+      "repository": "coldnighten/venera-configs",
+      "fileName": "lcmh.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "36347",
+        "epId": "1"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "coldnighten/venera-configs"
+      ],
+      "id": "095a6b7f72176785c3460d536977a713722ae3dbf3eddbda7e0067e6f3bdcfd7",
+      "sha256": "095a6b7f72176785c3460d536977a713722ae3dbf3eddbda7e0067e6f3bdcfd7",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "lcmhx.cc"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-22T19:29:36.048182+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45023716935",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/hgnbh/sw/4f1cff24024ab591d245d9a8f01a9cb1c60f6803/hentaifox.js",
+      "key": "hentaifox",
+      "name": "HentaiFox 系列",
+      "version": "1.0.0",
+      "minAppVersion": "1.4.0",
+      "repository": "hgnbh/sw",
+      "fileName": "hentaifox.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "178047",
+        "epId": "gallery"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "hgnbh/sw"
+      ],
+      "id": "1521fc63cea10c184d9e9bbf395500698ad5232259b6f991e594a631b9c1c694",
+      "sha256": "1521fc63cea10c184d9e9bbf395500698ad5232259b6f991e594a631b9c1c694",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "hentaifox.com"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-22T19:29:36.048182+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45023716935",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/hgnbh/sw/4f1cff24024ab591d245d9a8f01a9cb1c60f6803/lofter.js",
+      "key": "lofter",
+      "name": "LOFTER 同人图文",
+      "version": "1.0.1",
+      "minAppVersion": "1.4.0",
+      "repository": "hgnbh/sw",
+      "fileName": "lofter.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "499498056_11629518123",
+        "epId": "post"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "hgnbh/sw"
+      ],
+      "id": "e9e50018c6574d58d71f969ad429e9ba7f0924e08737f2fd88f6f101171c8db6",
+      "sha256": "e9e50018c6574d58d71f969ad429e9ba7f0924e08737f2fd88f6f101171c8db6",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "api.lofter.com"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-22T19:29:36.048182+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45023716935",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/mengteen.js",
+      "key": "mengteen",
+      "name": "Mengteen",
+      "version": "1.0.0",
+      "minAppVersion": "1.6.0",
+      "repository": "LX7kM9/venera-configs",
+      "fileName": "mengteen.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "/post/3453.html",
+        "epId": "/post/3453.html"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "LX7kM9/venera-configs"
+      ],
+      "id": "1e870bada169704a9d6c548dd8e1b5ed71e5205d747fcdd7d7c4f8e55bc5bd71",
+      "sha256": "1e870bada169704a9d6c548dd8e1b5ed71e5205d747fcdd7d7c4f8e55bc5bd71",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "635k.com"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-22T19:29:36.048182+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45023716935",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/jiepaituan.js",
+      "key": "jiepaituan",
+      "name": "街拍团",
+      "version": "1.0.3",
+      "minAppVersion": "1.6.0",
+      "repository": "LX7kM9/venera-configs",
+      "fileName": "jiepaituan.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "2484.html",
+        "epId": "2484.html"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "LX7kM9/venera-configs"
+      ],
+      "id": "491ef6a241f3b54203f3a5cac73034e4f8ce21d2d6878bed63ce99ccdbb69b57",
+      "sha256": "491ef6a241f3b54203f3a5cac73034e4f8ce21d2d6878bed63ce99ccdbb69b57",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "jiepaiclub.com"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-22T19:29:36.048182+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45023716935",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Ra1nbo-w/mhy-v/53c133b354b968586d69d57b09e630e0e23b848f/sources/copy_manga.js",
+      "key": "copy_web_routes",
+      "name": "拷贝漫画",
+      "version": "2.3.2",
+      "minAppVersion": "1.16.0",
+      "repository": "Ra1nbo-w/mhy-v",
+      "fileName": "copy_manga.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "huoyingrenzhetedian",
+        "epId": "ep_09a0024c-e0fb-11e8-a1df-00163e0ca5bd"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "Ra1nbo-w/mhy-v"
+      ],
+      "id": "7a472063e163a7a33f888554c83e1043c3a400641ee9e43d04e6de64b4933b22",
+      "sha256": "7a472063e163a7a33f888554c83e1043c3a400641ee9e43d04e6de64b4933b22",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "copy4000.com"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-22T19:29:36.048182+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45023716935",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/yuyuyu529/venera/9ff8db5cfa2e37ab22b0daa42e7aceb1bfad8049/lovehug.js",
+      "key": "lovehug",
+      "name": "Nicomanga(生肉)",
+      "version": "1.0.1",
+      "minAppVersion": "1.0.0",
+      "repository": "yuyuyu529/venera",
+      "fileName": "lovehug.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "https://lovehug.net/manga-osananajimitachi-ga-ninki-idol-ni-natta-amama-na-kanojotachi-wa-ore-ni-mitsuide-kureteiru.html",
+        "epId": "https://lovehug.net/unir-osananajimitachi-ga-ninki-idol-ni-natta-amama-na-kanojotachi-wa-ore-ni-mitsuide-kureteiru-chapter-1.html"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "yuyuyu529/venera"
+      ],
+      "id": "926672661ff83cce1b704220b4bede3465be95cdcdb3c76aa106a3055c2740a2",
+      "sha256": "926672661ff83cce1b704220b4bede3465be95cdcdb3c76aa106a3055c2740a2",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "lovehug.net"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-22T19:29:36.048182+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45023716935",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/yuyuyu529/venera/9ff8db5cfa2e37ab22b0daa42e7aceb1bfad8049/jmanga.js",
+      "key": "jmanga",
+      "name": "jmanga(生肉)",
+      "version": "1.0.3",
+      "minAppVersion": "1.0.0",
+      "repository": "yuyuyu529/venera",
+      "fileName": "jmanga.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "https://jmanga.coach/read/%E9%BB%92%E5%A6%96%E3%81%AE%E8%8A%B1%E5%AB%81%EF%BD%9E%E5%BF%8C%E3%81%BF%E5%AB%8C%E3%82%8F%E3%82%8C%E3%81%9F%E7%A7%81%E3%81%8C%E5%86%B7%E9%85%B7%E5%A4%A7%E5%B0%89%E3%81%AB%E6%84%9B%E3%81%95%E3%82%8C%E3%82%8B%E3%81%BE%E3%81%A7%EF%BD%9E-raw/",
+        "epId": "1740583"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "yuyuyu529/venera"
+      ],
+      "id": "6b1e1245938cae839f6c444ab6301b06f315c1b325eb336c5195ec7321c63cb2",
+      "sha256": "6b1e1245938cae839f6c444ab6301b06f315c1b325eb336c5195ec7321c63cb2",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "jmanga.coach"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-22T19:29:36.048182+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45023716935",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
     }
   ]
 }
