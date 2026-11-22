@@ -1279,10 +1279,22 @@ def new_hosts(candidate_hosts, known_hosts):
 
 def declared_fields(code):
     fields = {}
+    config = {}
+    literal = re.search(r"(?m)^\s*config\s*=\s*(?=\{)", code)
+    if literal:
+        try:
+            value, end = json.JSONDecoder().raw_decode(code[literal.end():])
+            if isinstance(value, dict) and re.match(r"[ \t]*(?:;|\r?$)", code[literal.end() + end:], re.M):
+                config = value
+        except ValueError:
+            pass
     for field in ("key", "name", "version", "minAppVersion"):
         match = re.search(r"(?m)^\s*" + field + r"""\s*=\s*["']([^"']+)["']""", code)
         if match:
             fields[field] = match.group(1)
+        elif isinstance(config.get(field), str) and re.search(
+                rf"(?m)^\s*{field}\s*=\s*this\.config\.{field}[ \t]*;?[ \t]*$", code):
+            fields[field] = config[field]
     return fields
 
 
@@ -1428,6 +1440,9 @@ def select_trials(updates, results, now, limit=TRIAL_LIMIT):
         if item.get("lane") not in ("auto", "trial"):
             continue
         previous = results.get(item["id"])
+        if (previous and previous.get("outcome") == "rejected" and not previous.get("reviewVersion")
+                and previous.get("detail") in ("源码声明的 key 与候选不一致", "试跑状态不满足主／扩展标准")):
+            previous = None
         if previous:
             checked = datetime.fromisoformat(previous["checkedAt"])
             if now - checked < timedelta(days=RETRY_DAYS[item["lane"]]):
@@ -1785,7 +1800,7 @@ def verify_auto_inclusion(candidate, pair, cli, catalog, registered, exclusions,
         if baseline:
             added = new_hosts(observed, hosts_of(baseline)[0])
             assert not added, "试跑访问新增主机名：" + "、".join(added)
-        assert source["status"] in ("passed", "partial"), "试跑状态不满足主／扩展标准"
+        assert source["status"] in ("passed", "partial", "failed"), "试跑状态不满足主／扩展标准"
         validate_client_record(record, entry, {"cli": cli})
         assert core(source), f"{profile} 核心阅读链路未通过"
     if not baseline:
@@ -1871,6 +1886,7 @@ def publish_candidates(payload, discovery, destination):
             "reason": text(candidate.get("reason", "")), "detail": text(candidate.get("detail", "")),
             "newHosts": [text(host) for host in candidate.get("newHosts", [])][:50],
             "baselineVersion": text((candidate.get("baseline") or {}).get("version", "")),
+            "reviewVersion": 2,
             "checkedAt": checked, "runUrl": run_url,
         }
         try:

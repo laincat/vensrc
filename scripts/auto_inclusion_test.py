@@ -128,6 +128,13 @@ class Workspace:
 
 
 class VersionAndHostTests(unittest.TestCase):
+    def test_delegated_identity_requires_literal_config_and_exact_field(self):
+        code = 'config = {"key":"fixture", "version":"1.0.2"};\nkey = this.config.key;\nversion = this.config.version;'
+        self.assertEqual(audit.declared_fields(code), {"key": "fixture", "version": "1.0.2"})
+        for changed in (code.replace('this.config.key;', 'this.config.key + suffix;'),
+                        code.replace('};', '} || fallback;'), code.replace('"fixture"', 'compute()')):
+            self.assertNotIn("key", audit.declared_fields(changed))
+
     def test_version_must_be_strictly_higher_and_comparable(self):
         for candidate, current, newer in (
             ("1.0.1", "1.0.0", True), ("1.10.0", "1.9.9", True), ("2.0.0", "1.99.99", True),
@@ -424,7 +431,8 @@ class InclusionTests(unittest.TestCase):
         payload = self.space.payload([candidate])
         for result in payload["candidateRecords"]:
             result["inputs"] = audit.DEFAULT_SAMPLE
-            result["source"]["status"] = "partial"
+            result["source"]["status"] = "failed"
+            result["source"]["stages"] += [{"path": "comic.onClickTag", "status": "failed"}]
         state, results = self.space.publish(payload, [candidate])
         self.assertIsNone(state["pending"][0]["replaces"])
         self.assertEqual(results[candidate["id"]]["outcome"], "queued")
