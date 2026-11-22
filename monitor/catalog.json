@@ -300,7 +300,8 @@
       "verifyProfiles": [
         "venera-next"
       ],
-      "settings": {}
+      "settings": {},
+      "rollbackFor": "e285c5dd21c66dc3fdb3ee20e51b0d9fdee611350565ae40b96a9bc7e3b67934"
     },
     {
       "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/a_43_e3f585.js",
@@ -885,7 +886,8 @@
       "verifyProfiles": [
         "venera-next"
       ],
-      "settings": {}
+      "settings": {},
+      "rollbackFor": "ea881a3a29c020802f63e20451bd74599b245e063b64decd752f2596caa7bde2"
     },
     {
       "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/cycomic.js",
@@ -1549,7 +1551,8 @@
       "verifyProfiles": [
         "venera-next"
       ],
-      "settings": {}
+      "settings": {},
+      "rollbackFor": "208abe75c6c84f45539f90d3bacdd1e066c0f74207acc8a7067f19c67c5c3c31"
     },
     {
       "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/hentaiclub.js",
@@ -1858,7 +1861,8 @@
       "runtimeProfile": "venerax",
       "verifyProfiles": [
         "venera-next"
-      ]
+      ],
+      "rollbackFor": "9c19985db94d3653290e0b45f9cef5b4022535dd03fdce3ea53098f22214bf74"
     },
     {
       "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/jmcomic.js",
@@ -3672,7 +3676,8 @@
       "verifyProfiles": [
         "venera-next"
       ],
-      "settings": {}
+      "settings": {},
+      "rollbackFor": "930d26974a5cfe42108b8634157c6a6425edaf3bbe20c73aca73469030db7abe"
     },
     {
       "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/naver_28_e2315f.js",
@@ -3721,7 +3726,8 @@
       "verifyProfiles": [
         "venera-next"
       ],
-      "settings": {}
+      "settings": {},
+      "rollbackFor": "e0c30482210941fb1783ff2caa95b72f206042c39cb582474afc872258c18c95"
     },
     {
       "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/nnhanman5_10_f0cebd.js",
@@ -5190,6 +5196,207 @@
         "venera-next"
       ],
       "settings": {}
+    },
+    {
+      "url": "https://raw.githubusercontent.com/BB-CHICKEN/venera-jm/c8136f54b3225a203796c502f6165c628615a8c7/recode-jm.js",
+      "key": "jm",
+      "name": "禁漫天堂",
+      "version": "1.9.3",
+      "minAppVersion": "1.16.0",
+      "repository": "BB-CHICKEN/venera-jm",
+      "fileName": "recode-jm.js",
+      "sample": {
+        "comicId": "1485211",
+        "epId": "ep_1485211",
+        "keyword": "火影"
+      },
+      "officialKey": true,
+      "priority": 20,
+      "trackedBy": [
+        "BB-CHICKEN/venera-jm"
+      ],
+      "id": "9c19985db94d3653290e0b45f9cef5b4022535dd03fdce3ea53098f22214bf74",
+      "sha256": "9c19985db94d3653290e0b45f9cef5b4022535dd03fdce3ea53098f22214bf74",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {
+        "dailyCheckInTask": false
+      },
+      "clientFamily": "Venera-Next",
+      "autoIncluded": {
+        "at": "2026-11-22T12:17:22.688717+00:00",
+        "replaces": "e50a45d1c3b33198ab3a154335c31f4e689652106135dcc367334a3325b8be3d",
+        "replacesVersion": "1.9.2",
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/coldnighten/venera-configs/01719d2b363e3a9874839b19a100f2105c13c6e3/mycomic.js",
+      "key": "mycomic",
+      "name": "MYCOMIC",
+      "version": "1.2.0",
+      "minAppVersion": "1.4.6",
+      "repository": "coldnighten/venera-configs",
+      "fileName": "mycomic.js",
+      "sample": {
+        "comicId": "1305",
+        "epId": "185931",
+        "keyword": "火影"
+      },
+      "officialKey": true,
+      "priority": 20,
+      "trackedBy": [
+        "coldnighten/venera-configs"
+      ],
+      "id": "930d26974a5cfe42108b8634157c6a6425edaf3bbe20c73aca73469030db7abe",
+      "sha256": "930d26974a5cfe42108b8634157c6a6425edaf3bbe20c73aca73469030db7abe",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "autoIncluded": {
+        "at": "2026-11-22T12:17:22.688717+00:00",
+        "replaces": "85432d15a15e71a03192a27e73ee61b09cd68878561c9f5543ecb5dcb2933c67",
+        "replacesVersion": "1.1.0",
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/cxc.js",
+      "key": "cxc",
+      "name": "CxC",
+      "version": "1.0.4",
+      "minAppVersion": "1.6.3",
+      "repository": "LX7kM9/venera-configs",
+      "fileName": "cxc.js",
+      "sample": {
+        "comicId": "324/6343",
+        "epId": "c27179",
+        "keyword": "火影"
+      },
+      "officialKey": false,
+      "priority": 20,
+      "trackedBy": [
+        "LX7kM9/venera-configs",
+        "morpuct/venera-sources-hub"
+      ],
+      "id": "ea881a3a29c020802f63e20451bd74599b245e063b64decd752f2596caa7bde2",
+      "sha256": "ea881a3a29c020802f63e20451bd74599b245e063b64decd752f2596caa7bde2",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "autoIncluded": {
+        "at": "2026-11-22T12:17:22.688717+00:00",
+        "replaces": "d6f5fbaff90113ca450685f6e9fd0547f83bf3627c896edc9a83921a5f943a04",
+        "replacesVersion": "1.0.3",
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/manhuagui.js",
+      "key": "ManHuaGui",
+      "name": "漫画柜",
+      "version": "1.2.3",
+      "minAppVersion": "1.4.0",
+      "repository": "LX7kM9/venera-configs",
+      "fileName": "manhuagui.js",
+      "sample": {
+        "comicId": "20224",
+        "epId": "233848",
+        "keyword": "火影"
+      },
+      "officialKey": true,
+      "priority": 20,
+      "trackedBy": [
+        "LX7kM9/venera-configs"
+      ],
+      "id": "e285c5dd21c66dc3fdb3ee20e51b0d9fdee611350565ae40b96a9bc7e3b67934",
+      "sha256": "e285c5dd21c66dc3fdb3ee20e51b0d9fdee611350565ae40b96a9bc7e3b67934",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "autoIncluded": {
+        "at": "2026-11-22T12:17:22.688717+00:00",
+        "replaces": "a5bf6c633e0ce728361dded097424b829134d618128f72b571e42525e8950128",
+        "replacesVersion": "1.2.1",
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/hcomic.js",
+      "key": "hcomic",
+      "name": "H-Comic",
+      "version": "1.0.1",
+      "minAppVersion": "1.6.0",
+      "repository": "Magentadots/venera-configs",
+      "fileName": "hcomic.js",
+      "sample": {
+        "comicId": "690059|Cross dimensions surprise 3",
+        "epId": "nh|3164169|16",
+        "keyword": "火影"
+      },
+      "officialKey": true,
+      "priority": 10,
+      "trackedBy": [
+        "Magentadots/venera-configs"
+      ],
+      "id": "208abe75c6c84f45539f90d3bacdd1e066c0f74207acc8a7067f19c67c5c3c31",
+      "sha256": "208abe75c6c84f45539f90d3bacdd1e066c0f74207acc8a7067f19c67c5c3c31",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "autoIncluded": {
+        "at": "2026-11-22T12:17:22.688717+00:00",
+        "replaces": "0490859b636ca796a8a16b044724fed556bcfcfcdefae02e6b1e81fd6d8393d2",
+        "replacesVersion": "1.0.0",
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/nhentai.js",
+      "key": "nhentai",
+      "name": "nhentai",
+      "version": "1.1.1",
+      "minAppVersion": "1.0.0",
+      "repository": "Magentadots/venera-configs",
+      "fileName": "nhentai.js",
+      "sample": {
+        "comicId": "628150",
+        "keyword": "火影"
+      },
+      "officialKey": true,
+      "priority": 10,
+      "trackedBy": [
+        "Magentadots/venera-configs"
+      ],
+      "id": "e0c30482210941fb1783ff2caa95b72f206042c39cb582474afc872258c18c95",
+      "sha256": "e0c30482210941fb1783ff2caa95b72f206042c39cb582474afc872258c18c95",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "autoIncluded": {
+        "at": "2026-11-22T12:17:22.688717+00:00",
+        "replaces": "0f68757f89d493926cbf4c039c256d34365d0639aaa6996acbcde7c162257982",
+        "replacesVersion": "1.1.0",
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
     }
   ]
 }
