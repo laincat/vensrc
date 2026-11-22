@@ -1,5 +1,7 @@
 FROM node:22-bookworm
 WORKDIR /opt/patrol
+COPY patrol-worker.c ./
+RUN cc -Wall -Wextra -Werror -O2 patrol-worker.c -o /usr/local/bin/patrol-worker
 COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts --omit=dev && npm rebuild better-sqlite3
 COPY src ./src

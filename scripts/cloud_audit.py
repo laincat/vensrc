@@ -1,4 +1,5 @@
-"""GitHub Actions 漫画源巡检；只执行 catalog.json 中已审阅且哈希匹配的源码。"""
+"""GitHub Actions 漫画源巡检；执行 catalog.json 中已审阅且哈希匹配的源码，
+并在同一隔离容器里试跑上游候选。候选只有经发布阶段复核后才会写进清单。"""
 
 import argparse
 import concurrent.futures
@@ -12,6 +13,7 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
+import time
 from datetime import datetime, timezone, timedelta
 from urllib.error import HTTPError
 from urllib.parse import quote, unquote, urlparse
@@ -90,6 +92,8 @@ def request(url, api=False):
     with urlopen(Request(url, headers=headers), timeout=35) as response:
         if urlparse(response.url).hostname not in allowed:
             raise ValueError("响应跳转到了非允许域名")
+        if pinned(url) and unquote(response.url) != unquote(url):
+            raise ValueError("固定源码地址发生重定向")
         data = response.read(2 * 1024 * 1024 + 1)
     if len(data) > 2 * 1024 * 1024:
         raise ValueError("响应超过 2 MiB")
@@ -228,6 +232,26 @@ def validate_catalog(catalog):
         if item["key"] == "jm" and item["version"] == "1.9.2":
             assert item["settings"].get("dailyCheckInTask") is False
             assert item["sample"].get("comicId") and item["sample"].get("epId")
+    items = {item["id"]: item for item in catalog["sources"]}
+    for item in catalog["sources"]:
+        auto = item.get("autoIncluded")
+        if auto is not None:
+            required = {"at", "replaces", "replacesVersion", "runUrl", "cliCommit"}
+            assert isinstance(auto, dict) and required <= set(auto) <= required | {"stableAt"}
+            if auto["replaces"] is None:
+                assert auto["replacesVersion"] is None and "stableAt" not in auto
+            else:
+                assert re.fullmatch(r"[a-f0-9]{64}", auto["replaces"]) and auto["replaces"] != item["id"]
+            assert auto["replaces"] is None or version_parts(item["version"]) > version_parts(auto["replacesVersion"]), \
+                "自动收录只接受严格更高的版本"
+            if auto["replaces"] and not auto.get("stableAt"):
+                old = items.get(auto["replaces"])
+                assert old and old["key"] == item["key"], "自动收录的新构建稳定前必须保留被替换的旧构建"
+        if item.get("rollbackFor") is not None:
+            newer = items.get(item["rollbackFor"])
+            assert (newer and newer["key"] == item["key"]
+                    and (newer.get("autoIncluded") or {}).get("replaces") == item["id"]), \
+                "回退标记必须指向替换它的自动收录构建"
     return catalog
 
 
@@ -360,6 +384,13 @@ def setup_cli(work):
     dockerfile = ROOT / "scripts/patrol.Dockerfile"
     image = cli_image_tag(commit, metadata["patches"])
     run("docker", "build", "--pull", "--tag", image, "--file", str(dockerfile), str(directory))
+    run("docker", "run", "--rm", "--read-only", "--cap-drop=ALL", "--security-opt=no-new-privileges",
+        "--tmpfs", "/tmp:rw,noexec,nosuid", "--entrypoint", "sh", image, "-ec",
+        "mkdir /tmp/private /tmp/reports; touch /tmp/reports/report.json; "
+        "VENERA_RUNTIME_DATA_DIR=/tmp/private patrol-worker -e 'const fs=require(\"fs\"); "
+        "fs.writeFileSync(\"/tmp/private/probe\",\"ok\"); "
+        "for(const p of [\"/tmp/reports/report.json\",\"/tmp/reports/other.json\"]) { "
+        "try { fs.writeFileSync(p,\"probe\"); process.exit(2) } catch(e) { if(e.code!==\"EACCES\") throw e } }'")
     metadata["image"] = image
     metadata["nodeVersion"] = run(
         "docker", "run", "--rm", "--entrypoint", "node", image, "--version",
@@ -382,6 +413,8 @@ def discover(work):
     save(work / "artifact/official-exclusions.json", exclusions)
     known = {i["sha256"] for i in catalog["sources"]}
     samples = {i["key"]: i["sample"] for i in catalog["sources"]}
+    registered = registered_repositories(config)
+    hosts, outside = {}, []
     commits = {}
 
     def resolve(repo, ref=None):
@@ -438,18 +471,23 @@ def discover(work):
                     continue
                 if target.casefold() == OFFICIAL_REPOSITORY:
                     continue
+                if target.casefold() not in registered:
+                    # 已登记仓库的索引指向了未登记仓库：只列出，不下载、不执行。
+                    outside.append({"repository": text(target), "key": text(key), "name": text(name),
+                                    "fileName": text(Path(unquote(file)).name), "trackedBy": repo})
+                    continue
                 try:
                     ref = resolve(target, ref)
                     fixed = f"https://raw.githubusercontent.com/{target}/{ref}/{quote(unquote(file), safe='/')}"
+                    if pinned_repository(fixed) != target.casefold():
+                        raise ValueError("固定源码路径无效")
                     data = request(fixed)
                     digest = sha(data)
                     if digest in known:
                         continue
                     code = data.decode("utf-8-sig")
-                    for field in ("key", "name", "version", "minAppVersion"):
-                        match = re.search(r"(?m)^\s*" + field + r"""\s*=\s*["']([^"']+)["']""", code)
-                        if match:
-                            entry[field] = match.group(1)
+                    entry.update(declared_fields(code))
+                    hosts[digest] = source_surface(code)
                     name = entry.get("name", name)
                     actual_key = entry.get("key", key)
                     candidate = {"key": actual_key, "repository": target, "name": name,
@@ -483,6 +521,35 @@ def discover(work):
                     candidate["trackedBy"] = sorted(set(
                         updates[candidate["id"]]["trackedBy"] + candidate["trackedBy"]))
                 updates[candidate["id"]] = candidate
+    # 三条通道：只读文本判定，这一步不加载、不执行任何候选。
+    pending = list(updates.values())
+    chosen = set()
+    try:
+        builds, _ = host_check_targets(pending, catalog)
+        hosts.update(fetch_build_hosts(builds))
+        verdicts = classify_updates(pending, catalog, registered, exclusions, hosts_lookup(hosts))
+        for candidate in pending:
+            candidate.update(verdicts[candidate["id"]])
+            candidate["sample"] = trial_plan(candidate, catalog)[0]
+            candidate["state"] = (
+                "发现阶段只读取文本，未加载、未执行；通道：" + LANE_LABELS.get(candidate["lane"], "不执行")
+                + "（" + candidate["detail"] + "）")
+        results_path = ROOT / "data/candidate-results.json"
+        results = load(results_path).get("results", {}) if results_path.is_file() else {}
+        chosen = set(select_trials(pending, results, datetime.now(timezone.utc)))
+    except Exception as error:
+        # 候选归类出错不能拦住已审阅构建的巡检：本轮全部按待人工审阅处理，不试跑。
+        print(f"::warning::候选通道归类失败，本轮不试跑：{text(error)}", flush=True)
+        chosen = set()
+        for candidate in pending:
+            candidate.update(lane="trial", reason="hosts_unknown", detail="本轮通道归类失败，待下一轮",
+                             baseline=None, newHosts=[])
+    for candidate in pending:
+        candidate["trial"] = candidate["id"] in chosen
+    previous_path = ROOT / "data/pending-updates.json"
+    checks = {entry["repository"].casefold(): entry for entry in (
+        load(previous_path).get("repositoryChecks", []) if previous_path.is_file() else [])}
+    budget, repository_checks, filtered = REPOSITORY_CHECKS, [], []
     new_repositories, seen_repositories, search_errors = [], set(), []
     for query in SEARCH_QUERIES:
         try:
@@ -499,37 +566,57 @@ def discover(work):
                     or marker in (OFFICIAL_REPOSITORY, self_repository())):
                 continue
             seen_repositories.add(marker)
+            pushed = item.get("pushed_at") or ""
+            check = checks.get(marker)
+            if not check or check.get("pushedAt") != pushed:
+                check = None
+                if budget > 0:
+                    budget -= 1
+                    try:
+                        relevant, reason = repository_relevance(name)
+                        check = {"repository": name, "pushedAt": pushed,
+                                 "relevant": relevant, "reason": reason}
+                    except Exception:
+                        # 判断不了就保持现状，照常列出。
+                        check = None
+            if check:
+                repository_checks.append(check)
+                if not check["relevant"]:
+                    filtered.append({"repository": name, "reason": check["reason"]})
+                    continue
             new_repositories.append({"repository": name,
                                      "description": text(item.get("description") or ""),
                                      "foundBy": query})
     search_error = "；".join(search_errors)
     save(work / "artifact/discovery.json", {
         "schemaVersion": 1, "checkedAt": datetime.now(timezone.utc).isoformat(),
-        "updates": list(updates.values()), "repositories": repositories,
+        "updates": pending, "repositories": repositories,
         "newRepositories": new_repositories, "searchError": search_error,
+        "unregistered": sorted({json.dumps(entry, ensure_ascii=False, sort_keys=True): entry
+                                for entry in outside}.values(),
+                               key=lambda entry: (entry["repository"], entry["fileName"])),
+        "filteredRepositories": filtered, "repositoryChecks": repository_checks,
+        "trial": {"limit": TRIAL_LIMIT, "selected": len(chosen)},
     })
-    print(f"上游检测完成：{len(repositories)} 个仓库，{len(updates)} 个待审阅源码构建。")
+    print(f"上游检测完成：{len(repositories)} 个仓库，{len(updates)} 个待审阅源码构建；"
+          f"自动收录通道 {sum(i['lane'] == 'auto' for i in pending)} 个，本轮试跑 {len(chosen)} 个。")
 
 
-def collect_samples(source, work):
-    trace = Path(source.get("traceFile", ""))
-    try:
-        # 容器内只可能写入 /work；不读取报告提供的任意本机路径。
-        relative = trace.relative_to("/work")
-    except ValueError:
-        return {}
-    file = work / relative
+def collect_samples(source, report_dir):
+    file = report_dir / Path(source.get("traceFile") or "").name
     sample = {}
-    if not file.is_file():
-        return sample
+    sites = set()
+    if not file.name.endswith(".trace.jsonl") or not file.is_file():
+        return sample, sites
     for line in file.read_text(encoding="utf-8-sig").splitlines():
         event = json.loads(line)
+        collect_reading_site(event, sites)
         args = event.get("args", [])
         if event.get("event") == "capability.call" and event.get("stage") == "comic.loadEp" and len(args) >= 2:
             sample["comicId"] = args[0]
             if args[1] is not None:
                 sample["epId"] = args[1]
-    return sample
+    return sample, sites
 
 
 def patrol(work):
@@ -610,17 +697,8 @@ def patrol(work):
         save(output / f"{number}.index.json", [
             {"key": i["key"], "fileName": f"/sources/{i['id']}.js"} for i in batch])
         save(output / f"{number}.config.json", config)
-        command = [
-            "docker", "run", "--rm", "--read-only", "--cap-drop=ALL",
-            "--security-opt=no-new-privileges", "--pids-limit=256", "--memory=3g", "--cpus=2",
-            "--user", f"{os.getuid()}:{os.getgid()}", "--env", "HOME=/tmp",
-            "--tmpfs", "/tmp:rw,noexec,nosuid,size=1024m",
-            "--mount", f"type=bind,source={sources_dir},target=/sources,readonly",
-            "--mount", f"type=bind,source={output},target=/work",
-        ]
-        if batch[0].get("runtimeProfile"):
-            command += ["--env", f"VENERA_CLIENT_PROFILE={batch[0]['runtimeProfile']}"]
-        command += [metadata["image"], "check-all", "--config", f"/work/{number}.config.json", "--no-env"]
+        command = container_command(metadata, sources_dir, output, number,
+                                    batch[0].get("runtimeProfile"))
         print(f"第 {number + 1}/{len(batches)} 批：巡检 {len(batch)} 个已审阅构建。", flush=True)
         result = subprocess.run(command, timeout=max(
             300, len(batch) * (policy["sourceTimeoutMs"] // 1000 + 5)), check=False)
@@ -637,9 +715,11 @@ def patrol(work):
                 raise ValueError("报告的执行源码哈希与下载字节不一致")
             if source["key"] != item["key"]:
                 raise ValueError("实际 runtime key 与审阅清单不一致")
-            selected = collect_samples(source, output)
+            selected, reading_sites = collect_samples(source, reports[0].parent)
             record = {
                 "id": item["id"], "inputs": item["effectiveSample"],
+                "accountCapabilities": account_capabilities(source),
+                "readingSites": sorted(reading_sites),
                 "sample": {**selected, **item["effectiveSample"]},
                 "runtimeProfile": item.get("runtimeProfile"),
                 "policy": policy,
@@ -647,9 +727,16 @@ def patrol(work):
                     "key", "name", "version", "sourceSha256", "status", "startedAt", "stages")},
             }
             (client_records if item.get("verificationOnly") else records).append(record)
+    try:
+        candidate_records = trial_candidates(work, catalog, metadata, sources_dir)
+    except Exception as error:
+        # 候选是未审阅代码，它的任何问题都不能影响已审阅构建的发布。
+        print(f"候选试跑整体跳过：{text(error)}", flush=True)
+        candidate_records = []
     payload = {"schemaVersion": 1, "catalogSha256": sha((ROOT / "monitor/catalog.json").read_bytes()),
                "checkedAt": datetime.now(timezone.utc).isoformat(), "cli": metadata,
                "policy": POLICY, "records": records, "clientRecords": client_records,
+               "candidateRecords": candidate_records,
                "officialExclusions": official_policy(
                    snapshot=load(work / "artifact/official-exclusions.json"))}
     # 一份持久结构化证据；原始 trace 不上传、不进入带写权限的发布任务。
@@ -1052,26 +1139,43 @@ def publish_discovery(discovery, destination):
                  "repositories": [i for i in discovery["repositories"]
                                   if i["repository"].casefold() != OFFICIAL_REPOSITORY],
                  "newRepositories": [i for i in discovery["newRepositories"]
-                                     if i["repository"].casefold() != OFFICIAL_REPOSITORY]}
+                                     if i["repository"].casefold() != OFFICIAL_REPOSITORY],
+                 "unregistered": [i for i in discovery.get("unregistered", [])
+                                  if i["repository"].casefold() != OFFICIAL_REPOSITORY]}
     for item in discovery["updates"]:
         assert pinned(item["url"]) and item["id"] == item["sha256"]
         assert re.fullmatch(r"[a-f0-9]{64}", item["sha256"])
+        assert item.get("lane", "trial") in ("auto", "trial", "listed")
+    lanes = [item.get("lane", "trial") for item in discovery["updates"]]
     save(destination / "data/pending-updates.json", discovery)
     lines = [
         "# 上游变更与待审阅候选", "",
         f"检查时间：{discovery['checkedAt']}（UTC）。",
         f"检查 {len(discovery['repositories'])} 个已登记仓库；"
         f"发现 {len(discovery['updates'])} 个未审阅源码构建。", "",
-        "新代码只下载计算哈希及读取声明字段，不通过 list、init 或巡检执行。"
-        "维护者在 GitHub 审阅固定提交的 JS 后，把候选加入 monitor/catalog.json；"
-        "后续 Actions 才会执行巡检并按主／扩展标准自动收录。", "",
-        "候选排除官方原版、转引，以及未严格高于官方版本的社区同 key 源；版本更高也必须审阅、巡检后才可收录。", "",
-        "## 源码变动", "", "| 名称 | key | 版本 | 仓库 | 最低应用版本 | SHA-256 |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "发现阶段只下载计算哈希、读取声明字段和主机名，不通过 list、init 或巡检执行。待审构建分三条通道：", "",
+        f"- **自动收录**（{lanes.count('auto')} 个）：已登记仓库的新 key 或已有 key 的严格升级；"
+        "复核来源、排除规则、重复源和两端同轮匿名阅读后写入清单。",
+        f"- **试跑但不收录**（{lanes.count('trial')} 个）：新增目的地、凭据能力或重复来源等情况照常隔离试跑，"
+        "结果见 [候选试跑短名单](CANDIDATES.md)，收录仍需人工审阅。",
+        f"- **不执行**（{len(discovery['unregistered'])} 个文件）：未登记仓库只列出，不下载、不执行。", "",
+        f"每轮最多试跑 {TRIAL_LIMIT} 个候选，自动收录通道优先；本轮安排 "
+        f"{sum(bool(item.get('trial')) for item in discovery['updates'])} 个。", "",
+        "候选排除官方原版、转引，以及未严格高于官方版本的社区同 key 源。", "",
+        "## 源码变动", "", "| 名称 | key | 版本 | 仓库 | 最低应用版本 | 通道 | 说明 | SHA-256 |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for item in discovery["updates"]:
-        lines.append("| " + " | ".join(text(item.get(key, "")) for key in
-                     ("name", "key", "version", "repository", "minAppVersion", "sha256")) + " |")
+        lines.append("| " + " | ".join(text(value) for value in (
+            item.get("name", ""), item.get("key", ""), item.get("version", ""),
+            item.get("repository", ""), item.get("minAppVersion", ""),
+            LANE_LABELS.get(item.get("lane", "trial"), ""), item.get("detail", ""),
+            item["sha256"])) + " |")
+    lines += ["", "## 未登记仓库的文件（不下载、不执行）", "",
+              "已登记仓库的索引指向了这些未登记仓库。确认可信后在 monitor/upstreams.json 登记，才会进入前两条通道。", ""]
+    for item in discovery["unregistered"]:
+        lines.append(f"- `{text(item['repository'])}`：{text(item['name'])}（key `{text(item['key'])}`，"
+                     f"`{text(item['fileName'])}`），来自 `{text(item['trackedBy'])}` 的索引")
     lines += ["", "## 索引获取问题", ""]
     for repo in discovery["repositories"]:
         if repo["errors"]:
@@ -1080,9 +1184,950 @@ def publish_discovery(discovery, destination):
               "仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。", ""]
     for item in discovery["newRepositories"]:
         lines.append(f"- `{text(item['repository'])}`：{text(item['description'])}")
+    if discovery.get("filteredRepositories"):
+        lines += ["", f"另有 {len(discovery['filteredRepositories'])} 个搜索结果既没有漫画源索引 index.json，"
+                  "也没有 ComicSource 脚本，已从名单滤掉；无法判断的仓库照常列出。"]
     if discovery["searchError"]:
         lines.append("仓库搜索未完整完成：" + text(discovery["searchError"]))
     write_report(destination / "reports/UPDATES.md", lines + [""])
+    return discovery
+
+
+# —— 上游更新分三条通道：自动收录、试跑但不收录、不执行 ——
+TRIAL_LIMIT = 40
+TRIAL_BUDGET_SECONDS = 45 * 60
+TRIAL_PROFILES = ("venerax", "venera-next")
+# 试跑过的候选隔多久可以重试：自动通道 3 天，仅试跑通道 14 天。
+RETRY_DAYS = {"auto": 3, "trial": 14}
+# 自动收录的新构建连续通过满 7 天且不少于 24 轮才算稳定；此前必须保留被替换的旧构建。
+STABLE_DAYS = 7
+STABLE_PASSES = 24
+# 与「同站不同写法」的去重规则一致：www.x.com、m.x.com 视为同一站点。
+SAME_SITE_PREFIXES = ("www", "m")
+SELF_MAINTAINED = "laincat/vensrc"
+DEFAULT_SAMPLE = {"keyword": "火影"}
+REPOSITORY_CHECKS = 30
+LANE_LABELS = {"auto": "自动收录", "trial": "试跑但不收录", "listed": "不执行"}
+REASON_LABELS = {
+    "auto": "满足自动收录条件", "credentials": "新增凭据能力", "new_hosts": "新增主机名", "hosts_unknown": "主机名无法核对",
+    "new_key": "清单里没有的新 key", "self_maintained": "本仓库自建维护的源",
+    "version": "版本未严格高于清单现有版本", "superseded": "同 key 有更高版本的候选",
+    "ambiguous": "同 key 同版本有多个不同构建", "unregistered": "仓库未登记",
+    "excluded": "命中官方排除或绅士漫画规则",
+}
+OUTCOME_LABELS = {"queued": "两端通过，已排入下一轮写入清单", "passed": "两端通过",
+                  "failed": "未通过", "error": "试跑未完成", "rejected": "写入前复核未通过"}
+HOST_LABEL = r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?"
+HOSTNAME = re.compile(rf"{HOST_LABEL}(?:\.{HOST_LABEL})+")
+URL_AUTHORITY = re.compile(r"""(?i)(?:https?|wss?):\\?/\\?/([^\s/"'`\\?#<>(),;]+)""")
+QUOTED_LITERAL = re.compile(r"""(["'`])([A-Za-z0-9.-]{4,253})\1""")
+ESCAPED_CHARACTER = re.compile(r"\\x([0-9a-fA-F]{2})|\\u([0-9a-fA-F]{4})")
+NOT_HOST_SUFFIXES = frozenset(
+    "js mjs ts json html htm php asp aspx jsp css txt xml md svg ico jpg jpeg png webp gif avif bmp "
+    "mp4 m3u8 zip".split())
+# 形如 div.title、img.lazy 的字面量是页面选择器，不是主机名。
+SELECTOR_TAGS = frozenset("a b i p div span img li ul ol dl dt dd td tr th table tbody h1 h2 h3 h4 h5 h6 "
+                          "em strong small font form input button label select option section article "
+                          "header footer nav main aside figure picture source video iframe script".split())
+
+
+def host_name(value):
+    value = value.strip().lower().rsplit("@", 1)[-1]
+    value = re.sub(r":\d*$", "", value).rstrip(".")
+    return value if HOSTNAME.fullmatch(value) else None
+
+
+def source_hosts(code):
+    """源码文本里出现的网络主机名。只做静态读取，不加载、不执行。
+
+    覆盖 http(s)/ws(s) 地址和整段就是小写域名的字符串字面量；先还原 \\xNN、\\uNNNN 转义。
+    含大写的字面量（JSON.parse 这类标识符）和页面选择器（div.title）不算主机名。
+    运行时拼接或解码出来的主机名静态看不到，这是本检查已知的边界。
+    """
+    code = ESCAPED_CHARACTER.sub(lambda m: chr(int(m.group(1) or m.group(2), 16)), code)
+    hosts = set()
+    for raw in URL_AUTHORITY.findall(code):
+        if "${" in raw:
+            # 模板地址只认结尾写死的部分，例如 https://${sub}.example.com。
+            raw = raw.rsplit("}", 1)[-1].lstrip(".")
+        hosts.add(host_name(raw))
+    for _, raw in QUOTED_LITERAL.findall(code):
+        name = host_name(raw)
+        if not name or raw != raw.lower():
+            continue
+        labels = name.split(".")
+        if len(labels) == 2 and labels[0] in SELECTOR_TAGS:
+            continue
+        if all(label.isdigit() for label in labels):
+            if len(labels) == 4:
+                hosts.add(name)
+        elif labels[-1].isalpha() and 2 <= len(labels[-1]) <= 24 and labels[-1] not in NOT_HOST_SUFFIXES:
+            hosts.add(name)
+    hosts.discard(None)
+    return hosts
+
+
+def site_key(host):
+    labels = host.split(".")
+    return ".".join(labels[1:]) if len(labels) > 2 and labels[0] in SAME_SITE_PREFIXES else host
+
+
+def new_hosts(candidate_hosts, known_hosts):
+    known = {site_key(host) for host in known_hosts}
+    return sorted(host for host in candidate_hosts if site_key(host) not in known)
+
+
+def declared_fields(code):
+    fields = {}
+    for field in ("key", "name", "version", "minAppVersion"):
+        match = re.search(r"(?m)^\s*" + field + r"""\s*=\s*["']([^"']+)["']""", code)
+        if match:
+            fields[field] = match.group(1)
+    return fields
+
+
+def version_newer(candidate, current):
+    """严格更高才算；任何一边不是三段数字都视为无法比较。"""
+    try:
+        return version_parts(candidate) > version_parts(current)
+    except ValueError:
+        return False
+
+
+def registered_repositories(config):
+    return {repo.casefold() for repo in config["repositories"]} - {OFFICIAL_REPOSITORY}
+
+
+def pinned_repository(url):
+    if not pinned(url):
+        return None
+    parsed = urlparse(url)
+    parts = parsed.path[1:].split("/")
+    if (parsed.query or parsed.fragment or not re.fullmatch(r"[\w.-]+/[\w.-]+", "/".join(parts[:2]))
+            or any(unquote(part) in ("", ".", "..") or re.search(r"[/\\%]", unquote(part)) for part in parts)):
+        return None
+    return "/".join(parts[:2]).casefold()
+
+
+def source_surface(code):
+    credentials = {token.casefold() for token in re.findall(
+        r"\b(account|login\w*|getCookies?|setCookies?|deleteCookies?|authorization|password|"
+        r"credentials?|accessToken|refreshToken|browserToken|cookie)\b", code, re.I)}
+    origins = re.findall(r'''(?im)^\s*(?:(?:const|let|static)\s+)?(?:base_?url|base_?domain|domain|host|homepage)\s*[:=]\s*["'`](?:https?://)?([a-z0-9.-]+)(?=[:/"'`])''', code)
+    return source_hosts(code), credentials, {site_key(host.lower()) for host in origins if host_name(host)}
+
+
+def baseline_build(builds):
+    """样本、设置和巡检预算沿用同 key 版本最高的现有构建。"""
+    def rank(item):
+        try:
+            parts = version_parts(item["version"])
+        except ValueError:
+            parts = ()
+        return parts, item.get("priority", 0), item["id"]
+    return max(builds, key=rank)
+
+
+def candidate_gate(candidate, catalog, registered, exclusions, hosts_of):
+    """单个候选的通道判定；hosts_of(构建) 返回该构建源码里的主机名集合。"""
+    def verdict(lane, reason, detail="", baseline=None, hosts=()):
+        return {"lane": lane, "reason": reason, "detail": detail or REASON_LABELS[reason],
+                "baseline": ({"id": baseline["id"], "version": baseline["version"],
+                              "repository": baseline.get("repository", "")} if baseline else None),
+                "newHosts": list(hosts)}
+
+    repository = str(candidate.get("repository", ""))
+    url = candidate.get("url", "")
+    if (repository.casefold() not in registered or not isinstance(url, str)
+            or pinned_repository(url) != repository.casefold()):
+        return verdict("listed", "unregistered")
+    if excluded_wnacg(candidate) or excluded_official(candidate, exclusions):
+        return verdict("excluded", "excluded")
+    builds = [item for item in catalog["sources"] if item["key"] == candidate.get("key")]
+    if not builds:
+        try:
+            version_parts(candidate.get("version"))
+            hosts, permissions, sites = hosts_of(candidate)
+        except Exception as error:
+            return verdict("trial", "new_key", f"版本或源码待核对：{text(error)}")
+        aliases = {"copy_manga": "copy_manga_multi_accounts", "Komiic": "komiic_multi"}
+        if any(item["name"].strip().casefold() == candidate["name"].strip().casefold()
+               or item["key"] == aliases.get(candidate["key"]) for item in catalog["sources"]):
+            return verdict("trial", "ambiguous", "与清单现有源重名或属于已合并的 key")
+        if permissions:
+            return verdict("trial", "credentials", "新 key 涉及凭据能力：" + "、".join(sorted(permissions)))
+        if sites:
+            try:
+                if any(sites & hosts_of(item)[2] for item in catalog["sources"]):
+                    return verdict("trial", "ambiguous", "不同 key 指向清单中已有的站点，待核对分区或语言版本")
+            except Exception as error:
+                return verdict("trial", "hosts_unknown", f"同站去重未完成：{text(error)}")
+        return verdict("auto", "new_key", "登记仓库的新 key，使用匿名样本", hosts=sorted(hosts))
+    baseline = baseline_build(builds)
+    if any(item.get("repository") == SELF_MAINTAINED for item in builds):
+        return verdict("trial", "self_maintained", "本仓库自建维护的源，不自动替换", baseline)
+    version = candidate.get("version")
+    if not all(version_newer(version, item["version"]) for item in builds):
+        try:
+            version_parts(version)
+            detail = f"版本 {version} 未严格高于清单现有版本 {baseline['version']}"
+        except ValueError:
+            detail = f"版本 {text(version)} 不是三段数字，无法比较"
+        return verdict("trial", "version", detail, baseline)
+    try:
+        known, permissions, _ = hosts_of(baseline)
+        hosts, requested, _ = hosts_of(candidate)
+        added = new_hosts(hosts, known)
+        if requested - permissions:
+            return verdict("trial", "credentials", "新增凭据能力：" + "、".join(sorted(requested - permissions)), baseline, added)
+    except Exception as error:
+        return verdict("trial", "hosts_unknown", f"主机名无法核对：{text(error)}", baseline)
+    if added:
+        return verdict("trial", "new_hosts", "新增主机名：" + "、".join(added), baseline, added)
+    return verdict("auto", "auto", f"{baseline['version']} → {version}，未新增主机名", baseline)
+
+
+def classify_updates(updates, catalog, registered, exclusions, hosts_of):
+    """全部待审构建的通道判定。同一个 key 每次只放一个候选进自动通道。"""
+    verdicts = {item["id"]: candidate_gate(item, catalog, registered, exclusions, hosts_of)
+                for item in updates}
+    groups = {}
+    for item in updates:
+        if verdicts[item["id"]]["lane"] == "auto":
+            groups.setdefault(item["key"], []).append(item)
+    for group in groups.values():
+        top = max(version_parts(item["version"]) for item in group)
+        leaders = [item for item in group if version_parts(item["version"]) == top]
+        if len(leaders) > 1:
+            # 同版本不同字节：优先与现有构建同仓库的那一份，分不出唯一一份就交回人工选择。
+            home = (verdicts[leaders[0]["id"]]["baseline"] or {}).get("repository", "").casefold()
+            same = [item for item in leaders if item["repository"].casefold() == home]
+            if len(same) != 1:
+                # 其次看自用仓库优先级，与订阅选择构建时的顺序一致。
+                best = max(item.get("priority", 0) for item in leaders)
+                same = [item for item in leaders if item.get("priority", 0) == best]
+            leaders = same if len(same) == 1 else []
+        chosen = {item["id"] for item in leaders}
+        for item in group:
+            if item["id"] in chosen:
+                continue
+            lower = version_parts(item["version"]) < top
+            verdicts[item["id"]] = {
+                **verdicts[item["id"]], "lane": "trial",
+                "reason": "superseded" if lower else "ambiguous",
+                "detail": (f"同 key 有更高版本的候选 {'.'.join(map(str, top))}" if lower
+                           else "同 key 同版本有多个不同构建，需人工选择")}
+    return verdicts
+
+
+def select_trials(updates, results, now, limit=TRIAL_LIMIT):
+    """本轮试跑名单：自动通道优先，其次是没试过的，最后才重试到期的旧结果。"""
+    order = {"auto": 0, "new_hosts": 1, "hosts_unknown": 1, "new_key": 2}
+    queue = []
+    for item in updates:
+        if item.get("lane") not in ("auto", "trial"):
+            continue
+        previous = results.get(item["id"])
+        if previous:
+            checked = datetime.fromisoformat(previous["checkedAt"])
+            if now - checked < timedelta(days=RETRY_DAYS[item["lane"]]):
+                continue
+            stage = (1, order.get(item.get("reason"), 3), previous["checkedAt"])
+        else:
+            stage = (0, order.get(item.get("reason"), 3), "")
+        try:
+            version = version_parts(item.get("version"))
+        except ValueError:
+            version = (0, 0, 0)
+        queue.append((item["lane"] != "auto", stage, -item.get("priority", 0), str(item["key"]),
+                      tuple(-part for part in version), item["id"]))
+    return [entry[-1] for entry in sorted(queue)[:limit]]
+
+
+def repository_relevance(repository):
+    """只读文件列表和文本判断搜索到的仓库是不是漫画源仓库；不执行任何内容。
+
+    返回 (是否相关, 说明)。判断不了就抛错，由调用方保持原样列出。
+    """
+    tree = json.loads(request(
+        f"https://api.github.com/repos/{repository}/git/trees/HEAD?recursive=1", api=True))
+    if tree.get("truncated"):
+        raise ValueError("文件列表不完整")
+    paths = [entry["path"] for entry in tree["tree"]
+             if entry.get("type") == "blob" and isinstance(entry.get("path"), str)]
+    if "index.json" in paths or any(path.endswith(".js") for path in paths):
+        return True, "文件列表含索引或脚本线索"
+    return False, "文件列表中没有 index.json 或 JavaScript"
+
+
+def trial_plan(candidate, catalog):
+    """候选试跑的样本、设置和预算：已有 key 沿用现有构建，新 key 用默认关键词。"""
+    builds = [item for item in catalog["sources"] if item["key"] == candidate["key"]]
+    if not builds:
+        return dict(DEFAULT_SAMPLE), {}, dict(POLICY)
+    baseline = baseline_build(builds)
+    return baseline["sample"], baseline.get("settings", {}), execution_policy(baseline)
+
+
+def container_command(metadata, sources_dir, output, number, profile=None, name=None):
+    """已审阅构建和候选共用同一套隔离参数：只读根、去能力、无 GitHub 凭据。"""
+    command = [
+        "docker", "run", "--rm", "--read-only", "--cap-drop=ALL",
+        "--security-opt=no-new-privileges", "--pids-limit=256", "--memory=3g", "--cpus=2",
+        "--user", f"{os.getuid()}:{os.getgid()}", "--env", "HOME=/tmp",
+        "--env", "PATROL_WORKER=/usr/local/bin/patrol-worker", "--tmpfs", "/tmp:rw,noexec,nosuid,size=1024m",
+        "--mount", f"type=bind,source={sources_dir},target=/sources,readonly",
+        "--mount", f"type=bind,source={output},target=/work",
+    ]
+    if name:
+        command += ["--name", name]
+    if profile:
+        command += ["--env", f"VENERA_CLIENT_PROFILE={profile}"]
+    return command + [metadata["image"], "check-all", "--config", f"/work/{number}.config.json", "--no-env"]
+
+
+def trial_candidates(work, catalog, metadata, sources_dir, budget=TRIAL_BUDGET_SECONDS):
+    """在同一隔离容器里试跑候选。候选出的任何问题都只记在候选自己身上，不影响已审阅构建的结果。"""
+    path = work / "artifact/discovery.json"
+    if not path.is_file():
+        return []
+    deadline = time.monotonic() + budget
+    known = {item["sha256"] for item in catalog["sources"]}
+    registered = registered_repositories(load(ROOT / "monitor/upstreams.json"))
+    selected = sorted((item for item in load(path)["updates"] if item.get("trial")),
+                      key=lambda item: item.get("lane") != "auto")[:TRIAL_LIMIT]
+    records = []
+    number = 0
+    for item in selected:
+        if deadline - time.monotonic() < 120:
+            break
+        done = set()
+        try:
+            if not (isinstance(item.get("id"), str) and item["id"] == item.get("sha256")
+                    and re.fullmatch(r"[a-f0-9]{64}", item["id"]) and item["id"] not in known
+                    and pinned_repository(item.get("url", "")) == item["repository"].casefold() in registered):
+                raise ValueError("候选不是固定提交地址上的未入库构建")
+            data = request(item["url"])
+            if sha(data) != item["sha256"]:
+                raise ValueError("源码 SHA-256 与发现阶段不一致")
+            (sources_dir / f"{item['id']}.js").write_bytes(data)
+            sample, settings, policy = trial_plan(item, catalog)
+            for profile in TRIAL_PROFILES:
+                remaining = deadline - time.monotonic()
+                if remaining < 120:
+                    raise TimeoutError("本轮试跑时间预算已用完，留到下一轮")
+                latest = run("git", "ls-remote", "https://github.com/Gandum2077/venera-patrol-cli.git",
+                             "HEAD", capture_output=True, text=True).stdout.split()[0]
+                if latest != metadata["commit"]:
+                    raise TimeoutError("试跑前 CLI 已更新，留到下一轮")
+                name = f"c{number}"
+                number += 1
+                output = work / "trials" / item["id"] / profile
+                output.mkdir(parents=True, exist_ok=False)
+                save(output / f"{name}.index.json", [
+                    {"key": item["key"], "fileName": f"/sources/{item['id']}.js"}])
+                save(output / f"{name}.config.json", {
+                    "version": 1, "configPaths": [f"/work/{name}.index.json"],
+                    "output": f"/work/reports/{name}", "defaults": policy,
+                    "sources": {item["key"]: {"inputs": sample,
+                                              "settings": settings}}})
+                container = f"vensrc-trial-{os.getpid()}-{name}"
+                print(f"候选试跑 {name}：{profile}，{text(item['key'])}。", flush=True)
+                try:
+                    result = subprocess.run(
+                        container_command(metadata, sources_dir, output, name, profile, container),
+                        timeout=min(remaining, policy["sourceTimeoutMs"] // 1000 + 30),
+                        check=False)
+                except subprocess.TimeoutExpired:
+                    subprocess.run(["docker", "kill", container], check=False, capture_output=True)
+                    raise ValueError("试跑超时，已终止容器")
+                if result.returncode not in (0, 1):
+                    raise ValueError(f"试跑进程异常退出：{result.returncode}")
+                reports = list((output / f"reports/{name}").glob("*/report.json"))
+                if len(reports) != 1:
+                    raise ValueError("试跑没有生成唯一报告")
+                report = load(reports[0])
+                if report.get("schemaVersion") != 1 or len(report["sources"]) != 1:
+                    raise ValueError("试跑报告格式或源数量不符合当前契约")
+                source, = report["sources"]
+                if source.get("sourceSha256") and source["sourceSha256"] != item["sha256"]:
+                    raise ValueError("报告的执行源码哈希与下载字节不一致")
+                records.append({
+                    "id": item["id"], "runtimeProfile": profile, "inputs": sample,
+                    "trialRun": os.environ["AUDIT_RUN_URL"],
+                    **(trial_trace(reports[0].parent) if core(source) else {}),
+                    "accountCapabilities": account_capabilities(source),
+                    "policy": policy,
+                    "source": {key: source.get(key) for key in (
+                        "key", "name", "version", "sourceSha256", "status", "startedAt", "stages")}})
+                done.add(profile)
+        except TimeoutError as error:
+            # 没跑到的候选不留记录，下一轮照常排队；已跑完的那一端单独不构成结论，同样重排。
+            print(f"候选试跑停止：{text(error)}", flush=True)
+            records = [record for record in records
+                       if record.get("id") != item["id"]]
+            break
+        except Exception as error:
+            print(f"候选试跑中断：{text(error)}", flush=True)
+            records += [{"id": item["id"], "runtimeProfile": profile, "error": text(error)}
+                        for profile in TRIAL_PROFILES if profile not in done]
+    return records
+
+
+def account_capabilities(source):
+    return sorted({cap["path"] for cap in source["capabilities"] if cap["path"].startswith("account.")})
+
+
+def collect_reading_site(event, sites):
+    if event.get("event") == "http.response" and event.get("stage") == "comic.loadInfo":
+        host = urlparse(event.get("finalUrl") or event.get("url") or "").hostname
+        if host:
+            sites.add(site_key(host))
+
+
+def trial_trace(report_dir):
+    trace, = report_dir.glob("*.trace.jsonl")
+    hosts = set()
+    sites = set()
+    sample = {}
+    with trace.open(encoding="utf-8") as stream:
+        for line in stream:
+            event = json.loads(line)
+            collect_reading_site(event, sites)
+            if event.get("event") == "trace.truncated":
+                raise ValueError("候选网络记录被截断")
+            if event.get("event") == "capability.call" and event.get("stage") == "comic.loadEp":
+                args = event.get("args", [])
+                if args:
+                    sample = {key: value for key, value in zip(("comicId", "epId"), args)
+                              if isinstance(value, (int, str)) and str(value)}
+            if event.get("event") in ("http.request", "http.response"):
+                for field in ("url", "finalUrl"):
+                    if event.get(field):
+                        host = urlparse(event[field]).hostname
+                        if not host:
+                            raise ValueError("候选请求地址无法核对")
+                        hosts.add(host)
+    return {"networkHosts": sorted(hosts), "readingSites": sorted(sites), "readSample": sample}
+
+
+def fetch_build_hosts(items, workers=6):
+    """并发下载固定地址上的构建并读取主机名；返回 {sha256: 主机名集合或异常}。只读文本，不执行。"""
+    def one(item):
+        try:
+            data = request(item["url"])
+            if sha(data) != item["sha256"]:
+                raise ValueError("源码 SHA-256 与记录不一致")
+            return item["sha256"], source_surface(data.decode("utf-8-sig"))
+        except Exception as error:
+            return item["sha256"], error
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
+        return dict(pool.map(one, items))
+
+
+def hosts_lookup(table):
+    def hosts_of(item):
+        value = table.get(item["sha256"])
+        if value is None:
+            raise ValueError("没有取得源码")
+        if isinstance(value, Exception):
+            raise value
+        return value
+    return hosts_of
+
+
+def host_check_targets(updates, catalog):
+    """只有通过了版本条件的候选才需要比主机名；返回 (要读的现有构建, 要读的候选)。"""
+    by_key = {}
+    for item in catalog["sources"]:
+        by_key.setdefault(item["key"], []).append(item)
+    builds, candidates = {}, []
+    for update in updates:
+        existing = by_key.get(update.get("key"), [])
+        if all(version_newer(update.get("version"), item["version"]) for item in existing):
+            candidates.append(update)
+            builds.update({item["id"]: item for item in existing})
+            if not existing:
+                builds.update({item["id"]: item for item in catalog["sources"]})
+    return list(builds.values()), candidates
+
+
+def core_break(source):
+    """核心阅读链路断在哪一步；通过时返回 None。"""
+    if core(source):
+        return None
+    stages = source.get("stages") or []
+    passed = {stage["path"] for stage in stages if stage["status"] in ("passed", "recovered")}
+
+    def entry(path):
+        return path.startswith(("search.", "explore[", "categoryComics.")) and ".load" in path
+
+    for step in ("source.load", None, "comic.loadInfo", "comic.loadEp", "image.download", "image.decode"):
+        if step is None:
+            if any(entry(path) for path in passed):
+                continue
+            found = [stage for stage in stages if entry(stage["path"])]
+        else:
+            if step in passed:
+                continue
+            found = [stage for stage in stages if stage["path"] == step]
+        stage = next((item for item in found if item["status"] == "failed"), found[0] if found else None)
+        if stage is None:
+            return {"breakAt": step or "入口（搜索／发现／分类）", "category": "未执行", "reason": ""}
+        return {"breakAt": stage["path"],
+                "category": CATEGORIES.get(stage.get("category"), stage.get("category") or
+                                           LABELS.get(stage["status"], stage["status"])),
+                "reason": reason_zh(stage.get("reason", ""))}
+
+
+def trial_summary(record):
+    if not record or not isinstance(record.get("source"), dict):
+        return {"core": False, "status": "error", "breakAt": "", "category": "试跑未完成",
+                "reason": text((record or {}).get("error", "没有试跑记录"))}
+    broken = core_break(record["source"])
+    return {"core": broken is None, "status": text(record["source"].get("status")),
+            **(broken or {"breakAt": "", "category": "", "reason": ""})}
+
+
+def slim_record(record):
+    """留给下一轮写入前复核的记录：阶段状态和客户端身份，不带返回正文。"""
+    source = record["source"]
+    stages = []
+    for stage in source["stages"]:
+        kept = {name: stage[name] for name in ("path", "status", "category") if stage.get(name) is not None}
+        if stage.get("reason"):
+            kept["reason"] = text(stage["reason"])
+        if stage["path"] == "runtime.load" and "output" in stage:
+            kept["output"] = stage["output"]
+        stages.append(kept)
+    return {"id": record["id"], "runtimeProfile": record["runtimeProfile"], "inputs": record["inputs"],
+            "trialRun": record["trialRun"], "networkHosts": record["networkHosts"],
+            "accountCapabilities": record["accountCapabilities"], "readSample": record["readSample"],
+            "readingSites": record["readingSites"],
+            "policy": record.get("policy"),
+            "source": {**{name: source.get(name) for name in (
+                "key", "name", "version", "sourceSha256", "status", "startedAt")}, "stages": stages}}
+
+
+def catalog_entry(candidate, fields, baseline, catalog, registered):
+    """自动收录的新清单条目：来源取自已核对的候选，样本、设置和预算沿用同 key 现有构建。"""
+    baseline = baseline or {"sample": DEFAULT_SAMPLE}
+    repository = candidate["repository"]
+    tracked = sorted({repo for repo in candidate.get("trackedBy", [])
+                      if isinstance(repo, str) and repo.casefold() in registered} | {repository})
+    own = 20 if set(tracked) & set(catalog["priorityRepositories"]) else 0
+    entry = {
+        "url": candidate["url"], "key": candidate["key"],
+        "name": fields.get("name") or candidate["name"], "version": candidate["version"],
+        "minAppVersion": fields.get("minAppVersion", "1.0.0"), "repository": repository,
+        "fileName": Path(unquote(urlparse(candidate["url"]).path)).name,
+        "sample": json.loads(json.dumps(baseline["sample"])),
+        "officialKey": baseline.get("officialKey", False),
+        # 优先级不能低于被替换的构建，否则新版本永远选不上。
+        "priority": max(baseline.get("priority", 0), own), "trackedBy": tracked,
+        "id": candidate["sha256"], "sha256": candidate["sha256"],
+        "runtimeProfile": "venerax", "verifyProfiles": ["venera-next"],
+        "settings": json.loads(json.dumps(baseline.get("settings", {}))),
+    }
+    for name in ("patrolPolicy", "clientFamily"):
+        if name in baseline:
+            entry[name] = json.loads(json.dumps(baseline[name]))
+    return entry
+
+
+def verify_auto_inclusion(candidate, pair, cli, catalog, registered, exclusions, fetch, baseline_caps):
+    """写入清单前的完整复核：固定提交地址、SHA-256、通道条件和两端记录；任何一项不符即抛错。
+
+    fetch(url, sha256) 返回已核对哈希的源码字节。只读文本，不执行。
+    """
+    build_id = candidate.get("sha256")
+    assert isinstance(build_id, str) and re.fullmatch(r"[a-f0-9]{64}", build_id) \
+        and candidate.get("id") == build_id, "构建 ID 必须是完整源码哈希"
+    assert isinstance(candidate.get("url"), str) and pinned(candidate["url"]), "候选地址必须固定到 Git 提交"
+    assert pinned_repository(candidate["url"]) == candidate["repository"].casefold() in registered, "仓库未登记或地址不匹配"
+    data = fetch(candidate["url"], build_id)
+    assert sha(data) == build_id, "源码 SHA-256 与候选不一致"
+    code = data.decode("utf-8-sig")
+    fields = declared_fields(code)
+    assert isinstance(candidate.get("key"), str) and fields.get("key") == candidate["key"], \
+        "源码声明的 key 与候选不一致"
+    assert fields.get("version") == candidate.get("version"), "源码声明的版本与候选不一致"
+
+    def hosts_of(item):
+        if item["sha256"] == build_id:
+            return source_surface(code)
+        return source_surface(fetch(item["url"], item["sha256"]).decode("utf-8-sig"))
+
+    candidate = {**candidate, **fields}
+    verdict = candidate_gate(candidate, catalog, registered, exclusions, hosts_of)
+    assert verdict["lane"] == "auto", "不满足自动收录条件：" + verdict["detail"]
+    baseline = next((item for item in catalog["sources"] if verdict["baseline"] and
+                     item["id"] == verdict["baseline"]["id"]), None)
+    entry = catalog_entry(candidate, fields, baseline, catalog, registered)
+    guard = "scripts/patrol-worker.c"
+    assert cli["adapterSha256"].get(guard) == sha((ROOT / guard).read_bytes()), "试跑文件隔离器哈希不符"
+    assert isinstance(pair, dict) and set(pair) == set(TRIAL_PROFILES), "两端试跑记录不完整"
+    assert pair["venerax"].get("trialRun") and pair["venerax"]["trialRun"] == pair["venera-next"].get("trialRun"), "两端证据必须来自同轮隔离试跑"
+    for profile in TRIAL_PROFILES:
+        record = pair[profile]
+        source = record["source"]
+        assert record["id"] == build_id and record["runtimeProfile"] == profile, "试跑记录与候选不对应"
+        assert source["key"] == entry["key"], "实际 runtime key 与候选不一致"
+        assert source.get("sourceSha256") == build_id, "试跑执行的源码哈希与候选不一致"
+        assert source.get("version") == entry["version"], "CLI 实际加载的版本与候选不一致"
+        assert record.get("inputs") == entry["sample"], "试跑样本不一致"
+        observed = record.get("networkHosts")
+        capabilities = record["accountCapabilities"]
+        assert isinstance(capabilities, list)
+        if capabilities:
+            assert baseline and set(capabilities) <= set(baseline_caps.get(baseline["id"], {}).get(profile, [])), "试跑发现新增账号能力"
+        assert isinstance(observed, list) and observed and all(isinstance(host, str) and host for host in observed), "缺少实际网络请求证据"
+        if baseline:
+            added = new_hosts(observed, hosts_of(baseline)[0])
+            assert not added, "试跑访问新增主机名：" + "、".join(added)
+        assert source["status"] in ("passed", "partial"), "试跑状态不满足主／扩展标准"
+        validate_client_record(record, entry, {"cli": cli})
+        assert core(source), f"{profile} 核心阅读链路未通过"
+    if not baseline:
+        actual = pair["venerax"]["readSample"]
+        assert actual.get("comicId") and actual == pair["venera-next"]["readSample"], "两端实际阅读样本不一致"
+        entry["sample"].update(actual)
+        sites = set().union(*(record["readingSites"] for record in pair.values()))
+        assert not any(sites.intersection(item.get("readingSites", [])) for item in catalog["sources"]), "与已收录构建详情站点重复"
+        entry["readingSites"] = sorted(sites)
+    return entry, baseline
+
+
+def inclusion_state():
+    path = ROOT / "data/auto-inclusion.json"
+    state = load(path) if path.is_file() else {}
+    assert state.get("schemaVersion", 1) == 1
+    return {"schemaVersion": 1, "updatedAt": state.get("updatedAt", ""),
+            "policy": {"trialLimit": TRIAL_LIMIT, "stableDays": STABLE_DAYS, "stablePasses": STABLE_PASSES},
+            "pending": list(state.get("pending", [])), "builds": dict(state.get("builds", {})),
+            "rejected": dict(state.get("rejected", {}))}
+
+
+def protected_builds():
+    """重点复测、源备注和账号巡检按构建 ID 引用的构建；自动化不删除它们。"""
+    def optional(name):
+        path = ROOT / "monitor" / name
+        return load(path) if path.is_file() else {}
+    return (set(optional("focus.json").get("buildIds", []))
+            | set(optional("source-notes.json").get("notes", {}))
+            | {site["buildId"] for site in optional("accounts.json").get("sites", []) if site.get("buildId")})
+
+
+def verified_fetcher():
+    cache = {}
+
+    def fetch(url, digest):
+        if (url, digest) not in cache:
+            data = request(url)
+            if sha(data) != digest:
+                raise ValueError("源码 SHA-256 与记录不一致")
+            cache[url, digest] = data
+        return cache[url, digest]
+    return fetch
+
+
+def publish_candidates(payload, discovery, destination):
+    """发布阶段：汇总候选试跑结果，复核自动通道并排队，更新自动收录构建的稳定计数。
+
+    这里不改 monitor/catalog.json：本轮证据绑定的是巡检时的清单哈希，清单由下一轮开头的 promote 写入。
+    """
+    (destination / "reports").mkdir(parents=True, exist_ok=True)
+    catalog = validate_catalog(load(ROOT / "monitor/catalog.json"))
+    registered = registered_repositories(load(ROOT / "monitor/upstreams.json"))
+    exclusions = official_policy(snapshot=payload.get("officialExclusions"))
+    checked = payload["checkedAt"]
+    run_url = os.environ.get("AUDIT_RUN_URL", "")
+    updates = {item["id"]: item for item in discovery["updates"]}
+    previous_path = ROOT / "data/candidate-results.json"
+    previous = load(previous_path).get("results", {}) if previous_path.is_file() else {}
+    state = inclusion_state()
+    fetch = verified_fetcher()
+    pairs = {}
+    for record in payload.get("candidateRecords", []):
+        if record.get("id") in updates and record.get("runtimeProfile") in TRIAL_PROFILES:
+            pair = pairs.setdefault(record["id"], {})
+            assert record["runtimeProfile"] not in pair, "候选客户端证据重复"
+            pair[record["runtimeProfile"]] = record
+    results = {build_id: result for build_id, result in previous.items() if build_id in updates}
+    verified = {}
+    baseline_caps = {}
+    catalog_sites = set()
+    for record in payload["records"] + payload.get("clientRecords", []):
+        catalog_sites.update(record.get("readingSites", []))
+        if record.get("accountCapabilities") and record["source"].get("sourceSha256") == record["id"]:
+            baseline_caps.setdefault(record["id"], {})[record["runtimeProfile"]] = record["accountCapabilities"]
+    for build_id, pair in pairs.items():
+        candidate = updates[build_id]
+        state["rejected"].pop(build_id, None)
+        result = {
+            **{name: text(candidate.get(name, "")) for name in ("key", "name", "version", "repository")},
+            "url": candidate["url"],
+            "lane": candidate.get("lane") if candidate.get("lane") in ("auto", "trial") else "trial",
+            "reason": text(candidate.get("reason", "")), "detail": text(candidate.get("detail", "")),
+            "newHosts": [text(host) for host in candidate.get("newHosts", [])][:50],
+            "baselineVersion": text((candidate.get("baseline") or {}).get("version", "")),
+            "checkedAt": checked, "runUrl": run_url,
+        }
+        try:
+            result["profiles"] = {profile: trial_summary(pair.get(profile)) for profile in TRIAL_PROFILES}
+        except Exception as error:
+            result["profiles"] = {profile: trial_summary({"error": f"记录无法解析：{error}"})
+                                  for profile in TRIAL_PROFILES}
+        if any(summary["status"] == "error" for summary in result["profiles"].values()):
+            result["outcome"] = "error"
+        elif all(summary["core"] for summary in result["profiles"].values()):
+            result["outcome"] = "passed"
+        else:
+            result["outcome"] = "failed"
+        if result["outcome"] == "passed" and result["lane"] == "auto":
+            # 发现阶段给的通道只是线索；这里用受信任的清单重新下载、重新判定。
+            try:
+                assert run_url and all(record.get("trialRun") == run_url for record in pair.values()), "试跑轮次与发布不符"
+                entry, baseline = verify_auto_inclusion(
+                    candidate, pair, payload["cli"], catalog, registered, exclusions, fetch, baseline_caps)
+                assert baseline or catalog_sites.isdisjoint(entry["readingSites"]), "不同 key 的详情请求指向清单已有站点"
+                verified.setdefault(entry["key"], []).append((entry, baseline, candidate, pair))
+                result["outcome"] = "queued"
+            except Exception as error:
+                result["outcome"] = "rejected"
+                result["detail"] = text(error) or "试跑证据与受信任的记录不一致"
+        results[build_id] = result
+    pending = {entry["candidate"]["id"]: entry for entry in state["pending"]
+               if entry.get("candidate", {}).get("id") in updates
+               and entry["candidate"]["id"] not in pairs}
+    for group in verified.values():
+        top = max(version_parts(entry["version"]) for entry, _, _, _ in group)
+        leaders = [row for row in group if version_parts(row[0]["version"]) == top]
+        for entry, baseline, candidate, pair in group:
+            if len(leaders) != 1 or entry is not leaders[0][0]:
+                results[entry["id"]].update(outcome="rejected", detail="同 key 本轮有多个候选通过，只排入版本最高的一个")
+                continue
+            pending[entry["id"]] = {
+                "candidate": {name: candidate.get(name) for name in (
+                    "id", "key", "name", "version", "fileName", "url", "sha256", "repository",
+                    "trackedBy", "priority")},
+                "replaces": (baseline or {}).get("id"), "replacesVersion": (baseline or {}).get("version"),
+                "baselineCapabilities": {baseline["id"]: baseline_caps.get(baseline["id"], {})} if baseline else {},
+                "records": {profile: slim_record(pair[profile]) for profile in TRIAL_PROFILES},
+                "cli": {name: payload["cli"][name] for name in ("commit", "clientProfiles", "adapterSha256")},
+                "checkedAt": checked, "runUrl": run_url,
+            }
+    state["pending"] = list(pending.values())
+    state["rejected"] = {build_id: value for build_id, value in state["rejected"].items()
+                         if build_id in updates}
+    for build_id, value in state["rejected"].items():
+        if build_id in results and results[build_id]["outcome"] == "queued" and build_id not in pending:
+            results[build_id].update(outcome="rejected", detail=text(value.get("reason", "")))
+    # 稳定计数：自动收录的新构建本轮被订阅选中才算一次通过，中断即清零。
+    locks = {row["buildId"] for row in load(generated_path(destination, "sources.lock.json"))}
+    tested = {record["id"] for record in payload["records"]}
+    moment = datetime.fromisoformat(checked)
+    watching = {}
+    for item in catalog["sources"]:
+        auto = item.get("autoIncluded")
+        if not auto or not auto["replaces"] or auto.get("stableAt"):
+            continue
+        build = {"key": item["key"], "version": item["version"], "replaces": auto["replaces"],
+                 "replacesVersion": auto["replacesVersion"], "includedAt": auto["at"],
+                 "runUrl": auto["runUrl"], "passes": 0, "since": None,
+                 **state["builds"].get(item["id"], {})}
+        if item["id"] in tested and build.get("lastCheckedAt") != checked:
+            selected = item["id"] in locks
+            build["passes"] = build["passes"] + 1 if selected else 0
+            build["since"] = (build["since"] or checked) if selected else None
+            build.update(selected=selected, lastCheckedAt=checked)
+            build["stable"] = bool(
+                selected and build["passes"] >= STABLE_PASSES
+                and moment - datetime.fromisoformat(build["since"]) >= timedelta(days=STABLE_DAYS))
+        watching[item["id"]] = build
+    state["builds"] = watching
+    state["updatedAt"] = checked
+    save(destination / "data/auto-inclusion.json", state)
+    lanes = {}
+    for item in updates.values():
+        lanes[item.get("lane")] = lanes.get(item.get("lane"), 0) + 1
+    untested = sum(1 for item in updates.values()
+                   if item.get("lane") in ("auto", "trial") and item["id"] not in results)
+    save(destination / "data/candidate-results.json", {
+        "schemaVersion": 1, "checkedAt": checked, "runUrl": run_url, "trialLimit": TRIAL_LIMIT,
+        "testedThisRound": len(pairs), "untested": untested, "results": results})
+
+    def cells(*values):
+        return "| " + " | ".join(text(value) for value in values) + " |"
+
+    def outcome(summary):
+        if summary["core"]:
+            return "通过"
+        return "断在 " + "：".join(part for part in (
+            summary["breakAt"], summary["category"], summary["reason"]) if part)
+
+    rows = sorted(results.items(), key=lambda row: (row[1]["key"], row[1]["version"], row[0]))
+    lines = [
+        "# 上游候选试跑短名单", "",
+        f"核验时间：{checked}（UTC）。本轮试跑 {len(pairs)} 个候选（每轮上限 {TRIAL_LIMIT} 个），"
+        f"还有 {untested} 个等待首次试跑。",
+        f"待审构建 {len(updates)} 个：自动收录通道 {lanes.get('auto', 0)} 个，"
+        f"试跑但不收录 {lanes.get('trial', 0)} 个；未登记仓库的 "
+        f"{len(discovery.get('unregistered', []))} 个文件只列出、不下载执行（见 UPDATES.md）。",
+        "试跑与已审阅构建使用同一隔离容器，VeneraX 与 Venera-Next 各跑一次；"
+        "「通过」指核心阅读链路通过，不代表其他能力可用。", "",
+        "## 已排入自动收录（下一轮开始时再次复核并写入清单）", "",
+        "| key | 名称 | 现有版本 → 新版本 | 仓库 |", "| --- | --- | --- | --- |"]
+    for entry in state["pending"]:
+        candidate = entry["candidate"]
+        lines.append(cells(candidate["key"], candidate["name"],
+                           f"{entry['replacesVersion'] or '首次收录'} → {candidate['version']}", candidate["repository"]))
+    lines += ["", "## 自动收录观察期", "",
+              f"新构建连续被订阅选中满 {STABLE_DAYS} 天且不少于 {STABLE_PASSES} 轮才算稳定；"
+              "此前旧构建留在清单里照常巡检，新构建失败时订阅自动选回旧构建。", "",
+              "| key | 新版本 | 旧版本 | 本轮订阅选中 | 连续选中轮数 | 起算时间 |",
+              "| --- | --- | --- | --- | --- | --- |"]
+    for build in sorted(watching.values(), key=lambda row: row["key"]):
+        chosen = build.get("selected")
+        lines.append(cells(build["key"], build["version"], build["replacesVersion"],
+                           "尚无结果" if chosen is None else "新构建" if chosen else "未选中新构建（保留旧构建）",
+                           build["passes"], build["since"] or ""))
+    sections = (
+        ("试跑通过、等待人工确认", lambda row: row["outcome"] == "passed"),
+        ("试跑未通过", lambda row: row["outcome"] in ("failed", "error")),
+        ("自动通道写入前复核未通过", lambda row: row["outcome"] == "rejected"),
+    )
+    for title, wanted in sections:
+        lines += ["", f"## {title}", "",
+                  "| key | 名称 | 版本 | 仓库 | 未自动收录的原因 | 新增主机名 | VeneraX | Venera-Next |",
+                  "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+        for _, row in rows:
+            if wanted(row):
+                held = row["lane"] == "auto" and row["outcome"] in ("failed", "error")
+                lines.append(cells(
+                    row["key"], row["name"], row["version"], row["repository"],
+                    "自动收录通道，两端试跑未全部通过" if held else row["detail"],
+                    "、".join(row["newHosts"]) or "无",
+                    *(outcome(row["profiles"][profile]) for profile in TRIAL_PROFILES)))
+    write_report(destination / "reports/CANDIDATES.md", lines + [""])
+    print(f"候选试跑：本轮 {len(pairs)} 个，排入自动收录 {len(state['pending'])} 个，"
+          f"观察期 {len(watching)} 个。", flush=True)
+
+
+def promote(now=None):
+    """有写权限、不执行源码的写入步骤。
+
+    把上一轮发布阶段排队的新构建重新核对（固定提交地址、SHA-256、通道条件、两端记录）后写进清单，
+    并在新构建稳定后移除它替换掉的旧构建。返回本次改动摘要。
+    """
+    summary = {"added": [], "retired": [], "rejected": {}}
+    if not (ROOT / "data/auto-inclusion.json").is_file():
+        print("没有自动收录队列。", flush=True)
+        return summary
+    catalog = validate_catalog(load(ROOT / "monitor/catalog.json"))
+    before = json.dumps(catalog, sort_keys=True)
+    state = inclusion_state()
+    registered = registered_repositories(load(ROOT / "monitor/upstreams.json"))
+    exclusions = official_policy()
+    stamp = (now or datetime.now(timezone.utc)).isoformat()
+    fetch = verified_fetcher()
+    for pending in state["pending"]:
+        candidate = pending.get("candidate") or {}
+        try:
+            draft = json.loads(json.dumps(catalog))
+            assert pending["runUrl"] and all(record.get("trialRun") == pending["runUrl"]
+                                             for record in pending["records"].values()), "队列试跑轮次不符"
+            entry, baseline = verify_auto_inclusion(
+                candidate, pending["records"], pending["cli"], draft, registered, exclusions, fetch,
+                pending["baselineCapabilities"])
+            assert pending["replaces"] == (baseline or {}).get("id"), "排队后同 key 基线已变化"
+            entry["autoIncluded"] = {
+                "at": stamp, "replaces": pending["replaces"], "replacesVersion": pending["replacesVersion"],
+                "runUrl": pending.get("runUrl", ""), "cliCommit": pending["cli"]["commit"]}
+            if baseline:
+                baseline["rollbackFor"] = entry["id"]
+            draft["sources"].append(entry)
+            catalog = validate_catalog(draft)
+            if baseline:
+                state["builds"][entry["id"]] = {
+                    "key": entry["key"], "version": entry["version"], "replaces": baseline["id"],
+                    "replacesVersion": baseline["version"], "includedAt": stamp,
+                    "runUrl": pending.get("runUrl", ""), "passes": 0, "since": None}
+            state["rejected"].pop(entry["id"], None)
+            summary["added"].append(entry)
+        except Exception as error:
+            reason = text(error) or "试跑证据与受信任的记录不一致"
+            summary["rejected"][str(candidate.get("id"))] = reason
+            state["rejected"][str(candidate.get("id"))] = {"at": stamp, "reason": reason}
+    state["pending"] = []
+    protected = protected_builds()
+    items = {item["id"]: item for item in catalog["sources"]}
+    for build_id, build in list(state["builds"].items()):
+        item = items.get(build_id)
+        if not item or not item.get("autoIncluded") or item["autoIncluded"].get("stableAt"):
+            del state["builds"][build_id]
+            continue
+        if not build.get("stable"):
+            continue
+        item["autoIncluded"]["stableAt"] = stamp
+        target = item["autoIncluded"]["replaces"]
+        while target in items and items[target].get("rollbackFor"):
+            old = items[target]
+            del old["rollbackFor"]
+            if target in protected:
+                break
+            earlier = old.get("autoIncluded") or {}
+            catalog["sources"].remove(old)
+            del items[target]
+            state["builds"].pop(target, None)
+            summary["retired"].append(old)
+            target = None if earlier.get("stableAt") else earlier.get("replaces")
+        del state["builds"][build_id]
+    validate_catalog(catalog)
+    assert protected & {item["id"] for item in json.loads(before)["sources"]} <= set(items), \
+        "被重点复测、源备注或账号巡检引用的构建不能移除"
+    if json.dumps(catalog, sort_keys=True) != before:
+        save(ROOT / "monitor/catalog.json", catalog)
+    save(ROOT / "data/auto-inclusion.json", state)
+    print(f"自动收录写入 {len(summary['added'])} 个，复核未通过 {len(summary['rejected'])} 个，"
+          f"稳定后移除旧构建 {len(summary['retired'])} 个。", flush=True)
+    for entry in summary["added"]:
+        print(f"  + {text(entry['key'])} {entry['autoIncluded']['replacesVersion'] or '首次收录'} → {entry['version']}"
+              f"（{text(entry['repository'])}）", flush=True)
+    for build_id, reason in summary["rejected"].items():
+        print(f"  ! {build_id[:12]}：{reason}", flush=True)
+    return summary
+
+
+def classify(source, output=None):
+    """不执行任何源码的通道统计：只下载文本读主机名。"""
+    discovery = load(source)
+    catalog = validate_catalog(load(ROOT / "monitor/catalog.json"))
+    registered = registered_repositories(load(ROOT / "monitor/upstreams.json"))
+    updates = discovery["updates"]
+    builds, candidates = host_check_targets([item for item in updates if
+        pinned_repository(item["url"]) == item["repository"].casefold() in registered], catalog)
+    table = fetch_build_hosts(builds + candidates)
+    verdicts = classify_updates(updates, catalog, registered, official_policy(), hosts_lookup(table))
+    rows = [{**{name: item.get(name) for name in ("id", "key", "name", "version", "repository")},
+             **verdicts[item["id"]]} for item in updates]
+    if output:
+        save(output, rows)
+    lanes, reasons = {}, {}
+    for row in rows:
+        lanes[row["lane"]] = lanes.get(row["lane"], 0) + 1
+        reasons[(row["lane"], row["reason"])] = reasons.get((row["lane"], row["reason"]), 0) + 1
+    print(f"待审构建 {len(rows)} 个。")
+    for lane, count in sorted(lanes.items()):
+        print(f"- {LANE_LABELS.get(lane, lane)}：{count}")
+        for (owner, reason), number in sorted(reasons.items()):
+            if owner == lane and reason != lane:
+                print(f"    {REASON_LABELS.get(reason, reason)}：{number}")
+    auto = sorted((row for row in rows if row["lane"] == "auto"), key=lambda row: str(row["key"]))
+    print("自动收录通道前 20 个：")
+    for row in auto[:20]:
+        print(f"  {row['key']}｜{row['repository']}｜{(row['baseline'] or {}).get('version', '首次收录')} → {row['version']}")
+    return rows
 
 
 def self_test():
@@ -1098,6 +2143,11 @@ def self_test():
     assert csv_cell("=\ud800") == "'=\ufffd"
     assert not pinned("https://github.com/a/b/blob/main/a.js")
     assert pinned("https://raw.githubusercontent.com/a/b/" + "a" * 40 + "/a.js")
+    # 自动收录：版本必须严格更高且可比较；www、m 前缀视为同站，其余主机名一律算新增。
+    assert version_newer("1.10.0", "1.9.9") and not version_newer("1.9.9", "1.9.9")
+    assert not version_newer("2.0", "1.0.0") and not version_newer("2.0.0", "1.0")
+    assert new_hosts(source_hosts('url = "https://m.a.com/x"; api = "api.a.com"'),
+                     source_hosts('url = "https://www.a.com/"')) == ["api.a.com"]
     catalog = validate_catalog(load(ROOT / "monitor/catalog.json"))
     assert set(catalog["priorityRepositories"]) == {
         "hea784/venera-configs", "BB-CHICKEN/venera-jm", "handahao666-boop/venera_comic_source"}
@@ -1185,7 +2235,8 @@ def self_test():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["setup-cli", "discover", "patrol", "publish", "self-test"])
+    parser.add_argument("command", choices=["setup-cli", "discover", "patrol", "publish", "promote",
+                                            "classify", "self-test"])
     parser.add_argument("--work", type=Path, default=Path(".work"))
     parser.add_argument("--input", type=Path)
     args = parser.parse_args()
@@ -1196,8 +2247,18 @@ def main():
     elif args.command == "discover":
         discover(args.work.resolve())
     elif args.command == "publish":
-        publish(load(args.input), ROOT)
-        publish_discovery(load(args.input.with_name("discovery.json")), ROOT)
+        payload = load(args.input)
+        publish(payload, ROOT)
+        discovery = publish_discovery(load(args.input.with_name("discovery.json")), ROOT)
+        try:
+            publish_candidates(payload, discovery, ROOT)
+        except Exception as error:
+            # 候选汇总出错不能拦住已审阅构建的发布；本轮不排队、不计数，下一轮重来。
+            print(f"::warning::候选试跑结果未能汇总，本轮只发布已审阅构建：{text(error)}", flush=True)
+    elif args.command == "promote":
+        promote()
+    elif args.command == "classify":
+        classify(args.input, args.work.resolve() / "classification.json")
     else:
         self_test()
 

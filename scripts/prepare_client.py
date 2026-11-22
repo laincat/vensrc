@@ -10,6 +10,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def prepare(directory):
+    runner = directory / "src/runner.js"
+    runner_code = runner.read_text(encoding="utf-8")
+    hook = "child = fork(workerFile, [], {"
+    if runner_code.count(hook) != 1:
+        raise ValueError("上游 worker 启动接口发生变化")
+    runner.write_text(runner_code.replace(hook, hook + '\n        execPath: process.env.PATROL_WORKER || process.execPath,'),
+                      encoding="utf-8", newline="\n")
+    shutil.copyfile(ROOT / "scripts/patrol-worker.c", directory / "patrol-worker.c")
     engine = directory / "src/engine.js"
     code = engine.read_text(encoding="utf-8")
     replacements = {
@@ -34,7 +42,7 @@ def prepare(directory):
     shutil.copyfile(ROOT / "monitor/clients.json", target / "clients.json")
     return {
         name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
-        for name in ("scripts/client_bridge.mjs", "scripts/prepare_client.py", "monitor/clients.json")
+        for name in ("scripts/client_bridge.mjs", "scripts/prepare_client.py", "scripts/patrol-worker.c", "monitor/clients.json")
     }
 
 
