@@ -18,15 +18,6 @@
     "description": "引用源：Junkrat9527/venera-sources"
   },
   {
-    "name": "布卡漫画",
-    "key": "bukamh",
-    "version": "1.2.9",
-    "fileName": "bukamh.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/bukamh.js",
-    "minAppVersion": "1.4.0",
-    "description": "引用源：Junkrat9527/venera-sources"
-  },
-  {
     "name": "CosplayTele",
     "key": "cosplaytele",
     "version": "1.7.0",
@@ -72,13 +63,13 @@
     "description": "引用源：meaninglesslyy/venera-config"
   },
   {
-    "name": "瓜子漫画",
-    "key": "guazi_manhua_v2",
+    "name": "热辣漫画",
+    "key": "hot_manga",
     "version": "1.0.1",
-    "fileName": "guazi.js",
-    "url": "https://raw.githubusercontent.com/ChenTeea/veneresource/7cd59a1571e0b47138da9333034fbd37164d9335/guazi.js",
-    "minAppVersion": "1.2.2",
-    "description": "引用源：ChenTeea/veneresource"
+    "fileName": "sources/hot_manga.js",
+    "url": "https://raw.githubusercontent.com/laincat/vensrc/1c490abf4721628bc3eb0533995de47ee03f2887/sources/hot_manga.js",
+    "minAppVersion": "1.6.0",
+    "description": "引用源：laincat/vensrc。官方 1.0.0 的 comic.onClickTag 对「更新」「状态」命名空间直接抛错，用户点这两个标签会看到报错；1.0.1 改为只声明可跳转的命名空间（作者、标签），其余不返回。读取链路（列表、分类、搜索、详情分组、章节、图片两档清晰度）按接口重写并单测覆盖；不含账号与网络收藏，favorites 阶段记为跳过。"
   },
   {
     "name": "花咔漫画",
@@ -171,15 +162,6 @@
     "description": "引用源：Junkrat9527/venera-sources"
   },
   {
-    "name": "Cosplay联盟",
-    "key": "pandadiu",
-    "version": "1.2.3",
-    "fileName": "cosplaylm.js",
-    "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/cosplaylm.js",
-    "minAppVersion": "1.0.0",
-    "description": "引用源：LX7kM9/venera-configs"
-  },
-  {
     "name": "大人漫画（私人）",
     "key": "private_drmh3",
     "version": "1.0.0",
@@ -189,6 +171,15 @@
     "description": "引用源：Taototo/venera-comic-sources"
   },
   {
+    "name": "311漫画",
+    "key": "s311_com",
+    "version": "1.2.0",
+    "fileName": "311.js",
+    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/311.js",
+    "minAppVersion": "1.2.2",
+    "description": "引用源：Junkrat9527/venera-sources"
+  },
+  {
     "name": "神奇漫画",
     "key": "shenqimanhua",
     "version": "1.1.1",
@@ -196,6 +187,15 @@
     "url": "https://raw.githubusercontent.com/coldnighten/venera-configs/01719d2b363e3a9874839b19a100f2105c13c6e3/shenqimanhua.js",
     "minAppVersion": "1.6.0",
     "description": "引用源：coldnighten/venera-configs"
+  },
+  {
+    "name": "图库漫画",
+    "key": "tuku_cc",
+    "version": "1.0.1",
+    "fileName": "tuku_cc.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/tuku_cc.js",
+    "minAppVersion": "1.4.0",
+    "description": "引用源：handahao666-boop/venera_comic_source"
   },
   {
     "name": "LINE WEBTOON",
