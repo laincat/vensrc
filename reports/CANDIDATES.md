@@ -1,6 +1,6 @@
 # 上游候选试跑短名单
 
-核验时间：2026-11-23T09:19:01.437800+00:00（UTC）。本轮试跑 40 个候选（每轮上限 40 个），还有 289 个等待首次试跑。
+核验时间：2026-11-23T21:35:28.485967+00:00（UTC）。本轮试跑 40 个候选（每轮上限 40 个），还有 249 个等待首次试跑。
 待审构建 483 个：自动收录通道 109 个，试跑但不收录 374 个；未登记仓库的 3 个文件只列出、不下载执行（见 UPDATES.md）。
 试跑与已审阅构建使用同一隔离容器，VeneraX 与 Venera-Next 各跑一次；「通过」指核心阅读链路通过，不代表其他能力可用。
 
@@ -15,20 +15,35 @@
 
 | key | 新版本 | 旧版本 | 本轮订阅选中 | 连续选中轮数 | 起算时间 |
 | --- | --- | --- | --- | --- | --- |
-| ManHuaGui | 1.2.3 | 1.2.1 | 新构建 | 5 | 2026-11-22T12:40:13.675696+00:00 |
-| comick | 1.3.0 | 1.2.0 | 新构建 | 4 | 2026-11-22T13:00:58.753361+00:00 |
-| cxc | 1.0.4 | 1.0.3 | 新构建 | 5 | 2026-11-22T12:40:13.675696+00:00 |
-| hcomic | 1.0.1 | 1.0.0 | 新构建 | 5 | 2026-11-22T12:40:13.675696+00:00 |
-| jm | 1.9.3 | 1.9.2 | 新构建 | 5 | 2026-11-22T12:40:13.675696+00:00 |
-| lanraragi | 1.2.1 | 1.2.0 | 新构建 | 4 | 2026-11-22T13:00:58.753361+00:00 |
+| ManHuaGui | 1.2.3 | 1.2.1 | 新构建 | 6 | 2026-11-22T12:40:13.675696+00:00 |
+| comick | 1.3.0 | 1.2.0 | 新构建 | 5 | 2026-11-22T13:00:58.753361+00:00 |
+| cxc | 1.0.4 | 1.0.3 | 新构建 | 6 | 2026-11-22T12:40:13.675696+00:00 |
+| hcomic | 1.0.1 | 1.0.0 | 新构建 | 6 | 2026-11-22T12:40:13.675696+00:00 |
+| jm | 1.9.3 | 1.9.2 | 新构建 | 6 | 2026-11-22T12:40:13.675696+00:00 |
+| lanraragi | 1.2.1 | 1.2.0 | 新构建 | 5 | 2026-11-22T13:00:58.753361+00:00 |
 | mycomic | 1.2.0 | 1.1.0 | 未选中新构建（保留旧构建） | 0 |  |
-| nhentai | 1.1.1 | 1.1.0 | 新构建 | 5 | 2026-11-22T12:40:13.675696+00:00 |
+| nhentai | 1.1.1 | 1.1.0 | 新构建 | 6 | 2026-11-22T12:40:13.675696+00:00 |
 
 ## 试跑通过、等待人工确认
 
 | key | 名称 | 版本 | 仓库 | 未自动收录的原因 | 新增主机名 | VeneraX | Venera-Next |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| Komiic | Komiic | 1.0.6 | yelongyue197-svg/venera-sources | 与清单现有源重名或属于已合并的 key | 无 | 通过 | 通过 |
+| Komiic | Komiic | 1.0.7 | Magentadots/venera-configs | 与清单现有源重名或属于已合并的 key | 无 | 通过 | 通过 |
+| Komiic | Komiic | 1.1.1 | coldnighten/venera-configs | 与清单现有源重名或属于已合并的 key | 无 | 通过 | 通过 |
+| ManHuaGui | 漫画柜 | 1.2.2 | Magentadots/venera-configs | 版本 1.2.2 未严格高于清单现有版本 1.2.3 | 无 | 通过 | 通过 |
+| ManHuaGui | 漫画柜 | 1.2.2 | nightcat3254/venera-sources | 版本 1.2.2 未严格高于清单现有版本 1.2.3 | 无 | 通过 | 通过 |
+| ManHuaGui | 漫画柜 | 1.2.3 | lldaydayhappy/venera-sources | 版本 1.2.3 未严格高于清单现有版本 1.2.3 | 无 | 通过 | 通过 |
+| baihehui | 百合会 | 1.0.0 | YongkeDet/venera-configs | 版本 1.0.0 未严格高于清单现有版本 1.0.0 | 无 | 通过 | 通过 |
+| baihehui | 百合会 | 1.0.1 | Magentadots/venera-configs | 同 key 有更高版本的候选 1.0.2 | 无 | 通过 | 通过 |
+| baihehui | 百合会 | 1.0.2 | LX7kM9/venera-configs | 同 key 同版本有多个不同构建，需人工选择 | 无 | 通过 | 通过 |
+| baihehui | 百合会 | 1.0.2 | maplessovo/venera-configs | 同 key 同版本有多个不同构建，需人工选择 | 无 | 通过 | 通过 |
 | baozi | 包子漫画 | 1.1.9 | maplessovo/venera-configs | 新增主机名：cdn.jsdelivr.net | cdn.jsdelivr.net | 通过 | 通过 |
+| boylove | 香香腐宅 | 1.0.0 | YongkeDet/venera-configs | 版本 1.0.0 未严格高于清单现有版本 1.0.0 | 无 | 通过 | 通过 |
+| bzmgcn | 包子漫画 | 1.1.1 | YUIRIKIiii/venera-sources | 与清单现有源重名或属于已合并的 key | 无 | 通过 | 通过 |
+| ccc | CCC追漫台 | 1.0.2 | nightcat3254/venera-sources | 版本 1.0.2 未严格高于清单现有版本 1.0.2 | 无 | 通过 | 通过 |
+| ccc | CCC追漫台 | 1.0.9 | Junkrat9527/venera-sources | 同 key 同版本有多个不同构建，需人工选择 | 无 | 通过 | 通过 |
+| ccc | CCC追漫台 | 1.0.9 | LX7kM9/venera-configs | 同 key 同版本有多个不同构建，需人工选择 | 无 | 通过 | 通过 |
 | ccc | CCC追漫台 | 1.0.9 | lldaydayhappy/venera-sources | 新增主机名：raw.githubusercontent.com | raw.githubusercontent.com | 通过 | 通过 |
 | copy_manga | 拷贝漫画 | 1.6.7 | handahao666-boop/venera_comic_source | 与清单现有源重名或属于已合并的 key | 无 | 通过 | 通过 |
 | dongman_la | 动漫啦 | 1.0.6 | LX7kM9/venera-configs | 新增主机名：cdn.jsdelivr.net | cdn.jsdelivr.net | 通过 | 通过 |
@@ -65,29 +80,54 @@
 | key | 名称 | 版本 | 仓库 | 未自动收录的原因 | 新增主机名 | VeneraX | Venera-Next |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 4khd_24_21d7d1 | 4KHD 美图 | 0.2.0 | KadishJoey/venera-json | 自动收录通道，两端试跑未全部通过 | www.4khd.com | 断在 source.load：源加载或版本不兼容：Invalid or unexpected token | 断在 source.load：源加载或版本不兼容：key 4khd_24_21d7d1 is invalid |
+| Komiic | Komiic | 1.0.5 | VComic-org/venera-comic-source | 与清单现有源重名或属于已合并的 key | 无 | 断在 source.load：源加载或版本不兼容：Native source is unavailable during account configuration parsing | 断在 source.load：源加载或版本不兼容：Native source is unavailable during account configuration parsing |
+| Komiic | Komiic | 1.0.8 | ZhiLin-Sam/venera-sources | 与清单现有源重名或属于已合并的 key | 无 | 通过 | 断在 comic.loadEp：需要登录：Komiic 游客每日图片额度已用尽，请登录账号后重试（登录可恢复额度） |
+| Komiic | Komiic | 1.1.0 | zakkida/venera-sources | 与清单现有源重名或属于已合并的 key | 无 | 断在 search.load：源配置错误：[] is not a function | 断在 search.load：源配置错误：[] is not a function |
 | Komiic | Komiic | 1.8.3 | lldaydayhappy/venera-sources | 与清单现有源重名或属于已合并的 key | 无 | 断在 comic.loadEp：需要登录：account 0 login failed | 断在 comic.loadEp：需要登录：account 0 login failed |
 | Komiic | Komiic | 1.8.3 | LX7kM9/venera-configs | 与清单现有源重名或属于已合并的 key | 无 | 断在 comic.loadEp：需要登录：account 0 login failed | 断在 comic.loadEp：需要登录：account 0 login failed |
+| Komiic | Komiic | 1.8.3 | Junkrat9527/venera-sources | 与清单现有源重名或属于已合并的 key | 无 | 断在 comic.loadEp：需要登录：account 0 login failed | 断在 comic.loadEp：需要登录：account 0 login failed |
 | a_62_528fe9 | 漫客栈-A | 0.2.0 | KadishJoey/venera-json | 自动收录通道，两端试跑未全部通过 | comic.mkzhan.com | 断在 search.load：返回结构或样本不满足契约：列表项缺少合法 ID、标题或封面 | 断在 search.load：返回结构或样本不满足契约：列表项缺少合法 ID、标题或封面 |
+| ac_qq | 腾讯动漫 | 1.0.1 | Angus-fw/venera-configs | 与清单现有源重名或属于已合并的 key | 无 | 断在 comic.loadInfo：源配置错误：腾讯动漫 未找到章节 | 断在 comic.loadInfo：源配置错误：腾讯动漫 未找到章节 |
 | acg456 | ACG456 | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 自动收录通道，两端试跑未全部通过 | cdn.jsdelivr.net、m.acg456.com | 断在 search.load：请求超时：网络请求超时 | 断在 search.load：请求超时：网络请求超时 |
 | acgncc | ACGN漫画 | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 自动收录通道，两端试跑未全部通过 | cdn.jsdelivr.net、comic.acgn.cc | 断在 search.load：HTTP 错误：搜索失败: 500 | 断在 search.load：HTTP 错误：搜索失败: 500 |
 | acgndog_external | 次元狗｜仅外部入口 | 1.0.0 | Meloon-dr/venera-sources | 自动收录通道，两端试跑未全部通过 | www.acgndog.com | 断在 explore[0].load：返回结构或样本不满足契约：列表项缺少合法 ID、标题或封面 | 断在 explore[0].load：返回结构或样本不满足契约：列表项缺少合法 ID、标题或封面 |
+| acqq | 腾讯漫画 | 1.0.0 | token1008/venera-cn-64bit | 新 key 涉及凭据能力：cookie | 无 | 断在 comic.loadInfo：源配置错误：Comic not found | 断在 comic.loadInfo：源配置错误：Comic not found |
 | ao3 | AO3 同人图文 | 1.0.1 | hgnbh/sw | 自动收录通道，两端试跑未全部通过 | archiveofourown.org、blockquote.summary、blockquote.userstuff、cdn.jsdelivr.net、h2.title.heading、squidge.world | 断在 search.load：请求限流：Invalid status code: 429 | 断在 search.load：请求限流：Invalid status code: 429 |
+| bainianmh | 百年漫画 | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 与清单现有源重名或属于已合并的 key | 无 | 断在 search.load：需要登录：搜索失败: HTTP 401 | 断在 search.load：返回结构或样本不满足契约：当前关键词或列表为空，需复核样本或解析规则 |
+| bainianmh2 | 百年漫画 | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 与清单现有源重名或属于已合并的 key | 无 | 断在 search.load：返回结构或样本不满足契约：当前关键词或列表为空，需复核样本或解析规则 | 断在 search.load：返回结构或样本不满足契约：当前关键词或列表为空，需复核样本或解析规则 |
+| banana | 香蕉漫画 | 1.0.4 | LX7kM9/venera-configs | 与清单现有源重名或属于已合并的 key | 无 | 断在 search.load：需要登录：当前关键词或列表为空，需复核样本或解析规则 | 断在 search.load：需要登录：当前关键词或列表为空，需复核样本或解析规则 |
 | banana_external | 香蕉漫画｜仅外部入口 | 1.0.0 | Meloon-dr/venera-sources | 自动收录通道，两端试跑未全部通过 | xjdm168.com | 断在 explore[0].load：返回结构或样本不满足契约：列表项缺少合法 ID、标题或封面 | 断在 explore[0].load：返回结构或样本不满足契约：列表项缺少合法 ID、标题或封面 |
+| baozi | 包子漫画 | 1.1.7 | YHQY-Dev/venera-sources | 版本 1.1.7 未严格高于清单现有版本 1.1.7 | 无 | 断在 search.load：需要登录：Invalid status code: 403 | 断在 search.load：需要登录：Invalid status code: 403 |
+| baozi | 包子漫画 | 1.1.7 | Zicheng0326/my-venera-sources | 版本 1.1.7 未严格高于清单现有版本 1.1.7 | 无 | 断在 search.load：需要登录：Invalid status code: 403 | 断在 search.load：需要登录：Invalid status code: 403 |
+| baozi | 包子漫画 | 1.1.7 | ChopDream/venera-source-hub | 版本 1.1.7 未严格高于清单现有版本 1.1.7 | 无 | 断在 comic.loadEp：反爬拦截：Cloudflare challenge requires browser verification | 断在 comic.loadEp：反爬拦截：Cloudflare challenge requires browser verification |
+| baozi | 包子漫画 | 1.1.7 | fuluoydebende/venera-configs-fixed | 版本 1.1.7 未严格高于清单现有版本 1.1.7 | 无 | 断在 comic.loadEp：反爬拦截：Cloudflare challenge requires browser verification | 断在 comic.loadEp：反爬拦截：Cloudflare challenge requires browser verification |
+| baozi | 包子漫画 | 1.1.7 | zhimouzhou/venera-manga-sources | 版本 1.1.7 未严格高于清单现有版本 1.1.7 | 无 | 断在 search.load：需要登录：Invalid status code: 403 | 断在 search.load：需要登录：Invalid status code: 403 |
 | baozi | 包子漫画 | 1.1.8 | nightcat3254/venera-sources | 新增主机名：cdn.jsdelivr.net、github.com | cdn.jsdelivr.net、github.com | 断在 comic.loadEp：反爬拦截：Cloudflare challenge requires browser verification | 断在 comic.loadEp：反爬拦截：Cloudflare challenge requires browser verification |
 | baozi | 包子漫画 | 1.1.9 | YongkeDet/venera-configs | 新增主机名：www.baozimh.com | www.baozimh.com | 断在 comic.loadInfo：需要登录：Invalid status code: 403 | 断在 comic.loadInfo：需要登录：Invalid status code: 403 |
 | baozi | 包子漫画 | 1.2.0 | Magentadots/venera-configs | 新增主机名：baozimh.com、cdn.jsdelivr.net、cn.baozimh.com、www.baozimh.com | baozimh.com、cdn.jsdelivr.net、cn.baozimh.com、www.baozimh.com | 断在 search.load：需要登录：Invalid status code: 403 | 断在 search.load：需要登录：Invalid status code: 403 |
 | baozi | 包子漫画 | 1.2.1 | Junkrat9527/venera-sources | 新增主机名：as2.baozimh.com、cdn.jsdelivr.net、cn.baozimhcn.com、cn.bzmgcn.com、cn.dinnerku.com、cn.kukuc.co、cn.twmanga.com、cn.webmota.com、s1.bzcdn.net、s2.bzcdn.net、static-tw.bzmgcn.com、tw.baozimhcn.com、tw.bzmgcn.com、tw.dinnerku.com、tw.kukuc.co、tw.twmanga.com、tw.webmota.com | as2.baozimh.com、cdn.jsdelivr.net、cn.baozimhcn.com、cn.bzmgcn.com、cn.dinnerku.com、cn.kukuc.co、cn.twmanga.com、cn.webmota.com、s1.bzcdn.net、s2.bzcdn.net、static-tw.bzmgcn.com、tw.baozimhcn.com、tw.bzmgcn.com、tw.dinnerku.com、tw.kukuc.co、tw.twmanga.com、tw.webmota.com | 断在 search.load：需要登录：Invalid status code: 403 | 断在 search.load：需要登录：Invalid status code: 403 |
 | baozi | 包子漫画 | 1.2.1 | lldaydayhappy/venera-sources | 新增主机名：as2.baozimh.com、cn.baozimhcn.com、cn.bzmgcn.com、cn.dinnerku.com、cn.kukuc.co、cn.twmanga.com、cn.webmota.com、s1.bzcdn.net、s2.bzcdn.net、static-tw.bzmgcn.com、tw.baozimhcn.com、tw.bzmgcn.com、tw.dinnerku.com、tw.kukuc.co、tw.twmanga.com、tw.webmota.com | as2.baozimh.com、cn.baozimhcn.com、cn.bzmgcn.com、cn.dinnerku.com、cn.kukuc.co、cn.twmanga.com、cn.webmota.com、s1.bzcdn.net、s2.bzcdn.net、static-tw.bzmgcn.com、tw.baozimhcn.com、tw.bzmgcn.com、tw.dinnerku.com、tw.kukuc.co、tw.twmanga.com、tw.webmota.com | 断在 search.load：需要登录：Invalid status code: 403 | 断在 search.load：需要登录：Invalid status code: 403 |
 | baozi | 包子漫画 | 1.2.3 | LX7kM9/venera-configs | 新增主机名：as2.baozimh.com、cdn.jsdelivr.net、cn.baozimhcn.com、cn.bzmgcn.com、cn.dinnerku.com、cn.kukuc.co、cn.twmanga.com、cn.webmota.com、s1.bzcdn.net、s2.bzcdn.net、static-tw.bzmgcn.com、tw.baozimhcn.com、tw.bzmgcn.com、tw.dinnerku.com、tw.kukuc.co、tw.twmanga.com、tw.webmota.com | as2.baozimh.com、cdn.jsdelivr.net、cn.baozimhcn.com、cn.bzmgcn.com、cn.dinnerku.com、cn.kukuc.co、cn.twmanga.com、cn.webmota.com、s1.bzcdn.net、s2.bzcdn.net、static-tw.bzmgcn.com、tw.baozimhcn.com、tw.bzmgcn.com、tw.dinnerku.com、tw.kukuc.co、tw.twmanga.com、tw.webmota.com | 断在 search.load：需要登录：Invalid status code: 403 | 断在 search.load：需要登录：Invalid status code: 403 |
+| baozi | 包子漫画 | 2.3.3 | Ra1nbo-w/mhy-v | 新增凭据能力：getcookies、loginhost、loginwithcookies、loginwithwebview | cn.bzmgcn.com、cn.cnbzmg.com、cn.twbzmg.com、www.baozimh.com | 断在 source.load：源加载或版本不兼容：Native source is unavailable during account configuration parsing | 断在 source.load：源加载或版本不兼容：Native source is unavailable during account configuration parsing |
+| baozi2 | 包子漫画 | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 与清单现有源重名或属于已合并的 key | 无 | 断在 search.load：需要登录：搜索失败: 403 | 断在 search.load：需要登录：搜索失败: 403 |
 | baozi_external | 包子漫画｜仅外部入口 | 1.0.0 | Meloon-dr/venera-sources | 自动收录通道，两端试跑未全部通过 | baozimh.org | 断在 explore[0].load：返回结构或样本不满足契约：列表项缺少合法 ID、标题或封面 | 断在 explore[0].load：返回结构或样本不满足契约：列表项缺少合法 ID、标题或封面 |
+| bilimanga | 哔哩哔哩漫画 | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 版本 1.0.0 未严格高于清单现有版本 1.1.7 | 无 | 断在 search.load：HTTP 错误：搜索失败: 404 | 断在 search.load：HTTP 错误：搜索失败: 404 |
+| bilimanga | 嗶哩漫畫 | 1.1.0 | n3114576614-cell/N_venera_source | 版本 1.1.0 未严格高于清单现有版本 1.1.7 | 无 | 断在 image.download：反爬拦截：Cloudflare challenge requires browser verification | 断在 image.download：反爬拦截：Cloudflare challenge requires browser verification |
+| bilimanga | 嗶哩漫畫 | 1.1.3 | hgnbh/sw | 版本 1.1.3 未严格高于清单现有版本 1.1.7 | 无 | 断在 image.download：反爬拦截：Cloudflare challenge requires browser verification | 断在 image.download：反爬拦截：Cloudflare challenge requires browser verification |
 | bilimanga | 嗶哩漫畫 | 1.2.0 | meaninglesslyy/venera-config | 新增主机名：cdn.jsdelivr.net | cdn.jsdelivr.net | 断在 image.download：反爬拦截：Cloudflare challenge requires browser verification | 断在 image.download：反爬拦截：Cloudflare challenge requires browser verification |
 | bilimanga | 哔哩漫画 | 1.6.2 | Junkrat9527/venera-sources | 新增主机名：cdn.jsdelivr.net | cdn.jsdelivr.net | 断在 image.download：反爬拦截：Cloudflare challenge requires browser verification | 断在 image.download：反爬拦截：Cloudflare challenge requires browser verification |
 | bilimanga | 哔哩漫画 | 1.6.3 | LX7kM9/venera-configs | 新增主机名：cdn.jsdelivr.net | cdn.jsdelivr.net | 断在 image.download：反爬拦截：Cloudflare challenge requires browser verification | 断在 image.download：反爬拦截：Cloudflare challenge requires browser verification |
+| bukamh | 布卡漫画 | 1.0.0 | YHQY-Dev/venera-sources | 版本 1.0.0 未严格高于清单现有版本 1.2.9 | 无 | 断在 search.load：需要登录：Invalid status: 403 | 断在 search.load：需要登录：Invalid status: 403 |
+| bukamh | 布卡漫画 | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 版本 1.0.0 未严格高于清单现有版本 1.2.9 | 无 | 断在 search.load：返回结构或样本不满足契约：当前关键词或列表为空，需复核样本或解析规则 | 断在 search.load：返回结构或样本不满足契约：当前关键词或列表为空，需复核样本或解析规则 |
+| bukamh | 布卡漫画 | 1.0.0 | Zicheng0326/my-venera-sources | 版本 1.0.0 未严格高于清单现有版本 1.2.9 | 无 | 断在 search.load：需要登录：Invalid status: 403 | 断在 search.load：需要登录：Invalid status: 403 |
 | buondua_15_095853 | Buondua图集 | 0.2.0 | KadishJoey/venera-json | 自动收录通道，两端试跑未全部通过 | buondua.com | 断在 comic.loadInfo：返回结构或样本不满足契约：详情没有返回章节 | 断在 comic.loadInfo：返回结构或样本不满足契约：详情没有返回章节 |
 | cartoonmad | CartoonMad | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 自动收录通道，两端试跑未全部通过 | cdn.jsdelivr.net、www.cartoonmad.com | 断在 search.load：返回结构或样本不满足契约：当前关键词或列表为空，需复核样本或解析规则 | 断在 search.load：返回结构或样本不满足契约：当前关键词或列表为空，需复核样本或解析规则 |
 | chuixuemh | 吹雪漫画 | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 自动收录通道，两端试跑未全部通过 | cdn.jsdelivr.net、www.chuixue.net | 断在 search.load：请求超时：网络请求超时 | 断在 search.load：请求超时：网络请求超时 |
 | chuiyao | 吹妖漫画 | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 自动收录通道，两端试跑未全部通过 | cdn.jsdelivr.net、m.chuiyao.com | 断在 search.load：HTTP 错误：搜索失败: 502 | 断在 search.load：HTTP 错误：搜索失败: 502 |
 | colamanga | Colamanga | 1.0.0 | weihanlong267-spec/Venera-Next-sources | 自动收录通道，两端试跑未全部通过 | cdn.jsdelivr.net、www.colamanga.com | 断在 search.load：HTTP 错误：搜索失败: 523 | 断在 search.load：HTTP 错误：搜索失败: 523 |
+| comic_walker | カドコミ | 1.0.2 | hgnbh/sw | 同 key 有更高版本的候选 1.1.0 | 无 | 断在 image.decode：未执行 | 断在 image.decode：未执行 |
+| comic_walker | カドコミ | 1.0.2 | token1008/venera-cn-64bit | 同 key 有更高版本的候选 1.1.0 | 无 | 断在 image.decode：未执行 | 断在 image.decode：未执行 |
+| comic_walker | カドコミ | 1.0.2 | maplessovo/venera-configs | 同 key 有更高版本的候选 1.1.0 | 无 | 断在 image.decode：未执行 | 断在 image.decode：未执行 |
 | comic_walker | カドコミ | 1.1.0 | coldnighten/venera-configs | 自动收录通道，两端试跑未全部通过 | 无 | 断在 explore[0].load：前置能力未通过：Source setup or initialization did not complete | 断在 explore[0].load：前置能力未通过：Source setup or initialization did not complete |
 | comic_walker | カドコミ | 1.3.2 | Junkrat9527/venera-sources | 新增主机名：comic-walker.com | comic-walker.com | 断在 image.decode：未执行 | 断在 image.decode：未执行 |
 | comic_walker | カドコミ | 1.3.2 | LX7kM9/venera-configs | 新增主机名：comic-walker.com | comic-walker.com | 断在 image.decode：未执行 | 断在 image.decode：未执行 |

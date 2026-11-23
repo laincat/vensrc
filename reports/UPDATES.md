@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-23T08:59:23.662389+00:00（UTC）。
+检查时间：2026-11-23T21:16:33.257958+00:00（UTC）。
 检查 73 个已登记仓库；发现 483 个未审阅源码构建。
 
 发现阶段只下载计算哈希、读取声明字段和主机名，不通过 list、init 或巡检执行。待审构建分三条通道：
@@ -457,11 +457,11 @@
 | Hachiraw | hachiraw | 1.1.1 | YUIRIKIiii/venera-sources | 1.6.0 | 自动收录 | 1.0.0 → 1.1.1，未新增主机名 | 5fa4f3b3734d18239695bf83600b5ae230987bbf6e62fc3af84b611003569534 |
 | 包子漫画 | bzmgcn | 1.1.1 | YUIRIKIiii/venera-sources | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | bdecb2aa93b51026f257c8ea3595e18b84ce027bbc1f47ee62d9e65b20c0dd67 |
 | 拷貝漫畫 | mangacopy | 1.1.1 | YUIRIKIiii/venera-sources | 1.6.0 | 试跑但不收录 | 新 key 涉及凭据能力：account、authorization、cookie、loginwithcookies | 6aa12f16583dae640200e5e95268646f26be592e82bc7a83219d9423bf3fcad1 |
-| 拷贝漫画 | copy_manga | 1.4.5 | yuxuanmian/venera-configs | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | b8e061082c5c059f868f9cc3d81873ea754ebab3d1fb6b3f12cce96d15a08a77 |
+| 拷贝漫画 | copy_manga | 1.4.8 | yuxuanmian/venera-configs | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | f4260141dea3563a248c76d474afa8ad49e7c95f24c736dd73019e0f423a822a |
 | Picacg | picacg | 1.0.13 | yuxuanmian/venera-configs | 2.0.0 | 试跑但不收录 | 新增凭据能力：cookie | 4cc75abd2b8ec5eb2cbf458260b538639483713fbfdd45514646509d6f3aeb82 |
 | nhentai | nhentai | 1.1.1 | yuxuanmian/venera-configs | 1.0.0 | 试跑但不收录 | 版本 1.1.1 未严格高于清单现有版本 1.1.1 | 235954360ecdc2bab69dae7639374afaa62bd6a7842a59d0136304e9bcf3094c |
 | ehentai | ehentai | 1.2.1 | yuxuanmian/venera-configs | 1.5.3 | 试跑但不收录 | 同 key 同版本有多个不同构建，需人工选择 | 977de44db25ee29ce6b80ccec1cccc16b69f3ef846d95a34f8b6c73584241550 |
-| 禁漫天堂 | jm | 1.4.1 | yuxuanmian/venera-configs | 1.5.0 | 试跑但不收录 | 版本 1.4.1 未严格高于清单现有版本 1.9.3 | ad265d929ef5b757c64ca62c852f1bb756d38ebbe06769ab19c47aef3f901856 |
+| 禁漫天堂 | jm | 1.4.3 | yuxuanmian/venera-configs | 1.5.0 | 试跑但不收录 | 版本 1.4.3 未严格高于清单现有版本 1.9.3 | 2927df4f3eae6aed3e19d319a5821feac581793c1fa6609c79d21d98c6c03f43 |
 | 漫蛙 | manwa | 1.0.18 | yuxuanmian/venera-configs | 1.6.0 | 试跑但不收录 | 版本 1.0.18 未严格高于清单现有版本 1.1.6 | f120157be86ec5f34ff5ed2fbfdb068ad50d432ce289ca67ceeeaa876ef574c5 |
 | X漫画 | xmanhua | 1.0.0 | yuyuyu529/venera | 1.0.0 | 试跑但不收录 | 版本 1.0.0 未严格高于清单现有版本 1.8.1 | ef06cd614412f0d15a594b493c4ebea14091df870d01c1b250aa15affe708187 |
 | 卡拉漫画 | kalamanhua | 1.1.0 | yuyuyu529/venera | 1.0.0 | 试跑但不收录 | 新 key 涉及凭据能力：cookie | 40974a240f6993a6e2cfc394dccbdbd61c64dfe54c6ca388443ce73003a48041 |
@@ -536,23 +536,25 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
+- `Arteiimis/venera-lean`：Venera Prime 的精简与性能优化 fork（独立发行）
+- `amke79/venerastudios-site`：
 - `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `yuxuanmian/venera`：A comic app
+- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
+- `laincat/Nekophage`：Nekularity 的桌面端：Venera 兼容源阅读与视频播放（Go + MyGo）
+- `laincat/VeneraCat-Core`：Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0
+- `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
+- `xswlsbhhh/venera-comic-sources`：Venera 漫画源（由阅读/Legado 书源改写）
+- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
 - `3176289965f-ai/my-venera-sources`：
-- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
-- `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
-- `amke79/venerastudios-site`：
-- `Arteiimis/venera-lean`：Venera Prime 的精简与性能优化 fork（独立发行）
-- `xswlsbhhh/venera-comic-sources`：Venera 漫画源（由阅读/Legado 书源改写）
 - `lc2024924478-del/venera-all-in-one`：
-- `yuxuanmian/venera`：A comic app
 - `Aezir/venera-sources`：VeneraX 漫画源订阅与实测清单
 - `AllOut0129/my-venera-sources`：
 - `Venera-hub145/grade9`：Present Tenses, Past Tenses, Future Forms, Modal Verbs, Conditionals, Passive Voice, Reported Speech, Relative Clauses, Gerunds & Infinitives, Articles & Determiners.
 - `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
 - `Venera-hub145/file-C-Temp-Rar-EXa12520.43072.rartemp-english-grammar-hub-index.html`：Present Tenses, Past Tenses, Future Forms, Modal Verbs, Conditionals, Passive Voice, Reported Speech, Relative Clauses, Gerunds & Infinitives, Articles & Determiners.
-- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `jnsingh01/venerabulllife`：Venerabull Life — public website.
 - `w13630039663-bit/venera-miuix`：一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。
 - `tanye2333/venera-sources`：个人维护的 Venera 漫画源
@@ -572,7 +574,6 @@
 - `will040124-ctrl/LightReader`：轻阅：Kotlin / Jetpack Compose 小说、漫画与文档阅读器，支持 Venera 风格漫画源
 - `ikun5200/venera-prime-server`：
 - `opaiopaio/Venera-Nas`：Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中
-- `laincat/VeneraCat-Core`：Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0
 - `zmf678/venera-sources`：Venera 漫画源整合：148 个去重源，index.json 一键订阅
 - `venera-tropnikova/Alexs-Amazing-Garage-play`：Test play build of Alex's Amazing Garage (dist only). Source stays private.
 - `yemaoziben/venera-sources`：Venera 漫画源（44 个，含检测报告）
@@ -580,7 +581,6 @@
 - `qhu91it/h3r0-venera-configs`：My custom config for venera
 - `940440952/comic-sources`：双生态漫画源：Venera / VeneraNext / VeneraPlus JavaScript + Aidoku Rust/WASM；目前维护 manhuazhan.com。
 - `venera-app/venera-prime`：A comic app,but prime
-- `laincat/Nekophage`：Nekularity 的桌面端：Venera 兼容源阅读与视频播放（Go + MyGo）
 - `WEP-56/EZVenera`：Venera重写+简化版本，只提供windows、安卓包体，简化大量功能尤其是插件模块运行时，方便持续维护。／ 请勿提出超出EZVenera边界的需求，如果你真的需要，欢迎pr或自行fork
 - `1753454035/hentai20-venera`：1
 - `yanxiangwang521-ui/venera-fix-source-`：Venera修复漫画源
@@ -613,4 +613,4 @@
 - `Kiastr/Venera-SSR`：A manga viewer.support realtime Coloring  and Anime4kSR and OCR translation.All running locally./ 一个支持不同漫画源,阅读实时,本地黑白漫画上色，anime4k超分辨率，本地ocr翻译的改版漫画阅读器
 - `Jieless55/venera-megacomicxadult`：R18漫画源
 
-另有 39 个搜索结果既没有漫画源索引 index.json，也没有 ComicSource 脚本，已从名单滤掉；无法判断的仓库照常列出。
+另有 38 个搜索结果既没有漫画源索引 index.json，也没有 ComicSource 脚本，已从名单滤掉；无法判断的仓库照常列出。
