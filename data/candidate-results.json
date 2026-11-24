@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-23T21:35:28.485967+00:00",
-  "runUrl": "https://github.com/laincat/vensrc/actions/runs/45267685792",
+  "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+  "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
   "trialLimit": 40,
   "testedThisRound": 40,
-  "untested": 249,
+  "untested": 209,
   "results": {
     "926ea5a941994d321df046149a91220244ba710e3dde52356939d7af1d19d67a": {
       "key": "comic_walker",
@@ -7976,6 +7976,1289 @@
       "reviewVersion": 3,
       "checkedAt": "2026-11-23T21:35:28.485967+00:00",
       "runUrl": "https://github.com/laincat/vensrc/actions/runs/45267685792",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Invalid status: 403"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Invalid status: 403"
+        }
+      },
+      "outcome": "failed"
+    },
+    "db829f439e27dc33c3ae3303646fa780efe7d2c37ee9c777df1f041d7631485d": {
+      "key": "dongman",
+      "name": "咚漫漫画",
+      "version": "1.0.0",
+      "repository": "cattoldme/venera-configs",
+      "url": "https://raw.githubusercontent.com/cattoldme/venera-configs/8b62410bcd576551bf12523968d6373a0f28230d/dongman.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "不同 key 指向清单中已有的站点，待核对分区或语言版本",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "698032e28a7498e6d2a33ef3dd99324d2dd4220e93363ab9ecb62b42ca70ab64": {
+      "key": "comick",
+      "name": "comick",
+      "version": "1.2.1",
+      "repository": "fuluoydebende/venera-configs-fixed",
+      "url": "https://raw.githubusercontent.com/fuluoydebende/venera-configs-fixed/c7511d18a029bfb8ceff1d0174811b9a9276b3e5/comick.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.2.1 未严格高于清单现有版本 1.3.0",
+      "newHosts": [],
+      "baselineVersion": "1.3.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        }
+      },
+      "outcome": "failed"
+    },
+    "06ea2676323e40e980cb8f8fba2b53a70733e7cade267e0261763c55e6b30155": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.6.6",
+      "repository": "ZhiLin-Sam/venera-sources",
+      "url": "https://raw.githubusercontent.com/ZhiLin-Sam/venera-sources/cfa87d83b41ed02886d9da7b0832265487644bc1/sources/mirror/venera_comic_source/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        }
+      },
+      "outcome": "failed"
+    },
+    "25f69ded59266a0ed04d69dfee08f147d5a45bd537e8f474142810dfa996af7e": {
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "7.0.2",
+      "repository": "hgnbh/sw",
+      "url": "https://raw.githubusercontent.com/hgnbh/sw/4f1cff24024ab591d245d9a8f01a9cb1c60f6803/dm5.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 7.0.2 未严格高于清单现有版本 7.0.3",
+      "newHosts": [],
+      "baselineVersion": "7.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "passed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "passed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "ae7055749e31d9718abdfb14787c753210395597ca3a54f0c3903f14cb2302bf": {
+      "key": "dongman_la",
+      "name": "动漫啦",
+      "version": "1.0.2",
+      "repository": "hgnbh/sw",
+      "url": "https://raw.githubusercontent.com/hgnbh/sw/4f1cff24024ab591d245d9a8f01a9cb1c60f6803/dongman_la_fixed_v101.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.2 未严格高于清单现有版本 1.0.5",
+      "newHosts": [],
+      "baselineVersion": "1.0.5",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "passed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "passed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "942f29bd9a6834d7a7d9f7a5a115b3ff1164f0990828f4eb9c2358ed354303d7": {
+      "key": "cycomic",
+      "name": "次元漫画",
+      "version": "1.0.0",
+      "repository": "YHQY-Dev/venera-sources",
+      "url": "https://raw.githubusercontent.com/YHQY-Dev/venera-sources/b84b58ad0935df124b38a12f2d6e369d0715ff32/cycomic.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.0 未严格高于清单现有版本 1.0.3",
+      "newHosts": [],
+      "baselineVersion": "1.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Invalid status: 403"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Invalid status: 403"
+        }
+      },
+      "outcome": "failed"
+    },
+    "ea1f834157acd3787eade0a4c436f172b46e983f576e46142aa650574f373ca5": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "2.3.1",
+      "repository": "LX7kM9/venera-configs",
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "explore[0].load",
+          "category": "前置能力未通过",
+          "reason": "Source setup or initialization did not complete"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "explore[0].load",
+          "category": "前置能力未通过",
+          "reason": "Source setup or initialization did not complete"
+        }
+      },
+      "outcome": "failed"
+    },
+    "0adf399b0eab25937f07a9b6b23c044b7ebee8b75f1d30dcd55a1a8a4a5a400a": {
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "0.2.0",
+      "repository": "zhimouzhou/venera-manga-sources",
+      "url": "https://raw.githubusercontent.com/zhimouzhou/venera-manga-sources/b3b22aaf832fb2382004b5be10a314e59c47e328/sources/dm5.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 0.2.0 未严格高于清单现有版本 7.0.3",
+      "newHosts": [],
+      "baselineVersion": "7.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from manhua-manbucangqiong"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from manhua-manbucangqiong"
+        }
+      },
+      "outcome": "failed"
+    },
+    "a4e34d9681a48022640c072842dc37ccb4099fd1f9c04d8ab51cc38ebfa57669": {
+      "key": "dongman",
+      "name": "咚漫",
+      "version": "1.0.8",
+      "repository": "LX7kM9/venera-configs",
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/dongman.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "image.download",
+          "category": "请求超时",
+          "reason": "Network request failed: Request timed out after 10000ms"
+        },
+        "venera-next": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "failed"
+    },
+    "f3599e84cdebd39aa3cf752e0b97b015ea673917314572cf52e567d81a12daba": {
+      "key": "dongman_la",
+      "name": "动漫啦",
+      "version": "1.0.1",
+      "repository": "n3114576614-cell/N_venera_source",
+      "url": "https://raw.githubusercontent.com/n3114576614-cell/N_venera_source/e7229a5c8121eeb35e80e0c23e9f1fe3889ec342/dongman_la_fixed_v101.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.1 未严格高于清单现有版本 1.0.5",
+      "newHosts": [],
+      "baselineVersion": "1.0.5",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "3da97ede8f94cce6127313d582a8dda391d7b74d04bbb125e95c246010ee5ac5": {
+      "key": "dongman_la",
+      "name": "动漫啦",
+      "version": "1.0.3",
+      "repository": "Junkrat9527/venera-sources",
+      "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/dongman_la.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.3 未严格高于清单现有版本 1.0.5",
+      "newHosts": [],
+      "baselineVersion": "1.0.5",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "15a8e8970bd8142accb161272c6491082b193d8ceaad393025877effe63cf009": {
+      "key": "dongmanla",
+      "name": "动漫啦",
+      "version": "1.0.0",
+      "repository": "YHQY-Dev/venera-sources",
+      "url": "https://raw.githubusercontent.com/YHQY-Dev/venera-sources/b84b58ad0935df124b38a12f2d6e369d0715ff32/dongmanla.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "c1b9db6ef30749caf774d577e5c2a7ac1c66feb0f52226f2a6d47d144098a48d": {
+      "key": "cosplaytele_25_190983",
+      "name": "CosplayTele",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/cosplaytele_25_190983.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "HTTP 错误",
+          "reason": "HTTP 404"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "HTTP 错误",
+          "reason": "HTTP 404"
+        }
+      },
+      "outcome": "failed"
+    },
+    "8e0edfbe706646ee756c35801a6f39aa26368262dd92f8b5b698538fdd906266": {
+      "key": "comick",
+      "name": "comick",
+      "version": "1.3.0",
+      "repository": "lldaydayhappy/venera-sources",
+      "url": "https://raw.githubusercontent.com/lldaydayhappy/venera-sources/c4c746845a2100fed299ae5225e07f5385eb5042/comick.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.3.0 未严格高于清单现有版本 1.3.0",
+      "newHosts": [],
+      "baselineVersion": "1.3.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "9f248fb4b64da891b5e7ca79b5bb534cc2f95963997b908ae0689c2cf50a53c8": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "2.3.1",
+      "repository": "lldaydayhappy/venera-sources",
+      "url": "https://raw.githubusercontent.com/lldaydayhappy/venera-sources/c4c746845a2100fed299ae5225e07f5385eb5042/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "explore[0].load",
+          "category": "前置能力未通过",
+          "reason": "Source setup or initialization did not complete"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "explore[0].load",
+          "category": "前置能力未通过",
+          "reason": "Source setup or initialization did not complete"
+        }
+      },
+      "outcome": "failed"
+    },
+    "f1082766eade7d5acea8156b19430499fc1f8004408b9dfd4964dcad03f7fcbd": {
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "2.0.5",
+      "repository": "LX7kM9/venera-configs",
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/dm5.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 2.0.5 未严格高于清单现有版本 7.0.3",
+      "newHosts": [],
+      "baselineVersion": "7.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "passed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "passed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "d2a221a509f36fdad9b2a1a0e4109b6deb8055259e9519bc48864cadce6295cc": {
+      "key": "damotu",
+      "name": "大魔兔",
+      "version": "0.7.1",
+      "repository": "LX7kM9/venera-configs",
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/damotu.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 0.7.1 未严格高于清单现有版本 1.0.0",
+      "newHosts": [],
+      "baselineVersion": "1.0.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from /manhua/8302.htm"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from /manhua/8302.htm"
+        }
+      },
+      "outcome": "failed"
+    },
+    "b352baa7ce4da19aca93b197f1cebcadf1a739723cce5f8bff1f74b94554ea60": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.6.1",
+      "repository": "Magentadots/venera-configs",
+      "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        }
+      },
+      "outcome": "failed"
+    },
+    "d70f680003d13e1c53155804a7e4014334d52feef47345432829c7aef09e2077": {
+      "key": "copy_manga_multi_accounts",
+      "name": "拷贝漫画M",
+      "version": "1.4.2",
+      "repository": "Magentadots/venera-configs",
+      "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/copy_manga_multi_accounts.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "同 key 同版本有多个不同构建，需人工选择",
+      "newHosts": [],
+      "baselineVersion": "1.4.1",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "worker_crash",
+          "reason": "Worker exited before completion (1)"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "worker_crash",
+          "reason": "Worker exited before completion (1)"
+        }
+      },
+      "outcome": "failed"
+    },
+    "6cac096e047489fdd3d44929f203b860e2b9acb05b4665a0f3c242392703766b": {
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "7.0.1",
+      "repository": "Magentadots/venera-configs",
+      "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/dm5.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 7.0.1 未严格高于清单现有版本 7.0.3",
+      "newHosts": [],
+      "baselineVersion": "7.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "返回结构或样本不满足契约",
+          "reason": "详情缺少标题或封面"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "返回结构或样本不满足契约",
+          "reason": "详情缺少标题或封面"
+        }
+      },
+      "outcome": "failed"
+    },
+    "d6f574c13a37a262d90d964305bf4e86fe9f8454206c1bf0528a0ff868502a0e": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.4.4",
+      "repository": "maplessovo/venera-configs",
+      "url": "https://raw.githubusercontent.com/maplessovo/venera-configs/31e7f6d7994146c0dc038ca378feccb3c8aa32d9/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        }
+      },
+      "outcome": "failed"
+    },
+    "d6c091afe1b840a1d68bbd212f228a59c3a07653741fbce2893869505796909f": {
+      "key": "cosplaytele",
+      "name": "CosplayTele",
+      "version": "1.0.4",
+      "repository": "maplessovo/venera-configs",
+      "url": "https://raw.githubusercontent.com/maplessovo/venera-configs/31e7f6d7994146c0dc038ca378feccb3c8aa32d9/cosplaytele.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.4 未严格高于清单现有版本 1.7.0",
+      "newHosts": [],
+      "baselineVersion": "1.7.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "源配置错误",
+          "reason": "CosplayTele 未找到公开图片集"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "源配置错误",
+          "reason": "CosplayTele 未找到公开图片集"
+        }
+      },
+      "outcome": "failed"
+    },
+    "f40677fdcd9f50868dec7604ce926f96054c4c8b5f521b2d6e6473a6b2a33660": {
+      "key": "dm5_comics",
+      "name": "动漫屋",
+      "version": "0.2.2",
+      "repository": "Meloon-dr/venera-sources",
+      "url": "https://raw.githubusercontent.com/Meloon-dr/venera-sources/0b5378f65b1c61327630d0e6ab5fa49160eb578d/scripts/dm5.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "列表项缺少合法 ID、标题或封面"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "列表项缺少合法 ID、标题或封面"
+        }
+      },
+      "outcome": "failed"
+    },
+    "23908d87f455e3d09025ea450a2bf82eafb5a0ae0b9c3eceddb03207abbc7241": {
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "7.0.0",
+      "repository": "n3114576614-cell/N_venera_source",
+      "url": "https://raw.githubusercontent.com/n3114576614-cell/N_venera_source/e7229a5c8121eeb35e80e0c23e9f1fe3889ec342/dm5.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 7.0.0 未严格高于清单现有版本 7.0.3",
+      "newHosts": [],
+      "baselineVersion": "7.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "返回结构或样本不满足契约",
+          "reason": "详情缺少标题或封面"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "返回结构或样本不满足契约",
+          "reason": "详情缺少标题或封面"
+        }
+      },
+      "outcome": "failed"
+    },
+    "962506c70015b4e82ca3edf4b9e6bb6d69f979c5da6f26d6f2592039ebc78921": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.4.4",
+      "repository": "nightcat3254/venera-sources",
+      "url": "https://raw.githubusercontent.com/nightcat3254/venera-sources/293d647adfc1fbd9d70af161bb1dad980dcb6b89/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        }
+      },
+      "outcome": "failed"
+    },
+    "62b7d99ee12997f0e3f4e244f626d95e83d2a3060b8ad4eb1212a37213378800": {
+      "key": "dongmanla",
+      "name": "动漫啦",
+      "version": "1.0.1",
+      "repository": "token1008/venera-cn-64bit",
+      "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/dongmanla.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "78a751955d9ec6c640585220252757ffbc854331657ac0e7bd04d758dbf6d835": {
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "1.0.1",
+      "repository": "weihanlong267-spec/Venera-Next-sources",
+      "url": "https://raw.githubusercontent.com/weihanlong267-spec/Venera-Next-sources/0df676f36cd27bb348d92198731189ef342ea6bd/dm5.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.1 未严格高于清单现有版本 7.0.3",
+      "newHosts": [],
+      "baselineVersion": "7.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "返回结构或样本不满足契约",
+          "reason": "详情没有返回章节"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "返回结构或样本不满足契约",
+          "reason": "详情没有返回章节"
+        }
+      },
+      "outcome": "failed"
+    },
+    "146504b647d58270cf9d01138a948b4093ce9c2f368f7c7ec41625ab6d8d8482": {
+      "key": "dumanwu",
+      "name": "读漫屋",
+      "version": "1.0.0",
+      "repository": "weihanlong267-spec/Venera-Next-sources",
+      "url": "https://raw.githubusercontent.com/weihanlong267-spec/Venera-Next-sources/0df676f36cd27bb348d92198731189ef342ea6bd/dumanwu.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "HTTP 错误",
+          "reason": "搜索失败: 404"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "HTTP 错误",
+          "reason": "搜索失败: 404"
+        }
+      },
+      "outcome": "failed"
+    },
+    "e7d3e3247c676edb741d8dbb25f68e5cf41e194b316e172eb16a61a50230fb5e": {
+      "key": "dingmanhua",
+      "name": "丁漫画",
+      "version": "1.0.0",
+      "repository": "weihanlong267-spec/Venera-Next-sources",
+      "url": "https://raw.githubusercontent.com/weihanlong267-spec/Venera-Next-sources/0df676f36cd27bb348d92198731189ef342ea6bd/dingmanhua.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.0 未严格高于清单现有版本 1.0.5",
+      "newHosts": [],
+      "baselineVersion": "1.0.5",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "HTTP 错误",
+          "reason": "详情加载失败: 404"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "HTTP 错误",
+          "reason": "详情加载失败: 404"
+        }
+      },
+      "outcome": "failed"
+    },
+    "6413be028aea9e9730f59915a9751799da0f5f68a67f8b4c6e5273bf06db9863": {
+      "key": "dogemanga",
+      "name": "Dogemanga",
+      "version": "1.0.0",
+      "repository": "weihanlong267-spec/Venera-Next-sources",
+      "url": "https://raw.githubusercontent.com/weihanlong267-spec/Venera-Next-sources/0df676f36cd27bb348d92198731189ef342ea6bd/dogemanga.js",
+      "lane": "trial",
+      "reason": "superseded",
+      "detail": "同 key 有更高版本的候选 1.0.6",
+      "newHosts": [
+        "cdn.jsdelivr.net",
+        "dogemanga.com"
+      ],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        }
+      },
+      "outcome": "failed"
+    },
+    "0d27326532341a1fdf1e4d2ffb6f4353062956405455ec7178b3ee56ede8dead": {
+      "key": "dumanwuorg",
+      "name": "读漫屋",
+      "version": "1.0.0",
+      "repository": "weihanlong267-spec/Venera-Next-sources",
+      "url": "https://raw.githubusercontent.com/weihanlong267-spec/Venera-Next-sources/0df676f36cd27bb348d92198731189ef342ea6bd/dumanwuorg.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "HTTP 错误",
+          "reason": "搜索失败: 404"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "HTTP 错误",
+          "reason": "搜索失败: 404"
+        }
+      },
+      "outcome": "failed"
+    },
+    "e0a8d25704b83e3efcf757c0f6b80449bb2404bab5852ec5948a8ded44a99eea": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.6.1",
+      "repository": "xiaoxingmian/venera-configs",
+      "url": "https://raw.githubusercontent.com/xiaoxingmian/venera-configs/aa9fea3526294435982e765cc96ce916be6748a6/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "請到官網更新最新APP(https://www.copy4000.com/download), 您或您身邊的人曾經下載過破解版本的拷貝漫畫，請下載安裝正版之後等待1小時，限制會自動解除。"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "請到官網更新最新APP(https://www.copy4000.com/download), 您或您身邊的人曾經下載過破解版本的拷貝漫畫，請下載安裝正版之後等待1小時，限制會自動解除。"
+        }
+      },
+      "outcome": "failed"
+    },
+    "e948c055697747d401ba2177e95d4c341cbd22d894411e85661011a7fd527543": {
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "1.0.0",
+      "repository": "YHQY-Dev/venera-sources",
+      "url": "https://raw.githubusercontent.com/YHQY-Dev/venera-sources/b84b58ad0935df124b38a12f2d6e369d0715ff32/dm5.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.0 未严格高于清单现有版本 7.0.3",
+      "newHosts": [],
+      "baselineVersion": "7.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "HTTP 错误",
+          "reason": "Invalid status: 404"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "HTTP 错误",
+          "reason": "Invalid status: 404"
+        }
+      },
+      "outcome": "failed"
+    },
+    "b1a444db46b30b74c5c2852e12e09ce61cf7f68276ec15d5d21e74bd9080a134": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.4.4",
+      "repository": "YongkeDet/venera-configs",
+      "url": "https://raw.githubusercontent.com/YongkeDet/venera-configs/c728b1611f8b9a5b444c57c4231abb2305616beb/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        }
+      },
+      "outcome": "failed"
+    },
+    "f4260141dea3563a248c76d474afa8ad49e7c95f24c736dd73019e0f423a822a": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.4.8",
+      "repository": "yuxuanmian/venera-configs",
+      "url": "https://raw.githubusercontent.com/yuxuanmian/venera-configs/de37c2bd7d7007adc622534cceb53f339f908a95/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "fcb90412e0d16323340337e815267bb02c6ca0491c00cbfabe55241ed67029ac": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "1.4.4",
+      "repository": "zakkida/venera-sources",
+      "url": "https://raw.githubusercontent.com/zakkida/venera-sources/a5d8118da700c44f4823e82494d4ca816054afaf/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        }
+      },
+      "outcome": "failed"
+    },
+    "e2ba75d47461ea726af9fdd933e779ce8ec1bb24cd40ddca033650d6026b99a2": {
+      "key": "copy_manga",
+      "name": "拷贝漫画M",
+      "version": "1.4.4",
+      "repository": "zakkida/venera-sources",
+      "url": "https://raw.githubusercontent.com/zakkida/venera-sources/a5d8118da700c44f4823e82494d4ca816054afaf/copy_manga_multi_accounts.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Setting not found: base_url"
+        }
+      },
+      "outcome": "failed"
+    },
+    "d447e6094f06b4c15c53ec18b04cfc8d19a02a2f268235287dd77c2a0609ec74": {
+      "key": "dongmanla",
+      "name": "动漫啦",
+      "version": "1.0.0",
+      "repository": "Zicheng0326/my-venera-sources",
+      "url": "https://raw.githubusercontent.com/Zicheng0326/my-venera-sources/a87af2423c60b30c6e2e795f76da64b17ffc4e86/dongmanla.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "23d16ca1bd1848acd3177fd8f1040406a90302e502bf1483c3221e1afb3171d1": {
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "1.0.0",
+      "repository": "Zicheng0326/my-venera-sources",
+      "url": "https://raw.githubusercontent.com/Zicheng0326/my-venera-sources/a87af2423c60b30c6e2e795f76da64b17ffc4e86/dm5.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.0 未严格高于清单现有版本 7.0.3",
+      "newHosts": [],
+      "baselineVersion": "7.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "HTTP 错误",
+          "reason": "Invalid status: 404"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "HTTP 错误",
+          "reason": "Invalid status: 404"
+        }
+      },
+      "outcome": "failed"
+    },
+    "089712e928638293a05efbbed52da9ece5367baf684a303ccce64d274968550d": {
+      "key": "cycomic",
+      "name": "次元漫画",
+      "version": "1.0.0",
+      "repository": "Zicheng0326/my-venera-sources",
+      "url": "https://raw.githubusercontent.com/Zicheng0326/my-venera-sources/a87af2423c60b30c6e2e795f76da64b17ffc4e86/cycomic.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.0 未严格高于清单现有版本 1.0.3",
+      "newHosts": [],
+      "baselineVersion": "1.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-24T17:56:10.923292+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45449851274",
       "profiles": {
         "venerax": {
           "core": false,
