@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-25T02:40:47.642048+00:00",
-  "runUrl": "https://github.com/laincat/vensrc/actions/runs/45532201890",
+  "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+  "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
   "trialLimit": 40,
   "testedThisRound": 40,
   "untested": 169,
@@ -17,8 +17,9 @@
       "detail": "1.0.1 → 1.1.0，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.0.1",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -42,14 +43,15 @@
       "name": "包子漫画",
       "version": "1.1.8",
       "repository": "handahao666-boop/venera_comic_source",
-      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/a59bdea5b75b00f3770c2b831ef830aac05cc67e/baozi.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/71027b79d8fa67da64380bcb141128b3f63d6351/baozi.js",
       "lane": "auto",
       "reason": "auto",
       "detail": "试跑访问新增主机名：cn.twbzmg.com、cn.webmota.com、s1.bzcdn.net",
       "newHosts": [],
       "baselineVersion": "1.1.7",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": true,
@@ -73,7 +75,7 @@
       "name": "漫画社",
       "version": "1.0.2",
       "repository": "handahao666-boop/venera_comic_source",
-      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/a59bdea5b75b00f3770c2b831ef830aac05cc67e/manhuashe.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/71027b79d8fa67da64380bcb141128b3f63d6351/manhuashe.js",
       "lane": "auto",
       "reason": "new_key",
       "detail": "不同 key 的详情请求指向清单已有站点",
@@ -83,9 +85,9 @@
         "www.311s.com"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": true,
@@ -109,7 +111,7 @@
       "name": "漫画屋",
       "version": "1.0.1",
       "repository": "handahao666-boop/venera_comic_source",
-      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/a59bdea5b75b00f3770c2b831ef830aac05cc67e/manhuawu.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/71027b79d8fa67da64380bcb141128b3f63d6351/manhuawu.js",
       "lane": "auto",
       "reason": "new_key",
       "detail": "登记仓库的新 key，使用匿名样本",
@@ -119,22 +121,23 @@
         "www.mhua5.com"
       ],
       "baselineVersion": "",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
           "status": "failed",
-          "breakAt": "comic.loadEp",
+          "breakAt": "search.load",
           "category": "请求超时",
           "reason": "网络请求超时"
         },
         "venera-next": {
-          "core": true,
-          "status": "passed",
-          "breakAt": "",
-          "category": "",
-          "reason": ""
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "HTTP 错误",
+          "reason": "漫画屋页面请求失败，请稍后重试。"
         }
       },
       "outcome": "failed"
@@ -144,7 +147,7 @@
       "name": "熱辣漫畫",
       "version": "1.0.0",
       "repository": "handahao666-boop/venera_comic_source",
-      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/a59bdea5b75b00f3770c2b831ef830aac05cc67e/relamanhua.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/71027b79d8fa67da64380bcb141128b3f63d6351/relamanhua.js",
       "lane": "auto",
       "reason": "new_key",
       "detail": "登记仓库的新 key，使用匿名样本",
@@ -155,8 +158,9 @@
         "raw.githubusercontent.com"
       ],
       "baselineVersion": "",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -180,7 +184,7 @@
       "name": "Comic Fury 中文",
       "version": "1.0.0",
       "repository": "handahao666-boop/venera_comic_source",
-      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/a59bdea5b75b00f3770c2b831ef830aac05cc67e/comicfury.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/71027b79d8fa67da64380bcb141128b3f63d6351/comicfury.js",
       "lane": "auto",
       "reason": "new_key",
       "detail": "登记仓库的新 key，使用匿名样本",
@@ -190,22 +194,23 @@
         "raw.githubusercontent.com"
       ],
       "baselineVersion": "",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
           "status": "failed",
           "breakAt": "search.load",
-          "category": "请求超时",
-          "reason": "网络请求超时"
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
         },
         "venera-next": {
           "core": false,
           "status": "failed",
           "breakAt": "search.load",
-          "category": "请求超时",
-          "reason": "网络请求超时"
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
         }
       },
       "outcome": "failed"
@@ -215,7 +220,7 @@
       "name": "喜漫漫画",
       "version": "1.0.0",
       "repository": "handahao666-boop/venera_comic_source",
-      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/a59bdea5b75b00f3770c2b831ef830aac05cc67e/favcomic.js",
+      "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/71027b79d8fa67da64380bcb141128b3f63d6351/favcomic.js",
       "lane": "auto",
       "reason": "new_key",
       "detail": "登记仓库的新 key，使用匿名样本",
@@ -225,8 +230,9 @@
         "www.favcomic.com"
       ],
       "baselineVersion": "",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -256,15 +262,16 @@
       "detail": "1.4.1 → 1.4.2，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.4.1",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
-          "status": "error",
-          "breakAt": "",
-          "category": "试跑未完成",
-          "reason": "候选请求地址无法核对"
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "网络错误",
+          "reason": "网络请求失败"
         },
         "venera-next": {
           "core": false,
@@ -287,8 +294,9 @@
       "detail": "1.2.1 → 1.2.4，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.2.1",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -320,8 +328,9 @@
         "www.4khd.com"
       ],
       "baselineVersion": "",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -353,8 +362,9 @@
         "comic.mkzhan.com"
       ],
       "baselineVersion": "",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -384,8 +394,9 @@
       "detail": "1.0.7 → 1.1.0，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.0.7",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -415,8 +426,9 @@
       "detail": "试跑访问新增主机名：manhua1033zjcdn26.cdndm5.com、mhfm9us.cdndm5.com",
       "newHosts": [],
       "baselineVersion": "1.0.1",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": true,
@@ -446,8 +458,9 @@
       "detail": "1.9.0 → 1.9.6，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.9.0",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -474,28 +487,29 @@
       "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/yandere.js",
       "lane": "auto",
       "reason": "auto",
-      "detail": "4.9.3 → 4.9.4，未新增主机名",
+      "detail": "试跑访问新增主机名：assets.yande.re、files.yande.re",
       "newHosts": [],
       "baselineVersion": "4.9.3",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
-          "core": false,
+          "core": true,
           "status": "failed",
-          "breakAt": "search.load",
-          "category": "请求超时",
-          "reason": "网络请求超时"
+          "breakAt": "",
+          "category": "",
+          "reason": ""
         },
         "venera-next": {
-          "core": false,
+          "core": true,
           "status": "failed",
-          "breakAt": "search.load",
-          "category": "请求超时",
-          "reason": "网络请求超时"
+          "breakAt": "",
+          "category": "",
+          "reason": ""
         }
       },
-      "outcome": "failed"
+      "outcome": "rejected"
     },
     "106ac09e4c0582d3a32906976a325598671a41151b744c020f7d49641dce0ebd": {
       "key": "happy",
@@ -508,8 +522,9 @@
       "detail": "1.0.0 → 1.0.1，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.0.0",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -539,8 +554,9 @@
       "detail": "1.0.0 → 1.0.1，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.0.0",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -570,8 +586,9 @@
       "detail": "1.0.3 → 1.0.4，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.0.3",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -601,8 +618,9 @@
       "detail": "试跑访问新增主机名：52.128.238.250、manwauu.cc",
       "newHosts": [],
       "baselineVersion": "1.1.3",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": true,
@@ -632,8 +650,9 @@
       "detail": "1.0.0 → 1.0.1，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.0.0",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -663,8 +682,9 @@
       "detail": "1.0.6 → 1.0.7，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.0.6",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -694,8 +714,9 @@
       "detail": "1.2.0 → 1.2.1，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.2.0",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -725,8 +746,9 @@
       "detail": "1.0.0 → 1.0.1，未新增主机名",
       "newHosts": [],
       "baselineVersion": "1.0.0",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -738,9 +760,9 @@
         "venera-next": {
           "core": false,
           "status": "failed",
-          "breakAt": "comic.loadEp",
-          "category": "返回结构或样本不满足契约",
-          "reason": "章节没有返回非空图片列表"
+          "breakAt": "search.load",
+          "category": "请求超时",
+          "reason": "网络请求超时"
         }
       },
       "outcome": "failed"
@@ -756,8 +778,9 @@
       "detail": "试跑访问新增主机名：tk3.myhl005.sbs",
       "newHosts": [],
       "baselineVersion": "1.0.1",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": true,
@@ -790,22 +813,23 @@
         "m.acg456.com"
       ],
       "baselineVersion": "",
-      "checkedAt": "2026-11-22T12:14:24.881250+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
           "status": "failed",
           "breakAt": "search.load",
-          "category": "请求超时",
-          "reason": "网络请求超时"
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
         },
         "venera-next": {
           "core": false,
           "status": "failed",
           "breakAt": "search.load",
-          "category": "请求超时",
-          "reason": "网络请求超时"
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
         }
       },
       "outcome": "failed"
@@ -862,9 +886,9 @@
         "squidge.world"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -896,23 +920,23 @@
         "buondua.com"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
           "status": "failed",
-          "breakAt": "comic.loadInfo",
-          "category": "返回结构或样本不满足契约",
-          "reason": "详情没有返回章节"
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "HTTP 403"
         },
         "venera-next": {
           "core": false,
           "status": "failed",
-          "breakAt": "comic.loadInfo",
-          "category": "返回结构或样本不满足契约",
-          "reason": "详情没有返回章节"
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "HTTP 403"
         }
       },
       "outcome": "failed"
@@ -930,9 +954,9 @@
         "cn.webmota.com"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -1029,7 +1053,7 @@
       "name": "CosBlay",
       "version": "1.0.0",
       "repository": "meaninglesslyy/venera-config",
-      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/69b362ac8b1f3540692464b46c716b47f78c3526/real_person_photo_book/cosblay.js",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/b57b3c9b7256ec8223ca592c6f2af9d71f8d63d5/real_person_photo_book/cosblay.js",
       "lane": "auto",
       "reason": "new_key",
       "detail": "登记仓库的新 key，使用匿名样本",
@@ -1039,9 +1063,9 @@
         "cosblay.com"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -1073,9 +1097,9 @@
         "xjdm168.com"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -1107,9 +1131,9 @@
         "baozimh.org"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -1141,9 +1165,9 @@
         "www.acgndog.com"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -1175,9 +1199,9 @@
         "www.comicbox.xyz"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -1245,9 +1269,9 @@
         "www.colamanga.com"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -1280,23 +1304,23 @@
         "www.dashumanhua.com"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
           "status": "failed",
           "breakAt": "search.load",
           "category": "HTTP 错误",
-          "reason": "搜索失败: 500"
+          "reason": "搜索失败: 404"
         },
         "venera-next": {
           "core": false,
           "status": "failed",
           "breakAt": "search.load",
           "category": "HTTP 错误",
-          "reason": "搜索失败: 500"
+          "reason": "搜索失败: 404"
         }
       },
       "outcome": "failed"
@@ -1350,9 +1374,9 @@
         "comic.acgn.cc"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -1385,9 +1409,9 @@
         "www.cartoonmad.com"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -1420,9 +1444,9 @@
         "www.chuixue.net"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -1455,9 +1479,9 @@
         "m.chuiyao.com"
       ],
       "baselineVersion": "",
-      "reviewVersion": 2,
-      "checkedAt": "2026-11-22T12:40:13.675696+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
       "profiles": {
         "venerax": {
           "core": false,
@@ -10556,6 +10580,38 @@
         }
       },
       "outcome": "passed"
+    },
+    "20acc17ba134a94094f9a57ca1c524d9e54ffbe6301bbd880d48f8b1fbe20ef8": {
+      "key": "hentaiclub",
+      "name": "绅士会所",
+      "version": "1.0.1",
+      "repository": "meaninglesslyy/venera-config",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/b57b3c9b7256ec8223ca592c6f2af9d71f8d63d5/real_person_photo_book/hentaiclub.js",
+      "lane": "auto",
+      "reason": "auto",
+      "detail": "1.0.0 → 1.0.1，未新增主机名",
+      "newHosts": [],
+      "baselineVersion": "1.0.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-25T13:03:38.994062+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        }
+      },
+      "outcome": "failed"
     }
   }
 }
