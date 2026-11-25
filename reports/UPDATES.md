@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-24T17:36:08.751927+00:00（UTC）。
+检查时间：2026-11-25T02:21:58.569615+00:00（UTC）。
 检查 73 个已登记仓库；发现 483 个未审阅源码构建。
 
 发现阶段只下载计算哈希、读取声明字段和主机名，不通过 list、init 或巡检执行。待审构建分三条通道：
@@ -536,23 +536,24 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
-- `laincat/VeneraCat-Sources`：Shared cross-platform source collection and converters for VeneraCat
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
-- `yuxuanmian/venera`：A comic app
 - `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
 - `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
-- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多扩展功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
+- `noelle-silva/Venera`：
 - `amke79/venerastudios-site`：
-- `laincat/VeneraCat-Core`：Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `laincat/Nekophage`：Nekularity 的桌面端：Venera 兼容源阅读与视频播放（Go + MyGo）
-- `JIEQCH/my-venera-configs`：
+- `laincat/VeneraCat-Core`：Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0
 - `huangjun7hb/venera-next-sources`：
+- `laincat/VeneraCat-Sources`：Shared cross-platform source collection and converters for VeneraCat
+- `yuxuanmian/venera`：A comic app
+- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
+- `JIEQCH/my-venera-configs`：
 - `opaiopaio/Venera-Nas`：Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中
 - `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `w13630039663-bit/venera-miuix`：一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。
 - `AXmishell/veneraGo`：A comic app
 - `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
-- `Arteiimis/venera-lean`：Windows 与 Android 上的本地漫画阅读器（独立发行）
+- `Arteiimis/venera-lean`：Windows 与 Android 上的本地漫画阅读器
 - `xswlsbhhh/venera-comic-sources`：Venera 漫画源（由阅读/Legado 书源改写）
 - `3176289965f-ai/my-venera-sources`：
 - `lc2024924478-del/venera-all-in-one`：
@@ -594,7 +595,6 @@
 - `hlf2016/venera-config`：
 - `veneraproject/native-gui-wallet`：Electron GUI for native Venera wallets and services
 - `jnsingh01/venerabullstudios`：Venerabull Studios — a showcase of projects in development.
-- `jnsingh01/venerabullinteractive`：Venerabull Interactive — public website.
 - `wnzmb/venera-configs-wujiajun`：Venera 漫画源：nhentai / e-hentai / hitomi，指向自建 Cloudflare Worker 反代
 - `ACGNnsj/venera-unified-configs`：Self-hosted source catalog and configs for venera-unified (B4)
 - `nobug-project/venera-configs`：
