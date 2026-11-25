@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-25T02:40:47.642048+00:00",
+  "checkedAt": "2026-11-25T13:03:38.994062+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-25T02:20:42.087356+00:00",
+    "checkedAt": "2026-11-25T12:42:14.464009+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -51,7 +51,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.5",
-    "imageId": "sha256:ea1896e74872d75e43cbafee2644fe269722dcd866f55154a2a09e8825edb54e"
+    "imageId": "sha256:6bedeb86811f0f87b5f91d6012485785541b9a9141b7c856b3fa259089fcda37"
   },
   "catalogSha256": "e77f97723c446d79e93cee53c62bd040aa94d2d27845d02288f06159ccc345cb",
   "rows": [
@@ -173,7 +173,7 @@
       "repository": "handahao666-boop/venera_comic_source",
       "version": "1.2.1",
       "runtimeProfile": "venerax",
-      "corePassed": false,
+      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
@@ -1271,7 +1271,51 @@
       "corePassed": false,
       "failures": [
         {
+          "stage": "search.load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[0].load",
+          "category": "auth_required"
+        },
+        {
           "stage": "explore[1].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[2].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[3].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[4].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[5].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[6].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[7].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[8].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[9].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[10].load",
           "category": "auth_required"
         },
         {
@@ -1279,47 +1323,31 @@
           "category": "auth_required"
         },
         {
-          "stage": "explore[22].load",
+          "stage": "explore[12].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[23].load",
+          "stage": "explore[13].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[24].load",
+          "stage": "explore[14].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[25].load",
+          "stage": "explore[15].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[26].load",
+          "stage": "explore[16].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[27].load",
+          "stage": "explore[17].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[29].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[30].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[31].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[32].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[33].load",
+          "stage": "explore[18].load",
           "category": "auth_required"
         }
       ]
@@ -1790,6 +1818,21 @@
       ]
     },
     {
+      "id": "85a5bd2ff028d2cc769294123025c1d5d20fd90caa8ef35379788e39943242fe",
+      "key": "photo_deck_aitoda",
+      "name": "Aitoda · Nao Kanzaki",
+      "repository": "tide23333-max/venera-photo-sources",
+      "version": "0.1.3",
+      "runtimeProfile": "venerax",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "comic.loadInfo",
+          "category": "rate_limited"
+        }
+      ]
+    },
+    {
       "id": "aeac0db633a52a97a62c236adf9078897e2f23fb473dca410779a7ced8149004",
       "key": "pixiv",
       "name": "Pixiv",
@@ -1846,15 +1889,15 @@
       "corePassed": false,
       "failures": [
         {
+          "stage": "explore[5].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[6].load",
+          "category": "auth_required"
+        },
+        {
           "stage": "explore[7].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[8].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[14].load",
           "category": "auth_required"
         }
       ]
@@ -2143,7 +2186,7 @@
       "repository": "handahao666-boop/venera_comic_source",
       "version": "1.2.1",
       "runtimeProfile": "venera-next",
-      "corePassed": false,
+      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
@@ -3273,6 +3316,10 @@
           "category": "auth_required"
         },
         {
+          "stage": "explore[28].load",
+          "category": "auth_required"
+        },
+        {
           "stage": "explore[29].load",
           "category": "auth_required"
         },
@@ -3282,10 +3329,6 @@
         },
         {
           "stage": "explore[31].load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[32].load",
           "category": "auth_required"
         }
       ]
@@ -3812,7 +3855,11 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[2].load",
+          "stage": "explore[8].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[12].load",
           "category": "auth_required"
         }
       ]
@@ -3899,7 +3946,7 @@
       "repository": "xiaoxingmian/venera-configs",
       "version": "1.0.0",
       "runtimeProfile": "venera-next",
-      "corePassed": true,
+      "corePassed": false,
       "failures": [
         {
           "stage": "search.load",
@@ -3984,7 +4031,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/45532201890",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/45616234224",
   "browser": [
     {
       "key": "bakamh",
@@ -4075,5 +4122,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/45534718691"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/45619829611"
 }
