@@ -6434,6 +6434,114 @@
         "runUrl": "https://github.com/laincat/vensrc/actions/runs/45061026447",
         "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
       }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/dbdbb6c9b3b5f626971610da763eb0775aa609c2/gamersky.js",
+      "key": "gamersky",
+      "name": "GamerSky",
+      "version": "1.1.0",
+      "minAppVersion": "1.6.0",
+      "repository": "LX7kM9/venera-configs",
+      "fileName": "gamersky.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "book:690439",
+        "epId": "690900"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "LX7kM9/venera-configs"
+      ],
+      "id": "9a4c592bb398ff18e9ee7af32f70dde27c6cdecd1c715e89b80a4ed3b31f5cbf",
+      "sha256": "9a4c592bb398ff18e9ee7af32f70dde27c6cdecd1c715e89b80a4ed3b31f5cbf",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "acg.gamersky.com"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-26T04:57:36.937337+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45713411983",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/dbdbb6c9b3b5f626971610da763eb0775aa609c2/wuxian.js",
+      "key": "wuxian",
+      "name": "无限动漫",
+      "version": "1.2.0",
+      "minAppVersion": "1.6.0",
+      "repository": "LX7kM9/venera-configs",
+      "fileName": "wuxian.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "15124",
+        "epId": "ep_1"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "LX7kM9/venera-configs"
+      ],
+      "id": "1fb35af814c5366b8000fa145e066603a1161c937357f46ce83deeb3fa5e1c80",
+      "sha256": "1fb35af814c5366b8000fa145e066603a1161c937357f46ce83deeb3fa5e1c80",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "8comic.com"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-26T04:57:36.937337+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45713411983",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/yuyuyu529/venera/9ff8db5cfa2e37ab22b0daa42e7aceb1bfad8049/mangakuro.js",
+      "key": "mangakuro",
+      "name": "MangaKuro",
+      "version": "1.0.3",
+      "minAppVersion": "1.0.0",
+      "repository": "yuyuyu529/venera",
+      "fileName": "mangakuro.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "https://mangakuro.net/manga/muga-qi-yue-jie-hunshimashita",
+        "epId": "https://mangakuro.net/manga/muga-qi-yue-jie-hunshimashita/di1hua"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "yuyuyu529/venera"
+      ],
+      "id": "53b8c89428c509ff202e295e343c2004b36399df11d6599ee1ff56c78a086f58",
+      "sha256": "53b8c89428c509ff202e295e343c2004b36399df11d6599ee1ff56c78a086f58",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "mangakuro.net"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-26T04:57:36.937337+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45713411983",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
     }
   ]
 }
