@@ -6542,6 +6542,42 @@
         "runUrl": "https://github.com/laincat/vensrc/actions/runs/45713411983",
         "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
       }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/c4cfdc2c6dfdc6961aca03a07b3d3a101076da1b/mangaraw.js",
+      "key": "mangaraw",
+      "name": "MangaRaw",
+      "version": "1.0.0",
+      "minAppVersion": "1.6.0",
+      "repository": "LX7kM9/venera-configs",
+      "fileName": "mangaraw.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "2375",
+        "epId": "155949"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "LX7kM9/venera-configs"
+      ],
+      "id": "c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d",
+      "sha256": "c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "api.mangarw.com"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-26T23:46:52.176089+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/45844988008",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
     }
   ]
 }
