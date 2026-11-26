@@ -1,12 +1,333 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-26T05:17:15.783829+00:00",
+  "updatedAt": "2026-11-26T15:28:19.008964+00:00",
   "policy": {
     "trialLimit": 40,
     "stableDays": 7,
     "stablePasses": 24
   },
-  "pending": [],
+  "pending": [
+    {
+      "candidate": {
+        "id": "c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d",
+        "key": "mangaraw",
+        "name": "MangaRaw",
+        "version": "1.0.0",
+        "fileName": "mangaraw.js",
+        "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/c4cfdc2c6dfdc6961aca03a07b3d3a101076da1b/mangaraw.js",
+        "sha256": "c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d",
+        "repository": "LX7kM9/venera-configs",
+        "trackedBy": [
+          "LX7kM9/venera-configs"
+        ],
+        "priority": 0
+      },
+      "replaces": null,
+      "replacesVersion": null,
+      "baselineCapabilities": {},
+      "records": {
+        "venerax": {
+          "id": "c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d",
+          "runtimeProfile": "venerax",
+          "inputs": {
+            "keyword": "火影"
+          },
+          "trialRun": "https://github.com/laincat/vensrc/actions/runs/45844988008",
+          "networkHosts": [
+            "api.mangarw.com",
+            "cdn.mangaraw123.com",
+            "storage.mangabuzz.org"
+          ],
+          "accountCapabilities": [],
+          "readSample": {
+            "comicId": "2375",
+            "epId": "155949"
+          },
+          "readingSites": [
+            "api.mangarw.com"
+          ],
+          "policy": {
+            "concurrency": 4,
+            "pages": 1,
+            "imageSamples": 1,
+            "retries": 0,
+            "requestTimeoutMs": 10000,
+            "stageTimeoutMs": 20000,
+            "sourceTimeoutMs": 90000,
+            "minRequestIntervalMs": 300,
+            "maxRequests": 60,
+            "maxResponseBytes": 20971520,
+            "maxTraceEvents": 1600
+          },
+          "source": {
+            "key": "mangaraw",
+            "name": "MangaRaw",
+            "version": "1.0.0",
+            "sourceSha256": "c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d",
+            "status": "failed",
+            "startedAt": "2026-11-26T15:18:06.132Z",
+            "stages": [
+              {
+                "path": "runtime.load",
+                "status": "passed",
+                "output": {
+                  "type": "string",
+                  "value": "{\"name\":\"venerax\",\"repository\":\"Kyosee/VeneraX\",\"commit\":\"a4e20b9f14061fd333e89ca31c6458571e7a7e00\",\"version\":\"2.3.6\",\"bootstrapSha256\":\"bd9066a761b8aa0d7fa156c69917138072166c80667f7505d09fd26464bedc3a\",\"scope\":\"全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟\"}"
+                }
+              },
+              {
+                "path": "source.load",
+                "status": "passed"
+              },
+              {
+                "path": "configuration.apply",
+                "status": "passed"
+              },
+              {
+                "path": "configuration.capabilities",
+                "status": "passed"
+              },
+              {
+                "path": "category",
+                "status": "passed"
+              },
+              {
+                "path": "search.load",
+                "status": "failed",
+                "category": "contract_violation",
+                "reason": "Comic list is empty; provide a representative keyword or case"
+              },
+              {
+                "path": "explore[0].load",
+                "status": "passed"
+              },
+              {
+                "path": "categoryComics.load",
+                "status": "passed"
+              },
+              {
+                "path": "comic.loadInfo",
+                "status": "passed"
+              },
+              {
+                "path": "comic.loadEp",
+                "status": "passed"
+              },
+              {
+                "path": "comic.link.linkToId",
+                "status": "passed"
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "passed"
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "passed"
+              },
+              {
+                "path": "comic.idMatch",
+                "status": "passed"
+              },
+              {
+                "path": "comic.onImageLoad",
+                "status": "passed"
+              },
+              {
+                "path": "image.download",
+                "status": "passed"
+              },
+              {
+                "path": "image.decode",
+                "status": "passed"
+              },
+              {
+                "path": "comic.onThumbnailLoad",
+                "status": "passed"
+              },
+              {
+                "path": "thumbnail.download",
+                "status": "passed"
+              },
+              {
+                "path": "thumbnail.decode",
+                "status": "passed"
+              }
+            ]
+          }
+        },
+        "venera-next": {
+          "id": "c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d",
+          "runtimeProfile": "venera-next",
+          "inputs": {
+            "keyword": "火影"
+          },
+          "trialRun": "https://github.com/laincat/vensrc/actions/runs/45844988008",
+          "networkHosts": [
+            "api.mangarw.com",
+            "cdn.mangaraw123.com",
+            "storage.mangabuzz.org"
+          ],
+          "accountCapabilities": [],
+          "readSample": {
+            "comicId": "2375",
+            "epId": "155949"
+          },
+          "readingSites": [
+            "api.mangarw.com"
+          ],
+          "policy": {
+            "concurrency": 4,
+            "pages": 1,
+            "imageSamples": 1,
+            "retries": 0,
+            "requestTimeoutMs": 10000,
+            "stageTimeoutMs": 20000,
+            "sourceTimeoutMs": 90000,
+            "minRequestIntervalMs": 300,
+            "maxRequests": 60,
+            "maxResponseBytes": 20971520,
+            "maxTraceEvents": 1600
+          },
+          "source": {
+            "key": "mangaraw",
+            "name": "MangaRaw",
+            "version": "1.0.0",
+            "sourceSha256": "c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d",
+            "status": "failed",
+            "startedAt": "2026-11-26T15:18:11.027Z",
+            "stages": [
+              {
+                "path": "runtime.load",
+                "status": "passed",
+                "output": {
+                  "type": "string",
+                  "value": "{\"name\":\"venera-next\",\"repository\":\"CyrilPeng/Venera-Next\",\"commit\":\"47f7416cecc2dbbc97c7618f8dd53aa92f587601\",\"version\":\"1.18.0\",\"bootstrapSha256\":\"5854a85bc3822819c2742529906ab3b56bd233323034e6d3e7dc062d8e992a35\",\"scope\":\"全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟\"}"
+                }
+              },
+              {
+                "path": "source.load",
+                "status": "passed"
+              },
+              {
+                "path": "configuration.apply",
+                "status": "passed"
+              },
+              {
+                "path": "configuration.capabilities",
+                "status": "passed"
+              },
+              {
+                "path": "category",
+                "status": "passed"
+              },
+              {
+                "path": "search.load",
+                "status": "failed",
+                "category": "contract_violation",
+                "reason": "Comic list is empty; provide a representative keyword or case"
+              },
+              {
+                "path": "explore[0].load",
+                "status": "passed"
+              },
+              {
+                "path": "categoryComics.load",
+                "status": "passed"
+              },
+              {
+                "path": "comic.loadInfo",
+                "status": "passed"
+              },
+              {
+                "path": "comic.loadEp",
+                "status": "passed"
+              },
+              {
+                "path": "comic.link.linkToId",
+                "status": "passed"
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "passed"
+              },
+              {
+                "path": "comic.onClickTag",
+                "status": "passed"
+              },
+              {
+                "path": "comic.idMatch",
+                "status": "passed"
+              },
+              {
+                "path": "comic.onImageLoad",
+                "status": "passed"
+              },
+              {
+                "path": "image.download",
+                "status": "passed"
+              },
+              {
+                "path": "image.decode",
+                "status": "passed"
+              },
+              {
+                "path": "comic.onThumbnailLoad",
+                "status": "passed"
+              },
+              {
+                "path": "thumbnail.download",
+                "status": "passed"
+              },
+              {
+                "path": "thumbnail.decode",
+                "status": "passed"
+              }
+            ]
+          }
+        }
+      },
+      "cli": {
+        "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
+        "clientProfiles": {
+          "venerax": {
+            "repository": "Kyosee/VeneraX",
+            "commit": "a4e20b9f14061fd333e89ca31c6458571e7a7e00",
+            "version": "2.3.6",
+            "files": {
+              "assets/init.js": "bd9066a761b8aa0d7fa156c69917138072166c80667f7505d09fd26464bedc3a",
+              "pubspec.yaml": "4e72d6c7ac25d10554d5e73c765b66eb6aae54c032002efd99b2f08b302d8384",
+              "lib/foundation/js_engine.dart": "62b03d9ec7c8d10316e50c8c681df546caed1ec14aeda90119a56d386193b08d",
+              "lib/foundation/comic_source/parser.dart": "7a1c37a365f747ba324f8fcb4c550813abfb2e0ef44cc53a7dc380e75003427a",
+              "lib/network/cloudflare.dart": "7823ac8a2d7d063ffc0edf7fbfc7ee38ec3b5eea821b3f7a90a9e1d983c9aa40"
+            },
+            "scope": "全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟"
+          },
+          "venera-next": {
+            "repository": "CyrilPeng/Venera-Next",
+            "commit": "47f7416cecc2dbbc97c7618f8dd53aa92f587601",
+            "version": "1.18.0",
+            "files": {
+              "assets/init.js": "5854a85bc3822819c2742529906ab3b56bd233323034e6d3e7dc062d8e992a35",
+              "pubspec.yaml": "50a246f003c2e099efe441564bf90060647a254068aec527a34cc084ced7ff66",
+              "lib/foundation/js_engine.dart": "74613ef66731313b1632dc3e1bddb2997bc040b6a4b26c398744c9d018c569fb",
+              "lib/features/comic_source/parser.dart": "77cb151a2cab6718c743f8acd38fd396007ae79c18132f90cc6ed769e881587d",
+              "lib/network/cloudflare.dart": "e31bd2242afc77fa7241125624bf0c590207817292ff545636b72f6bf30b78e4"
+            },
+            "scope": "全部已审阅源的有限样本接口巡检；不是完整 Flutter 客户端模拟"
+          }
+        },
+        "adapterSha256": {
+          "scripts/client_bridge.mjs": "ec822f73af3def047ae82031ce89deb80930619cf966bfc0b280b2e8c011e5e5",
+          "scripts/prepare_client.py": "3db728792aee5f4cc617f09750fa7b42cb1eb39e0aa9fb625674bd940b3b5a5b",
+          "scripts/patrol-worker.c": "a86a0d7bf0b199e94c52c46de47841eb6db2e71ab1d7dd376eead845dae5a75f",
+          "monitor/clients.json": "164c9467adfa2dbe8d6080fffe935a95f28faa293e1a087fb6032a27ab8d9e41"
+        }
+      },
+      "checkedAt": "2026-11-26T15:28:19.008964+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45844988008"
+    }
+  ],
   "builds": {
     "9c19985db94d3653290e0b45f9cef5b4022535dd03fdce3ea53098f22214bf74": {
       "key": "jm",
@@ -18,7 +339,7 @@
       "passes": 0,
       "since": null,
       "selected": false,
-      "lastCheckedAt": "2026-11-26T05:17:15.783829+00:00",
+      "lastCheckedAt": "2026-11-26T15:28:19.008964+00:00",
       "stable": false
     },
     "930d26974a5cfe42108b8634157c6a6425edaf3bbe20c73aca73469030db7abe": {
@@ -28,10 +349,10 @@
       "replacesVersion": "1.1.0",
       "includedAt": "2026-11-22T12:17:22.688717+00:00",
       "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
-      "passes": 0,
-      "since": null,
-      "selected": false,
-      "lastCheckedAt": "2026-11-26T05:17:15.783829+00:00",
+      "passes": 1,
+      "since": "2026-11-26T15:28:19.008964+00:00",
+      "selected": true,
+      "lastCheckedAt": "2026-11-26T15:28:19.008964+00:00",
       "stable": false
     },
     "ea881a3a29c020802f63e20451bd74599b245e063b64decd752f2596caa7bde2": {
@@ -41,10 +362,10 @@
       "replacesVersion": "1.0.3",
       "includedAt": "2026-11-22T12:17:22.688717+00:00",
       "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
-      "passes": 11,
+      "passes": 12,
       "since": "2026-11-22T12:40:13.675696+00:00",
       "selected": true,
-      "lastCheckedAt": "2026-11-26T05:17:15.783829+00:00",
+      "lastCheckedAt": "2026-11-26T15:28:19.008964+00:00",
       "stable": false
     },
     "e285c5dd21c66dc3fdb3ee20e51b0d9fdee611350565ae40b96a9bc7e3b67934": {
@@ -54,10 +375,10 @@
       "replacesVersion": "1.2.1",
       "includedAt": "2026-11-22T12:17:22.688717+00:00",
       "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
-      "passes": 11,
+      "passes": 12,
       "since": "2026-11-22T12:40:13.675696+00:00",
       "selected": true,
-      "lastCheckedAt": "2026-11-26T05:17:15.783829+00:00",
+      "lastCheckedAt": "2026-11-26T15:28:19.008964+00:00",
       "stable": false
     },
     "208abe75c6c84f45539f90d3bacdd1e066c0f74207acc8a7067f19c67c5c3c31": {
@@ -67,10 +388,10 @@
       "replacesVersion": "1.0.0",
       "includedAt": "2026-11-22T12:17:22.688717+00:00",
       "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
-      "passes": 11,
+      "passes": 12,
       "since": "2026-11-22T12:40:13.675696+00:00",
       "selected": true,
-      "lastCheckedAt": "2026-11-26T05:17:15.783829+00:00",
+      "lastCheckedAt": "2026-11-26T15:28:19.008964+00:00",
       "stable": false
     },
     "e0c30482210941fb1783ff2caa95b72f206042c39cb582474afc872258c18c95": {
@@ -80,10 +401,10 @@
       "replacesVersion": "1.1.0",
       "includedAt": "2026-11-22T12:17:22.688717+00:00",
       "runUrl": "https://github.com/laincat/vensrc/actions/runs/45019138078",
-      "passes": 11,
+      "passes": 12,
       "since": "2026-11-22T12:40:13.675696+00:00",
       "selected": true,
-      "lastCheckedAt": "2026-11-26T05:17:15.783829+00:00",
+      "lastCheckedAt": "2026-11-26T15:28:19.008964+00:00",
       "stable": false
     },
     "510fbc210f12ab0260d26b4b708c8d23582e11c68fad4d5f7a0aac820bc7d236": {
@@ -93,10 +414,10 @@
       "replacesVersion": "1.2.0",
       "includedAt": "2026-11-22T12:43:12.858988+00:00",
       "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
-      "passes": 10,
+      "passes": 11,
       "since": "2026-11-22T13:00:58.753361+00:00",
       "selected": true,
-      "lastCheckedAt": "2026-11-26T05:17:15.783829+00:00",
+      "lastCheckedAt": "2026-11-26T15:28:19.008964+00:00",
       "stable": false
     },
     "1f73ebb4f6514ecaa3b5abdeec16975897774bd84ad36d28b3e0d043f7d3e7e6": {
@@ -106,10 +427,10 @@
       "replacesVersion": "1.2.0",
       "includedAt": "2026-11-22T12:43:12.858988+00:00",
       "runUrl": "https://github.com/laincat/vensrc/actions/runs/45021484138",
-      "passes": 10,
+      "passes": 11,
       "since": "2026-11-22T13:00:58.753361+00:00",
       "selected": true,
-      "lastCheckedAt": "2026-11-26T05:17:15.783829+00:00",
+      "lastCheckedAt": "2026-11-26T15:28:19.008964+00:00",
       "stable": false
     }
   },
