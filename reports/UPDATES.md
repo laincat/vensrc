@@ -1,6 +1,6 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-27T08:16:23.442363+00:00（UTC）。
+检查时间：2026-11-27T18:55:07.275445+00:00（UTC）。
 检查 73 个已登记仓库；发现 504 个未审阅源码构建。
 
 发现阶段只下载计算哈希、读取声明字段和主机名，不通过 list、init 或巡检执行。待审构建分三条通道：
@@ -74,10 +74,10 @@
 | 漫本 | manben | 1.0.1 | handahao666-boop/venera_comic_source | 1.6.3 | 试跑但不收录 | 版本 1.0.1 未严格高于清单现有版本 1.1.0 | d043c8fd82bbdbda1d3be667688ed0e6fb9a7be9bc26c146721ce26b8e05e250 |
 | 拷贝漫画 | copy_manga | 1.4.4 | hea784/venera-configs | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | cfc7ddb4645bd99fe7fdf2c161cccd45c9cbb62e1164570c5f220cc16536af40 |
 | 拷贝漫画M | copy_manga_multi_accounts | 1.4.2 | hea784/venera-configs | 1.6.0 | 自动收录 | 1.4.1 → 1.4.2，未新增主机名 | 015642798121aa45426c7677e73c50b2b298d9dfb5650dd2e28342f010911341 |
-| 禁漫天堂 | jm | 1.4.1 | hea784/venera-configs | 1.5.0 | 试跑但不收录 | 版本 1.4.1 未严格高于清单现有版本 1.9.3 | 490504eb906339d352c86dc8afdd40a772ac775bcdddb4a2de2eb683db23a08f |
-| 动漫屋 | dm5 | 0.2.0 | hea784/venera-configs | 1.6.0 | 试跑但不收录 | 版本 0.2.0 未严格高于清单现有版本 7.0.3 | f6d6edf89affd1609b0d2a76b61ca1f004fe261e51754ce05666d381c0ac3e6a |
-| Mangabz | mangabz | 0.2.0 | hea784/venera-configs | 1.6.0 | 试跑但不收录 | 版本 0.2.0 未严格高于清单现有版本 1.0.0 | 3f11e684b26440402293a33318fddd5583d416edf754481036bd7fd3d84de8d3 |
-| 极速漫画 | one_kkk | 0.2.0 | hea784/venera-configs | 1.6.0 | 试跑但不收录 | 版本 0.2.0 未严格高于清单现有版本 2.0.0 | 9f51fa9aa2e95e64d3297d4a8d4800e1dc6012831740439c19851cb0dc7c460f |
+| 禁漫天堂 | jm | 1.4.2 | hea784/venera-configs | 1.5.0 | 试跑但不收录 | 版本 1.4.2 未严格高于清单现有版本 1.9.3 | e87e92b1e9d452b02dbe49e51f68f5d7db8fd18c050623c2f2396cf244b82df1 |
+| 动漫屋 | dm5 | 0.2.1 | hea784/venera-configs | 1.6.0 | 试跑但不收录 | 版本 0.2.1 未严格高于清单现有版本 7.0.3 | 1a0824caf0a2e50c5cf58e78510a269a16132fed75a1b2a47e3f5356c647650f |
+| Mangabz | mangabz | 0.2.1 | hea784/venera-configs | 1.6.0 | 试跑但不收录 | 版本 0.2.1 未严格高于清单现有版本 1.0.0 | dbec3e86f137dcb04da56c490d61f3ab0c2e1ff848eec432249da2ed581889ce |
+| 极速漫画 | one_kkk | 0.2.1 | hea784/venera-configs | 1.6.0 | 试跑但不收录 | 版本 0.2.1 未严格高于清单现有版本 2.0.0 | e03fed20ae9e527ea4e2a2231ec9791df8d7a4e64f811499f3c0d5b6e4557c91 |
 | 野蛮漫画 | yemancomic | 0.1.2 | hea784/venera-configs | 1.6.0 | 试跑但不收录 | 版本 0.1.2 未严格高于清单现有版本 0.1.2 | 8e9564b9d048ae8c916a71aea7adf53b3b7cbcc941baea4bd2662f34be7d21c6 |
 | AO3 同人图文 | ao3 | 1.0.1 | hgnbh/sw | 1.4.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | fe73cde6653ee4ac991ea871a94ba5ecba381adb5db46b37996f34bf6e9bd125 |
 | 嗶哩漫畫 | bilimanga | 1.1.3 | hgnbh/sw | 1.6.0 | 试跑但不收录 | 版本 1.1.3 未严格高于清单现有版本 1.1.7 | 555e08f8d7dd2f0e8f95541dd644d0ccaf6e09309c41a979de00349ff8738c1a |
@@ -557,25 +557,27 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
+- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
 - `vibub/Venera-Source`：
+- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
+- `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
+- `vrs17/Venera-ai`：
+- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `3176289965f-ai/my-venera-sources`：
 - `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
-- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
+- `Taototo/ManComic`：A Flutter comic reader app based on Venera
 - `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
-- `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `yuxuanmian/venera`：A comic app
 - `advace808-eng/great-love-venerable`：prs_3cf9c6
-- `Taototo/ManComic`：A Flutter comic reader app based on Venera
 - `Dilnazochka/Venera_vizazh`：
-- `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
 - `Walter498/manwa-source`：漫蛙 (manwa) comic source for Venera
 - `wxcdxmn/venera-sources`：Venera comic sources: TOONTOP + MANGA18FX
 - `wxcdxmn/toontop`：TOONTOP (toontop.io) Venera 漫画源
 - `wxcdxmn/manga18fx`：MANGA18FX (manga18fx.com) comic source for Venera
 - `YearnMoonh/venera-ios`：Venera comic reader optimized for iOS
 - `noelle-silva/Venera`：
-- `gallhall/venera-v`：venera-v：支持漫画和视频的开源阅读器，基于 venera，支持 Android、iOS、Windows、macOS、Linux。漫画源列表：github.com/gallhall/venerav-configs · 更新频道：t.me/VeneraV_Updates
 - `amke79/venerastudios-site`：
 - `laincat/Nekophage`：Nekularity 的桌面端：Venera 兼容源阅读与视频播放（Go + MyGo）
 - `laincat/VeneraCat-Core`：Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0
@@ -585,7 +587,6 @@
 - `opaiopaio/Venera-Nas`：Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中
 - `w13630039663-bit/venera-miuix`：一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。
 - `AXmishell/veneraGo`：veneraGo，基于venera1.6.3开发
-- `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
 - `Arteiimis/venera-lean`：Windows 与 Android 上的本地漫画阅读器
 - `xswlsbhhh/venera-comic-sources`：Venera 漫画源（由阅读/Legado 书源改写）
 - `lc2024924478-del/venera-all-in-one`：
@@ -615,7 +616,6 @@
 - `qhu91it/h3r0-venera-configs`：My custom config for venera
 - `940440952/comic-sources`：双生态漫画源：Venera / VeneraNext / VeneraPlus JavaScript + Aidoku Rust/WASM；目前维护 manhuazhan.com。
 - `venera-app/venera-prime`：A comic app,but prime
-- `WEP-56/EZVenera`：Venera重写+简化版本，只提供windows、安卓包体，简化大量功能尤其是插件模块运行时，方便持续维护。／ 请勿提出超出EZVenera边界的需求，如果你真的需要，欢迎pr或自行fork
 - `wnzmb/venera-configs-wujiajun`：Venera 漫画源：nhentai / e-hentai / hitomi，指向自建 Cloudflare Worker 反代
 - `ACGNnsj/venera-unified-configs`：Self-hosted source catalog and configs for venera-unified (B4)
 - `nobug-project/venera-configs`：
@@ -639,4 +639,4 @@
 - `Kiastr/Venera-SSR`：A manga viewer.support realtime Coloring  and Anime4kSR and OCR translation.All running locally./ 一个支持不同漫画源,阅读实时,本地黑白漫画上色，anime4k超分辨率，本地ocr翻译的改版漫画阅读器
 - `Jieless55/venera-megacomicxadult`：R18漫画源
 
-另有 38 个搜索结果既没有漫画源索引 index.json，也没有 ComicSource 脚本，已从名单滤掉；无法判断的仓库照常列出。
+另有 37 个搜索结果既没有漫画源索引 index.json，也没有 ComicSource 脚本，已从名单滤掉；无法判断的仓库照常列出。

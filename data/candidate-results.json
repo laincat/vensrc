@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-27T08:35:44.179062+00:00",
-  "runUrl": "https://github.com/laincat/vensrc/actions/runs/45964111421",
+  "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+  "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
   "trialLimit": 40,
   "testedThisRound": 40,
-  "untested": 69,
+  "untested": 33,
   "results": {
     "926ea5a941994d321df046149a91220244ba710e3dde52356939d7af1d19d67a": {
       "key": "comic_walker",
@@ -5589,134 +5589,6 @@
           "breakAt": "comic.loadInfo",
           "category": "源配置错误",
           "reason": "Setting not found: base_url"
-        }
-      },
-      "outcome": "failed"
-    },
-    "490504eb906339d352c86dc8afdd40a772ac775bcdddb4a2de2eb683db23a08f": {
-      "key": "jm",
-      "name": "禁漫天堂",
-      "version": "1.4.1",
-      "repository": "hea784/venera-configs",
-      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/jm.js",
-      "lane": "trial",
-      "reason": "version",
-      "detail": "版本 1.4.1 未严格高于清单现有版本 1.9.3",
-      "newHosts": [],
-      "baselineVersion": "1.9.3",
-      "reviewVersion": 3,
-      "checkedAt": "2026-11-23T09:19:01.437800+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45142755015",
-      "profiles": {
-        "venerax": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "comic.loadEp",
-          "category": "源配置错误",
-          "reason": "Invalid Data"
-        },
-        "venera-next": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "comic.loadEp",
-          "category": "源配置错误",
-          "reason": "Invalid Data"
-        }
-      },
-      "outcome": "failed"
-    },
-    "f6d6edf89affd1609b0d2a76b61ca1f004fe261e51754ce05666d381c0ac3e6a": {
-      "key": "dm5",
-      "name": "动漫屋",
-      "version": "0.2.0",
-      "repository": "hea784/venera-configs",
-      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/dm5.js",
-      "lane": "trial",
-      "reason": "version",
-      "detail": "版本 0.2.0 未严格高于清单现有版本 7.0.3",
-      "newHosts": [],
-      "baselineVersion": "7.0.3",
-      "reviewVersion": 3,
-      "checkedAt": "2026-11-23T09:19:01.437800+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45142755015",
-      "profiles": {
-        "venerax": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "comic.loadInfo",
-          "category": "网络错误",
-          "reason": "Network request failed: Failed to parse URL from manhua-manbucangqiong"
-        },
-        "venera-next": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "comic.loadInfo",
-          "category": "网络错误",
-          "reason": "Network request failed: Failed to parse URL from manhua-manbucangqiong"
-        }
-      },
-      "outcome": "failed"
-    },
-    "3f11e684b26440402293a33318fddd5583d416edf754481036bd7fd3d84de8d3": {
-      "key": "mangabz",
-      "name": "Mangabz",
-      "version": "0.2.0",
-      "repository": "hea784/venera-configs",
-      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/mangabz.js",
-      "lane": "trial",
-      "reason": "version",
-      "detail": "版本 0.2.0 未严格高于清单现有版本 1.0.0",
-      "newHosts": [],
-      "baselineVersion": "1.0.0",
-      "reviewVersion": 3,
-      "checkedAt": "2026-11-23T09:19:01.437800+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45142755015",
-      "profiles": {
-        "venerax": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "comic.loadInfo",
-          "category": "网络错误",
-          "reason": "Network request failed: Failed to parse URL from 142"
-        },
-        "venera-next": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "comic.loadInfo",
-          "category": "网络错误",
-          "reason": "Network request failed: Failed to parse URL from 142"
-        }
-      },
-      "outcome": "failed"
-    },
-    "9f51fa9aa2e95e64d3297d4a8d4800e1dc6012831740439c19851cb0dc7c460f": {
-      "key": "one_kkk",
-      "name": "极速漫画",
-      "version": "0.2.0",
-      "repository": "hea784/venera-configs",
-      "url": "https://raw.githubusercontent.com/hea784/venera-configs/36daf741b976bcd496f2084628543ee4bafed1ff/one_kkk.js",
-      "lane": "trial",
-      "reason": "version",
-      "detail": "版本 0.2.0 未严格高于清单现有版本 2.0.0",
-      "newHosts": [],
-      "baselineVersion": "2.0.0",
-      "reviewVersion": 3,
-      "checkedAt": "2026-11-23T09:19:01.437800+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45142755015",
-      "profiles": {
-        "venerax": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "comic.loadInfo",
-          "category": "网络错误",
-          "reason": "Network request failed: Failed to parse URL from manhua55465"
-        },
-        "venera-next": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "comic.loadInfo",
-          "category": "网络错误",
-          "reason": "Network request failed: Failed to parse URL from manhua55465"
         }
       },
       "outcome": "failed"
@@ -14493,6 +14365,1292 @@
           "breakAt": "search.load",
           "category": "返回结构或样本不满足契约",
           "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "e696aaf1b4fb36d0bc29591fc407854c89e43ff4280211233192eb66b45963ed": {
+      "key": "tencent_comics",
+      "name": "腾讯动漫",
+      "version": "1.1.3",
+      "repository": "Junkrat9527/venera-sources",
+      "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/tencent_comics.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Comic detail selector no longer matches"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Comic detail selector no longer matches"
+        }
+      },
+      "outcome": "failed"
+    },
+    "a3f346b5569d945c4953ef32dd017735ddf81ecc0b0e5929cb79de69ea59e848": {
+      "key": "shonen_jump_plus",
+      "name": "少年ジャンプ＋",
+      "version": "1.1.2",
+      "repository": "cattoldme/venera-configs",
+      "url": "https://raw.githubusercontent.com/cattoldme/venera-configs/8b62410bcd576551bf12523968d6373a0f28230d/shonen_jump_plus.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.1.2 未严格高于清单现有版本 1.2.0",
+      "newHosts": [],
+      "baselineVersion": "1.2.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Unexpected token '<', \"<html>  <h\"... is not valid JSON"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Unexpected token '<', \"<html>  <h\"... is not valid JSON"
+        }
+      },
+      "outcome": "failed"
+    },
+    "e87e92b1e9d452b02dbe49e51f68f5d7db8fd18c050623c2f2396cf244b82df1": {
+      "key": "jm",
+      "name": "禁漫天堂",
+      "version": "1.4.2",
+      "repository": "hea784/venera-configs",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/44adb409829805569d4458be00b7c0464ba80377/jm.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.4.2 未严格高于清单现有版本 1.9.3",
+      "newHosts": [],
+      "baselineVersion": "1.9.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "源配置错误",
+          "reason": "Invalid Data"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "源配置错误",
+          "reason": "Invalid Data"
+        }
+      },
+      "outcome": "failed"
+    },
+    "1a0824caf0a2e50c5cf58e78510a269a16132fed75a1b2a47e3f5356c647650f": {
+      "key": "dm5",
+      "name": "动漫屋",
+      "version": "0.2.1",
+      "repository": "hea784/venera-configs",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/44adb409829805569d4458be00b7c0464ba80377/dm5.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 0.2.1 未严格高于清单现有版本 7.0.3",
+      "newHosts": [],
+      "baselineVersion": "7.0.3",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from manhua-manbucangqiong"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from manhua-manbucangqiong"
+        }
+      },
+      "outcome": "failed"
+    },
+    "dbec3e86f137dcb04da56c490d61f3ab0c2e1ff848eec432249da2ed581889ce": {
+      "key": "mangabz",
+      "name": "Mangabz",
+      "version": "0.2.1",
+      "repository": "hea784/venera-configs",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/44adb409829805569d4458be00b7c0464ba80377/mangabz.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 0.2.1 未严格高于清单现有版本 1.0.0",
+      "newHosts": [],
+      "baselineVersion": "1.0.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from 142"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from 142"
+        }
+      },
+      "outcome": "failed"
+    },
+    "e03fed20ae9e527ea4e2a2231ec9791df8d7a4e64f811499f3c0d5b6e4557c91": {
+      "key": "one_kkk",
+      "name": "极速漫画",
+      "version": "0.2.1",
+      "repository": "hea784/venera-configs",
+      "url": "https://raw.githubusercontent.com/hea784/venera-configs/44adb409829805569d4458be00b7c0464ba80377/one_kkk.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 0.2.1 未严格高于清单现有版本 2.0.0",
+      "newHosts": [],
+      "baselineVersion": "2.0.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from manhua55465"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from manhua55465"
+        }
+      },
+      "outcome": "failed"
+    },
+    "8c0eaf511dc14b14abc85c8e565c900bbe3ed8296a8df5c61fc40022c6d65a3c": {
+      "key": "rumanhua_fixed_v15",
+      "name": "如漫画",
+      "version": "1.2.7",
+      "repository": "hgnbh/sw",
+      "url": "https://raw.githubusercontent.com/hgnbh/sw/4f1cff24024ab591d245d9a8f01a9cb1c60f6803/rumanhua_fixed_v16.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.2.7 未严格高于清单现有版本 1.2.8",
+      "newHosts": [],
+      "baselineVersion": "1.2.8",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "partial",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "partial",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "017847c6901f8e491c28e6cb7b3da2a3475e6512b88374ecd41b7922dcca38a7": {
+      "key": "rumanhua",
+      "name": "如漫画",
+      "version": "1.0.0",
+      "repository": "meaninglesslyy/venera-config",
+      "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/b57b3c9b7256ec8223ca592c6f2af9d71f8d63d5/normal_comic/rumanhua.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "源配置错误",
+          "reason": "解密章节数据失败: URI malformed"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "源配置错误",
+          "reason": "解密章节数据失败: URI malformed"
+        }
+      },
+      "outcome": "failed"
+    },
+    "d7cc9e684b14239e3c921d8ce19da7db9343ccf7692093a7d048f21822130f6b": {
+      "key": "shonen_jump_plus",
+      "name": "少年ジャンプ＋",
+      "version": "1.3.1",
+      "repository": "Junkrat9527/venera-sources",
+      "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/shonen_jump_plus.js",
+      "lane": "trial",
+      "reason": "credentials",
+      "detail": "新增凭据能力：authorization",
+      "newHosts": [
+        "cdn.jsdelivr.net",
+        "itunes.apple.com"
+      ],
+      "baselineVersion": "1.2.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Invalid time value"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Invalid time value"
+        }
+      },
+      "outcome": "failed"
+    },
+    "67f2790696e4269db2248dd60b1bb720a68d2790d208ac453e0e3776c3bd249c": {
+      "key": "source_02_e3ec7f",
+      "name": "包子漫画",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_02_e3ec7f.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "HTTP 错误",
+          "reason": "HTTP 404"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "HTTP 错误",
+          "reason": "HTTP 404"
+        }
+      },
+      "outcome": "failed"
+    },
+    "2c2f0a2f012cf7e711f5ef67d42ff7072e144e42af9a267ad993b457c15cfd59": {
+      "key": "source_06_b7b48e",
+      "name": "再漫画",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_06_b7b48e.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "列表项缺少合法 ID、标题或封面"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "列表项缺少合法 ID、标题或封面"
+        }
+      },
+      "outcome": "failed"
+    },
+    "98a15cee618b6b10c40784b70ca8d7af12124d0fc044b75230a4da8d045c5478": {
+      "key": "source_08_fa018e",
+      "name": "野蛮漫画",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_08_fa018e.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "image.decode",
+          "category": "图片解码失败",
+          "reason": "Input buffer contains unsupported image format"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "image.decode",
+          "category": "图片解码失败",
+          "reason": "Input buffer contains unsupported image format"
+        }
+      },
+      "outcome": "failed"
+    },
+    "b75c1ac138cd76b1ff09244404b0ccac858ac84d660138443722d2a7e71f7ed4": {
+      "key": "source_09_fe41f7",
+      "name": "顶漫画",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_09_fe41f7.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "398e1fc8e4707b4eb1b0eeae8ae29f6b5c542c0484bc798ef927959d0ebc51ce": {
+      "key": "source_16_d622ad",
+      "name": "绅士会所",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_16_d622ad.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        }
+      },
+      "outcome": "failed"
+    },
+    "ef411add79295e8eadfd2829f59168ceb9c51a9b242c8e2e7d5947405b343190": {
+      "key": "sf_27_eb0a9b",
+      "name": "SF漫画",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/sf_27_eb0a9b.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "bf7ceb95c7581e9d2be88cbccec1f52642310178493a3bd2e04e4dbd2f5f5302": {
+      "key": "source_35_667a4f",
+      "name": "漫画人",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_35_667a4f.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "12015b6a608982e0cac02fcd3b7f883745843fc892eb9c00fbd726e9bb1c6149": {
+      "key": "source_36_d33fb7",
+      "name": "咚漫",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_36_d33fb7.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "1a6eca09cbb922586a5029cad9606a9caf0a9f2a0a35b66c7c3dedf74c661046": {
+      "key": "source_39_7cc572",
+      "name": "极速漫画",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_39_7cc572.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "9b389a91ba553446d40bb819620495218afe8f7556f21f690e87f87146f634d8": {
+      "key": "source_40_5846eb",
+      "name": "动漫啦",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_40_5846eb.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "60b0dcc6dc6d17246dc396c093d8bb8c1af84d41dc90b3b8f2cc917f3a75fa44": {
+      "key": "source_41_b0c446",
+      "name": "动漫屋",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_41_b0c446.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "53a600b55b9f11a58fd66fe68ccf3f55eef97b909f8f35e7da4cfc8449753aab": {
+      "key": "source_42_481e60",
+      "name": "漫漫漫画",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_42_481e60.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "HTTP 错误",
+          "reason": "HTTP 404"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "HTTP 错误",
+          "reason": "HTTP 404"
+        }
+      },
+      "outcome": "failed"
+    },
+    "014da8ab9aba586dc33116469b8a869b6c827756185c92f6012a4411c8e2ac1e": {
+      "key": "source_46_ac3286",
+      "name": "漫本",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_46_ac3286.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "25131c16e19fd2649ba44730cd61b40c11cb30bd34d22d3d7d26da3cfdaa8b2e": {
+      "key": "source_48_074d4f",
+      "name": "漫画皮",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_48_074d4f.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        }
+      },
+      "outcome": "failed"
+    },
+    "ac108c730710ebc57cac9484a39acf6ee1ffd998b7f824601ffbd1d5ad6b8da6": {
+      "key": "source_61_acb91b",
+      "name": "拷贝漫画",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_61_acb91b.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from {{ \"https://www.mangacopy.com/api/kb/web/searchs/comics?q=%5BREDACTED%5D\"+%E7%81%AB%E5%BD%B1.replace(/@.*/,\"\")+\"&q_type=\"+%E7%81%AB%E5%BD%B1.replace(/.*@／.*$/,\"\")+\"&offset=\"+24*(1-1)+\"&limit=24&platform=2@Header:\"+\"{\\\"referer\\\":\\\"https://www.mangacopy"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "网络错误",
+          "reason": "Network request failed: Failed to parse URL from {{ \"https://www.mangacopy.com/api/kb/web/searchs/comics?q=%5BREDACTED%5D\"+%E7%81%AB%E5%BD%B1.replace(/@.*/,\"\")+\"&q_type=\"+%E7%81%AB%E5%BD%B1.replace(/.*@／.*$/,\"\")+\"&offset=\"+24*(1-1)+\"&limit=24&platform=2@Header:\"+\"{\\\"referer\\\":\\\"https://www.mangacopy"
+        }
+      },
+      "outcome": "failed"
+    },
+    "8f662b1b1efb6181e3289c5982a9e928bb4b3c70e70db967eb46a0b7961f8664": {
+      "key": "source_64_2e309a",
+      "name": "無限動漫",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_64_2e309a.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "cf2bb25be39f6e66c762a325595cf845f6fd5ab0d297c79bcee24f743e971f5c": {
+      "key": "source_74_9820b5",
+      "name": "漫画柜",
+      "version": "0.2.0",
+      "repository": "KadishJoey/venera-json",
+      "url": "https://raw.githubusercontent.com/KadishJoey/venera-json/180044b426aa2772be5633f511e876ddf8b347f0/source_74_9820b5.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "HTTP 错误",
+          "reason": "HTTP 404"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "HTTP 错误",
+          "reason": "HTTP 404"
+        }
+      },
+      "outcome": "failed"
+    },
+    "42659ead9e657a2a7fce6512d2d15ce5f287568935bcd781d206a87124e38541": {
+      "key": "shonen_jump_plus",
+      "name": "少年ジャンプ＋",
+      "version": "1.3.1",
+      "repository": "lldaydayhappy/venera-sources",
+      "url": "https://raw.githubusercontent.com/lldaydayhappy/venera-sources/c4c746845a2100fed299ae5225e07f5385eb5042/shonen_jump_plus.js",
+      "lane": "trial",
+      "reason": "credentials",
+      "detail": "新增凭据能力：authorization",
+      "newHosts": [
+        "cdn.jsdelivr.net",
+        "itunes.apple.com"
+      ],
+      "baselineVersion": "1.2.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Invalid time value"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "源配置错误",
+          "reason": "Invalid time value"
+        }
+      },
+      "outcome": "failed"
+    },
+    "7de2d08ef245b7cb756b5f6500b1c6f1f84733f4211c09f525666e8de4321746": {
+      "key": "s311_com",
+      "name": "311漫画",
+      "version": "1.2.0",
+      "repository": "LX7kM9/venera-configs",
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/fcc28c59f929ed9a8a1d4788971f7a64fcc5df94/311.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.2.0 未严格高于清单现有版本 1.2.0",
+      "newHosts": [],
+      "baselineVersion": "1.2.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "passed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "passed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "fc8e6634a2d18e0ae9c25fa5574a56aad9db83db9132c8b995b01303ecad2bd7": {
+      "key": "sixmh",
+      "name": "六漫画",
+      "version": "1.0.1",
+      "repository": "LX7kM9/venera-configs",
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/fcc28c59f929ed9a8a1d4788971f7a64fcc5df94/sixmh.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "bf5b4c9becfbee456bfc02c2cc0851aedb6bde63a568564954208e27d455eec7": {
+      "key": "rumanhua_fixed_v15",
+      "name": "如漫画",
+      "version": "1.2.6",
+      "repository": "n3114576614-cell/N_venera_source",
+      "url": "https://raw.githubusercontent.com/n3114576614-cell/N_venera_source/e7229a5c8121eeb35e80e0c23e9f1fe3889ec342/rumanhua_fixed_v16.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.2.6 未严格高于清单现有版本 1.2.8",
+      "newHosts": [],
+      "baselineVersion": "1.2.8",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "partial",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "partial",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "2851cc1c51e7f0629cd5612f81ec5de6061bf6fccf4e5776435c6975ef387f1f": {
+      "key": "shonen_jump_plus",
+      "name": "少年ジャンプ＋",
+      "version": "1.1.2",
+      "repository": "Magentadots/venera-configs",
+      "url": "https://raw.githubusercontent.com/Magentadots/venera-configs/a45ef9b84eea4054a1c7cfdfad40ffb3879e9556/sources/shonen_jump_plus.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.1.2 未严格高于清单现有版本 1.2.0",
+      "newHosts": [],
+      "baselineVersion": "1.2.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Unexpected token '<', \"<html>  <h\"... is not valid JSON"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Unexpected token '<', \"<html>  <h\"... is not valid JSON"
+        }
+      },
+      "outcome": "failed"
+    },
+    "f8ae55635af3fb49cfa424053f948169c317a8b131df3eabbacb9edab69d284d": {
+      "key": "shonen_jump_plus",
+      "name": "少年ジャンプ＋",
+      "version": "1.2.0",
+      "repository": "maplessovo/venera-configs",
+      "url": "https://raw.githubusercontent.com/maplessovo/venera-configs/31e7f6d7994146c0dc038ca378feccb3c8aa32d9/shonen_jump_plus.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.2.0 未严格高于清单现有版本 1.2.0",
+      "newHosts": [],
+      "baselineVersion": "1.2.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "反爬拦截",
+          "reason": "少年ジャンプ＋公开网页请求失败（HTTP 404）"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadInfo",
+          "category": "反爬拦截",
+          "reason": "少年ジャンプ＋公开网页请求失败（HTTP 404）"
+        }
+      },
+      "outcome": "failed"
+    },
+    "3a383515749605a38609e8b5260e1f9aaf6aefd4f2dde22a38c07d9e606b93f2": {
+      "key": "rumanhua_com",
+      "name": "如漫画",
+      "version": "2.1.2",
+      "repository": "Ra1nbo-w/mhy-v",
+      "url": "https://raw.githubusercontent.com/Ra1nbo-w/mhy-v/53c133b354b968586d69d57b09e630e0e23b848f/sources/rumanhua.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "passed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "passed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "ddd6421d3095f04d22a3cf82256a52bf68792b8241b8513d912c4718fd6b42c4": {
+      "key": "shonen_jump_plus",
+      "name": "少年ジャンプ＋",
+      "version": "1.1.2",
+      "repository": "token1008/venera-cn-64bit",
+      "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/shonen_jump_plus.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.1.2 未严格高于清单现有版本 1.2.0",
+      "newHosts": [],
+      "baselineVersion": "1.2.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Unexpected token '<', \"<html>  <h\"... is not valid JSON"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Unexpected token '<', \"<html>  <h\"... is not valid JSON"
+        }
+      },
+      "outcome": "failed"
+    },
+    "86279ebe75df2d56f9990b4b3d9f6c7c0e0ff2ce27c0e493b5bae447337fac49": {
+      "key": "sisimanhua",
+      "name": "西西漫画",
+      "version": "1.0.0",
+      "repository": "weihanlong267-spec/Venera-Next-sources",
+      "url": "https://raw.githubusercontent.com/weihanlong267-spec/Venera-Next-sources/0df676f36cd27bb348d92198731189ef342ea6bd/sisimanhua.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.0 未严格高于清单现有版本 1.0.0",
+      "newHosts": [],
+      "baselineVersion": "1.0.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "返回结构或样本不满足契约",
+          "reason": "当前关键词或列表为空，需复核样本或解析规则"
+        }
+      },
+      "outcome": "failed"
+    },
+    "b224d65ccfa0f3f973b30ef0a7f0fa9e0cba160a4f2dea0851754c9cc881e093": {
+      "key": "soudongman",
+      "name": "搜动漫",
+      "version": "1.0.0",
+      "repository": "weihanlong267-spec/Venera-Next-sources",
+      "url": "https://raw.githubusercontent.com/weihanlong267-spec/Venera-Next-sources/0df676f36cd27bb348d92198731189ef342ea6bd/soudongman.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "搜索失败: 403"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "搜索失败: 403"
+        }
+      },
+      "outcome": "failed"
+    },
+    "3b1f2c677db6e6ae8217e32af8d191bc3352bd23e58f9965cee21daa9521344b": {
+      "key": "shonen_jump_plus",
+      "name": "少年ジャンプ＋",
+      "version": "1.1.3",
+      "repository": "yelongyue197-svg/venera-sources",
+      "url": "https://raw.githubusercontent.com/yelongyue197-svg/venera-sources/8d289aedc7598f04ecd71ce690096733b9fb6a12/shonen_jump_plus.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.1.3 未严格高于清单现有版本 1.2.0",
+      "newHosts": [],
+      "baselineVersion": "1.2.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Token request failed with status 403: <html>  <head><title>403 Forbidden</title></head>  <body>  <center><h1>403 Forbidden</h1></center>  <hr><center>nginx</center>  </body>  </html>  "
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "Token request failed with status 403: <html>  <head><title>403 Forbidden</title></head>  <body>  <center><h1>403 Forbidden</h1></center>  <hr><center>nginx</center>  </body>  </html>  "
+        }
+      },
+      "outcome": "failed"
+    },
+    "066120d2cf429efa904c7dc241e793e0ea16108e4bfc6ff482eadf50f7e45c3b": {
+      "key": "rumanhua",
+      "name": "如漫画",
+      "version": "1.1.0",
+      "repository": "YHQY-Dev/venera-sources",
+      "url": "https://raw.githubusercontent.com/YHQY-Dev/venera-sources/b84b58ad0935df124b38a12f2d6e369d0715ff32/rumanhua.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "返回结构或样本不满足契约",
+          "reason": "章节没有返回非空图片列表"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "返回结构或样本不满足契约",
+          "reason": "章节没有返回非空图片列表"
+        }
+      },
+      "outcome": "failed"
+    },
+    "24bc9bc9f6836790010f2610874765bf0d1978302015523570358cf1dfabb719": {
+      "key": "sisimanhua",
+      "name": "思思漫画",
+      "version": "1.0.0",
+      "repository": "Zicheng0326/my-venera-sources",
+      "url": "https://raw.githubusercontent.com/Zicheng0326/my-venera-sources/a87af2423c60b30c6e2e795f76da64b17ffc4e86/sisimanhua.js",
+      "lane": "trial",
+      "reason": "version",
+      "detail": "版本 1.0.0 未严格高于清单现有版本 1.0.0",
+      "newHosts": [],
+      "baselineVersion": "1.0.0",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "image.download",
+          "category": "HTTP 错误",
+          "reason": "Image HTTP 404"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "image.download",
+          "category": "HTTP 错误",
+          "reason": "Image HTTP 404"
+        }
+      },
+      "outcome": "failed"
+    },
+    "0e2041ca3177a48c2bcde2fc54929c26afa5f0b773ec0cdee7e81ab9c270a784": {
+      "key": "rumanhua",
+      "name": "如漫画",
+      "version": "1.1.0",
+      "repository": "Zicheng0326/my-venera-sources",
+      "url": "https://raw.githubusercontent.com/Zicheng0326/my-venera-sources/a87af2423c60b30c6e2e795f76da64b17ffc4e86/rumanhua.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "返回结构或样本不满足契约",
+          "reason": "章节没有返回非空图片列表"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "返回结构或样本不满足契约",
+          "reason": "章节没有返回非空图片列表"
         }
       },
       "outcome": "failed"

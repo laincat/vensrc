@@ -54,6 +54,15 @@
     "description": "引用源：sy0sy0/V"
   },
   {
+    "name": "Buon Dua",
+    "key": "buondua",
+    "version": "1.2.0",
+    "fileName": "buondua.js",
+    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/5f4407e0b06ebc2d5a5f66b219ade6f07b20a290/real_person_photo_book/buondua.js",
+    "minAppVersion": "1.6.0",
+    "description": "引用源：meaninglesslyy/venera-config"
+  },
+  {
     "name": "CCC追漫台",
     "key": "ccc",
     "version": "1.0.2",
@@ -61,6 +70,15 @@
     "url": "https://raw.githubusercontent.com/zakkida/venera-sources/a5d8118da700c44f4823e82494d4ca816054afaf/ccc.js",
     "minAppVersion": "1.6.0",
     "description": "引用源：zakkida/venera-sources"
+  },
+  {
+    "name": "Cosplay啦",
+    "key": "ciyuandao",
+    "version": "1.0.0",
+    "fileName": "ciyuandao.js",
+    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/ciyuandao.js",
+    "minAppVersion": "1.0.0",
+    "description": "引用源：token1008/venera-cn-64bit"
   },
   {
     "name": "comick",
@@ -162,6 +180,15 @@
     "description": "引用源：LX7kM9/venera-configs"
   },
   {
+    "name": "闺秀网",
+    "key": "guixiu_pic",
+    "version": "1.2.0",
+    "fileName": "guixiu.js",
+    "url": "https://raw.githubusercontent.com/meaninglesslyy/venera-config/69b362ac8b1f3540692464b46c716b47f78c3526/real_person_photo_book/guixiu.js",
+    "minAppVersion": "1.6.0",
+    "description": "引用源：meaninglesslyy/venera-config"
+  },
+  {
     "name": "Hachiraw",
     "key": "hachiraw",
     "version": "1.0.0",
@@ -187,15 +214,6 @@
     "url": "https://raw.githubusercontent.com/hgnbh/sw/4f1cff24024ab591d245d9a8f01a9cb1c60f6803/hentaifox.js",
     "minAppVersion": "1.4.0",
     "description": "引用源：hgnbh/sw"
-  },
-  {
-    "name": "热辣漫画",
-    "key": "hot_manga",
-    "version": "1.0.1",
-    "fileName": "sources/hot_manga.js",
-    "url": "https://raw.githubusercontent.com/laincat/vensrc/1c490abf4721628bc3eb0533995de47ee03f2887/sources/hot_manga.js",
-    "minAppVersion": "1.6.0",
-    "description": "引用源：laincat/vensrc。官方 1.0.0 的 comic.onClickTag 对「更新」「状态」命名空间直接抛错，用户点这两个标签会看到报错；1.0.1 改为只声明可跳转的命名空间（作者、标签），其余不返回。读取链路（列表、分类、搜索、详情分组、章节、图片两档清晰度）按接口重写并单测覆盖；不含账号与网络收藏，favorites 阶段记为跳过。"
   },
   {
     "name": "爱飒漫画",
@@ -252,15 +270,6 @@
     "description": "引用源：meaninglesslyy/venera-config"
   },
   {
-    "name": "来漫画（分流）",
-    "key": "laimanhua_split",
-    "version": "1.2.1",
-    "fileName": "laimanhua_split_hosts_v1.2.1_configurable.js",
-    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/3349bdd9cb92554826c179e70216eb7f46660d4b/laimanhua_split_hosts_v1.2.1_configurable.js",
-    "minAppVersion": "1.0.0",
-    "description": "引用源：handahao666-boop/venera_comic_source"
-  },
-  {
     "name": "Lanraragi",
     "key": "lanraragi",
     "version": "1.2.1",
@@ -315,15 +324,6 @@
     "description": "引用源：LX7kM9/venera-configs"
   },
   {
-    "name": "178漫画网",
-    "key": "manhua178",
-    "version": "1.0.0",
-    "fileName": "manhua178.js",
-    "url": "https://raw.githubusercontent.com/token1008/venera-cn-64bit/a47957c657f39731c3a082e7bab82113d6fc693e/sources-direct/manhua178.js",
-    "minAppVersion": "1.0.0",
-    "description": "引用源：token1008/venera-cn-64bit"
-  },
-  {
     "name": "漫舍",
     "key": "manshe",
     "version": "1.0.8",
@@ -369,6 +369,15 @@
     "description": "引用源：JunQianNuo/venera-sources"
   },
   {
+    "name": "米卡插画",
+    "key": "mikagogo",
+    "version": "1.0.0",
+    "fileName": "mikagogo.js",
+    "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/a59bdea5b75b00f3770c2b831ef830aac05cc67e/mikagogo.js",
+    "minAppVersion": "1.6.3",
+    "description": "引用源：handahao666-boop/venera_comic_source"
+  },
+  {
     "name": "MOJOIN",
     "key": "mojoin_v2",
     "version": "1.0.7",
@@ -385,6 +394,15 @@
     "url": "https://raw.githubusercontent.com/venera-app/venera-configs/a04e05591f7832f7166d6660546613c114d6738a/mxs.js",
     "minAppVersion": "1.5.0",
     "description": "引用源：venera-app/venera-configs"
+  },
+  {
+    "name": "MYCOMIC",
+    "key": "mycomic",
+    "version": "1.2.0",
+    "fileName": "mycomic.js",
+    "url": "https://raw.githubusercontent.com/coldnighten/venera-configs/01719d2b363e3a9874839b19a100f2105c13c6e3/mycomic.js",
+    "minAppVersion": "1.4.6",
+    "description": "引用源：coldnighten/venera-configs"
   },
   {
     "name": "NamiComi 中文",
@@ -405,13 +423,13 @@
     "description": "引用源：Magentadots/venera-configs"
   },
   {
-    "name": "Aitoda · Nao Kanzaki",
-    "key": "photo_deck_aitoda",
-    "version": "0.1.3",
-    "fileName": "aitoda.js",
-    "url": "https://raw.githubusercontent.com/tide23333-max/venera-photo-sources/d1adf1e3984cc983b1a5b2256dccf39c5f9d24fd/scripts/aitoda.js",
-    "minAppVersion": "1.17.0",
-    "description": "引用源：tide23333-max/venera-photo-sources"
+    "name": "Cosplay联盟",
+    "key": "pandadiu",
+    "version": "1.2.3",
+    "fileName": "cosplaylm.js",
+    "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/cosplaylm.js",
+    "minAppVersion": "1.0.0",
+    "description": "引用源：LX7kM9/venera-configs"
   },
   {
     "name": "Geinou Nude",
@@ -574,15 +592,6 @@
     "url": "https://raw.githubusercontent.com/handahao666-boop/venera_comic_source/a59bdea5b75b00f3770c2b831ef830aac05cc67e/xkcd.js",
     "minAppVersion": "1.6.3",
     "description": "引用源：handahao666-boop/venera_comic_source"
-  },
-  {
-    "name": "yande.re",
-    "key": "yandere",
-    "version": "4.9.3",
-    "fileName": "yandere.js",
-    "url": "https://raw.githubusercontent.com/Junkrat9527/venera-sources/9a82f61848daa18d2bcf4ffbc907e4a19e1a8e29/yandere.js",
-    "minAppVersion": "1.6.0",
-    "description": "引用源：Junkrat9527/venera-sources"
   },
   {
     "name": "杂志迷",
