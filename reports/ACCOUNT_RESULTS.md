@@ -1,6 +1,6 @@
 # 隔离账号巡检结果
 
-核验时间：2026-11-26T23:48:49.651081+00:00（UTC）。
+核验时间：2026-11-27T08:16:14.864666+00:00（UTC）。
 最新 CLI 提交：`dd6ded39844e56902d3880b1fc1c201a6d1d1fda`。
 每个源只接收本站凭据；同一固定源码及样本分别在 VeneraX、Venera-Next 执行。
 不发布用户名、密码、Cookie、Token、收藏内容、异常原文或原始追踪。
@@ -54,4 +54,4 @@
 | 热辣漫画 | hot_manga | — | 已保存凭据；1.0.1 是自建读取版，尚未实现账号登录（没有可复测账号，不写未验证流程）；补上账户能力后再纳入登录巡检。 | 未测试 | 跳过 |  | 未执行 |
 
 固定源码哈希、客户端提交、依赖锁和样本输入见 ../data/account-results.json。
-Actions：https://github.com/laincat/vensrc/actions/runs/45912914029
+Actions：https://github.com/laincat/vensrc/actions/runs/45964111421

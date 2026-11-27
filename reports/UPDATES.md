@@ -1,12 +1,12 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-26T23:48:33.874254+00:00（UTC）。
-检查 73 个已登记仓库；发现 503 个未审阅源码构建。
+检查时间：2026-11-27T08:16:23.442363+00:00（UTC）。
+检查 73 个已登记仓库；发现 504 个未审阅源码构建。
 
 发现阶段只下载计算哈希、读取声明字段和主机名，不通过 list、init 或巡检执行。待审构建分三条通道：
 
 - **自动收录**（107 个）：已登记仓库的新 key 或已有 key 的严格升级；复核来源、排除规则、重复源和两端同轮匿名阅读后写入清单。
-- **试跑但不收录**（396 个）：新增目的地、凭据能力或重复来源等情况照常隔离试跑，结果见 [候选试跑短名单](CANDIDATES.md)，收录仍需人工审阅。
+- **试跑但不收录**（397 个）：新增目的地、凭据能力或重复来源等情况照常隔离试跑，结果见 [候选试跑短名单](CANDIDATES.md)，收录仍需人工审阅。
 - **不执行**（3 个文件）：未登记仓库只列出，不下载、不执行。
 
 每轮最多试跑 40 个候选，自动收录通道优先；本轮安排 40 个。
@@ -51,9 +51,10 @@
 | Hanime1 H漫画 | hanime1_comics | 1.2.1 | gallhall/venerav-configs | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 729836e4e65b01161f5ba1f9998fdc1630d08dd6407e480f063d578cfa7ea7c7 |
 | 包子漫画 | baozi | 1.2.1 | handahao666-boop/venera_comic_source | 1.0.0 | 试跑但不收录 | 新增主机名：www.baozimh.com | afa90ff41776da97127a5ff7b69b528988e2ef402b90b6fdc22145784c0e545f |
 | 嗶哩漫畫 | bilimanga | 1.2.3 | handahao666-boop/venera_comic_source | 1.6.0 | 试跑但不收录 | 新增主机名：raw.githubusercontent.com | 4f4ee857307c1b5491ebb61861c0d85efe614c8c9fd4b0aa8cfd0740ff2ed93e |
-| 拷贝漫画 | copy_manga | 1.6.7 | handahao666-boop/venera_comic_source | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | e752dda481ad48c50d2814c4cc176402f3d77f6f3c1b59aacfd2a61fcca493a6 |
+| 拷贝漫画 | copy_manga | 1.6.13 | handahao666-boop/venera_comic_source | 1.6.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | 3a7a5156663f5554d3176fe13aa2cb9694840689cc8920bef39586483b23d76a |
 | 飞翔漫画 | ffppt | 1.0.8 | handahao666-boop/venera_comic_source | 1.0.0 | 试跑但不收录 | 新增主机名：dmlimg.youjieke.host、raw.githubusercontent.com | de1f3fc4d01a48908015e4421d73a3b3de258f47bdd8c3135536ef3dc7df9a47 |
 | 瓜子漫画 | guazimanhua | 1.0.4 | ZhiLin-Sam/venera-sources | 1.0.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | b93ad63c5e0ac1a41c77ab95e7561f20718ad46228fb9b6b8fbb8196c3f56dc6 |
+| 爱看漫 | ikmmh_v2 | 3.0.1 | handahao666-boop/venera_comic_source | 1.0.0 | 试跑但不收录 | 新增主机名：raw.githubusercontent.com | 07f50486363d7730f752a050a55572aaf1bb758c3f88abbf968803ae9165498c |
 | Komiic | Komiic | 1.0.8 | ZhiLin-Sam/venera-sources | 1.0.0 | 试跑但不收录 | 与清单现有源重名或属于已合并的 key | ad74a243c07ebc549254e75162fceb81097e6755054e1902ca81e0327370bd68 |
 | 腾讯动漫（正版） | qq_comic_official_v1 | 1.0.3 | ZhiLin-Sam/venera-sources | 1.0.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | fd53172968ebc576a69d8bda73b8e576589a28b469e84a46890692b93e1256b6 |
 | W漫画 | wmanhua | 1.0.3 | handahao666-boop/venera_comic_source | 1.4.0 | 试跑但不收录 | 新增主机名：raw.githubusercontent.com | 113b94d281f16f53877f75c18df909c2e0b3e3233746cb99ac7b3976e6cc0398 |
@@ -557,12 +558,14 @@
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
 - `vibub/Venera-Source`：
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
-- `yuxuanmian/venera`：A comic app
+- `3176289965f-ai/my-venera-sources`：
+- `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
+- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
 - `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
 - `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `yuxuanmian/venera`：A comic app
 - `advace808-eng/great-love-venerable`：prs_3cf9c6
-- `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
 - `Taototo/ManComic`：A Flutter comic reader app based on Venera
 - `Dilnazochka/Venera_vizazh`：
 - `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
@@ -585,7 +588,6 @@
 - `Yo1sing/Venera-Edge`：A comic app, but built with FRB (Flutter Rust Bridge).
 - `Arteiimis/venera-lean`：Windows 与 Android 上的本地漫画阅读器
 - `xswlsbhhh/venera-comic-sources`：Venera 漫画源（由阅读/Legado 书源改写）
-- `3176289965f-ai/my-venera-sources`：
 - `lc2024924478-del/venera-all-in-one`：
 - `Aezir/venera-sources`：VeneraX 漫画源订阅与实测清单
 - `AllOut0129/my-venera-sources`：
@@ -601,7 +603,6 @@
 - `HHHHia/venera-mine`：my Venera comic-source mirror with local patches
 - `sbajtl/massage-web-site`：Venera Massage Center - Built site
 - `Nakami003/Fujyoshi-VeneraNext`：Fujyoshi's VeneraNext Comic Sources
-- `vonhezhou/mansou`：漫搜：支持多源聚合搜索与下载的自托管漫画工具，兼容 Venera 漫画源插件，适用于 NAS / VPS 部署。
 - `lll152872/venera-lll`：venera 二次开发：无缝跨章阅读、书源隐藏、快捷搜索、追更检测优化、
 - `alexanderabigail050-maker/venerable-adrian`：
 - `daodao0326/venera`：漫画源
@@ -615,7 +616,6 @@
 - `940440952/comic-sources`：双生态漫画源：Venera / VeneraNext / VeneraPlus JavaScript + Aidoku Rust/WASM；目前维护 manhuazhan.com。
 - `venera-app/venera-prime`：A comic app,but prime
 - `WEP-56/EZVenera`：Venera重写+简化版本，只提供windows、安卓包体，简化大量功能尤其是插件模块运行时，方便持续维护。／ 请勿提出超出EZVenera边界的需求，如果你真的需要，欢迎pr或自行fork
-- `1753454035/hentai20-venera`：1
 - `wnzmb/venera-configs-wujiajun`：Venera 漫画源：nhentai / e-hentai / hitomi，指向自建 Cloudflare Worker 反代
 - `ACGNnsj/venera-unified-configs`：Self-hosted source catalog and configs for venera-unified (B4)
 - `nobug-project/venera-configs`：
