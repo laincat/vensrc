@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-26T15:04:44.033694+00:00",
+  "checkedAt": "2026-11-26T23:48:33.874254+00:00",
   "updates": [
     {
       "id": "fdab1f9f87c055e33fdf069a744ef1ed60c1f421c4c85806b5e69412be9a6ee3",
@@ -99,7 +99,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "c36110d27ea41a64fdd9f1180bc3cf4b0936b0cdffa0fb30a14c5c8c64612236",
@@ -187,7 +187,7 @@
       "newHosts": [
         "kkmh.com"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "e696aaf1b4fb36d0bc29591fc407854c89e43ff4280211233192eb66b45963ed",
@@ -511,7 +511,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "323a61b9905979c5e0ebd50fe7e119cb3bc67a62aa7d7bbdc57b70dc4c5ef9a1",
@@ -542,7 +542,7 @@
         "repository": "Magentadots/venera-configs"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "926ea5a941994d321df046149a91220244ba710e3dde52356939d7af1d19d67a",
@@ -983,7 +983,7 @@
       "newHosts": [
         "www.baozimh.com"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "4f4ee857307c1b5491ebb61861c0d85efe614c8c9fd4b0aa8cfd0740ff2ed93e",
@@ -1016,7 +1016,7 @@
       "newHosts": [
         "raw.githubusercontent.com"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "e752dda481ad48c50d2814c4cc176402f3d77f6f3c1b59aacfd2a61fcca493a6",
@@ -2232,7 +2232,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "942f29bd9a6834d7a7d9f7a5a115b3ff1164f0990828f4eb9c2358ed354303d7",
@@ -2371,7 +2371,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "e21b7984e309e0a1b730d737da914834ce15908b59c45c0d4d2be2627cecbbe2",
@@ -2488,7 +2488,7 @@
       "detail": "新 key 涉及凭据能力：account、authorization、login、password",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "d957a4de13948a967368975b43e947a3dc56cb094f02e4fa9b62f8339a5e678a",
@@ -3297,7 +3297,7 @@
         "auth.mangadex.org",
         "git.nyne.dev"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "45ea62f02ef64fa0ad1f176fe125572b78d326060d06bf2964c7f8bc5dd63192",
@@ -3329,7 +3329,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "ac1d497bfe0ba800b84ae3f5f5d4d0bf07dccd1174e8e24198cf5eadf00623b1",
@@ -3361,7 +3361,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "b7f7995704b42b31010edf007c6a069bef77d3a96d03b5dca2d3456c6e2b29a4",
@@ -3387,7 +3387,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "5adc51fbd180f7f4b987d9f36c1f06951d3507a61def96385af2b72eb078508d",
@@ -3452,7 +3452,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "f4864ddfe001645b8b3e05285cc037ed844ddaa95802ff3a8863b177d40f5fb9",
@@ -3552,7 +3552,7 @@
         "repository": "venera-app/venera-configs"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "4e25bc428ac5284288bc680eadcb810216b00c2e0df6840550eb198bc04647de",
@@ -4517,7 +4517,7 @@
       "detail": "不同 key 指向清单中已有的站点，待核对分区或语言版本",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "1a6eca09cbb922586a5029cad9606a9caf0a9f2a0a35b66c7c3dedf74c661046",
@@ -4667,7 +4667,7 @@
       "detail": "不同 key 指向清单中已有的站点，待核对分区或语言版本",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "25131c16e19fd2649ba44730cd61b40c11cb30bd34d22d3d7d26da3cfdaa8b2e",
@@ -4848,7 +4848,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "cf2bb25be39f6e66c762a325595cf845f6fd5ab0d297c79bcee24f743e971f5c",
@@ -5130,7 +5130,7 @@
         "git.nyne.dev",
         "raw.githubusercontent.com"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "87f5eee07a9f3b0f557e7068c2974569ed282ccd177898fb5022e098b2b0bf08",
@@ -5528,7 +5528,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "05a9cab20abab530f10520c8b63049e106e54fd4d8ba180793929976d3751bc3",
@@ -5732,7 +5732,7 @@
         "cdn.jsdelivr.net",
         "dmlimg.youjieke.host"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "9874de436f3ee50db72543c53ad47a5375401791daf89f1f6542d485b6ae6c03",
@@ -6057,7 +6057,7 @@
         "api.similarmanga.com",
         "auth.mangadex.org"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "7de2d08ef245b7cb756b5f6500b1c6f1f84733f4211c09f525666e8de4321746",
@@ -6280,7 +6280,7 @@
         "repository": "Walter498/Walter"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "0a3a000f7bedeee8055017ed4d1170326626582fe7dc544d8872725f7ce89fd1",
@@ -6305,7 +6305,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "d2a221a509f36fdad9b2a1a0e4109b6deb8055259e9519bc48864cadce6295cc",
@@ -6505,7 +6505,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "f9be4e7025c545ed943924c5b18a872a042ffc4693dbcb9e1942fec5cb320f2f",
@@ -6535,7 +6535,7 @@
         "github.com",
         "www.311s.com"
       ],
-      "trial": false
+      "trial": true
     },
     {
       "id": "4e0cb11fbfc11d7806207e766975da478183422aab75eaebd8bedd092bcb6e40",
@@ -6566,7 +6566,7 @@
         "mhua5.com",
         "www.mhua5.com"
       ],
-      "trial": false
+      "trial": true
     },
     {
       "id": "a558064792e310a573662699bb31c664d9a275d0cb6977beca58e252671e5ec9",
@@ -6591,7 +6591,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "f7f9d5a98833949f086a342a1e35a69c194ae7cf69afec932e4845c4afaa647d",
@@ -6805,38 +6805,6 @@
       "trial": false
     },
     {
-      "id": "c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d",
-      "key": "mangaraw",
-      "name": "MangaRaw",
-      "version": "1.0.0",
-      "fileName": "mangaraw.js",
-      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/c4cfdc2c6dfdc6961aca03a07b3d3a101076da1b/mangaraw.js",
-      "sha256": "c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d",
-      "repository": "LX7kM9/venera-configs",
-      "minAppVersion": "1.6.0",
-      "sample": {
-        "keyword": "火影"
-      },
-      "trackedBy": [
-        "LX7kM9/venera-configs"
-      ],
-      "priority": 0,
-      "state": "发现阶段只读取文本，未加载、未执行；通道：自动收录（登记仓库的新 key，使用匿名样本）",
-      "lane": "auto",
-      "reason": "new_key",
-      "detail": "登记仓库的新 key，使用匿名样本",
-      "baseline": null,
-      "newHosts": [
-        "api.mangarw.com",
-        "cdn.jsdelivr.net",
-        "mangaraw.biz",
-        "mangaraw.co.uk",
-        "www.mangaraw.biz",
-        "www.mangaraw.co.uk"
-      ],
-      "trial": true
-    },
-    {
       "id": "5fdd41682311a3495a522e892819ad80209f2df4b40d95361a3ce08cf5d498e8",
       "key": "soraraw",
       "name": "SoraRaw",
@@ -6866,7 +6834,7 @@
         "www.soraraw.com",
         "www.soraraw.net"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "844ee8e10c6a473431c94aba330aa9af4b9804c886b2e0360e9d9b31a715a704",
@@ -7201,7 +7169,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "cbb3ac23c4389fb73c341bd14d169c011a81913957fa284e321a86df513ebc8f",
@@ -7286,7 +7254,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "b7a3564421242b44a7004ece5bdc439624a97b840a31a55d581e1cf8cbdd1b74",
@@ -7739,7 +7707,7 @@
         "repository": "venera-app/venera-configs"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "7c493973cab70ad0b14a491a2aab864056e553e33e52c31a381799fe11300e17",
@@ -7884,7 +7852,7 @@
         "repository": "venera-app/venera-configs"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "23dda487981425af402c3a536f920d9e6b70aedcd1f74cde6383338ce6ecfb53",
@@ -8403,7 +8371,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "c1ac850a7273bb8b2f9aebb995192f33eb85c9f043e36ab9821a5bdc01346e78",
@@ -8526,7 +8494,7 @@
         "repository": "venera-app/venera-configs"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "dd3bd7056c26cf800e3dfa8d1ec1a4913af63e9d9575c3b603d1b8f5d61a0120",
@@ -9449,7 +9417,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "bd644a10c65b11f959ace0ff4d306bfef05c91d3488758d04ac9dbb1a23d847d",
@@ -9650,7 +9618,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "63b165b1065239b07d94c3a83750824fde8a53bc1c2afc9b0af5f0bfd0195b6c",
@@ -9675,7 +9643,7 @@
       "detail": "新 key 涉及凭据能力：account、cookie、deletecookies、getcookies、loginwithcookies、loginwithwebview、setcookies",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "4f94b6801f09db7534de9f98c650e686ff6ff7dfbf5658a81a1b6d38b2ff2d1b",
@@ -9794,7 +9762,7 @@
       "detail": "新 key 涉及凭据能力：account、cookie、deletecookies、login、loginwithwebview、password",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "e6435ddc4ab45c3470150078a5240236bccb8f02d9647549d8f0a4cf36e666cb",
@@ -9819,7 +9787,7 @@
       "detail": "新 key 涉及凭据能力：account、cookie、deletecookies、loginwithcookies、loginwithwebview、setcookies",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "6d2fac84aa85f39c9a05d9846745f9dde22074d98fa2121635720c72248f0d80",
@@ -9879,7 +9847,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "4d0b8897c919c41ef2d44a55c9960ba931c46cc936fc808858e8dccf818cb39b",
@@ -10165,7 +10133,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "62b7d99ee12997f0e3f4e244f626d95e83d2a3060b8ad4eb1212a37213378800",
@@ -10450,7 +10418,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "3db60747709d72eff454d96bef13e907397ebd2a7e4e9cebd3279bddc5d768cd",
@@ -10481,7 +10449,7 @@
         "repository": "Magentadots/venera-configs"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "4782003a73733c27112709bcdef119de01095ac2cb2ce4b6114228487cd3273a",
@@ -10514,7 +10482,7 @@
       "newHosts": [
         "t1.imge.store"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "84501b357e70a8ad932a377a6c6b518a88f93f5535767012effff3d85c5e47eb",
@@ -10564,7 +10532,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "78a751955d9ec6c640585220252757ffbc854331657ac0e7bd04d758dbf6d835",
@@ -10656,7 +10624,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "e9ed391dc6aae13299d368ca2edfa148aac161eb525502078ca11a17d0abe742",
@@ -10798,7 +10766,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "8bda9f240300d3eaa59c556833d2a709782c34ec36abe428271cfed7ee1ddf22",
@@ -10823,7 +10791,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "7cac94ea3c1148568d00bbb69e8d34498b44733472f56d9e3e5f7ab4585b0d82",
@@ -11315,7 +11283,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "c515ae96effb945057fc0d982fa39a1a5cc359bd0259eae1c295124c6cde1725",
@@ -11990,7 +11958,7 @@
         "cdn.jsdelivr.net",
         "klmanga.com"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "de204d1115a59d674d9a419831817edf5d53d4b512d322380228c250939b2b54",
@@ -12015,7 +11983,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "66e5777e2911bb901dad775297a28720cec432be59b5d03d3a409901951bd8e0",
@@ -12096,7 +12064,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "eaa72a09562f0c3767661640d0831e351305d6215cef0139243ef242d7f2098b",
@@ -12177,7 +12145,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "ef3180b57ffb6c32aaceede332b3a5f5e4812e7153aaceb4b174eb85889a6099",
@@ -12651,7 +12619,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "c4b40776f977d229eee6ed5eaa7fcb000cd361bce2d5f0591037774ecaee6f52",
@@ -12676,7 +12644,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "cff311745f5b1ad664e4b19dba062cf3e974cd3ec988d4841cd13b14e06a617f",
@@ -12701,7 +12669,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "8ab8a3e0ccfe10462264f0130820c579dcd3bdcf3adfdf7100c255522585c19f",
@@ -12726,7 +12694,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "58e772b980531ede08561213022dfcb4163b9ce131d5431e6662ad5af1e9982d",
@@ -12807,7 +12775,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "3a045fc9d3dea78ad196fb3317b5a7b73fd8c14b6a5982d4134fc52e0999288d",
@@ -12832,7 +12800,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "f40d0f77dedeb8a0a4c38dbb59d18686cb7b422bc41aae5bdc79ac88f0d20b81",
@@ -12861,7 +12829,7 @@
         "repository": "YHQY-Dev/venera-sources"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "8b5bc5f7dbd3c9e20f944fb328bc2a6256ceee0a234cf2fda11f4631611332c2",
@@ -12976,7 +12944,7 @@
         "repository": "venera-app/venera-configs"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "31f0b78a6bf090743763f072e4d5b1a2e20666813ea5b1ef40b079b5f3519f09",
@@ -13093,7 +13061,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "e948c055697747d401ba2177e95d4c341cbd22d894411e85661011a7fd527543",
@@ -13184,7 +13152,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "9ca6d84bf82e3ca03415cd0e05739767d11d32476527833d3048f54b876076c5",
@@ -13213,7 +13181,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "1d16542756f3bbaa4f699fbf55996239c3842a3c188b05e72b8045c6fd95d650",
@@ -13419,7 +13387,7 @@
         "repository": "Magentadots/venera-configs"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "4b00bf339136b3ed70390b3887c84069eb2e8ac748a564127515d9809f6fd7fc",
@@ -13531,7 +13499,7 @@
       "detail": "新 key 涉及凭据能力：account、authorization、cookie、loginwithcookies",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "f4260141dea3563a248c76d474afa8ad49e7c95f24c736dd73019e0f423a822a",
@@ -13705,7 +13673,7 @@
         "repository": "YHQY-Dev/venera-sources"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "ef06cd614412f0d15a594b493c4ebea14091df870d01c1b250aa15affe708187",
@@ -13817,7 +13785,7 @@
         "gcore.jsdelivr.net",
         "klmanga.toys"
       ],
-      "trial": true
+      "trial": false
     },
     {
       "id": "fc9ac7ed1efab09cc477195a302f1316ea2b2e47b9dd036ffc84a2b8fd9c7774",
@@ -13990,7 +13958,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "fcb90412e0d16323340337e815267bb02c6ca0491c00cbfabe55241ed67029ac",
@@ -14185,7 +14153,7 @@
         "repository": "venera-app/venera-configs"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "b1f34a65e13d15d6ac3c03836c1b7e0a8f68c40bb6a490d7155d31c134035bab",
@@ -14214,7 +14182,7 @@
         "repository": "venera-app/venera-configs"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "1959122cc804977ad90f8b09f23379af3e20fd23cd2ef4dab5da21ad8a854b67",
@@ -14295,7 +14263,7 @@
       "detail": "与清单现有源重名或属于已合并的 key",
       "baseline": null,
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "bac41b0b008db6e18d52bb6975ffcb54a10b63526243075d53bf369a12c7fdc2",
@@ -14326,7 +14294,7 @@
         "repository": "handahao666-boop/venera_comic_source"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "857078783fc13901bba12ccdbe9e61c6d2e344bfbcd8fc044d207d2e9c7d7f55",
@@ -14355,7 +14323,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "23d16ca1bd1848acd3177fd8f1040406a90302e502bf1483c3221e1afb3171d1",
@@ -14477,7 +14445,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "6618d81a425fb79ee67bee788f97317cc87e738caa0233ca9c1a9874ac9bf9a3",
@@ -14535,7 +14503,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "1819bb5a5a4be11ba95e4429e09aa5d303286097221a5f0bb6ce485beb4e5af1",
@@ -14597,7 +14565,7 @@
         "repository": "Junkrat9527/venera-sources"
       },
       "newHosts": [],
-      "trial": true
+      "trial": false
     },
     {
       "id": "7d5b1645ae5cab77d662f718b559b816321ded7fcb31062f85c9620b49fba75d",
@@ -14657,7 +14625,7 @@
         "repository": "YHQY-Dev/venera-sources"
       },
       "newHosts": [],
-      "trial": false
+      "trial": true
     },
     {
       "id": "0e2041ca3177a48c2bcde2fc54929c26afa5f0b773ec0cdee7e81ab9c270a784",
@@ -15226,6 +15194,26 @@
   ],
   "newRepositories": [
     {
+      "repository": "vibub/Venera-Source",
+      "description": "",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "venerahome/venerahome.github.io",
+      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "yuxuanmian/venera",
+      "description": "A comic app",
+      "foundBy": "venera in:name,description"
+    },
+    {
+      "repository": "lwtor/venera-native",
+      "description": "Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。",
+      "foundBy": "venera in:name,description"
+    },
+    {
       "repository": "CyrilPeng/Venera-Next",
       "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
       "foundBy": "venera in:name,description"
@@ -15246,11 +15234,6 @@
       "foundBy": "venera in:name,description"
     },
     {
-      "repository": "lwtor/venera-native",
-      "description": "Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。",
-      "foundBy": "venera in:name,description"
-    },
-    {
       "repository": "Dilnazochka/Venera_vizazh",
       "description": "",
       "foundBy": "venera in:name,description"
@@ -15258,11 +15241,6 @@
     {
       "repository": "Venera-Works/Venera-Plus",
       "description": "VeneraPlus 是一个跨平台漫画阅读器。",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "venerahome/venerahome.github.io",
-      "description": "Venera Hasanova · Imoti Premier · Property in Greece",
       "foundBy": "venera in:name,description"
     },
     {
@@ -15323,11 +15301,6 @@
     {
       "repository": "laincat/VeneraCat-Sources",
       "description": "Shared cross-platform source collection and converters for VeneraCat",
-      "foundBy": "venera in:name,description"
-    },
-    {
-      "repository": "yuxuanmian/venera",
-      "description": "A comic app",
       "foundBy": "venera in:name,description"
     },
     {
@@ -15811,6 +15784,30 @@
   ],
   "repositoryChecks": [
     {
+      "repository": "vibub/Venera-Source",
+      "pushedAt": "2026-11-26T20:00:27Z",
+      "relevant": true,
+      "reason": "文件列表含索引或脚本线索"
+    },
+    {
+      "repository": "venerahome/venerahome.github.io",
+      "pushedAt": "2026-11-26T17:39:32Z",
+      "relevant": true,
+      "reason": "文件列表含索引或脚本线索"
+    },
+    {
+      "repository": "yuxuanmian/venera",
+      "pushedAt": "2026-11-26T15:17:51Z",
+      "relevant": true,
+      "reason": "文件列表含索引或脚本线索"
+    },
+    {
+      "repository": "lwtor/venera-native",
+      "pushedAt": "2026-11-26T14:05:39Z",
+      "relevant": true,
+      "reason": "文件列表含索引或脚本线索"
+    },
+    {
       "repository": "CyrilPeng/Venera-Next",
       "pushedAt": "2026-11-26T12:03:33Z",
       "relevant": true,
@@ -15829,20 +15826,8 @@
       "reason": "文件列表含索引或脚本线索"
     },
     {
-      "repository": "lwtor/venera-native",
-      "pushedAt": "2026-11-26T14:05:39Z",
-      "relevant": true,
-      "reason": "文件列表含索引或脚本线索"
-    },
-    {
       "repository": "Venera-Works/Venera-Plus",
-      "pushedAt": "2026-11-26T14:53:44Z",
-      "relevant": true,
-      "reason": "文件列表含索引或脚本线索"
-    },
-    {
-      "repository": "venerahome/venerahome.github.io",
-      "pushedAt": "2026-11-26T14:58:09Z",
+      "pushedAt": "2026-11-26T15:37:48Z",
       "relevant": true,
       "reason": "文件列表含索引或脚本线索"
     },
@@ -15959,12 +15944,6 @@
       "pushedAt": "2026-11-24T16:04:35Z",
       "relevant": false,
       "reason": "文件列表中没有 index.json 或 JavaScript"
-    },
-    {
-      "repository": "yuxuanmian/venera",
-      "pushedAt": "2026-11-26T14:42:19Z",
-      "relevant": true,
-      "reason": "文件列表含索引或脚本线索"
     },
     {
       "repository": "JIEQCH/my-venera-configs",

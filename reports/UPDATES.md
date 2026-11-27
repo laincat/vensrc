@@ -1,11 +1,11 @@
 # 上游变更与待审阅候选
 
-检查时间：2026-11-26T15:04:44.033694+00:00（UTC）。
-检查 73 个已登记仓库；发现 504 个未审阅源码构建。
+检查时间：2026-11-26T23:48:33.874254+00:00（UTC）。
+检查 73 个已登记仓库；发现 503 个未审阅源码构建。
 
 发现阶段只下载计算哈希、读取声明字段和主机名，不通过 list、init 或巡检执行。待审构建分三条通道：
 
-- **自动收录**（108 个）：已登记仓库的新 key 或已有 key 的严格升级；复核来源、排除规则、重复源和两端同轮匿名阅读后写入清单。
+- **自动收录**（107 个）：已登记仓库的新 key 或已有 key 的严格升级；复核来源、排除规则、重复源和两端同轮匿名阅读后写入清单。
 - **试跑但不收录**（396 个）：新增目的地、凭据能力或重复来源等情况照常隔离试跑，结果见 [候选试跑短名单](CANDIDATES.md)，收录仍需人工审阅。
 - **不执行**（3 个文件）：未登记仓库只列出，不下载、不执行。
 
@@ -245,7 +245,6 @@
 | Toomics 玩漫（繁中） | toomics | 1.0.0 | LX7kM9/venera-configs | 1.6.3 | 试跑但不收录 | 版本 1.0.0 未严格高于清单现有版本 1.0.0 | 717c23554644f65a2986b298931779b8cdad21715fd9bd74f7e6f80d36ef2082 |
 | xkcd 中文 | xkcd | 1.0.2 | LX7kM9/venera-configs | 1.6.3 | 试跑但不收录 | 版本 1.0.2 未严格高于清单现有版本 1.0.2 | c3d3c183e9ce9c8893791710a4e55cd72c2fc2cca7788b35d592e7274b6a7269 |
 | 杂志迷 | zazhimi | 1.0.2 | LX7kM9/venera-configs | 1.6.3 | 试跑但不收录 | 版本 1.0.2 未严格高于清单现有版本 1.0.2 | ec3bcc1ddc55d98e3094055f2a5989532f606477d8adfd28bd881f35a98fab7a |
-| MangaRaw | mangaraw | 1.0.0 | LX7kM9/venera-configs | 1.6.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | c4ab175ea3dafd57d99b86019d1faf033775cc4adc7037473df18d3de98e3f7d |
 | SoraRaw | soraraw | 1.1.0 | LX7kM9/venera-configs | 1.6.0 | 自动收录 | 登记仓库的新 key，使用匿名样本 | 5fdd41682311a3495a522e892819ad80209f2df4b40d95361a3ce08cf5d498e8 |
 | 包子漫画 | baozi | 1.2.3 | LX7kM9/venera-configs | 1.0.0 | 试跑但不收录 | 新增主机名：as2.baozimh.com、cdn.jsdelivr.net、cn.baozimhcn.com、cn.bzmgcn.com、cn.dinnerku.com、cn.kukuc.co、cn.twmanga.com、cn.webmota.com、s1.bzcdn.net、s2.bzcdn.net、static-tw.bzmgcn.com、tw.baozimhcn.com、tw.bzmgcn.com、tw.dinnerku.com、tw.kukuc.co、tw.twmanga.com、tw.webmota.com | 844ee8e10c6a473431c94aba330aa9af4b9804c886b2e0360e9d9b31a715a704 |
 | 漫画人 | manhuaren | 2.0.1 | LX7kM9/venera-configs | 1.6.0 | 试跑但不收录 | 新增主机名：cdn.jsdelivr.net | a13a85540e57ee3ae4a8ccdcf0f4c83fd8d396dd678afa04ba5dc0260533e70e |
@@ -557,14 +556,16 @@
 
 仅列本次 GitHub 更新排序搜索第一页的未登记仓库，尚未认定为漫画源，不代表全网穷尽。
 
+- `vibub/Venera-Source`：
+- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
+- `yuxuanmian/venera`：A comic app
+- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
 - `CyrilPeng/Venera-Next`：VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。
 - `advace808-eng/great-love-venerable`：prs_3cf9c6
 - `Kyosee/VeneraX`：基于 Venera 增强的跨平台漫画阅读器，支持 AI 翻译、鸿蒙系统及更多功能。 ／ An enhanced, cross-platform comic reader based on Venera, featuring AI translation, HarmonyOS support, and more.
 - `Taototo/ManComic`：A Flutter comic reader app based on Venera
-- `lwtor/venera-native`：Android 原生漫画阅读器，使用 Kotlin 与 Jetpack Compose 构建，兼容 Venera 漫画源生态。
 - `Dilnazochka/Venera_vizazh`：
 - `Venera-Works/Venera-Plus`：VeneraPlus 是一个跨平台漫画阅读器。
-- `venerahome/venerahome.github.io`：Venera Hasanova · Imoti Premier · Property in Greece
 - `Walter498/manwa-source`：漫蛙 (manwa) comic source for Venera
 - `wxcdxmn/venera-sources`：Venera comic sources: TOONTOP + MANGA18FX
 - `wxcdxmn/toontop`：TOONTOP (toontop.io) Venera 漫画源
@@ -577,7 +578,6 @@
 - `laincat/VeneraCat-Core`：Shared Go core for the Nekularity (iOS) and Nekophage (desktop) clients: Venera-compatible comic sources, video plugins, .venera backups. GPL-3.0
 - `huangjun7hb/venera-next-sources`：
 - `laincat/VeneraCat-Sources`：Shared cross-platform source collection and converters for VeneraCat
-- `yuxuanmian/venera`：A comic app
 - `JIEQCH/my-venera-configs`：
 - `opaiopaio/Venera-Nas`：Venera 漫画阅读器 - SMB/NAS 定制版，支持访问NAS保存的漫画，支持将漫画下载到NAS存储中
 - `w13630039663-bit/venera-miuix`：一款支持漫画阅读器（支持picacg 禁漫 nh ex和其他正常 混合）漫画和图库功能——采用Miuix风格重构的Venera。
