@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-27T19:13:38.533097+00:00",
+  "checkedAt": "2026-11-28T02:20:32.988978+00:00",
   "cli": {
     "repository": "Gandum2077/venera-patrol-cli",
     "commit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
     "version": "1.0.0",
     "packageLockSha256": "7ea394a32e59776dfb39647d0434c106283ae3f275e7329b694f660b771974de",
-    "checkedAt": "2026-11-27T18:53:43.309532+00:00",
+    "checkedAt": "2026-11-28T01:55:04.428466+00:00",
     "patches": [
       {
         "file": "patches/venera-patrol-cli-maxpage-null.patch",
@@ -51,7 +51,7 @@
     },
     "image": "venera-patrol:dd6ded39844e56902d3880b1fc1c201a6d1d1fda-p15078f08",
     "nodeVersion": "v22.23.5",
-    "imageId": "sha256:2d7f6c1cbd880140b9e2757d15af42434e23ad0a8791abc3e575108dacc3c7f1"
+    "imageId": "sha256:7990f99e81608a26398c423263270cc641a0b0400adef5e96de74374a9f2a91d"
   },
   "catalogSha256": "b2b6b49e4ae27baf11671c61e4e7dd106b85c1d746b200c694c99977c45f8e3b",
   "rows": [
@@ -173,7 +173,7 @@
       "repository": "handahao666-boop/venera_comic_source",
       "version": "1.2.1",
       "runtimeProfile": "venerax",
-      "corePassed": false,
+      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
@@ -273,6 +273,10 @@
         },
         {
           "stage": "image.download",
+          "category": "anti_bot"
+        },
+        {
+          "stage": "thumbnail.download",
           "category": "anti_bot"
         }
       ]
@@ -1237,25 +1241,6 @@
       ]
     },
     {
-      "id": "d7361f1ec9128df35d0ccc7ea4bf6aef18c44065f51ed7a397228dcadbb6363f",
-      "key": "manhua178",
-      "name": "178漫画网",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "auth_required"
-        },
-        {
-          "stage": "image.download",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
       "id": "51636f60ed1f983ea2033cbfc8d1207a0063a0d0578ee5639da02d7867300d76",
       "key": "manhuaba",
       "name": "漫画吧网",
@@ -1605,21 +1590,6 @@
       ]
     },
     {
-      "id": "85a5bd2ff028d2cc769294123025c1d5d20fd90caa8ef35379788e39943242fe",
-      "key": "photo_deck_aitoda",
-      "name": "Aitoda · Nao Kanzaki",
-      "repository": "tide23333-max/venera-photo-sources",
-      "version": "0.1.3",
-      "runtimeProfile": "venerax",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadInfo",
-          "category": "rate_limited"
-        }
-      ]
-    },
-    {
       "id": "aeac0db633a52a97a62c236adf9078897e2f23fb473dca410779a7ced8149004",
       "key": "pixiv",
       "name": "Pixiv",
@@ -1676,15 +1646,23 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "explore[5].load",
+          "stage": "explore[2].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[12].load",
+          "stage": "explore[3].load",
           "category": "auth_required"
         },
         {
-          "stage": "explore[13].load",
+          "stage": "explore[7].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[8].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[14].load",
           "category": "auth_required"
         }
       ]
@@ -2000,7 +1978,7 @@
       "repository": "handahao666-boop/venera_comic_source",
       "version": "1.2.1",
       "runtimeProfile": "venera-next",
-      "corePassed": false,
+      "corePassed": true,
       "failures": [
         {
           "stage": "search.load",
@@ -2101,6 +2079,25 @@
         {
           "stage": "image.download",
           "category": "anti_bot"
+        },
+        {
+          "stage": "thumbnail.download",
+          "category": "anti_bot"
+        }
+      ]
+    },
+    {
+      "id": "cb3c96f259cf31e7688aa309866e3e7a43489211c84684d3151d444afb6c51ed",
+      "key": "mikagogo",
+      "name": "米卡插画",
+      "repository": "handahao666-boop/venera_comic_source",
+      "version": "1.0.0",
+      "runtimeProfile": "venera-next",
+      "corePassed": false,
+      "failures": [
+        {
+          "stage": "comic.loadInfo",
+          "category": "auth_required"
         }
       ]
     },
@@ -2544,21 +2541,6 @@
       ]
     },
     {
-      "id": "a5044dc65e35ab1a3cc0a12e84be5427529f05d84e15b21763520f22eab90492",
-      "key": "gravuregalaxy",
-      "name": "GravureGalaxy",
-      "repository": "LX7kM9/venera-configs",
-      "version": "2.0.1",
-      "runtimeProfile": "venera-next",
-      "corePassed": true,
-      "failures": [
-        {
-          "stage": "search.load",
-          "category": "rate_limited"
-        }
-      ]
-    },
-    {
       "id": "b7c7b03cefb791395b5fb7a06be832e7ab4d2a73d2e661407f131b29d1cc448a",
       "key": "guoman8",
       "name": "国漫吧",
@@ -2970,15 +2952,19 @@
           "category": "auth_required"
         },
         {
-          "stage": "explore[12].load",
+          "stage": "explore[13].load",
           "category": "rate_limited"
         },
         {
-          "stage": "explore[23].load",
+          "stage": "explore[14].load",
           "category": "rate_limited"
         },
         {
-          "stage": "explore[35].load",
+          "stage": "explore[25].load",
+          "category": "rate_limited"
+        },
+        {
+          "stage": "explore[26].load",
           "category": "rate_limited"
         },
         {
@@ -3056,25 +3042,6 @@
         },
         {
           "stage": "categoryComics.ranking.load",
-          "category": "auth_required"
-        }
-      ]
-    },
-    {
-      "id": "d7361f1ec9128df35d0ccc7ea4bf6aef18c44065f51ed7a397228dcadbb6363f",
-      "key": "manhua178",
-      "name": "178漫画网",
-      "repository": "token1008/venera-cn-64bit",
-      "version": "1.0.0",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "image.download",
-          "category": "auth_required"
-        },
-        {
-          "stage": "image.download",
           "category": "auth_required"
         }
       ]
@@ -3429,21 +3396,6 @@
       ]
     },
     {
-      "id": "85a5bd2ff028d2cc769294123025c1d5d20fd90caa8ef35379788e39943242fe",
-      "key": "photo_deck_aitoda",
-      "name": "Aitoda · Nao Kanzaki",
-      "repository": "tide23333-max/venera-photo-sources",
-      "version": "0.1.3",
-      "runtimeProfile": "venera-next",
-      "corePassed": false,
-      "failures": [
-        {
-          "stage": "comic.loadInfo",
-          "category": "rate_limited"
-        }
-      ]
-    },
-    {
       "id": "aeac0db633a52a97a62c236adf9078897e2f23fb473dca410779a7ced8149004",
       "key": "pixiv",
       "name": "Pixiv",
@@ -3500,15 +3452,23 @@
       "corePassed": false,
       "failures": [
         {
-          "stage": "search.load",
-          "category": "auth_required"
-        },
-        {
-          "stage": "explore[5].load",
+          "stage": "explore[0].load",
           "category": "auth_required"
         },
         {
           "stage": "explore[6].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[8].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[11].load",
+          "category": "auth_required"
+        },
+        {
+          "stage": "explore[12].load",
           "category": "auth_required"
         }
       ]
@@ -3707,7 +3667,7 @@
       ]
     }
   ],
-  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/46052756127",
+  "patrolRunUrl": "https://github.com/laincat/vensrc/actions/runs/46095455737",
   "browser": [
     {
       "key": "bakamh",
@@ -3798,5 +3758,5 @@
     }
   ],
   "browserCliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda",
-  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/46055235523"
+  "diagnosticRunUrl": "https://github.com/laincat/vensrc/actions/runs/46097628140"
 }
