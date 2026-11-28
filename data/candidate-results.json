@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-28T02:20:32.988978+00:00",
-  "runUrl": "https://github.com/laincat/vensrc/actions/runs/46095455737",
+  "checkedAt": "2026-11-28T10:32:39.059941+00:00",
+  "runUrl": "https://github.com/laincat/vensrc/actions/runs/46134242628",
   "trialLimit": 40,
-  "testedThisRound": 39,
+  "testedThisRound": 5,
   "untested": 0,
   "results": {
     "926ea5a941994d321df046149a91220244ba710e3dde52356939d7af1d19d67a": {
@@ -3766,56 +3766,6 @@
       "detail": "新增主机名：as2.baozimh.com、cn.baozimhcn.com、cn.bzmgcn.com、cn.dinnerku.com、cn.kukuc.co、cn.twmanga.com、cn.webmota.com、s1.bzcdn.net、s2.bzcdn.net、static-tw.bzmgcn.com、tw.baozimhcn.com、tw.bzmgcn.com、tw.dinnerku.com、tw.kukuc.co、tw.twmanga.com、tw.webmota.com",
       "newHosts": [
         "as2.baozimh.com",
-        "cn.baozimhcn.com",
-        "cn.bzmgcn.com",
-        "cn.dinnerku.com",
-        "cn.kukuc.co",
-        "cn.twmanga.com",
-        "cn.webmota.com",
-        "s1.bzcdn.net",
-        "s2.bzcdn.net",
-        "static-tw.bzmgcn.com",
-        "tw.baozimhcn.com",
-        "tw.bzmgcn.com",
-        "tw.dinnerku.com",
-        "tw.kukuc.co",
-        "tw.twmanga.com",
-        "tw.webmota.com"
-      ],
-      "baselineVersion": "1.1.7",
-      "reviewVersion": 3,
-      "checkedAt": "2026-11-22T19:48:55.485679+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45061026447",
-      "profiles": {
-        "venerax": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "search.load",
-          "category": "需要登录",
-          "reason": "Invalid status code: 403"
-        },
-        "venera-next": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "search.load",
-          "category": "需要登录",
-          "reason": "Invalid status code: 403"
-        }
-      },
-      "outcome": "failed"
-    },
-    "844ee8e10c6a473431c94aba330aa9af4b9804c886b2e0360e9d9b31a715a704": {
-      "key": "baozi",
-      "name": "包子漫画",
-      "version": "1.2.3",
-      "repository": "LX7kM9/venera-configs",
-      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/baozi.js",
-      "lane": "trial",
-      "reason": "new_hosts",
-      "detail": "新增主机名：as2.baozimh.com、cdn.jsdelivr.net、cn.baozimhcn.com、cn.bzmgcn.com、cn.dinnerku.com、cn.kukuc.co、cn.twmanga.com、cn.webmota.com、s1.bzcdn.net、s2.bzcdn.net、static-tw.bzmgcn.com、tw.baozimhcn.com、tw.bzmgcn.com、tw.dinnerku.com、tw.kukuc.co、tw.twmanga.com、tw.webmota.com",
-      "newHosts": [
-        "as2.baozimh.com",
-        "cdn.jsdelivr.net",
         "cn.baozimhcn.com",
         "cn.bzmgcn.com",
         "cn.dinnerku.com",
@@ -9321,38 +9271,6 @@
       },
       "outcome": "failed"
     },
-    "e78216115cc4e14484b3cbe299585a99f832944a8e277bd11b365ccae9396c98": {
-      "key": "ikmmh",
-      "name": "爱看漫",
-      "version": "3.0.1",
-      "repository": "LX7kM9/venera-configs",
-      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/8338b789096bf9132c9f0f6d899dd4f14efe551d/ikmmh.js",
-      "lane": "trial",
-      "reason": "ambiguous",
-      "detail": "同 key 同版本有多个不同构建，需人工选择",
-      "newHosts": [],
-      "baselineVersion": "1.0.6",
-      "reviewVersion": 3,
-      "checkedAt": "2026-11-25T02:40:47.642048+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45532201890",
-      "profiles": {
-        "venerax": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "search.load",
-          "category": "需要登录",
-          "reason": "搜索失败：爱看漫反爬校验未通过（403）：https://www.ikmmh.com/search?searchkey=%5BREDACTED%5D"
-        },
-        "venera-next": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "search.load",
-          "category": "需要登录",
-          "reason": "搜索失败：爱看漫反爬校验未通过（403）：https://www.ikmmh.com/search?searchkey=%5BREDACTED%5D"
-        }
-      },
-      "outcome": "failed"
-    },
     "04bfdfb5fd06f5e29c340253cc5c78e5c5f1a47d65766d920b841ea41e5cb53d": {
       "key": "haokan_txt",
       "name": "好看漫画",
@@ -11049,38 +10967,6 @@
         }
       },
       "outcome": "passed"
-    },
-    "8fe2c936bdf1b441c219c54733600388d8ee43c94827a6e54fd6e33920bd0d66": {
-      "key": "copy_manga",
-      "name": "拷贝漫画",
-      "version": "2.3.3",
-      "repository": "LX7kM9/venera-configs",
-      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/c4cfdc2c6dfdc6961aca03a07b3d3a101076da1b/copy_manga.js",
-      "lane": "trial",
-      "reason": "ambiguous",
-      "detail": "与清单现有源重名或属于已合并的 key",
-      "newHosts": [],
-      "baselineVersion": "",
-      "reviewVersion": 3,
-      "checkedAt": "2026-11-26T15:28:19.008964+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/45844988008",
-      "profiles": {
-        "venerax": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "explore[0].load",
-          "category": "前置能力未通过",
-          "reason": "Source setup or initialization did not complete"
-        },
-        "venera-next": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "explore[0].load",
-          "category": "前置能力未通过",
-          "reason": "Source setup or initialization did not complete"
-        }
-      },
-      "outcome": "failed"
     },
     "5b2307d8ec90f96e255ba34c14ad214e51706a3b46fa66faaee9735434da72e0": {
       "key": "komga",
@@ -15691,47 +15577,6 @@
       },
       "outcome": "failed"
     },
-    "e3872c66c3752e316ab6682b9ff68bb47f4cfdacf40edf1398b2c4f6e59bc358": {
-      "key": "bilinovel",
-      "name": "哔哩轻小说",
-      "version": "1.2.0",
-      "repository": "LX7kM9/venera-configs",
-      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/656b9af3d7d5d6fa6af2ee8fcc1b539e27ff5526/bilinovel.js",
-      "lane": "auto",
-      "reason": "new_key",
-      "detail": "登记仓库的新 key，使用匿名样本",
-      "newHosts": [
-        "bilinovel.net",
-        "cdn.jsdelivr.net",
-        "fastly.jsdelivr.net",
-        "linovelib.com",
-        "raw.githubusercontent.com",
-        "www.bilinovel.net",
-        "www.linovelib.com",
-        "www.w3.org"
-      ],
-      "baselineVersion": "",
-      "reviewVersion": 3,
-      "checkedAt": "2026-11-28T02:20:32.988978+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46095455737",
-      "profiles": {
-        "venerax": {
-          "core": true,
-          "status": "failed",
-          "breakAt": "",
-          "category": "",
-          "reason": ""
-        },
-        "venera-next": {
-          "core": true,
-          "status": "failed",
-          "breakAt": "",
-          "category": "",
-          "reason": ""
-        }
-      },
-      "outcome": "queued"
-    },
     "525cf99fc99d62991069c3c01ecaff16b4044804ec451743ec7188af3f853846": {
       "key": "vomic",
       "name": "vomic",
@@ -16048,45 +15893,6 @@
           "breakAt": "comic.loadInfo",
           "category": "HTTP 错误",
           "reason": "HTTP 404"
-        }
-      },
-      "outcome": "failed"
-    },
-    "f0891a6e4ea6b1bef684da3e940baab5b231eaf184b5942e58db66f7124d8a1f": {
-      "key": "bilimanga",
-      "name": "哔哩漫画",
-      "version": "2.3.7",
-      "repository": "LX7kM9/venera-configs",
-      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/656b9af3d7d5d6fa6af2ee8fcc1b539e27ff5526/bilimanga.js",
-      "lane": "trial",
-      "reason": "new_hosts",
-      "detail": "新增主机名：127.0.0.1、cdn.jsdelivr.net、f-droid.org、images.weserv.nl、wsrv.nl、www.bilicomic.net",
-      "newHosts": [
-        "127.0.0.1",
-        "cdn.jsdelivr.net",
-        "f-droid.org",
-        "images.weserv.nl",
-        "wsrv.nl",
-        "www.bilicomic.net"
-      ],
-      "baselineVersion": "1.1.7",
-      "reviewVersion": 3,
-      "checkedAt": "2026-11-28T02:20:32.988978+00:00",
-      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46095455737",
-      "profiles": {
-        "venerax": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "image.decode",
-          "category": "未执行",
-          "reason": ""
-        },
-        "venera-next": {
-          "core": false,
-          "status": "failed",
-          "breakAt": "image.decode",
-          "category": "未执行",
-          "reason": ""
         }
       },
       "outcome": "failed"
@@ -16887,6 +16693,196 @@
           "breakAt": "search.load",
           "category": "需要登录",
           "reason": "列表项缺少合法 ID、标题或封面"
+        }
+      },
+      "outcome": "failed"
+    },
+    "ae24872f84480acb3ca0ca8683fa32e6bb230632a04b00f2ca480ecfb077c443": {
+      "key": "ikmmh",
+      "name": "爱看漫",
+      "version": "3.0.2",
+      "repository": "LX7kM9/venera-configs",
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/7575b0b3dcbbc473a84f6b3d001ba4544467eeee/ikmmh.js",
+      "lane": "auto",
+      "reason": "auto",
+      "detail": "1.0.6 → 3.0.2，未新增主机名",
+      "newHosts": [],
+      "baselineVersion": "1.0.6",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-28T10:32:39.059941+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46134242628",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "搜索失败：爱看漫拒绝了当前网络出口的地区访问（403）。请先用同一网络在浏览器打开原站确认能否访问；若原站能打开，请在漫画源设置里填写本机可直接访问的官方域名。地址：https://www.ikmmh.com/search?searchkey=%5BREDACTED%5D"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "search.load",
+          "category": "需要登录",
+          "reason": "搜索失败：爱看漫拒绝了当前网络出口的地区访问（403）。请先用同一网络在浏览器打开原站确认能否访问；若原站能打开，请在漫画源设置里填写本机可直接访问的官方域名。地址：https://www.ikmmh.com/search?searchkey=%5BREDACTED%5D"
+        }
+      },
+      "outcome": "failed"
+    },
+    "aa533abb4b31c7391fc0d193b210290f56187727fce2f5a4ceb2d4a4e228bbc7": {
+      "key": "bilimanga",
+      "name": "哔哩漫画",
+      "version": "2.4.7",
+      "repository": "LX7kM9/venera-configs",
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/7575b0b3dcbbc473a84f6b3d001ba4544467eeee/bilimanga.js",
+      "lane": "trial",
+      "reason": "new_hosts",
+      "detail": "新增主机名：127.0.0.1、cdn.jsdelivr.net、f-droid.org、images.weserv.nl、wsrv.nl、www.bilicomic.net",
+      "newHosts": [
+        "127.0.0.1",
+        "cdn.jsdelivr.net",
+        "f-droid.org",
+        "images.weserv.nl",
+        "wsrv.nl",
+        "www.bilicomic.net"
+      ],
+      "baselineVersion": "1.1.7",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-28T10:32:39.059941+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46134242628",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "image.decode",
+          "category": "未执行",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "image.decode",
+          "category": "未执行",
+          "reason": ""
+        }
+      },
+      "outcome": "failed"
+    },
+    "d0067ed072a34e96b700875c056d202e3e13ae6da11c3ca17680842e59316154": {
+      "key": "baozi",
+      "name": "包子漫画",
+      "version": "1.2.5",
+      "repository": "LX7kM9/venera-configs",
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/7575b0b3dcbbc473a84f6b3d001ba4544467eeee/baozi.js",
+      "lane": "trial",
+      "reason": "new_hosts",
+      "detail": "新增主机名：as2.baozimh.com、cdn.jsdelivr.net、cn.baozimhcn.com、cn.bzmgcn.com、cn.dinnerku.com、cn.kukuc.co、cn.twmanga.com、cn.webmota.com、cnbzmg.com、dzmanga.com、s1.bzcdn.net、s2.bzcdn.net、static-tw.bzmgcn.com、tw.baozimhcn.com、tw.bzmgcn.com、tw.dinnerku.com、tw.kukuc.co、tw.twmanga.com、tw.webmota.com、twbzmg.com",
+      "newHosts": [
+        "as2.baozimh.com",
+        "cdn.jsdelivr.net",
+        "cn.baozimhcn.com",
+        "cn.bzmgcn.com",
+        "cn.dinnerku.com",
+        "cn.kukuc.co",
+        "cn.twmanga.com",
+        "cn.webmota.com",
+        "cnbzmg.com",
+        "dzmanga.com",
+        "s1.bzcdn.net",
+        "s2.bzcdn.net",
+        "static-tw.bzmgcn.com",
+        "tw.baozimhcn.com",
+        "tw.bzmgcn.com",
+        "tw.dinnerku.com",
+        "tw.kukuc.co",
+        "tw.twmanga.com",
+        "tw.webmota.com",
+        "twbzmg.com"
+      ],
+      "baselineVersion": "1.1.7",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-28T10:32:39.059941+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46134242628",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "partial",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "partial",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "bcbfffb19a0f4494ea93ba93a26b356fd6ff4b758cb709c0788e0dafd266a6c8": {
+      "key": "copy_manga",
+      "name": "拷贝漫画",
+      "version": "2.3.9",
+      "repository": "LX7kM9/venera-configs",
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/7575b0b3dcbbc473a84f6b3d001ba4544467eeee/copy_manga.js",
+      "lane": "trial",
+      "reason": "ambiguous",
+      "detail": "与清单现有源重名或属于已合并的 key",
+      "newHosts": [],
+      "baselineVersion": "",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-28T10:32:39.059941+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46134242628",
+      "profiles": {
+        "venerax": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        },
+        "venera-next": {
+          "core": true,
+          "status": "failed",
+          "breakAt": "",
+          "category": "",
+          "reason": ""
+        }
+      },
+      "outcome": "passed"
+    },
+    "938dc1e12538f3200a1ce5852384dc2da5c8d45fec8c1b43ce3b70698cb8e564": {
+      "key": "hj_baozi",
+      "name": "包子漫画",
+      "version": "1.2.5",
+      "repository": "Taototo/venera-comic-sources",
+      "url": "https://raw.githubusercontent.com/Taototo/venera-comic-sources/abede94928dd8049ede2a36293d69763e2a22810/sources/private/baozi.js",
+      "lane": "trial",
+      "reason": "new_hosts",
+      "detail": "新增主机名：raw.githubusercontent.com",
+      "newHosts": [
+        "raw.githubusercontent.com"
+      ],
+      "baselineVersion": "1.1.7",
+      "reviewVersion": 3,
+      "checkedAt": "2026-11-28T10:32:39.059941+00:00",
+      "runUrl": "https://github.com/laincat/vensrc/actions/runs/46134242628",
+      "profiles": {
+        "venerax": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
+        },
+        "venera-next": {
+          "core": false,
+          "status": "failed",
+          "breakAt": "comic.loadEp",
+          "category": "反爬拦截",
+          "reason": "Cloudflare challenge requires browser verification"
         }
       },
       "outcome": "failed"
