@@ -6578,6 +6578,42 @@
         "runUrl": "https://github.com/laincat/vensrc/actions/runs/45844988008",
         "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
       }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/LX7kM9/venera-configs/656b9af3d7d5d6fa6af2ee8fcc1b539e27ff5526/bilinovel.js",
+      "key": "bilinovel",
+      "name": "哔哩轻小说",
+      "version": "1.2.0",
+      "minAppVersion": "1.6.3",
+      "repository": "LX7kM9/venera-configs",
+      "fileName": "bilinovel.js",
+      "sample": {
+        "keyword": "火影",
+        "comicId": "5597",
+        "epId": "349512"
+      },
+      "officialKey": false,
+      "priority": 0,
+      "trackedBy": [
+        "LX7kM9/venera-configs"
+      ],
+      "id": "e3872c66c3752e316ab6682b9ff68bb47f4cfdacf40edf1398b2c4f6e59bc358",
+      "sha256": "e3872c66c3752e316ab6682b9ff68bb47f4cfdacf40edf1398b2c4f6e59bc358",
+      "runtimeProfile": "venerax",
+      "verifyProfiles": [
+        "venera-next"
+      ],
+      "settings": {},
+      "readingSites": [
+        "linovelib.com"
+      ],
+      "autoIncluded": {
+        "at": "2026-11-28T10:14:54.085090+00:00",
+        "replaces": null,
+        "replacesVersion": null,
+        "runUrl": "https://github.com/laincat/vensrc/actions/runs/46095455737",
+        "cliCommit": "dd6ded39844e56902d3880b1fc1c201a6d1d1fda"
+      }
     }
   ]
 }
